@@ -34,25 +34,25 @@ class SIOClientImpl: public Poco::Runnable
 {
 public:
 	bool handshake();
-	bool openSocket();
-	bool init();
+	bool openSocket(); // Opens a WebSocket connection.
+	bool init(); // Initializes the client.
 
-	void release();
-	void addref();
+	void release(); //Releases resources.
+	void addref(); // Manages reference counting for the object.
 
-	static SIOClientImpl* connect(Poco::URI uri);
-	void disconnect(std::string endpoint);
-	void connectToEndpoint(std::string endpoint);
-	void monitor();
-	virtual void run();
-	void heartbeat(Poco::Timer& timer);
-	bool receive();
-	void send(std::string endpoint, std::string s);
-	void send(SocketIOPacket *packet);
-	void emit(std::string endpoint, std::string eventname, std::string args);
-  void emit(std::string endpoint, std::string eventname, Poco::JSON::Object::Ptr args);
+	static SIOClientImpl* connect(Poco::URI uri); //establish a connection to server by uri
+	void disconnect(std::string endpoint); // disconnect from endpoint
+	void connectToEndpoint(std::string endpoint); // connect to specific endpoint
+	void monitor(); // Monitors the connection status.
+	virtual void run(); // The main run loop for the client's thread.
+	void heartbeat(Poco::Timer& timer); // Manages the heartbeat mechanism to keep the connection alive.
+	bool receive(); // Receives data from the WebSocket.
+	void send(std::string endpoint, std::string s); // Sends a string message to a specific endpoint.
+	void send(SocketIOPacket *packet); // Sends a SocketIOPacket.
+	void emit(std::string endpoint, std::string eventname, std::string args); // Emits an event with string arguments.
+  void emit(std::string endpoint, std::string eventname, Poco::JSON::Object::Ptr args); // Emits an event with JSON arguments.
 
-	std::string getUri();
+	std::string getUri(); // 
 
 private:
 
