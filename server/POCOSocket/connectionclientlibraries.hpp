@@ -1,5 +1,4 @@
-#ifndef SIO_ClientImpl_DEFINED
-#define SIO_ClientImpl_DEFINED
+
 
 #include <string>
 
