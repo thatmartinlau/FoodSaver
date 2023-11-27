@@ -1,7 +1,7 @@
 #ifndef SIO_Client_INCLUDED
 #define SIO_Client_INCLUDED
 
-#include "SIOClientImpl.h"
+#include "connectionclientlibraries.hpp"
 
 #include "Poco/JSON/Array.h"
 
