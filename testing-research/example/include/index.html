@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Server Test Page</title>
+</head>
+<body>
+    <button id="connect" onclick="connect()">CONNECT</button>
+    <button id="disconnect" onclick="socket.disconnect()" disabled>DISCONNECT</button>
+    <input id="eventname" type="text" placeholder="Websocket Event Name" disabled>
+    <input id="eventdata" type="text" placeholder="Websocket Event Payload" disabled>
+    <button id="send" onclick="sendEvent()" disabled>Send</button><br>
+
+    <textarea id="log" disabled rows="30" cols="80">Client Logs:</textarea>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        var logbox = document.getElementById("log");
+        function updateLog(obj) {
+            log.value += "\r\n"
+            log.value += obj.toString();
+            log.scrollTop = log.scrollHeight;
+            console.log(obj);
+        }
+        const socket = io({autoConnect: false, reconnection:false});
+        socket.on("message", (data)=>{
+            updateLog("[Message from Server]"+data.data);
+        });
+        socket.on("alert", (data)=>{
+            alert(data.data)
+            updateLog("[Alert from Server]"+data.data);
+        });
+        socket.on("connect_error", function(){
+            updateLog("Connect failed.")
+        })
+        socket.on("connect", function(){
+            onConnect();
+        })
+        socket.on("disconnect", function(){
+            onDisconnect();
+        })
+
+        function sendEvent(){
+            var eventname = document.getElementById("eventname").value;
+            var eventdata = document.getElementById("eventdata").value;
+            socket.emit(eventname, JSON.parse(eventdata));
+            updateLog("[Send Event]"+eventname+", data: "+eventdata);
+        }
+
+        function connect(){
+            updateLog("connecting...")
+            socket.connect();
+        }
+
+        function onDisconnect(){
+            updateLog("disconnected")
+            document.getElementById("connect").disabled = false;
+            document.getElementById("disconnect").disabled = true;
+            document.getElementById("eventname").disabled = true;
+            document.getElementById("eventdata").disabled = true;
+            document.getElementById("send").disabled = true;
+        }
+
+        function onConnect(){
+            updateLog("connected")
+            document.getElementById("connect").disabled = true;
+            document.getElementById("disconnect").disabled = false;
+            document.getElementById("eventname").disabled = false;
+            document.getElementById("eventdata").disabled = false;
+            document.getElementById("send").disabled = false;
+        }
+
+    </script>
+</body>
+</html>
