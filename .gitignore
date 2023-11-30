@@ -52,3 +52,6 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+
+# VSCode folder in PocoSocket
+.vscode/*
