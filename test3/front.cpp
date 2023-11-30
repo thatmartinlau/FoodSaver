@@ -3,9 +3,16 @@
 #include <list>
 using namespace std;
 
+//INGREDIENT
+
 Ingredient::Ingredient(){
-    this->category = unspecified;
-    this->quantity = 1;
+    Food_class* cat = new Food_class;
+    *cat = unspecified
+    this->category = *cat;
+
+    int* quant = new int;
+    *quant = 1;
+    this->quantity = *quant;
 }
 
 Ingredient::Ingredient(int quantity, Food_class category, string expiry_date){
@@ -42,6 +49,37 @@ Priority Ingredient::get_priority(){
     return this->priority_level;
 }
 
+//FRIDGE
+
+Fridge::Fridge(){
+    this->ingredient_list = list<Ingredient>;
+}
+
+Fridge::Fridge(list<Ingredient> init_list){
+    this->ingredient_list = init_list;
+}
+
+Fridge::~Fridge(){
+
+}
+
+void Fridge::set_list(std::list<Ingredient> new_list){
+    this->ingredient_list = new_list;
+}
+
+list<Ingredient> Fridge::get_list(){
+    return this->ingredient_list;
+}
+
+void Fridge::add_elt(Ingredient elt){
+    this->get_list().push_back(elt);
+}
+
+Ingredient Fridge::pop_elt(){
+    this->get_list().pop_front();
+}
+
+//USER
 
 
 

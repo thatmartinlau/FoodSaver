@@ -33,10 +33,10 @@ public:
     ~Ingredient();
     void set_FoodClass(Food_class category);
     Food_class get_FoodClass();
-    void set_Quant(int quantity);
-    Food_class get_Quant();
+    void set_Quantity(int quantity);
+    int get_Quantity();
     void set_priority(Priority priority_level);
-    Food_class get_priority();
+    Priority get_priority();
 
 
 private:
@@ -49,7 +49,10 @@ private:
 class Fridge {
 public:
     Fridge();
+    Fridge(std::list<Ingredient> init_list);
     ~Fridge();
+    void set_list(std::list<Ingredient> new_list);
+    std::list<Ingredient> get_list();
     void add_elt(Ingredient elt);
     Ingredient pop_elt();
 
