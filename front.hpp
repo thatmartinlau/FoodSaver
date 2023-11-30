@@ -16,6 +16,7 @@ enum Food_class{
     fish,
     sweet,
     nut,
+    unspecified,
     other
 };
 
@@ -27,10 +28,16 @@ enum Priority{
 
 class Ingredient{
 public:
-    Ingredient(){};
+    Ingredient();
+    Ingredient(int quantity,Food_class category, std::string expiry_date);
     ~Ingredient();
-    void set_FoodClass(){};
-    Food_class get_FoodClass(){};
+    void set_FoodClass();
+    Food_class get_FoodClass();
+    void set_Quant();
+    Food_class get_Quant();
+    void set_priority();
+    Food_class get_priority();
+
 
 private:
     Food_class category;
@@ -41,8 +48,10 @@ private:
 
 class Fridge {
 public:
-    Fridge(){};
-    ~Fridge(){};
+    Fridge();
+    ~Fridge();
+    void add_elt();
+    Ingredient pop_elt();
 
 private:
     std::list<Ingredient> ingredient_list;
@@ -50,8 +59,14 @@ private:
 
 class User{
 public:
-    User(){};
-    ~User(){};
+    User();
+    ~User();
+    void set_username();
+    std::string get_username();
+    void set_password();
+    std::string get_password();
+    void set_telegram();
+    std::string get_telegram();
 
 private:
     std::string username;
@@ -62,8 +77,12 @@ private:
 
 class Offer {
 public:
-    Offer(){};
-    ~Offer(){};
+    Offer();
+    ~Offer();
+    void set_price();
+    double get_price();
+    void set_username();
+    User get_username();
 
 private:
     std::list<Ingredient> ingredient_list;
