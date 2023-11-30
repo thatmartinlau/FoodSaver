@@ -89,7 +89,7 @@ Project {
     importPaths: [ "imports", "asset_imports" ]
 
     /* Required for deployment */
-    targetDirectory: "/opt/test-app1"
+    targetDirectory: "/opt/TestApp"
 
     qdsVersion: "4.1"
 

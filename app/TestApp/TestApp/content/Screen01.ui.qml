@@ -7,7 +7,7 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 
 import QtQuick 6.2
 import QtQuick.Controls 6.2
-import test-app1
+import TestApp
 
 Rectangle {
     id: rectangle
@@ -31,7 +31,7 @@ Rectangle {
 
     Text {
         id: label
-        text: qsTr("Hello test-app1")
+        text: qsTr("Hello TestApp")
         anchors.top: button.bottom
         font.family: Constants.font.family
         anchors.topMargin: 45

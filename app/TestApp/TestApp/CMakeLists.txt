@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.21.1)
 option(LINK_INSIGHT "Link Qt Insight Tracker library" ON)
 option(BUILD_QDS_COMPONENTS "Build design studio components" ON)
 
-project(test-app1App LANGUAGES CXX)
+project(TestAppApp LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
 
@@ -13,15 +13,15 @@ if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
 endif()
 
-qt_add_executable(test-app1App src/main.cpp)
+qt_add_executable(TestAppApp src/main.cpp)
 
-qt_add_resources(test-app1App "configuration"
+qt_add_resources(TestAppApp "configuration"
     PREFIX "/"
     FILES
         qtquickcontrols2.conf
 )
 
-target_link_libraries(test-app1App PRIVATE
+target_link_libraries(TestAppApp PRIVATE
     Qt6::Core
     Qt6::Gui
     Qt6::Qml
@@ -39,7 +39,7 @@ if (LINK_INSIGHT)
 endif ()
 
 include(GNUInstallDirs)
-install(TARGETS test-app1App
+install(TARGETS TestAppApp
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
