@@ -31,11 +31,11 @@ public:
     Ingredient();
     Ingredient(int quantity,Food_class category, std::string expiry_date);
     ~Ingredient();
-    void set_FoodClass();
+    void set_FoodClass(Food_class category);
     Food_class get_FoodClass();
-    void set_Quant();
+    void set_Quant(int quantity);
     Food_class get_Quant();
-    void set_priority();
+    void set_priority(Priority priority_level);
     Food_class get_priority();
 
 
@@ -50,7 +50,7 @@ class Fridge {
 public:
     Fridge();
     ~Fridge();
-    void add_elt();
+    void add_elt(Ingredient elt);
     Ingredient pop_elt();
 
 private:
@@ -61,11 +61,11 @@ class User{
 public:
     User();
     ~User();
-    void set_username();
+    void set_username(std::string username);
     std::string get_username();
-    void set_password();
+    void set_password(std::string password);
     std::string get_password();
-    void set_telegram();
+    void set_telegram(std::string telegram);
     std::string get_telegram();
 
 private:
@@ -79,10 +79,10 @@ class Offer {
 public:
     Offer();
     ~Offer();
-    void set_price();
+    void set_price(double price);
     double get_price();
-    void set_username();
-    User get_username();
+    void set_user(User user);
+    User get_user();
 
 private:
     std::list<Ingredient> ingredient_list;
