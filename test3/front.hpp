@@ -26,6 +26,8 @@ enum Priority{
     green
 };
 
+////////////////////////////////////////////////////////////////////////////
+
 class Ingredient{
 public:
     Ingredient();
@@ -46,6 +48,8 @@ private:
     Priority priority_level;
 };
 
+////////////////////////////////////////////////////////////////////////////
+
 class Fridge {
 public:
     Fridge();
@@ -60,23 +64,25 @@ private:
     std::list<Ingredient> ingredient_list;
 };
 
+////////////////////////////////////////////////////////////////////////////
+
 class User{
 public:
-    User();
+    User(std::string *username, std::string *password);
     ~User();
-    void set_username(std::string username);
     std::string get_username();
-    void set_password(std::string password);
-    std::string get_password();
-    void set_telegram(std::string telegram);
+    bool check_password(std::string *input_password);
+    void set_telegram(std::string *telegram);
     std::string get_telegram();
 
 private:
-    std::string username;
-    std::string password;
-    std::string telegram_username;
-    Fridge user_fridge;
+    std::string* username = new std::string;
+    std::string* password = new std::string;
+    std::string* telegram_username = new std::string;
+    Fridge* user_fridge = new Fridge();
 };
+
+////////////////////////////////////////////////////////////////////////////
 
 class Offer {
 public:
