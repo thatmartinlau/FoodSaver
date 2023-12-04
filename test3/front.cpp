@@ -5,19 +5,19 @@ using namespace std;
 
 //INGREDIENT
 
-Ingredient::Ingredient(string name){
+Ingredient::Ingredient(string *name){
     this->name = name;
 
     Food_class* cat = new Food_class;
     *cat = unspecified;
-    this->category = *cat;
+    this->category = cat;
 
     int* quant = new int;
     *quant = 1;
-    this->quantity = *quant;
+    this->quantity = quant;
 }
 
-Ingredient::Ingredient(string name, int quantity, Food_class category, string expiry_date){
+Ingredient::Ingredient(string *name, int *quantity, Food_class *category, string *expiry_date){
     this->name = name;
     this->quantity = quantity;
     this->category = category;
@@ -25,7 +25,7 @@ Ingredient::Ingredient(string name, int quantity, Food_class category, string ex
 }
 
 string Ingredient::get_name(){
-    return this->name;
+    return *name;
 }
 
 bool Ingredient::operator ==(Ingredient other){
@@ -37,20 +37,20 @@ Ingredient::~Ingredient(){
     delete this->quantity;
 }
 
-void Ingredient::set_FoodClass(Food_class category){
+void Ingredient::set_FoodClass(Food_class *category){
     this->category = category;
 }
 
 Food_class Ingredient::get_FoodClass(){
-    return this->category;
+    return *category;
 }
 
-void Ingredient::set_Quantity(int quantity){
+void Ingredient::set_Quantity(int *quantity){
     this->quantity = quantity;
 }
 
 int Ingredient::get_Quantity(){
-    return this->quantity;
+    return *quantity;
 }
 
 void Ingredient::set_priority(Priority priority_level){
@@ -87,8 +87,9 @@ void Fridge::add_elt(Ingredient elt){
     this->get_list().push_back(elt);
 }
 
+// this does not work
 Ingredient Fridge::pop_elt(Ingredient getit){
-    this->get_list().remove(getit);
+    ingredient_list.remove(getit);
     return getit;
 }
 

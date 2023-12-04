@@ -30,24 +30,24 @@ enum Priority{
 
 class Ingredient{
 public:
-    Ingredient(std::string name);
-    Ingredient(std::string name, int quantity,Food_class category, std::string expiry_date);
+    Ingredient(std::string *name);
+    Ingredient(std::string *name, int *quantity,Food_class *category, std::string *expiry_date);
     ~Ingredient();
-    void set_FoodClass(Food_class category);
+    void set_FoodClass(Food_class *category);
     Food_class get_FoodClass();
-    void set_Quantity(int quantity);
+    void set_Quantity(int *quantity);
     int get_Quantity();
     void set_priority(Priority priority_level);
     Priority get_priority();
     std::string get_name();
     bool operator==(Ingredient other);
-
+    void saveToJsonFile(const std::string& fileIngredient);
 
 private:
-    std::string name;
-    Food_class category;
-    int quantity;
-    std::string expiry_date;
+    std::string *name = new std::string;
+    Food_class *category = new Food_class;
+    int *quantity = new int;
+    std::string *expiry_date = new std::string;
     Priority priority_level;
 };
 
@@ -62,6 +62,7 @@ public:
     std::list<Ingredient> get_list();
     void add_elt(Ingredient elt);
     Ingredient pop_elt(Ingredient getit);
+    void saveToJsonFile(const std::string& fileFridge);
 
 private:
     std::list<Ingredient> ingredient_list;
