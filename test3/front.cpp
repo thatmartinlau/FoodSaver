@@ -5,9 +5,11 @@ using namespace std;
 
 //INGREDIENT
 
-Ingredient::Ingredient(){
+Ingredient::Ingredient(string name){
+    this->name = name;
+
     Food_class* cat = new Food_class;
-    *cat = unspecified
+    *cat = unspecified;
     this->category = *cat;
 
     int* quant = new int;
@@ -15,14 +17,24 @@ Ingredient::Ingredient(){
     this->quantity = *quant;
 }
 
-Ingredient::Ingredient(int quantity, Food_class category, string expiry_date){
+Ingredient::Ingredient(string name, int quantity, Food_class category, string expiry_date){
+    this->name = name;
     this->quantity = quantity;
     this->category = category;
     this->expiry_date = expiry_date;
 }
 
-Ingredient::~Ingredient(){
+string Ingredient::get_name(){
+    return this->name;
+}
 
+bool Ingredient::operator ==(Ingredient other){
+    return (this->get_name() == other.get_name());
+}
+
+Ingredient::~Ingredient(){
+    delete this->category;
+    delete this->quantity;
 }
 
 void Ingredient::set_FoodClass(Food_class category){
@@ -33,11 +45,11 @@ Food_class Ingredient::get_FoodClass(){
     return this->category;
 }
 
-void Ingredient::set_Quant(int quantity){
+void Ingredient::set_Quantity(int quantity){
     this->quantity = quantity;
 }
 
-int Ingredient::get_Quant(){
+int Ingredient::get_Quantity(){
     return this->quantity;
 }
 
@@ -52,7 +64,8 @@ Priority Ingredient::get_priority(){
 //FRIDGE
 
 Fridge::Fridge(){
-    this->ingredient_list = list<Ingredient>;
+    list<Ingredient> l = {};
+    this->ingredient_list = l;
 }
 
 Fridge::Fridge(list<Ingredient> init_list){
@@ -60,7 +73,6 @@ Fridge::Fridge(list<Ingredient> init_list){
 }
 
 Fridge::~Fridge(){
-
 }
 
 void Fridge::set_list(std::list<Ingredient> new_list){
@@ -75,8 +87,9 @@ void Fridge::add_elt(Ingredient elt){
     this->get_list().push_back(elt);
 }
 
-Ingredient Fridge::pop_elt(){
-    this->get_list().pop_front();
+Ingredient Fridge::pop_elt(Ingredient getit){
+    this->get_list().remove(getit);
+    return getit;
 }
 
 //USER
