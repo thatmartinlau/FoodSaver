@@ -33,7 +33,8 @@ bool Ingredient::operator ==(Ingredient other){
 }
 
 Ingredient::~Ingredient(){
-
+    delete this->category;
+    delete this->quantity;
 }
 
 void Ingredient::set_FoodClass(Food_class category){
@@ -72,7 +73,6 @@ Fridge::Fridge(list<Ingredient> init_list){
 }
 
 Fridge::~Fridge(){
-
 }
 
 void Fridge::set_list(std::list<Ingredient> new_list){
