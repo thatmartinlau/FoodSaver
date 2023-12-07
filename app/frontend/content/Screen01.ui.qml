@@ -75,6 +75,11 @@ Rectangle {
             target: button1
             onDoubleClicked: animation.complete()
         }
+
+        Connections {
+            target: button1
+            onDoubleClicked: console.log("button1.doubleClicked")
+        }
     }
 
     Timeline {
