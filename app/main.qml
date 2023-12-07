@@ -7,13 +7,37 @@ Window {
     height: 1280
     visible: true
     title: qsTr("App")
+
+    WebSocket {
+        id: socket
+        url: "ws://127.0.0.1:3333"
+        onTextMessageReceived: {
+            test.text = test.text + "\n Received message: " + message
+        }
+        onStatusChanged: if (socket.status == WebSocket.Error) {
+                             console.log("Error: " + socket.errorString)
+                         } else if (socket.status == WebSocket.Open) {
+                             socket.sendTextMessage("Hello World")
+                         } else if (socket.status == WebSocket.Closed) {
+                             test.text += "\nSocket closed"
+                         }
+        active: true
+    }
+
     SwipeView {
         id: view
         currentIndex: 0
         anchors.fill: parent
-        Fridge {
-            id: fridgeView
+        Item {
+            Text {
+                id: test
+                text: qsTr("text")
+            }
         }
+
+        /*Fridge {
+            id: fridgeView
+        }*/
         Share {
             id: shareView
         }
