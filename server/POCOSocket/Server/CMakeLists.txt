@@ -9,9 +9,8 @@ add_subdirectory(rpclib-master)
 include_directories(rpclib-master/include)
 
 add_executable(Server main.cpp
-	server-side.cpp
 	client-side.cpp
-	
+	client-side.hpp
 )
 
 target_link_libraries(Server PRIVATE rpc)
