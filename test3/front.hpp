@@ -39,8 +39,8 @@ public:
     int get_Quantity();
     void set_priority(Priority priority_level);
     Priority get_priority();
-    std::string get_name();
-    bool operator==(Ingredient other);
+    std::string get_name() const;
+    bool operator==(const Ingredient& other) const;
     void saveToJsonFile(const std::string& fileIngredient);
 
 private:
@@ -61,11 +61,11 @@ public:
     void set_list(std::list<Ingredient> new_list);
     std::list<Ingredient> get_list();
     void add_elt(Ingredient elt);
-    Ingredient pop_elt(Ingredient getit);
+    Ingredient pop_elt(Ingredient *getit);
     void saveToJsonFile(const std::string& fileFridge);
 
 private:
-    std::list<Ingredient> ingredient_list;
+    std::list<Ingredient>* ingredient_list;
 };
 
 ////////////////////////////////////////////////////////////////////////////

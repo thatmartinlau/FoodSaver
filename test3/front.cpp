@@ -24,17 +24,23 @@ Ingredient::Ingredient(string *name, int *quantity, Food_class *category, string
     this->expiry_date = expiry_date;
 }
 
-string Ingredient::get_name(){
+string Ingredient::get_name() const {
     return *name;
 }
 
-bool Ingredient::operator ==(Ingredient other){
+//bool Ingredient::operator==(Ingredient other){
+//    return ( this->get_name() == other.get_name());
+//}
+
+bool Ingredient::operator==(const Ingredient& other) const {
     return (this->get_name() == other.get_name());
 }
 
 Ingredient::~Ingredient(){
-    delete this->category;
-    delete this->quantity;
+    delete name;
+    delete category;
+    delete quantity;
+    delete expiry_date;
 }
 
 void Ingredient::set_FoodClass(Food_class *category){
@@ -65,22 +71,22 @@ Priority Ingredient::get_priority(){
 
 Fridge::Fridge(){
     list<Ingredient> l = {};
-    this->ingredient_list = l;
+    *ingredient_list = l;
 }
 
 Fridge::Fridge(list<Ingredient> init_list){
-    this->ingredient_list = init_list;
+    *ingredient_list = init_list;
 }
 
 Fridge::~Fridge(){
 }
 
 void Fridge::set_list(std::list<Ingredient> new_list){
-    this->ingredient_list = new_list;
+    *ingredient_list = new_list;
 }
 
 list<Ingredient> Fridge::get_list(){
-    return this->ingredient_list;
+    return *ingredient_list;
 }
 
 void Fridge::add_elt(Ingredient elt){
@@ -88,13 +94,12 @@ void Fridge::add_elt(Ingredient elt){
 }
 
 // this does not work
-Ingredient Fridge::pop_elt(Ingredient getit){
-    ingredient_list.remove(getit);
-    return getit;
+Ingredient Fridge::pop_elt(Ingredient *getit){
+    this->get_list().remove(*getit);
+    return *getit;
 }
 
 //USER
-
 User::User(std::string *username, std::string *password) {
     this->username = username;
     this->password = password;
