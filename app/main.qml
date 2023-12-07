@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtWebSockets
+import app.foodsaver 0.1
 
 Window {
     width: 720
@@ -8,36 +9,28 @@ Window {
     visible: true
     title: qsTr("App")
 
-    WebSocket {
-        id: socket
-        url: "ws://127.0.0.1:3333"
-        onTextMessageReceived: {
-            test.text = test.text + "\n Received message: " + message
-        }
-        onStatusChanged: if (socket.status == WebSocket.Error) {
-                             console.log("Error: " + socket.errorString)
-                         } else if (socket.status == WebSocket.Open) {
-                             socket.sendTextMessage("Hello World")
-                         } else if (socket.status == WebSocket.Closed) {
-                             test.text += "\nSocket closed"
-                         }
-        active: true
+    // Test for instantiating Test Class in QML, now commented
+    /* Test {
+        id: testClass
     }
+
+    Button {
+        id: btn
+        text: "TRY"
+        onClicked: {
+            testClass.clickTest();
+        }
+        anchors.fill: parent
+    } */
 
     SwipeView {
         id: view
         currentIndex: 0
         anchors.fill: parent
-        Item {
-            Text {
-                id: test
-                text: qsTr("text")
-            }
-        }
 
-        /*Fridge {
+        Fridge {
             id: fridgeView
-        }*/
+        }
         Share {
             id: shareView
         }
