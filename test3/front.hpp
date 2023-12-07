@@ -63,6 +63,7 @@ public:
     void add_elt(Ingredient elt);
     Ingredient pop_elt(Ingredient *getit);
     void saveToJsonFile(const std::string& fileFridge);
+    std::list<Ingredient> sort_ingredients(std::string* sort_key);
 
 private:
     std::list<Ingredient>* ingredient_list = new std::list<Ingredient>;
