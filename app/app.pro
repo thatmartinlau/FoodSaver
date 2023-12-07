@@ -1,7 +1,9 @@
 QT += quick websockets
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+        test.cpp \
+        websocketclient.cpp
 
 resources.files = main.qml Fridge.qml Share.qml Account.qml
 resources.prefix = /$${TARGET}
@@ -22,4 +24,9 @@ DISTFILES += \
     Fridge.qml \
     Account.qml \
     Share.qml
+
+HEADERS += \
+    config.h \
+    test.h \
+    websocketclient.h
 
