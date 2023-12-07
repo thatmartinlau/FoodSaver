@@ -9,6 +9,8 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 import QtQuick 6.2
 import QtQuick.Controls 6.2
 import frontend
+import ""
+import QtQuick.Timeline 1.0
 
 Rectangle {
     id: rectangle
@@ -44,8 +46,8 @@ Rectangle {
             ColorAnimation {
                 id: colorAnimation1
                 target: rectangle
-                property: "color"
-                to: "#FF0000"
+                property: "color    "
+                to: "#2294c6"
                 from: Constants.backgroundColor
             }
 
@@ -54,43 +56,47 @@ Rectangle {
                 target: rectangle
                 property: "color"
                 to: Constants.backgroundColor
-                from: "#FF0000"
+                from: "#2294c6"
             }
         }
     }
 
     Button {
         id: button1
-        x: 457
-        y: 575
-        text: qsTr("Button")
-        checkable: true
+        x: 647
+        y: 366
+        width: 116
+        height: 52
+        visible: true
+        text: qsTr("test button")
+        clip: false
+
         Connections {
             target: button1
-            onClicked: animation1.start()
+            onDoubleClicked: animation.complete()
         }
 
-
-        SequentialAnimation {
-            id: animation1
-            paused: false
-            running: true
-            ColorAnimation {
-                id: colorAnimation3
-                target: rectangle
-                property: "color"
-                to: "#efea47"
-                from: Constants.backgroundColor
-            }
-
-            ColorAnimation {
-                id: colorAnimation4
-                target: rectangle
-                property: "color"
-                to: Constants.backgroundColor
-                from: "#efea47"
-            }
+        Connections {
+            target: button1
+            onDoubleClicked: console.log("button1.doubleClicked")
         }
+    }
+
+    Timeline {
+        id: timeline
+        animations: [
+            TimelineAnimation {
+                id: timelineAnimation
+                duration: 1000
+                loops: 1
+                running: true
+                to: 1000
+                from: 0
+            }
+        ]
+        enabled: true
+        startFrame: 0
+        endFrame: 1000
     }
     states: [
         State {
