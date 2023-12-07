@@ -1,10 +1,11 @@
+
+
 /*
 This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
 It is supposed to be strictly declarative and only uses a subset of QML. If you edit
 this file manually, you might introduce QML code that is not supported by Qt Design Studio.
 Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
 */
-
 import QtQuick 6.2
 import QtQuick.Controls 6.2
 import frontend
@@ -44,7 +45,7 @@ Rectangle {
                 id: colorAnimation1
                 target: rectangle
                 property: "color"
-                to: "#2294c6"
+                to: "#FF0000"
                 from: Constants.backgroundColor
             }
 
@@ -53,7 +54,41 @@ Rectangle {
                 target: rectangle
                 property: "color"
                 to: Constants.backgroundColor
-                from: "#2294c6"
+                from: "#FF0000"
+            }
+        }
+    }
+
+    Button {
+        id: button1
+        x: 457
+        y: 575
+        text: qsTr("Button")
+        checkable: true
+        Connections {
+            target: button1
+            onClicked: animation1.start()
+        }
+
+
+        SequentialAnimation {
+            id: animation1
+            paused: false
+            running: true
+            ColorAnimation {
+                id: colorAnimation3
+                target: rectangle
+                property: "color"
+                to: "#efea47"
+                from: Constants.backgroundColor
+            }
+
+            ColorAnimation {
+                id: colorAnimation4
+                target: rectangle
+                property: "color"
+                to: Constants.backgroundColor
+                from: "#efea47"
             }
         }
     }
