@@ -4,8 +4,8 @@
  * to the user interface implemented by QML. -Xiaxi
 */
 
-#ifndef WEBSOCKETCLIENT_H
-#define WEBSOCKETCLIENT_H
+#ifndef WEBSOCKETCLIENT_WEBSOCKETCLIENT_H
+#define WEBSOCKETCLIENT_WEBSOCKETCLIENT_H
 
 #include <QObject>
 #include <QWebSocket> //Websocket class provided by Qt Framework

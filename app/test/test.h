@@ -1,5 +1,5 @@
-#ifndef TEST_H
-#define TEST_H
+#ifndef TEST_TEST_H
+#define TEST_TEST_H
 
 #include <QObject>
 #include <QDebug>

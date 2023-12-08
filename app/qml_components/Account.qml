@@ -5,20 +5,23 @@ import QtQuick.Controls
 Item {
     ColumnLayout {
         anchors.fill: parent
-        spacing: 2
+        spacing: 1
         Text {
             id: accountText
             text: qsTr("This is the Account Page")
+            Layout.preferredHeight: 40
         }
         Text {
             id: anotherText
             text: qsTr("This is another line to show columnlayout")
+            Layout.preferredHeight: 40
         }
         Button {
             text: "Send message to server"
             onClicked: {
                 wsClient.sendMessage("Hello World");
             }
+            Layout.preferredHeight: 40
         }
         // Connect to wsClient in main.cpp
         Connections {

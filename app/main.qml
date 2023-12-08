@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtWebSockets
 import app.foodsaver 0.1
+import "qml_components" // Importing all qml files under qml_components/
 
 Window {
     width: 720
