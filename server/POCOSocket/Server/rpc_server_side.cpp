@@ -22,13 +22,13 @@ void remove_food(std::unordered_map fridge){}
 
 std::string check_fridge(std::unordered_map fridge){}
 
-std::unordered_map get_recommandation(){} //return a vector with vector[0] = name of dish, and the rest recipe
+std::unordered_map get_recommandation(std::unordered_map fridge){} //return a vector with vector[0] = name of dish, and the rest recipe
 
 void reminder(){} // check regularly expiration whether shoud send notification
 
 void remind_expiration (){} // send notification
 
-void share_food(){} //push food from fridge to market place to the market
+void share_food(std::unordered_map fridge){} //push food from fridge to market place to the market
 
 int main() {
     rpc::server srv(3333);
@@ -51,7 +51,7 @@ int main() {
         rpc::this_handler().respond_error(err_obj);
     });
 
-    // client connect, will respense first
+    // client connect, will response first
     srv.bind("exit", []() {
         rpc::this_session().post_exit();
     });
