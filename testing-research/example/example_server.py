@@ -23,7 +23,7 @@ def print_current_connections(): #To print current connections
     print_socket("Current connections:"+str(connections))
 
 #HTTP events
-@app.route('/', methods=["GET"])
+@app.route('/a', methods=["GET"])
 def testpageindex(): #Serve index.html
     return send_file("include/index.html")
 
