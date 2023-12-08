@@ -15,6 +15,9 @@ android {
     ANDROID_EXTRA_LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_3/arm64-v8a/libcrypto_3.so
 }
 
+# Disable qDebug() for release builds
+CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
+
 SOURCES += \
         main.cpp \
         test.cpp \

@@ -14,10 +14,8 @@ WebsocketClient::WebsocketClient(QObject *parent)
 }
 
 void WebsocketClient::connectToServer() {
-#ifdef QT_DEBUG
     qDebug() << "[WebsocketClient] Connecting to server...";
     qDebug() << "[WebsocketClient] Url: "<< SERVER_URL;
-#endif
     m_ws.open(m_url);
 }
 
@@ -26,14 +24,10 @@ void WebsocketClient::sendMessage(const QString &message) {
 }
 
 void WebsocketClient::onConnected() {
-#ifdef QT_DEBUG
     qDebug() << "[WebsocketClient] Connected to server";
-#endif
 }
 
 void WebsocketClient::onTextMessageReceived(QString message) {
-#ifdef QT_DEBUG
     qDebug() << "[WebsocketClient] Message received: " << message;
-#endif
     emit messageReceived(message);
 }
