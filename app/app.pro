@@ -20,18 +20,18 @@ CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
 
 SOURCES += \
         main.cpp \
-        test.cpp \
-        websocketclient.cpp
+        test/test.cpp \
+        websocketclient/websocketclient.cpp
 
-resources.files = main.qml Fridge.qml Share.qml Account.qml
+resources.files = main.qml qml_components/Fridge.qml qml_components/Share.qml qml_components/Account.qml
 resources.prefix = /$${TARGET}
 RESOURCES += resources
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
+QML_IMPORT_PATH = qml_components
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
-QML_DESIGNER_IMPORT_PATH =
+QML_DESIGNER_IMPORT_PATH = qml_components
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -39,12 +39,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Fridge.qml \
-    Account.qml \
-    Share.qml
+    qml_components/Fridge.qml \
+    qml_components/Account.qml \
+    qml_components/Share.qml
 
 HEADERS += \
     config.h \
-    test.h \
-    websocketclient.h
+    test/test.h \
+    websocketclient/websocketclient.h
 

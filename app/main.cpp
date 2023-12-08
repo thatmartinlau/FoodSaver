@@ -5,8 +5,8 @@
 #include <QtCore/QDebug>
 #include <QQmlContext>
 #include <iostream>
-#include "test.h"
-#include "websocketclient.h"
+#include "test/test.h"
+#include "websocketclient/websocketclient.h"
 
 int main(int argc, char *argv[])
 {
