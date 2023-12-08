@@ -1,5 +1,20 @@
 QT += quick websockets
 
+# Some measurement to fix the bugs caused by different Openssl versions of Qt & Android SDK (1.1 vs 3.x)
+# If it doesnt work for you check ur openssl folder and the path of the libs but dont edit s.v.p.
+# Dont touch it if it works fine on your android build...
+android {
+    message(ANDROID OPENSSL ADDITIONAL LIBRARIES LOADED)
+    LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_1.1/arm64-v8a/libssl_1_1.so
+    LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_1.1/arm64-v8a/libcrypto_1_1.so
+    ANDROID_EXTRA_LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_1.1/arm64-v8a/libssl_1_1.so
+    ANDROID_EXTRA_LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_1.1/arm64-v8a/libcrypto_1_1.so
+    LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_3/arm64-v8a/libssl_3.so
+    LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_3/arm64-v8a/libcrypto_3.so
+    ANDROID_EXTRA_LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_3/arm64-v8a/libssl_3.so
+    ANDROID_EXTRA_LIBS += $$ANDROID_SDK_ROOT/android_openssl/ssl_3/arm64-v8a/libcrypto_3.so
+}
+
 SOURCES += \
         main.cpp \
         test.cpp \
