@@ -48,3 +48,7 @@ HEADERS += \
     test/test.h \
     websocketclient/websocketclient.h
 
+# Import msgpack11 dependency
+HEADERS += dependencies/msgpack11/msgpack11.hpp
+SOURCES += dependencies/msgpack11/msgpack11.cpp
+
