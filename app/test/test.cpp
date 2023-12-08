@@ -1,3 +1,4 @@
+// As its name suggests, this is a testing playground...
 #include "test.h"
 
 Test::Test(QObject *parent)
