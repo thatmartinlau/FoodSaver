@@ -13,6 +13,13 @@ WebsocketClient::WebsocketClient(QObject *parent)
     connect(&m_ws, &QWebSocket::binaryMessageReceived, this, &WebsocketClient::onBinaryMessageReceived);
 }
 
+CallbackFuncs resolveCallbackFuncs(std::string funcStr) { // Convert parsed MsgPack to enum types
+    if(funcStr=="userLoginSuccess") return userLoginSuccess;
+    if(funcStr=="userLoginFail") return userLoginFail;
+    if(funcStr=="updateFridge") return updateFridge;
+    return funcNotFound;
+}
+
 void WebsocketClient::connectToServer() {
     qDebug() << "[WebsocketClient] Connecting to server...";
     qDebug() << "[WebsocketClient] Url: "<< SERVER_URL;
@@ -28,11 +35,7 @@ void WebsocketClient::onConnected() {
     qDebug() << "[WebsocketClient] Connected to server";
 }
 
-CallbackFuncs resolveCallbackFuncs(std::string funcStr) { // Convert parsed MsgPack to enum types
-    if(funcStr=="userLoginSuccess") return userLoginSuccess;
-    if(funcStr=="userLoginFail") return userLoginFail;
-    return funcNotFound;
-}
+
 
 void WebsocketClient::onBinaryMessageReceived(QByteArray serialized_data) {
     qDebug() << "[WebsocketClient] Message received: " << serialized_data;
@@ -49,11 +52,26 @@ void WebsocketClient::onBinaryMessageReceived(QByteArray serialized_data) {
     case userLoginFail:
         handleUserLoginFail(payload);
         break;
+    case updateFridge:
+        handleUpdateFridge(payload);
+        break;
     case funcNotFound:
         qDebug() << "Func: " << func << " not found";
         break;
     }
 }
+
+void WebsocketClient::sendFunc(const std::string &func) {
+    msgpack11::MsgPack payload = msgpack11::MsgPack::object {
+        {"func", func}
+    };
+    sendMsgPack(payload);
+}
+
+void WebsocketClient::requestUpdateFridge() {
+    qDebug() << "[WebsocketClient] Updating Fridge...";
+    sendFunc("updateFridge");
+    }
 
 // Write handler here
 void WebsocketClient::handleUserLoginSuccess(msgpack11::MsgPack payload) {
@@ -63,6 +81,27 @@ void WebsocketClient::handleUserLoginSuccess(msgpack11::MsgPack payload) {
 
 void WebsocketClient::handleUserLoginFail(msgpack11::MsgPack payload) {
     qDebug() << "User login fail, message from server: " << payload["message"].string_value();
+}
+
+void WebsocketClient::handleUpdateFridge(msgpack11::MsgPack payload) {
+    qDebug() << "handleUpdateFridge()";
+    QList<QList<QVariant>> result;
+    for(const msgpack11::MsgPack &p : payload.array_items()) {
+        QList<QVariant> arr;
+        for(const auto &item : p.array_items()) {
+            if(item.is_string()) {
+                // qDebug() << item.string_value();
+                arr << QVariant(QString::fromStdString(item.string_value()));
+            }
+            if(item.is_int()) {
+                // qDebug() << item.int_value();
+                arr << QVariant(item.int_value());
+            }
+        }
+        result << arr;
+    }
+    qDebug() << result;
+    emit updateFridgeModel(result);
 }
 
 // Testing functions here

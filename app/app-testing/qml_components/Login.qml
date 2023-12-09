@@ -3,7 +3,6 @@ import QtQuick.Controls
 
 Item {
 
-    signal userLogin
     Button {
         text: "Login"
         onClicked: {

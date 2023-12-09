@@ -17,6 +17,8 @@
 #include <QWebSocket> //Websocket class provided by Qt Framework
 #include <QQmlApplicationEngine> //QML engine used to navigate between components
 #include "dependencies/msgpack11/msgpack11.hpp"
+#include <QVariantList>
+#include <QVariant>
 
 
 
@@ -30,9 +32,12 @@
 enum CallbackFuncs{ // This enum is used to store all possible values of key "func" from the server
     userLoginSuccess, // Two call-backs when trying to login
     userLoginFail,
+    updateFridge,
     funcNotFound // All other cases when theres an unresolved callback (which means u need to check the server-side)
 };
-CallbackFuncs resolveCallbackFuncs(msgpack11::MsgPack msgpack);// Convert parsed MsgPack to enum types
+
+CallbackFuncs resolveCallbackFuncs(std::string funcStr); // Convert parsed MsgPack to enum types
+
 
 class WebsocketClient : public QObject //Inheriting QObject makes it possible to be a QML component
 {
@@ -40,27 +45,33 @@ class WebsocketClient : public QObject //Inheriting QObject makes it possible to
 public:
     explicit WebsocketClient(QObject *parent = nullptr);
 
+
 signals:
     void messageReceived(QString message); // On receiving websocket string message from server
     void loadHomePage();
     void loadLoginPage();
+    void updateFridgeModel(QList<QList<QVariant>> data);
 
 public slots:
     void connectToServer();
     void sendMsgPack(const msgpack11::MsgPack &msgpack);
     void onConnected();
     void onBinaryMessageReceived(const QByteArray serialized_data);
+    void requestUpdateFridge(); // Actively updating fridge items from server
 #ifdef QT_DEBUG // Testing slot functions
     void testUserLogin();
 #endif
+
 
 private:
     QWebSocket m_ws;
     QUrl m_url;
 
+    void sendFunc(const std::string &func); // Pack MsgPacks with no "payload" and only "func"
     // Server Callback Handlers
     void handleUserLoginSuccess(msgpack11::MsgPack payload);
     void handleUserLoginFail(msgpack11::MsgPack payload);
+    void handleUpdateFridge(msgpack11::MsgPack payload);
     void handleFuncNotFound();
 };
 
