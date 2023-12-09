@@ -20,33 +20,27 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    MsgPack mypack = MsgPack::object {
-        {"key", "value"},
-        {"key1", "value1"}
-    };
-    qDebug() << "Key: " << mypack["key"].string_value();
-    std::string serialized = mypack.dump();
-    qDebug() << "Serialized: " << serialized;
-    std::string err;
-    MsgPack repack = MsgPack::parse(serialized, err);
-    qDebug() << "Repacked. error: " << err;
-    qDebug() << "Key: " << repack["key"].string_value();
-
+    // Register C++ components in QML
     qmlRegisterType<Test>("app.foodsaver", 0, 1, "Test");
-    WebsocketClient wsClient; // Instantiate a WebsocketClient object with server address in config.h
-    wsClient.connectToServer();
 
     QQmlApplicationEngine engine;
 
+    // Instantiate a WebsocketClient object with server address in config.h, with parameter QMLEngine by reference
+    WebsocketClient wsClient(engine);
+    wsClient.connectToServer(); //Autoconnect
+
     engine.rootContext()->setContextProperty("wsClient", &wsClient);
 
-    const QUrl url(u"qrc:/app/main.qml"_qs);
+    // const QUrl url(u"qrc:/app/main.qml"_qs);
+    const QUrl url(u"qrc:/app/login.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {
             if (!obj && url == objUrl)
                 QCoreApplication::exit(-1);
         }, Qt::QueuedConnection);
+
     engine.load(url);
+
 
     return app.exec();
 }

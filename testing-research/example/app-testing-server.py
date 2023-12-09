@@ -18,7 +18,7 @@ async def echo(websocket):
             print_socket("Requested function: "+str(message["func"]))
             match message["func"]:
                 case "userLogin":
-                    return handleLogin(message["payload"])
+                    await handleLogin(websocket, message["payload"])
                 case "ping":
                     await websocket.send(msgpack.packb({"func": "ping", "payload": {"message": "pong"}}))
                 case _:
@@ -27,14 +27,14 @@ async def echo(websocket):
             print_socket_red("Error in unpacking message: "+str(err))
             await websocket.send(msgpack.packb({"func": "error", "payload": {"message": "Server-side error, check server terminal for more information"}}))
             
-def handleLogin(payload):
+async def handleLogin(websocket, payload):
     print_socket("UserLogin request received")
     if payload["username"] == "test" and payload["password"] == "test":
         print_socket("Login success")
-        return {"func": "userLoginSuccess", "payload": {"username": str(payload["username"])}}
+        await websocket.send(msgpack.packb({"func": "userLoginSuccess", "payload": {"username": str(payload["username"])}}))
     else:
-        print_socket("Login failed")
-        return {"func": "userLoginFail", "payload": {"message": "Wrong username or password"}}
+        print_socket_red("Login failed")
+        await websocket.send(msgpack.packb({"func": "userLoginFail", "payload": {"message": "Wrong username or password"}}))
 
 async def main():
     async with websockets.serve(echo, "0.0.0.0", 3333):

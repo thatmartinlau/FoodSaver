@@ -5,8 +5,5 @@ Item {
         id: fridgeText
         text: qsTr("This is the Fridge Page")
     }
-    Text {
-        id: name
-        text: qsTr("123456")
-    }
+
 }

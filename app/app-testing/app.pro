@@ -23,7 +23,7 @@ SOURCES += \
         test/test.cpp \
         websocketclient/websocketclient.cpp
 
-resources.files = main.qml qml_components/Fridge.qml qml_components/Share.qml qml_components/Account.qml
+resources.files = main.qml qml_components/Fridge.qml qml_components/Share.qml qml_components/Account.qml login.qml
 resources.prefix = /$${TARGET}
 RESOURCES += resources
 
@@ -39,9 +39,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    login.qml \
     qml_components/Fridge.qml \
     qml_components/Account.qml \
-    qml_components/Share.qml
+    qml_components/Share.qml \
+    login.qml
 
 HEADERS += \
     config.h \
