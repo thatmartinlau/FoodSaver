@@ -1,8 +1,8 @@
 #include "websocketclient.h"
 #include "config.h"
 
-WebsocketClient::WebsocketClient(QQmlApplicationEngine &engine, QObject *parent)
-    : QObject{parent}, m_engine(engine)
+WebsocketClient::WebsocketClient(QObject *parent)
+    : QObject{parent}
 {
     m_url = QUrl(QStringLiteral(SERVER_URL));
     // Call WebsocketClient::onConnected after connected to server
@@ -55,12 +55,10 @@ void WebsocketClient::onBinaryMessageReceived(QByteArray serialized_data) {
     }
 }
 
-
 // Write handler here
 void WebsocketClient::handleUserLoginSuccess(msgpack11::MsgPack payload) {
     qDebug() << "User login success, username: " << payload["username"].string_value();
-    m_engine.load(QUrl(u"qrc:/app/main.qml"_qs)); // Load to main.qml after signing in
-    m_engine.clearComponentCache(); // Destroy login.qml
+    emit loadHomePage(); // Load Home.qml, this will be done in main.qml
 }
 
 void WebsocketClient::handleUserLoginFail(msgpack11::MsgPack payload) {

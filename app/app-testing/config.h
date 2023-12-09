@@ -7,6 +7,6 @@
 #define CONFIG_H
 
 //Start your configuration here
-#define SERVER_URL "ws://127.0.0.1:3333"
+#define SERVER_URL "ws://192.168.137.1:3333"
 
 #endif // CONFIG_H

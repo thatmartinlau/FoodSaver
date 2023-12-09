@@ -1,11 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-Window {
-    width: 720
-    height: 1280
-    visible: true
-    title: qsTr("App")
+Item {
 
     signal userLogin
     Button {

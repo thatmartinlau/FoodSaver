@@ -38,10 +38,12 @@ class WebsocketClient : public QObject //Inheriting QObject makes it possible to
 {
     Q_OBJECT
 public:
-    explicit WebsocketClient(QQmlApplicationEngine &engine, QObject *parent = nullptr);
+    explicit WebsocketClient(QObject *parent = nullptr);
 
 signals:
     void messageReceived(QString message); // On receiving websocket string message from server
+    void loadHomePage();
+    void loadLoginPage();
 
 public slots:
     void connectToServer();
@@ -55,7 +57,6 @@ public slots:
 private:
     QWebSocket m_ws;
     QUrl m_url;
-    QQmlApplicationEngine &m_engine;
 
     // Server Callback Handlers
     void handleUserLoginSuccess(msgpack11::MsgPack payload);

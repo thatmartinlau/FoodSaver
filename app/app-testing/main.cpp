@@ -26,13 +26,12 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     // Instantiate a WebsocketClient object with server address in config.h, with parameter QMLEngine by reference
-    WebsocketClient wsClient(engine);
+    WebsocketClient wsClient;
     wsClient.connectToServer(); //Autoconnect
 
     engine.rootContext()->setContextProperty("wsClient", &wsClient);
 
-    // const QUrl url(u"qrc:/app/main.qml"_qs);
-    const QUrl url(u"qrc:/app/login.qml"_qs);
+    const QUrl url(u"qrc:/app/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {
             if (!obj && url == objUrl)

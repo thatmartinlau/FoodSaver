@@ -10,60 +10,19 @@ Window {
     visible: true
     title: qsTr("App")
 
-    // Test for instantiating Test Class in QML, now commented
-    /* Test {
-        id: testClass
+    Loader { // Switch between Home.qml and Login.qml
+        id: pageLoader
+        anchors.fill: parent
+        source: "qml_components/Login.qml"
     }
 
-    Button {
-        id: btn
-        text: "TRY"
-        onClicked: {
-            testClass.clickTest();
+    Connections {
+        target: wsClient
+        onLoadHomePage: {
+            pageLoader.source = "qml_components/Home.qml"
         }
-        anchors.fill: parent
-    } */
-
-    SwipeView {
-        id: view
-        currentIndex: 0
-        anchors.fill: parent
-
-        Fridge {
-            id: fridgeView
-        }
-        Share {
-            id: shareView
-        }
-        Account {
-            id: accountView
-        }
-    }
-
-    TabBar {
-        id: menuTab
-        width: parent.width
-
-        currentIndex: view.currentIndex
-
-        anchors.bottom: parent.bottom
-
-        TabButton {
-            id: fridgeTabbtn
-            text: qsTr("Fridge")
-        }
-        TabButton {
-            id: shareTabbtn
-            text: qsTr("Share")
-        }
-        TabButton {
-            id: accountTabbtn
-            text: qsTr("Account")
-        }
-
-        onCurrentIndexChanged: {
-            print("menuTab currentIndex change to ", currentIndex)
-            view.setCurrentIndex(currentIndex)
+        onLoadLoginPage: {
+            pageLoader.source = "qml_components/Login.qml"
         }
     }
 }
