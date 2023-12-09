@@ -10,11 +10,6 @@
 #include "test/test.h"
 #include "websocketclient/websocketclient.h"
 
-// Import external dependencies
-#include "dependencies/msgpack11/msgpack11.hpp"
-using namespace msgpack11;
-
-
 int main(int argc, char *argv[])
 {
 
