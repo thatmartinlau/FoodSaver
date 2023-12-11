@@ -4,10 +4,13 @@
 #include "rpc/this_session.h"
 #include "rpc/this_handler.h"
 
-std::vector<std::string> food_list;
-std::vector login_info; //login_info = [id, username, password, valid]
-std::unordered_map<std::string, double> expiration_time; //expiration_time[food_name] = duration
-std::vector fridge; //fridge = [[id, username, food_name, time of remind(time of put in + expiration), calorie, valid,],[..],...]
+using namespace std;
+
+vector<string> food_list;
+vector login_info; //login_info = [id, username, password, valid]
+unordered_map<string, double> expiration_time; //expiration_time[food_name] = duration
+int num_of_items;
+unordered_map<string, vector> fridge; //fridge = {username:[id, food_name, time of remind(time of put in + expiration), calorie, valid,],username2:[..],...}
 
 // We have two csv, one for login one for fridge
 // columns of login database: id, username, password, valid(if the the account is still active)
@@ -17,17 +20,17 @@ void read_from_csv() {} //everytime open the server, read csv to get data from p
 
 void save_to_csv() {} //save data of three maps in a csv
 
-void add_food(std::unordered_map fridge){}
+void add_food(unordered_map fridge, string food){}
 
-void add_user(std::unordered_map login_info){}
+void add_user(unordered_map login_info, string username, string password){}
 
-void remove_user(std::unordered_map login_info){}
+void remove_user(unordered_map login_info){}
 
-void remove_food(std::unordered_map fridge){}
+void remove_food(unordered_map fridge, food){}
 
-std::string check_fridge(std::unordered_map fridge){}
+string check_fridge(unordered_map fridge){}
 
-std::unordered_map get_recommandation(){} //return a vector with vector[0] = name of dish, and the rest recipe
+unordered_map get_recommandation(){} //return a vector with vector[0] = name of dish, and the rest recipe
 
 void reminder(){} // check regularly expiration whether shoud send notification
 
