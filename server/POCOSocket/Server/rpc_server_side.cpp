@@ -1,12 +1,17 @@
 #include <iostream>
-
+#include <string>
 #include "rpc/server.h"
 #include "rpc/this_session.h"
 #include "rpc/this_handler.h"
 
-std::unordered_map<std::string, std::string> login_info; //login_info[username] = password
+std::vector<std::string> food_list;
+std::vector login_info; //login_info = [id, username, password, valid]
 std::unordered_map<std::string, double> expiration_time; //expiration_time[food_name] = duration
-std::unordered_map<std::string, std::unordered_map> fridge; //fridge[username][item] = time of put in
+std::vector fridge; //fridge = [[id, username, food_name, time of remind(time of put in + expiration), calorie, valid,],[..],...]
+
+// We have two csv, one for login one for fridge
+// columns of login database: id, username, password, valid(if the the account is still active)
+// for fridge database: id, foodname, owner, calorie, valid(False if not in fridge or is expired)
 
 void read_from_csv() {} //everytime open the server, read csv to get data from previous session
 
@@ -22,13 +27,13 @@ void remove_food(std::unordered_map fridge){}
 
 std::string check_fridge(std::unordered_map fridge){}
 
-std::unordered_map get_recommandation(std::unordered_map fridge){} //return a vector with vector[0] = name of dish, and the rest recipe
+std::unordered_map get_recommandation(){} //return a vector with vector[0] = name of dish, and the rest recipe
 
 void reminder(){} // check regularly expiration whether shoud send notification
 
 void remind_expiration (){} // send notification
 
-void share_food(std::unordered_map fridge){} //push food from fridge to market place to the market
+void share_food(){} //push food from fridge to market place to the market
 
 int main() {
     rpc::server srv(3333);
@@ -51,7 +56,7 @@ int main() {
         rpc::this_handler().respond_error(err_obj);
     });
 
-    // client connect, will response first
+    // client connect, will respense first
     srv.bind("exit", []() {
         rpc::this_session().post_exit();
     });
