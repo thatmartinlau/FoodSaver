@@ -23,9 +23,16 @@ SOURCES += \
         test/test.cpp \
         websocketclient/websocketclient.cpp
 
-resources.files = main.qml qml_components/Fridge.qml qml_components/Share.qml qml_components/Account.qml qml_components/Login.qml qml_components/Home.qml
+resources.files = main.qml \
+    qml_components/Fridge.qml \
+    qml_components/Share.qml \
+    qml_components/Account.qml \
+    qml_components/Login.qml \
+    qml_components/Home.qml \
+    qml_components/Loading.qml
 resources.prefix = /$${TARGET}
-RESOURCES += resources
+
+RESOURCES += resources resources.qrc # include files from assets directory in resources.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = qml_components
@@ -38,14 +45,16 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    login.qml \
-    main.qml \
-    qml_components/Fridge.qml \
-    qml_components/Account.qml \
-    qml_components/Share.qml \
-    qml_components/Login.qml \
-    qml_components/Home.qml
+# DISTFILES += \
+#     login.qml \
+#     main.qml \
+#     qml_components/Fridge.qml \
+#     qml_components/Account.qml \
+#     qml_components/Loading.qml \
+#     qml_components/Share.qml \
+#     qml_components/Login.qml \
+#     qml_components/Home.qml \
+#     qml_components/Loading.qml
 
 HEADERS += \
     config.h \

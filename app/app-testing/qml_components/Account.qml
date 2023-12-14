@@ -26,7 +26,7 @@ Item {
         // Connect to wsClient in main.cpp
         Connections {
             target: wsClient
-            onMessageReceived: {
+            onMessageReceived: function(message){
                 console.log("[QML Connections]Message from server: ", message)
             }
         }
