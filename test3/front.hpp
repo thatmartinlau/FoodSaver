@@ -5,6 +5,9 @@
 #include <list>
 #include <string>
 #include <ctime>
+#include "nlohmann/json.hpp"
+using json = nlohmann::json;
+using namespace std;
 
 
 enum Food_class{
@@ -70,6 +73,7 @@ public:
     void saveToJsonFile(const std::string& fileIngredient);
     void set_expiry_date(Date expiry_date);
     Date get_expiry_date();
+    json toJson () const;
 
 private:
     std::string name;
@@ -92,6 +96,8 @@ public:
     Ingredient pop_elt(Ingredient *getit);
     void saveToJsonFile(const std::string& fileFridge);
     void sort_fridge(std::string* sort_key);
+    std::list<Ingredient> sort_ingredients(std::string* sort_key);
+    json toJson () const;
 
 private:
     std::vector<Ingredient> ingredient_list;
@@ -105,6 +111,7 @@ public:
     ~Offer();
     void set_price(double price);
     double get_price();
+    json toJson () const;
 
 private:
     std::list<Ingredient> ingredient_list;
@@ -124,6 +131,7 @@ public:
     bool check_password(std::string input_password);
     void set_telegram(std::string telegram);
     std::string get_telegram();
+    json toJson () const;
 
 private:
     std::string username;
