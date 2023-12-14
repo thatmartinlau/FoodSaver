@@ -1,6 +1,6 @@
 #include <iostream>
 #include "rpclib-master/include/rpc/client.h"
-
+#include "../../../test3/front.hpp"
 
 
 //Backend guys make a new user, which asks for functions to be called from serverside! All functions here are focused on getting server-coded functions called.
@@ -16,34 +16,17 @@ public:
 
 //createClient will add user data, login, to the server. Checks it isnt already in use, makes hash to give user so he can only access his own data.
 //login details given as a list of 2 strings. 1 means user added, 0 means user not added.
-    bool addNewUser();
-    bool openSession();
-    bool closeSession();
-
-//Client sending specific data types. Template function, we can implement differently for each file type- store food in different place to full fridge upload etc.
-//Make sure to add a category in json file which says YO my hash num is this.
-    template<typename File_Type> 
-    void addItem(File_Type file);
-
-
-//Client asking for data to be received, chooses which type !!Types to be decided still.
-    template <typename File_Type>
-    File_Type receive_file(std::string file_name);
-    
-    template <typename File_Type>
-    bool delete_file(std::string file_name);
-
+    bool create_user();
+    void remove_self();
+    void add_food(Ingredient food); //quantities included already.
+    void remove_food(Ingredient food);
+    void share_food();
+    void get_recommendation();
+    Fridge get_fridge();
+    void get_offer_list();
+    void upload_offer();
 private:
-    std::string username;
-    std::string password;
     rpc::client client;
+    
+    std::vector login_info; //[id, username, password, valid] //what is valid? How to compute id?
 };
-
-
-template<typename JSON_Type>
-void addItem(JSON_Type file) {
-    client.call("addItem", username, password, file);
-}
-
-
-heččo89'
