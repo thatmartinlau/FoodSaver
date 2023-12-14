@@ -8,7 +8,7 @@ CONFIG += c++17 cmdline
 
 SOURCES += \
         front.cpp \
-        main.cpp
+        main.cpp 
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
