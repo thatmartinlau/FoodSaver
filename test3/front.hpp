@@ -102,6 +102,7 @@ public:
     bool check_password(std::string *input_password);
     void set_telegram(std::string *telegram);
     std::string get_telegram();
+    json toJson const();
 
 private:
     std::string* username = new std::string;
@@ -109,7 +110,7 @@ private:
     std::string* telegram_username = new std::string;
     Fridge* user_fridge = new Fridge();
     std::list<Offer>* offer_list = new std::list<Offer>;
-    json toJson const();
+    
 };
 
 #endif // FRONT_HPP
