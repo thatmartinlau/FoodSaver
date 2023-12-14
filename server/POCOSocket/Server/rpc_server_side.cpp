@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "rpc/server.h"
+#include "rpc/client.h"
 #include "rpc/this_session.h"
 #include "rpc/this_handler.h"
 
@@ -20,13 +21,20 @@ void read_from_csv() {} //everytime open the server, read csv to get data from p
 
 void save_to_csv() {} //save data of three maps in a csv
 
-void add_food(unordered_map fridge, string food){}
+void update_fridge(std::string user_to_update, unordered_map updated_fridge) {} //updates a user fridge: replaces add/remove functions,
+//important to implement this^ instead of add/remove only, for the offers. Makes it easier to implement later.
 
-void add_user(unordered_map login_info, string username, string password){}
+unordered_map<string,vector> get_fridge(unordered_map lgoin_info) {} //returns a fridge to the user client-side.
+
+void add_user(unordered_map login_info){}
 
 void remove_user(unordered_map login_info){}
 
-void remove_food(unordered_map fridge, food){}
+void add_offer() {}
+
+void satisfy_offer_exchange() {} //enact an offer between two fridges.
+
+void delete_offer() {}
 
 string check_fridge(unordered_map fridge){}
 
@@ -38,20 +46,25 @@ void remind_expiration (){} // send notification
 
 void share_food(){} //push food from fridge to market place to the market
 
+
 int main() {
     rpc::server srv(3333);
-
-    srv.bind("add_food", &add_food);
-
-    srv.bind("remove_food", &remove_food);
+    
+    srv.bind("update_fridge", &update_fridge);
+    
+    srv.bind("get_fridge", &get_fridge);
 
     srv.bind("add_user", &add_user);
 
     srv.bind("remove_user", &remove_user);
-
-    srv.bind("get_recommandation", &get_recommandation);
-
-    srv.bind("share_food", &share_food);
+    
+    srv.bind("add_offer", &add_offer);
+    
+    srv.bind("satisfy_offer_exchange", &satisfy_offer_exchange);
+    
+    srv.bind("delete_offer", &delete_offer);
+    
+    
 
     // template for error messages
     srv.bind("error", []() {
@@ -63,8 +76,9 @@ int main() {
     srv.bind("exit", []() {
         rpc::this_session().post_exit();
     });
-
+        
     srv.run();
+    
 
     return 0;
 }

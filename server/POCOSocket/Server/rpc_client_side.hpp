@@ -1,6 +1,6 @@
 #include <iostream>
 #include "rpclib-master/include/rpc/client.h"
-
+#include "../../../test3/front.hpp"
 
 
 //Backend guys make a new user, which asks for functions to be called from serverside! All functions here are focused on getting server-coded functions called.
@@ -16,16 +16,17 @@ public:
 
 //createClient will add user data, login, to the server. Checks it isnt already in use, makes hash to give user so he can only access his own data.
 //login details given as a list of 2 strings. 1 means user added, 0 means user not added.
-    void add_user();
+    bool create_user();
     void remove_self();
-    void add_food();
-    void remove_food();
+    void add_food(Ingredient food); //quantities included already.
+    void remove_food(Ingredient food);
     void share_food();
     void get_recommendation();
-    void get_fridge();
-
+    Fridge get_fridge();
+    void get_offer_list();
+    void upload_offer();
 private:
-    std::string username;
-    std::string password;
     rpc::client client;
+    
+    std::vector login_info; //[id, username, password, valid] //what is valid? How to compute id?
 };
