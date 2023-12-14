@@ -7,11 +7,9 @@
 
 using namespace std;
 
-vector<string> food_list;
-vector login_info; //login_info = [id, username, password, valid]
-unordered_map<string, double> expiration_time; //expiration_time[food_name] = duration
+
 int num_of_items;
-unordered_map<string, vector> fridge; //fridge = {username:[id, food_name, time of remind(time of put in + expiration), calorie, valid,],username2:[..],...}
+unordered_map<string, vector>
 
 // We have two csv, one for login one for fridge
 // columns of login database: id, username, password, valid(if the the account is still active)
@@ -19,33 +17,20 @@ unordered_map<string, vector> fridge; //fridge = {username:[id, food_name, time 
 
 void read_from_csv() {} //everytime open the server, read csv to get data from previous session
 
-void save_to_csv() {} //save data of three maps in a csv
+void save_to_csv() {} //save data of the map in a csv
+
 
 void update_fridge(std::string user_to_update, unordered_map updated_fridge) {} //updates a user fridge: replaces add/remove functions,
 //important to implement this^ instead of add/remove only, for the offers. Makes it easier to implement later.
 
-unordered_map<string,vector> get_fridge(unordered_map lgoin_info) {} //returns a fridge to the user client-side.
 
 void add_user(unordered_map login_info){}
 
 void remove_user(unordered_map login_info){}
 
-void add_offer() {}
+void update_offer(std::string user_to_update, unordered_map updated_offer) {}//tell frontend to pay attention to update fridge here
 
-void satisfy_offer_exchange() {} //enact an offer between two fridges.
-
-void delete_offer() {}
-
-string check_fridge(unordered_map fridge){}
-
-unordered_map get_recommandation(){} //return a vector with vector[0] = name of dish, and the rest recipe
-
-void reminder(){} // check regularly expiration whether shoud send notification
-
-void remind_expiration (){} // send notification
-
-void share_food(){} //push food from fridge to market place to the market
-
+unordered_map<string,vector> get_user_data(username) {}//combine get fridge, get offer
 
 int main() {
     rpc::server srv(3333);
