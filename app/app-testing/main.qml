@@ -25,6 +25,7 @@ Window {
         id: loadingMask
         anchors.fill: parent
         active: isLoading
+        enabled: isLoading
         source: "qml_components/Loading.qml"
 
         // Intercept mouse event, not actually needed cuz we have disabled pageLoader
@@ -45,7 +46,7 @@ Window {
         onLoadLoginPage: function(){
             pageLoader.source = "qml_components/Login.qml"
         }
-        onMountLoadingMask: function(){
+        onMountLoadingMask: function(text){
             isLoading = true
         }
         onUnmountLoadingMask: function(){

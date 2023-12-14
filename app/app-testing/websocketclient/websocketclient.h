@@ -19,9 +19,8 @@
 #include "dependencies/msgpack11/msgpack11.hpp"
 #include <QVariantList>
 #include <QVariant>
-
-
-
+#include <QThread>
+#include <QTimer>
 
 /* Q: How to handle a callback from server?
  * A: Make sure you follows the protocol at the start of this header file, add yourCallback to enum CallbackFuncs
@@ -51,13 +50,17 @@ signals:
     void loadHomePage();
     void loadLoginPage();
     void updateFridgeModel(QList<QList<QVariant>> data);
+    void mountLoadingMask(QString text);
+    void unmountLoadingMask();
 
 public slots:
     void connectToServer();
     void sendMsgPack(const msgpack11::MsgPack &msgpack);
     void onConnected();
-    void onBinaryMessageReceived(const QByteArray serialized_data);
+    void onBinaryMessageReceived(const QByteArray serialized_data); // on QWebSocket::binaryMessageReceived
     void requestUpdateFridge(); // Actively updating fridge items from server
+    void onDisconnected(); // on QWebSocket::disconnected
+    void onErrorOccured(QAbstractSocket::SocketError err); // on QWebSocket::errorOccured
 #ifdef QT_DEBUG // Testing slot functions
     void testUserLogin();
 #endif
@@ -66,6 +69,7 @@ public slots:
 private:
     QWebSocket m_ws;
     QUrl m_url;
+    int error_counter;
 
     void sendFunc(const std::string &func); // Pack MsgPacks with no "payload" and only "func"
     // Server Callback Handlers
@@ -73,6 +77,7 @@ private:
     void handleUserLoginFail(msgpack11::MsgPack payload);
     void handleUpdateFridge(msgpack11::MsgPack payload);
     void handleFuncNotFound();
+    void tryReconnect(QAbstractSocket::SocketError err);
 };
 
 #endif // WEBSOCKETCLIENT_H

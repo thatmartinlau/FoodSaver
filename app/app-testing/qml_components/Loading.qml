@@ -19,4 +19,20 @@ Item {
         y: parent.height * 0.618 - height / 2
         source: "../assets/loading.gif"
     }
+
+    Label {
+        id: loadingLabel
+        text: "App is starting up..."
+        font.pixelSize: 20
+        anchors.top: loadingGif.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Connections {
+        target: wsClient
+        onMountLoadingMask: function(text) {
+            loadingLabel.text = text
+        }
+    }
 }

@@ -5,12 +5,17 @@ WebsocketClient::WebsocketClient(QObject *parent)
     : QObject{parent}
 {
     m_url = QUrl(QStringLiteral(SERVER_URL));
+    error_counter = 0;
     // Call WebsocketClient::onConnected after connected to server
     connect(&m_ws, &QWebSocket::connected, this, &WebsocketClient::onConnected);
     // Call WebsocketClient::onConnected when m_ws receives a text message from server
     // m_ws receives data -> client runs onTextMessageReceived(message) ->
     // emit messageReceived signal -> QML receives signal with onMessageReceived
     connect(&m_ws, &QWebSocket::binaryMessageReceived, this, &WebsocketClient::onBinaryMessageReceived);
+    // Call WebsocketClient::onDisconnected when disconnect from server
+    connect(&m_ws, &QWebSocket::disconnected, this, &WebsocketClient::onDisconnected);
+    // Call WebsocketClient::onDisconnected when disconnect from server
+    connect(&m_ws, &QWebSocket::errorOccurred, this, &WebsocketClient::onErrorOccured);
 }
 
 CallbackFuncs resolveCallbackFuncs(std::string funcStr) { // Convert parsed MsgPack to enum types
@@ -32,10 +37,33 @@ void WebsocketClient::sendMsgPack(const msgpack11::MsgPack &msgpack) {
 }
 
 void WebsocketClient::onConnected() {
+    this->error_counter = 0;
     qDebug() << "[WebsocketClient] Connected to server";
+    emit unmountLoadingMask(); // unmount the loading overlay on main.qml
 }
 
+void WebsocketClient::onDisconnected() { // Paused for having Websocket::onErrorOccured
+    // qDebug() << "[WebsocketClient] Disconnected from server";
+    // emit mountLoadingMask(QString("Disconnected from server, retrying..."));
+}
 
+// Handling connection errors
+void WebsocketClient::onErrorOccured(QAbstractSocket::SocketError err) {
+    this->error_counter += 1;
+    qDebug() << "[WebsocketClient] Error Occured: QAbstrackSocket::SocketError enum" << err << ", retrying in 3 seconds";
+    emit mountLoadingMask(QString("An server connection error occured, retrying for the ")+QString::number(this->error_counter)+QString(" time in 3 seconds..."));
+    QTimer::singleShot(3000, this, [this, err](){tryReconnect(err);});
+}
+
+void WebsocketClient::tryReconnect(QAbstractSocket::SocketError err) {
+    if(this->error_counter >= 5) {
+        qDebug() << "[WebsocketClient] Having more than 5 consecutive errors, stop trying, check settings, err: " << err;
+        emit mountLoadingMask(QString("Server error occured for more than 5 times, client socket error, app won't start"));
+        return;
+    }
+    qDebug() << "[WebsocketClient] Trying to reconnect: " << this->error_counter;
+    this->connectToServer();
+}
 
 void WebsocketClient::onBinaryMessageReceived(QByteArray serialized_data) {
     qDebug() << "[WebsocketClient] Message received: " << serialized_data;
