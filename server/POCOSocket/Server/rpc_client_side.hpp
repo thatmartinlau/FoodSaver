@@ -5,28 +5,26 @@
 
 //Backend guys make a new user, which asks for functions to be called from serverside! All functions here are focused on getting server-coded functions called.
 //Client connection:
+//The class User from front.cpp would have a private variable serverUser belonging to this class.
+//On every call which requests or requires, or gives data to the server database, simply call the sending/receiving functions given down here.
 
 class ServerUser {
                
 public:
     
 //Creates a user for temporary Use.
-    ServerUser(std::string username, std::string psswd);
+    ServerUser(std::string username, std::string psswd);//if user doesn't exist in database, add him to database.
     ~ServerUser();
 
-//createClient will add user data, login, to the server. Checks it isnt already in use, makes hash to give user so he can only access his own data.
-//login details given as a list of 2 strings. 1 means user added, 0 means user not added.
-    bool create_user();
-    void remove_self();
-    void add_food(Ingredient food); //quantities included already.
-    void remove_food(Ingredient food);
-    void share_food();
-    void get_recommendation();
-    Fridge get_fridge();
-    void get_offer_list();
-    void upload_offer();
+    void delete_self_in_db(); //deletes the user from the database.
+    
+    Fridge* get_fridge(); //receives the fridge from the database.
+    void update_fridge(); //updates the fridge on the database. Adds/removes necessary items with comparisons. Keeps the local fridge unchanged.
+    std::list<Offer>* get_offer_list(); //gets db's offer list for user
+    void update_offer_list(); //updates db's offer list.
+    void update_user(std::string new_username, std::string new_password); //gives new username and password to database.
 private:
     rpc::client client;
-    
-    std::vector login_info; //[id, username, password, valid] //what is valid? How to compute id?
+    std::string username;
+    std::string password;
 };

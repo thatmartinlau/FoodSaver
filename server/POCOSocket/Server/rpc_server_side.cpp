@@ -7,63 +7,63 @@
 
 using namespace std;
 
+//FILE FORMATS:
 
-int num_of_items;
-unordered_map<string, vector>
+//Ingredients: vector<string>>
+//Fridge: vector<vector<string>>
+//Offer: vector<vector<string>>: with vectors represented as {}, an offer looks like: { {Ingredient1, Ingredient2, etc}, {price} } where all elements are strings.
+//Offer List: vector<vector<vector<string>>>, looking like {Offer1, Offer2, etc}.
+//Database: unordered_map<string, UserData>, dicts as [], looking like  [username1: UserData, username2: UserData], with UserData having:
 
-// We have two csv, one for login one for fridge
-// columns of login database: id, username, password, valid(if the the account is still active)
-// for fridge database: id, foodname, owner, calorie, valid(False if not in fridge or is expired)
+class UserData {
+public:
+    string password;
+    vector<vector<string>> fridge;
+    vector<vector<vector<string>>> ofer_list;
+};
 
+unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
+
+
+//One CSV file, storing in a weird way adam will figure out.
 void read_from_csv() {} //everytime open the server, read csv to get data from previous session
-
 void save_to_csv() {} //save data of the map in a csv
 
+//DB Manipulation functions:
+void add_user(string username, string password){} //adds user only if user not in already, needs to check for that here/
+void remove_user(string username, string password){}
+void update_user(string old_username, string old_password, string new_username, string new_password) {} //changes a user's name and password. Old is for login verification, new is to change.
 
-void update_fridge(std::string user_to_update, unordered_map updated_fridge) {} //updates a user fridge: replaces add/remove functions,
-//important to implement this^ instead of add/remove only, for the offers. Makes it easier to implement later.
+void update_fridge(std::string username, vector<vector<string>> new_fridge) {} //updates a user fridge
+void update_offer(std::string username, vector<vector<vector<string>>> new_offer) {} //updates a user offer list
 
-
-void add_user(unordered_map login_info){}
-
-void remove_user(unordered_map login_info){}
-
-void update_offer(std::string user_to_update, unordered_map updated_offer) {}//tell frontend to pay attention to update fridge here
-
-unordered_map<string,vector> get_user_data(username) {}//combine get fridge, get offer
+//DB Sending Functions:
+vector<vector<vector<string>>> get_offer_list(string username, string password) {}
+vector<vector<string>> get_fridge(string username, string password) {}
 
 int main() {
     rpc::server srv(3333);
     
-    srv.bind("update_fridge", &update_fridge);
-    
-    srv.bind("get_fridge", &get_fridge);
-
+    //DB Manip
     srv.bind("add_user", &add_user);
-
     srv.bind("remove_user", &remove_user);
+    srv.bind("update_user", &update_user);
     
-    srv.bind("add_offer", &add_offer);
+    srv.bind("update_fridge", &update_fridge);
+    srv.bind("update_offer", &update_offer);
     
-    srv.bind("satisfy_offer_exchange", &satisfy_offer_exchange);
-    
-    srv.bind("delete_offer", &delete_offer);
-    
+    //DB Sending
+    srv.bind("get_fridge", &get_fridge);
+    srv.bind("get_offer_list", &get_offer_list);
     
 
-    // template for error messages
+    // template for error messages ::we keep this or not? To William, from Adam
     srv.bind("error", []() {
         auto err_obj = std::make_tuple(13, "Errors are arbitrary objects");
         rpc::this_handler().respond_error(err_obj);
     });
 
-    // client connect, will respense first
-    srv.bind("exit", []() {
-        rpc::this_session().post_exit();
-    });
         
     srv.run();
-    
-
     return 0;
 }
