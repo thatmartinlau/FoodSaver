@@ -1,7 +1,5 @@
 #include <torch/torch.h>
 
-using namespace torch;
-
 struct CNNModelImpl : torch::nn::Module {
     torch::nn::Conv2d conv1{nullptr}, conv2{nullptr}, conv3{nullptr}, conv4{nullptr};
     torch::nn::Linear fc1{nullptr}, fc2{nullptr}, fc3{nullptr};
