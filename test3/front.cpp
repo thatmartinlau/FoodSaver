@@ -2,6 +2,7 @@
 #include <iostream>
 #include <list>
 #include <ctime>
+#include <chrono>
 using namespace std;
 
 // DATE
@@ -30,12 +31,24 @@ int Date::get_day() {
     return day;
 }
 
+void Date::set_day(int d) {
+    this->day = d;
+}
+
 int Date::get_month() {
     return month;
 }
 
+void Date::set_month(int m) {
+    this->month = m;
+}
+
 int Date::get_year() {
     return year;
+}
+
+void Date::set_year(int y) {
+    this->year = y;
 }
 
 // Overload the < operator
@@ -61,20 +74,110 @@ bool Date::operator!=(const Date& other) const {
     return !(*this == other); // Utilize the == operator
 }
 
-//INGREDIENT
-
-Ingredient::Ingredient(string name){
-    this->name = name;
-
-    Food_class cat;
-    cat = unspecified;
-    this->category = cat;
-
-    int quant = 1;
-    this->quantity = quant;
+bool Date::isLeapYear(int y) const {
+    return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
 }
 
-Ingredient::Ingredient(string name, int quantity, Food_class category, Date expiry_date){
+int Date::countDays() const {
+    // Days in each month
+    int monthDays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    // Count the days from years
+    int totalDays = year * 365 + (year / 4) - (year / 100) + (year / 400);
+
+    // Count the days from months
+    for (int m = 0; m < month - 1; ++m) {
+        totalDays += monthDays[m];
+    }
+
+    // Adding days of the current month
+    totalDays += day;
+
+    // Correct for leap year if the current year is a leap year and the date is after February
+    if (month > 2 && isLeapYear(year)) {
+        totalDays += 1;
+    }
+
+    return totalDays;
+
+}
+
+// returns 0 if today is the exp_day
+// returns -1 if the exp date has passed
+// returns the number of days until the
+int Date::is_exp_date() {
+    // Get the current date
+    auto now = std::chrono::system_clock::now();
+    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+    std::tm* now_tm = std::localtime(&now_c);
+
+    int today_day = now_tm->tm_mday;
+    int today_month = now_tm->tm_mon + 1; // tm_mon is months since January (0-11)
+    int today_year = now_tm->tm_year + 1900; // tm_year is years since 1900
+
+    // Check if the date has passed
+    if (this->year < today_year ||
+        (this->year == today_year && this->month < today_month) ||
+        (this->year == today_year && this->month == today_month && this->day < today_day)) {
+        return -1;
+    }
+
+    // Check if the date is today
+    else if (this->day == today_day && this->month == today_month && this->year == today_year) {
+        return 0;
+    }
+
+    // If the date is in the future
+    else {
+        return 1
+    }
+
+    /*
+    time_t t = time(0);   // Get current time
+    tm* now = localtime(&t);
+    int today_day = now->tm_mday;
+    int today_month = now->tm_mon + 1;
+    int today_year = now->tm_year + 1900;
+    if (day == today_day && month == today_month && year == today_year) {
+        return 0;
+    }
+    else if (day < today_day || month < today_month && year < today_year) {
+        return -1;
+    }
+    else {
+        int diff_day = 0;
+        int diff_month = 0;
+        int diff_year = 0;
+        for (i = today_year; i ++; i < year) {
+            if (i % 4 == 0) {
+                diff_year += 366;
+            }
+            else {
+                diff_year += 365;
+            }
+        }
+        if (today_month > month) {
+
+        }
+        else {
+            today_yeat
+        }
+        for (i = today_month; i ++; i <= month) {
+
+        }
+        if (month == today_month && year == today_year) {
+            return day - today_day;
+        }
+        else {
+            return -2;
+        }
+    }
+*/
+}
+
+//INGREDIENT
+
+Ingredient::Ingredient(string name, int quantity = 1, Food_class category = unspecified, Date expiry_date){
     this->name = name;
     this->quantity = quantity;
     this->category = category;
@@ -212,7 +315,7 @@ std::string User::get_telegram() {
 }
 
 //OFFER
-Offer::Offer(std::list<Ingredient> ingredient_list) {
+Offer::Offer(std::vector<Ingredient> ingredient_list) {
     this->ingredient_list = ingredient_list;
     price = (double) 0;
 }

@@ -5,8 +5,8 @@
 #include <list>
 #include <string>
 #include <ctime>
-#include "nlohmann/json.hpp"
-using json = nlohmann::json;
+//#include "nlohmann/json.hpp"
+//using json = nlohmann::json;
 using namespace std;
 
 
@@ -40,12 +40,17 @@ public:
     Date(int d, int m, int y);
     void displayDate();
     int get_day();
+    void set_day(int d);
     int get_month();
+    void set_month(int m);
     int get_year();
+    void set_year(int y);
     bool operator<(const Date& other) const;
     bool operator==(const Date& other) const;
     bool operator!=(const Date& other) const;
-
+    int is_exp_date();
+    bool isLeapYear(int y) const;
+    int countDays() const;
 
 private:
     int day;
@@ -57,8 +62,7 @@ private:
 
 class Ingredient{
 public:
-    Ingredient(std::string name);
-    Ingredient(std::string name, int quantity,Food_class category, Date expiry_date);
+    Ingredient(std::string name, int quantity = 1,Food_class category = unspecified, Date expiry_date);
     ~Ingredient();
     std::string get_name() const;
     bool operator==(const Ingredient& other) const;
@@ -73,7 +77,7 @@ public:
     void saveToJsonFile(const std::string& fileIngredient);
     void set_expiry_date(Date expiry_date);
     Date get_expiry_date();
-    json toJson () const;
+    //json toJson () const;
 
 private:
     std::string name;
@@ -96,8 +100,8 @@ public:
     Ingredient pop_elt(Ingredient *getit);
     void saveToJsonFile(const std::string& fileFridge);
     void sort_fridge(std::string* sort_key);
-    std::list<Ingredient> sort_ingredients(std::string* sort_key);
-    json toJson () const;
+    std::vector<Ingredient> sort_ingredients(std::string* sort_key);
+    //json toJson () const;
 
 private:
     std::vector<Ingredient> ingredient_list;
@@ -107,14 +111,14 @@ private:
 
 class Offer {
 public:
-    Offer(std::list<Ingredient> ingredient_list);
+    Offer(std::vector<Ingredient> ingredient_list);
     ~Offer();
     void set_price(double price);
     double get_price();
-    json toJson () const;
+    //json toJson () const;
 
 private:
-    std::list<Ingredient> ingredient_list;
+    std::vector<Ingredient> ingredient_list;
     double price;
     // PHOTO
 
@@ -131,7 +135,7 @@ public:
     bool check_password(std::string input_password);
     void set_telegram(std::string telegram);
     std::string get_telegram();
-    json toJson () const;
+    //json toJson () const;
 
 private:
     std::string username;
