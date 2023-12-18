@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
 #include "rpc/server.h"
 #include "rpc/client.h"
 #include "rpc/this_session.h"
@@ -25,12 +27,45 @@ public:
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
 
 
-//One CSV file, storing in a weird way adam will figure out.
-void read_from_csv() {
+//Storage format: username, password, fridge, offer;
+//Inspired from iq.opengenus.org/read-and-write-in-csv-cpp/
+void read_from_csv() { //everytime open the server, read csv to get data from previous session 
+    ifstream file;
+    file.open("database.csv");
+    vector<string> lines;
+    for (string line; getline(file, line);) {
+        lines.push_back(line);
+    }
     
-} //everytime open the server, read csv to get data from previous session
+    for (auto line : lines) {
+        //comma-separate the lines into username, data format.
+        stringstream s_line(line);
+        
+        vector<string>* temp_holder = new vector<string>;
+        for (string item; getline(ss, item, ",");) {
+            temp_holder->push_back(item);
+        }
+        //temp_holder looks like : [username, password, fridge, offer_list] afterwards. All strings.
+        //convert fridge string "{[name: category: quantity: expiry_date: priority_level]; [...]; ...}"
+        vector<vector<string>> fridge_updated;
+        stringstream s_fridge(temp_holder[2]); //fridge
+        for (string ) { //separate into Ingredients
+            
+        }
+            
+        //convert offer_list string "{[name: category: quantity: expiry_date: priority_level]; [...]; ...; price}"
+            
+        //create username and data:
+        data = UserData();
+        data.password = 
+    }
+    
+}
+    
 
 void save_to_csv() {} //save data of the map in a csv
+
+    
 
 //DB Manipulation functions:
 void add_user(string username, string password){} //adds user only if user not in already, needs to check for that here/
@@ -44,7 +79,7 @@ void update_offer(std::string username, vector<vector<vector<string>>> new_offer
 vector<vector<vector<string>>> get_offer_list(string username, string password) {}
 vector<vector<string>> get_fridge(string username, string password) {}
 
-int main() {
+int main2() {
     rpc::server srv(3333);
     
     //DB Manip
@@ -69,4 +104,8 @@ int main() {
         
     srv.run();
     return 0;
+}
+
+int main() {
+    
 }
