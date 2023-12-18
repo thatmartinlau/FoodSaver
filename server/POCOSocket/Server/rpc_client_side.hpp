@@ -18,9 +18,9 @@ public:
 
     void delete_self_in_db(); //deletes the user from the database.
     
-    Fridge* get_fridge(); //receives the fridge from the database.
+    Fridge get_fridge(); //receives the fridge from the database.
     void update_fridge(); //updates the fridge on the database. Adds/removes necessary items with comparisons. Keeps the local fridge unchanged.
-    std::list<Offer>* get_offer_list(); //gets db's offer list for user
+    std::list<Offer> get_offer_list(); //gets db's offer list for user
     void update_offer_list(); //updates db's offer list.
     void update_user(std::string new_username, std::string new_password); //gives new username and password to database.
 private:

@@ -30,13 +30,13 @@ void ServerUser::update_user(string new_username, string new_password) {
 //OSCAR's CODE ADAPTED BY ADAM: Oscar, feel free to adjust and change if u have a way which matches smth u prefer to use.
 vector ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, quantity, category, expiry_date, priority_level], all as string s.
     vector vec;
-    vec.push_back(*ingr.name);
-    vec.push_back(*ingr.quantity);
-    string cat_string = nameof(*ingr.category); //gives the enum to string format.
+    vec.push_back(ingr.name);
+    vec.push_back(ingr.quantity);
+    string cat_string = nameof(ingr.category); //gives the enum to string format.
     vec.push_back(cat_string);
-    vec.push_back(*ingr.expiry_date);
-    string priority_level_string = nameof(*ingr.priority_level);
-    vec.push_back(*ingr.priority_level);
+    vec.push_back(ingr.expiry_date);
+    string priority_level_string = nameof(ingr.priority_level);
+    vec.push_back(ingr.priority_level);
     return vec
 }
 
@@ -50,10 +50,10 @@ Fridge* ServerUser::get_fridge() {
 }
 
 
-void ServerUser::update_fridge(Fridge* f_input) {
+void ServerUser::update_fridge(Fridge &f_input) {
     //convert to database-wanted format: OSCAR'S METHOD
     vector<vector<string>> fridge;
-    for (list<Ingredient>::iterator i = f_input->ingredient_list->begin(); i != f_input->ingredient_list->end(); i++) {
+    for (list<Ingredient>::iterator i = f_input.ingredient_list.begin(); i != f_input.ingredient_list.end(); i++) {
         
         //convert ingredient to vector format USING OSCAR's CODE
         vector<string> ingredient;
@@ -72,7 +72,7 @@ list<Offer>* ServerUser::get_offer_list() {
     
 }
 
-void ServerUser::update_offer_list(list<Offer>* ptr_to_offer_list) {
+void ServerUser::update_offer_list(list<Offer> &offer_list) {
     //Oscar work yo magiiiic: same format as get_offer_list for the data we want to give to the server.
     
     

@@ -26,7 +26,10 @@ unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
 
 
 //One CSV file, storing in a weird way adam will figure out.
-void read_from_csv() {} //everytime open the server, read csv to get data from previous session
+void read_from_csv() {
+    
+} //everytime open the server, read csv to get data from previous session
+
 void save_to_csv() {} //save data of the map in a csv
 
 //DB Manipulation functions:
