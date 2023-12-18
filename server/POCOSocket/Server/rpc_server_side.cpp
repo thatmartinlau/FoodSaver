@@ -11,15 +11,15 @@ using namespace std;
 
 //Ingredients: vector<string>>
 //Fridge: vector<vector<string>>
-//Offer: vector<vector<string>>: with vectors represented as {}, an offer looks like: { {Ingredient1, Ingredient2, etc}, {price} } where all elements are strings.
-//Offer List: vector<vector<vector<string>>>, looking like {Offer1, Offer2, etc}.
+//Offer: vector<vector<vector<string>>>: with vectors represented as {}, an offer looks like: { {Ingredient1, Ingredient2, etc}, {{price}} } where all elements are strings.
+//Offer List: vector<vector<vector<vector<string>>>>, looking like {Offer1, Offer2, etc}.
 //Database: unordered_map<string, UserData>, dicts as [], looking like  [username1: UserData, username2: UserData], with UserData having:
 
 class UserData {
 public:
     string password;
     vector<vector<string>> fridge;
-    vector<vector<vector<string>>> ofer_list;
+    vector<vector<vector<vector<string>>>> offer_list;
 };
 
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;

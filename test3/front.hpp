@@ -103,6 +103,8 @@ private:
     std::string* telegram_username = new std::string;
     Fridge* user_fridge = new Fridge();
     std::list<Offer>* offer_list = new std::list<Offer>;
+    
+    ServerUser srv_usr;
 };
 
 #endif // FRONT_HPP
