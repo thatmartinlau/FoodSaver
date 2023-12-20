@@ -4,13 +4,13 @@
 
 using namespace std;
 
-string HOST_SERVER_NAME = "127.0.0.1"; //change to Server later.
-int HOST_SERVER_PORT = 3333;
+const string HOST_SERVER_NAME = "127.0.0.1"; //change to Server later.
+const int HOST_SERVER_PORT = 3333;
 
 ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user not in db already. Oth, just initialise connection.
     username = usrname;
     password = psswd;
-    client(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    client(HOST_SERVER_NAME, (uint16_t) HOST_SERVER_PORT);
     client.call("add_user", username, password);
 }
 
