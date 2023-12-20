@@ -16,7 +16,9 @@ After: Connect UI logic with server communication
 
 
 WEEK 10: 04/11/23 - 10/12/23
-
+Setting up app UI project
+Learning how to use QML and UI is harder than I thought, I found a decently large manual to learn and understand how to use it, but it might take a while...
+Experimenting and tinkering with buttons and how to connect them to C++ functions.
 
 WEEK 11: 11/12/23 - 17/12/23
 
