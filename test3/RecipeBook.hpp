@@ -1,5 +1,5 @@
-#ifndef FRONT_HPP
-#define FRONT_HPP
+#ifndef RECIPEBOOK_HPP
+#define RECIPEBOOK_HPP
 // Front end class definitions
 #include <iostream>
 #include <list>
