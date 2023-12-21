@@ -1,5 +1,16 @@
-import QtQuick 2.15
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 
-Item {
+Column {
+    spacing: 10
+
+    Button {
+        text: "Back to Home"
+        onClicked: stackView.pop()
+    }
+    Button {
+        text: "Open Popup"
+        onClicked: backend.openPopupWindow()
+    }
 
 }

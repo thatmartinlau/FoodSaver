@@ -6,8 +6,8 @@ RESOURCES += \
     qml.qrc
 
 DISTFILES += \
+    QML/LoginPage.qml \
     QML/homepage.qml \
-    QML/loginpage.qml \
     QML/menu1.qml \
     QML/menu2.qml \
     QML/menu3.qml \

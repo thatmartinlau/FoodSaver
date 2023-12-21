@@ -10,6 +10,6 @@ ApplicationWindow {
     StackView {
         id: stackView
         anchors.fill: parent
-        initialItem: LoginPage {}
+        initialItem: loginpage {}
     }
 }
