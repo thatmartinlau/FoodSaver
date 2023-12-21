@@ -8,5 +8,6 @@
         <file>HomePage.qml</file>
         <file>LoginPage.qml</file>
         <file>PopupWindow.qml</file>
+        <file>ChangePrice.qml</file>
     </qresource>
 </RCC>

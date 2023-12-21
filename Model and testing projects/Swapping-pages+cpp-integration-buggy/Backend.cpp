@@ -22,7 +22,14 @@ QStringList Backend::getNameHistory() const {
 
 void Backend::openPopupWindow() {
     QQmlApplicationEngine engine;
-    QQmlComponent component(&engine, QUrl(QStringLiteral("qrc:/PopupWindow.qml")));
+    QQmlComponent component(&engine, QUrl("qrc:/ChangePrice.qml"));
     QObject *popup = component.create();
-    Q_UNUSED(popup)
+    if (popup) {
+        // You can perform additional setup for the popup if needed
+        // For example, connecting signals and slots
+
+        // Show the popup
+        popup->setProperty("visible", true);
+    }
 }
+

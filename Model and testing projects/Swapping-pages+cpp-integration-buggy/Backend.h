@@ -9,6 +9,7 @@ class Backend : public QObject
     Q_OBJECT
 public:
     explicit Backend(QObject *parent = nullptr);
+    //virtual ~Backend();
 
     Q_INVOKABLE void generateRandomNumber();
     Q_INVOKABLE void storeName(const QString &name);

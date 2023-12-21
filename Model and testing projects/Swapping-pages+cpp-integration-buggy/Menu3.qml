@@ -10,7 +10,7 @@ Column {
     }
     Button {
         text: "Open Popup"
-        onClicked: backend.openPopupWindow()
+        onClicked: backend.openPopupWindow("qrc:/ChangePrice.qml")
     }
 
 }
