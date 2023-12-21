@@ -175,6 +175,8 @@ int Date::is_exp_date() {
 */
 }
 
+////////////////////////////////////////////////////////////////////////////
+
 //INGREDIENT
 
 Ingredient::Ingredient(string name, int quantity = 1, Food_class category = unspecified, Date expiry_date){
@@ -246,6 +248,8 @@ Date Ingredient::get_expiry_date() {
     return expiry_date;
 }
 
+////////////////////////////////////////////////////////////////////////////
+
 //FRIDGE
 
 Fridge::Fridge(){
@@ -289,6 +293,8 @@ Ingredient Fridge::pop_elt(Ingredient *getit) {
     throw std::runtime_error("Ingredient not found in the fridge");
 }
 
+////////////////////////////////////////////////////////////////////////////
+
 //USER
 User::User(std::string username, std::string password) {
     this->username = username;
@@ -313,6 +319,8 @@ void User::set_telegram(std::string telegram) {
 std::string User::get_telegram() {
     return telegram_username;
 }
+
+////////////////////////////////////////////////////////////////////////////
 
 //OFFER
 Offer::Offer(std::vector<Ingredient> ingredient_list) {
