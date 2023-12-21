@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>QML/HomePage.qml</file>
+        <file>QML/Menu1.qml</file>
+        <file>QML/Menu2.qml</file>
+        <file>QML/Menu3.qml</file>
+        <file>QML/main.qml</file>
+        <file>QML/LoginPage.qml</file>
+        <file>QML/menu4.qml</file>
+    </qresource>
+</RCC>
