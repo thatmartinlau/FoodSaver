@@ -11,5 +11,6 @@ Item {
         Button { text: "Menu 1"; onClicked: stackView.push(Qt.resolvedUrl("Menu1.qml")) }
         Button { text: "Menu 2"; onClicked: stackView.push(Qt.resolvedUrl("Menu2.qml")) }
         Button { text: "Menu 3"; onClicked: stackView.push(Qt.resolvedUrl("Menu3.qml")) }
+        Button { text: "Menu 4"; onClicked: stackView.push(Qt.resolvedUrl("menu4.qml")) }
     }
 }

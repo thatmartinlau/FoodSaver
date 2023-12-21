@@ -6,5 +6,6 @@
         <file>QML/Menu3.qml</file>
         <file>QML/main.qml</file>
         <file>QML/LoginPage.qml</file>
+        <file>QML/menu4.qml</file>
     </qresource>
 </RCC>
