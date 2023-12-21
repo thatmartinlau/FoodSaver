@@ -12,7 +12,9 @@ public:
     explicit MainController(QObject *parent = nullptr);
 
 public slots:
-    void submitText(const QString &text);
+    QString submitText(const QString &text);
+    int changeTime(const QString &text);
+    int submitInt(const int &time);
 };
 
 #endif // MAINCONTROLLER_H

@@ -8,6 +8,9 @@ I tried to set up my laptop by downloading all necessary extensions and differen
 04/12/2023
 I wrote the User class in front.cpp. I also modified the hpp file accordingly. Finally, I corrected all bugs in those two files and reached out to my colleagues about what they need and expect of my team during the TD.
 
+07/12/2023
+I corrected the bug in the pop_elt function of the Fridge class. I modified the front.hpp and front.cpp files accordingly. I also changed the hierarchy of the classes in the file to make it easier to code the cpp of the Offer class. This also makes the overall project more coherent. I discussed those changes with the different teams. I added the hpp declaration of the sort_ingredients function I want to add to the Fridge class.
+
 11/12/2023
 I had an issue with Qt creator. I asked for help and was told I should delete it and download it again. This took a long time as there is terrible WiFi in the amphi.
 
