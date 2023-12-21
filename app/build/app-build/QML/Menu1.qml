@@ -6,8 +6,8 @@ Item {
     height: 480
 
     Button {
-        text: "Login"
+        text: "Back to Home"
         anchors.centerIn: parent
-        onClicked: stackView.push(Qt.resolvedUrl("HomePage.qml"))
+        onClicked: stackView.pop()
     }
 }
