@@ -32,7 +32,7 @@ Item {
 
         Connections {
             target: wsClient
-            onUpdateFridgeModel: function(data){
+            function onUpdateFridgeModel(data){
                 console.log("QML Fridge: onUpdateFridge()")
                 fridgeModel.clear() // Clear existing food items
                 for(var i=0;i<data.length;i++){

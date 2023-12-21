@@ -40,16 +40,16 @@ Window {
 
     Connections {
         target: wsClient
-        onLoadHomePage: function(){
+        function onLoadHomePage(){
             pageLoader.source = "qml_components/Home.qml"
         }
-        onLoadLoginPage: function(){
+        function onLoadLoginPage(){
             pageLoader.source = "qml_components/Login.qml"
         }
-        onMountLoadingMask: function(text){
+        function onMountLoadingMask(text){
             isLoading = true
         }
-        onUnmountLoadingMask: function(){
+        function onUnmountLoadingMask(){
             isLoading = false
         }
     }

@@ -11,12 +11,12 @@ Item {
 
     AnimatedImage {
         id: loadingGif
-        width: 100
-        height: 100
+        width: 200
+        height: 200
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: 0.764 * parent.verticalCenter
+        anchors.verticalCenter: parent.verticalCenter
         x: parent.width * 0.618 - width / 2
-        y: parent.height * 0.618 - height / 2
+        y: 0.764 * parent.height - height / 2
         source: "../assets/loading.gif"
     }
 
@@ -31,7 +31,7 @@ Item {
 
     Connections {
         target: wsClient
-        onMountLoadingMask: function(text) {
+        function onMountLoadingMask(text) {
             loadingLabel.text = text
         }
     }

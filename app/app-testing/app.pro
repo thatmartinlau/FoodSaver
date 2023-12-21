@@ -1,4 +1,4 @@
-QT += quick websockets
+QT += quick websockets core
 
 # Some measurement to fix the bugs caused by different Openssl versions of Qt & Android SDK (1.1 vs 3.x)
 # If it doesnt work for you check ur openssl folder and the path of the libs but dont edit s.v.p.
