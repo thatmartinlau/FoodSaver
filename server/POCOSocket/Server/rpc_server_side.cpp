@@ -263,9 +263,13 @@ void remove_user(string username, string password){
             database->erase(el); // Remove the user if the password matches
         } else {
             // Password does not match
+            auto err_obj = std::make_tuple(507, "Incorrect Password");
+            rpc::this_handler().respond_error(err_obj);
         }
     } else {
         // Username not found
+        auto err_obj = std::make_tuple(123, "Username not found");
+        rpc::this_handler().respond_error(err_obj);
     }
 
 }
@@ -284,6 +288,17 @@ void update_user(string old_username, string old_password, string new_username, 
         // Remove the old entry
         database->erase(el);
     }
+    else if(old_password != el->second.password){
+        // Password does not match
+        auto err_obj = std::make_tuple(507, "Incorrect Password");
+        rpc::this_handler().respond_error(err_obj);
+    }
+ else {
+    // Username not found
+    auto err_obj = std::make_tuple(123, "Username not found");
+    rpc::this_handler().respond_error(err_obj);
+}
+
 }
 
 void update_fridge(std::string username, string password, vector<vector<string>> &new_fridge) {
@@ -299,6 +314,17 @@ void update_fridge(std::string username, string password, vector<vector<string>>
 
             std::vector<std::vector<std::string>>().swap(old_data);//releases the memory used by old_data
             }
+            else if(password != el->second.password){
+            // Password does not match
+            auto err_obj = std::make_tuple(507, "Incorrect Password");
+            rpc::this_handler().respond_error(err_obj);
+            }
+            else {
+            // Username not found
+            auto err_obj = std::make_tuple(123, "Username not found");
+            rpc::this_handler().respond_error(err_obj);
+            }
+
         }
 } //updates a user fridge
 
@@ -315,6 +341,16 @@ void update_offer(std::string username, string password, vector<vector<vector<ve
 
             std::vector<std::vector<std::vector<std::vector<std::string>>>>().swap(old_data);//releases the memory used by old_data
 
+            }
+            else if(password != el->second.password){
+            // Password does not match
+            auto err_obj = std::make_tuple(507, "Incorrect Password");
+            rpc::this_handler().respond_error(err_obj);
+            }
+            else {
+            // Username not found
+            auto err_obj = std::make_tuple(123, "Username not found");
+            rpc::this_handler().respond_error(err_obj);
             }
         }
 } //updates a user offer list
