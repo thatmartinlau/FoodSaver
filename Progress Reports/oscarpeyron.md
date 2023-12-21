@@ -11,7 +11,8 @@ Get familiar with Poco. Start coding  the server. Converting data to json for po
 Week 9 : 4/12/2023 - 11/12/2023 : 
 Continue converting data to json. --> for every class in front.hpp converting the data that is stored. Finishing this task. 
 
-
-
+Week 10 : 18/12/2023 - 23/12/2023 
+Finished json. 
+Applying json converting algorithms to server_client.cpp --> converting data into vectors this time to create link between server and front. 
 
 
