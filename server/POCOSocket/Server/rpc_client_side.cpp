@@ -1,17 +1,16 @@
 #include "rpc/client.h"
 #include <string>
+#include <vector>
+#include <list>
 #include "rpc_client_side.hpp"
 
 using namespace std;
 
-string HOST_SERVER_NAME = "127.0.0.1"; //change to Server later.
-int HOST_SERVER_PORT = 3333;
-
 ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user not in db already. Oth, just initialise connection.
     username = usrname;
     password = psswd;
-    client(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    client.call("add_user", username, password);
+    rpc::client open_new(HOST_SERVER_NAME, HOST_SERVER_PORT);    
+    open_new.call("add_user", username, password);
 }
 
 ServerUser::~ServerUser() {}

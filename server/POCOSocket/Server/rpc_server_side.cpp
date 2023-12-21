@@ -21,6 +21,7 @@ const string DATABASE_CSV_FILE = "../Server/database.csv";
 
 class UserData {
 public:
+    UserData() {};
     UserData(string password){
         this->password = password;
     };
