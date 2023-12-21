@@ -10,6 +10,7 @@
 #include <json/json.h>
 #include <fstream>
 #include "nlohmann/json.hpp"
+#include "restClient.cpp"
 using json = nlohmann::json;
 
 using namespace std;
