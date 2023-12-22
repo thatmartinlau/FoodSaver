@@ -12,7 +12,7 @@ Item {
         onClicked: stackView.push("Menu2.qml")
     }
     Button {
-        text: "Menu 3"
+        text: "Fridge"
         y: 100
         onClicked: stackView.push("Menu3.qml")
     }

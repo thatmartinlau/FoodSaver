@@ -16,9 +16,11 @@ public:
     Q_INVOKABLE QStringList getNameHistory() const;
     Q_INVOKABLE void openPopupWindow();
 
+//connect(pushButton, SIGNAL(clicked()), popupWindow, SLOT(exec()));
 signals:
     void sumChanged(int newSum);
     void nameHistoryChanged();
+
 
 private:
     int sum = 0;
