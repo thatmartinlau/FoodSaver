@@ -120,7 +120,7 @@ vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [nam
     vec.push_back(to_string(ingr.get_Quantity()));
     std::string cat_string(foodClassToString(ingr.get_FoodClass())); // Convert std::string_view to std::string
     vec.push_back(cat_string);
-    vec.push_back(ingr.get_expiry_date()); // need Sixtine's get_expiry date
+    vec.push_back(to_string(ingr.get_expiry_date().get_day()) +"."+to_string(ingr.get_expiry_date().get_month())+ "." + to_string(ingr.get_expiry_date().get_year())); // date --> 22.10.2024 --> string
     string priority_level_string = nameof(ingr.priority_level);
     vec.push_back(ingr.priority_level);
     return vec;
