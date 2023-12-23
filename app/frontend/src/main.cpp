@@ -25,6 +25,9 @@ int main(int argc, char *argv[])
                 QCoreApplication::exit(-1);
         },
         Qt::QueuedConnection);
+    CounterHandler counterHandler;
+    engine.rootContext()->setContextProperty("CounterHandler", &counterHandler);
+
 
     engine.addImportPath(QCoreApplication::applicationDirPath() + "/qml");
     engine.addImportPath(":/");
