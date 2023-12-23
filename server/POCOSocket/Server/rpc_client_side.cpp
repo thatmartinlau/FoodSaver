@@ -3,6 +3,8 @@
 #include "rpc_client_side.hpp"
 #include<vector>
 #include "../../../test3/front.hpp"
+#include "../../../test3/ingredient.h"
+#include "../../../test3/date.h"
 
 using namespace std;
 
@@ -117,12 +119,12 @@ std::string priorityToString(Priority priority) {
 vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, quantity, category, expiry_date, priority_level], all as string s.
     vector<string> vec;
     vec.push_back(ingr.get_name());
-    vec.push_back(to_string(ingr.get_Quantity()));
-    std::string cat_string(foodClassToString(ingr.get_FoodClass())); // Convert std::string_view to std::string
+    vec.push_back(to_string(ingr.get_quantity()));
+    string cat_string(foodClassToString(ingr.get_food_class())); // Convert std::string_view to std::string
     vec.push_back(cat_string);
     vec.push_back(to_string(ingr.get_expiry_date().get_day()) +"."+to_string(ingr.get_expiry_date().get_month())+ "." + to_string(ingr.get_expiry_date().get_year())); // date --> 22.10.2024 --> string
-    string priority_level_string = nameof(ingr.priority_level);
-    vec.push_back(ingr.priority_level);
+    string priority_string(priorityToString(ingr.get_priority()));
+    vec.push_back(priority_string);
     return vec;
 }
 
