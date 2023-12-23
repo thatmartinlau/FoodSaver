@@ -263,43 +263,94 @@ void remove_user(string username, string password){
             database->erase(el); // Remove the user if the password matches
         } else {
             // Password does not match
+            auto err_obj = std::make_tuple(507, "Incorrect Password");
+            rpc::this_handler().respond_error(err_obj);
         }
     } else {
         // Username not found
+        auto err_obj = std::make_tuple(123, "Username not found");
+        rpc::this_handler().respond_error(err_obj);
     }
 
 }
-void update_user(string old_username, string old_password, string new_username, string new_password) {
-    auto el = database->find(old_username); // Find the username in the database
-    if (el != database->end()) {
-        // Username exists
-        if (old_password == el->second.password) {
-            // Password matches
-            UserData data = el->second;
-            database->erase(el);
-            add_user(new_username, new_password);
-            }
-        }
-    }//changes a user's name and password. Old is for login verification, new is to change.
 
-void update_fridge(std::string username, string password, vector<vector<string>> new_fridge) {
+
+void update_user(string old_username, string old_password, string new_username, string new_password) {
+    auto el = database->find(old_username); // Find the old username in the database
+
+    if (el != database->end() && old_password == el->second.password) {
+        // Username exists and password matches
+
+        // Create a new entry with the updated username and password
+        UserData new_data(new_password);
+        database->emplace(new_username, std::move(new_data));
+
+        // Remove the old entry
+        database->erase(el);
+    }
+    else if(old_password != el->second.password){
+        // Password does not match
+        auto err_obj = std::make_tuple(507, "Incorrect Password");
+        rpc::this_handler().respond_error(err_obj);
+    }
+ else {
+    // Username not found
+    auto err_obj = std::make_tuple(123, "Username not found");
+    rpc::this_handler().respond_error(err_obj);
+}
+
+}
+
+void update_fridge(std::string username, string password, vector<vector<string>> &new_fridge) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
             if (password == el->second.password) {
                 // Password matches
-            el->second.fridge = new_fridge;
+            vector<vector<string>> old_data = el->second.fridge; //used so we can later delete the old data
+            el->second.fridge = std::move(new_fridge);
+
+            old_data.clear();
+
+            std::vector<std::vector<std::string>>().swap(old_data);//releases the memory used by old_data
             }
+            else if(password != el->second.password){
+            // Password does not match
+            auto err_obj = std::make_tuple(507, "Incorrect Password");
+            rpc::this_handler().respond_error(err_obj);
+            }
+            else {
+            // Username not found
+            auto err_obj = std::make_tuple(123, "Username not found");
+            rpc::this_handler().respond_error(err_obj);
+            }
+
         }
 } //updates a user fridge
 
-void update_offer(std::string username, string password, vector<vector<vector<vector<string>>>> new_offer) {
+void update_offer(std::string username, string password, vector<vector<vector<vector<string>>>> &new_offer) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
             if (password == el->second.password) {
             // Password matches
-            el->second.offer_list = new_offer;
+            vector<vector<vector<vector<string>>>> old_data = el->second.offer_list; //used so we can later delete the old data
+            el->second.offer_list = std::move(new_offer);
+
+            old_data.clear();
+
+            std::vector<std::vector<std::vector<std::vector<std::string>>>>().swap(old_data);//releases the memory used by old_data
+
+            }
+            else if(password != el->second.password){
+            // Password does not match
+            auto err_obj = std::make_tuple(507, "Incorrect Password");
+            rpc::this_handler().respond_error(err_obj);
+            }
+            else {
+            // Username not found
+            auto err_obj = std::make_tuple(123, "Username not found");
+            rpc::this_handler().respond_error(err_obj);
             }
         }
 } //updates a user offer list
@@ -307,23 +358,30 @@ void update_offer(std::string username, string password, vector<vector<vector<ve
 //DB Sending Functions:
 vector<vector<vector<vector<string>>>> get_offer_list(string username, string password) {
         auto el = database->find(username); // Find the username in the database
-        if (el != database->end()) {
-            // Username exists
-            if (password == el->second.password) {
-            // Password matches
-            return el->second.offer_list;
-            }
+
+        if (el != database->end() && password == el->second.password) {
+            // Username exists and password matches
+
+            // Move the offer_list content to the caller
+            return std::move(el->second.offer_list);
         }
+
+
+        return {}; // Return an empty offer_list if no username or password does not match
+
 }
 vector<vector<string>> get_fridge(string username, string password) {
         auto el = database->find(username); // Find the username in the database
-        if (el != database->end()) {
-            // Username exists
-            if (password == el->second.password) {
-            // Password matches
-            return el->second.fridge;
-            }
+        if (el != database->end() && password == el->second.password) {
+            // Username exists and password matches
+
+
+            return std::move(el->second.fridge);
         }
+
+
+        return {}; // Return an empty offer_list if no username or password does not match
+
 }
 
 int main() {
