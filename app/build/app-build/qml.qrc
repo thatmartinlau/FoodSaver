@@ -1,10 +1,11 @@
 <RCC>
     <qresource prefix="/">
-        <file>QML/menu3.qml</file>
-        <file>QML/menu2.qml</file>
-        <file>QML/menu1.qml</file>
-        <file>QML/loginpage.qml</file>
-        <file>QML/homepage.qml</file>
-        <file>main.qml</file>
+        <file>QML/HomePage.qml</file>
+        <file>QML/Menu1.qml</file>
+        <file>QML/Menu2.qml</file>
+        <file>QML/Menu3.qml</file>
+        <file>QML/main.qml</file>
+        <file>QML/LoginPage.qml</file>
+        <file>QML/menu4.qml</file>
     </qresource>
 </RCC>

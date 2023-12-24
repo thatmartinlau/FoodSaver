@@ -14,5 +14,11 @@ Continue converting data to json. --> for every class in front.hpp converting th
 Week 10 : 18/12/2023 - 23/12/2023 
 Finished json. 
 Applying json converting algorithms to server_client.cpp --> converting data into vectors this time to create link between server and front. 
+Debugging code --> client side. 
+
+Week 11:
+
+
+
 
 

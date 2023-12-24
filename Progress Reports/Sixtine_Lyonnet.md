@@ -21,3 +21,13 @@ I finished downloading all necessary things for Qt.
 I added a Date class to the front.hpp file and defined the necessary classes in the cpp file.
 I tested the functions and classes I created.
 The TA told me defining things on the heap is considered bad practice so I put everything on the stack instead.
+
+18/12/2023
+I asked my collegues what I needed to implement to make the project work in the future and to make their work easier.
+I kept working on my code and worked out a few major bugs in some functions.
+I started to try and implement a function that compares a date with the current date in order to check if the ingredient is expired and/or expiring soon.
+
+21/12/2023
+I finished implementing the Date class.
+I also added a method requested by my collegues.
+I was told by my TA that the classes should be impplemented in separate cpp and h files, so I split the code from front.cpp and front.hpp in 5 different files.
