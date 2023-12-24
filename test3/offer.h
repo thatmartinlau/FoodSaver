@@ -18,6 +18,9 @@ public:
     void set_price(double price);
     double get_price();
     //json toJson () const;
+    // Need of an get_ingredient_list() method in offer.h
+    std::vector<Ingredient> get_ingredient_list();
+
 
 private:
     std::vector<Ingredient> ingredient_list;

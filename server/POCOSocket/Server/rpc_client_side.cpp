@@ -2,9 +2,12 @@
 #include <string>
 #include "rpc_client_side.hpp"
 #include<vector>
+#include <sstream>
 #include "../../../test3/front.hpp"
 #include "../../../test3/ingredient.h"
 #include "../../../test3/date.h"
+#include "../../../test3/fridge.h"
+#include "../../../test3/offer.h"
 
 using namespace std;
 
@@ -116,15 +119,31 @@ std::string priorityToString(Priority priority) {
 }
 
 //OSCAR's CODE ADAPTED BY ADAM: Oscar, feel free to adjust and change if u have a way which matches smth u prefer to use.
-vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, quantity, category, expiry_date, priority_level], all as string s.
+vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, expiry_date, quantity, category, priority_level], all as string s. I modified the format Adam
     vector<string> vec;
+
+    // first push name
     vec.push_back(ingr.get_name());
+
+    // then  push expiry_date
+
+    vec.push_back(to_string(ingr.get_expiry_date().get_day()) +"."+to_string(ingr.get_expiry_date().get_month())+ "." + to_string(ingr.get_expiry_date().get_year())); // date --> 22.10.2024 --> string
+
+
+    // push quantity
     vec.push_back(to_string(ingr.get_quantity()));
+
+
+    // push category
+
     string cat_string(foodClassToString(ingr.get_food_class())); // Convert std::string_view to std::string
     vec.push_back(cat_string);
-    vec.push_back(to_string(ingr.get_expiry_date().get_day()) +"."+to_string(ingr.get_expiry_date().get_month())+ "." + to_string(ingr.get_expiry_date().get_year())); // date --> 22.10.2024 --> string
+
+    // push priority_level
+
     string priority_string(priorityToString(ingr.get_priority()));
     vec.push_back(priority_string);
+
     return vec;
 }
 
@@ -137,36 +156,49 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
  // Convert string name into --> string name --> nothing to change
     std::string name = vector[0];
 
+    // Convert date expiry_date --> string --> nothing to change
+
+    std::istringstream ss(vector[1]);
+    std::vector<int> intArray;
+    std::string token;
+
+    while (std::getline(ss, token, '.')) {
+        intArray.push_back(std::stoi(token));
+    }
+
+    Date expiry_date = Date(intArray[0], intArray[1], intArray[2]);
+
+
     // Convert string quantity into --> int quantity :
-    int quantity = std::stoi(vector[1]);
+    int quantity = std::stoi(vector[2]);
 
     // Convert string category into --> in food class enum
 
-    Food_class category = mapCategoryToEnum(vector[2]);
+    Food_class category = mapCategoryToEnum(vector[3]);
 
-    // Convert string expiry_date --> string --> nothing to change
 
-    std::string expiry_date =vector[3];
 
     // Convert priority level string into --> enum
 
     Priority priority_level = mapprioToEnum(vector[4]);
 
-
-    Ingredient ingredient = Ingredient(name,category,expiry_date);
+    // Ingredient::Ingredient(string name, Date expiry_date, int quantity, Food_class category){
+    Ingredient ingredient = Ingredient(name,expiry_date, quantity, category);
     ingredient.set_priority(priority_level);
     return ingredient;
 }
 
-Fridge ServerUser::get_fridge() { // [[]]
+Fridge ServerUser::get_fridge() { //
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    std::vector<vector<string>> fridge_vector = new_cli.call("get_fridge", username, password); //vector of ingredients, each as a vector of strings.
+    std::vector<vector<string>>fridge_vector = new_cli.call("get_fridge", username, password); //vector of ingredients, each as a vector of strings.
     //Oscar work yo magic
     //     Fridge(std::list<Ingredient> init_list);
     std::vector<Ingredient> vector_Ingredient;
 
     for (size_t i = 0; i < fridge_vector.size(); ++i) {
-        vector_Ingredient.push_back(ingredient_from_vector(fridge_vector[i]));
+
+        vector<string> ingredient = fridge_vector[i];
+        vector_Ingredient.push_back(ingredient_from_vector(ingredient));
     }
 
     return Fridge(vector_Ingredient);
@@ -174,15 +206,31 @@ Fridge ServerUser::get_fridge() { // [[]]
 }
 
 
-void ServerUser::update_fridge(Fridge &f_input) {
+void ServerUser:: update_fridge(Fridge &f_input) {
     //convert to database-wanted format: OSCAR'S METHOD
     vector<vector<string>> fridge;
+
+
+    vector<Ingredient> ingredient_list = f_input.get_list();
+
+    for (size_t i = 0; i < ingredient_list.size(); ++i){
+        // Convert each Ingredient to vector format using Oscar's code
+        vector<string> ingredient = ingredient_to_vector(ingredient_list[i]);  // Pass the current Ingredient object
+
+        // Push the converted ingredient into the fridge vector
+        fridge.push_back(ingredient);
+    }
+
+    /*
     for (list<Ingredient>::iterator i = f_input.ingredient_list.begin(); i != f_input.ingredient_list.end(); i++) {
         
         //convert ingredient to vector format USING OSCAR's CODE
         vector<string> ingredient;
         fridge.push_back(ingredient_to_vector(ingredient));
     }
+    */
+
+
     //send as new format
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_fridge", username, password, fridge_vector);
@@ -206,8 +254,8 @@ vector<Offer> ServerUser::get_offer_list() {
 
         std::vector<Ingredient> vector_offer_list;
 
-        for (size_t j = 0; j < offer_list[i][0].size(); ++i) {
-            vector_offer_list.push_back(ingredient_from_vector(offer_list[i][0][j]));
+        for (size_t j = 0; j < offer_list_vector[i][0].size(); ++i) {
+            vector_offer_list.push_back(ingredient_from_vector(offer_list_vector[i][0][j]));
         }
 
         Offer offer = Offer(vector_offer_list);
@@ -234,11 +282,7 @@ vector<Offer> ServerUser::get_offer_list() {
 
 void ServerUser::update_offer_list(vector<Offer> &offer_list) {
     //Oscar work yo magiiiic: same format as get_offer_list for the data we want to give to the server.
-
     // vector<Offer> -->
-
-
-
     // [ [ [ [name1, quantity1, category1, expiry_date1, priority_level1], [name2, quantity2, category2, expiry_date2, priority_level2], ...], [[price]] ],  .... ,[ [ [name1', quantity1', category1', expiry_date1', priority_level1'], [name2', quantity2', category2', expiry_date2', priority_level2'], ...], [[price']] ]
     // [[Ingredient list1, price1] , [Ingredient list 2, price2] ,...]
     vector<vector<vector<vector<string>>>> update_offer;
@@ -246,14 +290,23 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
         Offer offer_elem =  offer_list[j];
         double price = offer_elem.get_price();
         string string_price = to_string(price);
+        //Offer(std::vector<Ingredient> ingredient_list);
+        vector<Ingredient> list_ingredient = offer_list[j].get_ingredient_list(); // ask for sixtine for such a method in class offer
+        vector<vector<string>> update_list_ingredient;
+        //ingredient_to_vector(Ingredient)
+        for(size_t i = 0; i<list_ingredient.size(); i++){
+            update_list_ingredient.push_back(ingredient_to_vector(list_ingredient[i]));
 
-
-
-
-
-
-
-
+        }
+        vector<vector<vector<string>>> list_ingr_price;
+        list_ingr_price.push_back(update_list_ingredient);
+        vector<vector<string>> price_element ;
+        vector<string> inner_vector;
+        inner_vector.push_back(string_price);
+        price_element.push_back(inner_vector);
+        // adding the [[price]] to the array with the list ingredients
+        list_ingr_price.push_back(price_element);
+        update_offer.push_back(list_ingr_price);
 
     }
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
