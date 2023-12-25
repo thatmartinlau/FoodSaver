@@ -17,7 +17,7 @@ Applying json converting algorithms to server_client.cpp --> converting data int
 Debugging code --> client side. 
 
 Week 11:
--Finished debugging code  
+- Finished debugging code  
 - Finished converting to data_structure for back_end. 
 
 
