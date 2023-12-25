@@ -11,8 +11,7 @@ DISTFILES += \
     QML/menu1.qml \
     QML/menu2.qml \
     QML/menu3.qml \
-    loginpage.qml \
-    main.qml
+    loginpage.qml
 
 SOURCES += \
     backend.cpp \
