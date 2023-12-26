@@ -11,5 +11,30 @@ ApplicationWindow {
         id: stackView
         anchors.fill: parent
         initialItem: LoginPage {}
+
+        // Custom push transition
+        pushTransition: Transition {
+            // Define the animation for the push transition
+            NumberAnimation {
+                properties: "opacity, x"
+                from: 640
+                to: 0
+                duration: 300
+                easing.type: Easing.InOutQuad
+            }
+        }
+
+        // Custom pop transition
+        popTransition: Transition {
+            // Define the animation for the pop transition
+            NumberAnimation {
+                properties: "opacity, x"
+                from: 0
+                to: -640
+                duration: 300
+                easing.type: Easing.InOutQuad
+            }
+        }
+
     }
 }

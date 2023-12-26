@@ -3,23 +3,28 @@ import QtQuick.Controls 2.12
 
 Item {
 
-    Rectangle {
+    // FOODSAVER LOGO/LABEL
 
-        x: parent.width / 2.2
-        y: parent.height / 3.3
+    Rectangle {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: parent.height/3.3
 
         Label {
+            horizontalAlignment: Text.AlignHCenter // Center the text within the Label
+            anchors.horizontalCenter: parent.horizontalCenter // Center the Label within the Rectangle
             text: "Welcome to FoodSaver!"
         }
-
     }
+
+    // TEXT ENTRIES + BUTTON
 
     Column{
         spacing: 10
         width: 300
 
-        x: parent.width / 2.2
-        y: parent.height / 2
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
 
         TextField {
             width: parent.width
@@ -36,6 +41,32 @@ Item {
             anchors.left: parent.left
             text: "Login"
             onClicked: stackView.push(Qt.resolvedUrl("HomePage.qml")) //replace this soon with the login function, to be implemented
+        }
+    }
+
+    // SIDE + EXTRA BUTTONS
+
+    Column {
+        anchors.right: parent.right
+        anchors.bottomMargin: 10
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
+        width: 150
+        spacing: 10
+
+        Button {
+            text: "About this project"
+            width: parent.width
+            onClicked: {
+                var url = "https://github.com/thatmartinlau/FoodSaver"
+                Qt.openUrlExternally(url)
+            }
+        }
+
+        Button {
+            width: parent.width
+            text: "Exit"
+            onClicked: Qt.quit()
         }
     }
 
