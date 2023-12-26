@@ -31,6 +31,23 @@ Beginning testing with Figma and how we can implement these designs within the p
 Need a more robust framework with how c++ and qml is to be integrated together.
 
 HOLIDAY WEEK 1: 25/12/23 - 31/12/23
+Monday (Merry Christmas!)
+edits were made on branch 'martin-settings-profile'.
+Finally setting up the QML basis - things are finally starting to look brighter.
+Set up elementary QML functions for the first two pages of the application
+--
+TODO:
+reorganize file names for the different QML pages so that everything will be easier to work with (e.g. change "Menu1.qml" -> "Market.qml")
+Use replace on the stackView instead of push and pop, works faster and is more flush
+Replace the janky default transitions on the stackview on main.qml
+Once finished, port these changes onto other's branches and ask them to complete cpp functions for their respective pages
+__
+Later on
+CPP functions to link with the homepage etc - talk to other team members to see how to integrate each parts.
+Make this thing look sexy
+--
+
+
 
 
 HOLIDAY WEEK 2: 01/01/24 - 07/01/24
