@@ -40,7 +40,7 @@ Item {
         Button {
             anchors.left: parent.left
             text: "Login"
-            onClicked: stackView.push(Qt.resolvedUrl("HomePage.qml")) //replace this soon with the login function, to be implemented
+            onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) //replace this soon with the login function, to be implemented
         }
     }
 
