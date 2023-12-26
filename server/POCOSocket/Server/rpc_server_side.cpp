@@ -30,15 +30,28 @@ public:
     vector<vector<vector<vector<string>>>> offer_list;
 };
 
+//.//////New Types for data transfer:
+struct offer_list_vector {
+    vector<vector<vector<vector<string>>>> offer_list;
+    MSGPACK_DEFINE_ARRAY(offer_list)
+};
+
+struct fridge_vector {
+    vector<vector<string>> fridge_vector;
+    MSGPACK_DEFINE_ARRAY(fridge_vector)
+};
+
+
+
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
 
-//silly needs for delimiter type within getline():
+//some needs for delimiter type within getline():
 char comma = *",";
 char semicolon = *";";
 char colon = *":";
 char forwardslash = *"/";
 
-//needs for string comparison (why, c++)
+//some needs for string comparison (why, c++)
 string curly_brackets = "{}";
 string absolute_signs = "||";
 

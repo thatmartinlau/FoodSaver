@@ -1,8 +1,8 @@
-#include "rpc/client.h"
 #include <string>
-#include "rpc_client_side.hpp"
 #include<vector>
 #include <sstream>
+#include "rpc/client.h"
+#include "rpc_client_side.hpp"
 #include "../../../test3/front.hpp"
 #include "../../../test3/ingredient.h"
 #include "../../../test3/date.h"
@@ -14,6 +14,8 @@ using namespace std;
 string HOST_SERVER_NAME = "127.0.0.1"; //change to Server later.
 int HOST_SERVER_PORT = 3333;
 
+//.///////// User functions
+
 ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user not in db already. Oth, just initialise connection.
     username = usrname;
     password = psswd;
@@ -21,15 +23,12 @@ ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user 
     new_cli.call("add_user", username, password);
 }
 
-
 ServerUser::~ServerUser() {}
-
 
 void ServerUser::delete_self_in_db() {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("remove_user", username, password);
 }
-
 
 void ServerUser::update_user(string new_username, string new_password) {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
@@ -38,6 +37,10 @@ void ServerUser::update_user(string new_username, string new_password) {
 
 
 
+
+
+
+//.///////// Mapping Types
 
 Food_class mapCategoryToEnum(const std::string& category) {
     static const std::unordered_map<std::string, Food_class> categoryMap = {
@@ -101,8 +104,6 @@ std::string_view foodClassToString(Food_class foodClass) {
 
 
 
-
-
 std::string priorityToString(Priority priority) {
     static const std::unordered_map<Priority, std::string> PriorityToString = {
         {Priority::red, "red"},
@@ -117,6 +118,7 @@ std::string priorityToString(Priority priority) {
         return "Unknown"; // Return a default string for unknown values
     }
 }
+
 
 //OSCAR's CODE ADAPTED BY ADAM: Oscar, feel free to adjust and change if u have a way which matches smth u prefer to use.
 vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, expiry_date, quantity, category, priority_level], all as string s. I modified the format Adam
@@ -146,10 +148,6 @@ vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [nam
 
     return vec;
 }
-
-
-
-
 
 
 Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar work yo magic
@@ -188,21 +186,35 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
     return ingredient;
 }
 
+//.//////New Types for data transfer:
+struct offer_list_vector {
+    vector<vector<vector<vector<string>>>> offer_list;
+    MSGPACK_DEFINE_ARRAY(offer_list)
+};
+
+struct fridge_vector {
+    vector<vector<string>> fridge_vector;
+    MSGPACK_DEFINE_ARRAY(fridge_vector)
+};
+
+
+
+//.//////Server send-receive functions.
+
 Fridge ServerUser::get_fridge() { //
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    std::vector<vector<string>>fridge_vector = new_cli.call("get_fridge", username, password); //vector of ingredients, each as a vector of strings.
+    fridge_vector fridge_vector1 = new_cli.call("get_fridge", username, password).as<fridge_vector>(); //vector of ingredients, each as a vector of strings.
     //Oscar work yo magic
     //     Fridge(std::list<Ingredient> init_list);
     std::vector<Ingredient> vector_Ingredient;
 
-    for (size_t i = 0; i < fridge_vector.size(); ++i) {
+    for (size_t i = 0; i < fridge_vector1.size(); ++i) {
 
-        vector<string> ingredient = fridge_vector[i];
+        vector<string> ingredient = fridge_vector1[i];
         vector_Ingredient.push_back(ingredient_from_vector(ingredient));
     }
 
     return Fridge(vector_Ingredient);
-
 }
 
 
@@ -233,7 +245,7 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
     //send as new format
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_fridge", username, password, fridge_vector);
+    new_cli.call("update_fridge", username, password, fridge);
 }
 
 
@@ -261,23 +273,9 @@ vector<Offer> ServerUser::get_offer_list() {
         Offer offer = Offer(vector_offer_list);
         offer.set_price(price);
         vector_offer.push_back(offer);
-    return vector_offer;
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
+    return vector_offer;
 }
-
 
 
 void ServerUser::update_offer_list(vector<Offer> &offer_list) {
@@ -310,13 +308,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 
     }
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_offer_list", username, password, new_offer_list); //this in the weird new vector<vector<vector<vector<string>>>> format, sorry! Check telegram paper image n1 for clarity, hopefully :)
-
-
-
-
-
-
+    new_cli.call("update_offer_list", username, password, update_offer); //this in the weird new vector<vector<vector<vector<string>>>> format, sorry! Check telegram paper image n1 for clarity, hopefully :)
 
 }
 
