@@ -208,9 +208,9 @@ Fridge ServerUser::get_fridge() { //
     //     Fridge(std::list<Ingredient> init_list);
     std::vector<Ingredient> vector_Ingredient;
 
-    for (size_t i = 0; i < fridge_vector1.size(); ++i) {
+    for (size_t i = 0; i < fridge_vector1.fridge_vector.size(); ++i) {
 
-        vector<string> ingredient = fridge_vector1[i];
+        vector<string> ingredient = fridge_vector1.fridge_vector[i];
         vector_Ingredient.push_back(ingredient_from_vector(ingredient));
     }
 
@@ -252,7 +252,8 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
 vector<Offer> ServerUser::get_offer_list() {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    vector<vector<vector<vector<string>>>> offer_list_vector = new_cli.call("get_offer_list", username, password);
+    //vector<vector<vector<vector<string>>>> offer_list_vector = new_cli.call("get_offer_list", username, password);
+    offer_list_vector offer_list_vector1 = new_cli.call("get_fridge", username, password).as<offer_list_vector>();
     //Oscar work yo magic: ADDED DETAIL: The offer list format holds offers, each other has this format exactly: [vector<string>, vector<string>], Where the second vector stores only a double!
     //That double represents the price of the offer. We needed this because vectors have homogenous type. (only store one type.)
     
@@ -260,14 +261,14 @@ vector<Offer> ServerUser::get_offer_list() {
     std::vector<Offer> vector_offer;
 
 
-    for (size_t i = 0; i < offer_list_vector.size(); ++i) {
-        double price = std::stod(offer_list_vector[i][1][0][0]);
+    for (size_t i = 0; i < offer_list_vector1.offer_list.size(); ++i) {
+        double price = std::stod(offer_list_vector1.offer_list[i][1][0][0]);
         // offer_list[i][0] convert into a vector of ingredient .
 
         std::vector<Ingredient> vector_offer_list;
 
-        for (size_t j = 0; j < offer_list_vector[i][0].size(); ++i) {
-            vector_offer_list.push_back(ingredient_from_vector(offer_list_vector[i][0][j]));
+        for (size_t j = 0; j < offer_list_vector1.offer_list[i][0].size(); ++i) {
+            vector_offer_list.push_back(ingredient_from_vector(offer_list_vector1.offer_list[i][0][j]));
         }
 
         Offer offer = Offer(vector_offer_list);
