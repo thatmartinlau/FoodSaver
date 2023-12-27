@@ -4,12 +4,12 @@ import QtQuick.Controls 2.15
 
 Popup {
     id: settings
-    anchors.centerIn: parent
     property alias changePassoword: changepw.text
     property alias confirmChangePassowrd: confirmpw.text
 
-    width: 200
-    height: 300
+    anchors.centerIn: parent
+    width: Screen.width / 3
+    height: Screen.height / 3
     closePolicy: "CloseOnEscape"
     background: Rectangle {
             color:"#EEEEEE"
