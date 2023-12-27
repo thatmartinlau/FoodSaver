@@ -13,9 +13,29 @@ DISTFILES += \
     QML/menu3.qml \
     loginpage.qml
 
+CPP = Source/
+HPP = Header/
+
 SOURCES += \
     backend.cpp \
-    main.cpp
+    main.cpp \
+    $$CPP/date.cpp \
+    $$CPP/fridge.cpp \
+    $$CPP/front.cpp \
+    $$CPP/ingredient.cpp \
+    $$CPP/link_pocco.cpp \
+    $$CPP/main.cpp \
+    $$CPP/offer.cpp \
+    $$CPP/temp.front.cpp \
+    $$CPP/temp.json.cpp \
+    $$CPP/user.cpp
 
 HEADERS += \
-    backend.h
+    backend.h \
+    $$HPP/date.h \
+    $$HPP/fridge.h \
+    $$HPP/front.hpp \
+    $$HPP/ingredient.h \
+    $$HPP/offer.h \
+    $$HPP/temp.front.hpp \
+    $$HPP/user.h
