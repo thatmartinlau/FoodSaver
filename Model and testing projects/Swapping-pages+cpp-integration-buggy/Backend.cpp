@@ -16,6 +16,11 @@ void Backend::storeName(const QString &name) {
     emit nameHistoryChanged();
 }
 
+/*void Backend::storeProduct(const QString &Item) {
+    nameHistory.append(Item);
+    emit nameHistoryChanged();
+}*/
+
 QStringList Backend::getNameHistory() const {
     return nameHistory;
 }
