@@ -8,8 +8,8 @@ Popup {
     property alias confirmChangePassowrd: confirmpw.text
 
     anchors.centerIn: parent
-    width: Screen.width / 3
-    height: Screen.height / 3
+    width: Screen.width / 2.5
+    height: Screen.height / 2
     closePolicy: "CloseOnEscape"
     background: Rectangle {
             color:"#EEEEEE"
@@ -18,21 +18,33 @@ Popup {
             border.width: 1
         }
 
-    Button {
-        anchors.right: parent.right
+
+
+
+    //Text
+    Rectangle {
+        anchors.left: parent.left
+        anchors.leftMargin: 10
         anchors.top: parent.top
-        text: "X"
-        palette.buttonText:  "#000000"
-        width: 50
-        background: null
-        onClicked: {
-            settings.close()
+        anchors.topMargin: 10
+
+        Label {
+            text: "Settings"
+            color: "black"
         }
     }
 
+
+    //Profile options
+
+
+
+    //
     Column {
 
-        anchors.centerIn: parent
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: 10
         spacing: 10
 
         Label {
@@ -81,39 +93,6 @@ Popup {
             onClicked: {} //insert the function that makes the button do something
         }
 
-        Popup {
-            id: areyousure
-            width: 300
-            height: Screen.height
-            background: Rectangle {
-                    color:"#EEEEEE"
-                    radius: 12.5
-                    border.color: "black"
-                    border.width: 1
-                }
-            Column {
-                Label {
-                    text: "WARNING: This process is irreversible."
-                }
-                Label {
-                    text: "Input your password to confirm deletion of your account."
-                }
-                TextField {
-                    id: confirmpw_delete
-                    width: 190
-                    height: 25
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    background: Rectangle {
-                            color: "#5E9F7C"
-                            radius: 12.5
-                        }
-                    placeholderText: "Confirm your password"
-                    echoMode: TextField.Password
-                }
-            }
-            //end popup definition
-        }
-
         Button {
             text: "Delete account"
             id: nukeyourself
@@ -139,30 +118,51 @@ Popup {
 
             // Opens up a second popup to confirm whether they really want to delete their account
             onClicked: {
-                areyousure.open()
+
             }
 
 
         }
 
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
 
-            Button {
-                text: "Apply Changes"
-                width: 100
-                //anchors.horizontalCenter: parent.horizontalCenter
-                background: Rectangle {
-                            color: "#5E9F7C"
-                            radius:12.5
-                        }
-
-                onClicked: {
-                    settings.close() // IMPORTANT: include a function which also submits these settings changes.
-                }
-            }
-        }
     // end of column definition
+    }
+
+    Row {
+        anchors.bottom:parent.bottom
+        anchors.right: parent.right
+        anchors.bottomMargin: 10
+        anchors.rightMargin: 10
+        spacing: 10
+
+        Button {
+            text: "Cancel"
+            width: 100
+            background: Rectangle {
+                color: "#5E9F7C"
+                radius:12.5
+            }
+            onClicked: {
+                settings.close()
+                changepw.text = ""
+                confirmpw.text = ""
+            }
+
+        }
+
+        Button {
+            text: "Apply"
+            width: 100
+            //anchors.horizontalCenter: parent.horizontalCenter
+            background: Rectangle {
+                color: "#5E9F7C"
+                radius:12.5
+            }
+
+            onClicked: {
+                settings.close() // IMPORTANT: include a function which also submits these settings changes.
+            }
+        }
     }
 // end of popup definition
 }
