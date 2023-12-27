@@ -1,6 +1,15 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+//Hello hello Fanny,
+//Sorry i kinda stole a bit of your work from you, it was just a small amount of changes to get the ball rolling
+//Could you continue working on this page by writing the C++ code to complete the login functions?
+//It would also be rly good if you could also make a page for new users to register, as well as the c++ code for that
+//Thanks!
+
+//PS: delete these comments once you see them, and text me the word 'banana' on Telegram.
+//-Martin
+
 Item {
 
     // FOODSAVER LOGO/LABEL
