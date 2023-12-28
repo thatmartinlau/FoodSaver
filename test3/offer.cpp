@@ -22,3 +22,7 @@ void Offer::set_price(double price) {
 double Offer::get_price() {
     return price;
 }
+
+std::vector<Ingredient> Offer::get_ingredient_list() {
+    return ingredient_list;
+}

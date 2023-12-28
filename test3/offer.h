@@ -17,6 +17,7 @@ public:
     ~Offer();
     void set_price(double price);
     double get_price();
+    std::vector<Ingredient> get_ingredient_list();
     //json toJson () const;
 
 private:
