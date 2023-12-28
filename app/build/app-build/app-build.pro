@@ -19,7 +19,7 @@ HPP = Header/
 SOURCES += \
     backend.cpp \
     main.cpp \
-    maincontroller.cpp
+    maincontroller.cpp \
     $$CPP/date.cpp \
     $$CPP/fridge.cpp \
     $$CPP/front.cpp \
