@@ -1,5 +1,6 @@
 #include "../Header/ingredient.h"
-
+#include <vector>
+#include <string>
 //#include <iostream>
 //#include <list>
 //#include <ctime>
@@ -7,7 +8,9 @@
 //using namespace std;
 
 //INGREDIENT
-Ingredient::Ingredient(string name, Date expiry_date, int quantity, Food_class category){
+
+
+Ingredient::Ingredient(std::string name, Date expiry_date, int quantity, Food_class category){
     this->name = name;
     this->quantity = quantity;
     this->category = category;
@@ -17,7 +20,7 @@ Ingredient::Ingredient(string name, Date expiry_date, int quantity, Food_class c
 Ingredient::~Ingredient() {
 }
 
-string Ingredient::get_name() const {
+std::string Ingredient::get_name() const {
     return name;
 }
 

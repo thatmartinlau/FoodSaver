@@ -2,6 +2,8 @@
 using json = nlohmann::json;
 
 #include <fstream>
+#include <iostream>
+
 
 // code a function that can cin the bachelor data from the website
 

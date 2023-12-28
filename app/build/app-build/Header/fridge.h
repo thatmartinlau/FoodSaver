@@ -2,7 +2,7 @@
 #define FRIDGE_H
 
 #include "ingredient.h"
-
+#include <vector>
 //#include <iostream>
 //#include <list>
 //#include <string>

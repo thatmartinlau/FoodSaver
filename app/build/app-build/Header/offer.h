@@ -2,7 +2,7 @@
 #define OFFER_H
 
 #include "ingredient.h"
-
+#include <vector>
 //#include <iostream>
 //#include <list>
 //#include <string>
