@@ -15,7 +15,9 @@ DISTFILES += \
 
 SOURCES += \
     backend.cpp \
-    main.cpp
+    main.cpp \
+    maincontroller.cpp
 
 HEADERS += \
-    backend.h
+    backend.h \
+    maincontroller.h
