@@ -12,7 +12,7 @@ public:
 
 public slots:
     QString submitText(const QString &text);
-    int changeTime(const QString &text);
+    double changeTime(const QString &text);
     int submitInt(const int &time);
 };
 

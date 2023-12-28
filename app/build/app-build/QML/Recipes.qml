@@ -34,9 +34,17 @@ Item {
         }
 
         TextField {
-            id: totalduration
+            id: totaldurationHrs
             validator: IntValidator {bottom: 1; top: 999}
-            placeholderText: "Type in the expected duration of the recipe"
+            placeholderText: "Type in the expected duration (HRS) of the recipe"
+            width: 640
+
+        }
+
+        TextField {
+            id: totaldurationMin
+            validator: IntValidator {bottom: 1; top: 999}
+            placeholderText: "Type in the expected duration (MIN) of the recipe"
             width: 640
 
         }
@@ -44,7 +52,7 @@ Item {
         Button { text: "yellow";
             onClicked: {
                 var userText = recipename.text + "%" + diet.text //the % sign is used to slpit the string into different information - this is a temporary solution
-                var time = totalduration.text
+                var time = totaldurationHrs.text + "h" + totaldurationMin.text
 
                 if (userText.trim() !== "") {
                     console.log("User has typed: " + userText)
@@ -54,9 +62,10 @@ Item {
 
                     diet.text = ""  //Reset all the text fields after submission
                     recipename.text = ""
-                    totalduration.text = ""
+                    totaldurationMin.text = ""
+                    totaldurationHrs.text = ""
 
-                    outputText.text = "Recipe and diet restiction:" + res + "Time:" + timer + 20// Update the label
+                    outputText.text = "Recipe and diet restiction:" + res + "Time:" + timer// Update the label
                     outputText.visible = true  // Make the label visible
                 }
             }

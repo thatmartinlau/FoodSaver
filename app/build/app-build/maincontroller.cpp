@@ -16,12 +16,18 @@ QString MainController::submitText(const QString &text)
     }
 }
 
-int MainController::changeTime(const QString &text)
+double MainController::changeTime(const QString &text)
 {
-    if (!text.trimmed().isEmpty()) {
+    QStringList list1 = text.split(u'h');
+    if (!list1[0].trimmed().isEmpty() && !list1[1].trimmed().isEmpty()) {
         qDebug() << "User has typed time:" << text;
-        QString copy = text;
-        return copy.toInt();
+        QString copyHrs = list1[0];
+        QString copyMin = list1[1];
+        int res[2] = {copyHrs.toInt(), copyMin.toInt()};
+
+        double decimal = (double)res[1]/(double)60;
+        double time = (double)res[0] + decimal;
+        return time;
     }
 }
 
