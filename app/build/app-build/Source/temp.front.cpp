@@ -1,5 +1,6 @@
 #include "../Header/temp.front.hpp"
 #include <sstream>
+#include <string>
 
 std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 std::tm* date = std::localtime(&now);
