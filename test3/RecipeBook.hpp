@@ -12,48 +12,48 @@
 #include "nlohmann/json.hpp"
 #include "restClient.cpp"
 using json = nlohmann::json;
-
 using namespace std;
-class RecipeParser{
+
+/////////////////////////////////////////////////////////////////////////////////
+// Class JsonRecipeReader : access and read the elements of the recipe given the 
+// Json file with all the recipes. 
+
+
+class JsonRecipeReader{
 public :
-    RecipeParser(const std::string& url, const std::string& pageEncoding = ENCODING);
-    void setsource();
-    void setLanguage();
-    void setFilename();
-    Json::Value compose();
-    void save(const std::string& folder = OUTPUT_FOLDER);
-    void store(const std::string& database, const std::string& collection, const std::map<std::string, std::string>& mongoService = ARMS)
-    virtual std::string getTitle();
-    virtual std::string getImage();
-    virtual std::vector<std::string> getIngredients();
-    virtual std::vector<sts::string> getDirections();
-    virtual std::vector<std::string> getTags();
-    virtual qstd::vector<std::string> getOtherRecipeLinks();
-
+    JsonRecipeReader(const std::string& filename) : jsonFileName(filename) {
+        loadJson();
+    }
+    
+    std::string getRecipeTitle(int recipeIndex)const{}
+    std::vector<std::string> getRecipeIngredients(int recipeIndex) const{}
+    std::vector<std::string> getRecipeDirection(int recipeIndex) const{}
+    std::vector<std::string> getRecipeTags(int recipeIndex) const{}
+    std::string getRecipeUrl(int recipeIndex) const{}
+    void AddRecipe(const json newRecipe) {}
+    
 private:
-    std::string url;
-    std::string encoding;
-    std::string html;
-    bool valid;
-    std::string encode;
-    std::string source;
-    std::string language;
-    std::string filename;
-    Json::Value json;
-}; 
+    void loadJson() {
+        std::ifstream file(jsonFileName);
+        if (!file.is_open()){
+            std::cerr << "Error opening file: "<< jsonFileName<< std::endl;
+            return ;
+        }
+        file >> jsonData;
+        file.close();
+    }
 
-class Epicurious : public RecipeParse{
-public:
-    Epicurious();
-    ~Epicurious();
-    std::string getTitle();
-    std::string getImage();
-    std::vector<std::string> getIngredients();
-    std::vector<std::string> getDirections();
-    std::vector<std::string> getTags();
-    std::vector<std::string> getOtherRecipeLink();
-private:
-    regex badTag;
+    void save(){
+        std::ifstream file(jsonFileName);
+        if (!file.open()){
+            std::cerr << "Error opening the file: " << jsonFileName << std::endl;
+            return ;
+        }
+        file << jsonData.dump(2);
+        file.close();
+    }
+    std::string jsonFileName;
+    json jsonData ;
 };
 
 #endif // RECIPEBOOK_HPP
