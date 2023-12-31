@@ -43,7 +43,7 @@ private:
         file.close();
     }
 
-    void save(){
+    void saveJson() const {
         std::ifstream file(jsonFileName);
         if (!file.open()){
             std::cerr << "Error opening the file: " << jsonFileName << std::endl;
