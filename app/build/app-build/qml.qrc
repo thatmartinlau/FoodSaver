@@ -8,5 +8,6 @@
         <file>QML/LoginPage.qml</file>
         <file>QML/Settings.qml</file>
         <file>QML/Profile.qml</file>
+        <file>QML/SigninPage.qml</file>
     </qresource>
 </RCC>

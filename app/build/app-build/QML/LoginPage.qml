@@ -81,5 +81,4 @@ Item {
             onClicked: Qt.quit()
         }
     }
-
 }
