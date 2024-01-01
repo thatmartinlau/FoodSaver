@@ -26,57 +26,55 @@ Popup {
     }
 
     Column {
-        width: parent.width
-        spacing: 10
-        padding: 20
-
-        Label {
-            text: "Profile"
-            font.pixelSize: 32
-            color: "#1C6F30" // Bright blue color for the title
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        Column {
             width: parent.width
-            spacing: 20
-            padding: 15
+            spacing: 10
+            padding: 20
 
-            Label {
-                text: "Personal Information"
-                color: "#28A745"
-                font.pixelSize: 25
+            // ... Label for title ...
+
+            TextField {
+
             }
 
-            // Adjusted Row
             GridLayout {
                 columns: 2
                 columnSpacing: 10
-                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width - (padding * 2) // Adjust for padding
 
-                TextField {
-                    Layout.fillWidth: false
-                    height: 10
-                }
-
-                TextField {
+                // Configure columns to have equal width
+                Column {
                     Layout.fillWidth: true
-                    height: 10
+
+                    TextField {
+                        width: parent.width
+                        height: 10
+                        // Other TextField properties
+                    }
+                }
+
+                Column {
+                    Layout.fillWidth: true
+
+                    TextField {
+                        width: parent.width
+                        height: 10
+                        // Other TextField properties
+                    }
                 }
             }
 
-            Button {
-                text: "Change Password"
-                width: parent.width * 0.8
-                background: Rectangle {
-                    color: "#28A745" // Green for positive actions
-                    radius: 8
-                }
-                onClicked: {
-                    // Add logic to change password
+            Column {
+                width: parent.width
+                spacing: 20
+                padding: 15
+
+                // ... Label for Personal Information ...
+
+                Button {
+                    // ... Button properties ...
                 }
             }
-        }
     }
 }
 
