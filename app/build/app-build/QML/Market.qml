@@ -21,22 +21,38 @@ Item {
 
     // BOTTOM BUTTONS
 
+    Profile {
+        id: profile
+    }
+
     Settings {
         id: settings
     }
 
-    Button {
+    Column {
+
         anchors.left: parent.left
         anchors.leftMargin: 10
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
 
-        id: button
-        text: "Settings"
-        onClicked: {
-        settings.open()
+        Button {
+            id: profilebutton
+            text: "Profile"
+            onClicked: {
+                profile.open()
+            }
+        }
+
+        Button {
+            id: settingsbutton
+            text: "Settings"
+            onClicked: {
+            settings.open()
+            }
         }
     }
+
 
     Button {
         anchors.right: parent.right

@@ -1,168 +1,253 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.15
 
-
 Popup {
-    id: settings
+    id: settingswindow
     anchors.centerIn: parent
-    property alias changePassoword: changepw.text
-    property alias confirmChangePassowrd: confirmpw.text
+    width: Screen.width / 2.5
+    height: Screen.height / 1.5
+    focus: true
+    closePolicy: Popup.CloseOnEscape
+    modal: true
 
-    width: 200
-    height: 300
-    closePolicy: "CloseOnEscape"
     background: Rectangle {
-            color:"#EEEEEE"
-            radius: 12.5
-            border.color: "black"
-            border.width: 1
-        }
-
-    Button {
-        anchors.right: parent.right
-        anchors.top: parent.top
-        text: "X"
-        palette.buttonText:  "#000000"
-        width: 50
-        background: null
-        onClicked: {
-            settings.close()
-        }
+        color: "#F0F0F0" // Light grey background
+        radius: 12.5
+        border.color: "#CCCCCC" // Light border color
+        border.width: 1
     }
 
+    property alias newPassword: changepw.text
+    property alias confirmNewPassword: confirmpw.text
+    property alias telegramUsername: telegramUser.text
+    property alias confirmdeletion: confirmdelete.text
+
+    //Column contains all the settings options
     Column {
-
-        anchors.centerIn: parent
+        width: parent.width
         spacing: 10
+        padding: 20
 
+        //Title bar
         Label {
-            id: changepwlabel
-            text: "Change password"
-            color: "#000000"
+            text: "Settings"
+            leftPadding: 20
+            rightPadding: 20
+            font.pixelSize: 32
+            color: "#1C6F30" // Bright blue color for the title
+            horizontalAlignment: Text.AlignHCenter
         }
 
-        TextField {
-            padding: 5
-            id: changepw
-            width: 190
-            height: 25
-            anchors.horizontalCenter: parent.horizontalCenter
-            background: Rectangle {
-                    color: "#5E9F7C"
-                    radius: 12.5
-                }
-            placeholderText: "Enter new password"
+        //Password options
+        Column {
 
-            echoMode: TextField.Password
-        }
+            width: parent.width
+            spacing: 20
+            padding: 15
 
-        TextField {
-            id: confirmpw
-            width: 190
-            height: 25
-            anchors.horizontalCenter: parent.horizontalCenter
-            background: Rectangle {
-                    color: "#5E9F7C"
-                    radius: 12.5
-                }
-            placeholderText: "Confirm your password"
-            echoMode: TextField.Password
-        }
+            Label {
+                text: "Change Password"
+                color: "#28A745"
+                font.pixelSize: 25
+            }
 
-        Button {
-            text: "Change password"
-            id: changepwbutton
-            width: 100
-            anchors.horizontalCenter: parent.horizontalCenter
-            background: Rectangle {
-                    color: "#5E9F7C"
-                    radius: 12.5
+            TextField {
+                id: changepw
+                property bool passwordVisible: false
+                width: parent.width * 0.8
+                placeholderText: "Enter new password"
+                placeholderTextColor: "#A0A0A0"
+                color: "#544E3D"
+                echoMode: passwordVisible ? TextField.Normal : TextField.Password
+                background: Rectangle {
+                    color: "#D9E8FF" // Light blue for text field
+                    radius: 8
                 }
-            onClicked: {} //insert the function that makes the button do something
-        }
 
-        Popup {
-            id: areyousure
-            width: 300
-            height: Screen.height
-            background: Rectangle {
-                    color:"#EEEEEE"
-                    radius: 12.5
-                    border.color: "black"
-                    border.width: 1
-                }
-            Column {
-                Label {
-                    text: "WARNING: This process is irreversible."
-                }
-                Label {
-                    text: "Input your password to confirm deletion of your account."
-                }
-                TextField {
-                    id: confirmpw_delete
-                    width: 190
-                    height: 25
-                    anchors.horizontalCenter: parent.horizontalCenter
+
+                Button {
+                    id: toggleButton
+                    width: 50
                     background: Rectangle {
-                            color: "#5E9F7C"
-                            radius: 12.5
-                        }
-                    placeholderText: "Confirm your password"
-                    echoMode: TextField.Password
-                }
-            }
-            //end popup definition
-        }
+                        color: "#D9E8FF" // Light blue for text field
+                        radius: 8
+                    }
 
-        Button {
-            text: "Delete account"
-            id: nukeyourself
-            width: 100
-            anchors.horizontalCenter: parent.horizontalCenter
-            background: Rectangle {
-                    color: "#5E9F7C"
-                    radius: 12.5
-                }
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.rightMargin: 5
+                    onClicked: parent.passwordVisible = !parent.passwordVisible
 
-            //this part makes the button turn red when hovered over
-            MouseArea {
-                anchors.fill: parent // Fill the entire area of the rectangle
-                hoverEnabled: true   // Enable hover events
-
-                onEntered: {
-                    nukeyourself.background.color = "red" // Change color on hover
-                }
-                onExited: {
-                    nukeyourself.background.color = "#5E9F7C"  // Revert color when mouse leaves
+                    Text {
+                        text: parent.parent.passwordVisible ? "Hide" : "Show"
+                        color: "#544E3D" // Set your desired text color here
+                        anchors.centerIn: parent
+                    }
                 }
             }
 
-            // Opens up a second popup to confirm whether they really want to delete their account
-            onClicked: {
-                areyousure.open()
+            TextField {
+                id: confirmpw
+                width: parent.width * 0.8
+                placeholderText: "Confirm new password"
+                placeholderTextColor: "#A0A0A0"
+                color: "#544E3D"
+                echoMode: TextField.Password
+                background: Rectangle {
+                    color: "#D9E8FF" // Light blue for text field
+                    radius: 8
+                }
             }
 
+            Label {
+                id: updatemessagepw
+                text: ""
+            }
 
-        }
-
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
 
             Button {
-                text: "Apply Changes"
-                width: 100
-                //anchors.horizontalCenter: parent.horizontalCenter
+                text: "Change Password"
+                width: parent.width * 0.8
                 background: Rectangle {
-                            color: "#5E9F7C"
-                            radius:12.5
-                        }
-
+                    color: "#28A745" // Green for positive actions
+                    radius: 8
+                }
                 onClicked: {
-                    settings.close() // IMPORTANT: include a function which also submits these settings changes.
+                    // Add logic to change password
                 }
             }
+
         }
-    // end of column definition
+
+        //Telegram options
+        Column {
+
+            width: parent.width
+            spacing: 20
+            padding: 15
+
+            Label {
+                text: "Telegram"
+                color: "#28A745"
+                font.pixelSize: 25
+            }
+
+            TextField {
+                id: telegramUser
+                width: parent.width * 0.8
+                placeholderText: "Bind Telegram Username"
+                placeholderTextColor: "#A0A0A0"
+                color: "#544E3D"
+                background: Rectangle {
+                    color: "#D9E8FF" // Light blue for text field
+                    radius: 8
+                }
+            }
+
+
+            Button {
+                text: "Bind Telegram Username"
+                width: parent.width * 0.8
+                background: Rectangle {
+                    color: mouseAreatelegram.containsMouse ? "#17A2B8" : "#28A745" // Yellow, turns red on hover
+                    radius: 8
+                }
+                MouseArea {
+                    id: mouseAreatelegram
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: {
+                        // Add logic to bind Telegram username
+                    }
+                }
+            }
+
+        }
+
+        //Account deletion
+        Column {
+
+            spacing: 20
+            width: parent.width
+            padding: 15
+
+            Label {
+                text: "Delete account"
+                color: "#28A745"
+                font.pixelSize: 25
+            }
+
+            Label {
+                text: "WARNING: This process is irreversible!"
+                color: "red"
+            }
+
+            TextField {
+                id: confirmdelete
+                width: parent.width* 0.8
+                placeholderText: "Type your password to confirm"
+                placeholderTextColor: "#A0A0A0"
+                color: "#544E3D"
+                echoMode: TextField.Password
+                background: Rectangle {
+                    color: "#D9E8FF" // Light blue for text field
+                    radius: 8
+                }
+
+            }
+
+            Button {
+                text: "Delete Account"
+                width: parent.width * 0.8
+                background: Rectangle {
+                    color: mouseAreadelete.containsMouse ? "#DC3545" : "#28A745" // Yellow, turns red on hover
+                    radius: 8
+                }
+
+                MouseArea {
+                    id: mouseAreadelete
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: {
+                        // Add logic for account deletion confirmation
+                    }
+                }
+            }
+
+        }
+
     }
-// end of popup definition
+
+    //Bottom buttons
+    Row {
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 20
+
+        Button {
+            text: "Cancel"
+            background: Rectangle {
+                color: "#6C757D" // Grey for neutral/cancel actions
+                radius: 8
+            }
+            onClicked: {
+                settingswindow.close()
+                changepw.text = ""
+                confirmpw.text = ""
+                telegramUser.text = ""
+            }
+        }
+
+        Button {
+            text: "Apply"
+            background: Rectangle {
+                color: "#28A745" // Blue for apply/confirm actions
+                radius: 8
+            }
+            onClicked: {
+                settingswindow.close()
+                // Add logic to apply settings changes
+            }
+        }
+    }
 }

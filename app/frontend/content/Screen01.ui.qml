@@ -8,9 +8,8 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 */
 import QtQuick 6.2
 import QtQuick.Controls 6.2
-import frontend
-import ""
 import QtQuick.Timeline 1.0
+import frontend
 
 Rectangle {
     id: rectangle
@@ -18,26 +17,33 @@ Rectangle {
     height: Constants.height
 
     color: Constants.backgroundColor
+    property int counter: 0
 
     Button {
         id: button
         text: qsTr("Press me")
         anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: 12
+        anchors.horizontalCenterOffset: 84
         checkable: true
         anchors.horizontalCenter: parent.horizontalCenter
 
         Connections {
             target: button
-            onClicked: animation.start()
+            onClicked: {
+                animation.start()
+                counter += 1
+            }
         }
     }
 
     Text {
         id: label
-        text: qsTr("Hello frontend")
+        text: qsTr("Value: " + counter)
         anchors.top: button.bottom
+        anchors.horizontalCenterOffset: 84
         font.family: Constants.font.family
-        anchors.topMargin: 45
+        anchors.topMargin: 57
         anchors.horizontalCenter: parent.horizontalCenter
 
         SequentialAnimation {
@@ -58,27 +64,6 @@ Rectangle {
                 to: Constants.backgroundColor
                 from: "#2294c6"
             }
-        }
-    }
-
-    Button {
-        id: button1
-        x: 647
-        y: 366
-        width: 116
-        height: 52
-        visible: true
-        text: qsTr("test button")
-        clip: false
-
-        Connections {
-            target: button1
-            onDoubleClicked: animation.complete()
-        }
-
-        Connections {
-            target: button1
-            onDoubleClicked: console.log("button1.doubleClicked")
         }
     }
 
@@ -105,8 +90,20 @@ Rectangle {
 
             PropertyChanges {
                 target: label
-                text: qsTr("Button Checked")
+                text: qsTr("Value: " + counter)
             }
         }
     ]
+
+    anchors.centerIn: parent
+
+    Connections {
+        target: CounterHandler
+        onCounterChanged: {
+            // Update the QML text when the counter changes
+            counter = newCounterValue
+        }
+    }
+
+
 }

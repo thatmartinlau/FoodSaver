@@ -19,6 +19,14 @@ Item {
 
     // TEXT ENTRIES + BUTTON
 
+    Settings {
+        id: settings
+    }
+
+    Profile {
+        id: profile
+    }
+
     Column{
         spacing: 10
         width: 300
@@ -35,6 +43,7 @@ Item {
             width: parent.width
             id: input_password
             placeholderText: "Password"
+            echoMode: TextField.Password
         }
         Button {
             anchors.left: parent.left
@@ -45,7 +54,25 @@ Item {
         Button {
             anchors.left: parent.left
             text: "Login"
-            onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) //replace this soon with the login function, to be implemented
+            onClicked: {
+                stackView.push(Qt.resolvedUrl("Fridge.qml")) //replace this soon with the login function, to be implemented
+                input_username.text = ""
+                input_password.text = ""
+            }
+        }
+
+        Button {
+            text:"settings"
+            onClicked: {
+                settings.open()
+            }
+        }
+
+        Button {
+            text: "profile"
+            onClicked: {
+                profile.open()
+            }
         }
     }
 
