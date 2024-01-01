@@ -19,14 +19,6 @@ Item {
 
     // TEXT ENTRIES + BUTTON
 
-    Settings {
-        id: settings
-    }
-
-    Profile {
-        id: profile
-    }
-
     Column{
         spacing: 10
         width: 300
@@ -61,19 +53,7 @@ Item {
             }
         }
 
-        Button {
-            text:"settings"
-            onClicked: {
-                settings.open()
-            }
-        }
 
-        Button {
-            text: "profile"
-            onClicked: {
-                profile.open()
-            }
-        }
     }
 
     // SIDE + EXTRA BUTTONS
