@@ -30,7 +30,8 @@ public :
     std::vector<std::string> getRecipeDirection(int recipeIndex) const{}
     std::vector<std::string> getRecipeTags(int recipeIndex) const{}
     std::string getRecipeUrl(int recipeIndex) const{}
-    void AddRecipe(const json newRecipe) {}
+    void addRecipe(const json newRecipe) {}
+    void addRecipeFromParameter(const std::string& title, const std::string>& description, const std::vector<std::string>& ingredients,const std::vector<std::string>& tags) {}
     
 private:
     void loadJson() {
