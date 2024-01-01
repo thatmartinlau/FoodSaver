@@ -86,7 +86,7 @@ void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const st
     json newrecipe = {
             {"title", title},
             {"description", description_sentences},
-            {"ingredients", ingredients}, // Question : How are the input ingredients is ? One single string (as description) or directly vector of strings ? 
+            {"ingredients", ingredients}, // Question : How is the input ingredients ? One single string (as description) or directly vector of strings ? 
             {"tags", tags}
             };
 
