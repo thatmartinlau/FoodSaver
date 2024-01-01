@@ -24,7 +24,10 @@ SOURCES += \
     $$CPP/offer.cpp \
     $$CPP/temp.front.cpp \
     $$CPP/temp.json.cpp \
-    $$CPP/user.cpp
+    $$CPP/user.cpp \
+    $$CPP/Login.cpp \
+    $$CPP/Signin.cpp
+
 
 HEADERS += \
     backend.h \
@@ -34,4 +37,6 @@ HEADERS += \
     $$HPP/ingredient.h \
     $$HPP/offer.h \
     $$HPP/temp.front.hpp \
-    $$HPP/user.h
+    $$HPP/user.h \
+    $$HPP/Login.h \
+    $$HPP/Signin.h
