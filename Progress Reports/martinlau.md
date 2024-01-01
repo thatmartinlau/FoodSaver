@@ -35,19 +35,24 @@ Monday (Merry Christmas!)
 edits were made on branch 'martin-settings-profile'.
 Finally setting up the QML basis - things are finally starting to look brighter.
 Set up elementary QML functions for the first two pages of the application
---
+
 TODO:
 reorganize file names for the different QML pages so that everything will be easier to work with (e.g. change "Menu1.qml" -> "Market.qml")
 Use replace on the stackView instead of push and pop, works faster and is more flush
 Replace the janky default transitions on the stackview on main.qml
 Once finished, port these changes onto other's branches and ask them to complete cpp functions for their respective pages
-__
+
 Later on
 CPP functions to link with the homepage etc - talk to other team members to see how to integrate each parts.
 Make this thing look sexy
---
-
-
 
 
 HOLIDAY WEEK 2: 01/01/24 - 07/01/24
+Monday (Happy new year!)
+Edits made on branch 'martin-settings-profile' 
+Editing QML style
+Added 'profile' page to differentiate from settings (also because I couldn't figure out how to make separate sub menus in one popup lmao)
+Merging CPP files from branch 'front' to the project - reconfiguring the project to accomodate these edits
+Going to implement C++ functions to update user settings and profile options.
+
+Checking with team on updates - everyone is on holiday, understandably.
