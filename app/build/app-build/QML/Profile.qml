@@ -55,7 +55,7 @@ Popup {
                 width: parent.width
 
                 TextField {
-                    Layout.fillWidth: true
+                    Layout.fillWidth: false
                     height: 10
                 }
 
