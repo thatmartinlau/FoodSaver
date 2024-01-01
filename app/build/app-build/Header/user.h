@@ -28,6 +28,10 @@ private:
     std::string telegram_username;
     Fridge user_fridge;
     std::list<Offer> offer_list;
+
+    //settings and preferences
+    std::string restrictions;
+
 };
 
 #endif // USER_H

@@ -2,16 +2,13 @@ TEMPLATE = app
 QT += quick
 CONFIG += c++11
 
+#QML resource manager here
+
 RESOURCES += \
     qml.qrc
 
-DISTFILES += \
-    QML/LoginPage.qml \
-    QML/homepage.qml \
-    QML/menu1.qml \
-    QML/menu2.qml \
-    QML/menu3.qml \
-    loginpage.qml
+
+#C++ and header file declaration here
 
 CPP = Source/
 HPP = Header/

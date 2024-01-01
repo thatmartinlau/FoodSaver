@@ -7,5 +7,6 @@
         <file>QML/main.qml</file>
         <file>QML/LoginPage.qml</file>
         <file>QML/Settings.qml</file>
+        <file>QML/Profile.qml</file>
     </qresource>
 </RCC>

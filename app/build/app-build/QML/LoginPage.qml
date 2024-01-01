@@ -19,6 +19,10 @@ Item {
 
     // TEXT ENTRIES + BUTTON
 
+    Settings {
+        id: settings
+    }
+
     Column{
         spacing: 10
         width: 300
@@ -45,6 +49,13 @@ Item {
                 stackView.push(Qt.resolvedUrl("Fridge.qml")) //replace this soon with the login function, to be implemented
                 input_username.text = ""
                 input_password.text = ""
+            }
+        }
+
+        Button {
+            text:"settings"
+            onClicked: {
+                settings.open()
             }
         }
     }
