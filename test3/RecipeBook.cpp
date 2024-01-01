@@ -1,10 +1,7 @@
 #include "RecipeBook.hpp"
 #include <iostream>
 #include <list>
-#include <ctime>
 #include <vector>
-#include <regex>
-#include <chrono>
 #include "front.hpp"
 #include "nlohmann/json.hpp"
 using Json = nlohmann::json;
@@ -88,8 +85,8 @@ void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const st
     // Create the Json new recipe file 
     json newrecipe = {
             {"title", title},
-            {"description", [description_sentences]},
-            {"ingredients", [ingredients]}, // Question : How are the input ingredients is ? One single string (as description) or directly vector of strings ? 
+            {"description", description_sentences},
+            {"ingredients", ingredients}, // Question : How are the input ingredients is ? One single string (as description) or directly vector of strings ? 
             {"tags", tags}
             };
 
