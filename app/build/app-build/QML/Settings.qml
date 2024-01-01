@@ -22,11 +22,13 @@ Popup {
     property alias telegramUsername: telegramUser.text
     property alias confirmdeletion: confirmdelete.text
 
+    //Column contains all the settings options
     Column {
         width: parent.width
         spacing: 10
         padding: 20
 
+        //Title bar
         Label {
             text: "Settings"
             leftPadding: 20
@@ -36,6 +38,7 @@ Popup {
             horizontalAlignment: Text.AlignHCenter
         }
 
+        //Password options
         Column {
 
             width: parent.width
@@ -116,6 +119,7 @@ Popup {
 
         }
 
+        //Telegram options
         Column {
 
             width: parent.width
@@ -160,6 +164,7 @@ Popup {
 
         }
 
+        //Account deletion
         Column {
 
             spacing: 20
@@ -213,6 +218,7 @@ Popup {
 
     }
 
+    //Bottom buttons
     Row {
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter

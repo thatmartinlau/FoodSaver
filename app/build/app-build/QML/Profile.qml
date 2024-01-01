@@ -1,5 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.3
+
 
 //MENU FOR THE PREFERENCES MENU
 //Shall include the following features:
@@ -8,82 +10,74 @@ import QtQuick.Controls 2.15
 //Ability to add a photo, potentially
 
 Popup {
-    id: prefwindow
-    //window positioning
+    id: settingswindow
     anchors.centerIn: parent
-
     width: Screen.width / 2.5
-    height: Screen.height / 2
+    height: Screen.height / 1.5
+    focus: true
+    closePolicy: Popup.CloseOnEscape
+    modal: true
 
-    focus: true //Listen to keyboard inputs
-    closePolicy: "CloseOnEscape" //Close upon escape button pressed
-    modal:true //Make it so no other buttons can be pressed while the popup is opened.
-
-    //background information
     background: Rectangle {
-            color:"#EEEEEE"
-            radius: 12.5
-            border.color: "black"
-            border.width: 1
-        }
+        color: "#F0F0F0" // Light grey background
+        radius: 12.5
+        border.color: "#CCCCCC" // Light border color
+        border.width: 1
+    }
 
-    //this part makes it so that information can pass in and out of the popup.
-    //property alias "something"
-
-    //Text
-    Rectangle {
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-        anchors.top: parent.top
-        anchors.topMargin: 10
+    Column {
+        width: parent.width
+        spacing: 10
+        padding: 20
 
         Label {
-            text: "Settings"
-            color: "black"
+            text: "Profile"
+            font.pixelSize: 32
+            color: "#1C6F30" // Bright blue color for the title
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        Column {
+            width: parent.width
+            spacing: 20
+            padding: 15
+
+            Label {
+                text: "Personal Information"
+                color: "#28A745"
+                font.pixelSize: 25
+            }
+
+            // Adjusted Row
+            GridLayout {
+                columns: 2
+                columnSpacing: 10
+                width: parent.width
+
+                TextField {
+                    Layout.fillWidth: true
+                    height: 10
+                }
+
+                TextField {
+                    Layout.fillWidth: true
+                    height: 10
+                }
+            }
+
+            Button {
+                text: "Change Password"
+                width: parent.width * 0.8
+                background: Rectangle {
+                    color: "#28A745" // Green for positive actions
+                    radius: 8
+                }
+                onClicked: {
+                    // Add logic to change password
+                }
+            }
         }
     }
-
-
-    //Profile options
-
-
-
-    //
-
-    Row {
-        anchors.bottom:parent.bottom
-        anchors.right: parent.right
-        anchors.bottomMargin: 10
-        anchors.rightMargin: 10
-        spacing: 10
-
-        Button {
-            text: "Cancel"
-            width: 100
-            background: Rectangle {
-                color: "#5E9F7C"
-                radius:12.5
-            }
-            onClicked: {
-                prefwindow.close()
-
-            }
-
-        }
-
-        Button {
-            text: "Apply"
-            width: 100
-            //anchors.horizontalCenter: parent.horizontalCenter
-            background: Rectangle {
-                color: "#5E9F7C"
-                radius:12.5
-            }
-
-            onClicked: {
-                prefwindow.close() // IMPORTANT: include a function which also submits these settings changes.
-            }
-        }
-    }
-// end of popup definition
 }
+
+

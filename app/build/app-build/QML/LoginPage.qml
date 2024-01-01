@@ -23,6 +23,10 @@ Item {
         id: settings
     }
 
+    Profile {
+        id: profile
+    }
+
     Column{
         spacing: 10
         width: 300
@@ -56,6 +60,13 @@ Item {
             text:"settings"
             onClicked: {
                 settings.open()
+            }
+        }
+
+        Button {
+            text: "profile"
+            onClicked: {
+                profile.open()
             }
         }
     }
