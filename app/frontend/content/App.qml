@@ -4,16 +4,31 @@
 import QtQuick 6.2
 import frontend
 
-Window {
-    width: mainScreen.width
-    height: mainScreen.height
-
+ApplicationWindow {
     visible: true
-    title: "frontend"
+    width: 400
+    height: 200
+    title: "Counter Example"
 
-    Screen01 {
-        id: mainScreen
+    // Include the logic from counterhandler.qml
+    CounterHandler {
+        id: counterHandler
     }
 
-}
+    // Column layout to arrange items vertically
+    ColumnLayout {
+        anchors.centerIn: parent
 
+        // Button connected to the logic in CounterHandler
+        Button {
+            text: "Increment Counter"
+            onClicked: counterHandler.incrementCounter()
+        }
+
+        // Text item to display the counter value
+        Text {
+            text: "Counter Value: " + counterHandler.counter
+            font.pointSize: 16
+        }
+    }
+}
