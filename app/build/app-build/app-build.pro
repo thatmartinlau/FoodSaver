@@ -7,6 +7,7 @@ RESOURCES += \
 
 DISTFILES += \
     QML/LoginPage.qml \
+    QML/SigninPage.qml \
     QML/homepage.qml \
     QML/menu1.qml \
     QML/menu2.qml \
@@ -14,8 +15,12 @@ DISTFILES += \
     loginpage.qml
 
 SOURCES += \
+    Login.cpp \
+    Signin.cpp \
     backend.cpp \
     main.cpp
 
 HEADERS += \
+    Login.h \
+    Signin.h \
     backend.h
