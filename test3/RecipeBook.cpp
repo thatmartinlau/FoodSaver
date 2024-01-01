@@ -27,7 +27,7 @@ std::vector<std::string> JsonRecipeReader::getRecipeDirections(int recipeIndex) 
 
 std::vector<std::string> JsonRecipeReader::getRecipeIngredients(int recipeIndex) const{
     std::vector<std::string> ingredients;
-    for (const auto& ingredient : jsonData["RecipeBook"][recipeIndex]["Ingredients"]){
+    for (const auto& ingredient : jsonData["RecipeBook"][recipeIndex]["ingredients"]){
         ingredients.push_back(ingredient);
     }
     return ingredients;
@@ -35,7 +35,7 @@ std::vector<std::string> JsonRecipeReader::getRecipeIngredients(int recipeIndex)
 
 std::vector<std::string> JsonRecipeReader::getRecipeTags(int recipeIndex) const{
     std::vector<std::string> recipetags;
-    for (const auto& tag : jsonData["RecipeBook"][recipeIndex]["Tags"]){
+    for (const auto& tag : jsonData["RecipeBook"][recipeIndex]["tags"]){
         recipetags.push_back(tag);
     }
     return recipetags;
