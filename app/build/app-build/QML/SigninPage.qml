@@ -1,6 +1,5 @@
-import QtQuick 2.12
+﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
-import com.Signin 1.0
 
 Item {
 
@@ -26,12 +25,12 @@ Item {
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        // Import Signin object
+        // Add Signin object
         Signin {
-            id: signinLogic
+                id: signinLogic
         }
 
-        // Add component
+        // Add components
         TextField {
             width: parent.width
             id: input_username
@@ -57,7 +56,7 @@ Item {
             anchors.left: parent.left
             text: "Sign in"
             onClicked: {
-                signinLogic.createUser(input_username.text, input_password.text, input_password_check.text)
+                signinLogic.signIn(input_username.text, input_password.text)
             }
         }
         // Handling signals for UI feedback
@@ -78,17 +77,12 @@ Item {
         Connections {
             target: signinLogic
 
-            onUsernameTaken: {
-                usernameTakenText.visible = true;
-            }
-
-            onPasswordMismatch: {
-                passwordMismatchText.visible = true;
-            }
-
-            onUserCreated: {
-                stackView.push(Qt.resolvedUrl("Fridge.qml"))
-            }
+            onOpenFridgePage: {
+                        stackView.push(Qt.resolvedUrl("Fridge.qml"))
+                    }
+            onOpenMarketPage: {
+                        stackView.push(Qt.resolvedUrl("Market.qml"))
+                    }
         }
 
     }

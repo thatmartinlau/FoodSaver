@@ -63,4 +63,15 @@ Item {
         text: "Logout"
         onClicked: stackView.pop() // need to add a function which logs the user out of the server, then deletes all active data from the instance.
     }
+
+    // Adding navigation from other pages
+    Connections {
+            target: signinLogic // Assuming signinLogic is accessible here
+
+            onOpenMarketPage: {
+                // Logic to display the Market page
+                // For example:
+                stackView.push(Qt.resolvedUrl("Market.qml"))
+            }
+        }
 }
