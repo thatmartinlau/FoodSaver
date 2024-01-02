@@ -10,10 +10,10 @@ class Signin : public QObject {
 public:
     explicit Signin(QObject *parent = nullptr);
 
-    Q_INVOKABLE void signIn(const QString &username, const QString &password);
+    Q_INVOKABLE void verifyPassword(const QString &username, const QString &password);
 
 signals:
-    void openFridgePage();
+    void openPasswordError();
     void openMarketPage();
 };
 

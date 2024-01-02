@@ -26,7 +26,21 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
 
-        // Add components
+        // Error messages (originally hidden)
+        Text {
+            id: existentUsernameText
+            visible: false // Initially hidden
+            text: "This username is already taken"
+            color: "red"
+        }
+        Text {
+            id: passwordMismatchText
+            visible: false // Initially hidden
+            text: "The password does not match"
+            color: "red"
+        }
+
+        // Regular page components
         TextField {
             width: parent.width
             id: input_username
@@ -52,33 +66,26 @@ Item {
             anchors.left: parent.left
             text: "Sign in"
             onClicked: {
-                signin.signIn(input_username.text, input_password.text)
+                signin.verifyPassword(input_password.text, input_password_check.text)
             }
         }
-        // Handling signals for UI feedback
-        Text {
-            id: usernameTakenText
-            visible: false // Initially hidden
-            text: "This username is already taken"
-            color: "red"
-            }
 
-        Text {
-            id: passwordMismatchText
-            visible: false // Initially hidden
-            text: "The password does not match"
-            color: "red"
-            }
 
+        // Implementing connections to C++ code
         Connections {
             target: signin
 
-            onOpenFridgePage: {
-                        stackView.push(Qt.resolvedUrl("Fridge.qml"))
-                    }
+            // Errors upon signin
+            onOpenPasswordError: {
+                passwordMismatchText.visible = true;
+            }
+            onOpenUsernameError: {
+                existentUsernameText.visible = true;
+            }
+            // Successful singin
             onOpenMarketPage: {
-                        stackView.push(Qt.resolvedUrl("Market.qml"))
-                    }
+                stackView.push(Qt.resolvedUrl("Market.qml"))
+            }
         }
 
     }
