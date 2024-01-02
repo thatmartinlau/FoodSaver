@@ -21,4 +21,5 @@ void ProfileManager::applyChanges(const QString &displayName, const QString &gen
     qDebug() << "Lactose Intolerant:" << lactoseIntolerant;
     qDebug() << "Pescatarian:" << pescatarian;
     qDebug() << "Halal:" << halal;
+    //figure out what to do with this information now
 }
