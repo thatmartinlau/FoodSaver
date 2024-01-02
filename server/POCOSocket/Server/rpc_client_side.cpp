@@ -38,17 +38,6 @@ void ServerUser::update_user(string new_username, string new_password) {
     new_cli.call("update_user", username, password, new_username, new_password);
 }
 
-//int test2() {
-//    string name = "adam";
-//    string psswd = "mama";
-//    User usr1(name, psswd);
-//    string uname = usr1.get_username();
-//    cout << uname;
-//    return 1;
-//}
-
-//int val = test2();
-
 
 //.///////// Mapping Types
 
@@ -206,6 +195,8 @@ struct fridge_vector {
     vector<vector<string>> fridge_vector;
     MSGPACK_DEFINE_ARRAY(fridge_vector)
 };
+
+//ESMA these are the interesting ideas I started to explore from rpclib.com, find out if this works or not, and find a better method if it exists othw. rpclib.com will have all necessary info, hopefully
 
 
 
