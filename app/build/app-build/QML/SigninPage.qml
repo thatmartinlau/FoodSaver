@@ -25,10 +25,6 @@ Item {
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        // Add Signin object
-        Signin {
-                id: signinLogic
-        }
 
         // Add components
         TextField {
@@ -56,7 +52,7 @@ Item {
             anchors.left: parent.left
             text: "Sign in"
             onClicked: {
-                signinLogic.signIn(input_username.text, input_password.text)
+                signin.signIn(input_username.text, input_password.text)
             }
         }
         // Handling signals for UI feedback
@@ -75,7 +71,7 @@ Item {
             }
 
         Connections {
-            target: signinLogic
+            target: signin
 
             onOpenFridgePage: {
                         stackView.push(Qt.resolvedUrl("Fridge.qml"))

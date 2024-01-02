@@ -1,5 +1,4 @@
 #include "../Header/Signin.h"
-
 Signin::Signin(QObject *parent) : QObject(parent) {}
 
 void Signin::signIn(const QString &username, const QString &password) {
