@@ -1,7 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "backend.h"
 #include "Header/settingsmanager.h"
 
 int main(int argc, char *argv[]) {
