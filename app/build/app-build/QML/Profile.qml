@@ -9,6 +9,8 @@ import QtQuick.Layouts 1.3
 //Ability to change their display name and 103 address
 //Ability to add a photo, potentially (future update)
 
+//Future update: make the window load the user's settings when open initially
+
 Popup {
     id: profilewindow
     anchors.centerIn: parent
@@ -331,8 +333,19 @@ Popup {
                 radius: 8
             }
             onClicked: {
-                profilewindow.close()
-            }
+                    displaynametext.text = ""
+                    buildingaddressinput.text = ""
+                    phonenumInput.text = ""
+                    genderMenu.currentIndex = -1
+                    choiceMenu.currentIndex = -1
+                    vegetarianCheck.checked = false
+                    veganCheck.checked = false
+                    glutenCheck.checked = false
+                    lactoseCheck.checked = false
+                    pescatarianCheck.checked = false
+                    halalCheck.checked = false
+                    profilewindow.close()
+                }
         }
 
         Button {
@@ -342,12 +355,12 @@ Popup {
                 radius: 8
             }
             onClicked: {
-
-                // Save the preferences of the switch buttons
-                let notificationSettings = settingsManager.processNotifications(toggleSwitchexpiry.checked, toggleSwitchmarket.checked);
-                // Use notificationSettings as needed
-
-            }
+                    profileManager.applyChanges(displaynametext.text, genderMenu.currentText, buildingaddressinput.text,
+                                                choiceMenu.currentText, phonenumInput.text, vegetarianCheck.checked,
+                                                veganCheck.checked, glutenCheck.checked, lactoseCheck.checked,
+                                                pescatarianCheck.checked, halalCheck.checked)
+                    profilewindow.close()
+                }
         }
     }
 
