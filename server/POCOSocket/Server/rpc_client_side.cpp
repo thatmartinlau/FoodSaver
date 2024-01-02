@@ -3,16 +3,19 @@
 #include <sstream>
 #include "rpc/client.h"
 #include "rpc_client_side.hpp"
-#include "../../../test3/front.hpp"
-#include "../../../test3/ingredient.h"
-#include "../../../test3/date.h"
-#include "../../../test3/fridge.h"
-#include "../../../test3/offer.h"
+#include "front.hpp"
+#include "ingredient.h"
+#include "date.h"
+#include "fridge.h"
+#include "offer.h"
+#include "user.h"
+
 
 using namespace std;
 
 string HOST_SERVER_NAME = "127.0.0.1"; //change to Server later.
 int HOST_SERVER_PORT = 3333;
+
 
 //.///////// User functions
 
@@ -35,9 +38,16 @@ void ServerUser::update_user(string new_username, string new_password) {
     new_cli.call("update_user", username, password, new_username, new_password);
 }
 
+//int test2() {
+//    string name = "adam";
+//    string psswd = "mama";
+//    User usr1(name, psswd);
+//    string uname = usr1.get_username();
+//    cout << uname;
+//    return 1;
+//}
 
-
-
+//int val = test2();
 
 
 //.///////// Mapping Types
@@ -306,8 +316,9 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
         // adding the [[price]] to the array with the list ingredients
         list_ingr_price.push_back(price_element);
         update_offer.push_back(list_ingr_price);
-
     }
+    
+    
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_offer_list", username, password, update_offer); //this in the weird new vector<vector<vector<vector<string>>>> format, sorry! Check telegram paper image n1 for clarity, hopefully :)
 

@@ -258,6 +258,8 @@ int test_read_write_csv() {
     return 0;
 }
 
+//////Back to actual Database Stuff:
+
 //DB Manipulation functions:
 void add_user(string username, string password){
     if (database->find(username) == database->end()) {
@@ -419,7 +421,19 @@ int main() {
         rpc::this_handler().respond_error(err_obj);
     });
 
-        
+    
     srv.run();
+    
+    
+    //#####TEST THE SERVER HERE/////
+    //TEST1: Create client, send offer list. Retrieve offer list, compare equality. Or equivalent test. Esma, make sure u only test the data types: make sure we can successfully send/receive data using
+    //the struct method. This is key, the rest is okay. But still good idea to test ur get_fridge and get_offer_list functions too, from serverside, to make sure they work well!
+    
+    //Test2: Create client, 
+    
+    
+    
+    
+    
     return 0;
 }
