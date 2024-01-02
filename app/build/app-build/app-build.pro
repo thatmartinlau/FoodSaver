@@ -14,7 +14,7 @@ CPP = Source/
 HPP = Header/
 
 SOURCES += \
-    backend.cpp \
+    Source/settingsmanager.cpp \
     main.cpp \
     $$CPP/date.cpp \
     $$CPP/fridge.cpp \
@@ -27,7 +27,7 @@ SOURCES += \
     $$CPP/user.cpp
 
 HEADERS += \
-    backend.h \
+    $$HPP/settingsmanager.h \
     $$HPP/date.h \
     $$HPP/fridge.h \
     $$HPP/front.hpp \
