@@ -347,13 +347,17 @@ Popup {
                         radius:12.5
             }
             onClicked: {
+                for (var i = 0; i < itemModel.count; i++) {
+                    MainController.submit(itemModel.get(i).name)
+                }
+
                 if (recipeName.text.trim() !== "" & ingredient1.text.trim() !== "") { // Check if the text is not empty or only whitespace
                     //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text});
                     var res = MainController.submitAll(recipeName.text, diet.currentValue, hours.text, minutes.text, ingredient1.text, instruction1.text)
                     var res2 = MainController.submitAll(instructionModel.get(1).name, diet.currentValue, hours.text, minutes.text, ingredient1.text, instruction1.text)
 
 
-                    itemModel.append({"name": res2, "dietRestriction": diet.currentValue, "date": "Test1", "quantity": "Test1" });
+                    itemModel.append({"name": recipeName.text, "dietRestriction": diet.currentValue, "date": "Test1", "quantity": "Test1" });
 
                     recipeName.text = "";
                     ingredient1.text = "";

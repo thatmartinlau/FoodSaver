@@ -1,6 +1,7 @@
 TEMPLATE = app
 QT += quick
 CONFIG += c++11
+CONFIG += console
 
 RESOURCES += \
     qml.qrc

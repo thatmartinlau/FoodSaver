@@ -15,6 +15,11 @@ public slots:
     QString submitText(const QString &text);
     double changeTime(const QString &text);
     int submitInt(const int &time);
+    void submit(const QString &recipeName);
+    QString gett(const int &i);
+    QList<QString> search_res(const QString &entry);
+    QList<QString> sorter(const QMap<QString, int> &dict);
+    int getTotalLength();
 };
 
 #endif // MAINCONTROLLER_H

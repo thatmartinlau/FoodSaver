@@ -1,13 +1,14 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtQml
 //colors: green #5E9F7C lightgreen #D7ECDE
 
 Row {
     Rectangle {
         width: parent.width * 0.20
         height: parent.height
-        color: "#5E9F7C"
+        color: "#EEEEEE"
         Column {
 
             anchors.left: parent.left
@@ -41,13 +42,14 @@ Row {
         x: parent.width * 0.20
         width: parent.width * 0.6
         height: parent.height
-        color: "#5E9F7C"
+        color: "#EEEEEE"
 
         Rectangle {
             y: parent.height * 0.05
             height: parent.height * 0.9
             width: parent.width
             radius: 12.5
+            border.color: "#1C6F30"
             color: "white"
             property string newItemText: ""
 
@@ -59,8 +61,7 @@ Row {
                     radius: 12.5
                     width: parent.width
                     height: parent.height * 0.2
-                    color: "white"
-
+                    color: "transparent"
                     Label {
                         text: "My Recipies, you can see existing recipues in the bachelor Cookbook in the center, and you can add your own \n recipies by clicking add recipe on the side -- ask Cyriac if questions "
                         anchors.top: parent.top
@@ -68,7 +69,7 @@ Row {
 
                     GridLayout{
                         id: majorGrid
-                        columns: 4
+                        columns: 5
                         width: parent.width
                         columnSpacing: 2
                         rowSpacing: 10
@@ -86,6 +87,25 @@ Row {
                             background: Rectangle {
                                 color: "#D9E8FF" // Light blue for text field
                                 radius: 8
+                            }
+                            onTextChanged: {
+                            //onEditingFinished: {
+                                //var counter = itemModel.count
+                                for (var i = 0; i < itemModel.count; i++) {
+                                    MainController.submit(itemModel.get(i).name)
+                                }
+                                var to_display = MainController.search_res(searchbar.text)
+
+                                itemModel.clear()
+                                //itemModel.append({"name": to_display})
+                                //itemModel.append({"name": to_display[1]})
+
+                                for (var j = 0; j< to_display.length; j++){
+                                    itemModel.append({"name" : to_display[j]})
+                                }
+
+                                //searchbar.text = ""
+
                             }
                         }
 
@@ -111,7 +131,34 @@ Row {
                                         radius:12.5
                             }
                             onClicked: {
-                                //do
+                                //
+                            }
+                        }
+
+
+                        Button {
+                            text: "Reset"
+                            width: 50
+                            palette.buttonText: "white"
+                            //anchors.horizontalCenter: parent.horizontalCenter
+                            background: Rectangle {
+                                        color: "#1C6F30"
+                                        radius:12.5
+                            }
+                            onClicked: {
+                                for (var i = 0; i < itemModel.count; i++) {
+                                    MainController.submit(itemModel.get(i).name)
+                                }
+                                //var counter = itemModel.count
+                                itemModel.clear()
+                                var len = MainController.getTotalLength()
+                                //itemModel.append({"name": "Try" + len})
+                                //itemModel.append({"name": MainController.gett(0)})
+                                for (var j = 0; j < len; j++) {
+                                    itemModel.append({"name": MainController.gett(j)})
+                                }
+                                scrollView.contentHeight = len*82.5;
+                                //itemModel = save
                             }
                         }
                     }
@@ -123,6 +170,7 @@ Row {
                     y: parent.height * 0.2
                     height: parent.height * 0.8
                     width: parent.width
+                    color: "transparent"
                     ScrollView {
                         id: scrollView
                         anchors.fill: parent
@@ -208,21 +256,37 @@ Row {
     Rectangle {
         width: parent.width * 0.20
         height: parent.height
-        color: "#5E9F7C"
+        color: "#EEEEEE"
         anchors.right: parent.right
 
         Button {
             y: parent.height * 0.05
             id: basket
             text: "My Personal Cookbook"
+            palette.buttonText: "white"
+            //anchors.horizontalCenter: parent.horizontalCenter
+            background: Rectangle {
+                        color: "#1C6F30"
+                        radius:12.5
+            }
             onClicked: {
-                cookBook.open()
+                //cookBook.open()
+                itemModel.append({"name" : "Vegetarian Lasagna"})
+                itemModel.append({"name" : "Eggs Benedict"})
+                itemModel.append({"name" : "Noodle Soup"})
+                scrollView.contentHeight = scrollView.contentHeight + 3*82.5;
             }
         }
         Button {
             y: parent.height * 0.25
             id: addtofridge
             text: "Add to Cookbook"
+            palette.buttonText: "white"
+            //anchors.horizontalCenter: parent.horizontalCenter
+            background: Rectangle {
+                        color: "#1C6F30"
+                        radius:12.5
+            }
             onClicked: {
                 addRecipe.open()
             }
