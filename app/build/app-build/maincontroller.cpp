@@ -36,3 +36,9 @@ int MainController::submitInt(const int &time)
     qDebug() << "time is:" << time;
     return time + 20;
 }
+
+QString MainController::submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes, const QString &ingredient1, const QString &instruction1)
+{
+    //qDebug() << "name" << recipeName << "diet" << diet<< "ingr" << ingredient1<< "instr" << instruction1 << "hours"<< hours << "minutes" << minutes;
+    return recipeName+diet+hours+minutes+ingredient1+instruction1;
+}
