@@ -28,13 +28,13 @@ Item {
 
         // Error messages (originally hidden)
         Text {
-            id: existentUsernameText
+            id: usernameError
             visible: false // Initially hidden
             text: "This username is already taken"
             color: "red"
         }
         Text {
-            id: passwordMismatchText
+            id: passwordError
             visible: false // Initially hidden
             text: "The password does not match"
             color: "red"
@@ -50,11 +50,13 @@ Item {
             width: parent.width
             id: input_password
             placeholderText: "Chose a password"
+            echoMode: TextInput.Password //hide the text
         }
         TextField {
             width: parent.width
             id: input_password_check
             placeholderText: "Verify your password"
+            echoMode: TextInput.Password //hide the text
         }
         Button {
             anchors.left: parent.left
@@ -66,12 +68,13 @@ Item {
             anchors.left: parent.left
             text: "Sign in"
             onClicked: {
-                signin.verifyPasswordUsername(input_username.text, input_password.text, input_password_check.text);
+                if (signin.signIn(input_username.text, input_password.text, input_password_check.text)){
+                    passwordError.visible = false;
+                    usernameError.visible = false;
+                }
                 input_username.text = ""
                 input_password.text = ""
                 input_password_check.text = ""
-                passwordMismatchText.visible = false;
-                existentUsernameText.visible = false;
             }
         }
 
@@ -82,12 +85,12 @@ Item {
 
             // Errors upon signin
             onOpenPasswordError: {
-                passwordMismatchText.visible = true;
-                existentUsernameText.visible = flase;
+                usernameError.visible = false;
+                passwordError.visible = true;
             }
             onOpenUsernameError: {
-                passwordMismatchText.visible = false;
-                existentUsernameText.visible = true;
+                passwordError.visible = false;
+                usernameError.visible = true;
             }
             // Successful singin
             onOpenMarketPage: {

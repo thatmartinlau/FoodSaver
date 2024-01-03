@@ -1,17 +1,19 @@
 #include "../Header/Signin.h"
 Signin::Signin(QObject *parent) : QObject(parent) {}
 
-void Signin::verifyPasswordUsername(const QString &username, const QString &password, const QString &passwordCheck) {
-    //implement the check of the username
-    bool taken=false;
-    if (taken){
-        emit openUsernameError();
+
+bool Signin::signIn(const QString &username, const QString &password, const QString &password_check) {
+    //STILL NEED TO ADD IN THE VERIFICATION FOR EXISTING USERNAME
+    if (username!= "Fanny") {
+        emit openUsernameError(); //show username error
+        return false;
     }
-    else{
-        if (password == passwordCheck) {
-            emit openMarketPage(); // Open Fridge.qml
-        } else {
-            emit openPasswordError(); // Show error
-        }
+    else if (password != password_check) {
+        emit openPasswordError(); //show password error
+        return false;
+    }
+    else {
+        emit openMarketPage(); //open Market.qml
+        return true;
     }
 }

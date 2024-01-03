@@ -26,13 +26,20 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         // Error messages (originally hidden)
+                Text {
+                    id: usernameError
+                    visible: false // Initially hidden
+                    text: "This username is already taken"
+                    color: "red"
+                }
+                Text {
+                    id: passwordError
+                    visible: false // Initially hidden
+                    text: "The password does not match"
+                    color: "red"
+                }
 
-        Text {
-            id: passwordOrUsernameErrorText
-            visible: false // Initially hidden
-            text: "The username and/or password is incorrect"
-            color: "red"
-        }
+        // Page components
         TextField {
             width: parent.width
             id: input_username
@@ -42,7 +49,7 @@ Item {
             width: parent.width
             id: input_password
             placeholderText: "Password"
-            echoMode: TextField.Password
+            echoMode: TextField.Password //hide text
         }
         Button {
             anchors.left: parent.left
@@ -54,10 +61,7 @@ Item {
             anchors.left: parent.left
             text: "Login"
             onClicked: {
-                login.verifyPasswordUsername(input_username.text, input_password.text);
-                input_username.text = ""
-                input_password.text = ""
-                passwordOrUsernameErrorText.visible = false;
+                login.logIn(input_username.text, input_password.text)
             }
         }
 
@@ -65,19 +69,17 @@ Item {
         Connections {
             target: login
 
-            // Errors upon login
-            onOpenPasswordUsernameError: {
-                passwordOrUsernameErrorText.visible = true;
-            }
+                onOpenFridgePage: {
+                    stackView.push(Qt.resolvedUrl("Fridge.qml"))
+                }
+                onOpenMarketPage: {
+                    stackView.push(Qt.resolvedUrl("Market.qml"))
+                }
 
-            // Successful login
-            onoOenMarketPage: {
-                stackView.push(Qt.resolvedUrl("Market.qml"))
-            }
         }
-
-
     }
+
+
 
     // SIDE + EXTRA BUTTONS
 

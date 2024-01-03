@@ -10,12 +10,12 @@ class Signin : public QObject {
 public:
     explicit Signin(QObject *parent = nullptr);
 
-    Q_INVOKABLE void verifyPasswordUsername(const QString &username, const QString &password, const QString &passwordCheck);
+    Q_INVOKABLE bool signIn(const QString &username, const QString &password, const QString &password_check);
 
 signals:
+    void openMarketPage();
     void openPasswordError();
     void openUsernameError();
-    void openMarketPage();
 };
 
 #endif // SIGNIN_H

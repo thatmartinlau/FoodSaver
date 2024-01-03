@@ -1,14 +1,8 @@
 #include "../Header/Login.h"
-
-Login::Login(QObject *parent) : QObject(parent) {}
-
-void Login::verifyPasswordUsername(const QString &username, const QString &password) {
-    //implement logic to verify password
-    bool validUsername=true;
-    bool correctPassword=true;
-    if (validUsername && correctPassword) {
-        emit openMarketPage(); // Open Fridge.qml
+void Login::logIn(const QString &username, const QString &password) {
+    if (username != "Fanny" || password != "Fanny") {
+        emit openFridgePage(); // Open Fridge.qml
     } else {
-        emit openPasswordUsernameError(); // Show error
+        emit openMarketPage(); // Open Market.qml
     }
 }
