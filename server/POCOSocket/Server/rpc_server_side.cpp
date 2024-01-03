@@ -67,6 +67,7 @@ string curly_brackets_sep =  "{}";
 string absolute_signs_sep = "||";
 
 
+
 //Storage format: username, password, fridge, offer;
 //Inspired from iq.opengenus.org/read-and-write-in-csv-cpp/. Check it out, I only adapted some basic ideas from them. 
 void read_from_csv() { //everytime open the server, read csv to get data from previous session
@@ -419,7 +420,7 @@ vector<vector<string>> get_fridge(string username, string password) {
 int main() {
     rpc::server srv(3333);
     
-    //DB Manip
+    //DB Manip/add/remove
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
@@ -431,22 +432,17 @@ int main() {
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
     
-    //Implement actual error raising.
+    //implement error raising
     
     //test read-write of database here:
-    cout << "Started";
-    int test1 = test_read_write_csv();
-    cout << "Done";
+//    cout << "Started";
+//    int test1 = test_read_write_csv();
+//    cout << "Done";
+    
+    cout << "running";
     
     
     srv.run();
-    
-    
-    //Test Server Here:
-    
-        
-    
-    
     
     return 0;
 }

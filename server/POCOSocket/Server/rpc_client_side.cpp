@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include<vector>
 #include <sstream>
@@ -9,6 +10,9 @@
 #include "fridge.h"
 #include "offer.h"
 #include "user.h"
+
+
+//for banned-character-error: TAB, ~, *, >, {, }, [, ], | <- these are all the banned characters.
 
 
 using namespace std;
@@ -119,7 +123,7 @@ std::string priorityToString(Priority priority) {
 }
 
 
-//OSCAR's CODE ADAPTED BY ADAM: Oscar, feel free to adjust and change if u have a way which matches smth u prefer to use.
+//OSCAR's CODE: to adjust and change if u have a way which matches smth u prefer to use.
 vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, expiry_date, quantity, category, priority_level], all as string s. I modified the format Adam
     vector<string> vec;
 
@@ -196,11 +200,27 @@ struct fridge_vector {
     MSGPACK_DEFINE_ARRAY(fridge_vector)
 };
 
-//ESMA these are the interesting ideas I started to explore from rpclib.com, find out if this works or not, and find a better method if it exists othw. rpclib.com will have all necessary info, hopefully
+//ayo Es^ these are the interesting ideas I started to explore from rpclib.com, find out if this works or not, and find a better method if it exists othw. rpclib.com will have all necessary info, hopefully
+
+//Excluding characters
+
+//LIST of chars to exclude: TAB, ~, *, >, {, }, [, ], |
+char char_exclude_list[9] = {(char)9, *"~", *"*", *">", *"{", *"}", *"[", *"]", *"|"};
+bool char_to_exclude_satisfied(string input_string) {
+    for (int i=0; i <sizeof(char_exclude_list); i++) { //iterate through exclusion list, check find, if returned string::npos; return false.
+        size_t found_or_not = input_string.find(char_exclude_list[i]);
+        if (found_or_not != string::npos) {
+            cout << "Character Matched!" << endl;
+            return false;
+        }
+    }
+    cout << "All good, no match!" << endl;
+    return true;
+}
 
 
 
-//.//////Server send-receive functions.
+//#/// Server send-receive functions.
 
 Fridge ServerUser::get_fridge() { //
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
@@ -229,7 +249,12 @@ void ServerUser:: update_fridge(Fridge &f_input) {
     for (size_t i = 0; i < ingredient_list.size(); ++i){
         // Convert each Ingredient to vector format using Oscar's code
         vector<string> ingredient = ingredient_to_vector(ingredient_list[i]);  // Pass the current Ingredient object
-
+        //check the vector contains only allowed characters:
+        for (vector<string>::iterator it= ingredient.begin(); it != ingredient.end(); it++) {
+            if (char_to_exclude_satisfied(*it) == false) {cout << "ValueError: ingredient contains disallowed characters. See top of client_side for list.";return;}
+        }
+        
+        
         // Push the converted ingredient into the fridge vector
         fridge.push_back(ingredient);
     }
@@ -243,7 +268,6 @@ void ServerUser:: update_fridge(Fridge &f_input) {
     }
     */
 
-
     //send as new format
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_fridge", username, password, fridge);
@@ -255,7 +279,7 @@ vector<Offer> ServerUser::get_offer_list() {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     //vector<vector<vector<vector<string>>>> offer_list_vector = new_cli.call("get_offer_list", username, password);
     offer_list_vector offer_list_vector1 = new_cli.call("get_fridge", username, password).as<offer_list_vector>();
-    //Oscar work yo magic: ADDED DETAIL: The offer list format holds offers, each other has this format exactly: [vector<string>, vector<string>], Where the second vector stores only a double!
+    //Oscar work yo magic: ADDED DETAIL: The offer list format holds offers, each other has this format exactly: [vector<vector<string>>, vector<vector<string>>], Where the second vector stores only a double!
     //That double represents the price of the offer. We needed this because vectors have homogenous type. (only store one type.)
     
     //    double doubleValue = std::stod(numericalString);
@@ -295,7 +319,13 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
         vector<vector<string>> update_list_ingredient;
         //ingredient_to_vector(Ingredient)
         for(size_t i = 0; i<list_ingredient.size(); i++){
-            update_list_ingredient.push_back(ingredient_to_vector(list_ingredient[i]));
+            //vector of an ingredient:
+            vector<string> ingredient_vector = ingredient_to_vector(list_ingredient[i]);
+            //check broken characters: if banned or not
+            for (vector<string>::iterator it= ingredient_vector.begin(); it != ingredient_vector.end(); it++) {
+                if (char_to_exclude_satisfied(*it) == false) {cout << "ValueError: ingredient contains disallowed characters. See top of client_side for list.";return;}
+            }
+            update_list_ingredient.push_back(ingredient_vector);
 
         }
         vector<vector<vector<string>>> list_ingr_price;
@@ -311,7 +341,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
     
     
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_offer_list", username, password, update_offer); //this in the weird new vector<vector<vector<vector<string>>>> format, sorry! Check telegram paper image n1 for clarity, hopefully :)
+    new_cli.call("update_offer_list", username, password, update_offer);
 
 }
 
