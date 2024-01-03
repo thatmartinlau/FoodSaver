@@ -66,7 +66,12 @@ Item {
             anchors.left: parent.left
             text: "Sign in"
             onClicked: {
-                signin.verifyPassword(input_password.text, input_password_check.text)
+                signin.verifyPasswordUsername(input_username.text, input_password.text, input_password_check.text);
+                input_username.text = ""
+                input_password.text = ""
+                input_password_check.text = ""
+                passwordMismatchText.visible = false;
+                existentUsernameText.visible = false;
             }
         }
 
@@ -78,8 +83,10 @@ Item {
             // Errors upon signin
             onOpenPasswordError: {
                 passwordMismatchText.visible = true;
+                existentUsernameText.visible = flase;
             }
             onOpenUsernameError: {
+                passwordMismatchText.visible = false;
                 existentUsernameText.visible = true;
             }
             // Successful singin

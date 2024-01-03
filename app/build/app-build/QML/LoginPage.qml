@@ -25,7 +25,14 @@ Item {
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
+        // Error messages (originally hidden)
 
+        Text {
+            id: passwordOrUsernameErrorText
+            visible: false // Initially hidden
+            text: "The username and/or password is incorrect"
+            color: "red"
+        }
         TextField {
             width: parent.width
             id: input_username
@@ -47,9 +54,25 @@ Item {
             anchors.left: parent.left
             text: "Login"
             onClicked: {
-                stackView.push(Qt.resolvedUrl("Fridge.qml")) //replace this soon with the login function, to be implemented
+                login.verifyPasswordUsername(input_username.text, input_password.text);
                 input_username.text = ""
                 input_password.text = ""
+                passwordOrUsernameErrorText.visible = false;
+            }
+        }
+
+        // Implementing connections to C++ code
+        Connections {
+            target: login
+
+            // Errors upon login
+            onOpenPasswordUsernameError: {
+                passwordOrUsernameErrorText.visible = true;
+            }
+
+            // Successful login
+            onoOenMarketPage: {
+                stackView.push(Qt.resolvedUrl("Market.qml"))
             }
         }
 
