@@ -4,9 +4,10 @@ import QtQuick.Controls 2.12
 Item {
 
     // FOODSAVER LOGO/LABEL
-
     Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
+        color: "white"
+        border.color: "white"
         anchors.top: parent.top
         anchors.topMargin: parent.height/3.3
 
@@ -14,70 +15,88 @@ Item {
             horizontalAlignment: Text.AlignHCenter // Center the text within the Label
             anchors.horizontalCenter: parent.horizontalCenter // Center the Label within the Rectangle
             text: "Welcome to FoodSaver!"
+            color: "#1C6F30"
+            font.pixelSize: 32
         }
     }
 
     // TEXT ENTRIES + BUTTON
-
-    Column{
-        spacing: 10
-        width: 300
-
+    Rectangle{
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        // Error messages (originally hidden)
-                Text {
-                    id: usernameError
-                    visible: false // Initially hidden
-                    text: "This username is already taken"
-                    color: "red"
-                }
-                Text {
-                    id: passwordError
-                    visible: false // Initially hidden
-                    text: "The password does not match"
-                    color: "red"
-                }
+        color:white
 
-        // Page components
-        TextField {
-            width: parent.width
-            id: input_username
-            placeholderText: "Username"
-        }
-        TextField {
-            width: parent.width
-            id: input_password
-            placeholderText: "Password"
-            echoMode: TextField.Password //hide text
-        }
-        Button {
-            anchors.left: parent.left
-            text: "New here?"
-            onClicked: stackView.push(Qt.resolvedUrl("SigninPage.qml"))
-        }
+        Column{
+            spacing: 10
+            width: 300
 
-        Button {
-            anchors.left: parent.left
-            text: "Login"
-            onClicked: {
-                login.logIn(input_username.text, input_password.text)
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            // Error messages (originally hidden)
+            Text {
+                id: usernameError
+                visible: false // Initially hidden
+                text: "This username is already taken"
+                color: "red"
             }
-        }
+            Text {
+                id: passwordError
+                visible: false // Initially hidden
+                text: "The password does not match"
+                color: "red"
+            }
 
-        // Implementing connections to C++ code
-        Connections {
-            target: login
+            // Page components
+            TextField {
+                width: parent.width
+                id: input_username
+                placeholderText: "Username"
+            }
+            TextField {
+                width: parent.width
+                id: input_password
+                placeholderText: "Password"
+                echoMode: TextField.Password //hide text
+            }
+            Text {
+                anchors.left: parent.left
+                text: "New here?"
+                color: "#1C6F30"
+                font.bold: true
 
-                onOpenFridgePage: {
-                    stackView.push(Qt.resolvedUrl("Fridge.qml"))
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        stackView.push(Qt.resolvedUrl("SigninPage.qml"))
+                    }
                 }
-                onOpenMarketPage: {
+            }
+
+            Button {
+                anchors.left: parent.left
+                text: "Login"
+                background: Rectangle {
+                        color: "#1C6F30"
+                        radius: 4
+                }
+                contentItem: Text {
+                        text: parent.text
+                        font: parent.font
+                        color: "white"
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        padding: 5
+                }
+                onClicked: {
                     stackView.push(Qt.resolvedUrl("Market.qml"))
                 }
+            }
 
+            // Implementing connections to C++ code
         }
     }
+
+
 
 
 

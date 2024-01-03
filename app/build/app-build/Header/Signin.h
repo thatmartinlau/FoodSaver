@@ -16,6 +16,8 @@ signals:
     void openMarketPage();
     void openPasswordError();
     void openUsernameError();
+    void openNoUsernameError();
+    void openNoPasswordError();
 };
 
 #endif // SIGNIN_H

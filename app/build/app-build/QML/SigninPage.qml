@@ -7,6 +7,8 @@ Item {
 
     Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
+        color: "#F0F0F0"
+        border.color: "#CCCCCC"
         anchors.top: parent.top
         anchors.topMargin: parent.height/3.3
 
@@ -14,6 +16,8 @@ Item {
             horizontalAlignment: Text.AlignHCenter // Center the text within the Label
             anchors.horizontalCenter: parent.horizontalCenter // Center the Label within the Rectangle
             text: "Welcome to FoodSaver!"
+            color: "#1C6F30"
+            font.pixelSize: 32
         }
     }
 
@@ -27,6 +31,19 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
 
         // Error messages (originally hidden)
+
+        Text {
+            id: noUsernameError
+            visible: false // Initially hidden
+            text: "You need to chose a username"
+            color: "red"
+        }
+        Text {
+            id: noPasswordError
+            visible: false // Initially hidden
+            text: "You need to chose and verify your password"
+            color: "red"
+        }
         Text {
             id: usernameError
             visible: false // Initially hidden
@@ -44,29 +61,55 @@ Item {
         TextField {
             width: parent.width
             id: input_username
+            placeholderTextColor: "#A0A0A0"
+            color: "#544E3D"
             placeholderText: "Chose a username"
         }
         TextField {
             width: parent.width
             id: input_password
             placeholderText: "Chose a password"
+            placeholderTextColor: "#A0A0A0"
+            color: "#544E3D"
             echoMode: TextInput.Password //hide the text
         }
         TextField {
             width: parent.width
             id: input_password_check
             placeholderText: "Verify your password"
+            placeholderTextColor: "#A0A0A0"
+            color: "#544E3D"
             echoMode: TextInput.Password //hide the text
         }
-        Button {
+        Text {
             anchors.left: parent.left
             text: "Do you already have an account?"
-            onClicked: stackView.push(Qt.resolvedUrl("LoginPage.qml"))
+            color: "#1C6F30"
+            font.bold: true
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    stackView.push(Qt.resolvedUrl("LoginPage.qml"))
+                }
+            }
         }
 
         Button {
             anchors.left: parent.left
             text: "Sign in"
+            background: Rectangle {
+                    color: "#1C6F30"
+                    radius: 4
+            }
+            contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    color: "white"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    padding: 5
+            }
             onClicked: {
                 if (signin.signIn(input_username.text, input_password.text, input_password_check.text)){
                     passwordError.visible = false;
@@ -84,18 +127,36 @@ Item {
             target: signin
 
             // Errors upon signin
+            onOpenNoUsernameError: {
+                noUsernameError.visible = true;
+                usernameError.visible = false;
+                passwordError.visible = false;
+                noPasswordError.visible = false;
+            }
             onOpenPasswordError: {
+                noUsernameError.visible = false;
                 usernameError.visible = false;
                 passwordError.visible = true;
+                noPasswordError.visible = false;
             }
             onOpenUsernameError: {
+                noUsernameError.visible = false;
                 passwordError.visible = false;
                 usernameError.visible = true;
+                noPasswordError.visible = false;
             }
+            onOpenNoPasswordError: {
+                noUsernameError.visible = false;
+                noPasswordError.visible = true;
+                passwordError.visible = false;
+                usernameError.visible = false;
+            }
+
             // Successful singin
             onOpenMarketPage: {
                 stackView.push(Qt.resolvedUrl("Market.qml"))
             }
+
         }
 
     }
