@@ -7,3 +7,12 @@ During the monday session we spent an hour splitting the group into smaller work
 Week 2:
 
 Watched and followed many online tutorials to figure out the way Qt designer works. Nothing really worked and we could not figure out how to make a basic switch between pages.
+
+Week 3:
+
+We moved on to using Figma to make the visual design, spent the monday session debriefing how we would make the layouts and started working on the design. Spent the thursday session working on the design, and kept working on it over the weekend.
+
+
+Week 4:
+
+We finalized a basic draft of the Figma design but realized it wouod take too much time before getting to C++ code by using sigma. We thus decided to move away from Figma and divided the pages amongst ourselves. I will be in charge of the Sign in and Login pages. We decided to use only Qt qml files to make things easier. During the thursday session I started working on it.
