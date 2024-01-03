@@ -16,4 +16,5 @@ Week 3:
 - Working on a transition between two pages using the Qt Design Studios, trying to understand how the Design Studio interface allows us to transition and connect diffrent "Flowitems". This has proven more difficult than it sounds as not many tutorials are available online. (This is not a very used way to create websites)
 
 Week 4:
+- Working on the recepie  page, starting to set up the buttons and different user inputs that are needed for this page.
 
