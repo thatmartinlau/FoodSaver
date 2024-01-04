@@ -1,8 +1,8 @@
-/*#include "Header/RecipeBook.h"
+#include "Header/RecipeBook.h"
 #include <iostream>
 #include <list>
 #include <vector>
-#include "front.hpp"
+#include "Header/front.hpp"
 #include "nlohmann/json.hpp"
 using Json = nlohmann::json;
 using namespace std;
@@ -47,7 +47,7 @@ void JsonRecipeReader::addRecipe(const json& newRecipe) {
     saveJson();
 }
 
-void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const std::string>& description, const std::vector<std::string>& ingredients,const std::vector<std::string>& tags) {
+/*void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const std::string& description, const std::vector<std::string>& ingredients,const std::vector<std::string>& tags) {
 
     // convert the description into small strings based on sentence-ending punctuation marks.
     std::vector<std::string> description_sentences;
@@ -92,6 +92,5 @@ void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const st
 
     addRecipe(newrecipe);
 }*/
-
 
 

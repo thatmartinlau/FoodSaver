@@ -7,10 +7,10 @@
 #include <ctime>
 #include <vector>
 #include <regex>
-#include <json/json.h>
+#include <nlohmann/json.hpp>
 #include <fstream>
 #include "nlohmann/json.hpp"
-#include "restClient.cpp"
+//#include "restClient.cpp"
 using json = nlohmann::json;
 using namespace std;
 
@@ -25,13 +25,13 @@ public :
         loadJson();
     }
 
-    std::string getRecipeTitle(int recipeIndex)const{}
-    std::vector<std::string> getRecipeIngredients(int recipeIndex) const{}
-    std::vector<std::string> getRecipeDirection(int recipeIndex) const{}
-    std::vector<std::string> getRecipeTags(int recipeIndex) const{}
-    std::string getRecipeUrl(int recipeIndex) const{}
-    void addRecipe(const json newRecipe) {}
-    void addRecipeFromParameter(const std::string& title, const std::string>& description, const std::vector<std::string>& ingredients,const std::vector<std::string>& tags) {}
+    std::string getRecipeTitle(int recipeIndex)const;
+    std::vector<std::string> getRecipeIngredients(int recipeIndex) const;
+    std::vector<std::string> getRecipeDirections(int recipeIndex) const;
+    std::vector<std::string> getRecipeTags(int recipeIndex) const;
+    std::string getRecipeUrl(int recipeIndex) const;
+    void addRecipe(const json &newRecipe);
+    void addRecipeFromParameter(const std::string& title, const std::string& description, const std::vector<std::string>& ingredients,const std::vector<std::string>& tags);
 
 private:
     void loadJson() {
@@ -46,11 +46,11 @@ private:
 
     void saveJson() const {
         std::ifstream file(jsonFileName);
-        if (!file.open()){
+        if (!file.is_open()){
             std::cerr << "Error opening the file: " << jsonFileName << std::endl;
             return ;
         }
-        file << jsonData.dump(2);
+        //file << jsonData.dump(2);
         file.close();
     }
     std::string jsonFileName;
