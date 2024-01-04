@@ -68,13 +68,18 @@ Item {
         // Implementing connections to C++ code
         Connections {
             target: login
-
-                onOpenFridgePage: {
-                    stackView.push(Qt.resolvedUrl("Fridge.qml"))
-                }
-                onOpenMarketPage: {
-                    stackView.push(Qt.resolvedUrl("Market.qml"))
-                }
+                    onOpenFridgePage: {
+                        // Navigate to Fridge.qml or perform necessary actions
+                        console.log("Opening Fridge Page")
+                    }
+                    onShowUsernameError: {
+                        // Show username error message
+                        console.log("Username error")
+                    }
+                    onShowPasswordError: {
+                        // Show password error message
+                        console.log("Password error")
+                    }
 
         }
     }

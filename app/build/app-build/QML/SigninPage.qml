@@ -68,35 +68,36 @@ Item {
             anchors.left: parent.left
             text: "Sign in"
             onClicked: {
-                if (signin.signIn(input_username.text, input_password.text, input_password_check.text)){
-                    passwordError.visible = false;
-                    usernameError.visible = false;
-                }
-                input_username.text = ""
-                input_password.text = ""
-                input_password_check.text = ""
-            }
-        }
-
-
-        // Implementing connections to C++ code
-        Connections {
-            target: signin
-
-            // Errors upon signin
-            onOpenPasswordError: {
-                usernameError.visible = false;
-                passwordError.visible = true;
-            }
-            onOpenUsernameError: {
-                passwordError.visible = false;
-                usernameError.visible = true;
-            }
-            // Successful singin
-            onOpenMarketPage: {
                 stackView.push(Qt.resolvedUrl("Market.qml"))
+                // if (signin.signIn(input_username.text, input_password.text, input_password_check.text)){
+                //     passwordError.visible = false;
+                //     usernameError.visible = false;
+                // }
+                // input_username.text = ""
+                // input_password.text = ""
+                // input_password_check.text = ""
             }
         }
+
+
+        // // Implementing connections to C++ code
+        // Connections {
+        //     target: signin
+
+        //     // Errors upon signin
+        //     onOpenPasswordError: {
+        //         usernameError.visible = false;
+        //         passwordError.visible = true;
+        //     }
+        //     onOpenUsernameError: {
+        //         passwordError.visible = false;
+        //         usernameError.visible = true;
+        //     }
+        //     // Successful singin
+        //     onOpenMarketPage: {
+        //         stackView.push(Qt.resolvedUrl("Market.qml"))
+        //     }
+        // }
 
     }
 
