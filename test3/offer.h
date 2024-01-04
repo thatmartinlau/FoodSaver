@@ -2,6 +2,7 @@
 #define OFFER_H
 
 #include "ingredient.h"
+#include "user.h"
 
 //#include <iostream>
 //#include <list>
@@ -13,19 +14,35 @@
 
 class Offer {
 public:
-    Offer(std::vector<Ingredient> ingredient_list);
+    Offer();
+    //Offer(Ingredient ingredient_on_offer);
     ~Offer();
     void set_price(double price);
     double get_price();
-    std::vector<Ingredient> get_ingredient_list();
+    void set_quantity(int q);
+    int get_quantity();
+    void set_ingredient(Ingredient i);
+    Ingredient get_ingredient();
+
+    void set_username(User username);
+    User get_username();
     //json toJson () const;
 
+    /*
+    std::vector<Ingredient> sort_offers_by_category();
+    std::vector<Ingredient> sort_offers_by_expiration_date();
+    std::vector<Ingredient> sort_offers_by_price();
+    */
+
 private:
-    std::vector<Ingredient> ingredient_list;
+    Ingredient ingredient_on_offer;
     double price;
+    int quantity;
+    User username;
     // PHOTO
 
     // add filters in case don't want to see meat and other products
 };
 
 #endif // OFFER_H
+
