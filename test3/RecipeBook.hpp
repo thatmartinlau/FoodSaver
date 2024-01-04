@@ -40,7 +40,9 @@ private:
             std::cerr << "Error opening file: "<< jsonFileName<< std::endl;
             return ;
         }
-        file >> jsonData;
+        std::string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+        jsonData = json::parse(fileContents);
+
         file.close();
     }
 
