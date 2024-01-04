@@ -53,13 +53,13 @@ void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const st
     std::vector<std::string> description_sentences;
     size_t startPos = 0;
 
-    for (size_t i = 0; i < input.length(); ++i) {
-        char currentChar = input[i];
+    for (size_t i = 0; i < description.length(); ++i) {
+        char currentChar = description[i];
 
         // Check for sentence-ending punctuation marks
         if (currentChar == '.' || currentChar == '!' || currentChar == '?') {
             // Extract the sentence from startPos to the current position (including the punctuation mark)
-            std::string sentence = input.substr(startPos, i - startPos + 1);
+            std::string sentence = description.substr(startPos, i - startPos + 1);
             
             // Trim leading and trailing whitespaces
             size_t firstNonSpace = sentence.find_first_not_of(" \t\n\r");
@@ -77,8 +77,8 @@ void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const st
     }
 
     // If there is a remaining part of the input, add it as the last sentence
-    if (startPos < input.length()) {
-        std::string lastSentence = input.substr(startPos);
+    if (startPos < description.length()) {
+        std::string lastSentence = description.substr(startPos);
         description_sentences.push_back(lastSentence);
     }
 
