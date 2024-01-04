@@ -8,7 +8,7 @@ using Json = nlohmann::json;
 using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-// JSON RECIPE READER 
+// JSON RECIPE READER
 
 std::string JsonRecipeReader::getRecipeTitle(int recipeIndex) const{
     return jsonData["RecipeBook"][recipeIndex]["title"];
@@ -60,7 +60,7 @@ void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const st
         if (currentChar == '.' || currentChar == '!' || currentChar == '?') {
             // Extract the sentence from startPos to the current position (including the punctuation mark)
             std::string sentence = description.substr(startPos, i - startPos + 1);
-            
+
             // Trim leading and trailing whitespaces
             size_t firstNonSpace = sentence.find_first_not_of(" \t\n\r");
             size_t lastNonSpace = sentence.find_last_not_of(" \t\n\r");
@@ -82,16 +82,13 @@ void JsonRecipeReader::addRecipeFromParameter(const std::string& title, const st
         description_sentences.push_back(lastSentence);
     }
 
-    // Create the Json new recipe file 
+    // Create the Json new recipe file
     json newrecipe = {
             {"title", title},
             {"description", description_sentences},
-            {"ingredients", ingredients}, // Question : How is the input ingredients ? One single string (as description) or directly vector of strings ? 
+            {"ingredients", ingredients}, // Question : How is the input ingredients ? One single string (as description) or directly vector of strings ?
             {"tags", tags}
             };
 
     addRecipe(newrecipe);
 }
-
-    
-        
