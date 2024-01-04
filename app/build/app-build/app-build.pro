@@ -7,6 +7,7 @@ RESOURCES += \
     qml.qrc
 
 DISTFILES += \
+    Jason/Recipes.json \
     QML/LoginPage.qml \
     QML/homepage.qml \
     QML/menu1.qml \
@@ -18,6 +19,7 @@ CPP = Source/
 HPP = Header/
 
 SOURCES += \
+    Source/RecipeBook.cpp \
     backend.cpp \
     main.cpp \
     maincontroller.cpp \
@@ -32,6 +34,7 @@ SOURCES += \
     $$CPP/user.cpp
 
 HEADERS += \
+    Header/RecipeBook.h \
     backend.h \
     maincontroller.h \
     $$HPP/date.h \
