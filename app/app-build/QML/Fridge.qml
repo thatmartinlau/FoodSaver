@@ -2,7 +2,9 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 //colors: green #5E9F7C lightgreen #D7ECDE
+
 Row {
+    property int currentIndex: 0
     Rectangle {
         width: parent.width * 0.20
         height: parent.height
@@ -18,9 +20,6 @@ Row {
             Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
             Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
 
-        }
-        Settings {
-            id: settings
         }
 
         Button {
@@ -112,7 +111,7 @@ Row {
                                 Rectangle {
                                     radius:12.5
                                     width: parent.width
-                                    height: 80
+                                    height: 200
                                     color: "red"
                                     Row {
                                         width:parent.width
@@ -128,25 +127,46 @@ Row {
                                             x:parent.height
                                             spacing:1
                                             Label {
-                                                text: model.item // Access the "item" property of the model data
+                                                text: "Item: " + model.item // Access the "item" property of the model data
                                             }
                                             Label {
-                                                text: model.categorie // Access the "categorie" property of the model data
+                                                text: "Categorie: " + model.categorie // Access the "categorie" property of the model data
+                                            }
+                                            /*Label {
+                                                text: "Index: " + model.index
+                                            }*/
+                                            Label {
+                                                text: (model.status === 0) ? "Not for sale" : (model.price === -1) ? "Negotiate" : "Price: " + model.price
+                                            }
+                                            Label {
+                                                text: "Expiration date: " + model.date
+                                            }
+
+                                            Label {
+                                                text: "Quantity: " + model.quantity
                                             }
                                         }
                                         Column {
                                             width: parent.width * 0.4 // Set the width of the column as half of the parent width
                                             anchors.right: parent.right
                                             Button {
-                                                text: "Put to Sell"
-                                                // onClicked: handlePutToSell() // Define the function to handle the button click
-                                                // Other properties of the button
+                                                text: "Price Settings"
+                                                onClicked: {
+                                                    var indexToSell = itemModel.getIndexByPropertyValue("index", model.index);
+                                                    if (indexToSell !== -1) {
+                                                        selling.itemIndex = indexToSell;
+                                                        selling.open();
+                                                    } else {
+                                                        console.warn("No item available for sale.");
+                                                    }
+                                                }
                                             }
 
                                             Button {
                                                 text: "Remove from Fridge"
-                                                // onClicked: handleRemoveFromFridge() // Define the function to handle the button click
-                                                // Other properties of the button
+                                                onClicked: {
+                                                    itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
+                                                }
                                             }
                                         }
                                     }
@@ -159,7 +179,16 @@ Row {
         }
         ListModel {
                 id: itemModel
-            }
+                function getIndexByPropertyValue(propertyName, propertyValue) {
+                    scrollView.contentHeight -= 202.5;
+                    for (var i = 0; i < count; i++) {
+                        if (get(i)[propertyName] === propertyValue) {
+                            return i;
+                        }
+                    }
+                    return -1; // Return -1 if the item is not found
+                }
+        }
     }
 
 
@@ -176,10 +205,10 @@ Row {
         }
         Button {
             y: parent.height * 0.25
-            id: addtofridge
+            //id: addtofridge
             text: "Add to Fridge"
             onClicked: {
-                myPopup.open()
+                addtofridge.open()
             }
         }
         Button {
@@ -188,9 +217,9 @@ Row {
             id: profil
             height: 100
             width: 100
-            text: "Profil"
+            text: "Profile"
             onClicked: {
-                myPopup.open()
+                profile.open()
             }
             background: Rectangle {
                         color: "#D7ECDE"
@@ -207,100 +236,18 @@ Row {
             onClicked: stackView.pop() // need to add a function which logs the user out of the server, then deletes all active data from the instance.
         }
     }
-Popup {
-        id: myPopup
-        anchors.centerIn: parent
-        width: 200
-        height: 220
-        closePolicy: "CloseOnEscape"
-        background: Rectangle {
-                color:"#EEEEEE"
-                radius: 12.5
-            }
-        Column {
-            anchors.centerIn: parent
-            spacing: 10
-            Button {
-                anchors.right: parent.right
-                //anchors.top: parent.top
-                text: "X"
-                width: 50
-                background: null
-                onClicked: {
-                    myPopup.close()
-                }
-            }
-            TextField {
-                padding: 5
-                id: iteminput
-                width: 190
-                height: 25
-                anchors.horizontalCenter: parent.horizontalCenter
-                background: Rectangle {
-                        color: "#5E9F7C"
-                        radius: 12.5
-                    }
-                placeholderText: "Item"
-            }
-            TextField {
-                id: categorieinput
-                width: 190
-                height: 25
-                anchors.horizontalCenter: parent.horizontalCenter
-                background: Rectangle {
-                        color: "#5E9F7C"
-                        radius: 12.5
-                    }
-                placeholderText: "Categorie"
-            }
-            TextField {
-                padding: 5
-                id: dateinput
-                width: 190
-                height: 25
-                anchors.horizontalCenter: parent.horizontalCenter
-                background: Rectangle {
-                        color: "#5E9F7C"
-                        radius: 12.5
-                    }
-                placeholderText: "Expiration Date"
-            }
-            TextField {
-                padding: 5
-                id: quantityinput
-                width: 190
-                height: 25
-                anchors.horizontalCenter: parent.horizontalCenter
-                background: Rectangle {
-                        color: "#5E9F7C"
-                        radius: 12.5
-                    }
-                placeholderText: "Quantity"
-            }
-            Row {
-                anchors.horizontalCenter: parent.horizontalCenter
-                Button {
-                    text: "Validate"
-                    width: 100
-                    //anchors.horizontalCenter: parent.horizontalCenter
-                    background: Rectangle {
-                                color: "#5E9F7C"
-                                radius:12.5
-                    }
-                    onClicked: {
-                        if (iteminput.text.trim() !== "" &categorieinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
-                            //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text});
-                            itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text });
-                            iteminput.text = "";
-                            categorieinput.text = "";
-                            scrollView.contentHeight = scrollView.contentHeight + 82.5;
-                            myPopup.close()
-                        }
-                    }
-                }
-            }
-        }
-    }
+Profile {
+    id: profile
+}
+Settings {
+    id:settings
+}
+AddToFridge {
+    id:addtofridge
+}
+Selling {
+    id:selling
+}
 }
 
 

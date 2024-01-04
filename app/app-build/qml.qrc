@@ -8,5 +8,7 @@
         <file>QML/LoginPage.qml</file>
         <file>QML/Settings.qml</file>
         <file>QML/Profile.qml</file>
+        <file>QML/Selling.qml</file>
+        <file>QML/AddToFridge.qml</file>
     </qresource>
 </RCC>
