@@ -31,3 +31,16 @@ I started to try and implement a function that compares a date with the current 
 I finished implementing the Date class.
 I also added a method requested by my collegues.
 I was told by my TA that the classes should be impplemented in separate cpp and h files, so I split the code from front.cpp and front.hpp in 5 different files.
+
+24/12/2023
+I added a get_ingredient_list method in Offer.
+I merged the front branch with the front_merge branch.
+
+02/01/2024
+I discussed different problems in our class implementation with other group members.
+I realised the Offer function had a mistake and was badly implemented.
+
+04/12/2024
+I implemented two sorting functions in the Fridge class with Martin's help.
+I made all necessary modifications to the User class to align my definition with Martin's one on the app.
+I corrected the Offer class which was badly implemented and discussed what was expected of me with Antoine.
