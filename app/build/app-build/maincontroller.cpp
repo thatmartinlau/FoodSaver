@@ -175,7 +175,7 @@ QList<QString> MainController::sorter(const QMap<QString, int> &dict){
     //qDebug() << occurences << occurences[1] << occurences[2];
     return names;
 }
-std::string filename = "Recipies.json";
+std::string filename = "Recipes.json";
 JsonRecipeReader reader(filename);
 //json jsonData1 = readJsonFromFile("Recipies.json");
 
@@ -212,7 +212,8 @@ QList<QString> MainController::searchRecipes(const QString &entry, const QString
     QMap<QString, int> recipeScores;
 
     // Split the search entry into a list of words
-    QList<QString> searchWords = entry.split(QRegExp("\\W+"), Qt::SkipEmptyParts);
+    //QList<QString> searchWords = entry.split(QRegExp("\\W+"), Qt::SkipEmptyParts);
+    QList<QString> searchWords = entry.split(u' ', Qt::SkipEmptyParts);
 
     // Iterate through each recipe in the dataset
     for (int i = 0; i < recipeArray.size(); ++i) {
