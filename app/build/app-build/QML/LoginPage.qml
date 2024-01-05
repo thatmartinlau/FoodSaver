@@ -68,17 +68,17 @@ Item {
         // Implementing connections to C++ code
         Connections {
             target: login
-                    onOpenFridgePage: {
+                    function onOpenFridgePage() {
                         // Navigate to Fridge.qml or perform necessary actions
-                        console.log("Opening Fridge Page")
+                        console.log("Opening Fridge Page");
                     }
-                    onShowUsernameError: {
+                    function onShowUsernameError() {
                         // Show username error message
-                        console.log("Username error")
+                        console.log("Username error");
                     }
-                    onShowPasswordError: {
+                    function onShowPasswordError() {
                         // Show password error message
-                        console.log("Password error")
+                        console.log("Password error");
                     }
 
         }
