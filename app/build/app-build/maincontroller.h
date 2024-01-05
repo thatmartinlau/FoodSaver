@@ -4,6 +4,9 @@
 #include <QObject>
 #include <string>
 #include <iostream>
+//modif eli:
+#include <QList>
+#include <QMap>
 
 class MainController : public QObject
 {
@@ -23,6 +26,8 @@ public slots:
     QList<QString> sorter(const QMap<QString, int> &dict);
     int getTotalLength();
     QString getJsonRTitle(const int &h);
+    //modif eli:
+    QList<QString> searchRecipes(const QString &entry, const QString &dietRestriction);
 };
 
 #endif // MAINCONTROLLER_H
