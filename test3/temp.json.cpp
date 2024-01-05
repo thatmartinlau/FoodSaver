@@ -1,7 +1,9 @@
-#include "nlohmann/json.hpp"
-using json = nlohmann::json;
+#include <iostream> //for inputs and outputs
+#include <fstream> //to read and write files
+#include <nlohmann/json.hpp> //import json library
 
-#include <fstream>
+using namespace std;
+using json = nlohmann::json;
 
 // code a function that can cin the bachelor data from the website
 
