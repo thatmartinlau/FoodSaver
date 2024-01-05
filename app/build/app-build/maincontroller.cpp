@@ -3,6 +3,15 @@
 #include <QDebug>
 #include <iostream>
 #include <list>
+#include "Source/RecipeBook.cpp"
+
+/*#include "Source/temp.json.cpp"
+#include "Header/RecipeBook.h"
+#include <vector>
+#include "Header/front.hpp"
+#include "nlohmann/json.hpp"
+using Json = nlohmann::json;
+//using namespace std;*/
 
     MainController::MainController(QObject *parent) : QObject(parent)
 {
@@ -159,4 +168,15 @@ QList<QString> MainController::sorter(const QMap<QString, int> &dict){
     }
     //qDebug() << occurences << occurences[1] << occurences[2];
     return names;
+}
+std::string filename = "Recipies.json";
+JsonRecipeReader reader(filename);
+//json jsonData1 = readJsonFromFile("Recipies.json");
+
+QString MainController::getJsonRTitle(const int &h){
+    std::string title; // = reader.getRecipeTitle(h);
+    QString res = "lol";
+    title = "bonjour";//jsonData1["RecipeBook"][h]["title"];
+    res = res.fromStdString(title);
+    return res;
 }

@@ -2,6 +2,8 @@
 #define MAINCONTROLLER_H
 
 #include <QObject>
+#include <string>
+#include <iostream>
 
 class MainController : public QObject
 {
@@ -20,6 +22,7 @@ public slots:
     QList<QString> search_res(const QString &entry);
     QList<QString> sorter(const QMap<QString, int> &dict);
     int getTotalLength();
+    QString getJsonRTitle(const int &h);
 };
 
 #endif // MAINCONTROLLER_H
