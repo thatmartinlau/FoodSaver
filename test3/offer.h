@@ -22,8 +22,8 @@ public:
 
     void set_price(double price);
     double get_price();
-    void set_quantity(int q);
-    int get_quantity();
+    //void set_quantity(int q);
+    //int get_quantity();
     void set_ingredient(Ingredient i);
     Ingredient get_ingredient();
     //json toJson () const;

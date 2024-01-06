@@ -56,19 +56,19 @@ int main(int argc, char *argv[])
         std::cout << f.sort_ingredients_by_expiration_date()[i].get_name() << std::endl;
     }
 
-    std::string ingredientName = "salmon";
-    Date d;
-    Ingredient ingredientInstance(ingredientName, d);
+    std::string ingredientName5 = "salmon";
+    Date dt;
+    Ingredient ingredientInstance1(ingredientName5, dt);
 
-    std::string ingredientName2 = "broccoli";
-    int ingredientQuantity = 5;
-    Food_class ingredientCategory =  vegetable;
-    Date date;
-    date.set_day(19);
-    Ingredient ingredientInstance2(ingredientName2, date, ingredientQuantity, ingredientCategory);
+    std::string ingredientName21 = "broccoli";
+    int ingredientQuantity1 = 5;
+    Food_class ingredientCategory1 =  vegetable;
+    Date date1;
+    date1.set_day(19);
+    Ingredient ingredientInstance21(ingredientName21, date1, ingredientQuantity1, ingredientCategory1);
 
-    ingredientInstance.set_FoodClass(fish);
-    Date c = ingredientInstance2.get_expiry_date();
+    ingredientInstance1.set_FoodClass(fish);
+    Date c = ingredientInstance21.get_expiry_date();
     std::cout << c.get_day() << "/" << c.get_month() << "/" << c.get_year() <<  std::endl;
     std::cout << c.countDays() << std::endl;
     std::cout << "Hello" << std::endl;

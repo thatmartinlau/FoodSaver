@@ -33,6 +33,7 @@ double Offer::get_price() {
     return price;
 }
 
+/*
 void Offer::set_quantity(int q) {
     this->quantity = q;
 }
@@ -40,6 +41,7 @@ void Offer::set_quantity(int q) {
 int Offer::get_quantity() {
     return quantity;
 }
+*/
 
 void Offer::set_ingredient(Ingredient i) {
     this-> ingredient_on_offer = i;
