@@ -60,28 +60,27 @@ Item {
         Button {
             anchors.left: parent.left
             text: "Login"
-            onClicked: {
-                login.logIn(input_username.text, input_password.text)
+            Button {
+                anchors.left: parent.left
+                text: "Login"
+                onClicked: {
+                    var loginSuccess = login.checkCredentials(input_username.text, input_password.text);
+                    if (loginSuccess) {
+                        console.log("Login successful");
+                        stackView.push(Qt.resolvedUrl("Fridge.qml"))
+                        // Navigate to the next page or perform the desired action
+                    } else {
+                        console.log("Login failed");
+                        // Optionally, set error message visibility here
+                        usernameError.visible = true;
+                        passwordError.visible = true;
+                    }
+                }
             }
-        }
-
-        // Implementing connections to C++ code
-        Connections {
-            target: login
-                    function onOpenFridgePage() {
-                        // Navigate to Fridge.qml or perform necessary actions
-                        console.log("Opening Fridge Page");
-                    }
-                    function onShowUsernameError() {
-                        // Show username error message
-                        console.log("Username error");
-                    }
-                    function onShowPasswordError() {
-                        // Show password error message
-                        console.log("Password error");
-                    }
 
         }
+
+
     }
 
 

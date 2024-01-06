@@ -11,12 +11,7 @@ public:
     explicit Login(QObject *parent = nullptr);
 
 public slots:
-    void logIn(const QString &username, const QString &password);
-
-signals:
-    void openMarketPage();
-    void showUsernameError();
-    void showPasswordError();
+    bool checkCredentials(const QString &username, const QString &password);
 };
 
 #endif // LOGIN_H
