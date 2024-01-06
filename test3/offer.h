@@ -44,4 +44,3 @@ private:
 };
 
 #endif // OFFER_H
-
