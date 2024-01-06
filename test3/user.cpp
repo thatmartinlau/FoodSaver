@@ -95,3 +95,28 @@ void User::set_marketplace_notifications(int m) {
 int User::get_marketplace_notifications() {
     return marketplace_notifications;
 }
+
+void User::add_offer(Offer new_offer) {
+    offer_list.push_back(new_offer);
+}
+
+Offer User::remove_offer(Offer *offer_to_delete) {
+    // Check if offer_to_delete is nullptr
+    if (offer_to_delete == nullptr) {
+        throw std::invalid_argument("Null pointer passed to remove_offer");
+    }
+
+    for (auto it = offer_list.begin(); it != offer_list.end(); ++it) {
+        if (*it == *offer_to_delete) {
+            Offer foundOffer = *it;
+            offer_list.erase(it);
+            return foundOffer;
+        }
+    }
+
+    throw std::runtime_error("Ingredient not found in the fridge");
+}
+
+std::vector<Offer> User::get_my_offers(){
+    return offer_list;
+}

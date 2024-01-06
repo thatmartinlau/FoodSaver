@@ -2,7 +2,7 @@
 #define USER_H
 
 #include "fridge.h"
-//#include "offer.h"
+#include "offer.h"
 
 //#include <iostream>
 #include <list>
@@ -38,6 +38,9 @@ public:
     void set_marketplace_notifications(int m);
     int get_marketplace_notifications();
     //json toJson () const;
+    void add_offer(Offer new_offer);
+    Offer remove_offer(Offer *offer_to_delete);
+    std::vector<Offer> get_my_offers();
 
 private:
     std::string username;
@@ -52,7 +55,7 @@ private:
     int telegram_notifications;
     int marketplace_notifications;
     Fridge user_fridge;
-    //std::list<Offer> offer_list;
+    std::vector<Offer> offer_list;
 };
 
 #endif // USER_H

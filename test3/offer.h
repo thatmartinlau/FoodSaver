@@ -2,7 +2,7 @@
 #define OFFER_H
 
 #include "ingredient.h"
-#include "user.h"
+//#include "user.h"
 
 //#include <iostream>
 //#include <list>
@@ -17,15 +17,15 @@ public:
     Offer();
     //Offer(Ingredient ingredient_on_offer);
     ~Offer();
+
+     bool operator==(Offer& other);
+
     void set_price(double price);
     double get_price();
     void set_quantity(int q);
     int get_quantity();
     void set_ingredient(Ingredient i);
     Ingredient get_ingredient();
-
-    void set_username(User username);
-    User get_username();
     //json toJson () const;
 
     /*
@@ -38,7 +38,6 @@ private:
     Ingredient ingredient_on_offer;
     double price;
     int quantity;
-    User username;
     // PHOTO
 
     // add filters in case don't want to see meat and other products

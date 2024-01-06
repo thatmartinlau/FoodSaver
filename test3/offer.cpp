@@ -21,6 +21,9 @@ Offer::Offer(Ingredient ingredient_on_offer) {
 Offer::~Offer() {
 }
 
+bool Offer::operator==(Offer& other) {
+    return (this->get_ingredient() == other.get_ingredient());
+}
 
 void Offer::set_price(double price) {
     this->price = price;
@@ -45,17 +48,6 @@ void Offer::set_ingredient(Ingredient i) {
 Ingredient Offer::get_ingredient() {
     return ingredient_on_offer;
 }
-
-
-void Offer::set_username(User username) {
-    this->username = username;
-}
-
-
-User Offer::get_username() {
-    return username;
-}
-
 
 /*
 std::vector<Ingredient> Offer::sort_offers_by_category() {
