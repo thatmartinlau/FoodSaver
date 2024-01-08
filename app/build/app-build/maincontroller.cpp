@@ -4,12 +4,6 @@
 #include <iostream>
 #include <list>
 #include "Source/RecipeBook.cpp"
-//modif eli
-#include <QFile>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonArray>
-//
 
 /*#include "Source/temp.json.cpp"
 #include "Header/RecipeBook.h"
@@ -175,82 +169,14 @@ QList<QString> MainController::sorter(const QMap<QString, int> &dict){
     //qDebug() << occurences << occurences[1] << occurences[2];
     return names;
 }
-std::string filename = "Recipes.json";
-JsonRecipeReader reader(filename);
+//std::string filename = "Recipes.json";
+JsonRecipeReader reader;//(filename);
 //json jsonData1 = readJsonFromFile("Recipies.json");
 
 QString MainController::getJsonRTitle(const int &h){
-    std::string title; // = reader.getRecipeTitle(h);
+    std::string title = "bonjour";//= reader.getRecipeTitle(2);
     QString res = "lol";
-    title = "bonjour";//jsonData1["RecipeBook"][h]["title"];
+    //title = "bonjour";//jsonData1["RecipeBook"][h]["title"];
     res = res.fromStdString(title);
     return res;
-}
-
-//modif eli:
-/*the function no longer returns recipes from listnames but rather iterates through the Recipes.json seen previously and iterates over the titles of
-the recipes or the tags. for optimal return, there should be assigned a score to each recipe for each ingredient they have in common with the output,
-and be sorted even higher if the dietary restriction is the same.*/
-QList<QString> MainController::searchRecipes(const QString &entry, const QString &dietRestriction) {
-    QList<QString> result;
-
-    // Load and parse the Recipes.json file
-    QFile file("Recipes.json");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qWarning() << "Failed to open Recipes.json";
-        return result;
-    }
-
-    QByteArray jsonData = file.readAll();
-    file.close();
-
-    QJsonDocument doc = QJsonDocument::fromJson(jsonData);
-    QJsonObject recipesObject = doc.object();
-    QJsonArray recipeArray = recipesObject["RecipeBook"].toArray();
-
-    // Initialize a QMap to store recipe scores
-    QMap<QString, int> recipeScores;
-
-    // Split the search entry into a list of words
-    //QList<QString> searchWords = entry.split(QRegExp("\\W+"), Qt::SkipEmptyParts);
-    QList<QString> searchWords = entry.split(u' ', Qt::SkipEmptyParts);
-
-    // Iterate through each recipe in the dataset
-    for (int i = 0; i < recipeArray.size(); ++i) {
-        QJsonObject recipe = recipeArray[i].toObject();
-        QString title = recipe["title"].toString();
-        QStringList tags = recipe["tags"].toStringList();
-
-        // Initialize score for the current recipe
-        int score = 0;
-
-        // Check common ingredients and update the score
-        QStringList ingredients = recipe["ingredients"].toStringList();
-        for (const QString &ingredient : ingredients) {
-            if (searchWords.contains(ingredient, Qt::CaseInsensitive)) {
-                // Found a common ingredient
-                score += 1;
-            }
-        }
-
-        // Check dietary restriction and update the score
-        QString recipeDiet = tags.contains(dietRestriction, Qt::CaseInsensitive) ? dietRestriction : "";
-        if (!recipeDiet.isEmpty()) {
-            score += 2;  // Higher score for matching dietary restriction
-        }
-
-        // Assign the score to the recipe in the QMap
-        recipeScores[title] = score;
-    }
-
-    // Sort the recipes based on scores in descending order
-    QList<QString> sortedRecipes = sorter(recipeScores);
-
-    // Add the sorted recipes to the result list
-    for (const QString &recipe : sortedRecipes) {
-        result.append(recipe);
-    }
-
-    // Return the final result
-    return result;
 }
