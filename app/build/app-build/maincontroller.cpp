@@ -169,14 +169,14 @@ QList<QString> MainController::sorter(const QMap<QString, int> &dict){
     //qDebug() << occurences << occurences[1] << occurences[2];
     return names;
 }
-std::string filename = "Recipies.json";
-JsonRecipeReader reader(filename);
+//std::string filename = "Recipes.json";
+JsonRecipeReader reader;//(filename);
 //json jsonData1 = readJsonFromFile("Recipies.json");
 
 QString MainController::getJsonRTitle(const int &h){
-    std::string title; // = reader.getRecipeTitle(h);
+    std::string title = "bonjour";//= reader.getRecipeTitle(2);
     QString res = "lol";
-    title = "bonjour";//jsonData1["RecipeBook"][h]["title"];
+    //title = "bonjour";//jsonData1["RecipeBook"][h]["title"];
     res = res.fromStdString(title);
     return res;
 }

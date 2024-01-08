@@ -21,7 +21,7 @@ using namespace std;
 
 class JsonRecipeReader{
 public :
-    JsonRecipeReader(const std::string& filename) : jsonFileName(filename) {
+    JsonRecipeReader(const std::string& filename="Recipes.json") : jsonFileName(filename) {
         loadJson();
     }
 

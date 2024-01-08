@@ -196,7 +196,7 @@ Row {
                                     GridLayout{
                                         //anchors.horizontalCenter: parent.horizontalCenter
                                         id: repeated
-                                        columns: 2
+                                        columns: 3
                                         width: parent.width
                                         columnSpacing: 2
                                         rowSpacing: 10
@@ -220,6 +220,19 @@ Row {
                                                 openRecipe.open()
                                             }
                                         }
+                                        Button { // Ellie :)///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                            text: "LIKE"
+                                            width: 100
+                                            palette.buttonText: "white"
+                                            //anchors.horizontalCenter: parent.horizontalCenter
+                                            background: Rectangle {
+                                                        color: "#1C6F30"
+                                                        radius:12.5
+                                            }
+                                            onClicked: {
+                                                //myPopup.open()
+                                            }
+                                        }
                                     //ON LINE 2
                                         Text {text: model.dietRestriction; color: "#28A745"; Layout.preferredWidth: 75}
 
@@ -236,6 +249,21 @@ Row {
                                                 myPopup.open()
                                             }
                                         }
+
+                                        Button {
+                                            text: "BLANK"
+                                            width: 100
+                                            palette.buttonText: "white"
+                                            //anchors.horizontalCenter: parent.horizontalCenter
+                                            background: Rectangle {
+                                                        color: "#1C6F30"
+                                                        radius:12.5
+                                            }
+                                            onClicked: {
+                                                //myPopup.open()
+                                            }
+                                        }
+
 
                                     }
 
