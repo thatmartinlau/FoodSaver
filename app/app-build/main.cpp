@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "Header/Signin.h"
+#include "Header/Login.h"
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);

@@ -7,8 +7,6 @@ Item {
 
     Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
-        color: "#F0F0F0"
-        border.color: "#CCCCCC"
         anchors.top: parent.top
         anchors.topMargin: parent.height/3.3
 
@@ -67,6 +65,13 @@ Item {
         }
         TextField {
             width: parent.width
+            id: input_telegram_username
+            placeholderTextColor: "#A0A0A0"
+            color: "#544E3D"
+            placeholderText: "Fill in your telegram username"
+        }
+        TextField {
+            width: parent.width
             id: input_password
             placeholderText: "Chose a password"
             placeholderTextColor: "#A0A0A0"
@@ -102,22 +107,25 @@ Item {
                     color: "#1C6F30"
                     radius: 4
             }
-            contentItem: Text {
-                    text: parent.text
-                    font: parent.font
-                    color: "white"
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    padding: 5
+            contentItem: Text { // Text properties
+                text: parent.text
+                font: parent.font
+                color: "white"
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                padding: 5
             }
             onClicked: {
-                if (signin.signIn(input_username.text, input_password.text, input_password_check.text)){
+                if (signin.signIn(input_username.text, input_password.text, input_password_check.text, input_telegram_username.text)){
                     passwordError.visible = false;
                     usernameError.visible = false;
+                    noUsernameError.visible = false;
+                    noPasswordError.visible = false;
                 }
                 input_username.text = ""
                 input_password.text = ""
                 input_password_check.text = ""
+                input_telegram_username.text = ""
             }
         }
 
@@ -127,25 +135,25 @@ Item {
             target: signin
 
             // Errors upon signin
-            onOpenNoUsernameError: {
+            function onOpenNoUsernameError() {
                 noUsernameError.visible = true;
                 usernameError.visible = false;
                 passwordError.visible = false;
                 noPasswordError.visible = false;
             }
-            onOpenPasswordError: {
+            function onOpenPasswordError() {
                 noUsernameError.visible = false;
                 usernameError.visible = false;
                 passwordError.visible = true;
                 noPasswordError.visible = false;
             }
-            onOpenUsernameError: {
+            function onOpenUsernameError() {
                 noUsernameError.visible = false;
                 passwordError.visible = false;
                 usernameError.visible = true;
                 noPasswordError.visible = false;
             }
-            onOpenNoPasswordError: {
+            function onOpenNoPasswordError() {
                 noUsernameError.visible = false;
                 noPasswordError.visible = true;
                 passwordError.visible = false;
@@ -153,12 +161,10 @@ Item {
             }
 
             // Successful singin
-            onOpenMarketPage: {
+            function onOpenMarketPage() {
                 stackView.push(Qt.resolvedUrl("Market.qml"))
             }
-
         }
-
     }
 
     // SIDE + EXTRA BUTTONS
@@ -186,5 +192,4 @@ Item {
             onClicked: Qt.quit()
         }
     }
-
 }

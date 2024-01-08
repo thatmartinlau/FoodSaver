@@ -65,13 +65,6 @@ Item {
     }
 
     // Adding navigation from other pages
-    Connections {
-            target: signinLogic // Assuming signinLogic is accessible here
 
-            onOpenMarketPage: {
-                // Logic to display the Market page
-                // For example:
-                stackView.push(Qt.resolvedUrl("Market.qml"))
-            }
-        }
+
 }

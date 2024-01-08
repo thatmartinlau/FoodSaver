@@ -14,11 +14,12 @@
 
 class User{
 public:
-    User(std::string username, std::string password);
+    User(std::string username, std::string password, std::string telegram);
     ~User();
     std::string get_username();
     bool check_password(std::string input_password);
     void set_telegram(std::string telegram);
+    static bool is_username(std::string username);
     std::string get_telegram();
     //json toJson () const;
 

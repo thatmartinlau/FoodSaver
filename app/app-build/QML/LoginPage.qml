@@ -6,8 +6,6 @@ Item {
     // FOODSAVER LOGO/LABEL
     Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
-        color: "white"
-        border.color: "white"
         anchors.top: parent.top
         anchors.topMargin: parent.height/3.3
 
@@ -24,7 +22,6 @@ Item {
     Rectangle{
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        color:white
 
         Column{
             spacing: 10
@@ -75,24 +72,24 @@ Item {
             Button {
                 anchors.left: parent.left
                 text: "Login"
-                background: Rectangle {
-                        color: "#1C6F30"
-                        radius: 4
-                }
-                contentItem: Text {
-                        text: parent.text
-                        font: parent.font
-                        color: "white"
-                        verticalAlignment: Text.AlignVCenter
-                        horizontalAlignment: Text.AlignHCenter
-                        padding: 5
-                }
                 onClicked: {
                     stackView.push(Qt.resolvedUrl("Market.qml"))
                 }
-            }
 
-            // Implementing connections to C++ code
+                // Button styling
+                background: Rectangle { // Background color
+                    color: "#1C6F30"
+                    radius: 4
+                }
+                contentItem: Text { // Text properties
+                    text: parent.text
+                    font: parent.font
+                    color: "white"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    padding: 5
+                }
+            }
         }
     }
 
