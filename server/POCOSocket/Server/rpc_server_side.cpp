@@ -417,6 +417,24 @@ vector<vector<string>> get_fridge(string username, string password) {
 
 }
 
+unordered_map<string, vector<vector<vector<vector<string>>>>> getMapOfOffers(){
+        unordered_map<string, vector<vector<vector<vector<string>>>>> offerMap;
+
+        // Iterating through the database to retrieve user offers
+        for (const auto& entry : *database) {
+            const std::string& username = entry.first;
+            const UserData& userData = entry.second;
+
+            // Fetching offers for the current user from UserData
+            const std::vector<std::vector<std::vector<std::vector<std::string>>>>& userOffers = userData.offer_list;
+
+            // Assigning the user offers to the offerMap using the username as the index
+            offerMap[username] = userOffers;
+        }
+
+        return offerMap;
+}
+
 int main() {
     rpc::server srv(3333);
     
@@ -431,6 +449,7 @@ int main() {
     //DB Sending
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
+    srv.bind("getMapOfOffers", &getMapOfOffers);
     
     //implement error raising
     

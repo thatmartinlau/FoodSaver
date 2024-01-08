@@ -10,6 +10,9 @@
 #include "fridge.h"
 #include "offer.h"
 #include "user.h"
+#include "rpc/server.h"
+
+
 
 
 //for banned-character-error: TAB, ~, *, >, {, }, [, ], | <- these are all the banned characters.
@@ -338,7 +341,8 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
         list_ingr_price.push_back(price_element);
         update_offer.push_back(list_ingr_price);
     }
-    
+
+
     
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_offer_list", username, password, update_offer);
@@ -346,7 +350,16 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 }
 
 
+std::unordered_map<std::string, std::vector<std::vector<std::vector<std::vector<std::string>>>>>
+get_all_clients_with_offers() {
+    rpc::client cl(HOST_SERVER_NAME, HOST_SERVER_PORT);
 
+    // Perform an RPC call to the server to retrieve all clients with their offers
+    auto clientsWithOffers = cl.call("getMapOfOffers").as<
+        std::unordered_map<std::string, std::vector<std::vector<std::vector<std::vector<std::string>>>>>
+        >();
 
+    return clientsWithOffers;
+}
 
 
