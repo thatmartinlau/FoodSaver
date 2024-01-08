@@ -17,6 +17,7 @@ public:
     User();
     User(std::string username, std::string password);
     ~User();
+    void set_username(std::string username);
     std::string get_username();
     bool check_password(std::string input_password);
     void set_distplay_name(std::string display_name);

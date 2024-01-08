@@ -15,6 +15,10 @@ User::User(std::string username, std::string password) {
 User::~User() {
 }
 
+void User::set_username(std::string username) {
+    this->username = username;
+}
+
 std::string User::get_username() {
     return username;
 }
