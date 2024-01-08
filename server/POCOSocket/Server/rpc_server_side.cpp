@@ -26,7 +26,8 @@ public:
         this->password = password;
     };
     string password;
-    string telegram_username; //NEW ADDITION!!!
+    string telegram_username;
+    
     vector<vector<string>> fridge;
     vector<vector<vector<vector<string>>>> offer_list;
 };

@@ -8,10 +8,11 @@
 //#include <string>
 //#include <ctime>
 
-#include <vector>
 //#include "nlohmann/json.hpp"
 //using json = nlohmann::json;
 //using namespace std;
+
+#include <vector>
 
 class Fridge {
 public:
@@ -24,8 +25,8 @@ public:
     Ingredient pop_elt(Ingredient *getit);
     void saveToJsonFile(const std::string& fileFridge);
     //void sort_fridge(std::string* sort_key);
-    std::vector<Ingredient> sort_ingredients_by_category(std::string sort_key);
-    std::vector<Ingredient> sort_ingredients_by_expiration_date(std::string sort_key);
+    std::vector<Ingredient> sort_ingredients_by_category();
+    std::vector<Ingredient> sort_ingredients_by_expiration_date();
     //json toJson () const;
 
 private:
