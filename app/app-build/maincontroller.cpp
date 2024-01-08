@@ -191,7 +191,7 @@ QString MainController::getJsonRTitle(const int &h){
 /*the function no longer returns recipes from listnames but rather iterates through the Recipes.json seen previously and iterates over the titles of
 the recipes or the tags. for optimal return, there should be assigned a score to each recipe for each ingredient they have in common with the output,
 and be sorted even higher if the dietary restriction is the same.*/
-QList<QString> MainController::searchRecipes(const QString &entry, const QString &dietRestriction) {
+/*QList<QString> MainController::searchRecipes(const QString &entry, const QString &dietRestriction) {
     QList<QString> result;
 
     // Load and parse the Recipes.json file
@@ -253,4 +253,4 @@ QList<QString> MainController::searchRecipes(const QString &entry, const QString
 
     // Return the final result
     return result;
-}
+}*/
