@@ -10,7 +10,7 @@ Session 1 : 27/11
     - recipe ideas given the ingredients you have in your fridge: must determine whether we should use a generating AI or implement an ingredients choice option 
     - seeing people’s fridges: sort of like an Instagram for fridges, where one can add comments
 
-Session 2:
+Session 2: 
 
 Session 3:
     - download XCode on MacOS to download OpenCV 

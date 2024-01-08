@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>QML/Fridge.qml</file>
+        <file>QML/Favorites.qml</file>
+        <file>QML/Market.qml</file>
+        <file>QML/Recipes.qml</file>
+        <file>QML/main.qml</file>
+        <file>QML/LoginPage.qml</file>
+        <file>QML/Settings.qml</file>
+        <file>QML/Profile.qml</file>
+        <file>QML/Selling.qml</file>
+        <file>QML/AddToFridge.qml</file>
+    </qresource>
+</RCC>

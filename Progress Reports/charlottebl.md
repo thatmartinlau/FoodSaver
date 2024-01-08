@@ -16,4 +16,11 @@ Session 3 : 4/12
 Session 4 : 7/12
   Instead of looking for an API food generator, for now we can create a file with tons of recipes that are most used within the   Bachelo, or the most common recipes in general given the Bachelor's international culture. The bonus would be to select only    recipes that are quick and easy to make. These recipes will be put together in a single file so that, from the list of          ingredients in the fridge and their priority for consumption, we can generate a list of recipes. 
   Then, we just have to implement a code that open and look through a file. 
-  
+
+Session 5 : 11/12
+Delving into how  we could organise the file of recipes so that we optimize the structure of the code and simplify its access. Brainstorming on what are the main things someone will be looking at when looking for a recipe, which one should come first, how many recipes should the app show,where can we find recipes.
+Came to a conclusion to use an .CSV file so that we can categorized the recipes into differents categories depending for instance on their type : vegetarian, vegan, fish, meat, gluten free... if they are sweat or salty recipes , the time consumming etc.. 
+Therfore the easiest is to store these recipes in a table hence .CSV file.
+
+Session 6 : 14/12
+Coding the parsing of a .CSV file in C++.

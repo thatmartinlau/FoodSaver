@@ -1,45 +1,30 @@
 #include <iostream>
 #include "rpclib-master/include/rpc/client.h"
-
+#include "../../../test3/front.hpp"
 
 
 //Backend guys make a new user, which asks for functions to be called from serverside! All functions here are focused on getting server-coded functions called.
 //Client connection:
+//The class User from front.cpp would have a private variable serverUser belonging to this class.
+//On every call which requests or requires, or gives data to the server database, simply call the sending/receiving functions given down here.
 
-class User {
+class ServerUser {
                
 public:
     
 //Creates a user for temporary Use.
-    User(std::string username, std::string psswd);
+    ServerUser(std::string username, std::string psswd);//if user doesn't exist in database, add him to database.
+    ~ServerUser();
+
+    void delete_self_in_db(); //deletes the user from the database.
     
-    ~User();
-
-//createClient will add user data, login, to the server. Checks it isnt already in use, makes hash to give user so he can only access his own data.
-//login details given as a list of 2 strings. 1 means user added, 0 means user not added.
-    bool addNewUser();
-
-    
-//Then, we open a session. This checks login details, if valid, opens a session with specific access.
-    bool openSession();
-
-//and to close a session
-    bool closeSession();
-
-//Client sending specific data types. Template function, we can implement differently for each file type- store food in different place to full fridge upload etc.
-//Make sure to add a category in json file which says YO my hash num is this.
-    template<typename File_Type>
-    bool upload_file(File_Type file);
-
-
-//Client asking for data to be received, chooses which type !!Types to be decided still.
-    template <typename File_Type>
-    File_Type receive_file(std::string file_name);
-    
-    template <typename File_Type>
-    bool delete_file(std::string file_name);
-
+    Fridge get_fridge(); //receives the fridge from the database.
+    void update_fridge(); //updates the fridge on the database. Adds/removes necessary items with comparisons. Keeps the local fridge unchanged.
+    std::list<Offer> get_offer_list(); //gets db's offer list for user
+    void update_offer_list(); //updates db's offer list.
+    void update_user(std::string new_username, std::string new_password); //gives new username and password to database.
 private:
-    std::vector<std::string> *login_details;
-
+    rpc::client client;
+    std::string username;
+    std::string password;
 };

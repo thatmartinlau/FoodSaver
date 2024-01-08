@@ -39,3 +39,12 @@ Future Plans:
 
     Integration: Integrate the researched tools and APIs into the app's existing structure.
     Testing: Test these features thoroughly to make sure they work smoothly and without issues.
+
+
+
+Progress report 2:
+we attempted to go forward with the barcode scanner and research on API applications. Unfortunately my pc was unable to install various libraries, and we found that we were not well prepared to work on the barcode scanning feature yet. Over the course of the week, we turned to the actual structure of the code:
+We will implement a recipe finding algorithm. The user will input the ingredients in their fridge that they wish to use, and the algorithm will match them with recipes from the bachelor. This will be directly coded on c++.
+
+Progress report 3:
+Started writing the reciped matching code. I implemented the "countdown" function for the ingredients class (meant to count down till the expiration date comparing expiry_date with the local time), the recipe matcher which given and ingredient will print the recipes that require this ingredient. Also started working on the base classes for fridge, recipe and ingredients. Next session I'll work on bettering the "recipe matching" function to include multiple ingredients and quantities / preferences. Also plan to discuss with the webpage team to check out the design of our website :)
