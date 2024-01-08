@@ -60,3 +60,10 @@ File reorganization on the github repo
 Going to implement C++ functions to update user settings and profile options.
 
 Checking with team on updates - everyone is on holiday, understandably.
+
+WEEK 13:  08/01/24 - 14/01/24
+Monday team meeting: coming together, formulating new plan to finish and link the project progress together.
+Starting work on the telegram bot: obtaining API, starting out the Telegram bot development branch.
+
+
+WEEK 14: 15/01/24 - 21/01/24
