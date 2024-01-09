@@ -431,9 +431,6 @@ int main() {
     //DB Sending
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
-    
-    //implement error raising
-    
     //test read-write of database here:
 //    cout << "Started";
 //    int test1 = test_read_write_csv();
