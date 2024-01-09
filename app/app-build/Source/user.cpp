@@ -20,7 +20,7 @@ std::string User::get_username() {
     return username;
 }
 
-bool User::check_password(std::string input_password) {
+bool User::check_password(std::string input_username, std::string input_password) {
     return input_password == password;
 }
 
@@ -34,5 +34,5 @@ std::string User::get_telegram() {
 
 bool is_username(std::string username) {
     //implement logic for checking if a username has already been used
-    return true;
+    return false;
 }

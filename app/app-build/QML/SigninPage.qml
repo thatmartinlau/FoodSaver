@@ -43,6 +43,12 @@ Item {
             color: "red"
         }
         Text {
+            id: shortPasswordError
+            visible: false // Initially hidden
+            text: "Password must contain at least 8 characters"
+            color: "red"
+        }
+        Text {
             id: usernameError
             visible: false // Initially hidden
             text: "This username is already taken"
@@ -121,6 +127,7 @@ Item {
                     usernameError.visible = false;
                     noUsernameError.visible = false;
                     noPasswordError.visible = false;
+                    shortPasswordError.visible = false;
                 }
                 input_username.text = ""
                 input_password.text = ""
@@ -140,22 +147,33 @@ Item {
                 usernameError.visible = false;
                 passwordError.visible = false;
                 noPasswordError.visible = false;
+                shortPasswordError.visible = false;
             }
             function onOpenPasswordError() {
                 noUsernameError.visible = false;
                 usernameError.visible = false;
                 passwordError.visible = true;
                 noPasswordError.visible = false;
+                shortPasswordError.visible = false;
             }
             function onOpenUsernameError() {
                 noUsernameError.visible = false;
                 passwordError.visible = false;
                 usernameError.visible = true;
                 noPasswordError.visible = false;
+                shortPasswordError.visible = false;
             }
             function onOpenNoPasswordError() {
                 noUsernameError.visible = false;
                 noPasswordError.visible = true;
+                passwordError.visible = false;
+                usernameError.visible = false;
+                shortPasswordError.visible = false;
+            }
+            function onOpenShortPasswordError() {
+                noUsernameError.visible = false;
+                noPasswordError.visible = false;
+                shortPasswordError.visible = true;
                 passwordError.visible = false;
                 usernameError.visible = false;
             }

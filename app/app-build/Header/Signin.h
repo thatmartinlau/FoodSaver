@@ -1,24 +1,23 @@
+
 #ifndef SIGNIN_H
 #define SIGNIN_H
 
 #include <QObject>
-#include <QString>
-
 
 class Signin : public QObject {
     Q_OBJECT
-
 public:
     explicit Signin(QObject *parent = nullptr);
 
-    Q_INVOKABLE bool signIn(const QString &username, const QString &password, const QString &password_check, const QString &telegram);
+    Q_INVOKABLE bool signIn(const QString &username, const QString &password, const QString &passwordCheck, const QString &telegram);
 
 signals:
-    void openMarketPage();
+    void openNoUsernameError();
     void openPasswordError();
     void openUsernameError();
-    void openNoUsernameError();
     void openNoPasswordError();
+    void openMarketPage();
+    void openShortPasswordError();
 };
 
 #endif // SIGNIN_H
