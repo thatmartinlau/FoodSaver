@@ -26,15 +26,22 @@ public:
         this->password = password;
     };
     string password;
-    string telegram_username; //NEW ADDITION!!!
-    vector<vector<string>> fridge;
-    vector<vector<vector<vector<string>>>> offer_list;
+    string display_name;
+    string telegram_username;
+    int gender;
+    int promotion;
+    string building_address;
+    int phone_number;
+    vector<bool> food_and_dietary_restrictions;
+    int telegram_notifications;
+    int marketplace_notifications;
+    vector<vector<vector<string>>> offer_list; //Implied: offer i svector<vector<string>>, containing price and qty as vector<string>, both (both are 1-elt vectors), with Ingredient as vector<string>, like below.
+    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!
 };
 
 
 
-//ESMA LOOK HERE: Up above, I added the telegram_username in case it's implemented.
-//        Down below, I've added the types from rpclib.com, check out my comment on client_side.cpp about them.
+//        Down below, new types for Oscar to fix around and make bug fixes to. Pls and thank you :)
 
 
 //.//////New Types for data transfer: Work these around to mkae them work well pls
