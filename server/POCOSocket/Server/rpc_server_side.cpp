@@ -6,8 +6,9 @@
 #include <sstream>
 #include "rpc/server.h"
 #include "rpc/client.h"
-#include "rpc/this_session.h"
+#include "rpc_client_side_tester_file.hpp"
 #include "rpc/this_handler.h"
+#include "rpc/this_session.h"
 
 using namespace std;
 const string DATABASE_CSV_FILE = "../Server/database.csv";
@@ -35,8 +36,8 @@ public:
     vector<bool> food_and_dietary_restrictions;
     int telegram_notifications;
     int marketplace_notifications;
-    vector<vector<vector<string>>> offer_list; //Implied: offer i svector<vector<string>>, containing price and qty as vector<string>, both (both are 1-elt vectors), with Ingredient as vector<string>, like below.
-    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!
+    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!    
+    vector<vector<vector<string>>> offer_list; //Implied: offer is [Ingredient, [price]]. Offer list is vector of this offer type.
 };
 
 
@@ -55,7 +56,22 @@ struct fridge_vector {
     MSGPACK_DEFINE_ARRAY(fridge_vector)
 };
 
+struct vector_list{
+    vector<string> vec;
+    MSGPACK_DEFINE_ARRAY(vec)   //to use in function get_user_list;
+};
 
+struct basic_user_data {
+    string display_name;
+    string telegram_username;
+    int gender;
+    int promotion;
+    string building_address;
+    int phone_number;
+    vector<bool> food_and_dietary_restrictions;
+    int telegram_notifications;
+    int marketplace_notifications;
+};
 
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
 
@@ -156,8 +172,7 @@ void save_to_csv() { //save data of the map in a csv
 
     //generate a vector of the lines to write. Then, write the lines, using: file << string << endl;
     vector<string> lines;
-    for (auto& [u_name, u_data]: *(database)) {
-        //first, unpack username and password.
+    for (auto& [u_name, u_data]: *(database)) {        
         string line = u_name + basic_csv_separator + u_data.telegram_username + basic_csv_separator + u_data.password + basic_csv_separator;
 
         //then, unpack a fridge into the format: "{[name: category: quantity: expiry_date: priority_level]; [...]; ...}" exactly, modulo any spacebars.
@@ -255,7 +270,6 @@ void init_data_test() { //debug function. Tests database read/write all together
     apple.push_back(name); apple.push_back(category); apple.push_back(qty); apple.push_back(exp_date); apple.push_back(priority_level);
     fridge_darton.push_back(apple); fridge_darton.push_back(apple);
     data.fridge = fridge_darton;
-    data.telegram_username = "USERWOOOOO";
     string m = "Molly";
     (*database)[m] = data;
     string k = "Johnny";
@@ -283,7 +297,7 @@ int test_read_write_csv() {
 
 
 
-//////Back to actual Database Stuff:
+//.////Back to actual Database Stuff:
 
 //DB Manipulation functions:
 void add_user(string username, string password){
@@ -311,9 +325,7 @@ void remove_user(string username, string password){
         auto err_obj = std::make_tuple(123, "Username not found");
         rpc::this_handler().respond_error(err_obj);
     }
-
 }
-
 
 void update_user(string old_username, string old_password, string new_username, string new_password) {
     auto el = database->find(old_username); // Find the old username in the database
@@ -338,7 +350,34 @@ void update_user(string old_username, string old_password, string new_username, 
     auto err_obj = std::make_tuple(123, "Username not found");
     rpc::this_handler().respond_error(err_obj);
 }
-
+    
+}
+    
+void update_user_characs(string username, string password, basic_user_data new_characs) {
+    auto el = database->find(username);
+    
+    if (el != database->end() && password==el->second.password) {
+            second.display_name = new_characs.display_name;
+            second.telegram_username = new_characs.telegram_username;
+            second.gender = new_characs.gender;
+            second.promotion = new_characs.promotion;
+            second.building_address = new_characs.building_address;
+            second.phone_number = new_characs.phone_number;
+            second.food_and_dietary_restrictions = new_characs.food_and_dietary_restrictions;
+            second.telegram_notifications = new_characs.telegram_notifications;
+            second.marketplace_notifications = new_characs.marketplace_notifications;
+    }
+    else if(old_password != el->second.password){
+            // Password does not match
+            auto err_obj = std::make_tuple(507, "Incorrect Password");
+            rpc::this_handler().respond_error(err_obj);
+    }
+else {
+        // Username not found
+        auto err_obj = std::make_tuple(123, "Username not found");
+        rpc::this_handler().respond_error(err_obj);
+    }
+    
 }
 
 void update_fridge(std::string username, string password, vector<vector<string>> &new_fridge) {
@@ -424,6 +463,15 @@ vector<vector<string>> get_fridge(string username, string password) {
 
 }
 
+vector<string> get_user_name_list() {
+        vector<string> user_list;
+        for (auto& [key, value] : *database) {
+            user_list.push_back(key);
+        }
+        return user_list;
+}
+
+
 int main() {
     rpc::server srv(3333);
     
@@ -431,6 +479,7 @@ int main() {
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
+    srv.bind("update_user_characs", &update_user_characs);
     
     srv.bind("update_fridge", &update_fridge);
     srv.bind("update_offer", &update_offer);
@@ -438,6 +487,10 @@ int main() {
     //DB Sending
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
+    
+    //General Functions
+    srv.bind("get_user_name_list", &get_user_name_list);
+    
     //test read-write of database here:
 //    cout << "Started";
 //    int test1 = test_read_write_csv();

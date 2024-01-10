@@ -57,6 +57,7 @@ private:
     int marketplace_notifications;
     Fridge user_fridge;
     std::vector<Offer> offer_list;
+    
 };
 
 #endif // USER_H

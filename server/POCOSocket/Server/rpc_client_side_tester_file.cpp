@@ -32,9 +32,27 @@ void ServerUser::delete_self_in_db() {
     new_cli.call("remove_user", username, password);
 }
 
-void ServerUser::update_user(string new_username, string new_password) {
+void ServerUser::update_user_characteristics(User usr) {
+    basic_user_data basic_data;
+    basic_data.display_name = usr.display_name;
+    basic_data.telegram_username = usr.telegram_username;
+    basic_data.gender = usr.gender;
+    basic_data.promotion = usr.promotion;
+    basic_data.building_address = usr.building_address;
+    basic_data.phone_number = usr.phone_number;
+    basic_data.food_and_dietary_restrictions = usr.food_and_dietary_restrictions;
+    basic_data.telegram_notifications = usr.telegram_notifications;
+    basic_data.marketplace_notifications = usr.marketplace_notifications;
+    
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_user", username, password, new_username, new_password);
+    new_cli.call("update_user_characteristics", username, password, basic_data);
+}
+
+//////////General Functions:
+
+vector<string> get_user_name_list() {
+    rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    new_client.call("get_user_name_list").as<vector_list>();
 }
 
 
@@ -194,6 +212,24 @@ struct fridge_vector {
     vector<vector<string>> fridge_vector;
     MSGPACK_DEFINE_ARRAY(fridge_vector)
 };
+
+struct vector_list{
+    vector<string> vec;
+    MSGPACK_DEFINE_ARRAY(vec)   //to use in function get_user_list;
+};
+
+struct basic_user_data {
+    string display_name;
+    string telegram_username;
+    int gender;
+    int promotion;
+    string building_address;
+    int phone_number;
+    vector<bool> food_and_dietary_restrictions;
+    int telegram_notifications;
+    int marketplace_notifications;
+};
+
 
 //ayo Es^ these are the interesting ideas I started to explore from rpclib.com, find out if this works or not, and find a better method if it exists othw. rpclib.com will have all necessary info, hopefully
 
