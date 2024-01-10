@@ -17,13 +17,13 @@
 //On every call which requests or requires, or gives data to the server database, simply call the sending/receiving functions given down here.
 
 class ServerUser {
-               
+    
 public:
     
-//Creates a user for temporary Use.
+    //Creates a user for temporary Use.
     ServerUser(std::string username, std::string psswd);//if user doesn't exist in database, add him to database.
     ~ServerUser();
-
+    
     void delete_self_in_db(); //deletes the user from the database.
     
     Fridge get_fridge(); //receives the fridge from the database.
@@ -31,10 +31,14 @@ public:
     std::vector<Offer> get_offer_list(); //gets db's offer list for user
     void update_offer_list(vector<Offer> &offer_list); //updates db's offer list.
     void update_user(std::string new_username, std::string new_password); //gives new username and password to database.
+    void update_user_characteristics(User usr); //updates user's characteristics, ASIDE from username/password. that's update+user.
+    
 private:
     std::string username;
     std::string password;
 };
 
+
+vector<string> get_user_name_list();
 
 #endif

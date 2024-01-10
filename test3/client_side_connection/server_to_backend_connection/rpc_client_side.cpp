@@ -32,9 +32,27 @@ void ServerUser::delete_self_in_db() {
     new_cli.call("remove_user", username, password);
 }
 
-void ServerUser::update_user(string new_username, string new_password) {
+void ServerUser::update_user_characteristics(User usr) {
+    basic_user_data basic_data;
+    basic_data.display_name = usr.display_name;
+    basic_data.telegram_username = usr.telegram_username;
+    basic_data.gender = usr.gender;
+    basic_data.promotion = usr.promotion;
+    basic_data.building_address = usr.building_address;
+    basic_data.phone_number = usr.phone_number;
+    basic_data.food_and_dietary_restrictions = usr.food_and_dietary_restrictions;
+    basic_data.telegram_notifications = usr.telegram_notifications;
+    basic_data.marketplace_notifications = usr.marketplace_notifications;
+    
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_user", username, password, new_username, new_password);
+    new_cli.call("update_user_characteristics", username, password, basic_data);
+}
+
+//////////General Functions:
+
+vector<string> get_user_name_list() {
+    rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    new_client.call("get_user_name_list").as<vector_list>();
 }
 
 
@@ -54,7 +72,7 @@ Food_class mapCategoryToEnum(const std::string& category) {
         {"unspecified", unspecified},
         {"other", other}
     };
-
+    
     auto it = categoryMap.find(category);
     if (it != categoryMap.end()) {
         return it->second;
@@ -69,7 +87,7 @@ Priority mapprioToEnum(const std::string& priority_level) {
         {"orange",orange},
         {"green",green}
     };
-
+    
     auto it = PrioMap.find(priority_level);
     if (it != PrioMap.end()) {
         return it->second;
@@ -91,7 +109,7 @@ std::string_view foodClassToString(Food_class foodClass) {
         {Food_class::unspecified, "unspecified"},
         {Food_class::other, "other"}
     };
-
+    
     auto it = FoodClassToString.find(foodClass);
     if (it != FoodClassToString.end()) {
         return it->second;
@@ -108,7 +126,7 @@ std::string priorityToString(Priority priority) {
         {Priority::orange, "orange"},
         {Priority::green, "green"}
     };
-
+    
     auto it = PriorityToString.find(priority);
     if (it != PriorityToString.end()) {
         return it->second;
@@ -121,63 +139,63 @@ std::string priorityToString(Priority priority) {
 //OSCAR's CODE: to adjust and change if u have a way which matches smth u prefer to use.
 vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, expiry_date, quantity, category, priority_level], all as string s. I modified the format Adam
     vector<string> vec;
-
+    
     // first push name
     vec.push_back(ingr.get_name());
-
+    
     // then  push expiry_date
-
+    
     vec.push_back(to_string(ingr.get_expiry_date().get_day()) +"."+to_string(ingr.get_expiry_date().get_month())+ "." + to_string(ingr.get_expiry_date().get_year())); // date --> 22.10.2024 --> string
-
-
+    
+    
     // push quantity
     vec.push_back(to_string(ingr.get_quantity()));
-
-
+    
+    
     // push category
-
+    
     string cat_string(foodClassToString(ingr.get_food_class())); // Convert std::string_view to std::string
     vec.push_back(cat_string);
-
+    
     // push priority_level
-
+    
     string priority_string(priorityToString(ingr.get_priority()));
     vec.push_back(priority_string);
-
+    
     return vec;
 }
 
 
 Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar work yo magic
- // Convert string name into --> string name --> nothing to change
+    // Convert string name into --> string name --> nothing to change
     std::string name = vector[0];
-
+    
     // Convert date expiry_date --> string --> nothing to change
-
+    
     std::istringstream ss(vector[1]);
     std::vector<int> intArray;
     std::string token;
-
+    
     while (std::getline(ss, token, '.')) {
         intArray.push_back(std::stoi(token));
     }
-
+    
     Date expiry_date = Date(intArray[0], intArray[1], intArray[2]);
-
-
+    
+    
     // Convert string quantity into --> int quantity :
     int quantity = std::stoi(vector[2]);
-
+    
     // Convert string category into --> in food class enum
-
+    
     Food_class category = mapCategoryToEnum(vector[3]);
-
-
-
+    
+    
+    
     // Convert priority level string into --> enum
-
+    
     Priority priority_level = mapprioToEnum(vector[4]);
-
+    
     // Ingredient::Ingredient(string name, Date expiry_date, int quantity, Food_class category){
     Ingredient ingredient = Ingredient(name,expiry_date, quantity, category);
     ingredient.set_priority(priority_level);
@@ -194,6 +212,24 @@ struct fridge_vector {
     vector<vector<string>> fridge_vector;
     MSGPACK_DEFINE_ARRAY(fridge_vector)
 };
+
+struct vector_list{
+    vector<string> vec;
+    MSGPACK_DEFINE_ARRAY(vec)   //to use in function get_user_list;
+};
+
+struct basic_user_data {
+    string display_name;
+    string telegram_username;
+    int gender;
+    int promotion;
+    string building_address;
+    int phone_number;
+    vector<bool> food_and_dietary_restrictions;
+    int telegram_notifications;
+    int marketplace_notifications;
+};
+
 
 //ayo Es^ these are the interesting ideas I started to explore from rpclib.com, find out if this works or not, and find a better method if it exists othw. rpclib.com will have all necessary info, hopefully
 
@@ -223,13 +259,13 @@ Fridge ServerUser::get_fridge() { //
     //Oscar work yo magic
     //     Fridge(std::list<Ingredient> init_list);
     std::vector<Ingredient> vector_Ingredient;
-
+    
     for (size_t i = 0; i < fridge_vector1.fridge_vector.size(); ++i) {
-
+        
         vector<string> ingredient = fridge_vector1.fridge_vector[i];
         vector_Ingredient.push_back(ingredient_from_vector(ingredient));
     }
-
+    
     return Fridge(vector_Ingredient);
 }
 
@@ -237,10 +273,10 @@ Fridge ServerUser::get_fridge() { //
 void ServerUser:: update_fridge(Fridge &f_input) {
     //convert to database-wanted format: OSCAR'S METHOD
     vector<vector<string>> fridge;
-
-
+    
+    
     vector<Ingredient> ingredient_list = f_input.get_list();
-
+    
     for (size_t i = 0; i < ingredient_list.size(); ++i){
         // Convert each Ingredient to vector format using Oscar's code
         vector<string> ingredient = ingredient_to_vector(ingredient_list[i]);  // Pass the current Ingredient object
@@ -253,7 +289,7 @@ void ServerUser:: update_fridge(Fridge &f_input) {
         // Push the converted ingredient into the fridge vector
         fridge.push_back(ingredient);
     }
-
+    
     /*
     for (list<Ingredient>::iterator i = f_input.ingredient_list.begin(); i != f_input.ingredient_list.end(); i++) {
         
@@ -262,7 +298,7 @@ void ServerUser:: update_fridge(Fridge &f_input) {
         fridge.push_back(ingredient_to_vector(ingredient));
     }
     */
-
+    
     //send as new format
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_fridge", username, password, fridge);
@@ -279,18 +315,18 @@ vector<Offer> ServerUser::get_offer_list() {
     
     //    double doubleValue = std::stod(numericalString);
     std::vector<Offer> vector_offer;
-
-
+    
+    
     for (size_t i = 0; i < offer_list_vector1.offer_list.size(); ++i) {
         double price = std::stod(offer_list_vector1.offer_list[i][1][0][0]);
         // offer_list[i][0] convert into a vector of ingredient .
-
+        
         std::vector<Ingredient> vector_offer_list;
-
+        
         for (size_t j = 0; j < offer_list_vector1.offer_list[i][0].size(); ++i) {
             vector_offer_list.push_back(ingredient_from_vector(offer_list_vector1.offer_list[i][0][j]));
         }
-
+        
         Offer offer = Offer(vector_offer_list);
         offer.set_price(price);
         vector_offer.push_back(offer);
@@ -321,7 +357,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
                 if (char_to_exclude_satisfied(*it) == false) {cout << "ValueError: ingredient contains disallowed characters. See top of client_side for list.";return;}
             }
             update_list_ingredient.push_back(ingredient_vector);
-
+            
         }
         vector<vector<vector<string>>> list_ingr_price;
         list_ingr_price.push_back(update_list_ingredient);
@@ -337,7 +373,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
     
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_offer_list", username, password, update_offer);
-
+    
 }
 
 
