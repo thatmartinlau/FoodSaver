@@ -10,11 +10,10 @@ bool Signin::signIn(const QString &username, const QString &password, const QStr
         return false;
     }
 
-    //THE FOLLOWING CODE DOES NOT WORK
-    //else if (User::is_username(username.toStdString())) {
-    //    emit openUsernameError();
-    //    return false;
-    //}
+    else if (User::is_username(username.toStdString())) {
+        emit openUsernameError();
+        return false;
+    }
 
     else if (password== "" || passwordCheck== "") {
         emit openNoPasswordError();

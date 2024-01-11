@@ -32,7 +32,7 @@ std::string User::get_telegram() {
     return telegram_username;
 }
 
-bool is_username(std::string username) {
+bool User::is_username(std::string username) {
     //implement logic for checking if a username has already been used
     return false;
 }
