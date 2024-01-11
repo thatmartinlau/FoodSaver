@@ -39,7 +39,6 @@ public:
     UserData(string password){
         this->password = password;
     };
-    ~UserData() {}
     string password;
     string display_name;
     string telegram_username;
@@ -129,7 +128,7 @@ void read_simple_types_from_csv() {
         basic_u_data.promotion = user_data[5];
         basic_u_data.building_address = user_data[6];
         basic_u_data.phone_number = user_data[7];
-        basic_u_data.food_and_dietary_restrictions = user_data[7]; //
+        basic_u_data.food_and_dietary_restrictions = user_data[7]; //convert first
         basic_u_data.telegram_notifications = user_data[8];
         basic_u_data.marketplace_notifications = user_data[9];
         
