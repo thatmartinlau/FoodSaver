@@ -3,7 +3,7 @@
 #include<vector>
 #include <sstream>
 #include "rpc/client.h"
-#include "rpc_client_side.hpp"
+#include "rpc_client_side_tester_file.hpp"
 
 
 
@@ -137,6 +137,8 @@ std::string priorityToString(Priority priority) {
 
 
 //OSCAR's CODE: to adjust and change if u have a way which matches smth u prefer to use.
+
+//THIS WORKS !!
 vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, expiry_date, quantity, category, priority_level], all as string s. I modified the format Adam
     vector<string> vec;
     
@@ -164,6 +166,7 @@ vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [nam
     
     return vec;
 }
+
 
 
 Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar work yo magic
@@ -204,7 +207,7 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
 
 //.//////New Types for data transfer:
 struct offer_list_vector {
-    vector<vector<vector<vector<string>>>> offer_list;
+    vector<vector<vector<string>>> offer_list;
     MSGPACK_DEFINE_ARRAY(offer_list)
 };
 
@@ -270,6 +273,7 @@ Fridge ServerUser::get_fridge() { //
 }
 
 
+
 void ServerUser:: update_fridge(Fridge &f_input) {
     //convert to database-wanted format: OSCAR'S METHOD
     vector<vector<string>> fridge;
@@ -292,7 +296,7 @@ void ServerUser:: update_fridge(Fridge &f_input) {
     
     /*
     for (list<Ingredient>::iterator i = f_input.ingredient_list.begin(); i != f_input.ingredient_list.end(); i++) {
-        
+
         //convert ingredient to vector format USING OSCAR's CODE
         vector<string> ingredient;
         fridge.push_back(ingredient_to_vector(ingredient));
@@ -306,7 +310,11 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
 
 
-vector<Offer> ServerUser::get_offer_list() {
+// To re-do !!
+
+
+
+vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     //vector<vector<vector<vector<string>>>> offer_list_vector = new_cli.call("get_offer_list", username, password);
     offer_list_vector offer_list_vector1 = new_cli.call("get_fridge", username, password).as<offer_list_vector>();
@@ -316,20 +324,12 @@ vector<Offer> ServerUser::get_offer_list() {
     //    double doubleValue = std::stod(numericalString);
     std::vector<Offer> vector_offer;
     
-    
     for (size_t i = 0; i < offer_list_vector1.offer_list.size(); ++i) {
-        double price = std::stod(offer_list_vector1.offer_list[i][1][0][0]);
-        // offer_list[i][0] convert into a vector of ingredient .
-        
-        std::vector<Ingredient> vector_offer_list;
-        
-        for (size_t j = 0; j < offer_list_vector1.offer_list[i][0].size(); ++i) {
-            vector_offer_list.push_back(ingredient_from_vector(offer_list_vector1.offer_list[i][0][j]));
-        }
-        
-        Offer offer = Offer(vector_offer_list);
-        offer.set_price(price);
-        vector_offer.push_back(offer);
+        Offer offer_i;
+        offer_i.set_ingredient(ingredient_from_vector(offer_list_vector1.offer_list[i][0]));
+        double price = std::stod(offer_list_vector1.offer_list[i][1][0]);
+        offer_i.set_price(price);
+        vector_offer.push_back(offer_i);
     }
     return vector_offer;
 }
@@ -337,39 +337,43 @@ vector<Offer> ServerUser::get_offer_list() {
 
 void ServerUser::update_offer_list(vector<Offer> &offer_list) {
     //Oscar work yo magiiiic: same format as get_offer_list for the data we want to give to the server.
-    // vector<Offer> -->
-    // [ [ [ [name1, quantity1, category1, expiry_date1, priority_level1], [name2, quantity2, category2, expiry_date2, priority_level2], ...], [[price]] ],  .... ,[ [ [name1', quantity1', category1', expiry_date1', priority_level1'], [name2', quantity2', category2', expiry_date2', priority_level2'], ...], [[price']] ]
-    // [[Ingredient list1, price1] , [Ingredient list 2, price2] ,...]
-    vector<vector<vector<vector<string>>>> update_offer;
+    // vector<Offer> --> [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
+    
+    vector<vector<vector<string>>> update_offer;
     for (size_t j = 0; j < offer_list.size(); ++j){
         Offer offer_elem =  offer_list[j];
+        
+        // deal with price
         double price = offer_elem.get_price();
         string string_price = to_string(price);
-        //Offer(std::vector<Ingredient> ingredient_list);
-        vector<Ingredient> list_ingredient = offer_list[j].get_ingredient_list(); // ask for sixtine for such a method in class offer
-        vector<vector<string>> update_list_ingredient;
-        //ingredient_to_vector(Ingredient)
-        for(size_t i = 0; i<list_ingredient.size(); i++){
-            //vector of an ingredient:
-            vector<string> ingredient_vector = ingredient_to_vector(list_ingredient[i]);
-            //check broken characters: if banned or not
-            for (vector<string>::iterator it= ingredient_vector.begin(); it != ingredient_vector.end(); it++) {
-                if (char_to_exclude_satisfied(*it) == false) {cout << "ValueError: ingredient contains disallowed characters. See top of client_side for list.";return;}
-            }
-            update_list_ingredient.push_back(ingredient_vector);
-            
+        
+        vector<string> price_vector;
+        
+        price_vector.push_back(string_price);
+        
+        
+        // deal with Ingredient
+        Ingredient ingredient_offer = offer_elem.get_ingredient();
+        
+        
+        vector<string> ingredient_vector = ingredient_to_vector(ingredient_offer);
+        
+        // for CSV file !
+        for (vector<string>::iterator it= ingredient_vector.begin(); it != ingredient_vector.end(); it++) {
+            if (char_to_exclude_satisfied(*it) == false) {cout << "ValueError: ingredient contains disallowed characters. See top of client_side for list.";return;}
         }
-        vector<vector<vector<string>>> list_ingr_price;
-        list_ingr_price.push_back(update_list_ingredient);
-        vector<vector<string>> price_element ;
-        vector<string> inner_vector;
-        inner_vector.push_back(string_price);
-        price_element.push_back(inner_vector);
-        // adding the [[price]] to the array with the list ingredients
-        list_ingr_price.push_back(price_element);
-        update_offer.push_back(list_ingr_price);
+        vector<vector<string>> ingredient_price;
+        
+        ingredient_price.push_back(ingredient_vector);
+        ingredient_price.push_back(price_vector);
+        
+        //check broken characters: if banned or not
+        
+        update_offer.push_back(ingredient_price);
     }
     
+    
+    // make sure the format works !!
     
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_offer_list", username, password, update_offer);
@@ -377,7 +381,56 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 }
 
 
+int test_msgpack(){
+    
+    
+    
+    
+    /*
+    vector<vector<vector<string>>> ex_offer_list;
+
+    vector<vector<string>> ingredient_price ;
+
+    vector<string> ingredient;
+
+    vector<string> price;
 
 
 
+    vector<string> ingredient.push_back("apple");
+    vector<string> ingredient.push_back("11.11.2005");
+    vector<string> ingredient.push_back("25kg");
+    vector<string> ingredient.push_back("meat");
+    vector<string> ingredient.push_back("red");
+
+    vector<string> price.push_back("11$");
+
+    ingredient_price.push_back(ingredient);
+    ingredient_price.push_back(price);
+    ex_offer_list.push_back(ingredient_price);
+    */
+    
+    Offer offer;
+    offer.set_ingredient(Ingredient("apple", Date(24,6,2004) , 1, drink));
+    offer.set_price(1.5);
+    vector<Offer> offer_vector;
+    offer_vector.push_back(offer);
+    
+    ServerUser srv1_usr("oscar", "123");
+    
+    srv1_usr.update_offer_list(offer_vector);
+    
+    
+    
+    return 1;
+    
+    
+    // [name, expiry_date, quantity, category, priority_level]
+    
+    
+}
+
+
+
+//int var = test_msgpack();
 
