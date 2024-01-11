@@ -16,6 +16,36 @@ string HOST_SERVER_NAME = "127.0.0.1"; //change to Server later.
 int HOST_SERVER_PORT = 3333;
 
 
+//.//////New Types for data transfer:
+struct offer_list_vector {
+    vector<vector<vector<string>>> offer_list;
+    MSGPACK_DEFINE_ARRAY(offer_list)
+};
+
+struct fridge_vector {
+    vector<vector<string>> fridge_vector;
+    MSGPACK_DEFINE_ARRAY(fridge_vector)
+};
+
+struct vector_list{
+    vector<string> vec;
+    MSGPACK_DEFINE_ARRAY(vec)   //to use in function get_user_list;
+};
+
+struct basic_user_data {
+    string display_name;
+    string telegram_username;
+    int gender;
+    int promotion;
+    string building_address;
+    int phone_number;
+    list<bool> food_and_dietary_restrictions;
+    int telegram_notifications;
+    int marketplace_notifications;
+    MSGPACK_DEFINE_ARRAY(display_name, telegram_username, gender, promotion, building_address, phone_number, food_and_dietary_restrictions, telegram_notifications, marketplace_notifications)
+};
+
+
 //.///////// User functions
 
 ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user not in db already. Oth, just initialise connection.
@@ -34,15 +64,15 @@ void ServerUser::delete_self_in_db() {
 
 void ServerUser::update_user_characteristics(User usr) {
     basic_user_data basic_data;
-    basic_data.display_name = usr.display_name;
-    basic_data.telegram_username = usr.telegram_username;
-    basic_data.gender = usr.gender;
-    basic_data.promotion = usr.promotion;
-    basic_data.building_address = usr.building_address;
-    basic_data.phone_number = usr.phone_number;
-    basic_data.food_and_dietary_restrictions = usr.food_and_dietary_restrictions;
-    basic_data.telegram_notifications = usr.telegram_notifications;
-    basic_data.marketplace_notifications = usr.marketplace_notifications;
+    basic_data.display_name = usr.get_display_name();
+    basic_data.telegram_username = usr.get_telegram_username();
+    basic_data.gender = usr.get_gender();
+    basic_data.promotion = usr.get_promotion();
+    basic_data.building_address = usr.get_building_address();
+    basic_data.phone_number = usr.get_phone_number();
+    basic_data.food_and_dietary_restrictions = usr.get_food_and_dietary_restrictions();
+    basic_data.telegram_notifications = usr.get_telegram_notifications();
+    basic_data.marketplace_notifications = usr.get_marketplace_notifications();
     
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_user_characteristics", username, password, basic_data);
@@ -205,33 +235,7 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
     return ingredient;
 }
 
-//.//////New Types for data transfer:
-struct offer_list_vector {
-    vector<vector<vector<string>>> offer_list;
-    MSGPACK_DEFINE_ARRAY(offer_list)
-};
 
-struct fridge_vector {
-    vector<vector<string>> fridge_vector;
-    MSGPACK_DEFINE_ARRAY(fridge_vector)
-};
-
-struct vector_list{
-    vector<string> vec;
-    MSGPACK_DEFINE_ARRAY(vec)   //to use in function get_user_list;
-};
-
-struct basic_user_data {
-    string display_name;
-    string telegram_username;
-    int gender;
-    int promotion;
-    string building_address;
-    int phone_number;
-    vector<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
-};
 
 
 //ayo Es^ these are the interesting ideas I started to explore from rpclib.com, find out if this works or not, and find a better method if it exists othw. rpclib.com will have all necessary info, hopefully

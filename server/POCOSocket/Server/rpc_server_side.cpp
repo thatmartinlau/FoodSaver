@@ -14,6 +14,7 @@ using namespace std;
 const string Database_simple_data = "databases/database_simple_data.csv";
 const string Database_offer_list_data = "databases/database_offer_list_data.csv";
 const string Database_fridge_data = "databases/database_fridge_data.csv";
+const string Database_list_of_restrictions_data = "databases/database_restrictions_data.csv";
 
 //FILE FORMATS:
 
@@ -23,45 +24,10 @@ const string Database_fridge_data = "databases/database_fridge_data.csv";
 //Offer List: vector<vector<vector<vector<string>>>>, looking like {Offer1, Offer2, etc}.
 //Database: unordered_map<string, UserData>, dicts as [], looking like  [username1: UserData, username2: UserData], with UserData having:
 
-class UserData {
-public:
-    UserData(string password, basic_user_data basic_u_data) {
-        display_name = basic_u_data.display_name;
-        telegram_username = basic_u_data.telegram_username;
-        gender = basic_u_data.gender;
-        promotion = basic_u_data.promotion;
-        building_address = basic_u_data.building_address;
-        phone_number = basic_u_data.phone_number;
-        food_and_dietary_restrictions = basic_u_data.food_and_dietary_restrictions;
-        telegram_notifications = basic_u_data.telegram_notifications;
-        marketplace_notifications = basic_u_data.marketplace_notifications;
-    };
-    UserData(string password){
-        this->password = password;
-    };
-    ~UserData() {}
-    string password;
-    string display_name;
-    string telegram_username;
-    int gender;
-    int promotion;
-    string building_address;
-    int phone_number;
-    vector<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
-    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!    
-    vector<vector<vector<string>>> offer_list; //Implied: offer is [Ingredient, [price]]. Offer list is vector of this offer type.
-};
-
-
-
-//        Down below, new types for Oscar to fix around and make bug fixes to. Pls and thank you :)
-
-
-//.//////New Types for data transfer: Work these around to mkae them work well pls
+//Data type declarations
+//.//////New Types for data transfer:
 struct offer_list_vector {
-    vector<vector<vector<vector<string>>>> offer_list;
+    vector<vector<vector<string>>> offer_list;
     MSGPACK_DEFINE_ARRAY(offer_list)
 };
 
@@ -82,10 +48,50 @@ struct basic_user_data {
     int promotion;
     string building_address;
     int phone_number;
-    vector<bool> food_and_dietary_restrictions;
+    list<bool> food_and_dietary_restrictions;
     int telegram_notifications;
     int marketplace_notifications;
+    MSGPACK_DEFINE_ARRAY(display_name, telegram_username, gender, promotion, building_address, phone_number, food_and_dietary_restrictions, telegram_notifications, marketplace_notifications)
 };
+
+
+class UserData {
+public:
+    UserData(string password, basic_user_data basic_u_data) {
+        display_name = basic_u_data.display_name;
+        telegram_username = basic_u_data.telegram_username;
+        gender = basic_u_data.gender;
+        promotion = basic_u_data.promotion;
+        building_address = basic_u_data.building_address;
+        phone_number = basic_u_data.phone_number;
+        food_and_dietary_restrictions = basic_u_data.food_and_dietary_restrictions;
+        telegram_notifications = basic_u_data.telegram_notifications;
+        marketplace_notifications = basic_u_data.marketplace_notifications;
+    };
+    UserData(string password){
+        this->password = password;
+    };
+    UserData() {}
+    ~UserData() {}
+    string password;
+    string display_name;
+    string telegram_username;
+    int gender;
+    int promotion;
+    string building_address;
+    int phone_number;
+    int telegram_notifications;
+    int marketplace_notifications;
+    list<bool> food_and_dietary_restrictions;
+    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!    
+    vector<vector<vector<string>>> offer_list; //Implied: offer is [Ingredient, [price]]. Offer list is vector of this offer type.
+};
+
+
+
+//        Down below, new types for Oscar to fix around and make bug fixes to. Pls and thank you :)
+
+
 
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
 
@@ -118,31 +124,38 @@ void read_simple_types_from_csv() {
     
     for (auto line_it: lines) { //iterate through each user, add up all the factors into UserData , into database.
         vector<string> user_data;
-        for (string line_it_element; getline(line_it, line_it_element, basic_csv_separator);) {
-            user_data.push_back(line_it_element);
+        
+        stringstream line_it_stream(line_it);
+        for (string line_it_elt; getline(line_it_stream, line_it_elt, basic_csv_separator);) {
+            user_data.push_back(line_it_elt);
         }
         //fill basic user data, with all types
         basic_user_data basic_u_data;
         basic_u_data.display_name = user_data[2];
         basic_u_data.telegram_username = user_data[3];
-        basic_u_data.gender = user_data[4];
-        basic_u_data.promotion = user_data[5];
+        basic_u_data.gender = std::stoi(user_data[4]); //convert to int
+        basic_u_data.promotion = std::stoi(user_data[5]); //convert to int
         basic_u_data.building_address = user_data[6];
-        basic_u_data.phone_number = user_data[7];
-        basic_u_data.food_and_dietary_restrictions = user_data[7]; //
-        basic_u_data.telegram_notifications = user_data[8];
-        basic_u_data.marketplace_notifications = user_data[9];
+        basic_u_data.phone_number = std::stoi(user_data[7]); //convert to int
+        //basic_user_data's list<bool> taken out into dietary_restrictions_from_csv functions.
+        basic_u_data.telegram_notifications = std::stoi(user_data[8]); //convert to int
+        basic_u_data.marketplace_notifications = std::stoi(user_data[9]);//convert to int
         
-        *database[user_data[0]] = UserData(user_data[1], basic_u_data) //0 is username, 1 is password, rest is U-data.
-        
-        
+        (*database)[user_data[0]] = UserData(user_data[1], basic_u_data); //0 is username, 1 is password, rest is U-data.
     }
 }
 
+
+
 void read_fridge_from_csv() { //call AFTER simple_types, before offer_list_from_csv.
-    
+    istream file;
+    file.open(Database_list_of_restrictions_data);
 }
 void read_offer_list_from_csv() {
+    
+}
+
+void dietary_restrictions_from_csv() {
     
 }
 
@@ -151,8 +164,16 @@ void read_from_csv() {
     read_simple_types_from_csv();//so we initialise here the database list. WIth basic types only.
     read_fridge_from_csv(); //use already initialized database.
     read_offer_list_from_csv();
+    read_dietary_restrictions_from_csv();
 }
 
+
+void save_to_csv() {
+    save_simple_types();
+    save_fridges();
+    save_offer_lists();
+    save_dietary_restrictions();
+}
 
 
 
@@ -416,7 +437,7 @@ void update_user(string old_username, string old_password, string new_username, 
     
 }
     
-void update_user_characs(string username, string password, basic_user_data new_characs) {
+void update_user_characteristics(string username, string password, basic_user_data new_characs) {
     auto el = database->find(username);
     
     if (el != database->end() && password==el->second.password) {
