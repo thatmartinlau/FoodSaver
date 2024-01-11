@@ -20,7 +20,7 @@ public:
     std::string get_username();
     bool check_password(std::string input_username, std::string input_password);
     void set_telegram(std::string telegram);
-    bool is_username(std::string username);
+    static bool is_username(std::string username);
     std::string get_telegram();
     //json toJson () const;
 
