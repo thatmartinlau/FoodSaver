@@ -11,18 +11,20 @@
 #include "rpc/this_session.h"
 
 using namespace std;
+
+
+//Database storage files: no touchy :))
 const string Database_simple_data = "databases/database_simple_data.csv";
 const string Database_offer_list_data = "databases/database_offer_list_data.csv";
-const string Database_fridge_data = "databases/database_fridge_data.csv";
-const string Database_list_of_restrictions_data = "databases/database_restrictions_data.csv";
+const string Database_fridge_and_food_lists_data = "databases/database_fridge_data.csv";
 
 //FILE FORMATS:
 
 //Ingredients: vector<string>>
 //Fridge: vector<vector<string>>
-//Offer: vector<vector<vector<string>>>: with vectors represented as {}, an offer looks like: { {Ingredient1, Ingredient2, etc}, {{price}} } where all elements are strings.
-//Offer List: vector<vector<vector<vector<string>>>>, looking like {Offer1, Offer2, etc}.
-//Database: unordered_map<string, UserData>, dicts as [], looking like  [username1: UserData, username2: UserData], with UserData having:
+//Offer: vector<vector<string>>>: with vectors represented as {}, an offer looks like: {Ingredient1, {price}} where all elements are strings.
+//Offer List: <vector<vector<vector<string>>>>, looking like {Offer1, Offer2, etc}.
+//Database: unordered_map<string, UserData>, dicts as [], looking like  {username1: UserData, username2: UserData}, with UserData having:
 
 //Data type declarations
 //.//////New Types for data transfer:
@@ -89,14 +91,9 @@ public:
 
 
 
-//        Down below, new types for Oscar to fix around and make bug fixes to. Pls and thank you :)
-
-
 
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
 
-
-//LIST of chars to exclude: TAB, ~, *, >, {, }, [, ], |
 
 //some needs for delimiter type within getline():
 char basic_csv_separator = (char) 9; //Replaces comma. Convention to use comma in comments. Same for the below.
@@ -137,7 +134,7 @@ void read_simple_types_from_csv() {
         basic_u_data.promotion = std::stoi(user_data[5]); //convert to int
         basic_u_data.building_address = user_data[6];
         basic_u_data.phone_number = std::stoi(user_data[7]); //convert to int
-        //basic_user_data's list<bool> taken out into dietary_restrictions_from_csv functions.
+        //basic_user_data's list<bool> taken out in fridge_from_csv function.
         basic_u_data.telegram_notifications = std::stoi(user_data[8]); //convert to int
         basic_u_data.marketplace_notifications = std::stoi(user_data[9]);//convert to int
         
@@ -147,39 +144,82 @@ void read_simple_types_from_csv() {
 
 
 
-void read_fridge_from_csv() { //call AFTER simple_types, before offer_list_from_csv.
-    istream file;
-    file.open(Database_list_of_restrictions_data);
+void read_fridge_and_food_lists_from_csv() { //call AFTER simple_types, before offer_list_from_csv. Remember to call
+    ifstream file;
+    file.open(Database_fridge_and_food_lists_data);
+    string username;
+    int count = 0;
+    for (string line; getline(file, line);) {
+        stringstream line_stream;
+        vector<string> line_data;
+        for (string element; getline(line_stream, element, basic_csv_separator);) {
+            line_data.push_back(element);
+        }
+        if (count % 2 == 0) {
+            username = line_data[0];
+            for (int i = 1; i < sizeof(line_data); i +=5) {
+                vector<string> ingredient;
+                for ( int j = 1; j < 5; j ++) {
+                    ingredient.push_back(line_data[i + j]);
+                }
+                (*database)[username].fridge.push_back(ingredient);
+            }
+        }
+        else { //odd number, store food_and_dietary_restrictions:
+            for (int i=0; i < sizeof(line_data); i++) {
+                (*database)[username].food_and_dietary_restrictions.push_back(std::stoi(line_data[i]));
+            }
+        }
+    }
 }
 void read_offer_list_from_csv() {
-    
+    ifstream file;
+    file.open(Database_offer_list_data);
+    for (string line; getline(file, line);) {
+        stringstream line_stream;
+        vector<string> line_data;
+        vector<vector<vector<string>>> offer_list;
+        for (string element; getline(line_stream, element, basic_csv_separator);) {
+            line_data.push_back(element);
+        }
+        string username = line_data[0];
+        for (string::iterator it=line_data.begin() + 1; it != line_data.end(); it+= 6) {
+            vector<vector<string>> offer;
+            vector<string> ingredient; //three are all necessary.
+            vector<string> price;
+            for ( int j=0; j <5; j++ ) {
+                ingredient.push_back(line_data[it + j]);
+            }
+            price.push_back(line_data[it+6]);
+            offer.push_back(ingredient);
+            offer.push_back(price);
+            (*database)[username].offer_list.push_back(offer);
+        }
+        
+    }
 }
 
-void dietary_restrictions_from_csv() {
-    
-}
+
 
 void read_from_csv() {
     //first, read simple types for username / password. And this allows us to create UserData.
-    read_simple_types_from_csv();//so we initialise here the database list. WIth basic types only.
-    read_fridge_from_csv(); //use already initialized database.
-    read_offer_list_from_csv();
-    read_dietary_restrictions_from_csv();
+    read_simple_types_from_csv();//we begin here, initialize user class. Then, we initialise fridge and offer_list types. Along with food restrictions.
+    read_fridge_and_food_lists_from_csv(); //use already initialized database. 
+    read_offer_list_from_csv(); 
 }
 
 
-void save_to_csv() {
-    save_simple_types();
-    save_fridges();
-    save_offer_lists();
-    save_dietary_restrictions();
+void write_to_csv() {
+    write_simple_types();
+    write_fridge_and_food_lists();
+    write_offer_list();
 }
 
 
 
-void read_from_csv() { //everytime open the server, read csv to get data from previous session
+void read_from_csv_old() { //everytime open the server, read csv to get data from previous session
     ifstream file;
-    file.open(DATABASE_CSV_FILE);
+    file.open(Database_fridge_and_food_lists_data);
     vector<string> lines;
     for (string line; getline(file, line);) {
         lines.push_back(line);
@@ -251,8 +291,8 @@ void read_from_csv() { //everytime open the server, read csv to get data from pr
     file.close();
 }
 
-void save_to_csv() { //save data of the map in a csv
-    ofstream file(DATABASE_CSV_FILE);
+void save_to_csv_old() { //save data of the map in a csv
+    ofstream file(Database_fridge_and_food_lists_data);
 
     //generate a vector of the lines to write. Then, write the lines, using: file << string << endl;
     vector<string> lines;
@@ -357,13 +397,11 @@ void init_data_test() { //debug function. Tests database read/write all together
     string m = "Molly";
     (*database)[m] = data;
     string k = "Johnny";
-    vector<vector<vector<string>>> offer;
+    vector<vector<string>> offer;
     offer.push_back(data.fridge);
     string price_str = "10";
-    vector<string> inner_price;
-    vector<vector<string>> price;
-    inner_price.push_back(price_str);
-    price.push_back(inner_price);
+    vector<string> price;
+    price.push_back(price_str);
     offer.push_back(price);
     data.offer_list.push_back(offer); data.offer_list.push_back(offer);
     (*database)[k] = data;
@@ -563,7 +601,7 @@ int main() {
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
-    srv.bind("update_user_characs", &update_user_characs);
+    srv.bind("update_user_characteristics", &update_user_characteristics);
     
     srv.bind("update_fridge", &update_fridge);
     srv.bind("update_offer", &update_offer);
@@ -582,8 +620,9 @@ int main() {
     
     cout << "running";
     
-    
+    read_from_csv();
     srv.run();
     
     return 0;
+    write_to_csv()
 }

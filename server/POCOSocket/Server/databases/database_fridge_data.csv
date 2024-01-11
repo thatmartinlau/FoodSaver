@@ -1,0 +1,5 @@
+username, igr1_name, ingr1_category, ingr1_quantity, ingr1_expiry_date,ingr_priority_lvl1, etc... indexed by 5.
+0,1,0, 1, 1 <- dietary bools
+username2, igr1_name, ingr1_category, ingr1_quantity, ingr1_expiry_date, ingr1_priority_lvl, ingr2, ingr3, etc...
+0,1,0, 1, 1 <- dietary bools
+
