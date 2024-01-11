@@ -9,5 +9,6 @@
         <file>QML/Settings.qml</file>
         <file>QML/Profile.qml</file>
         <file>QML/SigninPage.qml</file>
+        <file>QML/SigninInformation.qml</file>
     </qresource>
 </RCC>

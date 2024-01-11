@@ -14,6 +14,7 @@ CPP = Source/
 HPP = Header/
 
 SOURCES += \
+    Source/SIgninInformation.cpp \
     backend.cpp \
     main.cpp \
     $$CPP/date.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
 
 
 HEADERS += \
+    Header/SigninInformation.h \
     backend.h \
     $$HPP/date.h \
     $$HPP/fridge.h \
