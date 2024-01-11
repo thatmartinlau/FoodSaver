@@ -7,9 +7,10 @@
 //using namespace std;
 
 //USER
-User::User(std::string username, std::string password) {
+User::User(std::string username, std::string password, std::string telegram_username) {
     this->username = username;
     this->password = password;
+    this->telegram_username = telegram_username;
 }
 
 User::~User() {
@@ -23,8 +24,8 @@ std::string User::get_username() {
     return username;
 }
 
-bool User::check_password(std::string input_password) {
-    return input_password == password;
+bool User::check_password(std::string input_username, std::string input_password) {
+    return input_username == username && input_password == password;
 }
 
 void User::set_distplay_name(std::string display_name) {

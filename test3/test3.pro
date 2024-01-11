@@ -13,6 +13,7 @@ SOURCES += \
         ingredient.cpp \
         main.cpp \
         offer.cpp \
+        recipe.cpp \
         user.cpp
 
 # Default rules for deployment.
@@ -26,4 +27,5 @@ HEADERS += \
     front.hpp \
     ingredient.h \
     offer.h \
+    recipe.h \
     user.h

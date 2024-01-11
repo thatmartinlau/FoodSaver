@@ -15,11 +15,11 @@
 class User{
 public:
     User();
-    User(std::string username, std::string password);
+    User(std::string username, std::string password, std::string telegram_username);
     ~User();
     void set_username(std::string username);
     std::string get_username();
-    bool check_password(std::string input_password);
+    bool check_password(std::string input_username, std::string input_password);
     void set_distplay_name(std::string display_name);
     std::string get_display_name();
     void set_telegram_username(std::string telegram);
