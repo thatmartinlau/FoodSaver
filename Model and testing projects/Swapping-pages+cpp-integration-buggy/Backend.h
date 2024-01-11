@@ -9,15 +9,18 @@ class Backend : public QObject
     Q_OBJECT
 public:
     explicit Backend(QObject *parent = nullptr);
+    //virtual ~Backend();
 
     Q_INVOKABLE void generateRandomNumber();
     Q_INVOKABLE void storeName(const QString &name);
     Q_INVOKABLE QStringList getNameHistory() const;
     Q_INVOKABLE void openPopupWindow();
 
+//connect(pushButton, SIGNAL(clicked()), popupWindow, SLOT(exec()));
 signals:
     void sumChanged(int newSum);
     void nameHistoryChanged();
+
 
 private:
     int sum = 0;

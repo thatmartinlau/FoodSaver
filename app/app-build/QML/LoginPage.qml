@@ -19,18 +19,6 @@ Item {
 
     // TEXT ENTRIES + BUTTON
 
-/*
-    //TeST
-    Settings {
-        id: settings1
-    }
-
-    Profile {
-        id: profile
-    }
-
-*/
-
     Column{
         spacing: 10
         width: 300
@@ -50,7 +38,6 @@ Item {
             echoMode: TextField.Password
         }
 
-
         Button {
             anchors.left: parent.left
             text: "Login"
@@ -61,23 +48,6 @@ Item {
             }
         }
 
-
-/*
-         // TEST BUTTONS
-        Button {
-            text:"settings"
-            onClicked: {
-                settings1.open()
-            }
-        }
-
-        Button {
-            text: "profile"
-            onClicked: {
-                profile.open()
-            }
-        }
-*/
     }
 
     // SIDE + EXTRA BUTTONS

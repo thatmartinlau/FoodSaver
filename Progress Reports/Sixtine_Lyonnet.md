@@ -21,3 +21,39 @@ I finished downloading all necessary things for Qt.
 I added a Date class to the front.hpp file and defined the necessary classes in the cpp file.
 I tested the functions and classes I created.
 The TA told me defining things on the heap is considered bad practice so I put everything on the stack instead.
+
+18/12/2023
+I asked my collegues what I needed to implement to make the project work in the future and to make their work easier.
+I kept working on my code and worked out a few major bugs in some functions.
+I started to try and implement a function that compares a date with the current date in order to check if the ingredient is expired and/or expiring soon.
+
+21/12/2023
+I finished implementing the Date class.
+I also added a method requested by my collegues.
+I was told by my TA that the classes should be impplemented in separate cpp and h files, so I split the code from front.cpp and front.hpp in 5 different files.
+
+24/12/2023
+I added a get_ingredient_list method in Offer.
+I merged the front branch with the front_merge branch.
+
+02/01/2024
+I discussed different problems in our class implementation with other group members.
+I realised the Offer function had a mistake and was badly implemented.
+
+04/01/2024
+I implemented two sorting functions in the Fridge class with Martin's help.
+I made all necessary modifications to the User class to align my definition with Martin's one on the app.
+I corrected the Offer class which was badly implemented and discussed what was expected of me with Antoine.
+
+07/01/2024
+I changed the Offer and User classes. I also got rid of the quantity variable in Offer. I also changed to hierarchy of the classes accordingly.
+
+08/01/2024
+I discussed with each member of the app to better adapt my back-end code to their needs.
+- Fanny: I made some necessary arrangements on the User class to help implement the logic behind her login page.
+- Cyriac, Charlotte and Elisabeth: talked about adding a recipe class.
+- Antoine: showed him the functions on my code such as add_ingredient and the sorting functions of the Fridge class.
+- Diana: discussed the problem she was facing and told her Esma would be better equipped to answer her.
+
+11/01/2024
+I coded the new Recipe class and added the necessary functions. I added a is_username function to the User class as Fanny has asked me.
