@@ -1,4 +1,5 @@
 #include "../Header/profilemanager.h"
+#include "../Header/user.h"
 
 ProfileManager::ProfileManager(QObject *parent) : QObject(parent) {}
 
@@ -21,5 +22,14 @@ void ProfileManager::applyChanges(const QString &displayName, const QString &gen
     qDebug() << "Lactose Intolerant:" << lactoseIntolerant;
     qDebug() << "Pescatarian:" << pescatarian;
     qDebug() << "Halal:" << halal;
+
+    std::string displayNamestr = displayName.toStdString();
+    std::string genderstr = gender.toStdString();
+    std::string addressstr = address.toStdString();
+    std::string promotionstr = promotion.toStdString();
+    std::string phonestr = phone.toStdString();
+
+
+
     //figure out what to do with this information now
 }
