@@ -11,25 +11,34 @@ void link_verification(client client, string token) {}
 
 void send_remind_messages(client client) {}
 
-void check_expiration(vector<vector<string>> fridge) {}
+string check_expiration(vector<vector<string>> fridge) {}
 
-
-
+string check_fridge(client)
 
 int main() {
-    TgBot::Bot bot("6354477753:AAFal99-y11oE7oKx2Uf5rzLk6nphuW-JWA");
+    TgBot::Bot bot("6644281748:AAFh40LQLa5054caEUPt8T_9wf-Yv1hAB-w");
 
-    bot.getEvents().onCommand("sell", [&bot](TgBot::Message::Ptr message) {
-        bot.getApi().sendMessage(message->chat->id, "Sell command received");
+    bot.getEvents().onCommand("Start", [&bot](TgBot::Message::Ptr message) {
+        bot.getApi().sendMessage(message->chat->id, "Welcome to FoodSaver, I can help you manage your fridge in Apps." 
+                                                    "Here are the things that I can do for you:\n"
+                                                    "- /check_fridge - check your fridge contents\n"
+                                                    "- /link_your_fridge - link your fridge to the app";);
     });
 
-    bot.getEvents().onCommand("get_lists", [&bot](TgBot::Message::Ptr message) {
-        bot.getApi().sendMessage(message->chat->id, "Get lists command received");
+    bot.getEvents().onAnyMessage([&bot](TgBot::Message::Ptr message) {
+    if (StringTools::startsWith(message->text, "/check_fridge")) {
+        return;
+    }
+    bot.getApi().sendMessage(message->chat->id, "Your message is: " + message->text);
     });
 
-    bot.getEvents().onCommand("buy", [&bot](TgBot::Message::Ptr message) {
-        bot.getApi().sendMessage(message->chat->id, "Buy command received");
+    bot.getEvents().onAnyMessage([&bot](TgBot::Message::Ptr message) {
+    if (StringTools::startsWith(message->text, "/link_your_fridge")) {
+        return;
+    }
+    bot.getApi().sendMessage(message->chat->id, "Your message is: " + message->text);
     });
+
 
     try {
         printf("Bot username: %s\n", bot.getApi().getMe()->username.c_str());
@@ -39,7 +48,7 @@ int main() {
             longPoll.start();
         }
     } catch (TgBot::TgException& e) {
-        printf("Error: %s\n", e.what());
+        cout << "Error: " << e.what() << endl;
     }
 
     return 0;
