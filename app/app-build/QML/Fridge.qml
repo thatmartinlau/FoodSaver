@@ -35,13 +35,195 @@ Row {
             }
         }
     }
+
     Rectangle {
         x: parent.width * 0.20
         width: parent.width * 0.6
         height: parent.height
         color: "#5E9F7C"
 
+        Row{
+            anchors.top: parent.top
+
+                    Button {
+                        id:buttonFridge
+                        enabled: false
+                        text: "My Fridge"
+                        width: parent.parent.width * 0.2
+                        onClicked: {
+                            fridgePage.visible = true;
+                            offerPage.visible = false;
+                            buttonOffer.enabled = true;
+                            buttonFridge.enabled = false;
+                        }
+                    }
+
+                    Button {
+                        id:buttonOffer
+                        enabled: true
+                        text: "My Offers"
+                        width: parent.parent.width * 0.2
+                        onClicked: {
+                            fridgePage.visible = false;
+                            offerPage.visible = true;
+                            buttonOffer.enabled = false;
+                            buttonFridge.enabled = true;
+
+                        }
+                    }
+        }
+
         Rectangle {
+            id: offerPage
+            visible: false
+            y: parent.height * 0.05
+            height: parent.height * 0.9
+            width: parent.width
+            radius: 12.5
+            color: "white"
+
+            ScrollView {
+                    anchors.fill: parent
+                    Column {
+                        spacing: 2.5
+                        width: parent.width
+                        padding:parent.width*0.01
+                        Rectangle {
+                            radius: 12.5
+                            width: parent.width *0.98
+                            height: parent.width * 0.05
+                            color:"#EEEEEE"
+
+                            /*Label {
+                                text: "My Fridge __ Hello, on this page \n The add product works, you can try it, (you need to put at least a name and a category)\nIf there are enough products the scroll bar will appear\nIf questions, ask Antoine"
+                                anchors.top: parent.top
+                            }*/
+
+                            Row {
+                                spacing: 10
+                                padding:10
+                                anchors.verticalCenter:parent.verticalCenter
+                                TextField {
+                                    y:3
+                                    id: itemTextFieldOffer
+                                    placeholderText: "Search for a specific item"
+                                    //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
+                                }
+
+                                Button {
+                                    text: "Category"
+                                    onClicked: {
+                                       //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_category()
+                                    }
+                                }
+
+                                Button {
+                                    text: "Time left"
+                                    onClicked: {
+                                        //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
+                                    }
+                                }
+
+                                /*Button {
+                                    text: "Price"
+                                    onClicked: {
+                                        // Handle Price button click
+                                    }
+                                }*/
+                            }
+                        }
+                        Rectangle {
+                            radius: 12.5
+                            y: parent.height * 0.2
+                            height: parent.height * 0.8
+                            width: parent.width *0.98
+                            ScrollView {
+                                id: scrollViewOffer
+                                anchors.fill: parent
+                                width:parent.width
+                                Column {
+                                    spacing: 2.5
+                                    width:parent.width
+                                    Repeater {
+
+                                        model: itemModel
+                                        Rectangle {
+                                            visible: model.status
+                                            radius: 12.5
+                                            width: parent.width * 0.98
+                                            height: 200
+                                            color: "green"  // Adjust the color as needed
+
+                                            Row {
+                                                width: parent.width
+                                                height: parent.height
+                                                Rectangle {
+                                                    radius: 12.5
+                                                    width: parent.height
+                                                    height: parent.height
+                                                    color: "lightblue"
+                                                    Label { text: "photo" }
+                                                }
+                                                Column {
+                                                    x: parent.height
+                                                    spacing: 1
+                                                    Label {
+                                                        text: "Item: " + model.item
+                                                    }
+                                                    Label {
+                                                        text: "Category: " + model.categorie
+                                                    }
+                                                    Label {
+                                                        text: "Expiration date: " + model.date
+                                                    }
+                                                    Label {
+                                                        text: "Quantity you are selling: " + model.quantity2sell
+                                                    }
+                                                    Label {
+                                                        text: "Quantity you have: " + model.quantity
+                                                    }
+                                                    Label {
+                                                        text: {
+                                                            if (model.pricestatus === 0) {
+                                                                return "Your item is set as Free";
+                                                            } if (model.pricestatus === 1) {
+                                                                return "Your item is set as Negociable";
+                                                            } else {
+                                                                return "Price: " + model.price;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                Column {
+                                                    Button {
+                                                        text: "Remove Offer"
+                                                        onClicked: {
+                                                            model.quantity2sell= 0
+                                                            model.pricestatus= -1
+                                                            model.status= 0
+                                                            model.price= 0
+                                                        }
+                                                    }
+                                                    Button {
+                                                        text: "Modify Offer"
+                                                        onClicked: {
+                                                            modifyOffer.open()
+                                                        }
+                                                    }
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+        Rectangle {
+            id: fridgePage
+            visible: true
             y: parent.height * 0.05
             height: parent.height * 0.9
             width: parent.width
@@ -52,21 +234,28 @@ Row {
             Column {
                 height: parent.height
                 width: parent.width
+                padding: parent.width *0.01
+                spacing: parent.width *0.01
+
 
                 Rectangle {
                     radius: 12.5
-                    width: parent.width
-                    height: parent.height * 0.2
+                    width: parent.width *0.98
+                    height: parent.width * 0.05
+                    color:"#EEEEEE"
 
-                    Label {
+                    /*Label {
                         text: "My Fridge __ Hello, on this page \n The add product works, you can try it, (you need to put at least a name and a category)\nIf there are enough products the scroll bar will appear\nIf questions, ask Antoine"
                         anchors.top: parent.top
-                    }
+                    }*/
 
                     Row {
-                        anchors.bottom: parent.bottom
+                        spacing: 10
+                        padding:10
+                        anchors.verticalCenter:parent.verticalCenter
                         TextField {
-                            id: itemTextField
+                            y:3
+                            id: itemTextFieldFridge
                             placeholderText: "Search for a specific item"
                             //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
                         }
@@ -74,23 +263,23 @@ Row {
                         Button {
                             text: "Category"
                             onClicked: {
-                                // Handle Category button click
+                               //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_category()
                             }
                         }
 
                         Button {
                             text: "Time left"
                             onClicked: {
-                                // Handle Time left button click
+                                //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
                             }
                         }
 
-                        Button {
+                        /*Button {
                             text: "Price"
                             onClicked: {
                                 // Handle Price button click
                             }
-                        }
+                        }*/
                     }
                 }
                 Rectangle {
@@ -99,7 +288,7 @@ Row {
                     height: parent.height * 0.8
                     width: parent.width
                     ScrollView {
-                        id: scrollView
+                        id: scrollViewFridge
                         anchors.fill: parent
                         width:parent.width
                         Column {
@@ -110,7 +299,7 @@ Row {
                                 //property var modelData: model // Assuming each model item is an object
                                 Rectangle {
                                     radius:12.5
-                                    width: parent.width
+                                    width: parent.width *0.98
                                     height: 200
                                     color: "red"
                                     Row {
@@ -135,9 +324,7 @@ Row {
                                             /*Label {
                                                 text: "Index: " + model.index
                                             }*/
-                                            Label {
-                                                text: (model.status === 0) ? "Not for sale" : (model.price === -1) ? "Negotiate" : "Price: " + model.price
-                                            }
+
                                             Label {
                                                 text: "Expiration date: " + model.date
                                             }
@@ -145,11 +332,15 @@ Row {
                                             Label {
                                                 text: "Quantity: " + model.quantity
                                             }
+                                            Label {
+                                                visible: model.status
+                                                text: "You are selling this item"
+                                            }
                                         }
                                         Column {
                                             width: parent.width * 0.4 // Set the width of the column as half of the parent width
                                             anchors.right: parent.right
-                                            Button {
+                                            /*Button {
                                                 text: "Price Settings"
                                                 onClicked: {
                                                     var indexToSell = itemModel.getIndexByPropertyValue("index", model.index);
@@ -160,12 +351,28 @@ Row {
                                                         console.warn("No item available for sale.");
                                                     }
                                                 }
-                                            }
-
+                                            }*/
                                             Button {
-                                                text: "Remove from Fridge"
+                                                text: "Modify item"
+                                                onClicked: {
+                                                    modify.itemIndex = itemModel.getIndexByPropertyValue("index", model.index);
+                                                    modify.open();
+                                                    //pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
+                                                }
+                                            }
+                                            Button {
+                                                text: "Remove item"
                                                 onClicked: {
                                                     itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
+                                                    //pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
+                                                }
+                                            }
+                                            Button {
+                                                visible: !(model.status)
+                                                text: "Put on sell"
+                                                onClicked: {
+                                                    selling.itemIndex = itemModel.getIndexByPropertyValue("index", model.index);
+                                                    selling.open();
                                                 }
                                             }
                                         }
@@ -180,7 +387,7 @@ Row {
         ListModel {
                 id: itemModel
                 function getIndexByPropertyValue(propertyName, propertyValue) {
-                    scrollView.contentHeight -= 202.5;
+                    scrollViewFridge.contentHeight -= 202.5;
                     for (var i = 0; i < count; i++) {
                         if (get(i)[propertyName] === propertyValue) {
                             return i;
@@ -236,6 +443,129 @@ Row {
             onClicked: stackView.pop() // need to add a function which logs the user out of the server, then deletes all active data from the instance.
         }
     }
+    Popup {
+        id: modifyOffer
+        anchors.centerIn: parent
+        width: 350
+        height: 370
+        closePolicy: "CloseOnEscape"
+        background: Rectangle {
+            color: "#EEEEEE"
+            radius: 12.5
+        }
+        property int itemIndex: -1
+
+        Column {
+            anchors.centerIn: parent
+            spacing: 10
+
+            Button {
+                anchors.right: parent.right
+                text: "X"
+                width: 50
+                background: null
+                onClicked: {
+                    modifyOffer.close()
+                }
+            }
+
+            Label {
+                text: "Enter the quantity you want to sell. Must be less than " + itemModel.get(itemIndex).quantity
+            }
+
+            TextField {
+                id: quantity2sellInput
+                width: 340
+                height: 25
+                padding: 5
+                anchors.horizontalCenter: parent.horizontalCenter
+                background: Rectangle {
+                    color: "#5E9F7C"
+                    radius: 12.5
+                }
+                placeholderText: "Enter Quantity"
+                text: itemModel.get(itemIndex).quantity
+            }
+
+            ComboBox {
+                id: priceType
+                width: 200
+                model: ["Free", "Negotiate", "Fixed Price"]
+
+                onCurrentIndexChanged: {
+                    priceInput.enabled = priceType.currentIndex === 2;
+                }
+            }
+
+            TextField {
+                id: priceInput
+                width: 340
+                height: 25
+                padding: 5
+                anchors.horizontalCenter: parent.horizontalCenter
+                background: Rectangle {
+                    color: "#5E9F7C"
+                    radius: 12.5
+                }
+                placeholderText: "Enter Price"
+                enabled: priceType.currentIndex === 2
+            }
+
+            Label {
+                id: errorQuantity
+                visible: false
+                text: "Quantity Invalid"
+                color: "red"
+            }
+
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                Button {
+                    text: "Validate"
+                    width: 150
+                    background: Rectangle {
+                        color: "#5E9F7C"
+                        radius: 12.5
+                    }
+                    onClicked: {
+                        errorQuantity.visible = false;
+
+                        itemModel.setProperty(itemIndex, "pricestatus", priceType.currentIndex);
+                        //itemModel.setProperty(itemIndex, "status", 1);
+                        itemModel.setProperty(itemIndex, "quantity2sell", quantity2sellInput.text);
+                        itemModel.setProperty(itemIndex, "price", priceInput.text);
+
+                        quantity2sellInput.text = "";
+                        priceInput.text = "";
+
+                        modifyOffer.close();
+                        /*if (quantity2sellInput.text <= itemModel.get(itemIndex).quantity) {
+                            console.log("Button Clicked");
+                            console.log("quantity2sellInput.text:", quantity2sellInput.text);
+                            console.log("itemModel.get(itemIndex).quantity:", itemModel.get(itemIndex).quantity);
+
+                            errorQuantity.visible = false;
+
+                            itemModel.setProperty(itemIndex, "pricestatus", priceType.currentIndex);
+                            itemModel.setProperty(itemIndex, "status", 1);
+                            itemModel.setProperty(itemIndex, "quantity2sell", quantity2sellInput.text);
+                            itemModel.setProperty(itemIndex, "price", priceInput.text);
+
+                            quantity2sellInput.text = "";
+                            priceInput.text = "";
+
+                            modifyOffer.close();
+                        } else {
+                            errorQuantity.visible = true;
+                            quantity2sellInput.text = "";
+                        }*/
+                    }
+                }
+            }
+        }
+    }
+
 Profile {
     id: profile
 }
@@ -247,6 +577,9 @@ AddToFridge {
 }
 Selling {
     id:selling
+}
+Modify {
+    id: modify
 }
 }
 

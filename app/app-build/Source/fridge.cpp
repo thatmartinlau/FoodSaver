@@ -8,7 +8,8 @@
 
 //FRIDGE
 
-Fridge::Fridge(){
+Fridge::Fridge() {
+//Fridge::Fridge(QObject *parent) : QObject(parent) {
     ingredient_list = {};
 }
 
@@ -48,3 +49,4 @@ Ingredient Fridge::pop_elt(Ingredient *getit) {
 
     throw std::runtime_error("Ingredient not found in the fridge");
 }
+

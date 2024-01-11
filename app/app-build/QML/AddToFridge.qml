@@ -87,7 +87,15 @@ Popup {
                         if (iteminput.text.trim() !== "" &categorieinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
                             //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text});
                             //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text });
-                            itemModel.append({ "index": currentIndex, "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text, "status": 0, "price": 0 });
+                            itemModel.append({ "index": currentIndex,
+                                                 "item": iteminput.text,
+                                                 "categorie": categorieinput.text,
+                                                 "date": dateinput.text,
+                                                 "quantity": quantityinput.text,
+                                                 "status": 0,
+                                                 "price" : 0,
+                                                 "quantity2sell": 0,
+                                                 "pricestatus": -1 });
 
                             // Increment the index for the next item
                             currentIndex++;
@@ -96,7 +104,11 @@ Popup {
                             categorieinput.text = "";
                             dateinput.text = "";
                             quantityinput.text = "";
-                            scrollView.contentHeight = scrollView.contentHeight + 202.5;
+                            scrollViewFridge.contentHeight = scrollViewFridge.contentHeight + 202.5;
+
+                            //Ingredient elem(itemimput.text, dateinput.text, quantityinput.text, categorieinput.text)
+                            //add_elt(elem)
+
                             addtofridge.close()
                         }
                     }

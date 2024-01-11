@@ -1,6 +1,10 @@
 #ifndef FRIDGE_H
 #define FRIDGE_H
 
+//Antoine
+#include <QObject>
+#include <QString>
+
 #include "ingredient.h"
 #include <vector>
 //#include <iostream>
@@ -13,7 +17,15 @@
 //using namespace std;
 
 class Fridge {
+//class Fridge : public QObject {
+    //Q_OBJECT
+
 public:
+    //explicit Fridge(QObject *parent = nullptr);
+    //explicit Fridge();
+
+    //Q_INVOKABLE bool fridge();
+
     Fridge();
     Fridge(std::vector<Ingredient> init_list);
     ~Fridge();
@@ -29,6 +41,10 @@ public:
 
 private:
     std::vector<Ingredient> ingredient_list;
+
+
+//signals:
+    //void openMarketPage();
 };
 
 #endif // FRIDGE_H
