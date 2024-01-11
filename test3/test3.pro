@@ -28,4 +28,5 @@ HEADERS += \
     ingredient.h \
     offer.h \
     recipe.h \
-    user.h
+    user.h \
+    client_side_connection/server_to_backend_connection/rpc_client_side.hpp
