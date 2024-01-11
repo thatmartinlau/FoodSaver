@@ -103,15 +103,15 @@ Item {
                 padding: 5
             }
             onClicked: {
-                stackView.push(Qt.resolvedUrl("Market.qml"))
-                // if (login.logIn(input_username2.text, input_password2.text)){
-                //                     passwordError.visible = false;
-                //                     usernameError.visible = false;
-                //                     noUsernameError.visible = false;
-                //                     noPasswordError.visible = false;
-                //                 }
-                // input_username2.text = ""
-                // input_password2.text = ""
+
+                if (login.logIn(input_username2.text, input_password2.text)){
+                                    passwordError.visible = false;
+                                    usernameError.visible = false;
+                                    noUsernameError.visible = false;
+                                    noPasswordError.visible = false;
+                                }
+                input_username2.text = ""
+                input_password2.text = ""
             }
 
         }
@@ -123,28 +123,28 @@ Item {
 
             // Errors upon login
             function onOpenNoUsernameError2() {
-                noUsernameError.visible = true;
-                usernameError.visible = false;
-                passwordError.visible = false;
-                noPasswordError.visible = false;
+                noUsernameError2.visible = true;
+                usernameError2.visible = false;
+                passwordError2.visible = false;
+                noPasswordError2.visible = false;
             }
             function onOpenPasswordError2() {
-                noUsernameError.visible = false;
-                usernameError.visible = false;
-                passwordError.visible = true;
-                noPasswordError.visible = false;
+                noUsernameError2.visible = false;
+                usernameError2.visible = false;
+                passwordError2.visible = true;
+                noPasswordError2.visible = false;
             }
             function onOpenUsernameError2() {
-                noUsernameError.visible = false;
-                passwordError.visible = false;
-                usernameError.visible = true;
-                noPasswordError.visible = false;
+                noUsernameError2.visible = false;
+                passwordError2.visible = false;
+                usernameError2.visible = true;
+                noPasswordError2.visible = false;
             }
             function onOpenNoPasswordError2() {
-                noUsernameError.visible = false;
-                noPasswordError.visible = true;
-                passwordError.visible = false;
-                usernameError.visible = false;
+                noUsernameError2.visible = false;
+                noPasswordError2.visible = true;
+                passwordError2.visible = false;
+                usernameError2.visible = false;
             }
 
             // Successful login
