@@ -40,7 +40,20 @@ I merged the front branch with the front_merge branch.
 I discussed different problems in our class implementation with other group members.
 I realised the Offer function had a mistake and was badly implemented.
 
-04/12/2024
+04/01/2024
 I implemented two sorting functions in the Fridge class with Martin's help.
 I made all necessary modifications to the User class to align my definition with Martin's one on the app.
 I corrected the Offer class which was badly implemented and discussed what was expected of me with Antoine.
+
+07/01/2024
+I changed the Offer and User classes. I also got rid of the quantity variable in Offer. I also changed to hierarchy of the classes accordingly.
+
+08/01/2024
+I discussed with each member of the app to better adapt my back-end code to their needs.
+- Fanny: I made some necessary arrangements on the User class to help implement the logic behind her login page.
+- Cyriac, Charlotte and Elisabeth: talked about adding a recipe class.
+- Antoine: showed him the functions on my code such as add_ingredient and the sorting functions of the Fridge class.
+- Diana: discussed the problem she was facing and told her Esma would be better equipped to answer her.
+
+11/01/2024
+I coded the new Recipe class and added the necessary functions. I added a is_username function to the User class as Fanny has asked me.
