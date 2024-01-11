@@ -1,3 +1,4 @@
+import QtQuick
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
@@ -13,6 +14,23 @@ Row {
             anchors.left: parent.left
             anchors.bottom: parent.verticalCenter
             anchors.leftMargin: parent.width * 0.05
+
+            /*Window{
+                visible: true
+                width: 640
+                height: 480
+                title: qsTr("Welcome")
+
+
+                Image {
+                    //anchors.top: parent.top
+                    //height: parent.height
+                    //width: parent.width
+                    id: root
+                    anchors.fill: parent
+                    source: "images/dog.png"
+                }
+            }*/
 
             Button { text: "Fridge";  onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
             Button { text: "Market"; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }

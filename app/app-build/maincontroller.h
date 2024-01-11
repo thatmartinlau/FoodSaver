@@ -26,8 +26,8 @@ public slots:
     QList<QString> sorter(const QMap<QString, int> &dict);
     int getTotalLength();
     QString getJsonRTitle(const int &h);
-    //modif eli:
-    QList<QString> searchRecipes(const QString &entry, const QString &dietRestriction);
+    //modif eli: jai changé QList<QString> en QString
+    //QString searchRecipes(const QString &entry, const QString &dietRestriction);
 };
 
 #endif // MAINCONTROLLER_H
