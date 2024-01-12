@@ -150,6 +150,8 @@ Item {
             // Successful login
             function onOpenMarketPage2() {
                 stackView.push(Qt.resolvedUrl("Market.qml"))
+                var currentUsername = CurrentUser.username;
+                var currentPassword = CurrentUser.password;
             }
         }
     }

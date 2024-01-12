@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include "Header/Signin.h"
 #include "Header/Login.h"
+#include "Header/SigninInformation.h"
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
@@ -14,6 +15,9 @@ int main(int argc, char *argv[]) {
 
     Login login;
     engine.rootContext()->setContextProperty("login", &login);
+
+    SigninInfo signinInfo;
+    engine.rootContext()->setContextProperty("signinInfo", &signinInfo);
 
     engine.load(QUrl(QStringLiteral("qrc:/QML/main.qml")));
 

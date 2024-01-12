@@ -31,6 +31,8 @@ Login::Login(QObject *parent) : QObject(parent) {}
      // If all conditions are satisfied
      else{
          emit openMarketPage2();
+         CurrentUser::username = username.toStdString();
+         CurrentUser::password = password.toStdString();
          return true;
      }
 }
