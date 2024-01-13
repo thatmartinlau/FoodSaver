@@ -14,10 +14,10 @@ using namespace std;
 
 
 //Database storage files: no touchy :))
-const string Database_simple_data = "databases/database_simple_data.csv";
-const string Database_offer_list_data = "databases/database_offer_list_data.csv";
-const string Database_fridge_and_food_lists_data = "databases/database_fridge_data.csv";
-
+const string Database_simple_data = "databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
+const string Database_offer_list_data = "databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
+const string Database_fridge_and_food_lists_data = "databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as - newline
+//as 0,1,0,1,0,1,1 checkbox integers for booleans.
 //FILE FORMATS:
 
 //Ingredients: vector<string>>
@@ -106,8 +106,6 @@ string square_brackets_sep = "[]";
 string curly_brackets_sep =  "{}"; 
 string absolute_signs_sep = "||";
 
-
-
 //Storage format: username, password, fridge, offer;
 //Inspired from iq.opengenus.org/read-and-write-in-csv-cpp/. I adapted the main idea from them. #Adam
 
@@ -150,7 +148,7 @@ void read_fridge_and_food_lists_from_csv() { //call AFTER simple_types, before o
     string username;
     int count = 0;
     for (string line; getline(file, line);) {
-        stringstream line_stream;
+        stringstream line_stream(line);
         vector<string> line_data;
         for (string element; getline(line_stream, element, basic_csv_separator);) {
             line_data.push_back(element);
@@ -176,21 +174,21 @@ void read_offer_list_from_csv() {
     ifstream file;
     file.open(Database_offer_list_data);
     for (string line; getline(file, line);) {
-        stringstream line_stream;
+        stringstream line_stream(line);
         vector<string> line_data;
         vector<vector<vector<string>>> offer_list;
         for (string element; getline(line_stream, element, basic_csv_separator);) {
             line_data.push_back(element);
         }
         string username = line_data[0];
-        for (string::iterator it=line_data.begin() + 1; it != line_data.end(); it+= 6) {
+        for (vector<string>::iterator it=line_data.begin() + 1; it != line_data.end(); it+= 6) {
             vector<vector<string>> offer;
             vector<string> ingredient; //three are all necessary.
             vector<string> price;
             for ( int j=0; j <5; j++ ) {
-                ingredient.push_back(line_data[it + j]);
+                ingredient.push_back(*next(it, j));
             }
-            price.push_back(line_data[it+6]);
+            price.push_back(*next(it, 6));
             offer.push_back(ingredient);
             offer.push_back(price);
             (*database)[username].offer_list.push_back(offer);
@@ -200,12 +198,84 @@ void read_offer_list_from_csv() {
 }
 
 
-
 void read_from_csv() {
     //first, read simple types for username / password. And this allows us to create UserData.
     read_simple_types_from_csv();//we begin here, initialize user class. Then, we initialise fridge and offer_list types. Along with food restrictions.
     read_fridge_and_food_lists_from_csv(); //use already initialized database. 
-    read_offer_list_from_csv(); 
+    read_offer_list_from_csv();
+    cout << "Read!";
+}
+
+
+void write_simple_types() {
+    ofstream file;
+    for (const auto& [username, user_data]: *database) {
+        vector<string> user_values_in_string_format;
+        user_values_in_string_format.push_back(username);
+        user_values_in_string_format.push_back(user_data.display_name);
+        user_values_in_string_format.push_back(user_data.telegram_username);
+        user_values_in_string_format.push_back(std::to_string(user_data.gender));
+        user_values_in_string_format.push_back(std::to_string(user_data.promotion));
+        user_values_in_string_format.push_back(user_data.building_address);
+        user_values_in_string_format.push_back(std::to_string(user_data.phone_number));
+        user_values_in_string_format.push_back(std::to_string(user_data.telegram_notifications));
+        user_values_in_string_format.push_back(std::to_string(user_data.marketplace_notifications));
+        string writing_to_file_line;
+        for (vector<string>::iterator it = user_values_in_string_format.begin(); it != user_values_in_string_format.end(); ++it) {
+            writing_to_file_line.append(*it + basic_csv_separator);
+        }
+        writing_to_file_line = writing_to_file_line.substr(writing_to_file_line.size()-1);
+        file << writing_to_file_line << endl;
+    }
+}
+
+void write_fridge_and_food_lists() {
+    ofstream file;
+    file.open(Database_fridge_and_food_lists_data);
+    for (const auto& [username, user_data] : *database) {
+        vector<string> first_line_to_write = {username};
+        for (int i=0; i < user_data.fridge.size(); i++) {
+                vector<string> ingredient = user_data.fridge[i];
+                for (int j=0; j < 5; j++) {
+                    first_line_to_write.push_back(ingredient[j]);
+                    
+                }
+        }
+        string line_to_write_here;
+        for (vector<string>::iterator it = first_line_to_write.begin(); it != first_line_to_write.end(); it++) {
+            line_to_write_here.append(*it + basic_csv_separator);
+        }
+        line_to_write_here.substr(line_to_write_here.size()-1);
+        file << line_to_write_here << endl;
+
+        //second line is writing boolean restrictions into file.
+        string line2; 
+        for (list<bool>::const_iterator it = user_data.food_and_dietary_restrictions.begin(); it != user_data.food_and_dietary_restrictions.end(); it++) {
+            line2.append(to_string(*it) + basic_csv_separator); //outputs "0" or "1" in string repr.
+        }
+        line2 = line2.substr(line2.size()-1);
+        file << line2 << endl;
+    }
+}
+
+void write_offer_list() {
+    ofstream file;
+    file.open(Database_fridge_and_food_lists_data);
+    for (const auto& [username, user_data] : *database) {
+        vector<string> line_to_write = {username};
+        for (int i=0; i < user_data.offer_list.size(); i++) {
+            for (int j=0; j < 5; j ++) {
+                line_to_write.push_back(user_data.offer_list[i][0][j]);
+            }
+            line_to_write.push_back(user_data.offer_list[i][1][0]); //price is indexed as 0th element of a vector<string> in a vec<vec<string>>
+        }
+        string line_to_write_string;
+        for (vector<string>::iterator it = line_to_write.begin(); it != line_to_write.end(); it++) {
+            line_to_write_string.append(*it + basic_csv_separator);
+        }
+        line_to_write_string = line_to_write_string.substr(line_to_write_string.size()-1);
+        file << line_to_write_string << endl;
+    }
 }
 
 
@@ -218,170 +288,170 @@ void write_to_csv() {
 
 
 void read_from_csv_old() { //everytime open the server, read csv to get data from previous session
-    ifstream file;
-    file.open(Database_fridge_and_food_lists_data);
-    vector<string> lines;
-    for (string line; getline(file, line);) {
-        lines.push_back(line);
-    }
-    cout << "Here we are";
-    for (auto line : lines) {
-        //separate the lines into username, data format. Use csv_separator designed to avoid conflicts with client-side. i.e. people naming their fruits "apple,ornot}[%" and this messing up my whole process.
-        stringstream s_line(line);
+//    ifstream file;
+//    file.open(Database_fridge_and_food_lists_data);
+//    vector<string> lines;
+//    for (string line; getline(file, line);) {
+//        lines.push_back(line);
+//    }
+//    cout << "Here we are";
+//    for (auto line : lines) {
+//        //separate the lines into username, data format. Use csv_separator designed to avoid conflicts with client-side. i.e. people naming their fruits "apple,ornot}[%" and this messing up my whole process.
+//        stringstream s_line(line);
 
-        vector<string> user_data_from_line;
-        for (string item; getline(s_line, item, basic_csv_separator);) {
-            user_data_from_line.push_back(item);
-        }
-        //user_data_from_line looks like : [username, telegram_username, password, fridge, offer_list] afterwards. All strings.
-        //convert fridge string "{[name: category: quantity: expiry_date: priority_level]; [...]; ...}" or an empty fridge string.
-        vector<vector<string>> fridge_vec;
-        if (!(user_data_from_line[3] == curly_brackets_sep)) { //nonempty fridge, run stuff with it.
+//        vector<string> user_data_from_line;
+//        for (string item; getline(s_line, item, basic_csv_separator);) {
+//            user_data_from_line.push_back(item);
+//        }
+//        //user_data_from_line looks like : [username, telegram_username, password, fridge, offer_list] afterwards. All strings.
+//        //convert fridge string "{[name: category: quantity: expiry_date: priority_level]; [...]; ...}" or an empty fridge string.
+//        vector<vector<string>> fridge_vec;
+//        if (!(user_data_from_line[3] == curly_brackets_sep)) { //nonempty fridge, run stuff with it.
 
-            stringstream s_fridge(user_data_from_line[3].substr(1, size(user_data_from_line[3]) -2)); //fridge, with {curly brackets} removed.
-            for (string ingr_str; getline(s_fridge, ingr_str, ingr_separator_in_fridge);) { //separate into ingredients = "[name:category:qty:exp_date:prior]"
-                vector<string> ingr;
-                stringstream ingr_stream(ingr_str.substr(1, size(ingr_str) -2));
-                for (string ingr_element; getline(ingr_stream, ingr_element, separator_within_ingredient);) {
-                    ingr.push_back(ingr_element);
-                }
-                fridge_vec.push_back(ingr);
-            }
-        }
+//            stringstream s_fridge(user_data_from_line[3].substr(1, size(user_data_from_line[3]) -2)); //fridge, with {curly brackets} removed.
+//            for (string ingr_str; getline(s_fridge, ingr_str, ingr_separator_in_fridge);) { //separate into ingredients = "[name:category:qty:exp_date:prior]"
+//                vector<string> ingr;
+//                stringstream ingr_stream(ingr_str.substr(1, size(ingr_str) -2));
+//                for (string ingr_element; getline(ingr_stream, ingr_element, separator_within_ingredient);) {
+//                    ingr.push_back(ingr_element);
+//                }
+//                fridge_vec.push_back(ingr);
+//            }
+//        }
 
 
-        //convert offer_list string "|{[name: category: quantity: expiry_date: priority_level]; [...]; ...; [price]}/{...}/...|" or an empty offer_list.
-        vector<vector<vector<vector<string>>>> offer_list_vec;
-        if (!(user_data_from_line[4] == absolute_signs_sep)) {
-            stringstream s_offers(user_data_from_line[4].substr(1, size(user_data_from_line[4]) - 2));
-            for (string offer_str; getline(s_offers, offer_str, separator_within_offer_list);) {
-                vector<vector<vector<string>>> offer;
-                stringstream s_offer(offer_str.substr(1, size(offer_str) -2));
-                vector<vector<string>> ingredient_vector;
-                vector<vector<string>> price_vector;
-                for (string ingredient_or_price_str; getline(s_offer, ingredient_or_price_str, ingr_separator_in_fridge);) {
-                    //now, reduce the ingredients to vector<string>, and consider the price separately.
-                    vector<string> ingr_or_price;
-                    stringstream ingr_price_stream(ingredient_or_price_str.substr(1, size(ingredient_or_price_str) -2));
-                    for (string ingr_price_element; getline(ingr_price_stream, ingr_price_element, separator_within_ingredient);) {
-                        ingr_or_price.push_back(ingr_price_element);
-                    }
+//        //convert offer_list string "|{[name: category: quantity: expiry_date: priority_level]; [...]; ...; [price]}/{...}/...|" or an empty offer_list.
+//        vector<vector<vector<vector<string>>>> offer_list_vec;
+//        if (!(user_data_from_line[4] == absolute_signs_sep)) {
+//            stringstream s_offers(user_data_from_line[4].substr(1, size(user_data_from_line[4]) - 2));
+//            for (string offer_str; getline(s_offers, offer_str, separator_within_offer_list);) {
+//                vector<vector<vector<string>>> offer;
+//                stringstream s_offer(offer_str.substr(1, size(offer_str) -2));
+//                vector<vector<string>> ingredient_vector;
+//                vector<vector<string>> price_vector;
+//                for (string ingredient_or_price_str; getline(s_offer, ingredient_or_price_str, ingr_separator_in_fridge);) {
+//                    //now, reduce the ingredients to vector<string>, and consider the price separately.
+//                    vector<string> ingr_or_price;
+//                    stringstream ingr_price_stream(ingredient_or_price_str.substr(1, size(ingredient_or_price_str) -2));
+//                    for (string ingr_price_element; getline(ingr_price_stream, ingr_price_element, separator_within_ingredient);) {
+//                        ingr_or_price.push_back(ingr_price_element);
+//                    }
 
-                    if (size(ingr_or_price) == 5) { //then we have an ingredient, the price contains 1 elements.
-                        ingredient_vector.push_back(ingr_or_price);
-                    }
-                    else {
-                        price_vector.push_back(ingr_or_price);
-                    }
-                }
-                offer.push_back(ingredient_vector);
-                offer.push_back(price_vector);
-                offer_list_vec.push_back(offer);
-            }
-        }
+//                    if (size(ingr_or_price) == 5) { //then we have an ingredient, the price contains 1 elements.
+//                        ingredient_vector.push_back(ingr_or_price);
+//                    }
+//                    else {
+//                        price_vector.push_back(ingr_or_price);
+//                    }
+//                }
+//                offer.push_back(ingredient_vector);
+//                offer.push_back(price_vector);
+//                offer_list_vec.push_back(offer);
+//            }
+//        }
 
-        //append username and data to db:
-        UserData data;
-        data.password = user_data_from_line[2];
-        data.telegram_username = user_data_from_line[1];
-        data.fridge = fridge_vec;
-        data.offer_list = offer_list_vec;
-        (*database)[user_data_from_line[0]] = data;
-    }
-    file.close();
+//        //append username and data to db:
+//        UserData data;
+//        data.password = user_data_from_line[2];
+//        data.telegram_username = user_data_from_line[1];
+//        data.fridge = fridge_vec;
+//        data.offer_list = offer_list_vec;
+//        (*database)[user_data_from_line[0]] = data;
+//    }
+//    file.close();
 }
 
 void save_to_csv_old() { //save data of the map in a csv
-    ofstream file(Database_fridge_and_food_lists_data);
+//    ofstream file(Database_fridge_and_food_lists_data);
 
-    //generate a vector of the lines to write. Then, write the lines, using: file << string << endl;
-    vector<string> lines;
-    for (auto& [u_name, u_data]: *(database)) {        
-        string line = u_name + basic_csv_separator + u_data.telegram_username + basic_csv_separator + u_data.password + basic_csv_separator;
+//    //generate a vector of the lines to write. Then, write the lines, using: file << string << endl;
+//    vector<string> lines;
+//    for (auto& [u_name, u_data]: *(database)) {        
+//        string line = u_name + basic_csv_separator + u_data.telegram_username + basic_csv_separator + u_data.password + basic_csv_separator;
 
-        //then, unpack a fridge into the format: "{[name: category: quantity: expiry_date: priority_level]; [...]; ...}" exactly, modulo any spacebars.
-        string f_string = "";
-        int numLeft = size(u_data.fridge);
-        if (!(numLeft == 0)) { //empty fridge, "{}" instead.
-            for (vector<vector<string>>::iterator ingredient = u_data.fridge.begin(); ingredient != u_data.fridge.end(); ++ingredient) {
-                numLeft --;
-                string ingr_str = "";
-                int count=0;
-                for (vector<string>::iterator ingr_element = ingredient->begin(); ingr_element != ingredient->end(); ++ingr_element) {
-                    count += 1;
-                    if (count == 5) {
-                        ingr_str += *ingr_element;
-                    }
-                    else {
-                        ingr_str += *ingr_element + separator_within_ingredient;
-                    }
-                }
-                ingr_str = square_brackets_sep[0] + ingr_str + square_brackets_sep[1];
+//        //then, unpack a fridge into the format: "{[name: category: quantity: expiry_date: priority_level]; [...]; ...}" exactly, modulo any spacebars.
+//        string f_string = "";
+//        int numLeft = size(u_data.fridge);
+//        if (!(numLeft == 0)) { //empty fridge, "{}" instead.
+//            for (vector<vector<string>>::iterator ingredient = u_data.fridge.begin(); ingredient != u_data.fridge.end(); ++ingredient) {
+//                numLeft --;
+//                string ingr_str = "";
+//                int count=0;
+//                for (vector<string>::iterator ingr_element = ingredient->begin(); ingr_element != ingredient->end(); ++ingr_element) {
+//                    count += 1;
+//                    if (count == 5) {
+//                        ingr_str += *ingr_element;
+//                    }
+//                    else {
+//                        ingr_str += *ingr_element + separator_within_ingredient;
+//                    }
+//                }
+//                ingr_str = square_brackets_sep[0] + ingr_str + square_brackets_sep[1];
 
-                //concatenate ingredients into fridge string.
-                if (numLeft == 0) {
-                    f_string += ingr_str;
-                }
-                else {
-                    f_string += ingr_str + ingr_separator_in_fridge;
-                }
-            }
-        }
-        f_string = curly_brackets_sep[0] + f_string + curly_brackets_sep[1];
-        line += f_string + basic_csv_separator;
+//                //concatenate ingredients into fridge string.
+//                if (numLeft == 0) {
+//                    f_string += ingr_str;
+//                }
+//                else {
+//                    f_string += ingr_str + ingr_separator_in_fridge;
+//                }
+//            }
+//        }
+//        f_string = curly_brackets_sep[0] + f_string + curly_brackets_sep[1];
+//        line += f_string + basic_csv_separator;
 
-        //deal with offer list now: convert to "⊂≺⊏name: category: quantity: expiry_date: priority_level⊐; ⊏...⊐; ...; ⊏price⊐≻/≺...≻/...⊃", from vecx4 <string>
-        string o_l_string = "";
-        numLeft = size(u_data.offer_list); //repurpose numLeft for this iteration.
-        if (!(numLeft == 0)) {//so that empty offer_list = "||"
-            for (vector<vector<vector<vector<string>>>>::iterator offer = u_data.offer_list.begin(); offer != u_data.offer_list.end(); ++offer) {
-                string price = (*offer)[1][0][0]; //offer[1] is price in a vector<vector<string>>
-                price = square_brackets_sep[0] + price + square_brackets_sep[1];
+//        //deal with offer list now: convert to "⊂≺⊏name: category: quantity: expiry_date: priority_level⊐; ⊏...⊐; ...; ⊏price⊐≻/≺...≻/...⊃", from vecx4 <string>
+//        string o_l_string = "";
+//        numLeft = size(u_data.offer_list); //repurpose numLeft for this iteration.
+//        if (!(numLeft == 0)) {//so that empty offer_list = "||"
+//            for (vector<vector<vector<vector<string>>>>::iterator offer = u_data.offer_list.begin(); offer != u_data.offer_list.end(); ++offer) {
+//                string price = (*offer)[1][0][0]; //offer[1] is price in a vector<vector<string>>
+//                price = square_brackets_sep[0] + price + square_brackets_sep[1];
 
-                //repack ingredient list into string, just like in a fridge:
-                //offer[0] is a vector<vector<string>>, of ingredients.
-                string ingr_list;
-                for (vector<vector<string>>::iterator ingredient = (*offer)[0].begin(); ingredient != (*offer)[0].end(); ++ingredient) {
-                    string ingr_str = "";
-                    int count=0;
-                    for (vector<string>::iterator ingr_element = ingredient->begin(); ingr_element != ingredient->end(); ++ingr_element) {
-                        count += 1;
-                        if (count == 5) {
-                            ingr_str += *ingr_element;
-                        }
-                        else {
-                            ingr_str += *ingr_element + separator_within_ingredient;
-                        }
-                    }
-                    ingr_str = square_brackets_sep[0] + ingr_str + square_brackets_sep[1];
+//                //repack ingredient list into string, just like in a fridge:
+//                //offer[0] is a vector<vector<string>>, of ingredients.
+//                string ingr_list;
+//                for (vector<vector<string>>::iterator ingredient = (*offer)[0].begin(); ingredient != (*offer)[0].end(); ++ingredient) {
+//                    string ingr_str = "";
+//                    int count=0;
+//                    for (vector<string>::iterator ingr_element = ingredient->begin(); ingr_element != ingredient->end(); ++ingr_element) {
+//                        count += 1;
+//                        if (count == 5) {
+//                            ingr_str += *ingr_element;
+//                        }
+//                        else {
+//                            ingr_str += *ingr_element + separator_within_ingredient;
+//                        }
+//                    }
+//                    ingr_str = square_brackets_sep[0] + ingr_str + square_brackets_sep[1];
 
-                    ingr_list += ingr_str + ingr_separator_in_fridge;
-                }
+//                    ingr_list += ingr_str + ingr_separator_in_fridge;
+//                }
 
-                //concatenate offers into offer list string.
-                string o_string = ingr_list + price;
-                o_string = curly_brackets_sep[0] + o_string +  curly_brackets_sep[1];
-                numLeft --;
-                if (numLeft == 0) {
-                    o_l_string += o_string;
-                }
-                else {
-                    o_l_string += o_string + separator_within_offer_list;
-                }
-            }
-        }
+//                //concatenate offers into offer list string.
+//                string o_string = ingr_list + price;
+//                o_string = curly_brackets_sep[0] + o_string +  curly_brackets_sep[1];
+//                numLeft --;
+//                if (numLeft == 0) {
+//                    o_l_string += o_string;
+//                }
+//                else {
+//                    o_l_string += o_string + separator_within_offer_list;
+//                }
+//            }
+//        }
 
-        o_l_string = absolute_signs_sep[0] + o_l_string + absolute_signs_sep[1];
-        line += o_l_string;
-        //now, pushback line into line list
-        lines.push_back(line);
-    }
-    //then, write lines into file.
-    for (vector<string>::iterator line_it = lines.begin(); line_it != lines.end(); ++line_it) {
-        //        cout << "Writing line " << *(line_it) <<endl; //for debug purposes.
-        file << *(line_it) << endl;
-    }
-    file.close();
+//        o_l_string = absolute_signs_sep[0] + o_l_string + absolute_signs_sep[1];
+//        line += o_l_string;
+//        //now, pushback line into line list
+//        lines.push_back(line);
+//    }
+//    //then, write lines into file.
+//    for (vector<string>::iterator line_it = lines.begin(); line_it != lines.end(); ++line_it) {
+//        //        cout << "Writing line " << *(line_it) <<endl; //for debug purposes.
+//        file << *(line_it) << endl;
+//    }
+//    file.close();
 }
 
 
@@ -398,7 +468,7 @@ void init_data_test() { //debug function. Tests database read/write all together
     (*database)[m] = data;
     string k = "Johnny";
     vector<vector<string>> offer;
-    offer.push_back(data.fridge);
+    offer.push_back(data.fridge[0]);
     string price_str = "10";
     vector<string> price;
     price.push_back(price_str);
@@ -409,14 +479,14 @@ void init_data_test() { //debug function. Tests database read/write all together
 
 int test_read_write_csv() {
     init_data_test();
-    save_to_csv();
+    write_to_csv();
     read_from_csv();
     cout <<"Feel free to check database.csv! You will gleefully see new items added :)";
     database; //open this while in debug mode to test, from qt it will give nice informations.
     return 0;
 }
 
-
+int val = test_read_write_csv();
 
 
 //.////Back to actual Database Stuff:
@@ -479,17 +549,17 @@ void update_user_characteristics(string username, string password, basic_user_da
     auto el = database->find(username);
     
     if (el != database->end() && password==el->second.password) {
-            second.display_name = new_characs.display_name;
-            second.telegram_username = new_characs.telegram_username;
-            second.gender = new_characs.gender;
-            second.promotion = new_characs.promotion;
-            second.building_address = new_characs.building_address;
-            second.phone_number = new_characs.phone_number;
-            second.food_and_dietary_restrictions = new_characs.food_and_dietary_restrictions;
-            second.telegram_notifications = new_characs.telegram_notifications;
-            second.marketplace_notifications = new_characs.marketplace_notifications;
+            el->second.display_name = new_characs.display_name;
+            el->second.telegram_username = new_characs.telegram_username;
+            el->second.gender = new_characs.gender;
+            el->second.promotion = new_characs.promotion;
+            el->second.building_address = new_characs.building_address;
+            el->second.phone_number = new_characs.phone_number;
+            el->second.food_and_dietary_restrictions = new_characs.food_and_dietary_restrictions;
+            el->second.telegram_notifications = new_characs.telegram_notifications;
+            el->second.marketplace_notifications = new_characs.marketplace_notifications;
     }
-    else if(old_password != el->second.password){
+    else if(password != el->second.password){
             // Password does not match
             auto err_obj = std::make_tuple(507, "Incorrect Password");
             rpc::this_handler().respond_error(err_obj);
@@ -620,9 +690,10 @@ int main() {
     
     cout << "running";
     
-    read_from_csv();
+//    read_from_csv(); Uncomment when actual testing server begins.
+    
     srv.run();
     
+//    write_to_csv();  Same-same. Uncomment when testing begins.
     return 0;
-    write_to_csv()
 }
