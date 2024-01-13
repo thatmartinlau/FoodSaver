@@ -299,7 +299,7 @@ Item {
 
             Button {
                 anchors.left: parent.left
-                text: "Close"
+                text: "Next"
                 background: Rectangle {
                         color: "#1C6F30"
                         radius: 4
@@ -330,65 +330,20 @@ Item {
 
                             // Calling the setUserInfo function
                             signinInfo.setUserInfo(displayName, gender, address, promotion, phone, vegetarian, vegan, glutenFree, lactoseIntolerant, pescatarian, halal);
-
-                            // Pushing the Market.qml onto the stack
-                            // stackView.push(Qt.resolvedUrl("Market.qml"));
                 }
             }
             Connections {
                 target: signinInfo
 
-                function onOpenFridge() {
-                    stackView.push(Qt.resolvedUrl("Fridge.qml"))
+                function onOpenMarketPage() {
+                    stackView.push(Qt.resolvedUrl("Market.qml"))
+                }
+                function onOpenPreviousPage() {
+                    stackView.push(Qt.resolvedUrl("SigninPage.qml"))
                 }
             }
         }
     }
-
-    //Bottom buttons
-    Row {
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 20
-
-        Button {
-            text: "Cancel"
-            background: Rectangle {
-                color: "#6C757D" // Grey for neutral/cancel actions
-                radius: 8
-            }
-            onClicked: {
-                    displaynametext.text = ""
-                    buildingaddressinput.text = ""
-                    phonenumInput.text = ""
-                    genderMenu.currentIndex = -1
-                    choiceMenu.currentIndex = -1
-                    vegetarianCheck.checked = false
-                    veganCheck.checked = false
-                    glutenCheck.checked = false
-                    lactoseCheck.checked = false
-                    pescatarianCheck.checked = false
-                    halalCheck.checked = false
-                    profilewindow.close()
-                }
-        }
-
-        Button {
-            text: "Apply"
-            background: Rectangle {
-                color: "#28A745" // Blue for apply/confirm actions
-                radius: 8
-            }
-            onClicked: {
-                    profileManager.applyChanges(displaynametext.text, genderMenu.currentText, buildingaddressinput.text,
-                                                choiceMenu.currentText, phonenumInput.text, vegetarianCheck.checked,
-                                                veganCheck.checked, glutenCheck.checked, lactoseCheck.checked,
-                                                pescatarianCheck.checked, halalCheck.checked)
-                    profilewindow.close()
-                }
-        }
-    }
-
 }
 
 

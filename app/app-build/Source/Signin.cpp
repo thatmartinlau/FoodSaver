@@ -1,6 +1,7 @@
 
 #include "../Header/Signin.h"
 #include "../Header/user.h"
+#include "../Header/currentUser.h"
 
 Signin::Signin(QObject *parent) : QObject(parent) {}
 
@@ -32,7 +33,8 @@ bool Signin::signIn(const QString &username, const QString &password, const QStr
     // If all conditions are satisfied
     else{
         emit openNextPage();
-        // User currentUser= User(username.toStdString(), password.toStdString(), telegram.toStdString());
+        CurrentUser::setCurrentUser("newUsername", "newPassword");
+        CurrentUser::currentUser->User::register_user();
         return true;
     }
 }

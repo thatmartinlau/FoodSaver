@@ -15,6 +15,7 @@ HPP = Header/
 
 SOURCES += \
     Source/SigninInformation.cpp \
+    Source/currentUser.cpp \
     backend.cpp \
     main.cpp \
     $$CPP/date.cpp \

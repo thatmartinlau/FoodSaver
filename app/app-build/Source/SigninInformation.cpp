@@ -2,49 +2,59 @@
 #include "../Header/SigninInformation.h"
 #include "../Header/user.h"
 #include "../Header/currentUser.h"
+#include <QDebug>
 SigninInfo::SigninInfo(QObject *parent) : QObject(parent) {}
 
 void SigninInfo::setUserInfo(const QString &displayName, const QString &gender, const QString &address,
                              const QString &promotion, const QString &phone, bool vegetarian,
                              bool vegan, bool glutenFree, bool lactoseIntolerant, bool pescatarian, bool halal) {
 
-    // extern User user = currentUser;
-    // std::string displayNamestr = displayName.toStdString();
-    // currentUser.set_display_name(displayNamestr);
+    if (CurrentUser::currentUser != nullptr) {
+        qDebug() << "Updating current user attributes:";
 
-    std::string genderstr = gender.toStdString();
-    // User::set_gender(genderstr);
+        // Update the attributes of the current user
+        CurrentUser::currentUser->set_display_name(displayName.toStdString());
+        qDebug() << "Display Name:" << QString::fromStdString(CurrentUser::currentUser->get_display_name());
 
-    std::string addressstr = address.toStdString();
-    // User::set_room_number(addressstr);
+        CurrentUser::currentUser->set_gender(gender.toStdString());
+        qDebug() << "Gender:" << QString::fromStdString(CurrentUser::currentUser->get_gender());
 
-    std::string promotionstr = promotion.toStdString();
-    // User::set_promotion(promotionstr);
+        CurrentUser::currentUser->set_room_number(address.toStdString());
+        qDebug() << "Room Number:" << QString::fromStdString(CurrentUser::currentUser->get_room_number());
 
-    std::string phonestr = phone.toStdString();
-    // User::set_phone_number(phonestr);
-    emit openFridge();
+        CurrentUser::currentUser->set_promotion(promotion.toStdString());
+        qDebug() << "Promotion:" << QString::fromStdString(CurrentUser::currentUser->get_promotion());
 
-    // if (vegan){
-    //     std::string diet="vegan";
-    //     User::set_diet(diet);
-    // }
-    // else if (glutenFree){
-    //     std::string diet="glutenFree";
-    //     User::set_diet(diet);
-    // }
-    // else if (vegetarian){
-    //     std::string diet="vegetarian";
-    //     User::set_diet(diet);
-    // }
-    // else if (pescatarian){
-    //     std::string diet="pescatarian";
-    //     User::set_diet(diet);
-    // }
-    // else if (halal){
-    //     std::string diet="halal";
-    //     User::set_diet(diet);
-    // }
+        CurrentUser::currentUser->set_phone_number(phone.toStdString());
+        qDebug() << "Phone Number:" << QString::fromStdString(CurrentUser::currentUser->get_phone_number());
+
+        // Handle dietary restrictions
+        std::string diet = "";
+        if (vegan) {
+            diet = "vegan";
+        } else if (glutenFree) {
+            diet = "glutenFree";
+        } else if (vegetarian) {
+            diet = "vegetarian";
+        } else if (pescatarian) {
+            diet = "pescatarian";
+        } else if (halal) {
+            diet = "halal";
+        }
+        else if (lactoseIntolerant) {
+            diet = "lactoseIntolerant";
+        }
+
+        if (!diet.empty()) {
+            CurrentUser::currentUser->set_diet(diet);
+            qDebug() << "Diet:" << QString::fromStdString(CurrentUser::currentUser->get_diet());
+        }
+
+        qDebug() << "Update complete.";
+        // Emit the signal to indicate that the update is complete
+        emit openMarketPage();
+    } else {
+        qDebug() << "Error: Current user is null.";
+        emit openPreviousPage();
+    }
 }
-
-

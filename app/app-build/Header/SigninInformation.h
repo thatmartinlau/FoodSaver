@@ -18,7 +18,8 @@ public slots:
 
 
 signals:
-void openFridge();
+void openMarketPage();
+void openPreviousPage();
 
 };
 #endif // SIGNININFORMATION_H

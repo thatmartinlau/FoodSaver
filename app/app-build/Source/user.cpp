@@ -10,7 +10,6 @@
 User::User(std::string username, std::string password, std::string telegram) {
     this->username = username;
     this->password = password;
-    this->telegram_username = telegram;
 }
 
 User::~User() {
@@ -32,12 +31,36 @@ std::string User::get_telegram() {
     return telegram_username;
 }
 
+std::string User::get_gender() {
+    return gender;
+}
+
+std::string User::get_display_name() {
+    return display_name;
+}
+std::string User::get_room_number() {
+    return room_number;
+}
+
+std::string User::get_promotion() {
+    return promotion;
+}
+
+std::string User::get_phone_number() {
+    return phone_number;
+}
+
+std::string User::get_diet() {
+    return diet;
+}
+
+
 bool User::is_username(std::string username) {
     //implement logic for checking if a username has already been used
     return false;
 }
 
-bool User::register_user(User user) {
+bool User::register_user() {
     //implement logic for registering the user in the server
     return true;
 }

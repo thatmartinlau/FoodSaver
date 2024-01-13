@@ -20,7 +20,7 @@ public:
     std::string get_username();
     static bool check_password(std::string input_username, std::string input_password);
     void set_telegram(std::string telegram);
-    bool register_user(User user);
+    bool register_user();
     void set_gender(std::string gender);
     void set_diet(std::string diet);
     void set_phone_number(std::string phone_number);
@@ -29,6 +29,12 @@ public:
     void set_display_name(std::string display_name);
     static bool is_username(std::string username);
     std::string get_telegram();
+    std::string get_gender();
+    std::string get_display_name();
+    std::string get_room_number();
+    std::string get_promotion();
+    std::string get_phone_number();
+    std::string get_diet();
 
     //json toJson () const;
 
