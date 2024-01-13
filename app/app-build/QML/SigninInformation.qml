@@ -332,7 +332,14 @@ Item {
                             signinInfo.setUserInfo(displayName, gender, address, promotion, phone, vegetarian, vegan, glutenFree, lactoseIntolerant, pescatarian, halal);
 
                             // Pushing the Market.qml onto the stack
-                            stackView.push(Qt.resolvedUrl("Market.qml"));
+                            // stackView.push(Qt.resolvedUrl("Market.qml"));
+                }
+            }
+            Connections {
+                target: signinInfo
+
+                function onOpenFridge() {
+                    stackView.push(Qt.resolvedUrl("Fridge.qml"))
                 }
             }
         }

@@ -16,7 +16,7 @@ signals:
     void openPasswordError();
     void openUsernameError();
     void openNoPasswordError();
-    void openMarketPage();
+    void openNextPage();
     void openShortPasswordError();
 };
 

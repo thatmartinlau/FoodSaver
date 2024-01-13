@@ -179,10 +179,10 @@ Item {
             }
 
             // Successful singin
-            function onOpenMarketPage() {
-                var currentUsername = CurrentUser.username;
-                var currentPassword = CurrentUser.password;
-                stackView.push(Qt.resolvedUrl("Market.qml"))
+            function onOpenNextPage() {
+                //var currentUsername = CurrentUser.username;
+                //var currentPassword = CurrentUser.password;
+                stackView.push(Qt.resolvedUrl("SigninInformation.qml"))
             }
         }
     }

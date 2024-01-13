@@ -29,6 +29,7 @@ public:
     void set_display_name(std::string display_name);
     static bool is_username(std::string username);
     std::string get_telegram();
+
     //json toJson () const;
 
 private:

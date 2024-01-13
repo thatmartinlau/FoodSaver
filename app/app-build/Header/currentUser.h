@@ -1,0 +1,4 @@
+#ifndef CURRENTUSER_H
+#define CURRENTUSER_H
+
+#endif // CURRENTUSER_H
