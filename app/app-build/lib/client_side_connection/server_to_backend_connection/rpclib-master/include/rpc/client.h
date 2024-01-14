@@ -5,10 +5,10 @@
 
 #include "nonstd/optional.hpp"
 
-#include "config.h"
-#include "detail/log.h"
-#include "detail/pimpl.h"
-#include "msgpack.hpp"
+#include "rpc/config.h"
+#include "rpc/detail/log.h"
+#include "rpc/detail/pimpl.h"
+#include "rpc/msgpack.hpp"
 
 namespace rpc {
 

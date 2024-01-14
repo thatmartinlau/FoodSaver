@@ -10,9 +10,9 @@
 #ifndef MSGPACK_V1_PACK_DECL_HPP
 #define MSGPACK_V1_PACK_DECL_HPP
 
-#include "versioning.hpp"
-#include "cpp_config.hpp"
-#include "../sysdep.h"
+#include "rpc/msgpack/versioning.hpp"
+#include "rpc/msgpack/cpp_config.hpp"
+#include "rpc/msgpack/sysdep.h"
 
 namespace clmdep_msgpack {
 

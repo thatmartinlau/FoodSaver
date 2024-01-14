@@ -10,10 +10,10 @@
 #ifndef MSGPACK_V1_OBJECT_DECL_HPP
 #define MSGPACK_V1_OBJECT_DECL_HPP
 
-#include "versioning.hpp"
-#include "pack.hpp"
-#include "zone.hpp"
-#include "adaptor/adaptor_base.hpp"
+#include "rpc/msgpack/versioning.hpp"
+#include "rpc/msgpack/pack.hpp"
+#include "rpc/msgpack/zone.hpp"
+#include "rpc/msgpack/adaptor/adaptor_base.hpp"
 
 #include <cstring>
 #include <stdexcept>

@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include "rpclib-master/include/rpc/client.h"
-#include "../../front.hpp"
-#include "../../ingredient.h"
-#include "../../date.h"
-#include "../../fridge.h"
-#include "../../offer.h"
-#include "../../user.h"
+#include "front.hpp"
+#include "ingredient.h"
+#include "date.h"
+#include "fridge.h"
+#include "offer.h"
+#include "user.h"
 
 
 //Backend guys make a new user, which asks for functions to be called from serverside! All functions here are focused on getting server-coded functions called.
