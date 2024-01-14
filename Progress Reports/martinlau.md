@@ -65,5 +65,8 @@ WEEK 13:  08/01/24 - 14/01/24
 Monday team meeting: coming together, formulating new plan to finish and link the project progress together.
 Starting work on the telegram bot: obtaining API, starting out the Telegram bot development branch.
 
+Implementing the given functions from Sixtine to link QML and CPP logic together.
+The code is currently very buggy and cannot compile due to an unforseen bug done by a careless ~~whisper~~ commit.
+
 
 WEEK 14: 15/01/24 - 21/01/24
