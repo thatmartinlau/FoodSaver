@@ -10,7 +10,7 @@
 #ifndef MSGPACK_V1_PACK_HPP
 #define MSGPACK_V1_PACK_HPP
 
-#include "pack_decl.hpp"
+#include "rpc/msgpack/v1/pack_decl.hpp"
 
 #include <stdexcept>
 #include <limits>

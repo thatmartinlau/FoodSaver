@@ -6,7 +6,7 @@
 #include <cstddef>
 #include <cstdint>
 
-#include "compatibility.h"
+#include "rpc/compatibility.h"
 
 namespace rpc
 {
