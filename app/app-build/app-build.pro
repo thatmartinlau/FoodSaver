@@ -15,6 +15,7 @@ HPP = Header/
 
 SOURCES += \
     Source/profilemanager.cpp \
+    Source/recipe.cpp \
     Source/settingsmanager.cpp \
     main.cpp \
     $$CPP/date.cpp \
@@ -36,4 +37,5 @@ HEADERS += \
     $$HPP/offer.h \
     $$HPP/temp.front.hpp \
     $$HPP/user.h \
-    Header/profilemanager.h
+    Header/profilemanager.h \
+    Header/recipe.h
