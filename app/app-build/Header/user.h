@@ -12,7 +12,7 @@
 //using json = nlohmann::json;
 //using namespace std;
 
-//#include "../lib/client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
+#include "../lib/client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
 
 class User{
 public:
