@@ -3,7 +3,9 @@
 
 #include "ingredient.h"
 
-//#include <iostream>
+#include <iostream>
+#include <vector>
+using namespace std;
 //#include <list>
 //#include <string>
 //#include <ctime>

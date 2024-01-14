@@ -37,5 +37,6 @@ HEADERS += \
     $$HPP/offer.h \
     $$HPP/temp.front.hpp \
     $$HPP/user.h \
+    $$HPP/client_side_connection/server_to_backend_connection/rpc_client_side.hpp \
     Header/profilemanager.h \
     Header/recipe.h
