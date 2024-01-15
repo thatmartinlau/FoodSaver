@@ -3,8 +3,7 @@
 #include<vector>
 #include <sstream>
 #include "rpc/client.h"
-<<<<<<< HEAD:server/POCOSocket/Server/rpc_client_side.cpp
-#include "rpc_client_side.hpp"
+#include "rpc_client_side_tester_file.hpp".hpp"
 #include "front.hpp"
 #include "ingredient.h"
 #include "date.h"
@@ -12,10 +11,6 @@
 #include "offer.h"
 #include "user.h"
 #include "rpc/server.h"
-
-=======
-#include "rpc_client_side_tester_file.hpp"
->>>>>>> 659436767f92c208cbdd5994e12e21d2a20e2b5e:server/POCOSocket/Server/rpc_client_side_tester_file.cpp
 
 
 
@@ -378,7 +373,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
         for (vector<string>::iterator it= ingredient_vector.begin(); it != ingredient_vector.end(); it++) {
             if (char_to_exclude_satisfied(*it) == false) {cout << "ValueError: ingredient contains disallowed characters. See top of client_side for list.";return;}
         }
-<<<<<<< HEAD:server/POCOSocket/Server/rpc_client_side.cpp
+
         vector<vector<vector<string>>> list_ingr_price;
         list_ingr_price.push_back(update_list_ingredient);
         vector<vector<string>> price_element ;
@@ -413,23 +408,24 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 }
 
 
-<<<<<<< HEAD:server/POCOSocket/Server/rpc_client_side.cpp
-std::unordered_map<std::string, std::vector<std::vector<std::vector<std::vector<std::string>>>>>
+
+std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>
 get_all_clients_with_offers() {
-    rpc::client cl(HOST_SERVER_NAME, HOST_SERVER_PORT);
+        rpc::client cl(HOST_SERVER_NAME, HOST_SERVER_PORT);
 
-    // Perform an RPC call to the server to retrieve all clients with their offers
-    auto clientsWithOffers = cl.call("getMapOfOffers").as<
-        std::unordered_map<std::string, std::vector<std::vector<std::vector<std::vector<std::string>>>>>
-        >();
+        // Perform an RPC call to the server to retrieve all clients with their offers
+        auto clientsWithOffers = cl.call("getMapOfOffers").as<
+            std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>
+            >();
 
-    return clientsWithOffers;
+        return clientsWithOffers;
 }
-=======
+
+
 int test_msgpack(){
 
 
->>>>>>> 659436767f92c208cbdd5994e12e21d2a20e2b5e:server/POCOSocket/Server/rpc_client_side_tester_file.cpp
+
 
 
     /*
@@ -475,6 +471,7 @@ return 1;
 
 
 }
+
 
 
 

@@ -39,7 +39,7 @@ private:
     std::string password;
 };
 
-
+std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>getOfferMapFromServer();
 vector<string> get_user_name_list();
 
 #endif

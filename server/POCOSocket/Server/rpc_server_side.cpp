@@ -517,7 +517,9 @@ void remove_user(string username, string password){
         auto err_obj = std::make_tuple(123, "Username not found");
         rpc::this_handler().respond_error(err_obj);
     }
+
 }
+
 
 void update_user(string old_username, string old_password, string new_username, string new_password) {
     auto el = database->find(old_username); // Find the old username in the database
@@ -537,154 +539,128 @@ void update_user(string old_username, string old_password, string new_username, 
         auto err_obj = std::make_tuple(507, "Incorrect Password");
         rpc::this_handler().respond_error(err_obj);
     }
- else {
-    // Username not found
-    auto err_obj = std::make_tuple(123, "Username not found");
-    rpc::this_handler().respond_error(err_obj);
-}
-    
-}
-    
-void update_user_characteristics(string username, string password, basic_user_data new_characs) {
-    auto el = database->find(username);
-    
-    if (el != database->end() && password==el->second.password) {
-            el->second.display_name = new_characs.display_name;
-            el->second.telegram_username = new_characs.telegram_username;
-            el->second.gender = new_characs.gender;
-            el->second.promotion = new_characs.promotion;
-            el->second.building_address = new_characs.building_address;
-            el->second.phone_number = new_characs.phone_number;
-            el->second.food_and_dietary_restrictions = new_characs.food_and_dietary_restrictions;
-            el->second.telegram_notifications = new_characs.telegram_notifications;
-            el->second.marketplace_notifications = new_characs.marketplace_notifications;
-    }
-    else if(password != el->second.password){
-            // Password does not match
-            auto err_obj = std::make_tuple(507, "Incorrect Password");
-            rpc::this_handler().respond_error(err_obj);
-    }
-else {
+    else {
         // Username not found
         auto err_obj = std::make_tuple(123, "Username not found");
         rpc::this_handler().respond_error(err_obj);
     }
-    
+
 }
 
 void update_fridge(std::string username, string password, vector<vector<string>> &new_fridge) {
-        auto el = database->find(username); // Find the username in the database
-        if (el != database->end()) {
-            // Username exists
-            if (password == el->second.password) {
-                // Password matches
+    auto el = database->find(username); // Find the username in the database
+    if (el != database->end()) {
+        // Username exists
+        if (password == el->second.password) {
+            // Password matches
             vector<vector<string>> old_data = el->second.fridge; //used so we can later delete the old data
             el->second.fridge = std::move(new_fridge);
 
             old_data.clear();
 
             std::vector<std::vector<std::string>>().swap(old_data);//releases the memory used by old_data
-            }
-            else if(password != el->second.password){
+        }
+        else if(password != el->second.password){
             // Password does not match
             auto err_obj = std::make_tuple(507, "Incorrect Password");
             rpc::this_handler().respond_error(err_obj);
-            }
-            else {
+        }
+        else {
             // Username not found
             auto err_obj = std::make_tuple(123, "Username not found");
             rpc::this_handler().respond_error(err_obj);
-            }
-
         }
+
+    }
 } //updates a user fridge
 
-void update_offer(std::string username, string password, vector<vector<vector<vector<string>>>> &new_offer) {
-        auto el = database->find(username); // Find the username in the database
-        if (el != database->end()) {
-            // Username exists
-            if (password == el->second.password) {
+void update_offer(std::string username, string password, vector<vector<vector<string>>> &new_offer) {
+    auto el = database->find(username); // Find the username in the database
+    if (el != database->end()) {
+        // Username exists
+        if (password == el->second.password) {
             // Password matches
-            vector<vector<vector<vector<string>>>> old_data = el->second.offer_list; //used so we can later delete the old data
+            vector<vector<vector<string>>> old_data = el->second.offer_list; //used so we can later delete the old data
             el->second.offer_list = std::move(new_offer);
 
             old_data.clear();
 
-            std::vector<std::vector<std::vector<std::vector<std::string>>>>().swap(old_data);//releases the memory used by old_data
+            std::vector<std::vector<std::vector<std::string>>>().swap(old_data);//releases the memory used by old_data
 
-            }
-            else if(password != el->second.password){
+        }
+        else if(password != el->second.password){
             // Password does not match
             auto err_obj = std::make_tuple(507, "Incorrect Password");
             rpc::this_handler().respond_error(err_obj);
-            }
-            else {
+        }
+        else {
             // Username not found
             auto err_obj = std::make_tuple(123, "Username not found");
             rpc::this_handler().respond_error(err_obj);
-            }
         }
+    }
 } //updates a user offer list
 
 //DB Sending Functions:
-vector<vector<vector<vector<string>>>> get_offer_list(string username, string password) {
-        auto el = database->find(username); // Find the username in the database
+vector<vector<vector<string>>> get_offer_list(string username, string password) {
+    auto el = database->find(username); // Find the username in the database
 
-        if (el != database->end() && password == el->second.password) {
-            // Username exists and password matches
+    if (el != database->end() && password == el->second.password) {
+        // Username exists and password matches
 
-            // Move the offer_list content to the caller
-            return std::move(el->second.offer_list);
-        }
+        // Move the offer_list content to the caller
+        return std::move(el->second.offer_list);
+    }
 
 
-        return {}; // Return an empty offer_list if no username or password does not match
+    return {}; // Return an empty offer_list if no username or password does not match
 
 }
 vector<vector<string>> get_fridge(string username, string password) {
-        auto el = database->find(username); // Find the username in the database
-        if (el != database->end() && password == el->second.password) {
-            // Username exists and password matches
+    auto el = database->find(username); // Find the username in the database
+    if (el != database->end() && password == el->second.password) {
+        // Username exists and password matches
 
 
-            return std::move(el->second.fridge);
-        }
+        return std::move(el->second.fridge);
+    }
 
 
-        return {}; // Return an empty offer_list if no username or password does not match
+    return {}; // Return an empty offer_list if no username or password does not match
 
 }
+unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
+    unordered_map<string, vector<vector<vector<string>>>> offerMap;
 
-<<<<<<< HEAD
-unordered_map<string, vector<vector<vector<vector<string>>>>> getMapOfOffers(){
-        unordered_map<string, vector<vector<vector<vector<string>>>>> offerMap;
+    // Iterating through the database to retrieve user offers
+    for (const auto& entry : *database) {
+        const std::string& username = entry.first;
+        const UserData& userData = entry.second;
 
-        // Iterating through the database to retrieve user offers
-        for (const auto& entry : *database) {
-            const std::string& username = entry.first;
-            const UserData& userData = entry.second;
+        // Fetching offers for the current user from UserData
+        const std::vector<std::vector<std::vector<std::string>>>& userOffers = userData.offer_list;
 
-            // Fetching offers for the current user from UserData
-            const std::vector<std::vector<std::vector<std::vector<std::string>>>>& userOffers = userData.offer_list;
+        // Assigning the user offers to the offerMap using the username as the index
+        offerMap[username] = userOffers;
+    }
 
-            // Assigning the user offers to the offerMap using the username as the index
-            offerMap[username] = userOffers;
-        }
-
-        return offerMap;
+    return offerMap;
 }
 
-=======
-vector<string> get_user_name_list() {
-        vector<string> user_list;
-        for (auto& [key, value] : *database) {
-            user_list.push_back(key);
-        }
-        return user_list;
+vector<string> getUsers(){
+    vector<string> Users;
+
+    // Iterating through the database to retrieve user offers
+    for (const auto& entry : *database) {
+        const std::string& username = entry.first;
+
+
+        Users.push_back(username);
+    }
+
+    return Users;
 }
 
-
->>>>>>> 659436767f92c208cbdd5994e12e21d2a20e2b5e
 int main() {
     rpc::server srv(3333);
     
@@ -701,6 +677,7 @@ int main() {
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
     srv.bind("getMapOfOffers", &getMapOfOffers);
+    srv.bind("getUsers", &getUsers);
     
     //General Functions
     srv.bind("get_user_name_list", &get_user_name_list);
