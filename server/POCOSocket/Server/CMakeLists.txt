@@ -23,7 +23,6 @@ add_executable(Server rpc_server_side.cpp
 	front_temp_copy/date.cpp
 	front_temp_copy/offer.cpp	
 	
-	
 )
 
 target_link_libraries(Server PRIVATE rpc)
