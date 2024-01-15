@@ -11,7 +11,6 @@
 #include "rpc/this_handler.h"
 #include "rpc/this_session.h"
 
-
 using namespace std;
 
 
@@ -460,7 +459,7 @@ int test_read_write_csv() {
     return 0;
 }
 
-int val = test_read_write_csv();
+int value1 = test_read_write_csv();
 
 
 //.////Real Server Stuff:
@@ -656,9 +655,9 @@ double check_user(string username, string password) {
 
 
 //Testing functions
-void test_sending_fridges(vector_of_ingredients fridge) {
-    cout << fridge[0].name << fridge[0].quantity << endl;
-}
+//void test_sending_fridges(vector_of_ingredients fridge) {
+//    cout << fridge[0].name << fridge[0].quantity << endl;
+//}
 
 void test_sending_fridges_vector_edition(vector<string> fridge) {
     cout << fridge[0][0] << fridge[0][1] << endl;
@@ -668,14 +667,14 @@ void test_sending_fridges_vector_edition(vector<string> fridge) {
 
 
 int main() {
-    rpc::server srv(HOST_SERVER_PORT);
+    rpc::server srv(8080);
     
     
     //DB Manip/add/remove
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
-    srv.bind("update_user_characteristics", &update_user_characteristics);
+//    srv.bind("update_user_characteristics", &update_user_characteristics);
     
     srv.bind("update_fridge", &update_fridge);
     srv.bind("update_offer", &update_offer);
@@ -698,12 +697,21 @@ int main() {
     cout << "running";
     
     //binding test functions:
-    srv.bind("test_sending_fridges", &test_sending_fridges);
+//    srv.bind("test_sending_fridges", &test_sending_fridges);
     srv.bind("test_sending_fridges_vector_edition", &test_sending_fridges_vector_edition);
     
     
     //SERVER running from here: 
     srv.run();
+    
+    //test1: fridge sending/receiving:
+    vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
+    vector<vector<string>> fridge_test;
+    fridge_test.push_back(ingr1);
+    fridge_test.push_back(ingr1);
+    //send through to server
+    rpc::client new_cli("localhost", 8080);
+    new_cli.call("test_sending_fridges_vector_edition", fridge_test);
     
     
 //    read_from_csv(); Uncomment when actual testing server begins.    

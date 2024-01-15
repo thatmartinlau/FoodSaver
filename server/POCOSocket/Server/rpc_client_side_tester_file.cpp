@@ -25,21 +25,21 @@ void ServerUser::delete_self_in_db() {
     new_cli.call("remove_user", username, password);
 }
 
-void ServerUser::update_user_characteristics(User usr) {
-    basic_user_data basic_data;
-    basic_data.display_name = usr.get_display_name();
-    basic_data.telegram_username = usr.get_telegram_username();
-    basic_data.gender = usr.get_gender();
-    basic_data.promotion = usr.get_promotion();
-    basic_data.building_address = usr.get_building_address();
-    basic_data.phone_number = usr.get_phone_number();
-    basic_data.food_and_dietary_restrictions = usr.get_food_and_dietary_restrictions();
-    basic_data.telegram_notifications = usr.get_telegram_notifications();
-    basic_data.marketplace_notifications = usr.get_marketplace_notifications();
+//void ServerUser::update_user_characteristics(User usr) {
+//    basic_user_data basic_data;
+//    basic_data.display_name = usr.get_display_name();
+//    basic_data.telegram_username = usr.get_telegram_username();
+//    basic_data.gender = usr.get_gender();
+//    basic_data.promotion = usr.get_promotion();
+//    basic_data.building_address = usr.get_building_address();
+//    basic_data.phone_number = usr.get_phone_number();
+//    basic_data.food_and_dietary_restrictions = usr.get_food_and_dietary_restrictions();
+//    basic_data.telegram_notifications = usr.get_telegram_notifications();
+//    basic_data.marketplace_notifications = usr.get_marketplace_notifications();
     
-    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_user_characteristics", username, password, basic_data);
-}
+//    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+//    new_cli.call("update_user_characteristics", username, password, basic_data);
+//}
 
 //      General Functions:
 
@@ -210,119 +210,119 @@ bool char_to_exclude_satisfied(string input_string) {
 
 //      Sending and receiving functions, from and to, the server.
 
-Fridge ServerUser::get_fridge() { //
-    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    double_vector fridge_vector = new_cli.call("get_fridge", username, password).as<double_vector>(); 
-    std::vector<Ingredient> vector_Ingredient;
+//Fridge ServerUser::get_fridge() { //
+//    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+//    double_vector fridge_vector = new_cli.call("get_fridge", username, password).as<double_vector>(); 
+//    std::vector<Ingredient> vector_Ingredient;
 
-    for (size_t i = 0; i < fridge_vector.double_vect.size(); ++i) {
+//    for (size_t i = 0; i < fridge_vector.double_vect.size(); ++i) {
 
-        vector<string> ingredient = fridge_vector.double_vect[i];
-        vector_Ingredient.push_back(ingredient_from_vector(ingredient));
-    }
+//        vector<string> ingredient = fridge_vector.double_vect[i];
+//        vector_Ingredient.push_back(ingredient_from_vector(ingredient));
+//    }
 
-    return Fridge(vector_Ingredient);
-}
+//    return Fridge(vector_Ingredient);
+//}
 
 
 
-void ServerUser:: update_fridge(Fridge &f_input) {
-    vector<vector<string>> fridge_as_string_vector;
+//void ServerUser:: update_fridge(Fridge &f_input) {
+//    vector<vector<string>> fridge_as_string_vector;
 
-    vector<Ingredient> ingredient_list = f_input.get_list();
+//    vector<Ingredient> ingredient_list = f_input.get_list();
 
-    for (size_t i = 0; i < ingredient_list.size(); ++i){
-        vector<string> ingredient = ingredient_to_vector(ingredient_list[i]);  // Pass the current Ingredient object
-        //verify allowed characters or not:
-        for (vector<string>::iterator it= ingredient.begin(); it != ingredient.end(); it++) {
-            if (char_to_exclude_satisfied(*it) == false) {
-                throw std::invalid_argument("Banned characters are present. Try again.");
-                return;
-            }
-        }
-        //add back to fridge vector, if works.
-        fridge_as_string_vector.push_back(ingredient);
-    }
-    //convert to struct:
-    double_vector fridge_as_struct;
+//    for (size_t i = 0; i < ingredient_list.size(); ++i){
+//        vector<string> ingredient = ingredient_to_vector(ingredient_list[i]);  // Pass the current Ingredient object
+//        //verify allowed characters or not:
+//        for (vector<string>::iterator it= ingredient.begin(); it != ingredient.end(); it++) {
+//            if (char_to_exclude_satisfied(*it) == false) {
+//                throw std::invalid_argument("Banned characters are present. Try again.");
+//                return;
+//            }
+//        }
+//        //add back to fridge vector, if works.
+//        fridge_as_string_vector.push_back(ingredient);
+//    }
+//    //convert to struct:
+//    double_vector fridge_as_struct;
     
-    //send as new format
-    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_fridge", username, password, fridge_as_struct);
-}
+//    //send as new format
+//    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+//    new_cli.call("update_fridge", username, password, fridge_as_struct);
+//}
 
 
 
-// To re-do !!
+//// To re-do !!
 
 
 
-vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
-    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+//vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
+//    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     
-    triple_vector offer_list_vector;
-    offer_list_vector.triple_vect = new_cli.call("get_fridge", username, password).as<triple_vector>().triple_vect;
+//    triple_vector offer_list_vector;
+//    offer_list_vector.triple_vect = new_cli.call("get_fridge", username, password).as<triple_vector>().triple_vect;
     
-    //    double doubleValue = std::stod(numericalString);
-    std::vector<Offer> vector_offer;
+//    //    double doubleValue = std::stod(numericalString);
+//    std::vector<Offer> vector_offer;
 
-    for (size_t i = 0; i < offer_list_vector.triple_vect.size(); ++i) {
-        Offer offer_i(ingredient_from_vector(offer_list_vector.triple_vect[i][0]));
-        double price = std::stod(offer_list_vector.triple_vect[i][1][0]);
-        offer_i.set_price(price);
-        vector_offer.push_back(offer_i);
-    }
-    return vector_offer;
-}
-
-
-void ServerUser::update_offer_list(vector<Offer> &offer_list) {
-    //Oscar work yo magiiiic: same format as get_offer_list for the data we want to give to the server.
-    // vector<Offer> --> [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
-
-    vector<vector<vector<string>>> update_offer_as_string;
-    for (size_t j = 0; j < offer_list.size(); ++j){
-        Offer offer_elem =  offer_list[j];
-
-        // deal with price
-        double price = offer_elem.get_price();
-        string string_price = to_string(price);
-
-        vector<string> price_vector;
-
-        price_vector.push_back(string_price);
+//    for (size_t i = 0; i < offer_list_vector.triple_vect.size(); ++i) {
+//        Offer offer_i(ingredient_from_vector(offer_list_vector.triple_vect[i][0]));
+//        double price = std::stod(offer_list_vector.triple_vect[i][1][0]);
+//        offer_i.set_price(price);
+//        vector_offer.push_back(offer_i);
+//    }
+//    return vector_offer;
+//}
 
 
-        // deal with Ingredient
-        Ingredient ingredient_offer = offer_elem.get_ingredient();
+//void ServerUser::update_offer_list(vector<Offer> &offer_list) {
+//    //Oscar work yo magiiiic: same format as get_offer_list for the data we want to give to the server.
+//    // vector<Offer> --> [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
+
+//    vector<vector<vector<string>>> update_offer_as_string;
+//    for (size_t j = 0; j < offer_list.size(); ++j){
+//        Offer offer_elem =  offer_list[j];
+
+//        // deal with price
+//        double price = offer_elem.get_price();
+//        string string_price = to_string(price);
+
+//        vector<string> price_vector;
+
+//        price_vector.push_back(string_price);
 
 
-        vector<string> ingredient_vector = ingredient_to_vector(ingredient_offer);
+//        // deal with Ingredient
+//        Ingredient ingredient_offer = offer_elem.get_ingredient();
 
-        //Check banned characters.
-        for (vector<string>::iterator it= ingredient_vector.begin(); it != ingredient_vector.end(); it++) {
-            if (char_to_exclude_satisfied(*it) == false) {
-                throw std::invalid_argument("This contains a comma, which is a banned character.");
-                return;
-            }
-        }
-        vector<vector<string>> ingredient_price;
 
-        ingredient_price.push_back(ingredient_vector);
-        ingredient_price.push_back(price_vector);
+//        vector<string> ingredient_vector = ingredient_to_vector(ingredient_offer);
 
-        update_offer_as_string.push_back(ingredient_price);
-        }
-    
+//        //Check banned characters.
+//        for (vector<string>::iterator it= ingredient_vector.begin(); it != ingredient_vector.end(); it++) {
+//            if (char_to_exclude_satisfied(*it) == false) {
+//                throw std::invalid_argument("This contains a comma, which is a banned character.");
+//                return;
+//            }
+//        }
+//        vector<vector<string>> ingredient_price;
 
-    // Convert to a struct format before sending.
-    triple_vector offer_as_struct_vector(update_offer_as_string);
+//        ingredient_price.push_back(ingredient_vector);
+//        ingredient_price.push_back(price_vector);
+
+//        update_offer_as_string.push_back(ingredient_price);
+//        }
     
 
-    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_offer_list", username, password, offer_as_struct_vector);
+//    // Convert to a struct format before sending.
+//    triple_vector offer_as_struct_vector(update_offer_as_string);
+    
 
-}
+//    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+//    new_cli.call("update_offer_list", username, password, offer_as_struct_vector);
+
+//}
 
 
 //int test_msgpack(){
@@ -385,18 +385,17 @@ int test2 () {
     
     //test1: fridge sending/receiving:
     vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
-    vector_of_ingredients fridge_test;
-    ingredient_struct ingr_struct(ingr1);
-    fridge_test.push_back(ingr_struct);
+    vector<vector<string>> fridge_test;
+    fridge_test.push_back(ingr1);
+    fridge_test.push_back(ingr1);
     //send through to server
-    
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("test_sending_fridges", fridge_test);
+    new_cli.call("test_sending_fridges_vector_edition", fridge_test);
     
     
 }
 
-test2();
+int val =test2();
 
 
 
