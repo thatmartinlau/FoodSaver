@@ -1,5 +1,6 @@
 // maincontroller.cpp
 #include "maincontroller.h"
+#include "Source/recipe.cpp"
 #include <QDebug>
 #include <iostream>
 #include <list>
@@ -19,6 +20,18 @@
 using Json = nlohmann::json;
 //using namespace std;*/
 
+std::string convertQtoStd(QString entry){
+    std::string res;
+    res = entry.toStdString();
+    return res;
+}
+
+QString convertStdtoQ(std::string entry){
+    QString res = QString::fromStdString(entry);
+    //res.fromStdString(entry);
+    return res;
+}
+
     MainController::MainController(QObject *parent) : QObject(parent)
 {
 }
@@ -31,19 +44,20 @@ QString MainController::submitText(const QString &text)
     }
 }
 
-double MainController::changeTime(const QString &text)
-{
-    QStringList list1 = text.split(u'h');
-    if (!list1[0].trimmed().isEmpty() && !list1[1].trimmed().isEmpty()) {
-        qDebug() << "User has typed time:" << text;
-        QString copyHrs = list1[0];
-        QString copyMin = list1[1];
-        int res[2] = {copyHrs.toInt(), copyMin.toInt()};
 
-        double decimal = (double)res[1]/(double)60;
-        double time = (double)res[0] + decimal;
-        return time;
-    }
+double changeTime(const QString &hours, const QString &minutes)
+{
+    //QStringList list1 = text.split(u'h');
+    //if (!list1[0].trimmed().isEmpty() && !list1[1].trimmed().isEmpty()) {
+    //qDebug() << "User has typed time:" << text;
+    QString copyHrs = hours;
+    QString copyMin = minutes;
+    int res[2] = {copyHrs.toInt(), copyMin.toInt()};
+
+    double decimal = (double)res[1]/(double)60;
+    double time = (double)res[0] + decimal;
+    return time;
+    //}
 }
 
 int MainController::submitInt(const int &time)
@@ -52,10 +66,81 @@ int MainController::submitInt(const int &time)
     return time + 20;
 }
 
-QString MainController::submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes, const QString &ingredient1, const QString &instruction1)
+std::vector<Recipe> allRecipes;
+std::vector<std::string> test;
+std::vector<std::string> allInstructions;
+
+void MainController::submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes, const QString &ingredient1, const QString &instruction1)
 {
+    std::vector<std::string> vecttt;
+
+    std::string name = convertQtoStd(recipeName);
+    Recipe new_recipe(name);
+    std::cout << "EHHHH"<< new_recipe.get_ingredients().size() <<std::endl;
+    std::cout << vecttt.size() << std::endl;
+    std::cout << "HELLO" << std::endl;
+
+    std::string diet_restr = convertQtoStd(diet);
+    new_recipe.set_diet(diet_restr);
+    new_recipe.set_time(changeTime(hours,minutes));
+    std::cout << vecttt.size() << std::endl;
+    vecttt.push_back(diet_restr);
+    std::cout << vecttt.size() << std::endl;
+    std::cout << "HELLO" << std::endl;
+    std::cout << "EHHHH"<< new_recipe.get_ingredients().size() <<std::endl;
+
+    new_recipe.set_ingredients(test);
+    std::string scd = "secondingr";
+    //new_recipe.add_ingredient(scd);
+    std::cout << "EHHHH"<< new_recipe.get_ingredients().size() <<std::endl;
+    new_recipe.set_directions(allInstructions);
+    allRecipes.push_back(new_recipe);
+
     //qDebug() << "name" << recipeName << "diet" << diet<< "ingr" << ingredient1<< "instr" << instruction1 << "hours"<< hours << "minutes" << minutes;
-    return recipeName+diet+hours+minutes+ingredient1+instruction1;
+    //return changeTime(hours, minutes);
+    //return convertStdtoQ(new_recipe.get_title());
+}
+
+
+
+QString MainController::submitIngredients(const QString &ingredientName){
+    /*Recipe temp_recipe = allRecipes[0];
+
+    std::string title ="heymoon";
+    temp_recipe.set_title(title);
+    temp_recipe.add_ingredient(convertQtoStd(ingredientName));
+    std::cout << "OHMAGAAWWWD"<< temp_recipe.get_ingredients().size() <<std::endl;
+    std::string str = "boy aah";
+    test.push_back(convertQtoStd(ingredientName));
+    //temp_recipe.set_title();
+    //title = "actually";
+    temp_recipe.set_ingredients(temp_recipe.get_ingredients());
+    return convertStdtoQ(temp_recipe.get_title());*/
+    test.push_back(convertQtoStd(ingredientName));
+    return ingredientName;
+}
+
+void MainController::submitInstructions(const QString &instruction){
+    allInstructions.push_back(convertQtoStd(instruction));
+}
+
+QString MainController::get_ingr(){
+    std::cout << "hello2";
+
+    if(allRecipes[0].get_directions().empty()){
+        std::cout << "hello";
+        QString res = convertStdtoQ(allRecipes[0].get_title());
+        return res;
+
+    }else{
+        QString res = convertStdtoQ(allRecipes[0].get_directions()[allRecipes[0].get_directions().size()-1]);
+        //QString res = convertStdtoQ(allRecipes[0].get_ingredients()[0]);
+        return res;
+    }
+    //std::string test = "hello";
+    //QString res = QString::fromStdString(test);
+    //res.fromStdString(test);
+    //return res;
 }
 
 QList<QString> list_names;
@@ -67,6 +152,8 @@ void MainController::submit(const QString &recipeName)
     qDebug() << "name"; //<< recipeName << "diet" << diet<< "ingr" << ingredient1<< "instr" << instruction1 << "hours"<< hours << "minutes" << minutes;
     std::cout << "RESULT";
     if(!list_names.contains(recipeName)){
+        std::string str = "lol";
+        Recipe test(str);
         list_names.append(recipeName);
     }
 }
@@ -96,10 +183,39 @@ int MainController::getTotalLength(){
 
 //QList<QString> list_names = list_recipies;
 QMap<QString, int> dict;
+QList<QString> tagsLasagna;
+
+QList<QString> construct_lstnames(QList<QString> lstnames){
+    lstnames.clear();
+    for(int i = 0; i < allRecipes.size();i++){
+        lstnames.append(convertStdtoQ(allRecipes[i].get_title()));
+        //for(int j=0; j < allRecipes[i].get_ingredients().size(); j++){
+        //    lstnames.append(convertStdtoQ(allRecipes[i].get_ingredients()[j]));
+        //}
+    }
+    return lstnames;
+}
+
+QList<QString> construct_templst(int i){
+    //tmplst.clear();
+    QList<QString> tmplst = list_names[i].split(u' ', Qt::SkipEmptyParts);
+    for(int j=0; j < allRecipes[i].get_ingredients().size(); j++){
+        tmplst.append(convertStdtoQ(allRecipes[i].get_ingredients()[j]));
+    }
+    return tmplst;
+}
 
 QList<QString> MainController::search_res(const QString &entry){
     //std::cout << "Search was: " << entry.toStdString() ;
     //qDebug() << "Hello";
+    tagsLasagna.append("pasta");
+    tagsLasagna.append("heavy");
+    tagsLasagna.append("carrot");
+    tagsLasagna.append("celery");
+    tagsLasagna.append("yummy");
+
+    list_names=construct_lstnames(list_names);
+
 
     for(int i = 0; i<list_names.size(); i++){
         dict[list_names[i]] = 0;
@@ -109,7 +225,8 @@ QList<QString> MainController::search_res(const QString &entry){
     for(int i = 0; i<list_entry.size(); i++){
         for(int j = 0; j<list_names.size(); j++){
             //dict[list_names[j]] = 0;
-            QList<QString> temp_list = list_names[j].split(u' ', Qt::SkipEmptyParts);
+
+            QList<QString> temp_list = construct_templst(j);//list_names[j].split(u' ', Qt::SkipEmptyParts);
 
             for(int h = 0; h<temp_list.size(); h++){
                 temp_list[h] = temp_list[h].toLower();
@@ -117,9 +234,12 @@ QList<QString> MainController::search_res(const QString &entry){
             if(temp_list.contains(list_entry[i].toLower())){
                 dict[list_names[j]]++;
 
+                //for(int h=0; h<allRecipes.)
+
                 //qDebug() << "FOUND" << list_entry[i] << " and " << temp_list.size() ;
                 //return "found: " + list_entry[i];
             }
+
 
             //qDebug() << "temporary" << list_names[j]<< " btw " <<dict[list_names[j]] << " data_bs " << list_names.size() ;
 

@@ -353,9 +353,21 @@ Popup {
 
                 if (recipeName.text.trim() !== "" & ingredient1.text.trim() !== "") { // Check if the text is not empty or only whitespace
                     //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text});
-                    var res = MainController.submitAll(recipeName.text, diet.currentValue, hours.text, minutes.text, ingredient1.text, instruction1.text)
-                    var res2 = MainController.submitAll(instructionModel.get(1).name, diet.currentValue, hours.text, minutes.text, ingredient1.text, instruction1.text)
+                    //var res2 = MainController.submitAll(instructionModel.get(1).name, diet.currentValue, hours.text, minutes.text, ingredient1.text, instruction1.text)
+                    var temp = MainController.submitIngredients("potato")
+                    for(var index = 0; index < inputModel.count; index++){
+                        MainController.submitIngredients(inputModel.get(index).name)
+                    }
 
+                    for(var index = 0; index < instructionModel.count; index++){
+                        MainController.submitInstructions(instructionModel.get(index).name)
+                    }
+                    var res = MainController.submitAll(recipeName.text, diet.currentValue, hours.text, minutes.text, ingredient1.text, instruction1.text)
+
+
+                    //var tester = MainController.submitIngredients("carrot")//inputModel.get(0).name)
+
+                    var no_Value = MainController.get_ingr()
 
                     itemModel.append({"name": recipeName.text, "dietRestriction": diet.currentValue, "date": "Test1", "quantity": "Test1" });
 

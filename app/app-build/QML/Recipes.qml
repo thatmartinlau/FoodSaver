@@ -241,6 +241,7 @@ Row {
                                         Button { // Ellie :)///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                             text: "LIKE"
                                             width: 100
+                                            height: 100
                                             palette.buttonText: "white"
                                             //anchors.horizontalCenter: parent.horizontalCenter
                                             background: Rectangle {

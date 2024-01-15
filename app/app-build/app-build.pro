@@ -20,6 +20,7 @@ HPP = Header/
 
 SOURCES += \
     Source/RecipeBook.cpp \
+    Source/recipe.cpp \
     backend.cpp \
     main.cpp \
     maincontroller.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
 
 HEADERS += \
     Header/RecipeBook.h \
+    Header/recipe.h \
     backend.h \
     maincontroller.h \
     $$HPP/date.h \
