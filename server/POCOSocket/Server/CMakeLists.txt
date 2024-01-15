@@ -12,8 +12,8 @@ include_directories(front_temp_copy/)
 
 
 add_executable(Server rpc_server_side.cpp
-	rpc_client_side.cpp
-	rpc_client_side.hpp
+	rpc_client_side_tester_file.cpp
+	rpc_client_side_tester_file.hpp
 	
 	front_temp_copy/user.cpp
 	front_temp_copy/fridge.cpp

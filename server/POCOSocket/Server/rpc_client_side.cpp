@@ -350,13 +350,13 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 }
 
 
-std::unordered_map<std::string, std::vector<std::vector<std::vector<std::vector<std::string>>>>>
+std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>
 get_all_clients_with_offers() {
     rpc::client cl(HOST_SERVER_NAME, HOST_SERVER_PORT);
 
     // Perform an RPC call to the server to retrieve all clients with their offers
     auto clientsWithOffers = cl.call("getMapOfOffers").as<
-        std::unordered_map<std::string, std::vector<std::vector<std::vector<std::vector<std::string>>>>>
+        std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>
         >();
 
     return clientsWithOffers;
