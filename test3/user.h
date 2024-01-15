@@ -11,13 +11,15 @@
 //#include "nlohmann/json.hpp"
 //using json = nlohmann::json;
 //using namespace std;
+//#include "recipe.h"
 
-#include "client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
+//#include "client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
+//include "" esma's thing
 
 class User{
 public:
     User();
-    User(std::string username, std::string password, std::string telegram_username);
+    User(std::string username, std::string password);
     ~User();
     void set_username(std::string username);
     std::string get_username();
@@ -60,6 +62,9 @@ private:
     int marketplace_notifications;
     Fridge user_fridge;
     std::vector<Offer> offer_list;
+    //std::vector<Recipe> liked_recipes;
 };
+
+std::vector<std::string> getUsers();
 
 #endif // USER_H

@@ -7,10 +7,9 @@
 //using namespace std;
 
 //USER
-User::User(std::string username, std::string password, std::string telegram_username) {
+User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
-    this->telegram_username = telegram_username;
 }
 
 User::~User() {
@@ -28,9 +27,10 @@ bool User::check_password(std::string input_username, std::string input_password
     return input_username == username && input_password == password;
 }
 
+/*
 // Returns true if username in user and false otherwise
-bool User::is_username(string username) {
-    vector<string> list_usernames = get_user_name_list();
+bool User::is_username(std::string username) {
+    std::vector<std::string> list_usernames = get_user_name_list();
     for (int i = 0; i < len(list_usernames); i++) {
         if (list_usernames[i] == username) {
             return true;
@@ -38,6 +38,7 @@ bool User::is_username(string username) {
     }
     return false;
 }
+*/
 
 void User::set_distplay_name(std::string display_name) {
     this->display_name = display_name;
@@ -136,3 +137,14 @@ Offer User::remove_offer(Offer *offer_to_delete) {
 std::vector<Offer> User::get_my_offers(){
     return offer_list;
 }
+
+/*
+std::vector<std::string> get_all_clients() {
+    rpc::clients cl(HOST_SERVER_NAME, HOST_SERVER_PORT);
+
+    auto clients = cl.call("getUsers").as<
+        std::vector<std::string> > ();
+
+    return clients;
+}
+*/
