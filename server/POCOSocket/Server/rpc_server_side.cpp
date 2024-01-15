@@ -15,8 +15,8 @@ const string DATABASE_CSV_FILE = "../Server/database.csv";
 
 //Ingredients: vector<string>>
 //Fridge: vector<vector<string>>
-//Offer: vector<vector<vector<string>>>: with vectors represented as {}, an offer looks like: { {Ingredient1, Ingredient2, etc}, {{price}} } where all elements are strings.
-//Offer List: vector<vector<vector<vector<string>>>>, looking like {Offer1, Offer2, etc}.
+//Offer: vector<vector<string>>: with vectors represented as {}, an offer looks like: { {Ingredient1, Ingredient2, etc}, {{price}} } where all elements are strings.
+//Offer List: <vector<vector<vector<string>>>, looking like {Offer1, Offer2, etc}.
 //Database: unordered_map<string, UserData>, dicts as [], looking like  [username1: UserData, username2: UserData], with UserData having:
 
 class UserData {
@@ -28,7 +28,7 @@ public:
     string password;
     string telegram_username; //NEW ADDITION!!!
     vector<vector<string>> fridge;
-    vector<vector<vector<vector<string>>>> offer_list;
+    vector<vector<vector<string>>>offer_list;
 };
 
 
@@ -39,7 +39,7 @@ public:
 
 //.//////New Types for data transfer: Work these around to mkae them work well pls
 struct offer_list_vector {
-    vector<vector<vector<vector<string>>>> offer_list;
+    vector<vector<vector<string>>> offer_list;
     MSGPACK_DEFINE_ARRAY(offer_list)
 };
 
@@ -361,18 +361,18 @@ void update_fridge(std::string username, string password, vector<vector<string>>
         }
 } //updates a user fridge
 
-void update_offer(std::string username, string password, vector<vector<vector<vector<string>>>> &new_offer) {
+void update_offer(std::string username, string password, vector<vector<vector<string>>> &new_offer) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
             if (password == el->second.password) {
             // Password matches
-            vector<vector<vector<vector<string>>>> old_data = el->second.offer_list; //used so we can later delete the old data
+            vector<vector<vector<string>>> old_data = el->second.offer_list; //used so we can later delete the old data
             el->second.offer_list = std::move(new_offer);
 
             old_data.clear();
 
-            std::vector<std::vector<std::vector<std::vector<std::string>>>>().swap(old_data);//releases the memory used by old_data
+            std::vector<std::vector<std::vector<std::string>>>().swap(old_data);//releases the memory used by old_data
 
             }
             else if(password != el->second.password){
@@ -389,7 +389,7 @@ void update_offer(std::string username, string password, vector<vector<vector<ve
 } //updates a user offer list
 
 //DB Sending Functions:
-vector<vector<vector<vector<string>>>> get_offer_list(string username, string password) {
+vector<vector<vector<string>>> get_offer_list(string username, string password) {
         auto el = database->find(username); // Find the username in the database
 
         if (el != database->end() && password == el->second.password) {
@@ -417,8 +417,8 @@ vector<vector<string>> get_fridge(string username, string password) {
 
 }
 
-unordered_map<string, vector<vector<vector<vector<string>>>>> getMapOfOffers(){
-        unordered_map<string, vector<vector<vector<vector<string>>>>> offerMap;
+unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
+        unordered_map<string, vector<vector<vector<string>>>> offerMap;
 
         // Iterating through the database to retrieve user offers
         for (const auto& entry : *database) {
@@ -426,7 +426,7 @@ unordered_map<string, vector<vector<vector<vector<string>>>>> getMapOfOffers(){
             const UserData& userData = entry.second;
 
             // Fetching offers for the current user from UserData
-            const std::vector<std::vector<std::vector<std::vector<std::string>>>>& userOffers = userData.offer_list;
+            const std::vector<std::vector<std::vector<std::string>>>& userOffers = userData.offer_list;
 
             // Assigning the user offers to the offerMap using the username as the index
             offerMap[username] = userOffers;

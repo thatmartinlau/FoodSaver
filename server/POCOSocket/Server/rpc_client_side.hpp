@@ -38,7 +38,7 @@ private:
 
 
 
-std::unordered_map<std::string, std::vector<std::vector<std::vector<std::vector<std::string>>>>>
+std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>
 getOfferMapFromServer();
 
 #endif
