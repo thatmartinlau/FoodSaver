@@ -41,3 +41,13 @@ Second is that when there are too many items, a scroll appreas so that you can s
 I'm very happy with that I was able to produce, we really have a nice base to work on also I think the rest of the page can be derived from this first page. 
 
 Next thing to do is to make the filtering of the ingredient, find how to remove smth from the fridge and from that on it would be really really nice. 
+
+##8th session: 
+I continued working on the QML fridge page. I figured out all the stuff from the listModel, the way to have scroll over the ingredient of the fridge. And now you can also remove them from your fridge. I started to darft (with code) the selling part i.e. how to make a product of your fridge into an offer. 
+
+##9th frist session back on campus: 
+We all discussed together, the main focus now should be to connect the cpp functions to qml and that a big cpp and hpp part. It is actually my conttributions to this project in cpp (the focus of this class). But in order to do so I need to make some last change to mu Fridge QML part. 
+
+##10th session (TD 11th of Jan):
+Modify the fridge and created in the fridge two tabs: the one My Fridge and the one My Offers. You add element to your fridge and then you can put them on sale when in your fridge and then they will appear on the offers tab and you can manage them over there. That beaing done (with the creation of new pop-up and remove offer individually from the product iof your frdige and being able to modify the chratacteristic of a product and all. I started to try to connect cpp and QML, was insucessful, better luck next time hopefully. 
+
