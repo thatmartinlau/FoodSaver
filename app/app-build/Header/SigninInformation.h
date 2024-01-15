@@ -8,10 +8,8 @@ class SigninInfo : public QObject {
 public:
     explicit SigninInfo(QObject *parent = nullptr);
 
-    //Q_INVOKABLE bool signInInfo();
 
 public slots:
-    //void clearFields();
     void setUserInfo(const QString &displayName, const QString &gender, const QString &address,
                       const QString &promotion, const QString &phone, bool vegetarian,
                       bool vegan, bool glutenFree, bool lactoseIntolerant, bool pescatarian, bool halal);

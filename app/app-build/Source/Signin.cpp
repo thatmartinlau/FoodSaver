@@ -1,7 +1,7 @@
-
 #include "../Header/Signin.h"
 #include "../Header/user.h"
 #include "../Header/currentUser.h"
+
 
 Signin::Signin(QObject *parent) : QObject(parent) {}
 
@@ -33,8 +33,11 @@ bool Signin::signIn(const QString &username, const QString &password, const QStr
     // If all conditions are satisfied
     else{
         emit openNextPage();
-        CurrentUser::setCurrentUser("newUsername", "newPassword");
-        CurrentUser::currentUser->User::register_user();
+        CurrentUser::currentUser.User::set_username(username.toStdString());
+        CurrentUser::currentUser.User::set_password(password.toStdString());
+        CurrentUser::currentUser.register_user();
+        CurrentUser::currentUser.register_new_user();
         return true;
     }
 }
+

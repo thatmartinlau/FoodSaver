@@ -21,12 +21,16 @@ public:
     static bool check_password(std::string input_username, std::string input_password);
     void set_telegram(std::string telegram);
     bool register_user();
+    bool register_new_user();
     void set_gender(std::string gender);
     void set_diet(std::string diet);
     void set_phone_number(std::string phone_number);
     void set_room_number(std::string room_number);
     void set_promotion(std::string promotion);
     void set_display_name(std::string display_name);
+    void set_username(std::string username);
+    void set_password(std::string password);
+
     static bool is_username(std::string username);
     std::string get_telegram();
     std::string get_gender();

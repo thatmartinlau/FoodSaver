@@ -1,3 +1,3 @@
 #include "../Header/currentUser.h"
 
-User* CurrentUser::currentUser = nullptr;
+User CurrentUser::currentUser = User("", "", "");

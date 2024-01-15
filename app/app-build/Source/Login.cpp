@@ -1,8 +1,8 @@
 #include "../Header/Login.h"
 #include "../Header/user.h"
+#include "../Header/currentUser.h"
 #include <string>
 #include <iostream>
-#include "../Header/currentUser.h"
 
 
 Login::Login(QObject *parent) : QObject(parent) {}
@@ -32,8 +32,9 @@ Login::Login(QObject *parent) : QObject(parent) {}
      // If all conditions are satisfied
      else{
          emit openMarketPage2();
-         // CurrentUser::setCurrentUser("newUsername", "newPassword");
-         // CurrentUser::currentUser->User::register_user();
+         CurrentUser::currentUser.User::set_username(username.toStdString());
+         CurrentUser::currentUser.User::set_password(password.toStdString());
+         CurrentUser::currentUser.register_user();
          return true;
      }
 }

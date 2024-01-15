@@ -64,6 +64,10 @@ bool User::register_user() {
     //implement logic for registering the user in the server
     return true;
 }
+bool User::register_new_user() {
+    //implement logic for registering the user in the server
+    return true;
+}
 
 void User::set_gender(std::string gender){
     this->gender=gender;
@@ -83,4 +87,11 @@ void User::set_promotion(std::string promotion){
 }
 void User::set_display_name(std::string display_name){
     this->display_name=display_name;
+}
+void User::set_username(std::string username){
+    this->username=username;
+}
+
+void User::set_password(std::string password){
+    this->password=password;
 }
