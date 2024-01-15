@@ -40,5 +40,6 @@ private:
 
 
 vector<string> get_user_name_list();
+double check_user(); //for William, no functionassociated here. Just tolett you know this name is already taken.
 
 #endif

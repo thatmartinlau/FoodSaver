@@ -15,6 +15,7 @@
 using namespace std;
 
 
+
 //Database storage files: no touchy :))
 const string Database_simple_data = "databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
 const string Database_offer_list_data = "databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
@@ -62,9 +63,10 @@ public:
 };
 
 
-
-
+//DATABASE declaration
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
+
+
 
 
 //some needs for delimiter type within getline():
@@ -461,9 +463,12 @@ int test_read_write_csv() {
 int val = test_read_write_csv();
 
 
-//.////Back to actual Database Stuff:
+//.////Real Server Stuff:
 
 //DB Manipulation functions:
+
+
+
 void add_user(string username, string password){
     if (database->find(username) == database->end()) {
         // Element doesn't exist, so add it
@@ -635,7 +640,18 @@ vector<string> get_user_name_vectors() {
         return user_list;
 }
 
-
+//check functions:
+double check_user(string username, string password) {
+        if (database->find(username) != database->end()) {
+            //check password matches
+            if ((*database)[username].password == password) {
+                return 1;
+            }
+        }
+        else {
+            return 0;
+        }
+}
 
 
 
@@ -666,6 +682,9 @@ int main() {
     
     //General Functions
     srv.bind("get_user_name_vectors", &get_user_name_vectors);
+    
+    //Check functions:
+    srv.bind("check_user", &check_user);
     
     //test read-write of database here:
 //    cout << "Started";
