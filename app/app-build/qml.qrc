@@ -10,5 +10,6 @@
         <file>QML/AddRecipePopup.qml</file>
         <file>QML/OpenRecipePopup.qml</file>
         <file>QML/CookBook.qml</file>
+        <file>QML/PersonalCookBook.qml</file>
     </qresource>
 </RCC>

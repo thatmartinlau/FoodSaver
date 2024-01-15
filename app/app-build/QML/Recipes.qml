@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Shapes 1.6 //eli
 //colors: green #5E9F7C lightgreen #D7ECDE
 
 Row {
@@ -80,7 +81,7 @@ Row {
                     height: parent.height * 0.2
                     color: "transparent"
                     Label {
-                        text: "My Recipies, you can see existing recipues in the bachelor Cookbook in the center, and you can add your own \n recipies by clicking add recipe on the side -- ask Cyriac if questions "
+                        text: "My Recipies, you can see existing recipies in the bachelor Cookbook in the center, and you can add your own \n recipies by clicking add recipe on the side -- ask Cyriac if questions "
                         anchors.top: parent.top
                     }
 
@@ -131,7 +132,7 @@ Row {
                         ComboBox {
                                 id: priority
                                 width: 200
-                                model: ["None","Cook time", "Vegetarian", "Gluten-free"]
+                                model: ["None","Cook time", "Vegetarian", "Gluten-free"] //add "Vegan", "Dairy free"
 
                                 onCurrentIndexChanged: {
                                     console.log("Selected option:", model[currentIndex]);
@@ -249,9 +250,150 @@ Row {
                                                         radius:12.5
                                             }
                                             onClicked: {
-                                                //myPopup.open()
+                                                addFavoriteRecipe.open()
                                             }
                                         }
+                                        /////research on how to make the button a heart or a star:
+                                            /*width: 50
+                                            height: 50 // Adjust the size as needed
+
+                                            Item {
+                                                width: parent.width
+                                                height: parent.height
+                                            Path {
+                                                id: heartPath
+                                                fillColor: "transparent"
+                                                strokeColor: "red"
+                                                strokeWidth: 2
+
+                                                startX: 50
+                                                startY: 95
+
+                                                PathLine { x: 80; y: 60 }
+                                                PathArc {
+                                                    x: 50; y: 30
+                                                    radiusX: 30; radiusY: 30
+                                                    useLargeArc: true
+                                                    direction: PathArc.Clockwise
+                                                }
+                                                PathArc {
+                                                    x: 20; y: 60
+                                                    radiusX: 30; radiusY: 30
+                                                    useLargeArc: true
+                                                    direction: PathArc.Clockwise
+                                                }
+
+                                                PathLine { x: 50; y: 95 }
+                                            }
+
+
+                                            onClicked:{
+                                                fillColor: "red"
+                                                //stackView.push(Qt.resolvedUrl("CookBookPopup.qml"))
+                                            }
+                                            /*Shape {
+                                                ShapePath {
+                                                    fillColor: "transparent"
+                                                    strokeColor: "yellow"
+                                                    strokeWidth: 2 // Adjust the border width as needed
+
+                                                    PathPolyline {
+                                                        path: [
+                                                            Qt.point(parent.width, parent.height),
+                                                            Qt.point(parent.width * 0.8, parent.height * 0.8),
+                                                            Qt.point(parent.width, parent.height * 0.6),
+                                                            Qt.point(parent.width * 0.6, parent.height * 0.6),
+                                                            Qt.point(parent.width * 0.5, parent.height * 0.4),
+                                                            Qt.point(parent.width * 0.4, parent.height * 0.6),
+                                                            Qt.point(0, parent.height * 0.6),
+                                                            Qt.point(parent.width * 0.2, parent.height * 0.8),
+                                                            Qt.point(0, parent.height),
+                                                            Qt.point(parent.width * 0.5, parent.height * 0.7) // Center point for symmetry
+                                                        ]
+                                                    }
+                                                }
+                                                anchors.fill: parent
+                                                onClicked: {
+                                                    // Handle the click event
+                                                    fillColor = "yellow";
+                                                    // Additional actions can be added here
+                                                }
+                                                /*MouseArea {
+                                                    anchors.fill: parent
+                                                    onClicked: {
+                                                        // Handle the click event
+                                                        fillColor = "yellow";
+                                                        // Additional actions can be added here
+                                                    }*/
+                                            //    }
+
+                                           // }
+                                           /*Shape {
+                                                    ShapePath {
+                                                        fillColor: "transparent"
+                                                        strokeColor: "yellow"
+                                                        strokeWidth: 2 // Adjust the border width as needed
+
+                                                        PathPolyline {
+                                                            path: [
+                                                                Qt.point(parent.width, parent.height),
+                                                                Qt.point(0, parent.height),
+                                                                Qt.point(parent.width, parent.height/2),
+                                                                Qt.point(0, parent.height/2),
+                                                                Qt.point(parent.width/2, 0)
+                                                                /*Qt.point(100,  20),
+                                                                Qt.point(150, 180),
+                                                                Qt.point( 20,  75),
+                                                                Qt.point(180,  75),
+                                                                Qt.point( 50, 180),
+                                                                Qt.point(100,  20),
+                                                            ]
+                                                        }
+                                                        MouseArea {
+                                                            anchors.fill: parent
+                                                            onClicked: {
+                                                                // Handle the click event
+                                                                fillColor = "yellow";
+                                                                // Additional actions can be added here
+                                                            }
+                                                        }
+                                                        // Define the star shape
+                                                        startX: parent.width / 2
+                                                        startY: 0
+                                                        PathLine { x: parent.width; y: parent.height }
+                                                        PathLine { x: 0; y: parent.height }
+                                                        PathLine { x: parent.width; y: parent.height / 2 }
+                                                        PathLine { x: 0; y: parent.height / 2 }
+                                                        PathLine { x: parent.width / 2; y: 0 }
+                                                        //closePath: true
+                                                    }
+                                            /*Rectangle {
+                                                    width: parent.width
+                                                    height: parent.height
+
+                                                    border.color: "yellow"
+                                                    border.width: 2 // Adjust the border width as needed
+                                                    radius: 12.5 // Adjust the corner radius as needed
+
+                                                    MouseArea {
+                                                        anchors.fill: parent
+                                                        onClicked: {
+                                                            // Handle the click event
+                                                            color = "yellow";
+                                                            // Additional actions can be added here
+                                                        }
+                                                    MouseArea {
+                                                        anchors.fill: parent
+                                                        onClicked: {
+                                                            // Handle the click event
+                                                            fillColor = "yellow";
+                                                            // Additional actions can be added here
+                                                        }
+                                                    }
+                                               }
+                                            }
+                                        } */
+
                                     //ON LINE 2
                                         Text {text: model.dietRestriction; color: "#28A745"; Layout.preferredWidth: 75}
 
@@ -453,5 +595,9 @@ Row {
 
     OpenRecipePopup{
         id: openRecipe
+    }
+
+    PersonalCookBook{ //eli
+        id: addFavoriteRecipe
     }
 }
