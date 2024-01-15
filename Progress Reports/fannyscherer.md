@@ -29,5 +29,10 @@ Week 6:
 
 During the Monday session we had a whole team meeting during which each person presented what they had accomplished over the break. Although we are still far from done, it was very encouraging to see that everything was coming along. We set our new objectives: linking up everyone's work (front end and back end, and backend and back-back end (server)), and starting work on the telegram bot. 
 I started coding the actual logic for the signin page and login page (although the login page still does not compile) and worked with Sixtine to define the final functions that she will be coding in the user class to connect my code to the server for users to be able to register and connect to the website.
+During the Thursday session, I started coding a new page, which opens right after a new user signs in to ask them their dietary restrictions, bachelor promotion, gender, telegram username... I finished coding this over the weekend but the logic can not fully be implemented yet as I do not have a way of accessing the username and password of the current user using this page yet. 
 
 Week 7:
+
+During the Monday session, I spoke with Sixtine again to make sure all the function on the user.cpp file that I was using were ok. I then worked on figuring out a way to store a global variable "currentUser" accessible for all front end files to keep track of which user is currently using the website. This still need to be connected  to the server end but it compiles and runs!
+
+
