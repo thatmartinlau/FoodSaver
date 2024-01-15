@@ -7,7 +7,7 @@
 //using namespace std;
 
 //USER
-User::User(std::string username, std::string password, std::string telegram) {
+User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
 }

@@ -15,7 +15,7 @@
 
 class User{
 public:
-    User(std::string username, std::string password, std::string telegram);
+    User(std::string username, std::string password);
     ~User();
     std::string get_username();
     static bool check_password(std::string input_username, std::string input_password);
