@@ -599,18 +599,18 @@ void update_fridge(std::string username, string password, vector<vector<string>>
         }
 } //updates a user fridge
 
-void update_offer(std::string username, string password, vector<vector<vector<vector<string>>>> &new_offer) {
+void update_offer(std::string username, string password, vector<vector<vector<string>>> &new_offer) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
             if (password == el->second.password) {
             // Password matches
-            vector<vector<vector<vector<string>>>> old_data = el->second.offer_list; //used so we can later delete the old data
+            vector<vector<vector<string>>> old_data = el->second.offer_list; //used so we can later delete the old data
             el->second.offer_list = std::move(new_offer);
 
             old_data.clear();
 
-            std::vector<std::vector<std::vector<std::vector<std::string>>>>().swap(old_data);//releases the memory used by old_data
+           vector<vector<vector<string>>>().swap(old_data);//releases the memory used by old_data
 
             }
             else if(password != el->second.password){
@@ -627,7 +627,7 @@ void update_offer(std::string username, string password, vector<vector<vector<ve
 } //updates a user offer list
 
 //DB Sending Functions:
-vector<vector<vector<vector<string>>>> get_offer_list(string username, string password) {
+vector<vector<vector<string>>> get_offer_list(string username, string password) {
         auto el = database->find(username); // Find the username in the database
 
         if (el != database->end() && password == el->second.password) {
