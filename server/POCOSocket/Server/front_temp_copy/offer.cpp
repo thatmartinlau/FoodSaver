@@ -8,15 +8,12 @@
 
 //OFFERme
 
-/*
+
 Offer::Offer(Ingredient ingredient_on_offer) {
     this->ingredient_on_offer = ingredient_on_offer;
     price = 0.0;
-    quantity = 0;
-    User u;
-    username = u;
 }
-*/
+
 
 Offer::~Offer() {
 }

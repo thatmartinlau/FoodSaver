@@ -1,4 +1,6 @@
 #include <iostream>
+#include "common_characteristics.hpp"
+
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -6,9 +8,9 @@
 #include <sstream>
 #include "rpc/server.h"
 #include "rpc/client.h"
-#include "rpc_client_side_tester_file.hpp"
 #include "rpc/this_handler.h"
 #include "rpc/this_session.h"
+
 
 using namespace std;
 
@@ -25,36 +27,6 @@ const string Database_fridge_and_food_lists_data = "databases/database_fridge_da
 //Offer: vector<vector<string>>>: with vectors represented as {}, an offer looks like: {Ingredient1, {price}} where all elements are strings.
 //Offer List: <vector<vector<vector<string>>>>, looking like {Offer1, Offer2, etc}.
 //Database: unordered_map<string, UserData>, dicts as [], looking like  {username1: UserData, username2: UserData}, with UserData having:
-
-//Data type declarations
-//.//////New Types for data transfer:
-struct offer_list_vector {
-    vector<vector<vector<string>>> offer_list;
-    MSGPACK_DEFINE_ARRAY(offer_list)
-};
-
-struct fridge_vector {
-    vector<vector<string>> fridge_vector;
-    MSGPACK_DEFINE_ARRAY(fridge_vector)
-};
-
-struct vector_list{
-    vector<string> vec;
-    MSGPACK_DEFINE_ARRAY(vec)   //to use in function get_user_list;
-};
-
-struct basic_user_data {
-    string display_name;
-    string telegram_username;
-    int gender;
-    int promotion;
-    string building_address;
-    int phone_number;
-    list<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
-    MSGPACK_DEFINE_ARRAY(display_name, telegram_username, gender, promotion, building_address, phone_number, food_and_dietary_restrictions, telegram_notifications, marketplace_notifications)
-};
 
 
 class UserData {
@@ -655,7 +627,7 @@ vector<vector<string>> get_fridge(string username, string password) {
 
 }
 
-vector<string> get_user_name_list() {
+vector<string> get_user_name_vectors() {
         vector<string> user_list;
         for (auto& [key, value] : *database) {
             user_list.push_back(key);
@@ -664,8 +636,20 @@ vector<string> get_user_name_list() {
 }
 
 
+
+
+
+//Testing functions
+void test_sending_fridges(vector_of_ingredients fridge) {
+    cout << fridge[0].name << fridge[0].quantity << endl;
+}
+
+
+
+
 int main() {
-    rpc::server srv(3333);
+    rpc::server srv(HOST_SERVER_PORT);
+    
     
     //DB Manip/add/remove
     srv.bind("add_user", &add_user);
@@ -681,7 +665,7 @@ int main() {
     srv.bind("get_offer_list", &get_offer_list);
     
     //General Functions
-    srv.bind("get_user_name_list", &get_user_name_list);
+    srv.bind("get_user_name_vectors", &get_user_name_vectors);
     
     //test read-write of database here:
 //    cout << "Started";
@@ -690,10 +674,17 @@ int main() {
     
     cout << "running";
     
-//    read_from_csv(); Uncomment when actual testing server begins.
+    //binding test functions:
+    srv.bind("test_sending_fridges", &test_sending_fridges);
     
+    
+    //SERVER running from here: 
     srv.run();
     
+    
+//    read_from_csv(); Uncomment when actual testing server begins.    
+    
+    
 //    write_to_csv();  Same-same. Uncomment when testing begins.
-    return 0;
+    return 0;    
 }

@@ -1,52 +1,15 @@
 #include <iostream>
 #include <string>
 #include<vector>
-#include <sstream>
+
 #include "rpc/client.h"
 #include "rpc_client_side_tester_file.hpp"
 
 
-
-//for banned-character-error: TAB, ~, *, >, {, }, [, ], | <- these are all the banned characters.
-
-
 using namespace std;
 
-string HOST_SERVER_NAME = "127.0.0.1"; //change to Server later.
-int HOST_SERVER_PORT = 3333;
 
-
-//.//////New Types for data transfer:
-struct offer_list_vector {
-    vector<vector<vector<string>>> offer_list;
-    MSGPACK_DEFINE_ARRAY(offer_list)
-};
-
-struct fridge_vector {
-    vector<vector<string>> fridge_vector;
-    MSGPACK_DEFINE_ARRAY(fridge_vector)
-};
-
-struct vector_list{
-    vector<string> vec;
-    MSGPACK_DEFINE_ARRAY(vec)   //to use in function get_user_list;
-};
-
-struct basic_user_data {
-    string display_name;
-    string telegram_username;
-    int gender;
-    int promotion;
-    string building_address;
-    int phone_number;
-    list<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
-    MSGPACK_DEFINE_ARRAY(display_name, telegram_username, gender, promotion, building_address, phone_number, food_and_dietary_restrictions, telegram_notifications, marketplace_notifications)
-};
-
-
-//.///////// User functions
+//          User Updating and creating functions.
 
 ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user not in db already. Oth, just initialise connection.
     username = usrname;
@@ -78,15 +41,15 @@ void ServerUser::update_user_characteristics(User usr) {
     new_cli.call("update_user_characteristics", username, password, basic_data);
 }
 
-//////////General Functions:
+//      General Functions:
 
 vector<string> get_user_name_list() {
     rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_client.call("get_user_name_list").as<vector_list>();
+    new_client.call("get_user_name_vectors");
 }
 
 
-//.///////// Mapping Types
+//          Type Mapping,  
 
 Food_class mapCategoryToEnum(const std::string& category) {
     static const std::unordered_map<std::string, Food_class> categoryMap = {
@@ -166,30 +129,19 @@ std::string priorityToString(Priority priority) {
 }
 
 
-//OSCAR's CODE: to adjust and change if u have a way which matches smth u prefer to use.
 
-//THIS WORKS !!
 vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [name, expiry_date, quantity, category, priority_level], all as string s. I modified the format Adam
     vector<string> vec;
 
-    // first push name
-    vec.push_back(ingr.get_name());
+    vec.push_back(ingr.get_name()); //first name, then the rest, in order listed above.
 
-    // then  push expiry_date
+    vec.push_back(to_string(ingr.get_expiry_date().get_day()) +"."+to_string(ingr.get_expiry_date().get_month())+ "." + to_string(ingr.get_expiry_date().get_year())); // date --> 22.10.2024
 
-    vec.push_back(to_string(ingr.get_expiry_date().get_day()) +"."+to_string(ingr.get_expiry_date().get_month())+ "." + to_string(ingr.get_expiry_date().get_year())); // date --> 22.10.2024 --> string
-
-
-    // push quantity
     vec.push_back(to_string(ingr.get_quantity()));
 
 
-    // push category
-
     string cat_string(foodClassToString(ingr.get_food_class())); // Convert std::string_view to std::string
     vec.push_back(cat_string);
-
-    // push priority_level
 
     string priority_string(priorityToString(ingr.get_priority()));
     vec.push_back(priority_string);
@@ -200,10 +152,10 @@ vector<string> ingredient_to_vector(Ingredient &ingr) { //returns vector as [nam
 
 
 Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar work yo magic
- // Convert string name into --> string name --> nothing to change
+ // Convert string name 
     std::string name = vector[0];
 
-    // Convert date expiry_date --> string --> nothing to change
+    // Convert date expiry
 
     std::istringstream ss(vector[1]);
     std::vector<int> intArray;
@@ -216,16 +168,16 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
     Date expiry_date = Date(intArray[0], intArray[1], intArray[2]);
 
 
-    // Convert string quantity into --> int quantity :
+    // Convert string quantity into int
     int quantity = std::stoi(vector[2]);
 
-    // Convert string category into --> in food class enum
+    // Convert string category into food_class enum.
 
     Food_class category = mapCategoryToEnum(vector[3]);
 
 
 
-    // Convert priority level string into --> enum
+    // Convert priority level string into its enum pairing.
 
     Priority priority_level = mapprioToEnum(vector[4]);
 
@@ -238,12 +190,10 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
 
 
 
-//ayo Es^ these are the interesting ideas I started to explore from rpclib.com, find out if this works or not, and find a better method if it exists othw. rpclib.com will have all necessary info, hopefully
 
-//Excluding characters
 
-//LIST of chars to exclude: TAB, ~, *, >, {, }, [, ], |
-char char_exclude_list[9] = {(char)9, *"~", *"*", *">", *"{", *"}", *"[", *"]", *"|"};
+//LIST of chars to exclude: currently, only comma to exclude.
+char char_exclude_list[9] = {","};
 bool char_to_exclude_satisfied(string input_string) {
     for (int i=0; i <sizeof(char_exclude_list); i++) { //iterate through exclusion list, check find, if returned string::npos; return false.
         size_t found_or_not = input_string.find(char_exclude_list[i]);
@@ -258,18 +208,16 @@ bool char_to_exclude_satisfied(string input_string) {
 
 
 
-//#/// Server send-receive functions.
+//      Sending and receiving functions, from and to, the server.
 
 Fridge ServerUser::get_fridge() { //
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    fridge_vector fridge_vector1 = new_cli.call("get_fridge", username, password).as<fridge_vector>(); //vector of ingredients, each as a vector of strings.
-    //Oscar work yo magic
-    //     Fridge(std::list<Ingredient> init_list);
+    double_vector fridge_vector = new_cli.call("get_fridge", username, password).as<double_vector>(); 
     std::vector<Ingredient> vector_Ingredient;
 
-    for (size_t i = 0; i < fridge_vector1.fridge_vector.size(); ++i) {
+    for (size_t i = 0; i < fridge_vector.double_vect.size(); ++i) {
 
-        vector<string> ingredient = fridge_vector1.fridge_vector[i];
+        vector<string> ingredient = fridge_vector.double_vect[i];
         vector_Ingredient.push_back(ingredient_from_vector(ingredient));
     }
 
@@ -279,37 +227,28 @@ Fridge ServerUser::get_fridge() { //
 
 
 void ServerUser:: update_fridge(Fridge &f_input) {
-    //convert to database-wanted format: OSCAR'S METHOD
-    vector<vector<string>> fridge;
-
+    vector<vector<string>> fridge_as_string_vector;
 
     vector<Ingredient> ingredient_list = f_input.get_list();
 
     for (size_t i = 0; i < ingredient_list.size(); ++i){
-        // Convert each Ingredient to vector format using Oscar's code
         vector<string> ingredient = ingredient_to_vector(ingredient_list[i]);  // Pass the current Ingredient object
-        //check the vector contains only allowed characters:
+        //verify allowed characters or not:
         for (vector<string>::iterator it= ingredient.begin(); it != ingredient.end(); it++) {
-            if (char_to_exclude_satisfied(*it) == false) {cout << "ValueError: ingredient contains disallowed characters. See top of client_side for list.";return;}
+            if (char_to_exclude_satisfied(*it) == false) {
+                throw std::invalid_argument("Banned characters are present. Try again.");
+                return;
+            }
         }
-
-
-        // Push the converted ingredient into the fridge vector
-        fridge.push_back(ingredient);
+        //add back to fridge vector, if works.
+        fridge_as_string_vector.push_back(ingredient);
     }
-
-    /*
-    for (list<Ingredient>::iterator i = f_input.ingredient_list.begin(); i != f_input.ingredient_list.end(); i++) {
-
-        //convert ingredient to vector format USING OSCAR's CODE
-        vector<string> ingredient;
-        fridge.push_back(ingredient_to_vector(ingredient));
-    }
-    */
-
+    //convert to struct:
+    double_vector fridge_as_struct;
+    
     //send as new format
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_fridge", username, password, fridge);
+    new_cli.call("update_fridge", username, password, fridge_as_struct);
 }
 
 
@@ -320,18 +259,16 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
 vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    //vector<vector<vector<vector<string>>>> offer_list_vector = new_cli.call("get_offer_list", username, password);
-    offer_list_vector offer_list_vector1 = new_cli.call("get_fridge", username, password).as<offer_list_vector>();
-    //Oscar work yo magic: ADDED DETAIL: The offer list format holds offers, each other has this format exactly: [vector<vector<string>>, vector<vector<string>>], Where the second vector stores only a double!
-    //That double represents the price of the offer. We needed this because vectors have homogenous type. (only store one type.)
-
+    
+    triple_vector offer_list_vector;
+    offer_list_vector.triple_vect = new_cli.call("get_fridge", username, password).as<triple_vector>().triple_vect;
+    
     //    double doubleValue = std::stod(numericalString);
     std::vector<Offer> vector_offer;
 
-    for (size_t i = 0; i < offer_list_vector1.offer_list.size(); ++i) {
-        Offer offer_i;
-        offer_i.set_ingredient(ingredient_from_vector(offer_list_vector1.offer_list[i][0]));
-        double price = std::stod(offer_list_vector1.offer_list[i][1][0]);
+    for (size_t i = 0; i < offer_list_vector.triple_vect.size(); ++i) {
+        Offer offer_i(ingredient_from_vector(offer_list_vector.triple_vect[i][0]));
+        double price = std::stod(offer_list_vector.triple_vect[i][1][0]);
         offer_i.set_price(price);
         vector_offer.push_back(offer_i);
     }
@@ -343,7 +280,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
     //Oscar work yo magiiiic: same format as get_offer_list for the data we want to give to the server.
     // vector<Offer> --> [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
 
-    vector<vector<vector<string>>> update_offer;
+    vector<vector<vector<string>>> update_offer_as_string;
     for (size_t j = 0; j < offer_list.size(); ++j){
         Offer offer_elem =  offer_list[j];
 
@@ -362,79 +299,121 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 
         vector<string> ingredient_vector = ingredient_to_vector(ingredient_offer);
 
-        // for CSV file !
+        //Check banned characters.
         for (vector<string>::iterator it= ingredient_vector.begin(); it != ingredient_vector.end(); it++) {
-            if (char_to_exclude_satisfied(*it) == false) {cout << "ValueError: ingredient contains disallowed characters. See top of client_side for list.";return;}
+            if (char_to_exclude_satisfied(*it) == false) {
+                throw std::invalid_argument("This contains a comma, which is a banned character.");
+                return;
+            }
         }
         vector<vector<string>> ingredient_price;
 
         ingredient_price.push_back(ingredient_vector);
         ingredient_price.push_back(price_vector);
 
-            //check broken characters: if banned or not
-
-        update_offer.push_back(ingredient_price);
+        update_offer_as_string.push_back(ingredient_price);
         }
+    
 
-
-    // make sure the format works !!
+    // Convert to a struct format before sending.
+    triple_vector offer_as_struct_vector(update_offer_as_string);
+    
 
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_offer_list", username, password, update_offer);
+    new_cli.call("update_offer_list", username, password, offer_as_struct_vector);
 
 }
 
 
-int test_msgpack(){
+//int test_msgpack(){
 
 
 
 
-    /*
-    vector<vector<vector<string>>> ex_offer_list;
+//    /*
+//    vector<vector<vector<string>>> ex_offer_list;
 
-    vector<vector<string>> ingredient_price ;
+//    vector<vector<string>> ingredient_price ;
 
-    vector<string> ingredient;
+//    vector<string> ingredient;
 
-    vector<string> price;
-
-
-
-    vector<string> ingredient.push_back("apple");
-    vector<string> ingredient.push_back("11.11.2005");
-    vector<string> ingredient.push_back("25kg");
-    vector<string> ingredient.push_back("meat");
-    vector<string> ingredient.push_back("red");
-
-    vector<string> price.push_back("11$");
-
-    ingredient_price.push_back(ingredient);
-    ingredient_price.push_back(price);
-    ex_offer_list.push_back(ingredient_price);
-    */
-
-    Offer offer;
-    offer.set_ingredient(Ingredient("apple", Date(24,6,2004) , 1, drink));
-    offer.set_price(1.5);
-    vector<Offer> offer_vector;
-    offer_vector.push_back(offer);
-
-    ServerUser srv1_usr("oscar", "123");
-
-    srv1_usr.update_offer_list(offer_vector);
+//    vector<string> price;
 
 
 
-return 1;
+//    vector<string> ingredient.push_back("apple");
+//    vector<string> ingredient.push_back("11.11.2005");
+//    vector<string> ingredient.push_back("25kg");
+//    vector<string> ingredient.push_back("meat");
+//    vector<string> ingredient.push_back("red");
+
+//    vector<string> price.push_back("11$");
+
+//    ingredient_price.push_back(ingredient);
+//    ingredient_price.push_back(price);
+//    ex_offer_list.push_back(ingredient_price);
+//    */
+
+//    Offer offer;
+//    offer.set_ingredient(Ingredient("apple", Date(24,6,2004) , 1, drink));
+//    offer.set_price(1.5);
+//    vector<Offer> offer_vector;
+//    offer_vector.push_back(offer);
+
+//    ServerUser srv1_usr("oscar", "123");
+
+//    srv1_usr.update_offer_list(offer_vector);
 
 
-    // [name, expiry_date, quantity, category, priority_level]
+
+//return 1;
 
 
+//    // [name, expiry_date, quantity, category, priority_level]
+
+
+//}
+
+
+
+//int var = test_msgpack();
+
+
+//CLIENT_SIDE MAIN FUNCTION, FOR TESTSING ONLY:
+int main () {
+    
+    //test1: offer list struct sending
+    string stri = "hello";
+    vector<string> tring;
+    tring.push_back(stri);
+    vector<vector<string>> dou_vec_test;
+    dou_vec_test.push_back(tring);
+    vector<vector<vector<string>>> tri_vec_test;
+    tri_vec_test.push_back(dou_vec_test);
+    
+    //test2: fridge sending/receiving:
+    vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
+    vector_of_ingredients fridge_test;
+    ingredient_struct ingr_struct(ingr1);
+    fridge_test.push_back(ingr_struct);
+    //send through to server
+    
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    new_cli.call("test_sending_fridges", fridge_test);
+    
+    
+    //test3: single-vector send-receiv:
+    vector<string> user_list = {"adam", "will", "bob", "rossie"};
+    
+    
+
+    triple_vector new_tri_vec_tested(tri_vec_test);
+    
 }
 
 
 
-int var = test_msgpack();
+
+
+
 
