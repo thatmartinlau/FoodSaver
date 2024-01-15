@@ -5,18 +5,15 @@ import QtQuick.Layouts 1.12
 
 Row {
     property int currentIndex: 0
-
-    // Sidebar with navigation buttons
     Rectangle {
         width: parent.width * 0.20
         height: parent.height
         color: "#5E9F7C"
-            // left column with option  to navigate pages
-            Column {
+        Column {
 
-                anchors.left: parent.left
-                anchors.bottom: parent.verticalCenter
-                anchors.leftMargin: parent.width * 0.05
+            anchors.left: parent.left
+            anchors.bottom: parent.verticalCenter
+            anchors.leftMargin: parent.width * 0.05
 
                 Button { text: "Fridge";  onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
                 Button { text: "Market"; enabled: false; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }
@@ -24,95 +21,97 @@ Row {
                 Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
 
             }
-            // Down-left settings button
-            Button {
-                anchors.left: parent.left
-                anchors.leftMargin: 10
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 10
 
-                id: button
-                text: "Settings"
-                onClicked: {
-                settings.open()
-                }
+        Button {
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+
+            id: button
+            text: "Settings"
+            onClicked: {
+            settings.open()
             }
         }
+    }
 
-
-    // Main content area for the marketplace
     Rectangle {
         x: parent.width * 0.20
         width: parent.width * 0.6
         height: parent.height
         color: "#5E9F7C"
 
+    // Main content area for the marketplace
         Rectangle {
+            visible: true
             y: parent.height * 0.05
             height: parent.height * 0.9
             width: parent.width
             radius: 12.5
             color: "white"
+            property string newItemText: ""
 
-            // Content for the marketplace
             Column {
+                height: parent.height
+                width: parent.width
+                padding: parent.width *0.01
+                spacing: parent.width *0.01
 
-                Row {
-                    anchors.bottom: parent.bottom
-                    TextField {
-                        id: itemTextField
-                        placeholderText: "Search for a specific item"
-                    }
 
-                    Button {
-                        text: "Category"
-                        onClicked: {
-                        }
-                    }
-
-                    Button {
-                        text: "Time left"
-                        onClicked: {
-                        }
-                    }
-
-                    Button {
-                        text: "Price"
-                        onClicked: {
-                        }
-                    }
-                }
-            }
-        }
-    Rectangle{
-        radius: 12.5
-        y: parent.height*0.2
-        height: parent.height*0.8
-        width: parent.width
-        ScrollView{
-            id: scrollView
-            anchors.fill: parent
-            width:parent.width
-        Column{
-            spacing: 2.5
-            width: parent.width
-            Repeater{
-                model:itemModel
-                Rectangle{
+                Rectangle {
                     radius: 12.5
-                    width: parent.width
-                    height: 200
-                    color: "yellow"
+                    width: parent.width *0.98
+                    height: parent.width * 0.05
+                    color:"#EEEEEE"
 
+                    Row {
+                        spacing: 10
+                        padding:10
+                        anchors.verticalCenter:parent.verticalCenter
+                        TextField {
+                            y:3
+                            id: itemTextFieldFridge
+                            placeholderText: "Search for a specific item"
+                            //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
+                        }
+
+                        Button {
+                            text: "Category"
+                            onClicked: {
+                               //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_category()
+                            }
+                        }
+
+                        Button {
+                            text: "Time left"
+                            onClicked: {
+                                //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
+                            }
+                        }
+
+                        Button {
+                            text: "Price"
+                            onClicked: {
+                                //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_price()
+                            }
+                        }
+                    }
                 }
-
+                Rectangle {
+                    radius: 12.5
+                    y: parent.height * 0.2
+                    height: parent.height * 0.8
+                    width: parent.width
+                    ScrollView {
+                        id: scrollViewMarket
+                        anchors.fill: parent
+                        width:parent.width
+                    }
+                }
             }
-        }
         }
     }
-
-}
-
 
     // Sidebar with additional buttons
     Rectangle {
