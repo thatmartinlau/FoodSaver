@@ -435,6 +435,20 @@ unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
         return offerMap;
 }
 
+vector<string> getUsers(){
+        vector<string> Users;
+
+        // Iterating through the database to retrieve user offers
+        for (const auto& entry : *database) {
+            const std::string& username = entry.first;
+
+
+            Users.push_back(username);
+        }
+
+        return Users;
+}
+
 int main() {
     rpc::server srv(3333);
     
@@ -450,7 +464,7 @@ int main() {
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
     srv.bind("getMapOfOffers", &getMapOfOffers);
-    
+    srv.bind("getUsers", &getUsers);
     //implement error raising
     
     //test read-write of database here:
