@@ -379,11 +379,19 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 //int var = test_msgpack();
 
 
-//CLIENT_SIDE MAIN FUNCTION, FOR TESTSING ONLY: not main, but almost main.
-int test2 () {
+//CLIENT_SIDE MAIN FUNCTION, FOR TESTSING ONLY:
+int main () {
     
+    //test1: offer list struct sending
+    string stri = "hello";
+    vector<string> tring;
+    tring.push_back(stri);
+    vector<vector<string>> dou_vec_test;
+    dou_vec_test.push_back(tring);
+    vector<vector<vector<string>>> tri_vec_test;
+    tri_vec_test.push_back(dou_vec_test);
     
-    //test1: fridge sending/receiving:
+    //test2: fridge sending/receiving:
     vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
     vector_of_ingredients fridge_test;
     ingredient_struct ingr_struct(ingr1);
@@ -394,9 +402,14 @@ int test2 () {
     new_cli.call("test_sending_fridges", fridge_test);
     
     
-}
+    //test3: single-vector send-receiv:
+    vector<string> user_list = {"adam", "will", "bob", "rossie"};
+    
+    
 
-test2();
+    triple_vector new_tri_vec_tested(tri_vec_test);
+    
+}
 
 
 

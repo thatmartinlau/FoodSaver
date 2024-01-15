@@ -660,10 +660,6 @@ void test_sending_fridges(vector_of_ingredients fridge) {
     cout << fridge[0].name << fridge[0].quantity << endl;
 }
 
-void test_sending_fridges_vector_edition(vector<string> fridge) {
-    cout << fridge[0][0] << fridge[0][1] << endl;
-}
-
 
 
 
@@ -699,7 +695,6 @@ int main() {
     
     //binding test functions:
     srv.bind("test_sending_fridges", &test_sending_fridges);
-    srv.bind("test_sending_fridges_vector_edition", &test_sending_fridges_vector_edition);
     
     
     //SERVER running from here: 
