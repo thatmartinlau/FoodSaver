@@ -45,42 +45,11 @@ int main() {
                                                     "Here are the things that I can do for you:\n"
                                                     "- /Login - login to your fridge account\n"
                                                     "- /Check_your_fridge - check your fridge contents\n"
-                                                    "- /update_fridge - update the entire fridge";);
+                                                    "- /Update_fridge - update the entire fridge";);
     });
 
     //
-    bot.getEvents().onCommand("check_fridge", [&bot, &userStates](TgBot::Message::Ptr message) {
-        UserInfo& userInfo = userStates[message->chat->id];
-        userInfo.state = UserState::AwaitingUsername;
-        bot.getApi().sendMessage(message->chat->id, "Enter your username:");
-    });
-
-    bot.getEvents().onAnyMessage([&bot, &userStates, &c](TgBot::Message::Ptr message) {
-        if (StringTools::startsWith(message->text, "/")) {
-            return;
-        }
-
-        int64_t chatId = message->chat->id;
-        UserInfo& userInfo = userStates[chatId];
-
-        if (userInfo.state == UserState::AwaitingUsername) {
-            userInfo.username = message->text;
-            userInfo.state = UserState::AwaitingPassword;
-            bot.getApi().sendMessage(chatId, "Enter your password:");
-        } else if (userInfo.state == UserState::AwaitingPassword) {
-            userInfo.password = message->text;
-            userInfo.state = UserState::None;
-
-            // Here you call your RPC function with the collected username and password
-            string fridge = c.call("get_fridge", userInfo.username, userInfo.password).as<double>();
-
-            bot.getApi().sendMessage(chatId, "Your fridge contains: " + fridge);
-        }
-    });
-
-
-    //
-    bot.getEvents().onCommand("login", [&bot, &userStates](TgBot::Message::Ptr message) {
+    bot.getEvents().onCommand("Login", [&bot, &userStates](TgBot::Message::Ptr message) {
         int64_t chatId = message->chat->id;
         if (userCredentialsMap.find(chatId) != userCredentialsMap.end()) {
             // User already logged in
@@ -89,10 +58,35 @@ int main() {
             // User needs to log in
             UserInfo& userInfo = userStates[message->chat->id];
             userInfo.state = UserState::AwaitingUsername;
-            bot.getApi().sendMessage(chatId, "Enter your password: ");
+            bot.getApi().sendMessage(chatId, "Enter your username: ");
         }
     });
 
+    //
+    bot.getEvents().onCommand("Check_fridge", [&bot, &userCredentialsMap, &c](TgBot::Message::Ptr message) {
+        int64_t chatId = message->chat->id;
+        if (userCredentialsMap.find(chatId) == userCredentialsMap.end()) {
+            bot.getApi().sendMessage(chatId, "Please login first using /login.");
+        } else {
+            auto& credentials = userCredentialsMap[chatId];
+            std::string fridgeContent = c.call("get_fridge", credentials.username, credentials.password).as<std::string>();
+            bot.getApi().sendMessage(chatId, "Your fridge contains: " + fridgeContent);
+        }
+    });
+
+    //
+    bot.getEvents().onCommand("Update_fridge", [&bot, &userCredentialsMap, &c](TgBot::Message::Ptr message) {
+        int64_t chatId = message->chat->id;
+        if (userCredentialsMap.find(chatId) == userCredentialsMap.end()) {
+            bot.getApi().sendMessage(chatId, "Please login first using /login.");
+        } else {
+            auto& credentials = userCredentialsMap[chatId];
+            c.call("update_fridge", credentials.username, credentials.password, content);
+            bot.getApi().sendMessage(chatId, "Your fridge has been updated successfully";
+        }
+    });
+
+    //
     bot.getEvents().onAnyMessage([&bot, &userStates, &c](TgBot::Message::Ptr message) {
         if (StringTools::startsWith(message->text, "/")) {
             return;
@@ -109,8 +103,10 @@ int main() {
             userInfo.password = message->text;
             userInfo.state = UserState::None;
 
+            userCredentialsMap[chatId] = {userInfo.username, userInfo.password};
+
             // RPC call to link the fridge
-            double server_message = c.call("get_token", userInfo.username, userInfo.password).as<double>();
+            double server_message = c.call("check_user", userInfo.username, userInfo.password).as<double>();
 
             // Check the server's response
             if (server_message == 1) {
@@ -120,6 +116,8 @@ int main() {
             } else {
                 bot.getApi().sendMessage(chatId, "An error occurred while linking your fridge.");
             }
+        } else {
+            bot.getApi().sendMessage(chatId, "Sorry, I couldn't understand your command.");
         }
     });
 
