@@ -384,7 +384,7 @@ int test2 () {
     
     
     //test1: fridge sending/receiving:
-    vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
+    vector<string> ingr1 = {"name", "exp_date", "qty", "cat1", "prior"};
     vector<vector<string>> fridge_test;
     fridge_test.push_back(ingr1);
     fridge_test.push_back(ingr1);
@@ -395,7 +395,7 @@ int test2 () {
     
 }
 
-int val =test2();
+//int val =test2();
 
 
 
