@@ -2,7 +2,11 @@
 #include "rpc.client.h"
 #include <iostream>
 #include <string>
-#include "test3/temp.front.cpp"
+#include <ctime>
+#include <sstream>
+#include <iomanip> // for std::get_time
+#include <thread>
+#include <chrono>
 
 using namespace rpc;
 using namespace std;
@@ -18,13 +22,13 @@ enum class UserState {
 
 struct UserInfo {
     UserState state = UserState::None;
-    std::string username;
-    std::string password;
+    string username;
+    string password;
 };
 
 struct UserCredentials {
-    std::string username;
-    std::string password;
+    string username;
+    string password;
 };
 
 std::map<int64_t, UserCredentials> userCredentialsMap;
@@ -32,9 +36,52 @@ std::map<int64_t, UserCredentials> userCredentialsMap;
 std::map<int64_t, UserInfo> userStates;
 
 
-string check_expiration(vector<vector<string>> fridge) {}
+vector<vector<string>> check_expiration(client& c) {
+    vector<vector<string>> result;
+    for (const auto& entry : userCredentialsMap) {
+        auto& credentials = entry.second;
+        vector<vector<string>> fridgeContent = c.call("get_fridge", credentials.username, credentials.password).as<vector<vector<string>>>();
 
-void link_verification(client client, string token) {}
+        for (const auto& item : fridgeContent) {
+            if (item.size() >= 4) {
+                std::tm expiry_tm = {};
+                std::istringstream ss(item[3]);
+                ss >> std::get_time(&expiry_tm, "%d-%m-%Y");
+
+                // Check if the expiry date is within 1 day
+                std::time_t now = std::time(nullptr);
+                std::time_t expiry_time_t = std::mktime(&expiry_tm);
+                double seconds_diff = std::difftime(expiry_time_t, now);
+                
+                if (seconds_diff >= 0 && seconds_diff <= 86400) { // 86400 seconds in a day
+                std::string chatIdStr = std::to_string(entry.first);
+                std::string message = item[0] + " (" + item[1] + ", " + item[2] + ") is going to expire in less than one day (Expiry Date: " + item[3] + ").";
+                result.push_back({chatIdStr, message});
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+std::thread expirationChecker([&bot, &c, &userCredentialsMap]() {
+    while (true) {
+        auto expiringItems = check_expiration(c, userCredentialsMap);
+
+        for (const auto& item : expiringItems) {
+            try {
+                int64_t chatId = std::stoll(item[0]);
+                std::string message = item[1];
+                bot.getApi().sendMessage(chatId, message);
+            } catch (const std::exception& e) {
+                std::cerr << "Error sending message: " << e.what() << std::endl;
+            }
+        }
+
+        std::this_thread::sleep_for(std::chrono::minutes(30)); // Sleep for 30 minutes
+    }
+});
 
 
 int main() {
@@ -152,15 +199,16 @@ int main() {
         }
     });
 
+    std::thread expirationCheckerThread = std::thread(expirationChecker);
+
+    // Main loop for the bot
     try {
-        printf("Bot username: %s\n", bot.getApi().getMe()->username.c_str());
         TgBot::TgLongPoll longPoll(bot);
         while (true) {
-            printf("Long poll started\n");
             longPoll.start();
         }
     } catch (TgBot::TgException& e) {
-        cout << "Error: " << e.what() << endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
 
     return 0;
