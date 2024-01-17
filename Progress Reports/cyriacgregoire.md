@@ -18,3 +18,11 @@ Week 3:
 Week 4:
 - Working on the recepie  page, starting to set up the buttons and different user inputs that are needed for this page.
 
+Holidays:
+- Working on the recipe page, setting up the pop-up windows, the different elements of the page, which include design of the buttons and text, a scrollbar, implementing all this in a pop-up, which allows users to publish recipes.
+- Working on the searchbar (for recipes) of the page. A first working version was implemented, it only dealt with strings of recipe names, and not yet with actual recipe objects. It did sort the results given, by order of most relevant title and would change for every character typed by the user.
+
+  Week 5:
+  - Making sure that, the popup for a recipe publication would create (and store in a for now local vector<string>) an object of type recipe, that is, fetching all the input information in the correct order. 
+  - Improving the searchbar wiht recipe objects, now the searching algorithm also checks if a recipe may be interesting for what was typed in, if it has a relevant ingredient (exampple someone searches something related to carrots, then recipes that contain carrots will appear) - still in order of most relevant 
+
