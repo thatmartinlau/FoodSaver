@@ -386,14 +386,14 @@ void init_data_test() { //debug function. Tests database read/write all together
 }
 
 int test_read_csv() {
+    init_data_test();
+    write_to_csv();
     read_from_csv();
     cout << "blabla";
-    write_to_csv();
-    database;
-    cout << "finished";
+    //find a way to open database,f rom debug, if you want to use read_from_csv() and it doesn't work. Reportto Adam :thumbs-Up:
     return 1;
 }
-int val2 = test_read_csv();
+//int val2 = test_read_csv();
 
 
 
@@ -597,9 +597,14 @@ double check_user(string username, string password) {
 //    cout << fridge[0].name << fridge[0].quantity << endl;
 //}
 
-void test_sending_fridges_vector_edition(vector<string> fridge) {
+void test_sending_ingr_vector_edition(vector<string> ingredient) {
+    cout << ingredient[0] << ingredient[0] << endl;
+}
+
+void test_sending_fridge_vector_edition(vectorvector<<string>> fridge) {
     cout << fridge[0][0] << fridge[0][1] << endl;
 }
+
 
 
 
@@ -627,34 +632,25 @@ int main() {
     //Check functions:
     srv.bind("check_user", &check_user);
     
-    //test read-write of database here:
-//    cout << "Started";
-//    int test1 = test_read_write_csv();
-//    cout << "Done";
-    
-    cout << "running";
     
     //binding test functions:
 //    srv.bind("test_sending_fridges", &test_sending_fridges);
-    srv.bind("test_sending_fridges_vector_edition", &test_sending_fridges_vector_edition);
+    srv.bind("test_sending_fridge_vector_edition", &test_sending_fridge_vector_edition);
+    srv.bind("test_sending_ingredient_vector_edition", &test_ingredient_fridge_vector_edition);
     
     
-    //SERVER running from here: 
+    //SERVER running from here:
+    read_from_csv();
     srv.run();
+    cout << "running";    
     
-    //test1: fridge sending/receiving:
-    vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
-    vector<vector<string>> fridge_test;
-    fridge_test.push_back(ingr1);
-    fridge_test.push_back(ingr1);
-    //send through to server
-//    rpc::client new_cli("localhost", 8080);
-//    new_cli.call("test_sending_fridges_vector_edition", fridge_test);
+    read_from_csv();  //runs //adam, go rest now. Take 15mins, at home. Then re-write this code to work. YOu'll need to run both simultaneously, get a RETUREND value to test the cout porpoer.y. logic. thank u
+    server begins. OPens Database calls, makes all functions capable of working with pre-existent data. Stored in csv.
     
     
-//    read_from_csv(); Uncomment when actual testing server begins.    
     
     
-//    write_to_csv();  Same-same. Uncomment when testing begins.
+    
+    write_to_csv();
     return 0;    
 }

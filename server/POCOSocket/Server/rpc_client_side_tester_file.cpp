@@ -384,18 +384,19 @@ int test2 () {
     
     
     //test1: fridge sending/receiving:
-    vector<string> ingr1 = {"name", "exp_date", "qty", "cat1", "prior"};
+    vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
     vector<vector<string>> fridge_test;
     fridge_test.push_back(ingr1);
     fridge_test.push_back(ingr1);
     //send through to server
-    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("test_sending_fridges_vector_edition", fridge_test);
+    rpc::client new_cli("localhost", 8080);
+    new_cli.call("test_sending_ingredient_vector_edition", ingr1);
+    new_cli.call("test_sending_fridge_vector_edition", fridge_test);
     
     
 }
 
-//int val =test2();
+int val =test2();
 
 
 
