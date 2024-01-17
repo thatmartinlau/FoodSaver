@@ -11,7 +11,9 @@ using namespace TgBot;
 enum class UserState {
     None,
     AwaitingUsername,
-    AwaitingPassword
+    AwaitingPassword,
+    RegiUsername,
+    RegiPassword,
 };
 
 struct UserInfo {
@@ -44,8 +46,8 @@ int main() {
         bot.getApi().sendMessage(message->chat->id, "Welcome to FoodSaver bot, I can help you manage your fridge account." 
                                                     "Here are the things that I can do for you:\n"
                                                     "- /Login - login to your fridge account\n"
-                                                    "- /Check_your_fridge - check your fridge contents\n"
-                                                    "- /Update_fridge - update the entire fridge";);
+                                                    "- /Register - register a new fridge account\n"
+                                                    "- /Check_your_fridge - check your fridge contents\n";);
     });
 
     //
@@ -53,7 +55,7 @@ int main() {
         int64_t chatId = message->chat->id;
         if (userCredentialsMap.find(chatId) != userCredentialsMap.end()) {
             // User already logged in
-            bot.getApi().sendMessage(chatId, "This telegram account already login.");
+            bot.getApi().sendMessage(chatId, "This telegram account has already logged in.");
         } else {
             // User needs to log in
             UserInfo& userInfo = userStates[message->chat->id];
@@ -63,26 +65,40 @@ int main() {
     });
 
     //
-    bot.getEvents().onCommand("Check_fridge", [&bot, &userCredentialsMap, &c](TgBot::Message::Ptr message) {
+    bot.getEvents().onCommand("Register", [&bot, &userStates](TgBot::Message::Ptr message) {
         int64_t chatId = message->chat->id;
         if (userCredentialsMap.find(chatId) == userCredentialsMap.end()) {
-            bot.getApi().sendMessage(chatId, "Please login first using /login.");
+            // User not in list
+            UserInfo& userInfo = userStates[message->chat->id];
+            userInfo.state = UserState::RegiUsername;
+            bot.getApi().sendMessage(chatId, "Enter you desired username: ");
         } else {
-            auto& credentials = userCredentialsMap[chatId];
-            std::string fridgeContent = c.call("get_fridge", credentials.username, credentials.password).as<std::string>();
-            bot.getApi().sendMessage(chatId, "Your fridge contains: " + fridgeContent);
+            // User already exists
+            bot.getApi().sendMessage(chatId, "This telegram account has already logged in.");
         }
     });
 
     //
-    bot.getEvents().onCommand("Update_fridge", [&bot, &userCredentialsMap, &c](TgBot::Message::Ptr message) {
+    bot.getEvents().onCommand("Check_fridge", [&bot, &userCredentialsMap, &c](TgBot::Message::Ptr message) {
         int64_t chatId = message->chat->id;
         if (userCredentialsMap.find(chatId) == userCredentialsMap.end()) {
-            bot.getApi().sendMessage(chatId, "Please login first using /login.");
+            bot.getApi().sendMessage(chatId, "Please login first using /Login, or register a new account using /Register.");
         } else {
             auto& credentials = userCredentialsMap[chatId];
-            c.call("update_fridge", credentials.username, credentials.password, content);
-            bot.getApi().sendMessage(chatId, "Your fridge has been updated successfully";
+            vector<vector<string>> fridgeContent = c.call("get_fridge", credentials.username, credentials.password).as<vector<vector<string>>>();
+            string formattedFridgeContent;
+
+            for (const auto& item : fridgeContent) {
+                if (item.size() >= 4) { // Make sure there are at least 4 elements (name, category, quantity, expiry_date)
+                    formattedFridgeContent += "- " + item[0] + ", " + item[1] + ", " + item[2] + ", " + item[3] + "\n";
+                }
+            }
+
+            if (!formattedFridgeContent.empty()) {
+                bot.getApi().sendMessage(chatId, "Your fridge contains: \n" + formattedFridgeContent);
+            } else {
+                bot.getApi().sendMessage(chatId, "Your fridge is currently empty.");
+            }
         }
     });
 
@@ -99,6 +115,21 @@ int main() {
             userInfo.username = message->text;
             userInfo.state = UserState::AwaitingPassword;
             bot.getApi().sendMessage(chatId, "Enter your password:");
+        } else if (userInfo.state == UserState::RegiUsername) {
+            userInfo.username = message->text;
+            userInfo.state = UserState::RegiPassword;
+            bot.getApi().sendMessage(chatId, "Enter your password:");
+        } else if (userInfo.state == UserState::RegiPassword) {
+            userInfo.password = message->text;
+            userInfo.state = UserState::None;
+
+            userCredentialsMap[chatId] = {userInfo.username, userInfo.password};
+
+            // RPC call to link the fridge
+            c.call("add_user", userInfo.username, userInfo.password);
+
+            bot.getApi().sendMessage(chatId, "Registered successfully!");
+
         } else if (userInfo.state == UserState::AwaitingPassword) {
             userInfo.password = message->text;
             userInfo.state = UserState::None;
