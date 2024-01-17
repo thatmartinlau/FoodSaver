@@ -25,21 +25,21 @@ void ServerUser::delete_self_in_db() {
     new_cli.call("remove_user", username, password);
 }
 
-//void ServerUser::update_user_characteristics(User usr) {
-//    basic_user_data basic_data;
-//    basic_data.display_name = usr.get_display_name();
-//    basic_data.telegram_username = usr.get_telegram_username();
-//    basic_data.gender = usr.get_gender();
-//    basic_data.promotion = usr.get_promotion();
-//    basic_data.building_address = usr.get_building_address();
-//    basic_data.phone_number = usr.get_phone_number();
-//    basic_data.food_and_dietary_restrictions = usr.get_food_and_dietary_restrictions();
-//    basic_data.telegram_notifications = usr.get_telegram_notifications();
-//    basic_data.marketplace_notifications = usr.get_marketplace_notifications();
+void ServerUser::update_user_characteristics(User usr) {
+    basic_user_data basic_data;
+    basic_data.display_name = usr.get_display_name();
+    basic_data.telegram_username = usr.get_telegram_username();
+    basic_data.gender = usr.get_gender();
+    basic_data.promotion = usr.get_promotion();
+    basic_data.building_address = usr.get_building_address();
+    basic_data.phone_number = usr.get_phone_number();
+    basic_data.food_and_dietary_restrictions = usr.get_food_and_dietary_restrictions();
+    basic_data.telegram_notifications = usr.get_telegram_notifications();
+    basic_data.marketplace_notifications = usr.get_marketplace_notifications();
     
 //    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
 //    new_cli.call("update_user_characteristics", username, password, basic_data);
-//}
+}
 
 //      General Functions:
 
@@ -396,7 +396,7 @@ int test2 () {
     
 }
 
-int val =test2();
+//int val =test2();
 
 
 
