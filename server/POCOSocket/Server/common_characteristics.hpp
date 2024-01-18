@@ -31,12 +31,17 @@ vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vec
     vector<string> just_vector;
     for(int i =0 ; i<sizeof(vector_of_vector_of_vector); i++){
         for(int j =0; j<sizeof(vector_of_vector_of_vector[i]); j++ ){
+
              for(int k =0; k<sizeof(vector_of_vector_of_vector[j]); k++ ){
+
                 just_vector.push_back(vector_of_vector_of_vector[i][j][k]);
             }
         }
     }
     return just_vector;
+    
+}
+
 
 }
 
