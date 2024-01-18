@@ -494,13 +494,12 @@ vector<string> get_offer_list(string username, string password) {
             // Username exists and password matches
 
             // Move the offer_list content to the caller
-
-            return serialize_offer_list(std::move(el->second.offer_list));
+	    return serialize_offer_list(std::move(el->second.offer_list));
+        }
 
 
         return {}; // Return an empty offer_list if no username or password does not match
 
-   }
 }
 vector<string> get_fridge(string username, string password) {
         auto el = database->find(username); // Find the username in the database
@@ -508,7 +507,7 @@ vector<string> get_fridge(string username, string password) {
             // Username exists and password matches
 
 
-            return serialize(std::move(el->second.fridge));
+             return serialize(std::move(el->second.fridge));
         }
 
 
