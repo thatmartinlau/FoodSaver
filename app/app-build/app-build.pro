@@ -1,9 +1,9 @@
 TEMPLATE = app
 QT += quick
 CONFIG += c++11
+CONFIG += console
 
 #QML resource manager here
-
 RESOURCES += \
     qml.qrc
 
@@ -14,12 +14,10 @@ CPP = Source/
 HPP = Header/
 
 SOURCES += \
-    main.cpp \
-    Source/profilemanager.cpp \
+    Source/RecipeBook.cpp \
     Source/recipe.cpp \
-    Source/settingsmanager.cpp \
-    Source/SigninInformation.cpp \
-    Source/currentUser.cpp \
+    main.cpp \
+    maincontroller.cpp \
     $$CPP/date.cpp \
     $$CPP/fridge.cpp \
     $$CPP/front.cpp \
@@ -37,6 +35,9 @@ HEADERS += \
     Header/SigninInformation.h \
     $$HPP/settingsmanager.h \
     Header/currentUser.h \
+    Header/RecipeBook.h \
+    Header/recipe.h \
+    maincontroller.h \
     $$HPP/date.h \
     $$HPP/fridge.h \
     $$HPP/front.hpp \

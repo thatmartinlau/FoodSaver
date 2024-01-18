@@ -8,8 +8,8 @@ std::string Recipe::get_title() {
     return title;
 }
 
-void Recipe::set_title(std::string title) {
-    this->title = title;
+void Recipe::set_title(std::string new_title) {
+    this->title = new_title;
 }
 
 std::vector<std::string> Recipe::get_directions() {
@@ -24,8 +24,8 @@ std::vector<std::string> Recipe::get_ingredients() {
     return ingredients;
 }
 
-void Recipe::set_ingredients(std::vector<std::string> ingredients) {
-    this->ingredients = ingredients;
+void Recipe::set_ingredients(std::vector<std::string> new_ingredients) {
+    this->ingredients = new_ingredients;
 }
 
 std::string Recipe::get_source() {
@@ -46,4 +46,24 @@ void Recipe::set_tags(std::vector<std::string> tags) {
 
 void Recipe::add_tags(std::string tag) {
     tags.push_back(tag);
+}
+
+void Recipe::set_diet(std::string dietary_restriction){
+    this->dietary_restriction = dietary_restriction;
+}
+
+std::string Recipe::get_diet(){
+    return dietary_restriction;
+}
+
+double Recipe::get_time(){
+    return time;
+}
+
+void Recipe::set_time(double time){
+    this->time = time;
+}
+
+void Recipe::add_ingredient(std::string ingredient_name){
+    this->ingredients.push_back(ingredient_name);
 }

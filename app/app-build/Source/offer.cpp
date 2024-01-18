@@ -1,6 +1,7 @@
 #include "../Header/offer.h"
 #include "../Header/ingredient.h"
 
+
 //#include <iostream>
 //#include <list>
 //#include <ctime>
@@ -21,6 +22,7 @@ bool Offer::operator==(Offer& other) {
     return (this->get_ingredient() == other.get_ingredient());
 }
 */
+
 void Offer::set_price(double price) {
     this->price = price;
 }

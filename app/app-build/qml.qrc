@@ -13,5 +13,9 @@
         <file>QML/Modify.qml</file>
         <file>QML/SigninPage.qml</file>
         <file>QML/SigninInformation.qml</file>
+        <file>QML/AddRecipePopup.qml</file>
+        <file>QML/OpenRecipePopup.qml</file>
+        <file>QML/CookBook.qml</file>
+        <file>QML/PersonalCookBook.qml</file>
     </qresource>
 </RCC>

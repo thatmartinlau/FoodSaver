@@ -40,6 +40,7 @@ public:
     std::string get_phone_number();
     std::string get_diet();
 
+
     //json toJson () const;
 
 private:

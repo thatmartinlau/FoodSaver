@@ -16,6 +16,7 @@ Item {
             text: "Welcome back to FoodSaver!"
             color: "#1C6F30"
             font.pixelSize: 32
+
         }
     }
 
