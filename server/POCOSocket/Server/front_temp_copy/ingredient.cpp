@@ -14,6 +14,8 @@ Ingredient::Ingredient(std::string name, Date expiry_date, int quantity, Food_cl
     this->expiry_date = expiry_date;
 }
 
+Ingredient::Ingredient() {}
+
 Ingredient::~Ingredient() {
 }
 
