@@ -216,7 +216,7 @@ bool char_to_exclude_satisfied(string input_string) {
 
 //      Sending and receiving functions, from and to, the server.
 
-//Fridge ServerUser::get_fridge() { //
+Fridge ServerUser::get_fridge() { //
 //    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
 //    double_vector fridge_vector = new_cli.call("get_fridge", username, password).as<double_vector>();
 //    std::vector<Ingredient> vector_Ingredient;
