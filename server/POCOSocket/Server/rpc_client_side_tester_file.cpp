@@ -234,12 +234,13 @@ Fridge ServerUser::get_fridge() { //
     vector<string> fridge_vector_as_single = new_cli.call("get_fridge", username, password).as<vector<string>>();
     std::vector<Ingredient> vector_Ingredient;
 
-//CONVERT TO DOUBLE VECTOR, THEN:
-    vector<vector<string>>fridge_vec_as_double;
+//CONVERT TO DOUBLE VECTOR, THEN: Deserialize
+    vector<vector<string>>fridge_vec_as_double= deserialize_fridge(fridge_vector_as_single);
     for (size_t i = 0; i < fridge_vec_as_double.size(); ++i) {
 
         vector<string> ingredient = fridge_vec_as_double[i];
-        vector_Ingredient.push_back(ingredient_from_vector(ingredient));
+        vector_Ingredient.push_back(ingredient_from_vector(ingredient)); //vector_ingredient type Ingredient
+
     }
 
     return Fridge(vector_Ingredient);
@@ -262,11 +263,14 @@ void ServerUser:: update_fridge(Fridge &f_input) {
             }
         }
         //add back to fridge vector, if works.
+
         fridge_as_string_vector.push_back(ingredient);
     }
     //convert to serialized vec<string>:
     
-    vector<string> serialized_fridge;
+
+    vector<string> serialized_fridge = serialize(fridge_as_string_vector);
+
     //send as new format
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_fridge", username, password, serialized_fridge);
@@ -275,6 +279,9 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
 
 //// To re-do !!
+
+
+// working on vector<Offer> ;
 
 
 
@@ -418,10 +425,11 @@ vector<string> serialize(vector<vector<string>> vector_of_vector){
 
 }
 
+
+
 // deserialize --> vector<string> --> vector<vector<string>>
 
-
-// [Ingredient1, Ingredient2, .... , [Price]]
+// [Ingredient1, Ingredient2, .... , [Price]
 
 //Ingredient_i = [name, expiry_date, quantity, category, priority_level]
 vector<vector<string>> deserialize_offer (vector<string> offer){
@@ -443,8 +451,6 @@ vector<vector<string>> deserialize_offer (vector<string> offer){
     return offer_deser;
 
 }
-
-
 
 
 vector<vector<string>> deserialize_fridge(vector<string> fridge){

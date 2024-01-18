@@ -13,34 +13,67 @@ using namespace std;
 
 
 
-//all struct types common to both:
-//struct triple_vector {
-//    vector<vector<vector<string>>> triple_vect;
-//    MSGPACK_DEFINE_ARRAY(triple_vect);
-//    //struct constructor:
-//    triple_vector(vector<vector<vector<string>>> triple_vec_of_strings) {triple_vect = triple_vec_of_strings;}
-//    triple_vector() {}
-//};
 
-//struct double_vector {
-//    vector<vector<string>> double_vect;
-//    MSGPACK_DEFINE_ARRAY(double_vect);
-//    double_vector(vector<vector<string>> double_vec_of_strings) {double_vect = double_vec_of_strings;}
-//    double_vector() {}
-//};
+vector<string> serialize(vector<vector<string>> vector_of_vector){
+    vector<string> just_vector;
+    for(int i =0 ; i<sizeof(vector_of_vector); i++){
+        for(int j =0; j<sizeof(vector_of_vector[i]); j++ ){
+            just_vector.push_back(vector_of_vector[i][j]);
+        }
 
-//struct ingredient_struct{
-//    string name, quantity, expiry_date, category, priority_level;
-//    MSGPACK_DEFINE_ARRAY(name, quantity, expiry_date, category, priority_level);
-//    ingredient_struct(vector<string> ingredient) {
-//        name = ingredient[0];
-//        quantity = ingredient[1];
-//        expiry_date = ingredient[2];
-//        category = ingredient[3];
-//        priority_level = ingredient[4];        
-//    }
-//    ingredient_struct() {}
-//};
+    }
+    return just_vector;
+
+}
+
+
+
+// deserialize --> vector<string> --> vector<vector<string>>
+
+// [Ingredient1, Ingredient2, .... , [Price]]
+
+//Ingredient_i = [name, expiry_date, quantity, category, priority_level]
+vector<vector<string>> deserialize_offer (vector<string> offer){
+    vector<vector<string>> offer_deser;
+    for(int i = 0 ; i<sizeof(offer)-1;i+=6){
+        vector<string> inter_vector;
+        for(int j=i; j<i+6; j++){
+            inter_vector.push_back(offer[j]);
+        }
+        offer_deser.push_back(inter_vector);
+    }
+
+    string price = offer.back();
+
+    vector<string> vector_price;
+    vector_price.push_back(price);
+    offer_deser.push_back(vector_price);
+
+    return offer_deser;
+
+}
+
+
+vector<vector<string>> deserialize_fridge(vector<string> fridge){
+    vector<vector<string>> fridge_deser;
+
+    for(int i =0; i<sizeof(fridge); i+=6){
+
+        vector<string> inter_vector;
+        for(int j =i; j<i+6; j++){
+            inter_vector.push_back(fridge[j]);
+
+        }
+        fridge_deser.push_back(inter_vector);
+
+    }
+
+
+    return fridge_deser;
+
+
+
+}
 
 struct basic_user_data {
     string display_name;
@@ -52,7 +85,6 @@ struct basic_user_data {
     list<bool> food_and_dietary_restrictions;
     int telegram_notifications;
     int marketplace_notifications;
-//    MSGPACK_DEFINE_ARRAY(display_name, telegram_username, gender, promotion, building_address, phone_number, food_and_dietary_restrictions, telegram_notifications, marketplace_notifications);
     basic_user_data() {}
 };
 
