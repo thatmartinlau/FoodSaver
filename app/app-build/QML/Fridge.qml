@@ -588,6 +588,9 @@ Modify {
 //Under is old code from Martin
 /*Item {
 
+
+Item {
+
     // SETTINGS POPUP
     // currently a template, created by Antoine on the other branch (ty)
 
@@ -650,5 +653,15 @@ Modify {
         onClicked: stackView.pop() // need to add a function which logs the user out of the server, then deletes all active data from the instance.
     }
 
+    // Adding connection from other pages
 
-}*/
+    Connections {
+            target: signinLogic // Assuming signinLogic is accessible here
+
+            onOpenFridgePage: {
+                // Logic to display the Fridge page
+                // For example:
+                stackView.push(Qt.resolvedUrl("Fridge.qml"))
+            }
+        }
+}

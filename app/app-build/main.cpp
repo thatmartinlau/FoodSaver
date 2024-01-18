@@ -13,9 +13,10 @@
 
 #include "Header/settingsmanager.h"
 #include "Header/profilemanager.h"
-#include "Header/fridge.h"
-#include "Header/user.h"
 
+#include "Header/Signin.h"
+#include "Header/Login.h"
+#include "Header/SigninInformation.h"
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
@@ -34,10 +35,16 @@ int main(int argc, char *argv[]) {
     //Fridge fridge;
     //engine.rootContext()->setContextProperty("fridge", &fridge);
 
+    Signin signin;
+    engine.rootContext()->setContextProperty("signin", &signin);
+
+    Login login;
+    engine.rootContext()->setContextProperty("login", &login);
+
+    SigninInfo signinInfo;
+    engine.rootContext()->setContextProperty("signinInfo", &signinInfo);
 
     engine.load(QUrl(QStringLiteral("qrc:/QML/main.qml")));
 
     return app.exec();
 }
-
-

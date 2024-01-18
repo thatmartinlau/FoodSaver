@@ -18,16 +18,10 @@ using namespace std;
 //using json = nlohmann::json;
 //using namespace std;
 
+#include <vector>
+
 class Fridge {
-//class Fridge : public QObject {
-    //Q_OBJECT
-
 public:
-    //explicit Fridge(QObject *parent = nullptr);
-    //explicit Fridge();
-
-    //Q_INVOKABLE bool fridge();
-
     Fridge();
     Fridge(std::vector<Ingredient> init_list);
     ~Fridge();
@@ -43,10 +37,6 @@ public:
 
 private:
     std::vector<Ingredient> ingredient_list;
-
-
-//signals:
-    //void openMarketPage();
 };
 
 #endif // FRIDGE_H

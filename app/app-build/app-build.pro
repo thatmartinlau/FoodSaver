@@ -17,6 +17,8 @@ SOURCES += \
     Source/profilemanager.cpp \
     Source/recipe.cpp \
     Source/settingsmanager.cpp \
+    Source/SigninInformation.cpp \
+    Source/currentUser.cpp \
     main.cpp \
     $$CPP/date.cpp \
     $$CPP/fridge.cpp \
@@ -29,6 +31,15 @@ SOURCES += \
 
 HEADERS += \
     $$HPP/settingsmanager.h \
+    $$CPP/temp.json.cpp \
+    $$CPP/user.cpp \
+    $$CPP/Login.cpp \
+    $$CPP/Signin.cpp
+
+
+HEADERS += \
+    Header/SigninInformation.h \
+    Header/currentUser.h \
     $$HPP/date.h \
     $$HPP/fridge.h \
     $$HPP/front.hpp \
@@ -39,3 +50,5 @@ HEADERS += \
     lib/client_side_connection/server_to_backend_connection/rpc_client_side.hpp \
     Header/profilemanager.h \
     Header/recipe.h
+    $$HPP/Login.h \
+    $$HPP/Signin.h

@@ -8,8 +8,7 @@
 
 //FRIDGE
 
-Fridge::Fridge() {
-//Fridge::Fridge(QObject *parent) : QObject(parent) {
+Fridge::Fridge(){
     ingredient_list = {};
 }
 

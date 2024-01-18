@@ -6,17 +6,11 @@
 //#include <chrono>
 //using namespace std;
 
-//OFFERme
-
-/*
-Offer::Offer(Ingredient ingredient_on_offer) {
-    this->ingredient_on_offer = ingredient_on_offer;
-    price = 0.0;
-    quantity = 0;
-    User u;
-    username = u;
+//OFFER
+Offer::Offer(std::vector<Ingredient> ingredient_list) {
+    this->ingredient_list = ingredient_list;
+    price = (double) 0;
 }
-*/
 
 Offer::~Offer() {
 }

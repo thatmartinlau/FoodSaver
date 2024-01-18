@@ -3,6 +3,7 @@
 
 #include "fridge.h"
 #include "offer.h"
+#include "Signin.h"
 
 //#include <iostream>
 #include <list>
@@ -12,54 +13,51 @@
 //using json = nlohmann::json;
 //using namespace std;
 
-//#include "../lib/client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
-
 class User{
 public:
-    User();
-    User(std::string username, std::string password, std::string telegram_username);
+    User(std::string username, std::string password);
     ~User();
-    void set_username(std::string username);
     std::string get_username();
-    bool check_password(std::string input_username, std::string input_password);
-    bool is_username(std::string username);
-    void set_distplay_name(std::string display_name);
+    static bool check_password(std::string input_username, std::string input_password);
+    void set_telegram(std::string telegram);
+    bool register_user();
+    bool register_new_user();
+    void set_gender(std::string gender);
+    void set_diet(std::string diet);
+    void set_phone_number(std::string phone_number);
+    void set_room_number(std::string room_number);
+    void set_promotion(std::string promotion);
+    void set_display_name(std::string display_name);
+    void set_username(std::string username);
+    void set_password(std::string password);
+
+    static bool is_username(std::string username);
+    std::string get_telegram();
+    std::string get_gender();
     std::string get_display_name();
-    void set_telegram_username(std::string telegram);
-    std::string get_telegram_username();
-    void set_gender(int gender);
-    int get_gender();
-    void set_promotion(int promotion);
-    int get_promotion();
-    void set_building_address(std::string building_address);
-    std::string get_building_address();
-    void set_phone_number(int phone_number);
-    int get_phone_number();
-    void set_food_and_dietary_restrictions(std::list<bool> r);
-    std::list<bool> get_food_and_dietary_restrictions();
-    void set_telegram_notifications(int t);
-    int get_telegram_notifications();
-    void set_marketplace_notifications(int m);
-    int get_marketplace_notifications();
+    std::string get_room_number();
+    std::string get_promotion();
+    std::string get_phone_number();
+    std::string get_diet();
+
     //json toJson () const;
-    void add_offer(Offer new_offer);
-    Offer remove_offer(Offer *offer_to_delete);
-    std::vector<Offer> get_my_offers();
 
 private:
     std::string username;
     std::string password;
-    std::string display_name;
     std::string telegram_username;
-    int gender;
-    int promotion;
-    std::string building_address;
-    int phone_number;
-    std::list<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
+    std::string gender;
+    std::string diet;
+    std::string phone_number;
+    std::string room_number;
+    std::string promotion;
+    std::string display_name;
     Fridge user_fridge;
-    std::vector<Offer> offer_list;
+    std::list<Offer> offer_list;
+
+    //settings and preferences
+    std::string restrictions;
+
 };
 
 #endif // USER_H

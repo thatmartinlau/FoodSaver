@@ -5,7 +5,6 @@
 #include <QString>
 #include <QDebug>
 
-
 class ProfileManager : public QObject {
     Q_OBJECT
 
