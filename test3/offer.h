@@ -15,7 +15,7 @@
 class Offer {
 public:
     Offer();
-    //Offer(Ingredient ingredient_on_offer);
+    Offer(Ingredient ingredient_on_offer);
     ~Offer();
 
      bool operator==(Offer& other);
@@ -37,7 +37,6 @@ public:
 private:
     Ingredient ingredient_on_offer;
     double price;
-    int quantity;
     // PHOTO
 
     // add filters in case don't want to see meat and other products

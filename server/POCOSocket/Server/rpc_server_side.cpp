@@ -64,11 +64,10 @@ public:
 
 //DATABASE declaration
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
+vector<string>* recipe_list = new vector<string>;
 
 
-
-
-//needs to be a char: predefined or buggy, for some reason.
+//needs to be a char: predefined or buggy, somehow.
 char csv_separator = *","; //Replaces comma. Convention to use comma in comments. Same for the below.
 
 

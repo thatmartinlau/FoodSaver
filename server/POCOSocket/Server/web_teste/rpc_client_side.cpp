@@ -190,7 +190,7 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
     
     // Ingredient::Ingredient(string name, Date expiry_date, int quantity, Food_class category){
     Ingredient ingredient = Ingredient(name,expiry_date, quantity, category);
-    ingredient.set_priority(priority_level);
+    ingredient.set_priority();
     return ingredient;
 }
 
