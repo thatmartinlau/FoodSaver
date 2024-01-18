@@ -75,6 +75,22 @@ vector<vector<string>> deserialize_fridge(vector<string> fridge){
 
 }
 
+vector<vector<vector<string>>> deserialize_offer_list (vector<string> offer_list){
+    vector<vector<vector<string>>> offer_deser;
+    for(int i = 0 ; i<offer_list.size();i++){
+        vector<string> inter_vector;
+        inter_vector.push_back(offer_list[i]);
+        offer_deser.push_back(deserialize_offer(inter_vector));
+
+    }
+
+
+
+    return offer_deser;
+
+}
+
+
 struct basic_user_data {
     string display_name;
     string telegram_username;
