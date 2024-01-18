@@ -16,9 +16,9 @@ using namespace std;
 
 
 //Database storage files: no touchy :)) Except if you wihs totest fully: change to YOUR absolute file path.
-const string Database_simple_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/SEM3/CSE201 C++/Github Holder For Project, Version 1/FoodSaver/server/POCOSocket/Server/databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
-const string Database_offer_list_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/SEM3/CSE201 C++/Github Holder For Project, Version 1/FoodSaver/server/POCOSocket/Server/databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
-const string Database_fridge_and_food_lists_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/SEM3/CSE201 C++/Github Holder For Project, Version 1/FoodSaver/server/POCOSocket/Server/databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as - newline
+const string Database_simple_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
+const string Database_offer_list_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
+const string Database_fridge_and_food_lists_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as - newline
 //as 0,1,0,1,0,1,1 checkbox integers for booleans.
 //FILE FORMATS:
 
@@ -597,7 +597,7 @@ vector<string> test_sending_ingredient_as_vec(vector<string> ingredient) {
 }
 
 vector<vector<string>> test_sending_fridge_as_vec(vector<vector<string>> fridge) {
-    cout << fridge[0][0] << fridge[0][1] << endl;
+    cout << fridge[0][0] << fridge[1][1] << endl;
     return fridge;
 }
 
