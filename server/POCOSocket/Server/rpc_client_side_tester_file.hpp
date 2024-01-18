@@ -33,7 +33,6 @@ public:
     void update_user_characteristics(User usr); //updates user's characteristics, ASIDE from username/password. that's update+user.    
     void update_fridge(Fridge &f_input); //updates the fridge on the database. Adds/removes necessary items with comparisons. Keeps the local fridge unchanged.
     void update_offer_list(vector<Offer> &offer_list); //updates db's offer list.
-    void update_recipe(vector<string> recipe);
     
 private:
     std::string username;
@@ -44,6 +43,7 @@ private:
 vector<string> get_user_name_list();
 double check_user(); //for William, no functionassociated here. Just tolett you know this name is already taken.
 vector<string> get_recipe_list();
+void update_recipe(string recipe);
 
 
 #endif
