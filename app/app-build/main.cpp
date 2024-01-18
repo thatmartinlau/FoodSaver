@@ -16,6 +16,7 @@
 #include "Header/Signin.h"
 #include "Header/Login.h"
 #include "Header/SigninInformation.h"
+
 #include "maincontroller.h"
 
 
@@ -45,12 +46,13 @@ int main(int argc, char *argv[]) {
     SigninInfo signinInfo;
     engine.rootContext()->setContextProperty("signinInfo", &signinInfo);
 
-
     MainController mainController;
     engine.rootContext()->setContextProperty("MainController", &mainController);
 
     engine.addImportPath(QCoreApplication::applicationDirPath() + "/qml");
     engine.addImportPath(":/");
+
+    engine.load(QUrl(QStringLiteral("qrc:/QML/main.qml")));
 
     engine.load(QUrl(QStringLiteral("qrc:/QML/main.qml")));
 
