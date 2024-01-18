@@ -1,4 +1,5 @@
 #include "../Header/offer.h"
+#include "../Header/ingredient.h"
 
 //#include <iostream>
 //#include <list>

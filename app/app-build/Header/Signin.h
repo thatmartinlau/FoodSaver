@@ -7,8 +7,7 @@ class Signin : public QObject {
     Q_OBJECT
 public:
     explicit Signin(QObject *parent = nullptr);
-
-    //Q_INVOKABLE bool signIn(const QString &username, const QString &password, const QString &passwordCheck, const QString &telegram);
+    Q_INVOKABLE bool signIn(const QString &username, const QString &password, const QString &passwordCheck, const QString &telegram);
 
 public slots:
     void openNoUsernameError();

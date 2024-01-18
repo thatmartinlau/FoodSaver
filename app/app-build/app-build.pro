@@ -14,12 +14,12 @@ CPP = Source/
 HPP = Header/
 
 SOURCES += \
+    main.cpp \
     Source/profilemanager.cpp \
     Source/recipe.cpp \
     Source/settingsmanager.cpp \
     Source/SigninInformation.cpp \
     Source/currentUser.cpp \
-    main.cpp \
     $$CPP/date.cpp \
     $$CPP/fridge.cpp \
     $$CPP/front.cpp \

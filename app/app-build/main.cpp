@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
     //Fridge fridge;
     //engine.rootContext()->setContextProperty("fridge", &fridge);
-
+    /*
     Signin signin;
     engine.rootContext()->setContextProperty("signin", &signin);
 
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
 
     SigninInfo signinInfo;
     engine.rootContext()->setContextProperty("signinInfo", &signinInfo);
-
+    */
     engine.load(QUrl(QStringLiteral("qrc:/QML/main.qml")));
 
     return app.exec();
