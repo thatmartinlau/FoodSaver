@@ -70,3 +70,5 @@ The code is currently very buggy and cannot compile due to an unforseen bug done
 
 
 WEEK 14: 15/01/24 - 21/01/24
+Working on merging 3-4 different branches together, and resolving conflicts
+Implementing logic properly into QML buttons.
