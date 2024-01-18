@@ -87,33 +87,33 @@ Item {
             }
         }
 
-        Button {
-            anchors.left: parent.left
-            text: "Log in"
-            background: Rectangle {
-                    color: "#1C6F30"
-                    radius: 4
-            }
-            contentItem: Text { // Text properties
-                text: parent.text
-                font: parent.font
+        Rectangle {
+            id: customButton
+            width: 60
+            height: 20
+            color: "#1C6F30"
+            radius: 4
+
+            Text {
+                anchors.centerIn: parent
+                text: "Log in"
                 color: "white"
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                padding: 5
-            }
-            onClicked: {
-
-                if (login.logIn(input_username2.text, input_password2.text)){
-                                    passwordError.visible = false;
-                                    usernameError.visible = false;
-                                    noUsernameError.visible = false;
-                                    noPasswordError.visible = false;
-                                }
-                input_username2.text = ""
-                input_password2.text = ""
             }
 
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log("Button clicked!");
+                    if (login.logIn(input_username2.text, input_password2.text)) {
+                        passwordError.visible = false;
+                        usernameError.visible = false;
+                        noUsernameError.visible = false;
+                        noPasswordError.visible = false;
+                    }
+                    input_username2.text = "";
+                    input_password2.text = "";
+                }
+            }
         }
 
 

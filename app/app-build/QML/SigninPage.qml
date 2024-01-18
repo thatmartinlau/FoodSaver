@@ -180,8 +180,6 @@ Item {
 
             // Successful singin
             function onOpenNextPage() {
-                //var currentUsername = CurrentUser.username;
-                //var currentPassword = CurrentUser.password;
                 stackView.push(Qt.resolvedUrl("SigninInformation.qml"))
             }
         }
