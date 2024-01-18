@@ -2,8 +2,9 @@
 #define RPC_CLIENT_SIDE
 
 #include <iostream>
-#include "common_characteristics.hpp"
+#include "../common_characteristics.hpp"
 #include "rpc/client.h"
+
 #include "ingredient.h"
 #include "date.h"
 #include "fridge.h"
@@ -15,13 +16,13 @@ int HOST_SERVER_PORT = 8080;
 //ServerUser is a PARAMETER under the User class, from Sixtine's user.h
 
 class ServerUser {
-               
+    
 public:
     
-//Creates a user for temporary Use.
+    //Creates a user for temporary Use.
     ServerUser(std::string username, std::string psswd);//if user doesn't exist in database, add him to database.
     ~ServerUser();
-
+    
     void delete_self_in_db(); //deletes the user from the database.
     void update_user_password_and_username(std::string new_username, std::string new_password); //gives new username and password to database.
     

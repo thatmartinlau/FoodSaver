@@ -543,7 +543,7 @@ vector<string> get_offer_list(string username, string password) {
             // Username exists and password matches
 
             // Move the offer_list content to the caller
-            return serialize(std::move(el->second.offer_list));
+//            return serialize(std::move(el->second.offer_list));
         }
 
 
