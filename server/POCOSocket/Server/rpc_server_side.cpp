@@ -535,14 +535,15 @@ void update_offer(std::string username, string password, vector<vector<vector<st
 } //updates a user offer list
 
 //DB Sending Functions:
-vector<vector<vector<string>>> get_offer_list(string username, string password) {
+vector<string> get_offer_list(string username, string password) {
+
         auto el = database->find(username); // Find the username in the database
 
         if (el != database->end() && password == el->second.password) {
             // Username exists and password matches
 
             // Move the offer_list content to the caller
-            return std::move(el->second.offer_list);
+            return serialize(std::move(el->second.offer_list));
         }
 
 
