@@ -548,6 +548,7 @@ vector<string> get_offer_list(string username, string password) {
 
         return {}; // Return an empty offer_list if no username or password does not match
 
+   }
 }
 vector<string> get_fridge(string username, string password) {
         auto el = database->find(username); // Find the username in the database

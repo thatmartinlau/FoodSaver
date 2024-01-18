@@ -43,7 +43,7 @@ vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vec
 }
 
 
-}
+
 
 vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> maps){
     vector<string> just_vector;
