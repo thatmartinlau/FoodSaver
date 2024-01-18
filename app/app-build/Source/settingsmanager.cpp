@@ -1,4 +1,6 @@
 #include "../Header/settingsmanager.h"
+#include "../Header/user.h"
+
 #include <QDebug>
 
 SettingsManager::SettingsManager(QObject *parent) : QObject(parent) {

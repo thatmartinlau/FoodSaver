@@ -15,6 +15,7 @@ HPP = Header/
 
 SOURCES += \
     Source/profilemanager.cpp \
+    Source/recipe.cpp \
     Source/settingsmanager.cpp \
     main.cpp \
     $$CPP/date.cpp \
@@ -24,7 +25,6 @@ SOURCES += \
     $$CPP/link_pocco.cpp \
     $$CPP/offer.cpp \
     $$CPP/temp.front.cpp \
-    $$CPP/temp.json.cpp \
     $$CPP/user.cpp
 
 HEADERS += \
@@ -36,4 +36,6 @@ HEADERS += \
     $$HPP/offer.h \
     $$HPP/temp.front.hpp \
     $$HPP/user.h \
-    Header/profilemanager.h
+    lib/client_side_connection/server_to_backend_connection/rpc_client_side.hpp \
+    Header/profilemanager.h \
+    Header/recipe.h

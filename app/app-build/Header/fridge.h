@@ -6,8 +6,10 @@
 #include <QString>
 
 #include "ingredient.h"
+
+#include <iostream>
 #include <vector>
-//#include <iostream>
+using namespace std;
 //#include <list>
 //#include <string>
 //#include <ctime>
@@ -35,8 +37,8 @@ public:
     Ingredient pop_elt(Ingredient *getit);
     void saveToJsonFile(const std::string& fileFridge);
     //void sort_fridge(std::string* sort_key);
-    std::vector<Ingredient> sort_ingredients_by_category(std::string sort_key);
-    std::vector<Ingredient> sort_ingredients_by_expiration_date(std::string sort_key);
+    std::vector<Ingredient> sort_ingredients_by_category();
+    std::vector<Ingredient> sort_ingredients_by_expiration_date();
     //json toJson () const;
 
 private:
