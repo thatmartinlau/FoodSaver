@@ -93,9 +93,6 @@ void User::set_promotion(std::string promotion){
 void User::set_display_name(std::string display_name){
     this->display_name=display_name;
 }
-void User::set_username(std::string username){
-    this->username=username;
-}
 
 void User::set_password(std::string password){
     this->password=password;

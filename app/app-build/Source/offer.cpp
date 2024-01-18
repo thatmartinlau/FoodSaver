@@ -15,10 +15,11 @@ Offer::Offer(std::vector<Ingredient> ingredient_list) {
 Offer::~Offer() {
 }
 
+/*
 bool Offer::operator==(Offer& other) {
     return (this->get_ingredient() == other.get_ingredient());
 }
-
+*/
 void Offer::set_price(double price) {
     this->price = price;
 }

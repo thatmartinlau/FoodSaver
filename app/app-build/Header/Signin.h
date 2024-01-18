@@ -1,4 +1,3 @@
-
 #ifndef SIGNIN_H
 #define SIGNIN_H
 
@@ -9,9 +8,9 @@ class Signin : public QObject {
 public:
     explicit Signin(QObject *parent = nullptr);
 
-    Q_INVOKABLE bool signIn(const QString &username, const QString &password, const QString &passwordCheck, const QString &telegram);
+    //Q_INVOKABLE bool signIn(const QString &username, const QString &password, const QString &passwordCheck, const QString &telegram);
 
-signals:
+public slots:
     void openNoUsernameError();
     void openPasswordError();
     void openUsernameError();

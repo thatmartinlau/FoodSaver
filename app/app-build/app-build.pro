@@ -27,18 +27,13 @@ SOURCES += \
     $$CPP/link_pocco.cpp \
     $$CPP/offer.cpp \
     $$CPP/temp.front.cpp \
-    $$CPP/user.cpp
-
-HEADERS += \
-    $$HPP/settingsmanager.h \
-    $$CPP/temp.json.cpp \
     $$CPP/user.cpp \
-    $$CPP/Login.cpp \
-    $$CPP/Signin.cpp
+    $$CPP/temp.json.cpp \
 
 
 HEADERS += \
     Header/SigninInformation.h \
+    $$HPP/settingsmanager.h \
     Header/currentUser.h \
     $$HPP/date.h \
     $$HPP/fridge.h \
@@ -49,6 +44,6 @@ HEADERS += \
     $$HPP/user.h \
     lib/client_side_connection/server_to_backend_connection/rpc_client_side.hpp \
     Header/profilemanager.h \
-    Header/recipe.h
+    Header/recipe.h \
     $$HPP/Login.h \
     $$HPP/Signin.h

@@ -19,10 +19,14 @@ public:
     ~Offer();
     void set_price(double price);
     double get_price();
+    Ingredient get_ingredient();
+    void set_ingredient(Ingredient ing);
+
     //json toJson () const;
 
 private:
     std::vector<Ingredient> ingredient_list;
+    Ingredient ingredient_on_offer;
     double price;
     // PHOTO
 
