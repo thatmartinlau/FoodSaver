@@ -25,6 +25,7 @@ SOURCES += \
     $$CPP/front.cpp \
     $$CPP/ingredient.cpp \
     $$CPP/link_pocco.cpp \
+    $$CPP/Login.cpp \
     $$CPP/offer.cpp \
     $$CPP/temp.front.cpp \
     $$CPP/user.cpp \
