@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_subdirectory(rpclib-master)
 include_directories(rpclib-master/include)
 
-include_directories(front_temp_copy/)
+include_directories(../../../test3)
 
 
 add_executable(Server rpc_server_side.cpp
@@ -16,12 +16,12 @@ add_executable(Server rpc_server_side.cpp
 	rpc_client_side_tester_file.hpp
 	common_characteristics.hpp
 	
-	front_temp_copy/user.cpp
-	front_temp_copy/fridge.cpp
-	front_temp_copy/front.cpp
-	front_temp_copy/ingredient.cpp
-	front_temp_copy/date.cpp
-	front_temp_copy/offer.cpp	
+	../../../test3/user.cpp
+	../../../test3/fridge.cpp
+	../../../test3/front.cpp
+	../../../test3/ingredient.cpp
+	../../../test3/date.cpp
+	../../../test3/offer.cpp	
 	
 	
 )

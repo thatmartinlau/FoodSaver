@@ -354,6 +354,127 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 }
 
 
+//int test_msgpack(){
+
+
+
+
+//    /*
+//    vector<vector<vector<string>>> ex_offer_list;
+
+//    vector<vector<string>> ingredient_price ;
+
+//    vector<string> ingredient;
+
+//    vector<string> price;
+
+
+
+//    vector<string> ingredient.push_back("apple");
+//    vector<string> ingredient.push_back("11.11.2005");
+//    vector<string> ingredient.push_back("25kg");
+//    vector<string> ingredient.push_back("meat");
+//    vector<string> ingredient.push_back("red");
+
+//    vector<string> price.push_back("11$");
+
+//    ingredient_price.push_back(ingredient);
+//    ingredient_price.push_back(price);
+//    ex_offer_list.push_back(ingredient_price);
+//    */
+
+//    Offer offer;
+//    offer.set_ingredient(Ingredient("apple", Date(24,6,2004) , 1, drink));
+//    offer.set_price(1.5);
+//    vector<Offer> offer_vector;
+//    offer_vector.push_back(offer);
+
+//    ServerUser srv1_usr("oscar", "123");
+
+//    srv1_usr.update_offer_list(offer_vector);
+
+
+
+//return 1;
+
+
+//    // [name, expiry_date, quantity, category, priority_level]
+
+
+//}
+
+
+
+//int var = test_msgpack();
+
+
+
+// do the recipe thing
+
+// serialize --> vector<vector<string> to vector<string>
+
+vector<string> serialize(vector<vector<string>> vector_of_vector){
+    vector<string> just_vector;
+    for(int i =0 ; i<sizeof(vector_of_vector); i++){
+        for(int j =0; j<sizeof(vector_of_vector[i]); j++ ){
+            just_vector.push_back(vector_of_vector[i][j]);
+        }
+
+    }
+    return just_vector;
+
+}
+
+
+
+// deserialize --> vector<string> --> vector<vector<string>>
+
+// [Ingredient1, Ingredient2, .... , [Price]
+
+//Ingredient_i = [name, expiry_date, quantity, category, priority_level]
+vector<vector<string>> deserialize_offer (vector<string> offer){
+    vector<vector<string>> offer_deser;
+    for(int i = 0 ; i<sizeof(offer)-1;i+=6){
+        vector<string> inter_vector;
+        for(int j=i; j<i+6; j++){
+            inter_vector.push_back(offer[j]);
+        }
+        offer_deser.push_back(inter_vector);
+    }
+
+    string price = offer.back();
+
+    vector<string> vector_price;
+    vector_price.push_back(price);
+    offer_deser.push_back(vector_price);
+
+    return offer_deser;
+
+}
+
+
+vector<vector<string>> deserialize_fridge(vector<string> fridge){
+    vector<vector<string>> fridge_deser;
+
+    for(int i =0; i<sizeof(fridge); i+=6){
+
+        vector<string> inter_vector;
+        for(int j =i; j<i+6; j++){
+            inter_vector.push_back(fridge[j]);
+
+        }
+        fridge_deser.push_back(inter_vector);
+
+    }
+
+
+    return fridge_deser;
+
+
+
+}
+
+
 
 
 

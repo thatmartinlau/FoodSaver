@@ -4,7 +4,6 @@
 #include <iostream>
 #include "common_characteristics.hpp"
 #include "rpc/client.h"
-
 #include "ingredient.h"
 #include "date.h"
 #include "fridge.h"

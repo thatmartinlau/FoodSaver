@@ -8,9 +8,7 @@
 //#include <string>
 //#include <ctime>
 
-//#include "nlohmann/json.hpp"
-//using json = nlohmann::json;
-//using namespace std;
+#include <vector>
 
 class Fridge {
 public:

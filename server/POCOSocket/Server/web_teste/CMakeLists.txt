@@ -19,6 +19,8 @@ include_directories(rpclib-master/include)
 add_executable(web_teste
   main.cpp
   common_characteristics.hpp
+  rpc_client_side.cpp
+  rpc_client_side.hpp
 )
 
 
