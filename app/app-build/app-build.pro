@@ -16,12 +16,11 @@ CPP = Source/
 HPP = Header/
 
 SOURCES += \
-
     Source/profilemanager.cpp \
     Source/settingsmanager.cpp \
     Source/RecipeBook.cpp \
     Source/recipe.cpp \
-    backend.cpp \
+    #backend.cpp \
     main.cpp \
     maincontroller.cpp \
     $$CPP/date.cpp \
@@ -32,7 +31,7 @@ SOURCES += \
     $$CPP/offer.cpp \
     $$CPP/temp.front.cpp \
     $$CPP/temp.json.cpp \
-    $$CPP/user.cpp \
+    $$CPP/user.cpp
 
 HEADERS += \
     $$HPP/settingsmanager.h \
