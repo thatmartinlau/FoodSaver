@@ -53,12 +53,15 @@ vector<string> get_user_name_list() {
 
 Food_class mapCategoryToEnum(const std::string& category) {
     static const std::unordered_map<std::string, Food_class> categoryMap = {
+        {"gluten", gluten},
         {"fruit", fruit},
         {"vegetable", vegetable},
         {"drink", drink},
-        {"dairy", dairy},
+        {"lactose", lactose},
         {"canned", canned},
+        {"eggs", eggs},
         {"meat", meat},
+        {"halal_meat", halal_meat},
         {"fish", fish},
         {"sweet", sweet},
         {"nut", nut},
@@ -90,12 +93,15 @@ Priority mapprioToEnum(const std::string& priority_level) {
 
 std::string_view foodClassToString(Food_class foodClass) {
     static const std::unordered_map<Food_class, std::string_view> FoodClassToString = {
+        {Food_class::gluten, "gluten"},
         {Food_class::fruit, "fruit"},
         {Food_class::vegetable, "vegetable"},
         {Food_class::drink, "drink"},
-        {Food_class::dairy, "dairy"},
+        {Food_class::lactose, "lactose"},
         {Food_class::canned, "canned"},
+        {Food_class::eggs, "eggs"},
         {Food_class::meat, "meat"},
+        {Food_class::halal_meat, "halal_meat"},
         {Food_class::fish, "fish"},
         {Food_class::sweet, "sweet"},
         {Food_class::nut, "nut"},
@@ -379,8 +385,81 @@ bool char_to_exclude_satisfied(string input_string) {
 //int var = test_msgpack();
 
 
+
+// do the recipe thing
+
+// serialize --> vector<vector<string> to vector<string>
+
+vector<string> serialize(vector<vector<string>> vector_of_vector){
+    vector<string> just_vector;
+    for(int i =0 ; i<sizeof(vector_of_vector); i++){
+        for(int j =0; j<sizeof(vector_of_vector[i]); j++ ){
+            just_vector.push_back(vector_of_vector[i][j]);
+        }
+
+    }
+    return just_vector;
+
+}
+
+// deserialize --> vector<string> --> vector<vector<string>>
+
+
+// [Ingredient1, Ingredient2, .... , [Price]]
+
+//Ingredient_i = [name, expiry_date, quantity, category, priority_level]
+vector<vector<string>> deserialize_offer (vector<string> offer){
+    vector<vector<string>> offer_deser;
+    for(int i = 0 ; i<sizeof(offer)-1;i+=6){
+        vector<string> inter_vector;
+        for(int j=i; j<i+6; j++){
+            inter_vector.push_back(offer[j]);
+        }
+        offer_deser.push_back(inter_vector);
+    }
+
+    string price = offer.back();
+
+    vector<string> vector_price;
+    vector_price.push_back(price);
+    offer_deser.push_back(vector_price);
+
+    return offer_deser
+
+}
+
+
+
+
+vector<vector<string>> deserialize_fridge(vector<string> fridge){
+    vector<vector<string>> fridge_deser;
+
+    for(int i =0; i<sizeof(fridge); i+=6){
+
+        vector<string> inter_vector;
+        for(int j =i; j<i+6; j++){
+            inter_vector.push_back(fridge[j]);
+
+        }
+        fridge_deser.push_back(inter_vector);
+
+    }
+
+
+    return fridge_deser;
+
+
+
+}
+
+
+
+
+
+
+
 //CLIENT_SIDE MAIN FUNCTION, FOR TESTSING ONLY:
-int main () {
+int test2 () {
 
     //test1: offer list struct sending
     string stri = "hello";
@@ -407,7 +486,7 @@ int main () {
 
 
 
-    triple_vector new_tri_vec_tested(tri_vec_test);
+    //triple_vector new_tri_vec_tested(tri_vec_test);
 
 }
 
