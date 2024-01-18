@@ -12,7 +12,11 @@ using namespace std;
 
 
 
+//Going to copy paste the deserialize and serialize functions !
 
+// do the recipe thing
+
+// serialize --> vector<vector<string> to vector<string>
 
 vector<string> serialize(vector<vector<string>> vector_of_vector){
     vector<string> just_vector;
@@ -20,17 +24,30 @@ vector<string> serialize(vector<vector<string>> vector_of_vector){
         for(int j =0; j<sizeof(vector_of_vector[i]); j++ ){
             just_vector.push_back(vector_of_vector[i][j]);
         }
-
     }
     return just_vector;
-
 }
 
 
 
+vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
+    vector<string> just_vector;
+
+    for(int i =0 ; i<vector_triple.size(); i++){
+        for(int j =0 ; j<vector_triple[i].size(); j++){
+            for (int k=0; k<vector_triple[i][j].size(); k++){
+                just_vector.push_back(vector_triple[i][j][k]);
+
+            }
+
+        }
+
+    }
+    return just_vector;
+}
 // deserialize --> vector<string> --> vector<vector<string>>
 
-// [Ingredient1, Ingredient2, .... , [Price]]
+// [Ingredient1, Ingredient2, .... , [Price]
 
 //Ingredient_i = [name, expiry_date, quantity, category, priority_level]
 vector<vector<string>> deserialize_offer (vector<string> offer){
@@ -54,10 +71,29 @@ vector<vector<string>> deserialize_offer (vector<string> offer){
 }
 
 
+vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list){
+
+    vector<vector<vector<string>>> deserialize_offer_list;
+    for(int i =0; i<offer_list.size(); i+=7){
+        vector<string> vector_inter;
+        for(int j = i ; j<i+7; j++){
+            vector_inter.push_back(offer_list[j]); // --> vector of an offer ;
+        }
+
+        vector<vector<string>> offer = deserialize_offer(vector_inter);
+
+        deserialize_offer_list.push_back(offer);
+
+    }
+
+    return deserialize_offer_list;
+}
+
+
 vector<vector<string>> deserialize_fridge(vector<string> fridge){
     vector<vector<string>> fridge_deser;
 
-    for(int i =0; i<sizeof(fridge); i+=6){
+    for(int i =0; i<fridge.size(); i+=6){
 
         vector<string> inter_vector;
         for(int j =i; j<i+6; j++){
