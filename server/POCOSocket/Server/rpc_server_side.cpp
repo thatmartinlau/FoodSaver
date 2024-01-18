@@ -57,7 +57,7 @@ public:
     int telegram_notifications;
     int marketplace_notifications;
     list<bool> food_and_dietary_restrictions;
-    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!
+    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!    
     vector<vector<vector<string>>> offer_list; //Implied: offer is [Ingredient, [price]]. Offer list is vector of this offer type.
 };
 
@@ -79,10 +79,10 @@ void read_simple_types_from_csv() {
     for (string line_it; getline(file, line_it);) {
         lines.push_back(line_it);
     }
-
+    
     for (auto line_it: lines) { //iterate through each user, add up all the factors into UserData , into database.
         vector<string> user_data;
-
+        
         stringstream line_it_stream(line_it);
         for (string line_it_elt; getline(line_it_stream, line_it_elt, csv_separator);) {
             user_data.push_back(line_it_elt);
@@ -98,7 +98,7 @@ void read_simple_types_from_csv() {
         //basic_user_data's list<bool> taken out in fridge_from_csv function.
         basic_u_data.telegram_notifications = std::stoi(user_data[8]); //convert to int
         basic_u_data.marketplace_notifications = std::stoi(user_data[9]);//convert to int
-
+        
         (*database)[user_data[0]] = UserData(user_data[1], basic_u_data); //0 is username, 1 is password, rest is U-data.
     }
     file.close();
@@ -160,7 +160,7 @@ void read_offer_list_from_csv() {
             offer.push_back(price);
             (*database)[username].offer_list.push_back(offer);
         }
-
+        
     }
     file.close();
 }
@@ -169,7 +169,7 @@ void read_offer_list_from_csv() {
 void read_from_csv() {
     //first, read simple types for username / password. And this allows us to create UserData.
     read_simple_types_from_csv();//we begin here, initialize user class. Then, we initialise fridge and offer_list types. Along with food restrictions.
-    read_fridge_and_food_lists_from_csv(); //use already initialized database.
+    read_fridge_and_food_lists_from_csv(); //use already initialized database. 
     read_offer_list_from_csv();
     cout << "Read!" << endl;
 }
@@ -212,7 +212,7 @@ void write_fridge_and_food_lists() {
                 vector<string> ingredient = user_data.fridge[i];
                 for (int j=0; j < 5; j++) {
                     first_line_to_write.push_back(ingredient[j]);
-
+                    
                 }
         }
         string line_to_write_here;
@@ -223,7 +223,7 @@ void write_fridge_and_food_lists() {
             line_to_write_here.pop_back();        file << line_to_write_here << endl;
 
         //second line is writing boolean restrictions into file.
-        string line2;
+        string line2; 
         for (list<bool>::const_iterator it = user_data.food_and_dietary_restrictions.begin(); it != user_data.food_and_dietary_restrictions.end(); it++) {
             line2.append(to_string(*it) + csv_separator); //outputs "0" or "1" in string repr.
         }
@@ -250,7 +250,7 @@ void write_offer_list() {
             line_to_write_string.append(*it + csv_separator);
         }
         if (!line_to_write_string.empty()) //stolen fron SToflow, username jcrv
-            line_to_write_string.pop_back();
+            line_to_write_string.pop_back();        
         file << line_to_write_string << endl;
     }
     file.close();
@@ -342,7 +342,7 @@ void read_from_csv_old() { //everytime open the server, read csv to get data fro
 void init_data_test() { //debug function. Tests database read/write all together along with test_read_write_csv().
     UserData data;
     string m = "Molly";
-
+    
     data.password = "Darton";
     vector<vector<string>> fridge_darton;
     vector<string> apple;
@@ -363,9 +363,9 @@ void init_data_test() { //debug function. Tests database read/write all together
     offer2.push_back(price_2);
     data.offer_list.push_back(offer2);
     data.food_and_dietary_restrictions = restrictions_of_molly;
-
+    
     (*database)[m] = data;
-
+    
     string k = "Johnny";
     vector<vector<string>> offer;
     offer.push_back(data.fridge[0]);
@@ -376,7 +376,7 @@ void init_data_test() { //debug function. Tests database read/write all together
     data.offer_list.push_back(offer);
     data.food_and_dietary_restrictions = restrictions_of_johnny;
     (*database)[k] = data;
-
+    
 }
 
 int test_read_csv() {
@@ -450,12 +450,12 @@ void update_user(string old_username, string old_password, string new_username, 
     auto err_obj = std::make_tuple(123, "Username not found");
     rpc::this_handler().respond_error(err_obj);
 }
-
+    
 }
-
+    
 void update_user_characteristics(string username, string password, basic_user_data new_characs) {
     auto el = database->find(username);
-
+    
     if (el != database->end() && password==el->second.password) {
             el->second.display_name = new_characs.display_name;
             el->second.telegram_username = new_characs.telegram_username;
@@ -477,7 +477,7 @@ else {
         auto err_obj = std::make_tuple(123, "Username not found");
         rpc::this_handler().respond_error(err_obj);
     }
-
+    
 }
 
 void update_fridge(std::string username, string password, vector<vector<string>> &new_fridge) {
@@ -563,6 +563,26 @@ vector<vector<string>> get_fridge(string username, string password) {
 
 }
 
+unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
+        unordered_map<string, vector<vector<vector<string>>>> offerMap;
+
+        // Iterating through the database to retrieve user offers
+        for (const auto& entry : *database) {
+            const std::string& username = entry.first;
+            const UserData& userData = entry.second;
+
+            // Fetching offers for the current user from UserData
+            const std::vector<std::vector<std::vector<std::string>>>& userOffers = userData.offer_list;
+
+            // Assigning the user offers to the offerMap using the username as the index
+            offerMap[username] = userOffers;
+        }
+
+        return offerMap;
+}
+
+
+
 vector<string> get_user_name_vectors() {
         vector<string> user_list;
         for (auto& [key, value] : *database) {
@@ -607,44 +627,46 @@ vector<vector<string>> test_sending_fridge_as_vec(vector<vector<string>> fridge)
 
 int main() {
     rpc::server srv(8080);
-
-
+    
+    
     //DB Manip/add/remove
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
 //    srv.bind("update_user_characteristics", &update_user_characteristics);
-
+    
     srv.bind("update_fridge", &update_fridge);
     srv.bind("update_offer", &update_offer);
-
+    
     //DB Sending
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
-
+    
     //General Functions
+    srv.bind("getMapOfOffers", &getMapOfOffers);
     srv.bind("get_user_name_vectors", &get_user_name_vectors);
 
+    
     //Check functions:
     srv.bind("check_user", &check_user);
-
-
+    
+    
     //binding test functions:
 //    srv.bind("test_sending_fridges", &test_sending_fridges);
     srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
     srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
-
-
+    
+    
     //SERVER running from here:
     read_from_csv();
-    cout << "running" << endl;
+    cout << "running" << endl;        
     srv.run();
-    cout << "running" << endl;
-
-
-
-
-
+    cout << "running" << endl;    
+        
+    
+    
+    
+    
     write_to_csv(); //need to implement side-by-side, every 5mins it updates. Or, when server closes, it updates.
-    return 0;
+    return 0;    
 }
