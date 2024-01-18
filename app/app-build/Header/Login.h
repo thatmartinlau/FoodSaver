@@ -11,7 +11,7 @@ class Login : public QObject {
 public:
     explicit Login(QObject *parent = nullptr);
 
-    //Q_INVOKABLE bool logIn(const QString &username, const QString &password);
+    Q_INVOKABLE bool logIn(const QString &username, const QString &password);
 
 public slots:
     void openNoUsernameError2();

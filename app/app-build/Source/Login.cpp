@@ -7,7 +7,7 @@
 
 Login::Login(QObject *parent) : QObject(parent) {}
 
- bool Login::logIn(const QString &username, const QString &password) {
+bool Login::logIn(const QString &username, const QString &password) {
      if (username== "") {
          emit openNoUsernameError2();
          return false;

@@ -28,6 +28,7 @@ SOURCES += \
     $$CPP/offer.cpp \
     $$CPP/temp.front.cpp \
     $$CPP/user.cpp \
+    $$CPP/Login.cpp \
     $$CPP/temp.json.cpp \
 
 
