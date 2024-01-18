@@ -29,7 +29,10 @@ SOURCES += \
     $$CPP/user.cpp \
     $$CPP/Signin.cpp \
     $$CPP/temp.json.cpp \
-
+    $$CPP/profilemanager.cpp \
+    $$CPP/settingsmanager.cpp \
+    $$CPP/currentUser.cpp \
+    $$CPP/SigninInformation.cpp \
 
 HEADERS += \
     Header/SigninInformation.h \
