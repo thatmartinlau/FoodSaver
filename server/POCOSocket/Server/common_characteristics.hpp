@@ -1,6 +1,7 @@
 #ifndef COMMON_CHARACTERISTICS
 #define COMMON_CHARACTERISTICS
 //all includes COMMON to both server_side.cpp and rpc_client_side.hpp
+#include <unordered_map>
 #include <vector>
 #include <list>
 #include <string>
@@ -26,8 +27,32 @@ vector<string> serialize(vector<vector<string>> vector_of_vector){
 
 }
 
+vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vector_of_vector){
+    vector<string> just_vector;
+    for(int i =0 ; i<sizeof(vector_of_vector_of_vector); i++){
+        for(int j =0; j<sizeof(vector_of_vector_of_vector[i]); j++ ){
+             for(int k =0; k<sizeof(vector_of_vector_of_vector[j]); k++ ){
+                just_vector.push_back(vector_of_vector_of_vector[i][j][k]);
+            }
+        }
+    }
+    return just_vector;
 
+}
 
+vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> maps){
+    vector<string> just_vector;
+     auto it = maps.begin();
+     just_vector.push_back(it->first);
+     vector<vector<vector<string>>> offer_lists;
+     vector<string> dec_ol = serialize_offer_list(it->second);
+
+     for(int k =0; k<sizeof(dec_ol); k++ ){
+        just_vector.push_back(dec_ol[k]);
+     }
+
+     return just_vector;
+}
 // deserialize --> vector<string> --> vector<vector<string>>
 
 // [Ingredient1, Ingredient2, .... , [Price]]
@@ -89,6 +114,33 @@ vector<vector<vector<string>>> deserialize_offer_list (vector<string> offer_list
     return offer_deser;
 
 }
+
+unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> mapInStr){
+    unordered_map<string, vector<vector<vector<string>>>> result;
+    for (const std::string& str : mapInStr) {
+        std::istringstream iss(str);
+        std::string key;
+        iss >> key;
+
+
+        std::string valueStr;
+        iss >> std::ws;
+        std::getline(iss, valueStr);
+
+        // Deserialize the value string into the map value type
+        std::vector<std::vector<std::vector<std::string>>> value = deserialize_offer_list({valueStr});
+
+        // Insert into the map
+        result[key] = value;
+    }
+
+    return result;
+}
+
+
+
+
+
 
 
 struct basic_user_data {

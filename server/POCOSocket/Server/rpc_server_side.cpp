@@ -543,20 +543,20 @@ vector<string> get_offer_list(string username, string password) {
             // Username exists and password matches
 
             // Move the offer_list content to the caller
-            return serialize(std::move(el->second.offer_list));
+            return serialize_offer_list(std::move(el->second.offer_list));
         }
 
 
         return {}; // Return an empty offer_list if no username or password does not match
 
 }
-vector<vector<string>> get_fridge(string username, string password) {
+vector<string> get_fridge(string username, string password) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end() && password == el->second.password) {
             // Username exists and password matches
 
 
-            return std::move(el->second.fridge);
+            return serialize(std::move(el->second.fridge));
         }
 
 
@@ -564,7 +564,7 @@ vector<vector<string>> get_fridge(string username, string password) {
 
 }
 
-unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
+vector<string> getMapOfOffers(){
         unordered_map<string, vector<vector<vector<string>>>> offerMap;
 
         // Iterating through the database to retrieve user offers
@@ -579,7 +579,7 @@ unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
             offerMap[username] = userOffers;
         }
 
-        return offerMap;
+        return serialize_unMap(offerMap);
 }
 
 
