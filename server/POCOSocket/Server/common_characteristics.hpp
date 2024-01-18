@@ -117,11 +117,4 @@ struct basic_user_data {
 };
 
 
-
-//USING method:
-//using vector_of_ingredients = vector<ingredient_struct>;
-//using vector_of_offers = vector<offer_struct>;
-
-//
-
 #endif

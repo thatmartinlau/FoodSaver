@@ -326,7 +326,7 @@ void init_data_test() { //debug function. Tests database read/write all together
     
     //add simple recipes:
     (*recipes_list)[0] = "hello, this is a recipe!";
-    (*recipes_list)[1] = "recipe2";
+    (*recipes_list)[1] ="byebye, second recipe :)";
     
 }
 
