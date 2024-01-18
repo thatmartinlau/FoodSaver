@@ -33,6 +33,8 @@ SOURCES += \
     $$CPP/settingsmanager.cpp \
     $$CPP/currentUser.cpp \
     $$CPP/SigninInformation.cpp \
+    $$CPP/market.cpp \
+    market.cpp
 
 HEADERS += \
     Header/SigninInformation.h \
@@ -52,4 +54,6 @@ HEADERS += \
     Header/profilemanager.h \
     Header/recipe.h \
     $$HPP/Login.h \
-    $$HPP/Signin.h
+    $$HPP/Signin.h \
+    $$HPP/market.h \
+    market.h
