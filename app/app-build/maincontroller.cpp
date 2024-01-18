@@ -70,7 +70,7 @@ std::vector<Recipe> allRecipes;
 std::vector<std::string> test;
 std::vector<std::string> allInstructions;
 
-void MainController::submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes, const QString &ingredient1, const QString &instruction1)
+void MainController::submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes)//, const QString &ingredient1, const QString &instruction1)
 {
     std::vector<std::string> vecttt;
 
@@ -272,6 +272,25 @@ QList<QString> MainController::search_res(const QString &entry){
 
     return final;
 }
+
+QList<QString> MainController::titleOrDiet(const QList<QString> &titles,const int &need){
+    QList<QString> res;
+    for(int i = 0; i<titles.size();i++){
+        for(int j = 0; j<allRecipes.size(); j++){
+            if(need == 0){
+                if(convertStdtoQ(allRecipes[j].get_title()).toLower() == titles[i].toLower()){
+                    res.append(convertStdtoQ(allRecipes[j].get_title()));
+                }
+            }else{
+                if(convertStdtoQ(allRecipes[j].get_title()).toLower() == titles[i].toLower()){
+                    res.append(convertStdtoQ(allRecipes[j].get_diet()));
+                }
+            }
+        }
+    }
+    return res;
+}
+
 
 QList<QString> MainController::sorter(const QMap<QString, int> &dict){
     QList<int> occurences = dict.values();

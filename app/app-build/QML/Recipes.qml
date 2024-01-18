@@ -113,13 +113,15 @@ Row {
                                     MainController.submit(itemModel.get(i).name)
                                 }
                                 var to_display = MainController.search_res(searchbar.text)
+                                //var titles = MainController.titleOrDiet(to_display,0)
+                                //var diets = MainController.titleOrDiet(to_display,1)
 
                                 itemModel.clear()
                                 //itemModel.append({"name": to_display})
                                 //itemModel.append({"name": to_display[1]})
 
                                 for (var j = 0; j< to_display.length; j++){
-                                    itemModel.append({"name" : to_display[j]})
+                                    itemModel.append({"name" : to_display[j]})//titles[j], "dietRestriction" : diets[j]})
                                 }
 
                                 //searchbar.text = ""
