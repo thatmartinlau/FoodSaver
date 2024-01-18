@@ -379,36 +379,36 @@ bool char_to_exclude_satisfied(string input_string) {
 //int var = test_msgpack();
 
 
-//CLIENT_SIDE MAIN FUNCTION, FOR TESTSING ONLY:
-int main () {
+////CLIENT_SIDE MAIN FUNCTION, FOR TESTSING ONLY:
+//int main () {
 
-    //test1: offer list struct sending
-    string stri = "hello";
-    vector<string> tring;
-    tring.push_back(stri);
-    vector<vector<string>> dou_vec_test;
-    dou_vec_test.push_back(tring);
-    vector<vector<vector<string>>> tri_vec_test;
-    tri_vec_test.push_back(dou_vec_test);
+//    //test1: offer list struct sending
+//    string stri = "hello";
+//    vector<string> tring;
+//    tring.push_back(stri);
+//    vector<vector<string>> dou_vec_test;
+//    dou_vec_test.push_back(tring);
+//    vector<vector<vector<string>>> tri_vec_test;
+//    tri_vec_test.push_back(dou_vec_test);
 
-    //test2: fridge sending/receiving:
-    vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
-    vector<vector<string>> fridge_test;
-    fridge_test.push_back(ingr1);
-    fridge_test.push_back(ingr1);
-    //send through to server
-    rpc::client new_cli("localhost", 8080);
-    new_cli.call("test_sending_ingredient_vector_edition", ingr1);
-    new_cli.call("test_sending_fridge_vector_edition", fridge_test);
-
-
-    //test3: single-vector send-receiv:
-    vector<string> user_list = {"adam", "will", "bob", "rossie"};
+//    //test2: fridge sending/receiving:
+//    vector<string> ingr1 = {"name", "exp", "date", "cat1", "prior"};
+//    vector<vector<string>> fridge_test;
+//    fridge_test.push_back(ingr1);
+//    fridge_test.push_back(ingr1);
+//    //send through to server
+//    rpc::client new_cli("localhost", 8080);
+//    new_cli.call("test_sending_ingredient_vector_edition", ingr1);
+//    new_cli.call("test_sending_fridge_vector_edition", fridge_test);
 
 
+//    //test3: single-vector send-receiv:
+//    vector<string> user_list = {"adam", "will", "bob", "rossie"};
 
-    triple_vector new_tri_vec_tested(tri_vec_test);
 
-}
+
+//    triple_vector new_tri_vec_tested(tri_vec_test);
+
+//}
 
 //int val =test2();
