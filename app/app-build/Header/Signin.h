@@ -9,7 +9,7 @@ public:
     explicit Signin(QObject *parent = nullptr);
     Q_INVOKABLE bool signIn(const QString &username, const QString &password, const QString &passwordCheck, const QString &telegram);
 
-public slots:
+signals:
     void openNoUsernameError();
     void openPasswordError();
     void openUsernameError();

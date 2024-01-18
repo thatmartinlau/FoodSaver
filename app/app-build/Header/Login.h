@@ -10,10 +10,9 @@ class Login : public QObject {
 
 public:
     explicit Login(QObject *parent = nullptr);
-
     Q_INVOKABLE bool logIn(const QString &username, const QString &password);
 
-public slots:
+signals:
     void openNoUsernameError2();
     void openPasswordError2();
     void openUsernameError2();

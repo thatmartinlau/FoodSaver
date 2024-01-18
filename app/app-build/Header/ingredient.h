@@ -35,7 +35,7 @@ enum Priority{
 
 class Ingredient{
 public:
-    Ingredient();
+    Ingredient(){};
     Ingredient(std::string name, Date expiry_date, int quantity = 1,Food_class category = unspecified);
     ~Ingredient();
     std::string get_name() const;
