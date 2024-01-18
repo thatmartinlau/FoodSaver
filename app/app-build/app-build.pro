@@ -25,7 +25,6 @@ SOURCES += \
     $$CPP/link_pocco.cpp \
     $$CPP/offer.cpp \
     $$CPP/temp.front.cpp \
-    $$CPP/temp.json.cpp \
     $$CPP/user.cpp
 
 HEADERS += \

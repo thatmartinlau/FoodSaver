@@ -30,12 +30,13 @@ bool User::check_password(std::string input_username, std::string input_password
 
 // Returns true if username in user and false otherwise
 bool User::is_username(string username) {
-    vector<string> list_usernames = get_user_name_list();
-    for (int i = 0; i < len(list_usernames); i++) {
-        if (list_usernames[i] == username) {
-            return true;
-        }
-    }
+    return false;
+    //vector<string> list_usernames = get_user_name_list();
+    //for (int i = 0; i < len(list_usernames); i++) {
+      //  if (list_usernames[i] == username) {
+        //    return true;
+        //}/
+    //}
     return false;
 }
 
