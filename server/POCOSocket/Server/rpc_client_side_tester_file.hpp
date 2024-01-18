@@ -9,7 +9,8 @@
 #include "fridge.h"
 #include "offer.h"
 #include "user.h"
-
+string HOST_SERVER_NAME = "localhost"; //local connection first
+int HOST_SERVER_PORT = 8080;
 
 //ServerUser is a PARAMETER under the User class, from Sixtine's user.h
 
