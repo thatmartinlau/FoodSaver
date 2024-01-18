@@ -1,3 +1,4 @@
+/*
 #include "front.hpp"
 #include <iostream>
 #include <list>
@@ -56,8 +57,10 @@ std::list<int> findRecipes(const std::string& ingredient, const Fridge& fridge) 
     return recipe_nums;
 }
 
+
 //USER
 
 ////////////////////////////////////////////////////////////////////////////
 
 //OFFER
+*/

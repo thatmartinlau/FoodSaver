@@ -4,6 +4,8 @@ Recipe::Recipe(std::string title) {
     this->title = title;
 }
 
+Recipe::~Recipe() {}
+
 std::string Recipe::get_title() {
     return title;
 }

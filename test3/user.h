@@ -3,6 +3,7 @@
 
 #include "fridge.h"
 #include "offer.h"
+#include "recipe.h"
 
 //#include <iostream>
 #include <list>
@@ -11,7 +12,6 @@
 //#include "nlohmann/json.hpp"
 //using json = nlohmann::json;
 //using namespace std;
-//#include "recipe.h"
 
 //#include "client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
 //include "" esma's thing
@@ -62,7 +62,7 @@ private:
     int marketplace_notifications;
     Fridge user_fridge;
     std::vector<Offer> offer_list;
-    //std::vector<Recipe> liked_recipes;
+    std::vector<Recipe> liked_recipes;
 };
 
 std::vector<std::string> getUsers();

@@ -45,12 +45,13 @@ public:
     std::string get_food_class_name();
     void set_quantity(int quantity);
     int get_quantity();
-    void set_priority(Priority priority_level);
+    void set_priority();
     Priority get_priority();
     std::string get_priority_name();
     void saveToJsonFile(const std::string& fileIngredient);
     void set_expiry_date(Date expiry_date);
     Date get_expiry_date();
+    int countDays();
     //json toJson () const;
 
 private:

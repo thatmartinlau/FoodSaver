@@ -1,3 +1,4 @@
+/*
 #ifndef FRONT_HPP
 #define FRONT_HPP
 // Front end class definitions
@@ -56,3 +57,4 @@ private:
 std::list<int> findRecipes(const std::string& ingredient, const Fridge& fridge);
 
 #endif // FRONT_HPP
+*/

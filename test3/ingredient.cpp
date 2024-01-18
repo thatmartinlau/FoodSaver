@@ -53,8 +53,18 @@ int Ingredient::get_quantity(){
     return quantity;
 }
 
-void Ingredient::set_priority(Priority priority_level){
-    this->priority_level = priority_level;
+void Ingredient::set_priority(){
+    int days_left = countDays();
+    Priority priority;
+    if (days_left <= 7) {
+        priority = orange;
+        if (days_left <= 2) {
+            priority = red;
+        }
+        else {priority = green;}
+    }
+
+    this->priority_level = priority;
 }
 
 Priority Ingredient::get_priority(){
@@ -74,4 +84,8 @@ void Ingredient::set_expiry_date(Date expiry_date) {
 
 Date Ingredient::get_expiry_date() {
     return expiry_date;
+}
+
+int Ingredient::countDays() {
+    return expiry_date.countDays();
 }
