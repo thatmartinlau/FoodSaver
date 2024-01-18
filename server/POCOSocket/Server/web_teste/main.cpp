@@ -20,8 +20,7 @@ int test_send_fridge_as_vec_vec_string() {
     vector<vector<string>> fridge = {vec_for_testing_1, vec_for_testing_2};
     
     rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    vector<vector<string>> returned_vec;
-    returned_vec = new_client.call("test_sending_fridge_as_vec", fridge).as<vector<vector<string>>>();
+    vector<vector<string>> returned_vec = new_client.call("test_sending_fridge_as_vec", fridge).as<vector<vector<string>>>();
     cout << returned_vec[0][1] << " and second ingr: " << returned_vec[1][5] << endl;
     return 1;
 }
