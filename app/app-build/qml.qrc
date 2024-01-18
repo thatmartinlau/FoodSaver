@@ -11,5 +11,9 @@
         <file>QML/Selling.qml</file>
         <file>QML/AddToFridge.qml</file>
         <file>QML/Modify.qml</file>
+        <file>QML/AddRecipePopup.qml</file>
+        <file>QML/OpenRecipePopup.qml</file>
+        <file>QML/CookBook.qml</file>
+        <file>QML/PersonalCookBook.qml</file>
     </qresource>
 </RCC>
