@@ -43,4 +43,8 @@ private:
 vector<string> get_user_name_list();
 double check_user(); //for William, no functionassociated here. Just to let u guys know ts already named away. Not to copy, or use anywhere.
 
+std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>
+getOfferMapFromServer();
+
+
 #endif
