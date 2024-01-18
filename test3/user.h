@@ -47,6 +47,8 @@ public:
     void add_offer(Offer new_offer);
     Offer remove_offer(Offer *offer_to_delete);
     std::vector<Offer> get_my_offers();
+    void like_recipe(Recipe recipe);
+    void unlike_recipe(Recipe recipe);
 
 private:
     std::string username;

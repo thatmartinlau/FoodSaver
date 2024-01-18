@@ -8,7 +8,7 @@ class Recipe
 public:
     Recipe(std::string title);
     ~Recipe();
-    std::string get_title();
+    std::string get_title() const;
     void set_title(std::string title);
     std::vector<std::string> get_directions();
     void set_directions(std::vector<std::string> directions);
@@ -19,6 +19,7 @@ public:
     std::vector<std::string> get_tags();
     void set_tags(std::vector<std::string> tags);
     void add_tags(std::string tag);
+    bool operator==(const Recipe& other) const;
 
 private:
     std::string title;

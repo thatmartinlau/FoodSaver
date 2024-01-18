@@ -14,12 +14,15 @@
 //using namespace std;
 
 enum Food_class{
+    gluten,
     fruit,
     vegetable,
     drink,
-    dairy,
+    lactose,
     canned,
+    eggs,
     meat,
+    halal_meat,
     fish,
     sweet,
     nut,

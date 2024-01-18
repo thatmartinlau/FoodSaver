@@ -148,3 +148,16 @@ std::vector<std::string> get_all_clients() {
     return clients;
 }
 */
+void User::like_recipe(Recipe recipe) {
+    liked_recipes.push_back(recipe);
+}
+
+void User::unlike_recipe(Recipe recipe) {
+    for (auto it = liked_recipes.begin(); it != liked_recipes.end(); ++it) {
+        if (*it == recipe) {
+            liked_recipes.erase(it);
+        }
+    }
+
+    throw std::runtime_error("Ingredient not found in the fridge");
+}

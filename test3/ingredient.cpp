@@ -31,16 +31,16 @@ void Ingredient::set_FoodClass(Food_class category){
 
 Food_class Ingredient::get_food_class(){
     static const std::string foodClassNames[] = {
-        "fruit", "vegetable", "drink", "dairy", "canned",
-        "meat", "fish", "sweet", "nut", "unspecified", "other"
+        "gluten", "fruit", "vegetable", "drink", "lactose", "canned", "eggs",
+        "meat", "halal_meat", "fish", "sweet", "nut", "unspecified", "other"
     };
     return category;
 }
 
 std::string Ingredient::get_food_class_name() {
     static const std::string foodClassNames[] = {
-        "fruit", "vegetable", "drink", "dairy", "canned",
-        "meat", "fish", "sweet", "nut", "unspecified", "other"
+        "gluten", "fruit", "vegetable", "drink", "lactose", "canned", "eggs",
+        "meat", "halal_meat", "fish", "sweet", "nut", "unspecified", "other"
     };
     return foodClassNames[category];
 }
