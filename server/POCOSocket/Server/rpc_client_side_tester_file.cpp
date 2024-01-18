@@ -424,7 +424,7 @@ vector<vector<string>> deserialize_offer (vector<string> offer){
     vector_price.push_back(price);
     offer_deser.push_back(vector_price);
 
-    return offer_deser
+    return offer_deser;
 
 }
 
