@@ -5,6 +5,7 @@
 #include "Header/profilemanager.h"
 #include "Header/fridge.h"
 #include "Header/user.h"
+#include "Header/fridgemanager.h"
 #include "maincontroller.h"
 
 
@@ -22,8 +23,8 @@ int main(int argc, char *argv[]) {
     //User user;
     //engine.rootContext()->setContextProperty("user", &user);
 
-    //Fridge fridge;
-    //engine.rootContext()->setContextProperty("fridge", &fridge);
+    FridgeManager fridge;
+    engine.rootContext()->setContextProperty("fridgemanager", &fridge);
 
 
     MainController mainController;
