@@ -14,10 +14,6 @@ CPP = Source/
 HPP = Header/
 
 SOURCES += \
-
-    Source/fridgemanager.cpp \
-    Source/profilemanager.cpp \
-    Source/settingsmanager.cpp \
     Source/RecipeBook.cpp \
     Source/recipe.cpp \
     main.cpp \
@@ -43,7 +39,6 @@ HEADERS += \
     $$HPP/settingsmanager.h \
     Header/currentUser.h \
     Header/RecipeBook.h \
-    Header/fridgemanager.h \
     Header/recipe.h \
     maincontroller.h \
     $$HPP/date.h \

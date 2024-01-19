@@ -12,7 +12,6 @@
 
 #include "Header/settingsmanager.h"
 #include "Header/profilemanager.h"
-#include "Header/fridgemanager.h"
 
 #include "Header/Signin.h"
 #include "Header/Login.h"
@@ -35,8 +34,8 @@ int main(int argc, char *argv[]) {
     //User user;
     //engine.rootContext()->setContextProperty("user", &user);
 
-    FridgeManager fridge;
-    engine.rootContext()->setContextProperty("fridgemanager", &fridge);
+    //Fridge fridge;
+    //engine.rootContext()->setContextProperty("fridge", &fridge);
 
     Signin signin;
     engine.rootContext()->setContextProperty("signin", &signin);

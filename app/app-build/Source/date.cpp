@@ -1,8 +1,5 @@
 #include "../Header/date.h"
 
-#include <iostream>
-#include <sstream>
-
 //#include "front.hpp"
 //#include <iostream>
 //#include <list>
@@ -118,26 +115,4 @@ int Date::countDays() const {
     int today_month = now->tm_mon + 1;  // tm_mon is zero-based
     int today_year = now->tm_year + 1900;  // tm_year is years since 1900
     return daysFromEpoch(day, month, year) - daysFromEpoch(today_day, today_month, today_year);
-}
-
-Date parseDateString(const std::string& dateString) {
-    std::istringstream ss(dateString);
-    char delimiter;
-
-    int day, month, year;
-
-    // Read day, month, and year from the string
-    ss >> day >> delimiter >> month >> delimiter >> year;
-
-    // Check if the extraction was successful and the format is correct
-    if (ss.fail() || delimiter != '/' || ss.rdbuf()->in_avail() != 0) {
-        throw std::invalid_argument("Invalid date string format: " + dateString);
-    }
-
-    // Check if the components are within valid ranges (you can customize this part)
-    if (day < 1 || day > 31 || month < 1 || month > 12 || year < 0) {
-        throw std::out_of_range("Invalid date components in: " + dateString);
-    }
-
-    return Date(day, month, year);
 }

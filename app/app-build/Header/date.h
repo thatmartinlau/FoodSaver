@@ -43,8 +43,6 @@ public:
     bool operator==(const Date& other) const;
     bool operator!=(const Date& other) const;
 
-    Date parseDateString(const std::string& dateString);
-
     int is_exp_date();
     //bool isLeapYear(int y) const;
     int countDays() const;
