@@ -11,6 +11,10 @@
 #include <QJsonObject>
 #include <QJsonArray>
 //
+// modif Charlotte
+#include <sstream>
+#include <string>
+#include <fstream>
 
 /*#include "Source/temp.json.cpp"
 #include "Header/RecipeBook.h"
@@ -430,3 +434,80 @@ and be sorted even higher if the dietary restriction is the same.*/
     // Return the final result
     return result;
 }*/
+
+std::vector<std::string> splitpoint(const std::string& s, const char& delim){
+
+    std::vector<std::string> result;
+    std::string sentence;
+    std::stringstream ss(s);
+
+    while (getline(ss, sentence, delim))
+    {
+        if (sentence[0]==',' or sentence[0]==')' or sentence[0]==' '){
+            sentence.erase(0,1);
+        }
+        result.push_back(sentence);
+    }
+
+    return result;
+}
+
+std::vector<Recipe> originalsrecipe() {
+
+
+    //ifstream file;
+    //std::string array[MAX_LINE];
+
+    //file.open("jsonformatter.txt");
+
+    //// Open the text file
+    std::ifstream file("jsonformatter.txt");
+
+    if (file.fail()) {
+        std::cout << "Error opening the file." << std::endl;
+        std::vector<Recipe> empty;
+        return empty;
+    }else{
+        std::cout << "hi" <<std::endl;
+    }
+
+    std::string line;
+    std::vector<Recipe> book;
+
+
+    int lines_count(0);
+    while (std::getline(file, line)) {
+        std::stringstream ss(line);
+        std::string title, direction, extracomma, ingredients, source, tags, url;
+
+
+        std::getline(ss, title, '"'); // directions, ingredients, source, tags, url;
+        std::getline(ss, direction, '"');
+        std::getline(ss, extracomma, '"');
+        std::getline(ss, ingredients , '"');
+        std::getline(ss, source, '"');
+        std::getline(ss, tags, '"');
+        std::getline(ss, url);
+
+
+        title.pop_back(); // remove the ','
+        source.pop_back();
+        source.erase(0,1);
+        url.erase(0,1);
+
+        Recipe recipe(title);
+
+        recipe.set_directions(splitpoint(direction,'.'));
+        recipe.set_ingredients(splitpoint(ingredients, ','));
+        recipe.set_source(source);
+        recipe.set_tags(splitpoint(tags, ','));
+        //recipe.set_url(url);
+        recipe.set_time(00);
+
+        book.push_back(recipe);
+
+        lines_count ++;
+    }
+
+    return book;
+}
