@@ -30,6 +30,9 @@ public slots:
     void submitInstructions(const QString &instruction);
     QString get_ingr();
     QList<QString> titleOrDiet(const QList<QString> &titles, const int &need);
+    QString submitRating(const QString &user_rating);
+    void submitTitleForRating(const QString &title);
+    QString getRating(const QString &title);
     //modif eli: jai changé QList<QString> en QString
     //QString searchRecipes(const QString &entry, const QString &dietRestriction);
 };

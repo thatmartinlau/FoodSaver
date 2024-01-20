@@ -67,3 +67,16 @@ void Recipe::set_time(double time){
 void Recipe::add_ingredient(std::string ingredient_name){
     this->ingredients.push_back(ingredient_name);
 }
+
+void Recipe::add_rating(const double &user_rating){
+    double R = this->rating;
+    int n = this->times_rated;
+    this->rating = (1/(n+1))*(n*R+user_rating);
+    this->times_rated ++;
+}
+
+double Recipe::get_rating(){
+    return rating;
+}
+
+

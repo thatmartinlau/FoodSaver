@@ -369,7 +369,7 @@ Popup {
 
                     var no_Value = MainController.get_ingr()
 
-                    itemModel.append({"name": recipeName.text, "dietRestriction": diet.currentValue, "date": "Test1", "quantity": "Test1" });
+                    itemModel.append({"name": recipeName.text, "dietRestriction": diet.currentValue, "grade": "None" , "date": "Test1", "quantity": "Test1" });
 
                     recipeName.text = "";
                     ingredient1.text = "";

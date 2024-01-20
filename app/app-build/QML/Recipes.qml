@@ -409,23 +409,13 @@ Row {
                                                         radius:12.5
                                             }
                                             onClicked: {
+                                                MainController.submitTitleForRating(model.name)
                                                 myPopup.open()
                                             }
                                         }
+                                        //MainController.getRating(model.name)
 
-                                        Button {
-                                            text: "BLANK"
-                                            width: 100
-                                            palette.buttonText: "white"
-                                            //anchors.horizontalCenter: parent.horizontalCenter
-                                            background: Rectangle {
-                                                        color: "#1C6F30"
-                                                        radius:12.5
-                                            }
-                                            onClicked: {
-                                                //myPopup.open()
-                                            }
-                                        }
+                                        Text {text: model.grade ; color: "#28A745"; Layout.preferredWidth: 75}
 
 
                                     }
@@ -554,7 +544,7 @@ Row {
 
             TextField {
                 Layout.preferredWidth: 75
-                id: recipeName
+                id: user_rating
                 width: parent.width
                 validator: DoubleValidator {bottom: 0; top: 5.0}
                 placeholderText: "rating"
@@ -565,8 +555,29 @@ Row {
                     radius: 8
                 }
                 onEditingFinished: {
+                    var rating = MainController.submitRating(user_rating.text)
+                    var rating_str = MainController.getRating(user_rating.text)//
+
+
+
+                    for (var i = 0; i < itemModel.count; i++) {
+                        MainController.submit(itemModel.get(i).name)
+                    }
+                    //var counter = itemModel.count
+                    itemModel.clear()
+                    var len = MainController.getTotalLength()
+                    itemModel.append({"name": "Try" + len})
+                    itemModel.append({"name": MainController.gett(0)})
+                    for (var j = 0; j < len; j++) {
+                        itemModel.append({"name": MainController.gett(j),"dietRestriction": "Veggie", "grade": rating})
+                    }
+
+
+                    //itemModel.append({"name": MainController.gett(j),"dietRestriction": "Veggie", "grade": rating_str})
+                    scrollView.contentHeight = len*82.5;
+
                     myPopup.close()
-                    recipeName.text = ""
+                    user_rating.text = ""
                 }
             }
 
@@ -581,7 +592,7 @@ Row {
                 }
                 onClicked: {
                     myPopup.close()
-                    recipeName.text = ""
+                    user_rating.text = ""
                 }
             }
         }

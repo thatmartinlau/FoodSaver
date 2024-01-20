@@ -69,6 +69,42 @@ int MainController::submitInt(const int &time)
 std::vector<Recipe> allRecipes;
 std::vector<std::string> test;
 std::vector<std::string> allInstructions;
+QList<QString> rated_recipes;
+
+void MainController::submitTitleForRating(const QString &title){
+    rated_recipes.append(title);
+}
+
+double tester=1.64;
+
+QString MainController::submitRating(const QString &user_rating){
+    double usr_rating = user_rating.toDouble();
+    double res;
+    for(int i = 0; i<allRecipes.size();i++){
+        if(convertStdtoQ(allRecipes[i].get_title()).toLower() == rated_recipes[0].toLower()){
+            allRecipes[i].add_rating(usr_rating);
+            res = allRecipes[i].get_rating();
+        }
+    }
+    rated_recipes.clear();
+    tester = user_rating.toDouble();
+    return QString::number(res);
+}
+
+QString MainController::getRating(const QString &title){
+    //double res;
+
+    for(int i = 0; i<allRecipes.size();i++){
+        if(convertStdtoQ(allRecipes[i].get_title()).toLower() == title.toLower()){
+            //allRecipes[i].add_rating(usr_rating);
+            return QString::number(allRecipes[i].get_rating());
+        }
+    }
+    return "ERR";
+
+    //return res
+    //return QString::number(res);
+}
 
 void MainController::submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes)//, const QString &ingredient1, const QString &instruction1)
 {
@@ -290,6 +326,7 @@ QList<QString> MainController::titleOrDiet(const QList<QString> &titles,const in
     }
     return res;
 }
+
 
 
 QList<QString> MainController::sorter(const QMap<QString, int> &dict){
