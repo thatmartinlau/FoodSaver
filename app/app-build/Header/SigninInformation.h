@@ -11,13 +11,15 @@ public:
 
 public slots:
     void setUserInfo(const QString &displayName, const QString &gender, const QString &address,
-                      const QString &promotion, const QString &phone, bool vegetarian,
-                      bool vegan, bool glutenFree, bool lactoseIntolerant, bool pescatarian, bool halal);
+                      const QString &promotion, const QString &phone, const QString &telegram,
+                     bool gluten, bool lactose, bool meat, bool halal_meat, bool fish, bool nuts,
+                     bool eggs);
 
 
 signals:
 void openMarketPage();
 void openPreviousPage();
-
+void openNameAndTelegramError();
+void closeNameAndTelegramError();
 };
 #endif // SIGNININFORMATION_H

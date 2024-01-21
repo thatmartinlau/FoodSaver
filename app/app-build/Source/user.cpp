@@ -50,11 +50,6 @@ std::string User::get_phone_number() {
     return phone_number;
 }
 
-std::string User::get_diet() {
-    return diet;
-}
-
-
 bool User::is_username(std::string username) {
     //implement logic for checking if a username has already been used
     return false;
@@ -71,10 +66,6 @@ bool User::register_new_user() {
 
 void User::set_gender(std::string gender){
     this->gender=gender;
-}
-void User::set_diet(std::string diet){
-    this->diet=diet;
-
 }
 void User::set_phone_number(std::string phone_number){
    this->phone_number=phone_number;
@@ -94,4 +85,12 @@ void User::set_username(std::string username){
 
 void User::set_password(std::string password){
     this->password=password;
+}
+
+void User::set_food_and_dietary_restrictions(std::list<bool> r){
+    this->food_and_dietary_restrictions=r;
+}
+
+std::list<bool> User::get_food_and_dietary_restrictions(){
+    return food_and_dietary_restrictions;
 }

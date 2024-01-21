@@ -2,14 +2,22 @@
 #include "../Header/SigninInformation.h"
 #include "../Header/user.h"
 #include "../Header/currentUser.h"
+#include <iostream>
+#include <list>
 #include <QDebug>
 SigninInfo::SigninInfo(QObject *parent) : QObject(parent) {}
 
 void SigninInfo::setUserInfo(const QString &displayName, const QString &gender, const QString &address,
-                             const QString &promotion, const QString &phone, bool vegetarian,
-                             bool vegan, bool glutenFree, bool lactoseIntolerant, bool pescatarian, bool halal) {
+                             const QString &promotion, const QString &phone, const QString &telegram,
+                             bool gluten, bool lactose, bool meat, bool halal_meat, bool fish,
+                             bool nuts, bool eggs) {
 
-    if (CurrentUser::currentUser.User::get_username() != "") {
+    // The user neads to fill in at least a display name and a telegram username
+    if (displayName.toStdString()=="" || telegram.toStdString()==""){
+        emit openNameAndTelegramError();
+    }
+
+    else if (CurrentUser::currentUser.User::get_username() != "") {
         qDebug() << "Updating current user attributes:";
 
         // Update the attributes of the current user
@@ -29,31 +37,45 @@ void SigninInfo::setUserInfo(const QString &displayName, const QString &gender, 
         qDebug() << "Phone Number:" << QString::fromStdString(CurrentUser::currentUser.User::get_phone_number());
 
         // Handle dietary restrictions
-        std::string diet = "";
-        if (vegan) {
-            diet = "vegan";
-        } else if (glutenFree) {
-            diet = "glutenFree";
-        } else if (vegetarian) {
-            diet = "vegetarian";
-        } else if (pescatarian) {
-            diet = "pescatarian";
-        } else if (halal) {
-            diet = "halal";
+
+        // initialize to no dietary restrictions
+        std::list<bool> diet = {true, true, true, true, true, true, true, true, true, true, true, true, true, true};
+
+        // add more dietary restrictions
+        if (!gluten) {
+            auto gluten_i = diet.begin();; // gluten is at indice 1
+            *gluten_i = false;
+        } else if (!lactose) {
+            auto lactose_i = std::next(diet.begin(), 4); //lactose is at indice 5
+            *lactose_i = false;
+        } else if (!meat) {
+            auto meat_i = std::next(diet.begin(), 7); // meat is at indice 8
+            *meat_i = false;
+        } else if (!halal_meat) {
+            auto halal_meat_i = std::prev(diet.end(),6);; // halal is at indice 9
+            *halal_meat_i = false;
+        } else if (!fish) {
+            auto fish_i = std::prev(diet.end(),5); // fish is at indice 10
+            *fish_i = false;
         }
-        else if (lactoseIntolerant) {
-            diet = "lactoseIntolerant";
+        else if (!nuts) {
+            auto nuts_i = std::prev(diet.end(),3); // nuts are at indice 12
+            *nuts_i = false;
+        }
+        else if (!eggs) {
+            auto eggs_i = std::next(diet.begin(), 6); // eggs are at indice 7
+            *eggs_i = false;
         }
 
-        if (!diet.empty()) {
-            CurrentUser::currentUser.set_diet(diet);
-            qDebug() << "Diet:" << QString::fromStdString(CurrentUser::currentUser.User::get_diet());
-        }
+        CurrentUser::currentUser.set_food_and_dietary_restrictions(diet);
 
         qDebug() << "Update complete.";
         emit openMarketPage();
+        emit closeNameAndTelegramError();
     } else {
         qDebug() << "Error: Current user is null.";
         emit openPreviousPage();
+        emit closeNameAndTelegramError();
     }
 }
+
