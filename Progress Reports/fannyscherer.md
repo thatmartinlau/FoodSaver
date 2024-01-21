@@ -34,5 +34,6 @@ During the Thursday session, I started coding a new page, which opens right afte
 Week 7:
 
 During the Monday session, I spoke with Sixtine again to make sure all the function on the user.cpp file that I was using were ok. I then worked on figuring out a way to store a global variable "currentUser" accessible for all front end files to keep track of which user is currently using the website. This still need to be connected  to the server end but it compiles and runs!
+During the thursday session I worked on debugging my qml files, I successfully debugged Signin and Login but I am still getting some errors on SigninInfo. I also implemented the logic for initializing and updating dietary restrictions.
 
 
