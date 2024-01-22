@@ -50,4 +50,14 @@ Post-christmas, week 2:
 I am writing this now, having re-written my storyline for the past six weeks, hoping it's biblically accurate to the Github history of my branch, which is now server(adam) or (adam)server after 
 I discovered and initiated fellow team members into the cult of merge-branches with merge-commits. This way, we can all work on the same server-branch, by having different sub-branches with regulr 
 merges to server. So, we keep updated, in the loop, while working on our own personal branches too. No mess, cleaner code. Everyone is up to date now, moving into final stages of the project. Today,
-I've just finished work on my last read/write to csv functions, it all should be bug-less for now. This coming week is debug week. Make everything work, all together now. Bye for now! See you again, in six weeks!
+I've just finished work on my last read/write to csv functions, it all should be bug-less for now. This coming week is debug week. Make everything work, all together now. Bye for now! See you again, in six weeks:)
+
+Week 3 Post-Apocalypse:
+Fixed (I refactored) the server subproject, to include all necessary connections to test3's branch and folders. Fixed that up, then went to finish my read/write functions for database files. Decided to separate into 4 files,
+rewrote the entire reading/writing to fit with this. (or rather, finished rewriting, had started Week 1 post-christmas.
+Now, all that's left is to clean up some minor details in my work, rewrite some cmake files.
+Later in the week: Now Monday, still counting it as last week's work. Either way,
+had to re-convert Sixtine''s test3 folder into CMake from qMake, debugged that, got it sorted well. Now, our connections are cleaned up nicely. We can work on combining with app-side for final project build.
+This week is the last!
+
+Week 4: Final week!
