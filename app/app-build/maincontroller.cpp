@@ -81,6 +81,84 @@ void temp_allRecipes_extension(std::vector<Recipe> book){
     }
 }
 
+QList< QList<QString> > vis_titles;
+
+QList<QString> MainController::sendTitleForVis(const QString &title){
+    std::cout << "MAN why" << std::endl;
+    QList<QString> res;
+    for(int i = 0; i<allRecipes.size();i++){
+        if(title == convertStdtoQ(allRecipes[i].get_title())){
+            res.append(title);
+            res.append(convertStdtoQ(allRecipes[i].get_diet()));
+
+            res.append(QString::number(allRecipes[i].get_time()));
+        }
+    }
+    //res.append("lol");
+    vis_titles.append(res);
+    std::cout << vis_titles.isEmpty() << std::endl;
+    std::cout << convertQtoStd(vis_titles[0][0]) << std::endl;
+
+    return res;
+}
+
+QList<QString> MainController::sendIngredientsForVis(const QString &title){
+    QList<QString> res;
+    for(int i = 0; i<allRecipes.size();i++){
+        if(title == convertStdtoQ(allRecipes[i].get_title())){
+            std::vector<std::string> ingrs = allRecipes[i].get_ingredients();
+            for(int j = 0; j<ingrs.size();j++){
+                res.append(convertStdtoQ(ingrs[j]));
+            }
+        }
+    }
+    vis_titles.append(res);
+    std::cout << "just checking" << std::endl;
+    std::cout << convertQtoStd( res[0]) << std::endl;
+    return res;
+}
+
+QList<QString> MainController::sendInstructionsForVis(const QString &title){
+    QList<QString> res;
+    for(int i = 0; i<allRecipes.size();i++){
+        if(title == convertStdtoQ(allRecipes[i].get_title())){
+            std::vector<std::string> instr = allRecipes[i].get_directions();
+            for(int j = 0; j<instr.size();j++){
+                res.append(convertStdtoQ(instr[j]));
+            }
+        }
+    }
+    vis_titles.append(res);
+    std::cout << "just checking" << std::endl;
+    std::cout << convertQtoStd( res[0]) << std::endl;
+    return res;
+}
+
+QList<QString> MainController::getTitleForVis(){
+    QList<QString> test;
+    test.append("one");
+    test.append("two");
+    std::cout << "vis_titles.isEmpty()" << std::endl;
+    std::cout << vis_titles.isEmpty() << std::endl;
+    if(vis_titles.isEmpty() == true){
+        QList<QString> lol;
+        lol.append("bob");
+        return lol;
+    }else{
+        return vis_titles[0];
+    }
+}
+
+
+QList<QString> MainController::getIngredientsForVis(){
+    return vis_titles[1];
+}
+
+QList<QString> MainController::getInstructionsForVis(){
+    QList<QString> temp;
+    return temp;
+}
+
 void MainController::submitTitleForRating(const QString &title){
     rated_recipes.append(title);
 }
