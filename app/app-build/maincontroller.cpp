@@ -75,6 +75,12 @@ std::vector<std::string> test;
 std::vector<std::string> allInstructions;
 QList<QString> rated_recipes;
 
+void temp_allRecipes_extension(std::vector<Recipe> book){
+    for(int i = 0; i<book.size(); i++){
+        allRecipes.push_back(book[i]);
+    }
+}
+
 void MainController::submitTitleForRating(const QString &title){
     rated_recipes.append(title);
 }
@@ -510,4 +516,9 @@ std::vector<Recipe> originalsrecipe() {
     }
 
     return book;
+}
+
+
+void MainController::initial(){
+    temp_allRecipes_extension(originalsrecipe());
 }

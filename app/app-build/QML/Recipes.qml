@@ -454,12 +454,13 @@ Row {
                 //for(var i = 0; i<10;i++){
                 //    itemModel.append(MainController.getJsonRTitle(i))
                 //}
-                var temp_title = MainController.getJsonRTitle(0)
-                itemModel.append({"name" : "Vegetarian Lasagna"})
-                itemModel.append({"name" : "Eggs Benedict"})
-                itemModel.append({"name" : "Noodle Soup"})
-                itemModel.append({"name" : temp_title})
-                scrollView.contentHeight = scrollView.contentHeight + 3*82.5;
+                //var temp_title = MainController.getJsonRTitle(0)
+                //itemModel.append({"name" : "Vegetarian Lasagna"})
+                //itemModel.append({"name" : "Eggs Benedict"})
+                //itemModel.append({"name" : "Noodle Soup"})
+                //itemModel.append({"name" : temp_title})
+                //scrollView.contentHeight = scrollView.contentHeight + 3*82.5;
+                MainController.initial()
             }
         }
         Button {

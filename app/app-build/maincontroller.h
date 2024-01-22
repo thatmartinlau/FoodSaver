@@ -33,6 +33,7 @@ public slots:
     QString submitRating(const QString &user_rating);
     void submitTitleForRating(const QString &title);
     QString getRating(const QString &title);
+    void initial();
     //modif eli: jai changé QList<QString> en QString
     //QString searchRecipes(const QString &entry, const QString &dietRestriction);
 };
