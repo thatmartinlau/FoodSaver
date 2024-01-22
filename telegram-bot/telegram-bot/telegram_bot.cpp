@@ -1,5 +1,5 @@
-#include <tgbot/tgbot>
-#include "rpc.client.h"
+#include "tgbot/tgbot.h"
+#include "rpc/client.h"
 #include <iostream>
 #include <string>
 #include <ctime>
