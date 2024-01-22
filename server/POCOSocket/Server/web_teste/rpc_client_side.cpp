@@ -219,11 +219,24 @@ get_all_clients_with_offers() {
     
     // Perform an RPC call to the server to retrieve all clients with their offers
     auto clientsWithOffers = cl.call("getMapOfOffers").as<
-        std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>
+                             std::vector<std::string>
         >();
     
     
-    return clientsWithOffers;
+    unordered_map<string, vector<vector<vector<string>>>> deserialized = deserialize_map(clientsWithOffers);
+    return deserialized;
+}
+
+std::vector<std::string>
+get_all_recipes() {
+    rpc::client cl(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    // Perform an RPC call to the server to retrieve all clients with their offers
+    auto allrec = cl.call("getAllRecipes").as<
+        std::vector<std::string>
+        >();
+
+
+    return allrec;
 }
 
 

@@ -431,7 +431,7 @@ else {
     
 }
 
-void update_fridge(std::string username, string password, vector<vector<string>> &new_fridge) {
+void update_fridge(string username, string password, vector<vector<string>> &new_fridge) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
@@ -484,6 +484,12 @@ void update_offer(std::string username, string password, vector<vector<vector<st
             }
         }
 } //updates a user offer list
+
+void addRecipes(const vector<string>& new_recipes) {
+        for (const string& recipe : new_recipes) {
+            recipes_list->push_back(recipe);
+        }
+}//adds recipes
 
 //DB Sending Functions:
 vector<string> get_offer_list(string username, string password) {
@@ -543,6 +549,19 @@ vector<string> get_user_name_vectors() {
         return user_list;
 }
 
+vector<string> getAllRecipes() {
+        vector<string> all_recipes;
+        if (recipes_list != nullptr) {
+            for (const string& recipe : *recipes_list) {
+            all_recipes.push_back(recipe);
+            }
+        }
+        return all_recipes;
+}
+
+
+
+
 //check functions:
 double check_user(string username, string password) {
         if (database->find(username) != database->end()) {
@@ -585,6 +604,7 @@ int main() {
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
+
 //    srv.bind("update_user_characteristics", &update_user_characteristics);
     
     srv.bind("update_fridge", &update_fridge);
@@ -597,7 +617,8 @@ int main() {
     //General Functions
     srv.bind("getMapOfOffers", &getMapOfOffers);
     srv.bind("get_user_name_vectors", &get_user_name_vectors);
-
+    srv.bind("addRecipes", &addRecipes);
+    srv.bind("getAllRecipes", &getAllRecipes);
     
     //Check functions:
     srv.bind("check_user", &check_user);
