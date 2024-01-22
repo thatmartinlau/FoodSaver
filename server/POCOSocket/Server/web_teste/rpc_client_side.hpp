@@ -40,11 +40,11 @@ private:
     std::string password;
 };
 
-
+vector<string> getOfferMapFromServer();
 vector<string> get_user_name_list();
 double check_user(); //for William, no functionassociated here. Just tolett you know this name is already taken.
-vector<string> get_recipe_list();
-void update_recipe(string recipe);
 
+vector<string> getAllRecipes();
+void addRecipes(vector<string> recipes);
 
 #endif
