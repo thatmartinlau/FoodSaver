@@ -179,3 +179,4 @@ Row {
         id: selling
     }
 }
+

@@ -13,7 +13,10 @@ Item {
         Label {
             horizontalAlignment: Text.AlignHCenter // Center the text within the Label
             anchors.horizontalCenter: parent.horizontalCenter // Center the Label within the Rectangle
-            text: "Welcome to FoodSaver!"
+            text: "Welcome back to FoodSaver!"
+            color: "#1C6F30"
+            font.pixelSize: 32
+
         }
     }
 
@@ -26,28 +29,132 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
 
-        TextField {
-            width: parent.width
-            id: input_username
-            placeholderText: "Username"
+        // Error messages (originally hidden)
+
+        Text {
+            id: noUsernameError2
+            visible: false // Initially hidden
+            text: "No username given"
+            color: "red"
         }
-        TextField {
-            width: parent.width
-            id: input_password
-            placeholderText: "Password"
-            echoMode: TextField.Password
+        Text {
+            id: noPasswordError2
+            visible: false // Initially hidden
+            text: "No password given"
+            color: "red"
+        }
+        Text {
+            id: usernameError2
+            visible: false // Initially hidden
+            text: "This username is not registered"
+            color: "red"
+        }
+        Text {
+            id: passwordError2
+            visible: false // Initially hidden
+            text: "The password is incorrect"
+            color: "red"
         }
 
-        Button {
+        // Regular page components
+        TextField {
+            width: parent.width
+            id: input_username2
+            placeholderTextColor: "#A0A0A0"
+            color: "#544E3D"
+            placeholderText: "username"
+        }
+
+        TextField {
+            width: parent.width
+            id: input_password2
+            placeholderText: "password"
+            placeholderTextColor: "#A0A0A0"
+            color: "#544E3D"
+            echoMode: TextInput.Password //hide the text
+        }
+
+        Text {
             anchors.left: parent.left
-            text: "Login"
-            onClicked: {
-                stackView.push(Qt.resolvedUrl("Fridge.qml")) //replace this soon with the login function, to be implemented
-                input_username.text = ""
-                input_password.text = ""
+            text: "New here?"
+            color: "#1C6F30"
+            font.bold: true
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    stackView.push(Qt.resolvedUrl("SigninPage.qml"))
+                }
             }
         }
 
+        Rectangle {
+            id: customButton
+            width: 60
+            height: 20
+            color: "#1C6F30"
+            radius: 4
+
+            Text {
+                anchors.centerIn: parent
+                text: "Log in"
+                color: "white"
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log("Button clicked!");
+                    if (login.logIn(input_username2.text, input_password2.text)) {
+                        passwordError.visible = false;
+                        usernameError.visible = false;
+                        noUsernameError.visible = false;
+                        noPasswordError.visible = false;
+                    }
+                    input_username2.text = "";
+                    input_password2.text = "";
+                }
+            }
+        }
+
+
+        // Implementing connections to C++ code
+        Connections {
+            target: login
+
+            // Errors upon login
+            function onOpenNoUsernameError2() {
+                noUsernameError2.visible = true;
+                usernameError2.visible = false;
+                passwordError2.visible = false;
+                noPasswordError2.visible = false;
+            }
+            function onOpenPasswordError2() {
+                noUsernameError2.visible = false;
+                usernameError2.visible = false;
+                passwordError2.visible = true;
+                noPasswordError2.visible = false;
+            }
+            function onOpenUsernameError2() {
+                noUsernameError2.visible = false;
+                passwordError2.visible = false;
+                usernameError2.visible = true;
+                noPasswordError2.visible = false;
+            }
+            function onOpenNoPasswordError2() {
+                noUsernameError2.visible = false;
+                noPasswordError2.visible = true;
+                passwordError2.visible = false;
+                usernameError2.visible = false;
+            }
+
+            // Successful login
+            function onOpenMarketPage2() {
+                stackView.push(Qt.resolvedUrl("Market.qml"))
+                var currentUsername = CurrentUser.username;
+                var currentPassword = CurrentUser.password;
+            }
+        }
     }
 
     // SIDE + EXTRA BUTTONS
@@ -75,5 +182,4 @@ Item {
             onClicked: Qt.quit()
         }
     }
-
 }

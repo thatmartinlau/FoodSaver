@@ -13,6 +13,7 @@ DISTFILES += \
     Menu1.qml \
     Menu2.qml \
     Menu3.qml \
+    SigninPage.qml \
     main.qml
 
 HEADERS += \

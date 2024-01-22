@@ -6,4 +6,9 @@ Item {
         text: "Login"
         onClicked: stackView.push("HomePage.qml")
     }
+    Button {
+        text: "New here?"
+        y: 50
+        onClicked: stackView.push("Menu2.qml")
+    }
 }

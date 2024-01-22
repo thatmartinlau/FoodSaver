@@ -28,7 +28,7 @@ std::vector<Ingredient> Fridge::get_list(){
 }
 
 void Fridge::add_elt(Ingredient elt){
-    this->get_list().push_back(elt);
+    ingredient_list.push_back(elt);
 }
 
 // Function to remove an ingredient from the vector
@@ -47,4 +47,30 @@ Ingredient Fridge::pop_elt(Ingredient *getit) {
     }
 
     throw std::runtime_error("Ingredient not found in the fridge");
+}
+
+#include <algorithm> // for std::sort
+
+// ... [existing implementations]
+
+// Function to sort ingredients by category
+std::vector<Ingredient> Fridge::sort_ingredients_by_category() {
+    std::vector<Ingredient> sorted_list = ingredient_list;
+    std::sort(sorted_list.begin(), sorted_list.end(),
+              [](Ingredient& a, Ingredient& b) {
+                  return a.get_food_class_name() < b.get_food_class_name();
+              }
+              );
+    return sorted_list;
+}
+
+// Function to sort ingredients by expiration date
+std::vector<Ingredient> Fridge::sort_ingredients_by_expiration_date() {
+    std::vector<Ingredient> sorted_list = ingredient_list;
+    std::sort(sorted_list.begin(), sorted_list.end(),
+              [](Ingredient& a, Ingredient& b) {
+                  return a.get_expiry_date() < b.get_expiry_date();
+              }
+              );
+    return sorted_list;
 }

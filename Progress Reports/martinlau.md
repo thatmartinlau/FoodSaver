@@ -51,8 +51,24 @@ HOLIDAY WEEK 2: 01/01/24 - 07/01/24
 Monday (Happy new year!)
 Edits made on branch 'martin-settings-profile' 
 Editing QML style
+
 Added 'profile' page to differentiate from settings (also because I couldn't figure out how to make separate sub menus in one popup lmao)
 Merging CPP files from branch 'front' to the project - reconfiguring the project to accomodate these edits
+
+Coordinating with the team how to reorganize the workload - getting everyone to do cpp coding and have the project be completed more efficiently
+File reorganization on the github repo
 Going to implement C++ functions to update user settings and profile options.
 
 Checking with team on updates - everyone is on holiday, understandably.
+
+WEEK 13:  08/01/24 - 14/01/24
+Monday team meeting: coming together, formulating new plan to finish and link the project progress together.
+Starting work on the telegram bot: obtaining API, starting out the Telegram bot development branch.
+
+Implementing the given functions from Sixtine to link QML and CPP logic together.
+The code is currently very buggy and cannot compile due to an unforseen bug done by a careless ~~whisper~~ commit.
+
+
+WEEK 14: 15/01/24 - 21/01/24
+Working on merging 3-4 different branches together, and resolving conflicts
+Implementing logic properly into QML buttons.

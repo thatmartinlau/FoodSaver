@@ -38,17 +38,16 @@ Popup {
                     }
                 placeholderText: "Item"
             }
-            TextField {
-                id: categorieinput
-                width: 190
-                height: 25
-                anchors.horizontalCenter: parent.horizontalCenter
-                background: Rectangle {
-                        color: "#5E9F7C"
-                        radius: 12.5
+            ComboBox {
+                    id: categorieMenu
+                    width: 200
+                    model: ["unspecified", "fruit", "vegetable", "drink", "dairy", "canned",
+                        "meat", "fish", "sweet", "nut", "other"]
+
+                    onCurrentIndexChanged: {
+                        console.log("Selected option:", categorieMenu.currentText);
                     }
-                placeholderText: "Categorie"
-            }
+                }
             TextField {
                 padding: 5
                 id: dateinput
@@ -83,11 +82,50 @@ Popup {
                                 color: "#5E9F7C"
                                 radius:12.5
                     }
-                    onClicked: {
+                    onClicked: if (iteminput.text.trim() !== "" && quantityinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
+                                   // Create a new Ingredient object
+                                   var newIngredient = {
+                                       "index": currentIndex,
+                                       "item": iteminput.text,
+                                       "categorie": categorieMenu.currentText,
+                                       "date": dateinput.text,
+                                       "quantity": quantityinput.text,
+                                       "status": 0,
+                                       "price" : 0,
+                                       "quantity2sell": 0,
+                                       "pricestatus": -1
+                                   };
+
+                                   itemModel.append(newIngredient);
+                                   // Append the new Ingredient object to the fridge
+                                   fridgemanager.add_elt(iteminput.text, dateinput.text, quantityinput.text, categorieMenu.currentText);
+
+                                   // Increment the index for the next item
+                                   currentIndex++;
+
+                                   // Clear input fields
+                                   iteminput.text = "";
+                                   //categorieinput.text = "";
+                                   dateinput.text = "";
+                                   quantityinput.text = "";
+                                   scrollViewFridge.contentHeight = scrollViewFridge.contentHeight + 202.5;
+
+                                   addtofridge.close();
+                               }
+
+                    /*{
                         if (iteminput.text.trim() !== "" &categorieinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
                             //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text});
                             //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text });
-                            itemModel.append({ "index": currentIndex, "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text, "status": 0, "price": 0 });
+                            itemModel.append({ "index": currentIndex,
+                                                 "item": iteminput.text,
+                                                 "categorie": categorieinput.text,
+                                                 "date": dateinput.text,
+                                                 "quantity": quantityinput.text,
+                                                 "status": 0,
+                                                 "price" : 0,
+                                                 "quantity2sell": 0,
+                                                 "pricestatus": -1 });
 
                             // Increment the index for the next item
                             currentIndex++;
@@ -96,11 +134,15 @@ Popup {
                             categorieinput.text = "";
                             dateinput.text = "";
                             quantityinput.text = "";
-                            scrollView.contentHeight = scrollView.contentHeight + 202.5;
+                            scrollViewFridge.contentHeight = scrollViewFridge.contentHeight + 202.5;
+
+                            //Ingredient elem(itemimput.text, dateinput.text, quantityinput.text, categorieinput.text)
+                            fridge.add_elt(elem)
+
                             addtofridge.close()
-                        }
+                        }*/
                     }
                 }
             }
         }
-    }
+

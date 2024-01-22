@@ -5,7 +5,7 @@ ApplicationWindow {
     visible: true
     width: Screen.width
     height: Screen.width
-    title: "Main Window"
+    title: "What if?"
 
     StackView {
         id: stackView
