@@ -46,7 +46,9 @@ I made all necessary modifications to the User class to align my definition with
 I corrected the Offer class which was badly implemented and discussed what was expected of me with Antoine.
 
 07/01/2024
-I changed the Offer and User classes. I also got rid of the quantity variable in Offer. I also changed to hierarchy of the classes accordingly.
+I changed the Offer and User classes.
+I also got rid of the quantity variable in Offer.
+I also changed to hierarchy of the classes accordingly.
 
 08/01/2024
 I discussed with each member of the app to better adapt my back-end code to their needs.
