@@ -60,6 +60,8 @@ vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
     }
     return just_vector;
 
+}
+
 
 
 vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> maps){
@@ -142,7 +144,7 @@ vector<vector<string>> deserialize_fridge(vector<string> fridge){
 
 }
 
-vector<vector<vector<string>>> deserialize_offer_list (vector<string> offer_list){
+vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> offer_list){
     vector<vector<vector<string>>> offer_deser;
     for(int i = 0 ; i<offer_list.size();i++){
         vector<string> inter_vector;

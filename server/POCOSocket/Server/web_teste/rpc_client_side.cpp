@@ -332,7 +332,7 @@ vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]
 }
 
 
-void ServerUser::x(vector<Offer> &offer_list) {
+void ServerUser:: update_offer_list(vector<Offer> &offer_list) {
     //Oscar work yo magiiiic: same format as get_offer_list for the data we want to give to the server.
     // vector<Offer> --> [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
     
