@@ -1,9 +1,11 @@
+#pragma once
 #ifndef USER_H
 #define USER_H
 
 #include "fridge.h"
 #include "offer.h"
 #include "recipe.h"
+#include "backupserver.h"
 
 //#include <iostream>
 #include <list>

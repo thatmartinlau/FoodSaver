@@ -1,7 +1,9 @@
+#pragma once
 #ifndef BACKUPSERVER_H
 #define BACKUPSERVER_H
 
 #include "user.h"
+class User;
 
 class BackupServer
 {
