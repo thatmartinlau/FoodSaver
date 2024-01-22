@@ -6,62 +6,40 @@
 #include <sstream>
 #include "rpc/server.h"
 #include "rpc/client.h"
-#include "rpc_client_side_tester_file.hpp"
-#include "rpc/this_handler.h"
 #include "rpc/this_session.h"
+#include "rpc/this_handler.h"
 
 using namespace std;
-const string Database_simple_data = "databases/database_simple_data.csv";
-const string Database_offer_list_data = "databases/database_offer_list_data.csv";
-const string Database_fridge_data = "databases/database_fridge_data.csv";
-
+const string DATABASE_CSV_FILE = "../Server/database.csv";
 //FILE FORMATS:
 
 //Ingredients: vector<string>>
 //Fridge: vector<vector<string>>
-//Offer: vector<vector<vector<string>>>: with vectors represented as {}, an offer looks like: { {Ingredient1, Ingredient2, etc}, {{price}} } where all elements are strings.
-//Offer List: vector<vector<vector<vector<string>>>>, looking like {Offer1, Offer2, etc}.
+//Offer: vector<vector<string>>: with vectors represented as {}, an offer looks like: { {Ingredient1, Ingredient2, etc}, {{price}} } where all elements are strings.
+//Offer List: <vector<vector<vector<string>>>, looking like {Offer1, Offer2, etc}.
 //Database: unordered_map<string, UserData>, dicts as [], looking like  [username1: UserData, username2: UserData], with UserData having:
 
 class UserData {
 public:
-    UserData(string password, basic_user_data basic_u_data) {
-        display_name = basic_u_data.display_name;
-        telegram_username = basic_u_data.telegram_username;
-        gender = basic_u_data.gender;
-        promotion = basic_u_data.promotion;
-        building_address = basic_u_data.building_address;
-        phone_number = basic_u_data.phone_number;
-        food_and_dietary_restrictions = basic_u_data.food_and_dietary_restrictions;
-        telegram_notifications = basic_u_data.telegram_notifications;
-        marketplace_notifications = basic_u_data.marketplace_notifications;
-    };
+    UserData() {};
     UserData(string password){
         this->password = password;
     };
-    ~UserData() {}
     string password;
-    string display_name;
-    string telegram_username;
-    int gender;
-    int promotion;
-    string building_address;
-    int phone_number;
-    vector<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
-    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!    
-    vector<vector<vector<string>>> offer_list; //Implied: offer is [Ingredient, [price]]. Offer list is vector of this offer type.
+    string telegram_username; //NEW ADDITION!!!
+    vector<vector<string>> fridge;
+    vector<vector<vector<string>>>offer_list;
 };
 
 
 
-//        Down below, new types for Oscar to fix around and make bug fixes to. Pls and thank you :)
+//ESMA LOOK HERE: Up above, I added the telegram_username in case it's implemented.
+//        Down below, I've added the types from rpclib.com, check out my comment on client_side.cpp about them.
 
 
 //.//////New Types for data transfer: Work these around to mkae them work well pls
 struct offer_list_vector {
-    vector<vector<vector<vector<string>>>> offer_list;
+    vector<vector<vector<string>>> offer_list;
     MSGPACK_DEFINE_ARRAY(offer_list)
 };
 
@@ -70,22 +48,7 @@ struct fridge_vector {
     MSGPACK_DEFINE_ARRAY(fridge_vector)
 };
 
-struct vector_list{
-    vector<string> vec;
-    MSGPACK_DEFINE_ARRAY(vec)   //to use in function get_user_list;
-};
 
-struct basic_user_data {
-    string display_name;
-    string telegram_username;
-    int gender;
-    int promotion;
-    string building_address;
-    int phone_number;
-    vector<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
-};
 
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
 
@@ -106,56 +69,7 @@ string absolute_signs_sep = "||";
 
 
 //Storage format: username, password, fridge, offer;
-//Inspired from iq.opengenus.org/read-and-write-in-csv-cpp/. I adapted the main idea from them. #Adam
-
-void read_simple_types_from_csv() {
-    ifstream file;
-    file.open(Database_simple_data);
-    vector<string> lines;
-    for (string line_it; getline(file, line_it);) {
-        lines.push_back(line_it);
-    }
-    
-    for (auto line_it: lines) { //iterate through each user, add up all the factors into UserData , into database.
-        vector<string> user_data;
-        for (string line_it_element; getline(line_it, line_it_element, basic_csv_separator);) {
-            user_data.push_back(line_it_element);
-        }
-        //fill basic user data, with all types
-        basic_user_data basic_u_data;
-        basic_u_data.display_name = user_data[2];
-        basic_u_data.telegram_username = user_data[3];
-        basic_u_data.gender = user_data[4];
-        basic_u_data.promotion = user_data[5];
-        basic_u_data.building_address = user_data[6];
-        basic_u_data.phone_number = user_data[7];
-        basic_u_data.food_and_dietary_restrictions = user_data[7]; //
-        basic_u_data.telegram_notifications = user_data[8];
-        basic_u_data.marketplace_notifications = user_data[9];
-        
-        *database[user_data[0]] = UserData(user_data[1], basic_u_data) //0 is username, 1 is password, rest is U-data.
-        
-        
-    }
-}
-
-void read_fridge_from_csv() { //call AFTER simple_types, before offer_list_from_csv.
-    
-}
-void read_offer_list_from_csv() {
-    
-}
-
-void read_from_csv() {
-    //first, read simple types for username / password. And this allows us to create UserData.
-    read_simple_types_from_csv();//so we initialise here the database list. WIth basic types only.
-    read_fridge_from_csv(); //use already initialized database.
-    read_offer_list_from_csv();
-}
-
-
-
-
+//Inspired from iq.opengenus.org/read-and-write-in-csv-cpp/. Check it out, I only adapted some basic ideas from them. 
 void read_from_csv() { //everytime open the server, read csv to get data from previous session
     ifstream file;
     file.open(DATABASE_CSV_FILE);
@@ -235,7 +149,8 @@ void save_to_csv() { //save data of the map in a csv
 
     //generate a vector of the lines to write. Then, write the lines, using: file << string << endl;
     vector<string> lines;
-    for (auto& [u_name, u_data]: *(database)) {        
+    for (auto& [u_name, u_data]: *(database)) {
+        //first, unpack username and password.
         string line = u_name + basic_csv_separator + u_data.telegram_username + basic_csv_separator + u_data.password + basic_csv_separator;
 
         //then, unpack a fridge into the format: "{[name: category: quantity: expiry_date: priority_level]; [...]; ...}" exactly, modulo any spacebars.
@@ -333,6 +248,7 @@ void init_data_test() { //debug function. Tests database read/write all together
     apple.push_back(name); apple.push_back(category); apple.push_back(qty); apple.push_back(exp_date); apple.push_back(priority_level);
     fridge_darton.push_back(apple); fridge_darton.push_back(apple);
     data.fridge = fridge_darton;
+    data.telegram_username = "USERWOOOOO";
     string m = "Molly";
     (*database)[m] = data;
     string k = "Johnny";
@@ -360,7 +276,7 @@ int test_read_write_csv() {
 
 
 
-//.////Back to actual Database Stuff:
+//////Back to actual Database Stuff:
 
 //DB Manipulation functions:
 void add_user(string username, string password){
@@ -388,7 +304,9 @@ void remove_user(string username, string password){
         auto err_obj = std::make_tuple(123, "Username not found");
         rpc::this_handler().respond_error(err_obj);
     }
+
 }
+
 
 void update_user(string old_username, string old_password, string new_username, string new_password) {
     auto el = database->find(old_username); // Find the old username in the database
@@ -413,34 +331,7 @@ void update_user(string old_username, string old_password, string new_username, 
     auto err_obj = std::make_tuple(123, "Username not found");
     rpc::this_handler().respond_error(err_obj);
 }
-    
-}
-    
-void update_user_characs(string username, string password, basic_user_data new_characs) {
-    auto el = database->find(username);
-    
-    if (el != database->end() && password==el->second.password) {
-            second.display_name = new_characs.display_name;
-            second.telegram_username = new_characs.telegram_username;
-            second.gender = new_characs.gender;
-            second.promotion = new_characs.promotion;
-            second.building_address = new_characs.building_address;
-            second.phone_number = new_characs.phone_number;
-            second.food_and_dietary_restrictions = new_characs.food_and_dietary_restrictions;
-            second.telegram_notifications = new_characs.telegram_notifications;
-            second.marketplace_notifications = new_characs.marketplace_notifications;
-    }
-    else if(old_password != el->second.password){
-            // Password does not match
-            auto err_obj = std::make_tuple(507, "Incorrect Password");
-            rpc::this_handler().respond_error(err_obj);
-    }
-else {
-        // Username not found
-        auto err_obj = std::make_tuple(123, "Username not found");
-        rpc::this_handler().respond_error(err_obj);
-    }
-    
+
 }
 
 void update_fridge(std::string username, string password, vector<vector<string>> &new_fridge) {
@@ -470,18 +361,18 @@ void update_fridge(std::string username, string password, vector<vector<string>>
         }
 } //updates a user fridge
 
-void update_offer(std::string username, string password, vector<vector<vector<vector<string>>>> &new_offer) {
+void update_offer(std::string username, string password, vector<vector<vector<string>>> &new_offer) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
             if (password == el->second.password) {
             // Password matches
-            vector<vector<vector<vector<string>>>> old_data = el->second.offer_list; //used so we can later delete the old data
+            vector<vector<vector<string>>> old_data = el->second.offer_list; //used so we can later delete the old data
             el->second.offer_list = std::move(new_offer);
 
             old_data.clear();
 
-            std::vector<std::vector<std::vector<std::vector<std::string>>>>().swap(old_data);//releases the memory used by old_data
+            std::vector<std::vector<std::vector<std::string>>>().swap(old_data);//releases the memory used by old_data
 
             }
             else if(password != el->second.password){
@@ -498,7 +389,7 @@ void update_offer(std::string username, string password, vector<vector<vector<ve
 } //updates a user offer list
 
 //DB Sending Functions:
-vector<vector<vector<vector<string>>>> get_offer_list(string username, string password) {
+vector<vector<vector<string>>> get_offer_list(string username, string password) {
         auto el = database->find(username); // Find the username in the database
 
         if (el != database->end() && password == el->second.password) {
@@ -526,14 +417,37 @@ vector<vector<string>> get_fridge(string username, string password) {
 
 }
 
-vector<string> get_user_name_list() {
-        vector<string> user_list;
-        for (auto& [key, value] : *database) {
-            user_list.push_back(key);
+unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
+        unordered_map<string, vector<vector<vector<string>>>> offerMap;
+
+        // Iterating through the database to retrieve user offers
+        for (const auto& entry : *database) {
+            const std::string& username = entry.first;
+            const UserData& userData = entry.second;
+
+            // Fetching offers for the current user from UserData
+            const std::vector<std::vector<std::vector<std::string>>>& userOffers = userData.offer_list;
+
+            // Assigning the user offers to the offerMap using the username as the index
+            offerMap[username] = userOffers;
         }
-        return user_list;
+
+        return offerMap;
 }
 
+vector<string> getUsers(){
+        vector<string> Users;
+
+        // Iterating through the database to retrieve user offers
+        for (const auto& entry : *database) {
+            const std::string& username = entry.first;
+
+
+            Users.push_back(username);
+        }
+
+        return Users;
+}
 
 int main() {
     rpc::server srv(3333);
@@ -542,7 +456,6 @@ int main() {
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
-    srv.bind("update_user_characs", &update_user_characs);
     
     srv.bind("update_fridge", &update_fridge);
     srv.bind("update_offer", &update_offer);
@@ -550,9 +463,9 @@ int main() {
     //DB Sending
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
-    
-    //General Functions
-    srv.bind("get_user_name_list", &get_user_name_list);
+    srv.bind("getMapOfOffers", &getMapOfOffers);
+    srv.bind("getUsers", &getUsers);
+    //implement error raising
     
     //test read-write of database here:
 //    cout << "Started";
