@@ -93,28 +93,28 @@ This aligns with the desired format we aim to adopt. The instructions and ingred
 {
     "RecipeBook": [
         {
-            "title": "Cherry Poke Cake",
+            "title": "title 1",
             "directions": [
                "some directions ..." 
                 ],
             "ingredients": [
                 "Some ingredients ..."
                 ],
-            "source": "allrecipes.com",
-            "tags": ["Sweet", "Chocolate", "Cake", "Poke", "Cherry", "Gluten-Free","Pan"],
-            "url": "http://allrecipes.com/recipe/235063/1-2-3-cherry-poke-cake/"
+            "source": "source",
+            "tags": ["...", "...", ...],
+            "url": "..."
         },
         {
-            "title": "1-Dish Chicken Parmesan",
+            "title": "title 2",
             "directions": [
                "some directions ..." 
                 ],
             "ingredients": [
                 "Some ingredients ..."
                 ],
-            "source": "allrecipes.com",
-            "tags": ["Chicken","Parmesan","Salty", "Lunch", "Dinner","Spaghetti", "Cheese", "Herb", "Flour", "Oven"],
-            "url": "http://allrecipes.com/recipe/173295/1-dish-chicken-parmesan/"
+            "source": "source",
+            "tags": ["...", "...", ...],
+            "url": "..."
         },
 …]
 }
@@ -124,4 +124,25 @@ The JsonRecipeReader contains by default the .json file with all the recipes and
 I put the header RecipeBook.hpp and RecipeBook.cpp in the front branch, in the file test3. 
 
 Session 9: 08/01
+We had a meeting with all the group to clarify where we were up to and what we did during the vacation. I talked to Cyriac and Sixtine to start setting up a way of linking the class I've created with the rest and setting up the recipe search on the application. 
+Try to fix some small details in the class.
+
+Session 10: 11/01
+Try to fix some errors due to the nholman/json.hpp file 
+
+Session 11: 15/01 
+Try to fix the error coming from the nholman library in order to access the file. 
+Towards the end of the course, after talking to Cyriac, we realized that it would be simpler for him and for me to use CSV files. 
+
+Session 12: 18/01
+Converted the json file into a .txt files using this website : https://jsonformatter.org/json-to-csv
+
+This returned a CSV file of the form : title, directions, instructions, source, tags, url
+
+I implemented the "originalsrecipe" function in the "maincontroler.cpp" file of Cyriac's branch, which generates a vector containing instances of the "Recipe" class, serving as the default recipe book for the application. This function iterates through each line of the file, creating a "Recipe" object for each line. To accomplish this, I also designed the "splitpoint" function, which takes a string and a delimiter as parameters, enabling the separation of the string into smaller substrings (a vector of strings), specifically for the description and ingredients.
+
+Session 13: 22/01
+
+Additionally, I introduced two functions that convert a vector of strings into a vector of recipes and vice versa. In the vector of strings, each string represents a recipe with the format: "title description ingredients source tags url time."
+To streamline the conversion of "Recipe" objects to strings, I created the "concatenatestrings," "concatenatetags," and "concatenatedirection" functions. These functions simplify the process of converting a "Recipe" into a string representation.
 
