@@ -60,12 +60,13 @@ I coded the new Recipe class and added the necessary functions.
 I added a is_username function to the User class as Fanny has asked me and discusses with Adam what he had to do to allow me to implement it.
 
 15/01/2024
-
+I tried to implement a version of is_username without Adam's help by asking Esma. However this did was unsuccessful. I discussed with Elisabeth what she needed me to code for the recipe class and made a not on Trello to add functions to like and unlike things on the User class.
 
 18/01/2024
 I adapted and added the functions Anahi wrote on the front.cpp file to the different class files. 
 I changed the enum per Fanny's request and informed Oscar of the changes he had to implement for the server as a result.
+I added the functions like and unlike recipe in the User class. To do so, I also had to implement an equality operator function in the recipe class.
 I also started working on the presentation.
 
 22/01/2024
-I debugged a problem resulting from the update of the server.
+I debugged a problem resulting from the update of the server with help from the TA.
