@@ -28,5 +28,6 @@ HEADERS += \
     ingredient.h \
     offer.h \
     recipe.h \
-    user.h \
-    client_side_connection/server_to_backend_connection/rpc_client_side.hpp
+    user.h
+    #server/POCOSocket/Server/web_teste/CMakeLists.txt
+    # client_side_connection/server_to_backend_connection/rpc_client_side.hpp
