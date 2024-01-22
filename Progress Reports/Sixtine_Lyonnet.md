@@ -56,4 +56,16 @@ I discussed with each member of the app to better adapt my back-end code to thei
 - Diana: discussed the problem she was facing and told her Esma would be better equipped to answer her.
 
 11/01/2024
-I coded the new Recipe class and added the necessary functions. I added a is_username function to the User class as Fanny has asked me.
+I coded the new Recipe class and added the necessary functions.
+I added a is_username function to the User class as Fanny has asked me and discusses with Adam what he had to do to allow me to implement it.
+
+15/01/2024
+
+
+18/01/2024
+I adapted and added the functions Anahi wrote on the front.cpp file to the different class files. 
+I changed the enum per Fanny's request and informed Oscar of the changes he had to implement for the server as a result.
+I also started working on the presentation.
+
+22/01/2024
+I debugged a problem resulting from the update of the server.
