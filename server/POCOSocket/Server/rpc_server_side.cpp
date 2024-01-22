@@ -18,8 +18,8 @@ using namespace std;
 //Database storage files: no touchy :)) Except if you wihs totest fully: change to YOUR absolute file path.
 const string Database_simple_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
 const string Database_offer_list_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
-const string Database_fridge_and_food_lists_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as - newline
-//as 0,1,0,1,0,1,1 checkbox integers for booleans.
+const string Database_fridge_and_food_lists_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as 0,1,0 etc...
+const string Database_recipe_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_recipe_data.csv"; //stores recipes, indexed by $ as separator.
 //FILE FORMATS:
 
 //Ingredients: vector<string>> as [ingredient_name, expiry_date, quantity, category, priority_level;
@@ -65,13 +65,12 @@ public:
 
 //DATABASE declaration
 unordered_map<string, UserData>* database = new unordered_map<string, UserData>;
+vector<string>* recipes_list = new vector<string>;
 
 
-
-
-//needs to be a char: predefined or buggy, for some reason.
-char csv_separator = *","; //Replaces comma. Convention to use comma in comments. Same for the below.
-
+//needs to be a char: predefined or buggy, somehow.
+char csv_sep = *","; //Replaces comma. Convention to use comma in comments. Same for the below.
+char recipes_sep = *"$"; //Separator for long files. Of text, for recipes.
 
 void read_simple_types_from_csv() {
     ifstream file;
@@ -85,7 +84,7 @@ void read_simple_types_from_csv() {
         vector<string> user_data;
         
         stringstream line_it_stream(line_it);
-        for (string line_it_elt; getline(line_it_stream, line_it_elt, csv_separator);) {
+        for (string line_it_elt; getline(line_it_stream, line_it_elt, csv_sep);) {
             user_data.push_back(line_it_elt);
         }
         //fill basic user data, with all types
@@ -114,7 +113,7 @@ void read_fridge_and_food_lists_from_csv() { //call AFTER simple_types, before o
     for (string line; getline(file, line);) {
         stringstream line_stream(line);
         vector<string> line_data;
-        for (string element; getline(line_stream, element, csv_separator);) {
+        for (string element; getline(line_stream, element, csv_sep);) {
             line_data.push_back(element);
         }
         if (count % 2 == 0) {
@@ -145,7 +144,7 @@ void read_offer_list_from_csv() {
     for (string line; getline(file, line);) {
         stringstream line_stream(line);
         vector<string> line_data;
-        for (string element; getline(line_stream, element, csv_separator);) {
+        for (string element; getline(line_stream, element, csv_sep);) {
             line_data.push_back(element);
         }
         string username = line_data[0];
@@ -166,13 +165,23 @@ void read_offer_list_from_csv() {
     file.close();
 }
 
+void read_recipes_from_csv() {
+    ifstream file;
+    file.open(Database_recipe_data);
+    vector<string> recipes;
+    for (string long_str; getline(file, long_str, recipes_sep);) {
+        recipes.push_back(long_str);
+    }
+    recipes_list->insert(recipes_list->end(), recipes.begin(), recipes.end());
+}
+
 
 void read_from_csv() {
     //first, read simple types for username / password. And this allows us to create UserData.
     read_simple_types_from_csv();//we begin here, initialize user class. Then, we initialise fridge and offer_list types. Along with food restrictions.
     read_fridge_and_food_lists_from_csv(); //use already initialized database. 
     read_offer_list_from_csv();
-    cout << "Read!" << endl;
+    read_recipes_from_csv();
 }
 
 
@@ -195,7 +204,7 @@ void write_simple_types() {
         user_values_in_string_format.push_back(std::to_string(user_data.marketplace_notifications));
         string writing_to_file_line;
         for (vector<string>::iterator it = user_values_in_string_format.begin(); it != user_values_in_string_format.end(); ++it) {
-            writing_to_file_line.append(*it + csv_separator);
+            writing_to_file_line.append(*it + csv_sep);
         }
         if (!writing_to_file_line.empty()) //stolen fron SToflow, username jcrv
             writing_to_file_line.pop_back();
@@ -218,7 +227,7 @@ void write_fridge_and_food_lists() {
         }
         string line_to_write_here;
         for (vector<string>::iterator it = first_line_to_write.begin(); it != first_line_to_write.end(); it++) {
-            line_to_write_here.append(*it + csv_separator);
+            line_to_write_here.append(*it + csv_sep);
         }
         if (!line_to_write_here.empty()) //stolen fron SToflow, username jcrv
             line_to_write_here.pop_back();        file << line_to_write_here << endl;
@@ -226,7 +235,7 @@ void write_fridge_and_food_lists() {
         //second line is writing boolean restrictions into file.
         string line2; 
         for (list<bool>::const_iterator it = user_data.food_and_dietary_restrictions.begin(); it != user_data.food_and_dietary_restrictions.end(); it++) {
-            line2.append(to_string(*it) + csv_separator); //outputs "0" or "1" in string repr.
+            line2.append(to_string(*it) + csv_sep); //outputs "0" or "1" in string repr.
         }
         if (!line2.empty()) //stolen fron SToflow, username jcrv
             line2.pop_back();
@@ -248,7 +257,7 @@ void write_offer_list() {
         }
         string line_to_write_string;
         for (vector<string>::iterator it = line_to_write.begin(); it != line_to_write.end(); it++) {
-            line_to_write_string.append(*it + csv_separator);
+            line_to_write_string.append(*it + csv_sep);
         }
         if (!line_to_write_string.empty()) //stolen fron SToflow, username jcrv
             line_to_write_string.pop_back();        
@@ -257,87 +266,25 @@ void write_offer_list() {
     file.close();
 }
 
+void write_recipes_list() {
+    ofstream file;
+    file.open(Database_recipe_data);
+    for (vector<string>::iterator i = recipes_list->begin(); i != recipes_list->end()-1; i++) {
+        file << *i << recipes_sep;
+    }
+    file << *(recipes_list->end() -1);
+    file.close();
+}
+
 
 void write_to_csv() {
     write_simple_types();
     write_fridge_and_food_lists();
     write_offer_list();
+    write_recipes_list();
 }
 
 
-void read_from_csv_old() { //everytime open the server, read csv to get data from previous session
-//    ifstream file;
-//    file.open(Database_fridge_and_food_lists_data);
-//    vector<string> lines;
-//    for (string line; getline(file, line);) {
-//        lines.push_back(line);
-//    }
-//    cout << "Here we are";
-//    for (auto line : lines) {
-//        //separate the lines into username, data format. Use csv_separator designed to avoid conflicts with client-side. i.e. people naming their fruits "apple,ornot}[%" and this messing up my whole process.
-//        stringstream s_line(line);
-
-//        vector<string> user_data_from_line;
-//        for (string item; getline(s_line, item, csv_separator);) {
-//            user_data_from_line.push_back(item);
-//        }
-//        //user_data_from_line looks like : [username, telegram_username, password, fridge, offer_list] afterwards. All strings.
-//        //convert fridge string "{[name: category: quantity: expiry_date: priority_level]; [...]; ...}" or an empty fridge string.
-//        vector<vector<string>> fridge_vec;
-//        if (!(user_data_from_line[3] == curly_brackets_sep)) { //nonempty fridge, run stuff with it.
-
-//            stringstream s_fridge(user_data_from_line[3].substr(1, size(user_data_from_line[3]) -2)); //fridge, with {curly brackets} removed.
-//            for (string ingr_str; getline(s_fridge, ingr_str, ingr_separator_in_fridge);) { //separate into ingredients = "[name:category:qty:exp_date:prior]"
-//                vector<string> ingr;
-//                stringstream ingr_stream(ingr_str.substr(1, size(ingr_str) -2));
-//                for (string ingr_element; getline(ingr_stream, ingr_element, separator_within_ingredient);) {
-//                    ingr.push_back(ingr_element);
-//                }
-//                fridge_vec.push_back(ingr);
-//            }
-//        }
-
-
-//        //convert offer_list string "|{[name: category: quantity: expiry_date: priority_level]; [...]; ...; [price]}/{...}/...|" or an empty offer_list.
-//        vector<vector<vector<vector<string>>>> offer_list_vec;
-//        if (!(user_data_from_line[4] == absolute_signs_sep)) {
-//            stringstream s_offers(user_data_from_line[4].substr(1, size(user_data_from_line[4]) - 2));
-//            for (string offer_str; getline(s_offers, offer_str, separator_within_offer_list);) {
-//                vector<vector<vector<string>>> offer;
-//                stringstream s_offer(offer_str.substr(1, size(offer_str) -2));
-//                vector<vector<string>> ingredient_vector;
-//                vector<vector<string>> price_vector;
-//                for (string ingredient_or_price_str; getline(s_offer, ingredient_or_price_str, ingr_separator_in_fridge);) {
-//                    //now, reduce the ingredients to vector<string>, and consider the price separately.
-//                    vector<string> ingr_or_price;
-//                    stringstream ingr_price_stream(ingredient_or_price_str.substr(1, size(ingredient_or_price_str) -2));
-//                    for (string ingr_price_element; getline(ingr_price_stream, ingr_price_element, separator_within_ingredient);) {
-//                        ingr_or_price.push_back(ingr_price_element);
-//                    }
-
-//                    if (size(ingr_or_price) == 5) { //then we have an ingredient, the price contains 1 elements.
-//                        ingredient_vector.push_back(ingr_or_price);
-//                    }
-//                    else {
-//                        price_vector.push_back(ingr_or_price);
-//                    }
-//                }
-//                offer.push_back(ingredient_vector);
-//                offer.push_back(price_vector);
-//                offer_list_vec.push_back(offer);
-//            }
-//        }
-
-//        //append username and data to db:
-//        UserData data;
-//        data.password = user_data_from_line[2];
-//        data.telegram_username = user_data_from_line[1];
-//        data.fridge = fridge_vec;
-//        data.offer_list = offer_list_vec;
-//        (*database)[user_data_from_line[0]] = data;
-//    }
-//    file.close();
-}
 
 
 void init_data_test() { //debug function. Tests database read/write all together along with test_read_write_csv().
@@ -377,6 +324,10 @@ void init_data_test() { //debug function. Tests database read/write all together
     data.offer_list.push_back(offer);
     data.food_and_dietary_restrictions = restrictions_of_johnny;
     (*database)[k] = data;
+    
+    //add simple recipes:
+    (*recipes_list)[0] = "hello, this is a recipe!";
+    (*recipes_list)[1] = "recipe2";
     
 }
 
@@ -481,7 +432,7 @@ else {
     
 }
 
-void update_fridge(std::string username, string password, vector<vector<string>> &new_fridge) {
+void update_fridge(string username, string password, vector<vector<string>> &new_fridge) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
@@ -535,28 +486,35 @@ void update_offer(std::string username, string password, vector<vector<vector<st
         }
 } //updates a user offer list
 
+void addRecipes(const vector<string>& new_recipes) {
+        for (const string& recipe : new_recipes) {
+            recipes_list->push_back(recipe);
+        }
+}//adds recipes
+
 //DB Sending Functions:
-vector<vector<vector<string>>> get_offer_list(string username, string password) {
+vector<string> get_offer_list(string username, string password) {
+
         auto el = database->find(username); // Find the username in the database
 
         if (el != database->end() && password == el->second.password) {
             // Username exists and password matches
 
             // Move the offer_list content to the caller
-            return std::move(el->second.offer_list);
+	    return serialize_offer_list(std::move(el->second.offer_list));
         }
 
 
         return {}; // Return an empty offer_list if no username or password does not match
 
 }
-vector<vector<string>> get_fridge(string username, string password) {
+vector<string> get_fridge(string username, string password) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end() && password == el->second.password) {
             // Username exists and password matches
 
 
-            return std::move(el->second.fridge);
+             return serialize(std::move(el->second.fridge));
         }
 
 
@@ -564,7 +522,7 @@ vector<vector<string>> get_fridge(string username, string password) {
 
 }
 
-unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
+vector<string> getMapOfOffers(){
         unordered_map<string, vector<vector<vector<string>>>> offerMap;
 
         // Iterating through the database to retrieve user offers
@@ -579,7 +537,7 @@ unordered_map<string, vector<vector<vector<string>>>> getMapOfOffers(){
             offerMap[username] = userOffers;
         }
 
-        return offerMap;
+        return serialize_unMap(offerMap);
 }
 
 
@@ -591,6 +549,19 @@ vector<string> get_user_name_vectors() {
         }
         return user_list;
 }
+
+vector<string> getAllRecipes() {
+        vector<string> all_recipes;
+        if (recipes_list != nullptr) {
+            for (const string& recipe : *recipes_list) {
+            all_recipes.push_back(recipe);
+            }
+        }
+        return all_recipes;
+}
+
+
+
 
 //check functions:
 double check_user(string username, string password) {
@@ -634,6 +605,7 @@ int main() {
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
+
 //    srv.bind("update_user_characteristics", &update_user_characteristics);
     
     srv.bind("update_fridge", &update_fridge);
@@ -646,7 +618,8 @@ int main() {
     //General Functions
     srv.bind("getMapOfOffers", &getMapOfOffers);
     srv.bind("get_user_name_vectors", &get_user_name_vectors);
-
+    srv.bind("addRecipes", &addRecipes);
+    srv.bind("getAllRecipes", &getAllRecipes);
     
     //Check functions:
     srv.bind("check_user", &check_user);

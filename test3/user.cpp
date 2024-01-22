@@ -23,9 +23,22 @@ std::string User::get_username() {
     return username;
 }
 
-bool User::check_password(std::string input_password) {
-    return input_password == password;
+bool User::check_password(std::string input_username, std::string input_password) {
+    return input_username == username && input_password == password;
 }
+
+/*
+// Returns true if username in user and false otherwise
+bool User::is_username(std::string username) {
+    std::vector<std::string> list_usernames = get_user_name_list();
+    for (int i = 0; i < len(list_usernames); i++) {
+        if (list_usernames[i] == username) {
+            return true;
+        }
+    }
+    return false;
+}
+*/
 
 void User::set_distplay_name(std::string display_name) {
     this->display_name = display_name;
@@ -123,4 +136,28 @@ Offer User::remove_offer(Offer *offer_to_delete) {
 
 std::vector<Offer> User::get_my_offers(){
     return offer_list;
+}
+
+/*
+std::vector<std::string> get_all_clients() {
+    rpc::clients cl(HOST_SERVER_NAME, HOST_SERVER_PORT);
+
+    auto clients = cl.call("getUsers").as<
+        std::vector<std::string> > ();
+
+    return clients;
+}
+*/
+void User::like_recipe(Recipe recipe) {
+    liked_recipes.push_back(recipe);
+}
+
+void User::unlike_recipe(Recipe recipe) {
+    for (auto it = liked_recipes.begin(); it != liked_recipes.end(); ++it) {
+        if (*it == recipe) {
+            liked_recipes.erase(it);
+        }
+    }
+
+    throw std::runtime_error("Ingredient not found in the fridge");
 }

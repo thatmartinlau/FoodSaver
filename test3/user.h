@@ -3,6 +3,7 @@
 
 #include "fridge.h"
 #include "offer.h"
+#include "recipe.h"
 
 //#include <iostream>
 #include <list>
@@ -12,6 +13,9 @@
 //using json = nlohmann::json;
 //using namespace std;
 
+//#include "client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
+//include "" esma's thing
+
 class User{
 public:
     User();
@@ -19,7 +23,8 @@ public:
     ~User();
     void set_username(std::string username);
     std::string get_username();
-    bool check_password(std::string input_password);
+    bool check_password(std::string input_username, std::string input_password);
+    bool is_username(std::string username);
     void set_distplay_name(std::string display_name);
     std::string get_display_name();
     void set_telegram_username(std::string telegram);
@@ -42,6 +47,8 @@ public:
     void add_offer(Offer new_offer);
     Offer remove_offer(Offer *offer_to_delete);
     std::vector<Offer> get_my_offers();
+    void like_recipe(Recipe recipe);
+    void unlike_recipe(Recipe recipe);
 
 private:
     std::string username;
@@ -57,6 +64,9 @@ private:
     int marketplace_notifications;
     Fridge user_fridge;
     std::vector<Offer> offer_list;
+    std::vector<Recipe> liked_recipes;
 };
+
+std::vector<std::string> getUsers();
 
 #endif // USER_H

@@ -13,6 +13,7 @@ SOURCES += \
         ingredient.cpp \
         main.cpp \
         offer.cpp \
+        recipe.cpp \
         user.cpp
 
 # Default rules for deployment.
@@ -26,4 +27,6 @@ HEADERS += \
     front.hpp \
     ingredient.h \
     offer.h \
-    user.h
+    recipe.h \
+    user.h \
+    client_side_connection/server_to_backend_connection/rpc_client_side.hpp
