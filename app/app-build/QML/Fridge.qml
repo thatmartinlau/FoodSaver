@@ -135,7 +135,7 @@ Row {
                     radius: 12.5
                     y: parent.height * 0.2
                     height: parent.height - 5 - parent.width*0.01 - parent.width * 0.05
-                    width: parent.width *0.98
+                    width: parent.width * 0.99
                     color: "blue"
                     ScrollView {
                         id: scrollViewOffer
@@ -149,7 +149,7 @@ Row {
                                 Rectangle {
                                     visible: model.status
                                     radius: 12.5
-                                    width: parent.width
+                                    width: scrollViewOffer.contentHeight < 625 ? parent.width * 0.99 : parent.width
                                     height: 150
                                     color: "#EEEEEE"  // Adjust the color as needed
 
@@ -380,8 +380,9 @@ Row {
                                                     //itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
                                                     //pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
                                                 }
-                                            }
+
                                             Button {
+
                                                 visible: !(model.status)
                                                 text: "Put on sell"
                                                 onClicked: {
@@ -397,7 +398,7 @@ Row {
                     }
                 }
             }
-
+        }
         ListModel {
                 id: itemModel
                 function getIndexByPropertyValue(propertyName, propertyValue) {
