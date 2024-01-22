@@ -151,16 +151,18 @@ Row {
                                             visible: model.status
                                             radius: 12.5
                                             width: parent.width * 0.98
-                                            height: 200
-                                            color: "green"  // Adjust the color as needed
+                                            height: 150
+                                            color: "#EEEEEE"  // Adjust the color as needed
 
                                             Row {
+                                                spacing:5
+                                                padding:5
                                                 width: parent.width
                                                 height: parent.height
                                                 Rectangle {
                                                     radius: 12.5
-                                                    width: parent.height
-                                                    height: parent.height
+                                                    width: parent.height -10
+                                                    height: parent.height -10
                                                     color: "lightblue"
                                                     Label { text: "photo" }
                                                 }
@@ -300,20 +302,25 @@ Row {
                                 Rectangle {
                                     radius:12.5
                                     width: parent.width *0.98
-                                    height: 200
-                                    color: "red"
+                                    height: 150
+                                    color: "#EEEEEE"
                                     Row {
-                                        width:parent.width
+                                        spacing:5
+                                        padding:5
+                                        width: parent.width
                                         height: parent.height
                                         Rectangle {
-                                            radius:12.5
-                                            width:parent.height
-                                            height: parent.height
-                                            color:"lightblue"
-                                            Label {text:"photo"}
+                                            radius: 12.5
+                                            x:5
+                                            y:5
+                                            width: parent.height -10
+                                            height: parent.height -10
+                                            color: "lightblue"
+                                            Label { text: "photo" }
                                         }
                                         Column {
-                                            x:parent.height
+                                            x:parent.height+5
+                                            y:5
                                             spacing:1
                                             Label {
                                                 text: "Item: " + model.item // Access the "item" property of the model data
