@@ -29,11 +29,17 @@ Week 12 :
 
 Week 13 : 08/01/2024 - 14/01/2024 
 - coding the final rpc_client_side updated with the front-end changes.
-
+  
 Week 14: 15/01/2024 - 21/01/2024 : 
 
-- coding serialize function
+- coding serialize functions (for double vector string, and triple vector string) 
+- coding deserialize functions
 - debugging again the code for rpc_client_side.
+- trying to add new enums in link with the wishes of the front end. 
+
+Week 15 : 
+- preparing for the presentation
+- discussing with Esma on server_side and client_side to be updated of the changes of one and other.
 
   
 
