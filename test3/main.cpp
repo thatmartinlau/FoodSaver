@@ -73,5 +73,13 @@ int main(int argc, char *argv[])
     std::cout << c.countDays() << std::endl;
     std::cout << "Hello" << std::endl;
 
+    User user1("sixtine", "password");
+    User user2();
+
+    BackupServer server;
+    server.add_user(user1);
+
+    //server.loadUserInfo("myFile.txt")
+
     return 0;
 }
