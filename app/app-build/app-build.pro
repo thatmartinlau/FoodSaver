@@ -29,13 +29,11 @@ SOURCES += \
     $$CPP/temp.front.cpp \
     $$CPP/user.cpp \
     $$CPP/Signin.cpp \
-    $$CPP/temp.json.cpp \
     $$CPP/profilemanager.cpp \
     $$CPP/settingsmanager.cpp \
     $$CPP/currentUser.cpp \
     $$CPP/SigninInformation.cpp \
-    $$CPP/market.cpp \
-    market.cpp
+    $$CPP/market.cpp
 
 HEADERS += \
     Header/SigninInformation.h \
@@ -59,3 +57,5 @@ HEADERS += \
     $$HPP/Signin.h \
     $$HPP/market.h \
     market.h
+
+INCLUDEPATH+="lib/"
