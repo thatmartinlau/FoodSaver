@@ -184,12 +184,7 @@ int main() {
             userCredentialsMap[chatId] = {userInfo.username, userInfo.password};
 
             // RPC call to link the fridge
-            double server_message = 0;
-            try{
-                double server_message = c.call("check_user", userInfo.username, userInfo.password).as<double>();
-            } catch (int64_t chatId) {
-                bot.getApi().sendMessage(chatId, "Sorry! there is an error connection to the server.");
-            } 
+            double server_message = c.call("check_user", userInfo.username, userInfo.password).as<double>();
 
             // Check the server's response
             if (server_message == 1) {
