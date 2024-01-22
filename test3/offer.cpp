@@ -10,10 +10,10 @@
 
 Offer::Offer() {}
 
-//Offer::Offer(Ingredient ingredient_on_offer) {
-//    this->ingredient_on_offer = ingredient_on_offer;
-//    price = 0.0;
-//}
+Offer::Offer(Ingredient ingredient_on_offer) {
+    this->ingredient_on_offer = ingredient_on_offer;
+    price = 0.0;
+}
 
 
 Offer::~Offer() {

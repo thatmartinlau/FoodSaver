@@ -15,7 +15,7 @@
 class Offer {
 public:
     Offer();
-    //Offer(Ingredient ingredient_on_offer);
+    Offer(Ingredient ingredient_on_offer);
     ~Offer();
 
      bool operator==(Offer& other);
