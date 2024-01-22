@@ -22,3 +22,7 @@ User BackupServer::remove_user(User *user_to_delete) {
         }
     }
 }
+
+std::vector<User> BackupServer::get_user_list() {
+    return user_list;
+}
