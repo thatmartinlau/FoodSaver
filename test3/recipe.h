@@ -2,7 +2,7 @@
 #define RECIPE_H
 
 #include<iostream>
-
+#include <vector>
 class Recipe
 {
 public:
