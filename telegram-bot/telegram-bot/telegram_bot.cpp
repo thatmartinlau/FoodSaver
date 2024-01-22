@@ -7,6 +7,7 @@
 #include <iomanip> // for std::get_time
 #include <thread>
 #include <chrono>
+#include <tgbot/tgbot.h>
 
 using namespace rpc;
 using namespace std;
@@ -34,6 +35,9 @@ struct UserCredentials {
 std::map<int64_t, UserCredentials> userCredentialsMap;
 
 std::map<int64_t, UserInfo> userStates;
+
+TgBot::Bot bot("6644281748:AAFh40LQLa5054caEUPt8T_9wf-Yv1hAB-w");
+rpc::client c("3333", rpc::constants::DEFAULT_PORT);
 
 
 vector<vector<string>> check_expiration(client& c) {
@@ -65,9 +69,9 @@ vector<vector<string>> check_expiration(client& c) {
     return result;
 }
 
-std::thread expirationChecker([&bot, &c, &userCredentialsMap]() {
+std::thread expirationChecker([]() {
     while (true) {
-        auto expiringItems = check_expiration(c, userCredentialsMap);
+        auto expiringItems = check_expiration(c);
 
         for (const auto& item : expiringItems) {
             try {
@@ -85,20 +89,16 @@ std::thread expirationChecker([&bot, &c, &userCredentialsMap]() {
 
 
 int main() {
-    TgBot::Bot bot("6644281748:AAFh40LQLa5054caEUPt8T_9wf-Yv1hAB-w");
-
-    rpc::client c("3333", rpc::constants::DEFAULT_PORT);
-
-    bot.getEvents().onCommand("Start", [&bot](TgBot::Message::Ptr message) {
+    bot.getEvents().onCommand("start", [](TgBot::Message::Ptr message) {
         bot.getApi().sendMessage(message->chat->id, "Welcome to FoodSaver bot, I can help you manage your fridge account." 
                                                     "Here are the things that I can do for you:\n"
                                                     "- /Login - login to your fridge account\n"
                                                     "- /Register - register a new fridge account\n"
-                                                    "- /Check_your_fridge - check your fridge contents\n";);
+                                                    "- /Check_your_fridge - check your fridge contents\n");
     });
 
     //
-    bot.getEvents().onCommand("Login", [&bot, &userStates](TgBot::Message::Ptr message) {
+    bot.getEvents().onCommand("Login", [](TgBot::Message::Ptr message) {
         int64_t chatId = message->chat->id;
         if (userCredentialsMap.find(chatId) != userCredentialsMap.end()) {
             // User already logged in
@@ -112,7 +112,7 @@ int main() {
     });
 
     //
-    bot.getEvents().onCommand("Register", [&bot, &userStates](TgBot::Message::Ptr message) {
+    bot.getEvents().onCommand("Register", [](TgBot::Message::Ptr message) {
         int64_t chatId = message->chat->id;
         if (userCredentialsMap.find(chatId) == userCredentialsMap.end()) {
             // User not in list
@@ -126,7 +126,7 @@ int main() {
     });
 
     //
-    bot.getEvents().onCommand("Check_fridge", [&bot, &userCredentialsMap, &c](TgBot::Message::Ptr message) {
+    bot.getEvents().onCommand("Check_fridge", [](TgBot::Message::Ptr message) {
         int64_t chatId = message->chat->id;
         if (userCredentialsMap.find(chatId) == userCredentialsMap.end()) {
             bot.getApi().sendMessage(chatId, "Please login first using /Login, or register a new account using /Register.");
@@ -150,7 +150,7 @@ int main() {
     });
 
     //
-    bot.getEvents().onAnyMessage([&bot, &userStates, &c](TgBot::Message::Ptr message) {
+    bot.getEvents().onAnyMessage([](TgBot::Message::Ptr message) {
         if (StringTools::startsWith(message->text, "/")) {
             return;
         }
@@ -184,7 +184,12 @@ int main() {
             userCredentialsMap[chatId] = {userInfo.username, userInfo.password};
 
             // RPC call to link the fridge
-            double server_message = c.call("check_user", userInfo.username, userInfo.password).as<double>();
+            double server_message = 0;
+            try{
+                double server_message = c.call("check_user", userInfo.username, userInfo.password).as<double>();
+            } catch (int64_t chatId) {
+                bot.getApi().sendMessage(chatId, "Sorry! there is an error connection to the server.");
+            } 
 
             // Check the server's response
             if (server_message == 1) {
@@ -199,12 +204,13 @@ int main() {
         }
     });
 
-    std::thread expirationCheckerThread = std::thread(expirationChecker);
+    // std::thread expirationCheckerThread = std::thread(expirationChecker);
 
     // Main loop for the bot
     try {
         TgBot::TgLongPoll longPoll(bot);
         while (true) {
+            std::cout << "Starting the bot" << std::endl;
             longPoll.start();
         }
     } catch (TgBot::TgException& e) {
