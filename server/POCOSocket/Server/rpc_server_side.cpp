@@ -42,6 +42,7 @@ public:
         telegram_notifications = basic_u_data.telegram_notifications;
         marketplace_notifications = basic_u_data.marketplace_notifications;
     };
+
     UserData(string password){
         this->password = password;
     }

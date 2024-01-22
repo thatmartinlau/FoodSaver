@@ -16,6 +16,7 @@ ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user 
     password = psswd;
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("add_user", username, password);
+
 }
 
 ServerUser::~ServerUser() {}
@@ -23,7 +24,9 @@ ServerUser::~ServerUser() {}
 void ServerUser::delete_self_in_db() {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("remove_user", username, password);
+
 }
+
 
 void ServerUser::update_user_characteristics(User usr) {
     basic_user_data basic_data;
@@ -280,8 +283,10 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
     //send as new format
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_fridge", username, password, serialized_fridge);
+    new_cli.call("update_fridge", username, password, serialized_fridge); // caling update_fridge on the database
+
 }
+
 
 
 
@@ -313,7 +318,7 @@ vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]
 }
 
 
-void ServerUser::update_offer_list(vector<Offer> &offer_list) {
+void ServerUser::x(vector<Offer> &offer_list) {
     //Oscar work yo magiiiic: same format as get_offer_list for the data we want to give to the server.
     // vector<Offer> --> [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
 
