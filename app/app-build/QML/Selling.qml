@@ -286,7 +286,7 @@ Popup {
                         itemModel.get(itemIndex).quanity2sell=quantity2sellInput.text
                         itemModel.get(itemIndex).price=priceInput.text
                         itemModel.get(itemIndex).pricestatus=priceType.currentIndex*/
-
+                        scrollViewOffer.contentHeight += 152.5
                         selling.close();
                     }
                     else {

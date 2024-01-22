@@ -3,6 +3,19 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts
 
 Popup {
+
+        //Fridge {
+            //ListModel {
+            //    id :itemModel
+            //}
+            //ScrollView {
+            //    id : scrollViewFridge
+            //}
+
+        //}
+        //property ListModel itemModel
+        //property var scrollViewFridge
+
         id: addtofridge
         anchors.centerIn: parent
         width: 200
@@ -108,7 +121,7 @@ Popup {
                                    //categorieinput.text = "";
                                    dateinput.text = "";
                                    quantityinput.text = "";
-                                   scrollViewFridge.contentHeight = scrollViewFridge.contentHeight + 202.5;
+                                   scrollViewFridge.contentHeight += 152.5;
 
                                    addtofridge.close();
                                }
