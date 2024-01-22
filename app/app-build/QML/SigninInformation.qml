@@ -27,11 +27,19 @@ Item {
             horizontalAlignment: Text.AlignHCenter
         }
 
+        Text{
+            id: noNameAndTelegramError
+            visible: false // Initially hidden
+            text: "You need to fill in a display name and telegram username"
+            color: "red"
+        }
+
+
         //Separator line
         Rectangle {
-                  width: parent.width * 0.8
-                  height: 1 // Adjust the height for border thickness
-                  color: "#A0A0A0" // Border color
+            width: parent.width * 0.8
+            height: 1 // Adjust the height for border thickness
+            color: "#A0A0A0" // Border color
           }
 
         // PERSONAL DETAIL SECTION
@@ -57,10 +65,6 @@ Item {
                 placeholderText: "Name                  "
                 placeholderTextColor: "#A0A0A0"
                 color: "#544E3D"
-                background: Rectangle {
-                    color: "#D9E8FF" // Light blue for text field
-                    radius: 8
-                }
             }
 
             Text {text: "Phone number"; color: "#28A745"}
@@ -71,10 +75,6 @@ Item {
                 placeholderText: "Phone number"
                 placeholderTextColor: "#A0A0A0"
                 color: "#544E3D"
-                background: Rectangle {
-                    color: "#D9E8FF" // Light blue for text field
-                    radius: 8
-                }
             }
 
 
@@ -87,10 +87,6 @@ Item {
                 placeholderText: "103 room number"
                 placeholderTextColor: "#A0A0A0"
                 color: "#544E3D"
-                background: Rectangle {
-                    color: "#D9E8FF" // Light blue for text field
-                    radius: 8
-                }
             }
 
             Text {text:"Promotion"; color: "#28A745"; Layout.preferredWidth: 75}
@@ -98,10 +94,6 @@ Item {
                     id: choiceMenu
                     width: 200
                     model: ["BX2026", "BX2025", "BX2024"]
-
-                    onCurrentIndexChanged: {
-                        //console.log("Selected option:", model[currentIndex]);
-                    }
                 }
 
             //ON LINE 3 OF GRID
@@ -114,10 +106,6 @@ Item {
                 placeholderText: "Telegram username"
                 placeholderTextColor: "#A0A0A0"
                 color: "#544E3D"
-                background: Rectangle {
-                    color: "#D9E8FF" // Light blue for text field
-                    radius: 8
-                }
             }
 
             Text {text: "Gender" ; color: "#28A745"; Layout.preferredWidth: 75}
@@ -125,19 +113,15 @@ Item {
                 id: genderMenu
                 width: 200
                 model: ["Male", "Female", "Prefer not to say"]
-
-                onCurrentIndexChanged: {
-                    //console.log("Selected option:", model[currentIndex]);
-                }
             }
         }
         // END OF PERSONAL INFO GRID
 
         //Separator line
         Rectangle {
-                  width: parent.width * 0.8
-                  height: 1 // Adjust the height for border thickness
-                  color: "#A0A0A0" // Border color
+            width: parent.width * 0.8
+            height: 1 // Adjust the height for border thickness
+            color: "#A0A0A0" // Border color
           }
 
         //DIETARY RESTRICTIONS
@@ -147,6 +131,7 @@ Item {
             font.pixelSize: 25
         }
 
+        //All checkboxes to select food restriction
         GridLayout {
             id: dietrestrictionsgrid
             columns: 3
@@ -156,182 +141,156 @@ Item {
 
             CheckBox {
                 id: glutenCheck
-                text: "<font color=\"#28A745\">Gluten intolerance</font>"
-
-                // Customizing the indicator
-                indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: glutenCheck.leftPadding
-                    y: parent.height / 2 - height / 2
-                    width: 26
-                    height: 26
-                    radius: 6
-                    border.color: glutenCheck.down ? "#E0E0E0" : "#BDBDBD"
-                    border.width: 2
-                    color: "white"
-
+                RowLayout {
+                    spacing: 10
                     Rectangle {
-                        visible: glutenCheck.checked
-                        anchors.fill: parent
-                        anchors.margins: 6
-                        color: "green"
+                        width: 26
+                        height: 26
+                        radius: 6
+                        border.color: glutenCheck.down ? "#E0E0E0" : "#BDBDBD"
+                        border.width: 2
+                        color: glutenCheck.checked ? "green" : "white"
+                    }
+                    Text {
+                        text: "<font color=\"#28A745\">Gluten Intolerance</font>"
+                        color: glutenCheck.down ? "#28A745" : "#BDBDBD"
+                        font: glutenCheck.font
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
                 }
             }
 
             CheckBox {
                 id: lactoseCheck
-                text: "<font color=\"#28A745\">Lactose intolerance</font>"
-
-                // Customizing the indicator
-                indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: lactoseCheck.leftPadding
-                    y: parent.height / 2 - height / 2
-                    width: 26
-                    height: 26
-                    radius: 6
-                    border.color: lactoseCheck.down ? "#E0E0E0" : "#BDBDBD"
-                    border.width: 2
-                    color: "white"
-
+                RowLayout {
+                    spacing: 10
                     Rectangle {
-                        visible: lactoseCheck.checked
-                        anchors.fill: parent
-                        anchors.margins: 6
-                        color: "green"
+                        width: 26
+                        height: 26
+                        radius: 6
+                        border.color: lactoseCheck.down ? "#E0E0E0" : "#BDBDBD"
+                        border.width: 2
+                        color: lactoseCheck.checked ? "green" : "white"
+                    }
+                    Text {
+                        text: "<font color=\"#28A745\">Lactose Intolerance</font>"
+                        color: lactoseCheck.down ? "#28A745" : "#BDBDBD"
+                        font: lactoseCheck.font
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
                 }
             }
 
+
+
             CheckBox {
                 id: nutsCheck
-                text: "<font color=\"#28A745\">Nut allergy</font>"
-
-                // Customizing the indicator
-                indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: nutsCheck.leftPadding
-                    y: parent.height / 2 - height / 2
-                    width: 26
-                    height: 26
-                    radius: 6
-                    border.color: nutsCheck.down ? "#E0E0E0" : "#BDBDBD"
-                    border.width: 2
-                    color: "white"
-
+                RowLayout {
+                    spacing: 10
                     Rectangle {
-                        visible: nutsCheck.checked
-                        anchors.fill: parent
-                        anchors.margins: 6
-                        color: "green"
+                        width: 26
+                        height: 26
+                        radius: 6
+                        border.color: nutsCheck.down ? "#E0E0E0" : "#BDBDBD"
+                        border.width: 2
+                        color: nutsCheck.checked ? "green" : "white"
+                    }
+                    Text {
+                        text: "<font color=\"#28A745\">Nut allergy</font>"
+                        color: nutsCheck.down ? "#28A745" : "#BDBDBD"
+                        font: nutsCheck.font
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
                 }
             }
 
             CheckBox {
                 id: veganCheck
-                text: "<font color=\"#28A745\">Vegan</font>"
-
-                // Customizing the indicator
-                indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: veganCheck.leftPadding
-                    y: parent.height / 2 - height / 2
-                    width: 26
-                    height: 26
-                    radius: 6
-                    border.color: veganCheck.down ? "#E0E0E0" : "#BDBDBD"
-                    border.width: 2
-                    color: "white"
-
+                RowLayout {
+                    spacing: 10
                     Rectangle {
-                        visible: veganCheck.checked
-                        anchors.fill: parent
-                        anchors.margins: 6
-                        color: "green"
+                        width: 26
+                        height: 26
+                        radius: 6
+                        border.color: veganCheck.down ? "#E0E0E0" : "#BDBDBD"
+                        border.width: 2
+                        color: veganCheck.checked ? "green" : "white"
+                    }
+                    Text {
+                        text: "<font color=\"#28A745\">Vegan</font>"
+                        color: veganCheck.down ? "#28A745" : "#BDBDBD"
+                        font: veganCheck.font
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
                 }
             }
 
             CheckBox {
                 id: vegetarianCheck
-                text: "<font color=\"#28A745\">Vegetarian</font>"
-
-                // Customizing the indicator
-                indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: vegetarianCheck.leftPadding
-                    y: parent.height / 2 - height / 2
-                    width: 26
-                    height: 26
-                    radius: 6
-                    border.color: vegetarianCheck.down ? "#E0E0E0" : "#BDBDBD"
-                    border.width: 2
-                    color: "white"
-
+                RowLayout {
+                    spacing: 10
                     Rectangle {
-                        visible: vegetarianCheck.checked
-                        anchors.fill: parent
-                        anchors.margins: 6
-                        color: "green"
+                        width: 26
+                        height: 26
+                        radius: 6
+                        border.color: vegetarianCheck.down ? "#E0E0E0" : "#BDBDBD"
+                        border.width: 2
+                        color: vegetarianCheck.checked ? "green" : "white"
+                    }
+                    Text {
+                        text: "<font color=\"#28A745\">Vegetarian</font>"
+                        color: vegetarianCheck.down ? "#28A745" : "#BDBDBD"
+                        font: vegetarianCheck.font
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
                 }
             }
 
             CheckBox {
                 id: pescatarianCheck
-                text: "<font color=\"#28A745\">Pescatarian</font>"
-
-                // Customizing the indicator
-                indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: pescatarianCheck.leftPadding
-                    y: parent.height / 2 - height / 2
-                    width: 26
-                    height: 26
-                    radius: 6
-                    border.color: pescatarianCheck.down ? "#E0E0E0" : "#BDBDBD"
-                    border.width: 2
-                    color: "white"
-
+                RowLayout {
+                    spacing: 10
                     Rectangle {
-                        visible: pescatarianCheck.checked
-                        anchors.fill: parent
-                        anchors.margins: 6
-                        color: "green"
+                        width: 26
+                        height: 26
+                        radius: 6
+                        border.color: pescatarianCheck.down ? "#E0E0E0" : "#BDBDBD"
+                        border.width: 2
+                        color: pescatarianCheck.checked ? "green" : "white"
+                    }
+                    Text {
+                        text: "<font color=\"#28A745\">Pescatarian</font>"
+                        color: pescatarianCheck.down ? "#28A745" : "#BDBDBD"
+                        font: pescatarianCheck.font
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
                 }
             }
 
             CheckBox {
                 id: halalCheck
-                text: "<font color=\"#28A745\">Halal</font>"
-
-                // Customizing the indicator
-                indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: halalCheck.leftPadding
-                    y: parent.height / 2 - height / 2
-                    width: 26
-                    height: 26
-                    radius: 6
-                    border.color: halalCheck.down ? "#E0E0E0" : "#BDBDBD"
-                    border.width: 2
-                    color: "white"
-
+                RowLayout {
+                    spacing: 10
                     Rectangle {
-                        visible: halalCheck.checked
-                        anchors.fill: parent
-                        anchors.margins: 6
-                        color: "green"
+                        width: 26
+                        height: 26
+                        radius: 6
+                        border.color: halalCheck.down ? "#E0E0E0" : "#BDBDBD"
+                        border.width: 2
+                        color: halalCheck.checked ? "green" : "white"
+                    }
+                    Text {
+                        text: "<font color=\"#28A745\">Halal</font>"
+                        color: halalCheck.down ? "#28A745" : "#BDBDBD"
+                        font: halalCheck.font
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
                 }
             }
@@ -339,9 +298,9 @@ Item {
 
         //Separator line
         Rectangle {
-                  width: parent.width * 0.8
-                  height: 1 // Adjust the height for border thickness
-                  color: "#A0A0A0" // Border color
+            width: parent.width * 0.8
+            height: 1 // Adjust the height for border thickness
+            color: "#A0A0A0" // Border color
           }
 
         Rectangle {
