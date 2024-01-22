@@ -44,11 +44,12 @@ public:
     void set_marketplace_notifications(int m);
     int get_marketplace_notifications();
     //json toJson () const;
+    std::vector<Offer> get_my_offers();
     void add_offer(Offer new_offer);
     Offer remove_offer(Offer *offer_to_delete);
-    std::vector<Offer> get_my_offers();
     void like_recipe(Recipe recipe);
     void unlike_recipe(Recipe recipe);
+    bool operator==(User& other);
 
 private:
     std::string username;

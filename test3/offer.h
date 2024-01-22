@@ -18,7 +18,7 @@ public:
     //Offer(Ingredient ingredient_on_offer);
     ~Offer();
 
-     bool operator==(Offer& other);
+    bool operator==(Offer& other);
 
     void set_price(double price);
     double get_price();

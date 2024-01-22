@@ -131,7 +131,7 @@ Offer User::remove_offer(Offer *offer_to_delete) {
         }
     }
 
-    throw std::runtime_error("Ingredient not found in the fridge");
+    throw std::runtime_error("Offer not found in the offers");
 }
 
 std::vector<Offer> User::get_my_offers(){
@@ -160,4 +160,8 @@ void User::unlike_recipe(Recipe recipe) {
     }
 
     throw std::runtime_error("Ingredient not found in the fridge");
+}
+
+bool User::operator==(User& other) {
+    return (this->get_username() == other.get_username());
 }
