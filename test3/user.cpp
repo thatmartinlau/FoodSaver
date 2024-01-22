@@ -40,6 +40,18 @@ bool User::is_username(std::string username) {
 }
 */
 
+// If the server crashes
+// Returns true if username in user and false otherwise
+bool User::is_username(std::string username) {
+    std::vector<User> list_usernames = BackupServer::get_user_list();
+    for (int i = 0; i < list_usernames.size(); i++) {
+        if (list_usernames[i].get_username() == username) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void User::set_distplay_name(std::string display_name) {
     this->display_name = display_name;
 }
