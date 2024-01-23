@@ -11,6 +11,10 @@ Row {
     property string open_time: ""
     property var open_ingredients
     property var open_instructions
+    property bool nothing_found: false
+    property string sorter_box : ""
+
+
 
     Rectangle {
         width: parent.width * 0.20
@@ -45,9 +49,7 @@ Row {
             Button { text: "Recipes"; enabled: false; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
 
         }
-        Settings {
-            id: settings
-        }
+
 
         Button {
             anchors.left: parent.left
@@ -76,108 +78,19 @@ Row {
             color: "white"
             property string newItemText: ""
 
+            Label {
+                text: "Nothing Corresponds to the current search, finish your word"
+                color: "grey"
+                font.pixelSize: 15
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                visible: nothing_found
+            }
+
             Column {
                 height: parent.height
                 width: parent.width
 
-                /*Rectangle {
-                    radius: 12.5
-                    width: parent.width
-                    height: parent.height * 0.2
-                    y : parent.height *0.05
-                    x : parent.height *0.05
-                    color: "transparent"
-
-
-                    GridLayout{
-                        id: majorGrid
-                        columns: 5
-                        width: parent.width
-                        columnSpacing: 2
-                        rowSpacing: 10
-                        height: parent.height*0.2
-                        //y : parent.height
-
-                        //ON LINE 1 OF GRID
-                        TextField {
-                            Layout.preferredWidth: 400
-                            id: searchbar
-                            width: parent.width
-                            placeholderText: "Search for a specific recipe"
-                            //placeholderTextColor: "#A0A0A0"
-                            //color: "#544E3D"
-
-                            onTextChanged: {
-                            //onEditingFinished: {
-                                //var counter = itemModel.count
-                                for (var i = 0; i < itemModel.count; i++) {
-                                    MainController.submit(itemModel.get(i).name)
-                                }
-                                var to_display = MainController.search_res(searchbar.text)
-                                //var titles = MainController.titleOrDiet(to_display,0)
-                                //var diets = MainController.titleOrDiet(to_display,1)
-
-                                itemModel.clear()
-                                //itemModel.append({"name": to_display})
-                                //itemModel.append({"name": to_display[1]})
-
-                                for (var j = 0; j< to_display.length; j++){
-                                    itemModel.append({"name" : to_display[j]})//titles[j], "dietRestriction" : diets[j]})
-                                }
-
-                                //searchbar.text = ""
-
-                            }
-                        }
-
-                        Text {text: "Sort by:"; color: "#28A745"; Layout.preferredWidth: 75}
-
-                        ComboBox {
-                                id: priority
-                                width: 200
-                                model: ["None","Cook time", "Vegetarian", "Gluten-free"] //add "Vegan", "Dairy free"
-
-                                onCurrentIndexChanged: {
-                                    console.log("Selected option:", model[currentIndex]);
-                                }
-                            }
-
-                        Button {
-                            text: "Sort"
-                            width: 50
-                            //anchors.horizontalCenter: parent.horizontalCenter
-
-                            onClicked: {
-                                //
-                            }
-                        }
-
-
-                        Button {
-                            text: "Reset"
-                            width: 50
-                            //anchors.horizontalCenter: parent.horizontalCenter
-
-                            onClicked: {
-                                for (var i = 0; i < itemModel.count; i++) {
-                                    MainController.submit(itemModel.get(i).name)
-                                }
-                                //var counter = itemModel.count
-                                itemModel.clear()
-                                var len = MainController.getTotalLength()
-                                //itemModel.append({"name": "Try" + len})
-                                //itemModel.append({"name": MainController.gett(0)})
-                                for (var j = 0; j < len; j++) {
-                                    itemModel.append({"name": MainController.gett(j)})
-                                }
-                                scrollView.contentHeight = len*82.5;
-                                //itemModel = save
-                            }
-                        }
-                    }
-
-
-                }*/
                 Rectangle {
                     radius: 12.5
                     y: parent.height*0.05
@@ -200,139 +113,139 @@ Row {
                                 height: parent.width * 0.05
                                 color:"#EEEEEE"
 
-                                /*Label {
-                                    text: "My Fridge __ Hello, on this page \n The add product works, you can try it, (you need to put at least a name and a category)\nIf there are enough products the scroll bar will appear\nIf questions, ask Antoine"
-                                    anchors.top: parent.top
-                                }*/
+
 
                                 Row {
                                     spacing: 10
                                     padding:10
                                     anchors.verticalCenter:parent.verticalCenter
+                                    width: parent.width
                                     TextField {
                                         y:3
-                                        id: itemTextFieldOffer
-                                        placeholderText: "Search for a specific item"
-                                        //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
-                                    }
-
-                                    Button {
-                                        text: "Category"
-                                        onClicked: {
-                                           //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_category()
-                                        }
-                                    }
-
-                                    Button {
-                                        text: "Time left"
-                                        onClicked: {
-                                            //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
-                                        }
-                                    }
-
-                                    /*Button {
-                                        text: "Price"
-                                        onClicked: {
-                                            // Handle Price button click
-                                        }
-                                    }*/
-
-                                    /*TextField {
-                                        Layout.preferredWidth: 400
                                         id: searchbar
-                                        width: parent.width
                                         placeholderText: "Search for a specific recipe"
-                                        //placeholderTextColor: "#A0A0A0"
-                                        //color: "#544E3D"
-
+                                        Layout.preferredWidth: 5000
                                         onTextChanged: {
-                                        //onEditingFinished: {
-                                            //var counter = itemModel.count
                                             for (var i = 0; i < itemModel.count; i++) {
                                                 MainController.submit(itemModel.get(i).name)
                                             }
                                             var to_display = MainController.search_res(searchbar.text)
                                             //var titles = MainController.titleOrDiet(to_display,0)
-                                            //var diets = MainController.titleOrDiet(to_display,1)
+                                            var diets = MainController.titleOrDiet(to_display,1)
 
                                             itemModel.clear()
-                                            //itemModel.append({"name": to_display})
-                                            //itemModel.append({"name": to_display[1]})
 
-                                            for (var j = 0; j< to_display.length; j++){
-                                                itemModel.append({"name" : to_display[j]})//titles[j], "dietRestriction" : diets[j]})
+                                            if(to_display[0] == "NOTHING FOUND"){
+                                                nothing_found = true;
+                                            }
+                                            else if(searchbar.text == "" && to_display[0] == "NOTHING FOUND"){
+                                                nothing_found = false;
+                                            }else{
+                                                nothing_found = false;
+                                                for (var j = 0; j< to_display.length; j++){
+                                                    itemModel.append({"name" : to_display[j], "dietRestriction": diets[j], "grade": MainController.sendRatingForVis(to_display[j])});//titles[j], "dietRestriction" : diets[j]})
+                                                }
                                             }
 
-                                            //searchbar.text = ""
 
                                         }
                                     }
-
-                                    Text {text: "Sort by:"; color: "#28A745"; Layout.preferredWidth: 75}
+                                    Text {text: "Sort by:"; Layout.preferredWidth: 75; y:4}
 
                                     ComboBox {
+                                            y:2
                                             id: priority
-                                            width: 200
-                                            model: ["None","Cook time", "Vegetarian", "Gluten-free"] //add "Vegan", "Dairy free"
+                                            width: 100
+                                            model: ["None", "Vegetarian", "Gluten-free", "other"] //add "Vegan", "Dairy free"
 
                                             onCurrentIndexChanged: {
                                                 console.log("Selected option:", model[currentIndex]);
+                                                sorter_box = model[currentIndex];
                                             }
                                         }
 
                                     Button {
                                         text: "Sort"
-                                        width: 50
-                                        //anchors.horizontalCenter: parent.horizontalCenter
-
                                         onClicked: {
-                                            //
+                                            if(sorter_box != "None"){
+                                                for (var i = 0; i < itemModel.count; i++) {
+                                                    MainController.submit(itemModel.get(i).name)
+                                                }
+                                                var to_display = MainController.search_res(sorter_box)
+                                                var diets = MainController.titleOrDiet(to_display,1)
+
+                                                itemModel.clear()
+
+                                                if(to_display[0] == "NOTHING FOUND"){
+                                                    nothing_found = true;
+                                                }
+                                                else if(searchbar.text == "" && to_display[0] == "NOTHING FOUND"){
+                                                    nothing_found = false;
+                                                }else{
+                                                    nothing_found = false;
+                                                    for (var j = 0; j< to_display.length; j++){
+                                                        itemModel.append({"name" : to_display[j], "dietRestriction": diets[j], "grade": MainController.sendRatingForVis(to_display[j])});//titles[j], "dietRestriction" : diets[j]})
+                                                    }
+                                                }
+                                            }else{
+                                                for (var i = 0; i < itemModel.count; i++) {
+                                                    MainController.submit(itemModel.get(i).name)
+                                                }
+
+                                                nothing_found = false
+                                                itemModel.clear()
+                                                var len = MainController.getTotalLength()
+                                                for (var j = 0; j < len; j++) {
+                                                    var see = [MainController.gett(j)]
+                                                    itemModel.append({"name": MainController.gett(j), "dietRestriction":MainController.titleOrDiet(see,1)[0], "grade": MainController.sendRatingForVis(MainController.gett(j))})
+                                                }
+                                                scrollView.contentHeight = len*82.5;
+                                                searchbar.text = ""
+                                            }
                                         }
                                     }
 
                                     Button {
                                         text: "Reset"
-                                        width: 50
-                                        //anchors.horizontalCenter: parent.horizontalCenter
-
                                         onClicked: {
                                             for (var i = 0; i < itemModel.count; i++) {
                                                 MainController.submit(itemModel.get(i).name)
                                             }
-                                            //var counter = itemModel.count
+
+                                            nothing_found = false
                                             itemModel.clear()
                                             var len = MainController.getTotalLength()
-                                            //itemModel.append({"name": "Try" + len})
-                                            //itemModel.append({"name": MainController.gett(0)})
                                             for (var j = 0; j < len; j++) {
-                                                itemModel.append({"name": MainController.gett(j)})
+                                                var see = [MainController.gett(j)]
+                                                itemModel.append({"name": MainController.gett(j), "dietRestriction":MainController.titleOrDiet(see,1)[0], "grade": MainController.sendRatingForVis(MainController.gett(j))})
                                             }
                                             scrollView.contentHeight = len*82.5;
-                                            //itemModel = save
+                                            searchbar.text = ""
                                         }
-                                    }*/
+                                    }
                                 }
                             }
 
                             Repeater {
                                 model: itemModel
-                                //property var modelData: model // Assuming each model item is an object
                                 Rectangle {
                                     radius:12.5
                                     width: parent.width*0.98
                                     height: 80
-                                    //padding : parent.width*0.01
                                     border.color: "#28A745"
                                     color: "#EEEEEE"
+
                                     Rectangle {
                                         radius:12.5
-                                        width: parent.height
-                                        height: parent.height
+                                        width: parent.height*0.9
+                                        height: parent.height*0.9
+                                        x : 5
+                                        anchors.verticalCenter: parent.verticalCenter
                                         color:"lightblue"
+
                                         Label {text:"photo"}
                                     }
                                     GridLayout{
-                                        //anchors.horizontalCenter: parent.horizontalCenter
                                         id: repeated
                                         columns: 3
                                         width: parent.width
@@ -340,7 +253,6 @@ Row {
                                         rowSpacing: 10
                                         height: parent.height*0.2
                                         x: parent.height
-                                        //y : parent.height*0.7
 
                                     //ON LINE 1 OF GRID
                                         Text {text: model.name; color: "#28A745"; Layout.preferredWidth: 75}
@@ -543,7 +455,6 @@ Row {
                                                 myPopup.open()
                                             }
                                         }
-                                        //MainController.getRating(model.name)
 
                                         Text {text: model.grade ; color: "#28A745"; Layout.preferredWidth: 75}
 
@@ -593,7 +504,6 @@ Row {
             y: parent.height * 0.25
             id: addtofridge
             text: "Add to Cookbook"
-            //anchors.horizontalCenter: parent.horizontalCenter
 
             onClicked: {
                 addRecipe.open()
@@ -607,7 +517,7 @@ Row {
             width: 100
             text: "Profil"
             onClicked: {
-                //
+                //cookBook.open()
             }
             background: Rectangle {
                         color: "#D7ECDE"
@@ -642,7 +552,6 @@ Row {
             text: "X"
             width: 20
             height: 20
-            //height: 50
             background: Rectangle {
                         color: "red"
                         radius: 50
@@ -659,8 +568,6 @@ Row {
             columnSpacing: 2
             rowSpacing: 10
             height: parent.height
-            //x: parent.height
-            //y : parent.height*0.7
 
         //ON LINE 1 OF GRID
             Text {text: "Enter your rating from 0 to 5:"; color: "#28A745"; Layout.preferredWidth: 250}
@@ -678,37 +585,27 @@ Row {
                     radius: 8
                 }
                 onEditingFinished: {
-                    /*var rating = MainController.submitRating(user_rating.text)
-                    var rating_str = MainController.getRating(user_rating.text)//
-
-
-
+                    var rating = MainController.submitRating(user_rating.text)
 
                     for (var i = 0; i < itemModel.count; i++) {
                         MainController.submit(itemModel.get(i).name)
                     }
-                    //var counter = itemModel.count
+
+                    nothing_found = false
                     itemModel.clear()
                     var len = MainController.getTotalLength()
-                    itemModel.append({"name": "Try" + len})
-                    itemModel.append({"name": MainController.gett(0)})
                     for (var j = 0; j < len; j++) {
-                        itemModel.append({"name": MainController.gett(j),"dietRestriction": "Veggie", "grade": rating})
+                        var see = [MainController.gett(j)]
+                        itemModel.append({"name":MainController.gett(j) , "dietRestriction":MainController.titleOrDiet(see,1)[0], "grade": MainController.sendRatingForVis(MainController.gett(j)) })
                     }
-
-
-                    //itemModel.append({"name": MainController.gett(j),"dietRestriction": "Veggie", "grade": rating_str})
-                    scrollView.contentHeight = len*82.5;*/
-
-                    myPopup.close()
                     user_rating.text = ""
+                    myPopup.close()
                 }
             }
 
             Button {
                 text: "submit"
                 width: 75
-                //anchors.horizontalCenter: parent.horizontalCenter
 
                 onClicked: {
                     myPopup.close()
@@ -734,6 +631,9 @@ Row {
         id: addFavoriteRecipe
     }
 
+    Settings {
+        id: settings
+    }
 
     Popup {
         id: viewRecipePopup
@@ -751,11 +651,12 @@ Row {
             text: "X"
             width: 20
             height: 20
-            //height: 50
+            background: Rectangle {
+                        color: "red"
+                        radius: 50
+            }
 
             onClicked: {
-                //readIngredients.clear()
-                //readInstructions.clear()
                 viewRecipePopup.close()
 
             }
@@ -795,7 +696,7 @@ Row {
             //ON LINE 1 OF GRID
             Text {text: "Total time"; color: "#28A745"; Layout.preferredWidth: 65}
 
-            Text {text: open_time; color: "blue"; Layout.preferredWidth: 65}
+            Text {text: open_time + " hours"; color: "blue"; Layout.preferredWidth: 65}
         }
 
         GridLayout{
@@ -817,7 +718,6 @@ Row {
 
 
         Rectangle{
-            //anchors.top: parent.top
             radius: 20
             y: parent.height * 0.30
             height: parent.height * 0.2
@@ -842,32 +742,18 @@ Row {
                                 width:parent.width
                                 height: parent.height
                                 TextField {
+                                    readOnly: true
                                     padding: 5
                                     id: ingr
-                                    width: parent.width*0.64
+                                    width: parent.width
+                                    Layout.preferredWidth: 400
                                     anchors.left: parent.left
                                     height: 30
-                                    placeholderTextColor: "#A0A0A0"
-                                    //anchors.horizontalCenter: parent.horizontalCenter
                                     background: Rectangle {
                                             color: "#D9E8FF"
                                             radius: 20
                                         }
                                     placeholderText: model.name
-                                }
-                                TextField {
-                                    padding: 5
-                                    id: quant
-                                    width: parent.width*0.34
-                                    anchors.right: parent.right
-                                    height: 30
-                                    placeholderTextColor: "#A0A0A0"
-                                    //anchors.horizontalCenter: parent.horizontalCenter
-                                    background: Rectangle {
-                                            color: "#D9E8FF"
-                                            radius: 20
-                                        }
-                                    placeholderText: "Quantity"
                                 }
                             }
                         }
@@ -888,14 +774,12 @@ Row {
             columnSpacing: 20
             rowSpacing: 10
             y: parent.height*0.505
-            //anchors.bottom: parent.bottom
 
             //ON LINE 1 OF GRID
             Text {text: "Instructions"; color: "#28A745"; Layout.preferredWidth: 150}
         }
 
         Rectangle{
-            //anchors.top: parent.top
             radius: 20
             y: parent.height * 0.6
             height: parent.height * 0.3
@@ -920,17 +804,17 @@ Row {
                                 width:parent.width
                                 height: parent.height
                                 TextField {
+                                    readOnly: true
                                     padding: 5
                                     id: instr
                                     width: parent.width
                                     height: 30
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    placeholderTextColor: "#A0A0A0"
                                     background: Rectangle {
                                             color: "#D9E8FF"
                                             radius: 20
                                         }
-                                    placeholderText: "1: "+ model.name
+                                    placeholderText: model.name
                                 }
                             }
                         }
