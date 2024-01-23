@@ -162,6 +162,12 @@
 			null
 		],
 		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/recipe.h",
+			"MU",
+			"EJRQKI7XPS/moc_recipe.cpp",
+			null
+		],
+		[
 			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/user.h",
 			"MU",
 			"EJRQKI7XPS/moc_user.cpp",
@@ -171,19 +177,7 @@
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/web_teste_autogen/include",
 	"MOC_COMPILATION_FILE" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/web_teste_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : 
-	[
-		"MINGW_HAS_SECURE_API=1",
-		"QT_CORE_LIB",
-		"RPCLIB_MSGPACK=clmdep_msgpack",
-		"RPCLIB_WIN32",
-		"UNICODE",
-		"WIN32",
-		"WIN64",
-		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
-		"_UNICODE",
-		"_WIN64"
-	],
+	"MOC_DEFINITIONS" : [ "RPCLIB_MSGPACK=clmdep_msgpack", "RPCLIB_WIN32" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[
@@ -195,9 +189,6 @@
 	[
 		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include",
 		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3",
-		"C:/Qt/6.5.3/mingw_64/include/QtCore",
-		"C:/Qt/6.5.3/mingw_64/include",
-		"C:/Qt/6.5.3/mingw_64/mkspecs/win32-g++",
 		"C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++",
 		"C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32",
 		"C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward",
@@ -263,6 +254,11 @@
 		],
 		[
 			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/offer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/recipe.cpp",
 			"MU",
 			null
 		],

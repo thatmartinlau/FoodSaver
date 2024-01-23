@@ -7,7 +7,7 @@
 //using namespace std;
 
 //USER
-User::User() {};
+User::User() {}
 
 User::User(std::string username, std::string password) {
     this->username = username;
