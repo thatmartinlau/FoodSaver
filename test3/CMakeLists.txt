@@ -12,7 +12,6 @@ include_directories(../server/POCOSocket/Server/web_teste)
 add_executable(test3	main.cpp
 			date.cpp 
 			fridge.cpp
-			front.cpp
 			ingredient.cpp
 			main.cpp
 			offer.cpp
@@ -21,7 +20,6 @@ add_executable(test3	main.cpp
 			
 			date.h 
 		        fridge.h 
-		        front.hpp 
 		        ingredient.h
 		        offer.h 
 		        recipe.h 
