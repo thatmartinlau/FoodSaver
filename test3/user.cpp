@@ -7,6 +7,8 @@
 //using namespace std;
 
 //USER
+User::User() {};
+
 User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
@@ -42,6 +44,7 @@ bool User::is_username(std::string username) {
 
 // If the server crashes
 // Returns true if username in user and false otherwise
+/*
 bool User::is_username(std::string username) {
     std::vector<User> list_usernames = BackupServer::get_user_list();
     for (int i = 0; i < list_usernames.size(); i++) {
@@ -51,6 +54,7 @@ bool User::is_username(std::string username) {
     }
     return false;
 }
+*/
 
 void User::set_distplay_name(std::string display_name) {
     this->display_name = display_name;

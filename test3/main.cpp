@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-
+    /*
     std::string ingredientName = "salmon";
     Date d;
     Food_class ct = fish;
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     ingredientInstance1.set_FoodClass(fish);
     Date c = ingredientInstance21.get_expiry_date();
     std::cout << c.get_day() << "/" << c.get_month() << "/" << c.get_year() <<  std::endl;
-    std::cout << c.countDays() << std::endl;
+    std::cout << c.countDays() << std::endl; */
     std::cout << "Hello" << std::endl;
 
     User user1("sixtine", "password");
