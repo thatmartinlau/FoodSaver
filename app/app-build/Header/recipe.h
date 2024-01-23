@@ -28,6 +28,8 @@ public:
     std::string get_diet();
     void set_time(double time);
     double get_time();
+    void add_rating(const double &user_rating);
+    double get_rating();
 
 private:
     std::string title;
@@ -38,6 +40,8 @@ private:
     std::string source;
     std::vector<std::string> tags;
     std::string url;
+    double rating = 0;
+    int times_rated = 0;
 
 
 };
