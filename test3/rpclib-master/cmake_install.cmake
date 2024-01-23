@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master
+# Install script for directory: /Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/test3")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,22 +34,26 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Qt/Tools/mingw1120_64/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/rpclib-master/librpc.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/rpclib-master/librpc.a")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librpc.a" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librpc.a")
+    execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librpc.a")
+  endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/[^/]*\\.hpp$" REGEX "/[^/]*\\.inl$" REGEX "/[^/]*\\.in$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/[^/]*\\.hpp$" REGEX "/[^/]*\\.inl$" REGEX "/[^/]*\\.in$" EXCLUDE)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/rpclib/rpclibTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/rpclib/rpclibTargets.cmake"
-         "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/rpclib-master/CMakeFiles/Export/e73be701c83ab2626d77eff6ace677f8/rpclibTargets.cmake")
+         "/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/rpclib-master/CMakeFiles/Export/e73be701c83ab2626d77eff6ace677f8/rpclibTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/rpclib/rpclibTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -62,28 +66,28 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/rpclib" TYPE FILE FILES "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/rpclib-master/CMakeFiles/Export/e73be701c83ab2626d77eff6ace677f8/rpclibTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/rpclib" TYPE FILE FILES "/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/rpclib-master/CMakeFiles/Export/e73be701c83ab2626d77eff6ace677f8/rpclibTargets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/rpclib" TYPE FILE FILES "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/rpclib-master/CMakeFiles/Export/e73be701c83ab2626d77eff6ace677f8/rpclibTargets-debug.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/rpclib" TYPE FILE FILES "/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/rpclib-master/CMakeFiles/Export/e73be701c83ab2626d77eff6ace677f8/rpclibTargets-debug.cmake")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/rpclib" TYPE FILE FILES
-    "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/rpclib-master/cmake/rpclibConfig.cmake"
-    "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/rpclib-master/cmake/rpclibConfigVersion.cmake"
+    "/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/rpclib-master/cmake/rpclibConfig.cmake"
+    "/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/rpclib-master/cmake/rpclibConfigVersion.cmake"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "C:/Program Files (x86)/test3/lib/pkgconfig/rpclib.pc")
+   "/usr/local/lib/pkgconfig/rpclib.pc")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "C:/Program Files (x86)/test3/lib/pkgconfig" TYPE FILE FILES "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/rpclib-master/rpclib.pc")
+  file(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/rpclib-master/rpclib.pc")
 endif()
 

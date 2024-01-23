@@ -1,86 +1,103 @@
 web_teste_autogen/timestamp: \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/Qt6Config.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/Qt6ConfigExtras.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/Qt6Targets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/Qt6VersionlessTargets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtFeature.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtFeatureCommon.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicTestHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicToolHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreVersionlessTargets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/QtInstallPaths.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointMinGW32Target.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateAdditionalTargetInfo.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersion.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersionImpl.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets-relwithdebinfo.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateVersionlessTargets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateAdditionalTargetInfo.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfig.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersionImpl.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateTargets.cmake \
-	C:/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateVersionlessTargets.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeFindDependencyMacro.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CheckCXXCompilerFlag.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CheckCXXSourceCompiles.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CheckIncludeFileCXX.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CheckLibraryExists.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/FindPackageMessage.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/FindThreads.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/GNUInstallDirs.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Internal/CheckCompilerFlag.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Internal/CheckFlagCommonConfig.cmake \
-	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/Internal/CheckSourceCompiles.cmake \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/build-test3-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/common_characteristics.hpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/CMakeLists.txt \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpc_client_side.cpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpc_client_side.hpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/date.cpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/date.h \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/fridge.cpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/fridge.h \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/front.cpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/front.hpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/ingredient.cpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/ingredient.h \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/offer.cpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/offer.h \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/user.cpp \
-	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/test3/user.h \
-	C:/Qt/Tools/CMake_64/bin/cmake.exe
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/build-test3-Working_setup-Debug/.qtc/package-manager/auto-setup.cmake \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/server/POCOSocket/Server/common_characteristics.hpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/server/POCOSocket/Server/web_teste/CMakeLists.txt \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/server/POCOSocket/Server/web_teste/rpc_client_side.cpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/server/POCOSocket/Server/web_teste/rpc_client_side.hpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/date.cpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/date.h \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/fridge.cpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/fridge.h \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/front.cpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/front.hpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/ingredient.cpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/ingredient.h \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/offer.cpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/offer.h \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/user.cpp \
+	/Users/sixtinelyonnet/Documents/Polytechnique/Semester3/CSE201/FoodSaver/test3/user.h \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/FindWrapAtomic.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/Qt6Config.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/Qt6ConfigExtras.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/Qt6ConfigVersion.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/Qt6Dependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/Qt6Targets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/Qt6VersionlessTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtFeature.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtFeatureCommon.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicAppleHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicPluginHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicTargetHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicTestHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicToolHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreConfig.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreMacros.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CorePlugins.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6CoreVersionlessTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginAdditionalTargetInfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginConfig.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginDependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginTargets-relwithdebinfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginAdditionalTargetInfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginConfig.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginDependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginTargets-relwithdebinfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginAdditionalTargetInfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginConfig.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginDependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginTargets-relwithdebinfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginAdditionalTargetInfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginConfig.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginDependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginTargets-relwithdebinfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginAdditionalTargetInfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginConfig.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginDependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginTargets-relwithdebinfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginAdditionalTargetInfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginConfig.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginDependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginTargets-relwithdebinfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6Core/QtInstallPaths.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake \
+	/Users/sixtinelyonnet/Qt/6.5.3/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/CMakeFindDependencyMacro.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/CheckCXXCompilerFlag.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/CheckCXXSourceCompiles.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/CheckIncludeFileCXX.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/CheckLibraryExists.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/FindPackageMessage.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/FindThreads.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/GNUInstallDirs.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/Internal/CheckCompilerFlag.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/Internal/CheckFlagCommonConfig.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake \
+	/Users/sixtinelyonnet/Qt/Tools/CMake/CMake.app/Contents/bin/cmake
