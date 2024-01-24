@@ -69,25 +69,6 @@ vector<vector<string>> check_expiration(client& c) {
     return result;
 }
 
-std::thread expirationChecker([]() {
-    while (true) {
-        auto expiringItems = check_expiration(c);
-
-        for (const auto& item : expiringItems) {
-            try {
-                int64_t chatId = std::stoll(item[0]);
-                std::string message = item[1];
-                bot.getApi().sendMessage(chatId, message);
-            } catch (const std::exception& e) {
-                std::cerr << "Error sending message: " << e.what() << std::endl;
-            }
-        }
-
-        std::this_thread::sleep_for(std::chrono::minutes(30)); // Sleep for 30 minutes
-    }
-});
-
-
 int main() {
     bot.getEvents().onCommand("start", [](TgBot::Message::Ptr message) {
         bot.getApi().sendMessage(message->chat->id, "Welcome to FoodSaver bot, I can help you manage your fridge account." 
@@ -195,11 +176,28 @@ int main() {
                 bot.getApi().sendMessage(chatId, "An error occurred while linking your fridge.");
             }
         } else {
-            bot.getApi().sendMessage(chatId, "Sorry, I couldn't understand your command.");
+            bot.getApi().sendMessage(chatId, "Sorry, I couldn't understand. Please use /start to check more commands. ");
         }
     });
 
-    // std::thread expirationCheckerThread = std::thread(expirationChecker);
+    //std::thread expirationCheckerThread = std::thread(expirationChecker);
+    std::thread expirationChecker([]() {
+        while (true) {
+            auto expiringItems = check_expiration(c);
+
+            for (const auto& item : expiringItems) {
+                try {
+                    int64_t chatId = std::stoll(item[0]);
+                    std::string message = item[1];
+                    bot.getApi().sendMessage(chatId, message);
+                } catch (const std::exception& e) {
+                    std::cerr << "Error sending message: " << e.what() << std::endl;
+                }
+            }
+
+            std::this_thread::sleep_for(std::chrono::minutes(30)); // Sleep for 30 minutes
+        }
+    });
 
     // Main loop for the bot
     try {
@@ -211,6 +209,8 @@ int main() {
     } catch (TgBot::TgException& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
+
+    expirationChecker.join();
 
     return 0;
 }
