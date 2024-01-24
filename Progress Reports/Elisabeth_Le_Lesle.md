@@ -11,6 +11,7 @@ Session 1 : 27/11
     - seeing people’s fridges: sort of like an Instagram for fridges, where one can add comments
 
 Session 2: 
+Lots of research done on the different recipe generating websites, like Tesco recipe finder, SuperCook or Dishgen, as well as on the different API options for barcode scanning of ingredients.
 
 Session 3:
     - download XCode on MacOS to download OpenCV 
@@ -31,4 +32,6 @@ Session 5:
   - for now, define a simple empty list matching_recipes to which we append all recipes with the given ingredients
   - then there should be a sorting for maximum optimization
   => should return recipe ideas (with pictures?) in order of relevance (most fridge and recipe ingredients in common)
+
+
 
