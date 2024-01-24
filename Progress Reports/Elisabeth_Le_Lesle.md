@@ -15,7 +15,7 @@ Lots of research done on the different recipe generating websites, like Tesco re
 
 Session 3:
     - download XCode on MacOS to download OpenCV 
-    - 
+    - Continued research on the barcode scan, through Youtube tutorials, github projects on a similar topic. The softwares needed still don’t work (XCode, Command Line Tools, Homebrew, OpenCV). I managed to add the PDF.Co API, which supposedly reads 1D and 2D Barcodes, but on QT Creator, I did not know how to use the code sample. 
 
 Session 4:
     - found PDF.co API : analysis of downloaded code that implements the API
