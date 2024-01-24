@@ -59,7 +59,7 @@ set_target_properties(rpclib::rpc PROPERTIES
 set_property(TARGET rpclib::rpc APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(rpclib::rpc PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/test3/rpclib-master/librpc.a"
+  IMPORTED_LOCATION_DEBUG "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/librpc.a"
   )
 
 # This file does not depend on other imported targets which have

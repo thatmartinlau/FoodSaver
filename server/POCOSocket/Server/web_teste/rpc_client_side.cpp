@@ -2,7 +2,6 @@
 #include <string>
 #include<vector>
 
-#include "rpc/client.h"
 #include "rpc_client_side.hpp"
 
 

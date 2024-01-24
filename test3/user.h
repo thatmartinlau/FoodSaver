@@ -5,7 +5,7 @@
 #include "fridge.h"
 #include "offer.h"
 #include "recipe.h"
-#include "rpc_client_side.hpp"
+//#include "rpc_client_side.hpp"
 
 //#include <iostream>
 #include <list>
@@ -69,7 +69,7 @@ private:
     std::vector<Offer> offer_list;
     std::vector<Recipe> liked_recipes;
     
-    ServerUser srv_usr;
+//    ServerUser srv_usr;
 };
 
 std::vector<std::string> getUsers();

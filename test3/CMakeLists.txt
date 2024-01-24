@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-add_subdirectory(../server/POCOSocket/Server/web_teste ${CMAKE_CURRENT_SOURCE_DIR})
+add_subdirectory(../server/POCOSocket/Server/web_teste ../server/POCOSocket/Server/web_teste)
 include_directories(../server/POCOSocket/Server/web_teste)
 
 add_executable(test3				
@@ -24,12 +24,10 @@ add_executable(test3
 	offer.cpp
 	user.cpp
 	recipe.cpp
-	
-#	rpc_client_side.cpp
-#	rpc_client_side.hpp
+
 )
 
-#target_link_libraries(test3 PRIVATE web_teste)
+target_link_directories(test3 PRIVATE web_teste)
 
 include(GNUInstallDirs)
 install(TARGETS test3
