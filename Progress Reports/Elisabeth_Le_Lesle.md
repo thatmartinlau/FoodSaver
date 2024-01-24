@@ -41,4 +41,10 @@ Session 6:
 discussed the add Bachelor recipes implementation with the front end team
 as our new class Recipe is based on the previous Ingredient and Fridge classes, i spent time with the server team to understand and use their code
 
+Session 7: 
+
+Currently focusing on the adding recipes part from the Bachelor aspect: code of the json functions to read JSON from a file (to read the data), to write JSON to a file (this will be used to add the Bachelor recipes from the website into the JSON database)
+file is temp.json.cpp
+
+
 
