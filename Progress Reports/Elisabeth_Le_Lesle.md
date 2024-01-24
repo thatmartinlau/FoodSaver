@@ -51,7 +51,12 @@ then having a JSON merging function to add the newly written JSON in the JSON re
 Session 8:
 finished the recipe class with Charlotte with the adding new recipes part: instead of the previous function ideas and tests, there is now a JSON reader function, and an adding  new recipe function where the strings are taken directly from the user typing bars and then inserted into the JSON recipe dataset : called RecipeBook.cpp and RecipeBook.hpp
 currently working on using the recipe class and the recipe json data set to write a code that, given a string (from a search bar from a website) of ingredients, then another with a dietary restriction (not always given but if given, must take into account), then another with an ideal cooking time. the ingredients are the priority, then the diet restriction and then the cooking time. the code should return a list of recipe names with ingredients in common with the given input ingredients string, diet restriction and cooking time. SOrt by order of things in common between the asked recipe and the given one (first put the recipes with the most recipe ingredients in common with the input ingredient string with the right diet and similar cooking time, then the recipes with the most recipe ingredients in common with the input ingredient string with the right diet, then the recipes with the most recipe ingredients in common with the input ingredient string, and then other recipes with common ingredient(s) and diet). 
-created a new RecipeSearch.cpp and recipeSearch.hpp that describe a new RecipeSearch class (using the RecipeBook class and the Recipes.json file
+created a new RecipeSearch.cpp and recipeSearch.hpp that describe a new RecipeSearch class (using the RecipeBook class and the Recipes.json file. With Cyriac : create an interface for users to type the ingredients, the diet restriction  and the cooking time in the recipe search. Basically they would need a space on the page called “Recipe Search” or they would have 3 spaces to Type:
+- the first for the ingredients (a string where each ingredient is written with a capital letter and separated by a comma, but you can just write it next to the box so they understand, don't worry about converting the strings)
+- the second for dietary restrictions (like Vegetarian…) like a thong in capital letters
+- the third for the cooking time in minutes (just an int)
+Just like ofr adding recipes, there will be one searchbar in which the user prompt will be of the form : “Vegetarian pasta with…”
+
 
 
 
