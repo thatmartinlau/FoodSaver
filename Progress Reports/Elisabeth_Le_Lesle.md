@@ -77,6 +77,9 @@ Session 10:
 With Sixtine, helped with the functions like_recipe and unlike_recipe, which I’m going to use to add or take recipes from the Personal Cookbook. The liked_recipes is a vector in the user.h file used to store the recipes in question in the user’s file, in order to individualize the liked recipes. in the OnClicked section of the button, I’m going to have to differentiate when I click to add a recipe, and when I click to remove a recipe from the favorites. I have 2 options: either I find a way to unlike when the recipe is already in liked recipes, and then it’s removed, or if I create a second button “UNLIKE” but that’s only present in the popup of the liked functions. 
 in main.cpp of the cyriac-recipes branch, I included the user.h file to be able to link the QML with the functions on the front end.
 
+Session 11: 
+Finalized the button
+
 
 
 
