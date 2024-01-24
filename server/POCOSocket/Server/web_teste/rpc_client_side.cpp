@@ -57,14 +57,15 @@ void ServerUser::update_user_characteristics(User usr) {
     basic_data.marketplace_notifications = usr.get_marketplace_notifications();
 
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_user_characteristics", username, password, basic_data);
+    new_cli.call("update_user_characteristics", username, password, ); //FI THIS CODE
 }
 
 //      General Functions:
 
 vector<string> get_user_name_list() {
     rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_client.call("get_user_name_vectors");
+    vector<string> ret_list = new_client.call("get_user_name_vectors").as<vector<string>>();
+    return ret_list;
 }
 
 
