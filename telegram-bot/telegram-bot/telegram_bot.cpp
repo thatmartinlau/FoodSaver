@@ -75,7 +75,7 @@ int main() {
                                                     "Here are the things that I can do for you:\n"
                                                     "- /Login - login to your fridge account\n"
                                                     "- /Register - register a new fridge account\n"
-                                                    "- /Check_your_fridge - check your fridge contents\n");
+                                                    "- /Check_fridge - check your fridge contents\n");
     });
 
     //
@@ -123,7 +123,7 @@ int main() {
             }
 
             if (!formattedFridgeContent.empty()) {
-                bot.getApi().sendMessage(chatId, "Your fridge contains: \n" + formattedFridgeContent);
+                bot.getApi().sendMessage(chatId, "Your fridge contains: \n" "Food name, Category, Quantity, Expired date \n" + formattedFridgeContent);
             } else {
                 bot.getApi().sendMessage(chatId, "Your fridge is currently empty.");
             }
