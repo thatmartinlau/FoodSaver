@@ -28,6 +28,21 @@ void ServerUser::delete_self_in_db() {
 }
 
 
+void ServerUser::get_user_characteristics(UserData usd){
+    basic_user_data data = usd.basic_u_data;
+    this-> display_name = data.display_name;
+    this->telegram_username= data.telegram_username;
+    this -> gender = data.gender;
+    this-> promotion = data.promotion;
+    this ->building_address = data.building_address;
+    this-> phone_number = data.phone_number;
+    this-> food_and_dietary_restrictions = data.food_and_dietary_restrictions;
+    this-> telegram_notifications = data.telegram_notifications;
+    this-> marketplace_notifications= data.marketplace_notifications;
+
+
+}
+
 
 void ServerUser::update_user_characteristics(User usr) {
     basic_user_data basic_data;

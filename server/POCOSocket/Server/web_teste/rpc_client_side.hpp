@@ -29,6 +29,19 @@ class ServerUser {
     
 public:
     
+    // put in public easier to code the constructor of User :
+
+    std::string display_name;
+    std::string telegram_username;
+    int gender;
+    int promotion;
+    std::string building_address;
+    int phone_number;
+    std::list<bool> food_and_dietary_restrictions;
+    int telegram_notifications;
+    int marketplace_notifications;
+
+
     //Creates a user for temporary Use.
     ServerUser();
     ServerUser(string username, string psswd);//if user doesn't exist in database, add him to database.
@@ -52,6 +65,7 @@ public:
 private:
     string username;
     string password;
+
 };
 
 vector<string> getOfferMapFromServer();

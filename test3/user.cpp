@@ -15,7 +15,17 @@ User::User(std::string username, std::string password) {
     this->server_user= ServerUser(username, password);
     this->user_fridge = server_user.get_fridge();
     this -> offer_list = server_user.get_offer_list();
+    this -> display_name = server_user.display_name;
+    this -> telegram_username = server_user.telegram_username;
+    this -> gender = server_user.gender;
+    this-> phone_number = server_user.phone_number;
+    this-> food_and_dietary_restrictions = server_user.food_and_dietary_restrictions;
+    this-> telegram_notifications = server_user.telegram_notifications;
+    this-> marketplace_notifications= server_user.marketplace_notifications;
+
 }
+
+
 
 User::~User() {
 }
