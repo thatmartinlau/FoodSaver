@@ -5,7 +5,7 @@
 #include "fridge.h"
 #include "offer.h"
 #include "recipe.h"
-//#include "rpc_client_side.hpp"
+#include "rpc_client_side.hpp"
 
 //#include <iostream>
 #include <list>
@@ -45,14 +45,16 @@ public:
     int get_telegram_notifications();
     void set_marketplace_notifications(int m);
     int get_marketplace_notifications();
-    //json toJson () const;
     std::vector<Offer> get_my_offers();
     void add_offer(Offer new_offer);
     Offer remove_offer(Offer *offer_to_delete);
     void like_recipe(Recipe recipe);
     void unlike_recipe(Recipe recipe);
     bool operator==(User& other);
-
+    
+    //DATABASE INVOLVMENT FUNCTIONS:
+    void set_user_params_from_db();
+    
 private:
     std::string username;
     std::string password;
@@ -69,7 +71,7 @@ private:
     std::vector<Offer> offer_list;
     std::vector<Recipe> liked_recipes;
     
-//    ServerUser srv_usr;
+    ServerUser server_user;
 };
 
 std::vector<std::string> getUsers();

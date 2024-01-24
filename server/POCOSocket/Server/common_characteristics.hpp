@@ -9,7 +9,19 @@
 #include <sstream>
 using namespace std;
 
-//ALl constant names, common to both, for comms.
+//strucut in common between server_side.cpp and webteste/client_side.cpp
+struct basic_user_data {
+    string display_name;
+    string telegram_username;
+    int gender;
+    int promotion;
+    string building_address;
+    int phone_number;
+    list<bool> food_and_dietary_restrictions;
+    int telegram_notifications;
+    int marketplace_notifications;
+    basic_user_data() {}
+};
 
 
 
@@ -76,6 +88,16 @@ vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string
      return just_vector;
 
 }
+
+
+vector<string> serialize_basic_characs(basic_user_data u_data) {
+    vector<string> serialized_characs;
+    serialized_characs.push_back();
+}
+
+
+
+
 // deserialize --> vector<string> --> vector<vector<string>>
 
 // [Ingredient1, Ingredient2, .... , [Price]
@@ -174,24 +196,6 @@ unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<str
     return result;
 }
 
-
-
-
-
-
-
-struct basic_user_data {
-    string display_name;
-    string telegram_username;
-    int gender;
-    int promotion;
-    string building_address;
-    int phone_number;
-    list<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
-    basic_user_data() {}
-};
 
 
 #endif

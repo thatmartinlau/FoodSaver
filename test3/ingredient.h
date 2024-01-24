@@ -3,14 +3,6 @@
 
 #include "date.h"
 
-//#include <iostream>
-//#include <list>
-//#include <string>
-//#include <ctime>
-
-
-//#include "nlohmann/json.hpp"
-//using json = nlohmann::json;
 //using namespace std;
 
 enum Food_class{
@@ -55,7 +47,6 @@ public:
     void set_expiry_date(Date expiry_date);
     Date get_expiry_date();
     int countDays();
-    //json toJson () const;
 
 private:
     std::string name;

@@ -12,6 +12,8 @@ User::User() {}
 User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
+    server_user(username, password);
+    server_user.get_all_user_characs()
 }
 
 User::~User() {
@@ -19,6 +21,7 @@ User::~User() {
 
 void User::set_username(std::string username) {
     this->username = username;
+    server_user.update_user_password_and_username(username, server_user.password);
 }
 
 std::string User::get_username() {
@@ -180,4 +183,8 @@ void User::unlike_recipe(Recipe recipe) {
 
 bool User::operator==(User& other) {
     return (this->get_username() == other.get_username());
+}
+
+void User::set_user_params_from_db() {
+    
 }

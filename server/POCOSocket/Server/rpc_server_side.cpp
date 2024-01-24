@@ -31,16 +31,8 @@ const string Database_recipe_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/
 
 class UserData {
 public:
-    UserData(string password, basic_user_data basic_u_data) {
-        display_name = basic_u_data.display_name;
-        telegram_username = basic_u_data.telegram_username;
-        gender = basic_u_data.gender;
-        promotion = basic_u_data.promotion;
-        building_address = basic_u_data.building_address;
-        phone_number = basic_u_data.phone_number;
-        food_and_dietary_restrictions = basic_u_data.food_and_dietary_restrictions;
-        telegram_notifications = basic_u_data.telegram_notifications;
-        marketplace_notifications = basic_u_data.marketplace_notifications;
+    UserData(string password, basic_user_data basic_us_data) {
+        basic_u_data = basic_us_data
     };
 
     UserData(string password){
@@ -49,15 +41,7 @@ public:
     UserData() {}
     ~UserData() {}
     string password;
-    string display_name;
-    string telegram_username;
-    int gender;
-    int promotion;
-    string building_address;
-    int phone_number;
-    int telegram_notifications;
-    int marketplace_notifications;
-    list<bool> food_and_dietary_restrictions;
+    basic_user_data basic_u_data;
     vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!    
     vector<vector<vector<string>>> offer_list; //Implied: offer is [Ingredient, [price]]. Offer list is vector of this offer type.
 };
@@ -95,7 +79,6 @@ void read_simple_types_from_csv() {
         basic_u_data.promotion = std::stoi(user_data[5]); //convert to int
         basic_u_data.building_address = user_data[6];
         basic_u_data.phone_number = std::stoi(user_data[7]); //convert to int
-        //basic_user_data's list<bool> taken out in fridge_from_csv function.
         basic_u_data.telegram_notifications = std::stoi(user_data[8]); //convert to int
         basic_u_data.marketplace_notifications = std::stoi(user_data[9]);//convert to int
         
@@ -404,20 +387,20 @@ void update_user(string old_username, string old_password, string new_username, 
 }
     
 }
-    
-void update_user_characteristics(string username, string password, basic_user_data new_characs) {
+
+void update_user_characteristics(string username, string password, vector<string> new_characs) {
     auto el = database->find(username);
     
     if (el != database->end() && password==el->second.password) {
-            el->second.display_name = new_characs.display_name;
-            el->second.telegram_username = new_characs.telegram_username;
-            el->second.gender = new_characs.gender;
-            el->second.promotion = new_characs.promotion;
-            el->second.building_address = new_characs.building_address;
-            el->second.phone_number = new_characs.phone_number;
-            el->second.food_and_dietary_restrictions = new_characs.food_and_dietary_restrictions;
-            el->second.telegram_notifications = new_characs.telegram_notifications;
-            el->second.marketplace_notifications = new_characs.marketplace_notifications;
+            el->second.display_name = new_characs[0];
+            el->second.telegram_username = new_characs[1];
+            el->second.gender = new_characs[2];
+            el->second.promotion = new_characs[3];
+            el->second.building_address = new_characs[4];
+            el->second.phone_number = new_characs[5];
+            el->second.food_and_dietary_restrictions = new_characs[6];
+            el->second.telegram_notifications = new_characs[7];
+            el->second.marketplace_notifications = new_characs[8];
     }
     else if(password != el->second.password){
             // Password does not match
@@ -432,7 +415,8 @@ else {
     
 }
 
-void update_fridge(string username, string password, vector<vector<string>> &new_fridge) {
+void update_fridge(string username, string password, vector<string> fridge) {
+    vector<vector<string>> new_fridge = deserialize_fridge(fridge);
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
@@ -459,7 +443,8 @@ void update_fridge(string username, string password, vector<vector<string>> &new
         }
 } //updates a user fridge
 
-void update_offer(std::string username, string password, vector<vector<vector<string>>> &new_offer) {
+void update_offer(std::string username, string password, vector<string> offer) {
+        vector<vector<vector<string>>> new_offer = deserialize_offer_list(offer);
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
@@ -486,7 +471,7 @@ void update_offer(std::string username, string password, vector<vector<vector<st
         }
 } //updates a user offer list
 
-void addRecipes(const vector<string>& new_recipes) {
+void addRecipes(const vector<string> new_recipes) {
         for (const string& recipe : new_recipes) {
             recipes_list->push_back(recipe);
         }
@@ -560,7 +545,16 @@ vector<string> getAllRecipes() {
         return all_recipes;
 }
 
-
+vector<string> get_user_characteristics(username, password) {
+    auto el = database->find(username); // Find the username in the database
+    
+    if (el != database->end() && password == el->second.password) {
+        // Username and password match correctly
+        return serialize_basic_characs(el->second.basic_u_data);   
+    }
+    else {}
+    
+}
 
 
 //check functions:
@@ -606,7 +600,7 @@ int main() {
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
 
-//    srv.bind("update_user_characteristics", &update_user_characteristics);
+    srv.bind("update_user_characteristics", &update_user_characteristics);
     
     srv.bind("update_fridge", &update_fridge);
     srv.bind("update_offer", &update_offer);
@@ -621,12 +615,12 @@ int main() {
     srv.bind("addRecipes", &addRecipes);
     srv.bind("getAllRecipes", &getAllRecipes);
     
+    srv.bind("get_user_characteristics", &get_user_characteristics);
     //Check functions:
     srv.bind("check_user", &check_user);
     
     
     //binding test functions:
-//    srv.bind("test_sending_fridges", &test_sending_fridges);
     srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
     srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
     
@@ -637,10 +631,5 @@ int main() {
     srv.run();
     cout << "running" << endl;    
         
-    
-    
-    
-    
-    write_to_csv(); //need to implement side-by-side, every 5mins it updates. Or, when server closes, it updates.
     return 0;    
 }

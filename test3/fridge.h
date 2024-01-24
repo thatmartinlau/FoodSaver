@@ -3,10 +3,6 @@
 
 #include "ingredient.h"
 
-//#include <iostream>
-//#include <list>
-//#include <string>
-//#include <ctime>
 
 #include <vector>
 
@@ -19,11 +15,9 @@ public:
     std::vector<Ingredient> get_list();
     void add_elt(Ingredient elt);
     Ingredient pop_elt(Ingredient *getit);
-    void saveToJsonFile(const std::string& fileFridge);
     //void sort_fridge(std::string* sort_key);
     std::vector<Ingredient> sort_ingredients_by_category();
     std::vector<Ingredient> sort_ingredients_by_expiration_date();
-    //json toJson () const;
 
 private:
     std::vector<Ingredient> ingredient_list;

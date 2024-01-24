@@ -24,7 +24,6 @@ ServerUser::~ServerUser() {}
 void ServerUser::delete_self_in_db() {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("remove_user", username, password);
-
 }
 
 
@@ -40,8 +39,8 @@ void ServerUser::update_user_characteristics(User usr) {
     basic_data.telegram_notifications = usr.get_telegram_notifications();
     basic_data.marketplace_notifications = usr.get_marketplace_notifications();
 
-    //    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    //    new_cli.call("update_user_characteristics", username, password, basic_data);
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    new_cli.call("update_user_characteristics", username, password, basic_data);
 }
 
 //      General Functions:
@@ -246,12 +245,6 @@ get_all_recipes() {
 //    Sending and receiving functions, from and to, the server.
 
 
-
-
-
-
-
-
 Fridge ServerUser::get_fridge() { //
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     vector<string> fridge_vector_as_single = new_cli.call("get_fridge", username, password).as<vector<string>>();
@@ -423,18 +416,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 //return 1;
 
 
-//    // [name, expiry_date, quantity, category, priority_level]
-
-
-//}
-
-
-
-//int var = test_msgpack();
-
-
-
-
+//    // [name, expiry_date, qua
 
 
 int test_send_vec_string() {
