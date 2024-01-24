@@ -50,13 +50,13 @@ public:
     int get_marketplace_notifications();
     std::vector<Offer> get_my_offers();
     void add_offer(Offer new_offer);
+    Fridge get_user_fridge();
+    void add_ingredient_fridge(Ingredient elt);
     Offer remove_offer(Offer *offer_to_delete);
     void like_recipe(Recipe recipe);
     void unlike_recipe(Recipe recipe);
     bool operator==(User& other);
-    
-    
-    
+
 private:
     std::string username;
     std::string password;
@@ -72,9 +72,12 @@ private:
     Fridge user_fridge;
     std::vector<Offer> offer_list;
     std::vector<Recipe> liked_recipes;
-    
     ServerUser server_user;
 };
+
+// User --> void get_user_characteristics --> struct (display name , ) with all the info and
+
+
 
 std::vector<std::string> getUsers();
 

@@ -28,6 +28,7 @@ void ServerUser::delete_self_in_db() {
 }
 
 
+
 void ServerUser::update_user_characteristics(User usr) {
     basic_user_data basic_data;
     basic_data.display_name = usr.get_display_name();
@@ -243,8 +244,21 @@ get_all_recipes() {
 
 
 
-//    Sending and receiving functions, from and to, the server.
+string ServerUser::get_username(){
+    return this->username;
 
+}
+
+string ServerUser::get_password(){
+    return this->password;
+
+}
+
+// Link between se
+
+
+
+//    Sending and receiving functions, from and to, the server.
 
 Fridge ServerUser::get_fridge() { //
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);

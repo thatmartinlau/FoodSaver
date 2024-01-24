@@ -12,8 +12,9 @@ User::User() {}
 User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
-    server_user(username, password);
-    server_user.get_all_user_characs();
+    this->server_user= ServerUser(username, password);
+    this->user_fridge = server_user.get_fridge();
+    this -> offer_list = server_user.get_offer_list();
 }
 
 User::~User() {
@@ -21,7 +22,7 @@ User::~User() {
 
 void User::set_username(std::string username) {
     this->username = username;
-    server_user.update_user_password_and_username(username, server_user.password);
+    server_user.update_user_password_and_username(username, server_user.get_password());
 }
 
 std::string User::get_username() {
@@ -31,6 +32,17 @@ std::string User::get_username() {
 bool User::check_password(std::string input_username, std::string input_password) {
     return input_username == username && input_password == password;
 }
+
+
+Fridge User::get_user_fridge(){
+    return this->user_fridge;
+    }
+
+void User::add_ingredient_fridge(Ingredient elt){
+    user_fridge.add_elt(elt);
+    }
+
+
 
 /*
 // Returns true if username in user and false otherwise
@@ -185,6 +197,12 @@ bool User::operator==(User& other) {
     return (this->get_username() == other.get_username());
 }
 
+
+/*
 void User::set_user_params_from_db() {
     
 }
+
+*/
+
+

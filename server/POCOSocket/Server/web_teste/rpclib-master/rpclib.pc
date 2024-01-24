@@ -1,10 +1,10 @@
-prefix=C:/Program Files (x86)/test3
+prefix=/usr/local
 exec_prefix=
-libdir=C:/Program Files (x86)/test3/lib
-includedir=C:/Program Files (x86)/test3/include
+libdir=/usr/local/lib
+includedir=/usr/local/include
 
 Name: rpclib
 Description: rpclib is a msgpack-rpc library written using modern C++
 Version: 2.3.0
 Libs: -L${libdir} -l
-Cflags: -I${includedir} rpclib_cflags-NOTFOUND
+Cflags: -I${includedir} -Wall -pedantic -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-missing-prototypes -Wno-undef -Wno-unused-lambda-capture -Wno-zero-as-null-pointer-constant

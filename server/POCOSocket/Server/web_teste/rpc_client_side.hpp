@@ -33,15 +33,19 @@ public:
     ServerUser();
     ServerUser(string username, string psswd);//if user doesn't exist in database, add him to database.
     ~ServerUser();
+
+    string get_username(); // to use in get_all_ServerUser_characteristics
+    string get_password(); // to use in get_all_ServerUser_characteristics
+
     
     void delete_self_in_db(); //deletes the user from the database.
-    void update_user_password_and_username(string new_username, string new_password); //gives new username and password to database.
+    void update_user_password_and_username(string username, string password); //gives new username and password to database.
     
-    
+    User get_all_ServerUser_characteristics(); // create User from data from ServerUser.
     Fridge get_fridge(); //receives the fridge from the database.
     vector<Offer> get_offer_list(); //gets db's offer list for user
     
-    void update_user_characteristics(User usr); //updates user's characteristics, ASIDE from username/password. that's update+user.    
+    void update_user_characteristics(User usr); //updates user's characteristics, ASIDE from username/password. that's update+user.
     void update_fridge(Fridge &f_input); //updates the fridge on the database. Adds/removes necessary items with comparisons. Keeps the local fridge unchanged.
     void update_offer_list(vector<Offer> &offer_list); //updates db's offer list.
     
