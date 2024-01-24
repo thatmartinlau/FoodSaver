@@ -44,7 +44,10 @@ as our new class Recipe is based on the previous Ingredient and Fridge classes, 
 Session 7: 
 
 Currently focusing on the adding recipes part from the Bachelor aspect: code of the json functions to read JSON from a file (to read the data), to write JSON to a file (this will be used to add the Bachelor recipes from the website into the JSON database)
-file is temp.json.cpp
+file is temp.json.cpp . 
+The plan is to have a file that reads the JSON recipe dataset, one that writes a JSON file out of the strings imputed by the user
+then having a JSON merging function to add the newly written JSON in the JSON recipe dataset
+
 
 
 
