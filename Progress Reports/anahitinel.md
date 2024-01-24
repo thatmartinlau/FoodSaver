@@ -35,4 +35,7 @@ Progress report 4:
 Worked on implementing the classes for ingredients with the expiration counter and setting the color (green if there is over a week for the ingredient to expire, yellow wif there's 7 to 2 days left for the expiration, and red for 2 days away from the expiration, fridge, and recipe, as well as the JSON files that will be containing the recipes, ingredients necessary and hopefully pictures. 
 
 Progress report 5:
-Worked on the RecipeBook cpp and hpp files, applying JSON files
+Worked on the RecipeBook cpp and hpp files, applying JSON files. Sent over the classes and commited the to the front branch. Next session will start working on the telegram bot and applying the Foodsaver as a medium of communication, sending ingredients that some users will not use to other users. 
+
+Progress report 6:
+
