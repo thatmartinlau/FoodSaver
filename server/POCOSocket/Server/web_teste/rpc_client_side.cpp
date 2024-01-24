@@ -296,12 +296,8 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
 
 
-//// To re-do !!
-
 
 // working on vector<Offer> ;
-
-
 
 vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);

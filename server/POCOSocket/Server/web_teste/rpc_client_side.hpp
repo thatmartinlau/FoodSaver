@@ -27,7 +27,6 @@ public:
     void update_user_password_and_username(string new_username, string new_password); //gives new username and password to database.
     
     
-    User get_all_user_characs(string username, string password); //TO CODE, not urgent. Easy: return all user data    
     Fridge get_fridge(); //receives the fridge from the database.
     vector<Offer> get_offer_list(); //gets db's offer list for user
     

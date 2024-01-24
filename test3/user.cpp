@@ -13,7 +13,7 @@ User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
     server_user(username, password);
-    server_user.get_all_user_characs()
+    server_user.get_all_user_characs();
 }
 
 User::~User() {

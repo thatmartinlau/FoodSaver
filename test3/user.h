@@ -52,8 +52,7 @@ public:
     void unlike_recipe(Recipe recipe);
     bool operator==(User& other);
     
-    //DATABASE INVOLVMENT FUNCTIONS:
-    void set_user_params_from_db();
+    
     
 private:
     std::string username;
