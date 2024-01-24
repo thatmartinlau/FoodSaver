@@ -36,5 +36,9 @@ Session 5:
   => should return recipe ideas (with pictures?) in order of relevance (most fridge and recipe ingredients in common)
 ideally, we would want to implement another function that would allow bachelors to add their very own recipes to the data base. However, out of simplicity (and to spare us the difficulty of converting the recipes to JSON format), the website would have spaces to write each recipe characteristic in the format we want (error if not the same format e.g. lowercase, int, list of ingredients separated by commas and no spaces, upload a picture of the recipe and extract its URL?
 
+Session 6:
+
+discussed the add Bachelor recipes implementation with the front end team
+as our new class Recipe is based on the previous Ingredient and Fridge classes, i spent time with the server team to understand and use their code
 
 
