@@ -72,7 +72,7 @@ private:
     Fridge user_fridge;
     std::vector<Offer> offer_list;
     std::vector<Recipe> liked_recipes;
-    ServerUser server_user;
+    ServerUser *server_user;
 };
 
 // User --> void get_user_characteristics --> struct (display name , ) with all the info and

@@ -12,7 +12,7 @@ User::User() {}
 User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
-    this->server_user= ServerUser(username, password);
+    this-> server_user = ServerUser(username, password);
     this->user_fridge = server_user.get_fridge();
     this -> offer_list = server_user.get_offer_list();
     this -> display_name = server_user.display_name;

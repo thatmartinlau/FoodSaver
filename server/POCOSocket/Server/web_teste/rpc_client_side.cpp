@@ -44,7 +44,7 @@ void ServerUser::get_user_characteristics(UserData usd){
 }
 
 
-void ServerUser::update_user_characteristics(User usr) {
+void ServerUser::update_user_characteristics(User usr) { //ESMA TO FIX
     basic_user_data basic_data;
     basic_data.display_name = usr.get_display_name();
     basic_data.telegram_username = usr.get_telegram_username();
@@ -57,7 +57,7 @@ void ServerUser::update_user_characteristics(User usr) {
     basic_data.marketplace_notifications = usr.get_marketplace_notifications();
 
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_user_characteristics", username, password, ); //FI THIS CODE
+    new_cli.call("update_user_characteristics", username, password); 
 }
 
 //      General Functions:
@@ -455,7 +455,7 @@ int test_send_vec_string() {
 }
 
 
-//CLIENT_SIDE MAIN FUNCTION, FOR TESTSING ONLY:
+//CLIENT_SIDE FUNCTION, FOR TESTIING STILL
 int test_sending_to_db() {
 
     cout << "hello, it opens" << endl;
