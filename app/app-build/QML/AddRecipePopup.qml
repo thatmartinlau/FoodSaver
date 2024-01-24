@@ -18,7 +18,6 @@ Popup {
         text: "X"
         width: 20
         height: 20
-        //height: 50
         background: Rectangle {
                     color: "red"
                     radius: 50
@@ -123,10 +122,10 @@ Popup {
 
 
         //ON LINE 1 OF GRID
-        Text {text: "Ingredients"; color: "#28A745"; Layout.preferredWidth: 155}
+        Text {text: "Ingredients"; color: "#28A745"; Layout.preferredWidth: 135}
 
         TextField {
-            Layout.preferredWidth: 300
+            Layout.preferredWidth: 400
             id: ingredient1
             width: parent.width
             placeholderText: "Ingredient 1"
@@ -136,46 +135,36 @@ Popup {
                 color: "#D9E8FF" // Light blue for text field
                 radius: 8
             }
-        }
-
-        TextField {
-            Layout.preferredWidth: 125
-            id: ingredientQnt
-            width: parent.width
-            //anchors.left: ingredient1.right
-            placeholderText: "Quantity"
-            placeholderTextColor: "#A0A0A0"
-            color: "#544E3D"
-            background: Rectangle {
-                color: "#D9E8FF" // Light blue for text field
-                radius: 8
+            onEditingFinished: {
+                if(ingredient1.text.trim() != ""){
+                    inputModel.append({"name":ingredient1.text});
+                    ingredient1.text = "";
+                    scroller.contentHeight = scroller.contentHeight + 32.5;
+                    //}
+                }
             }
         }
 
         Button {
             text: "+"
             width: 20
-            palette.buttonText: "white"
+            //palette.buttonText: "white"
             //anchors.horizontalCenter: parent.horizontalCenter
             background: Rectangle {
-                        color: "#1C6F30"
-                        radius:12.5
+                color: "#28A745" // Green for positive actions
+                radius: 8
             }
             onClicked: {
-                //if (ingr.text.trim() !== "" &categorieinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
-                    //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text});
-                inputModel.append({"name":ingredient1.text});
-                ingredient1.text = "";
-                    //iteminput.text = "";
-                    //categorieinput.text = "";
-                scroller.contentHeight = scroller.contentHeight + 32.5;
-                //}
+                if(ingredient1.text.trim() != ""){
+                    inputModel.append({"name":ingredient1.text});
+                    ingredient1.text = "";
+                    scroller.contentHeight = scroller.contentHeight + 32.5;
+                }
             }
         }
 
     }
     Rectangle{
-        //anchors.top: parent.top
         radius: 20
         y: parent.height * 0.30
         height: parent.height * 0.2
@@ -200,32 +189,19 @@ Popup {
                             width:parent.width
                             height: parent.height
                             TextField {
+                                readOnly: true
+
                                 padding: 5
                                 id: ingr
-                                width: parent.width*0.64
+                                Layout.preferredWidth: 400
+                                width: parent.width
                                 anchors.left: parent.left
                                 height: 30
-                                placeholderTextColor: "#A0A0A0"
-                                //anchors.horizontalCenter: parent.horizontalCenter
                                 background: Rectangle {
                                         color: "#D9E8FF"
                                         radius: 20
                                     }
                                 placeholderText: model.name
-                            }
-                            TextField {
-                                padding: 5
-                                id: quant
-                                width: parent.width*0.34
-                                anchors.right: parent.right
-                                height: 30
-                                placeholderTextColor: "#A0A0A0"
-                                //anchors.horizontalCenter: parent.horizontalCenter
-                                background: Rectangle {
-                                        color: "#D9E8FF"
-                                        radius: 20
-                                    }
-                                placeholderText: "Quantity"
                             }
                         }
                     }
@@ -246,10 +222,9 @@ Popup {
         columnSpacing: 20
         rowSpacing: 10
         y: parent.height*0.505
-        //anchors.bottom: parent.bottom
 
         //ON LINE 1 OF GRID
-        Text {text: "Instructions"; color: "#28A745"; Layout.preferredWidth: 150}
+        Text {text: "Instructions"; color: "#28A745"; Layout.preferredWidth: 135}
         TextField {
             Layout.preferredWidth: 400
             id: instruction1
@@ -261,26 +236,28 @@ Popup {
                 color: "#D9E8FF" // Light blue for text field
                 radius: 8
             }
+            onEditingFinished: {
+                if(instruction1.text.trim() != ""){
+                    instructionModel.append({"name":instruction1.text});
+                    instruction1.text = "";
+                    scroller2.contentHeight = scroller2.contentHeight + 32.5;
+                }
+            }
         }
 
         Button {
             text: "+"
             width: 20
-            palette.buttonText: "white"
-            //anchors.horizontalCenter: parent.horizontalCenter
             background: Rectangle {
-                        color: "#1C6F30"
-                        radius:12.5
+                color: "#28A745" // Green for positive actions
+                radius: 8
             }
             onClicked: {
-                //if (ingr.text.trim() !== "" &categorieinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
-                    //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text});
-                instructionModel.append({"name":instruction1.text});
-                instruction1.text = "";
-                    //iteminput.text = "";
-                    //categorieinput.text = "";
-                scroller2.contentHeight = scroller2.contentHeight + 32.5;
-                //}
+                if(instruction1.text.trim() != ""){
+                    instructionModel.append({"name":instruction1.text});
+                    instruction1.text = "";
+                    scroller2.contentHeight = scroller2.contentHeight + 32.5;
+                }
             }
         }
     }
@@ -311,17 +288,17 @@ Popup {
                             width:parent.width
                             height: parent.height
                             TextField {
+                                readOnly: true
                                 padding: 5
                                 id: instr
                                 width: parent.width
                                 height: 30
                                 anchors.horizontalCenter: parent.horizontalCenter
-                                placeholderTextColor: "#A0A0A0"
                                 background: Rectangle {
                                         color: "#D9E8FF"
                                         radius: 20
                                     }
-                                placeholderText: "1: "+ model.name
+                                placeholderText: model.name
                             }
                         }
                     }
@@ -339,22 +316,17 @@ Popup {
         anchors.bottom: parent.bottom
         Button {
             text: "Publish"
-            width: 100
-            palette.buttonText: "white"
-            //anchors.horizontalCenter: parent.horizontalCenter
+            width: 500
             background: Rectangle {
-                        color: "#1C6F30"
-                        radius:12.5
+                color: "#28A745" // Green for positive actions
+                radius: 8
             }
             onClicked: {
                 for (var i = 0; i < itemModel.count; i++) {
                     MainController.submit(itemModel.get(i).name)
                 }
 
-                if (recipeName.text.trim() !== "" ) { // Check if the text is not empty or only whitespace
-                    //itemModel.append({ "item": iteminput.text, "categorie": categorieinput.text, "date": dateinput.text, "quantity": quantityinput.text});
-                    //var res2 = MainController.submitAll(instructionModel.get(1).name, diet.currentValue, hours.text, minutes.text, ingredient1.text, instruction1.text)
-                    //var temp = MainController.submitIngredients("potato")
+                if (recipeName.text.trim() !== "" && instructionModel.count != 0 &&  inputModel.count != 0 && MainController.checkTitle(recipeName.text.trim()) != false) { // Check if the text is not empty or only whitespace
                     for(var index = 0; index < inputModel.count; index++){
                         MainController.submitIngredients(inputModel.get(index).name)
                     }
@@ -362,14 +334,15 @@ Popup {
                     for(var index = 0; index < instructionModel.count; index++){
                         MainController.submitInstructions(instructionModel.get(index).name)
                     }
+                    if(hours.text.trim() == ""){hours.text = 0;}
+                    if(minutes.text.trim() == ""){minutes.text = 0;}
                     var res = MainController.submitAll(recipeName.text, diet.currentValue, hours.text, minutes.text)//, ingredient1.text, instruction1.text)
 
 
-                    //var tester = MainController.submitIngredients("carrot")//inputModel.get(0).name)
 
                     var no_Value = MainController.get_ingr()
 
-                    itemModel.append({"name": recipeName.text, "dietRestriction": diet.currentValue, "date": "Test1", "quantity": "Test1" });
+                    itemModel.append({"name": recipeName.text, "dietRestriction": diet.currentValue, "grade": "None" , "date": "Test1", "quantity": "Test1" });
 
                     recipeName.text = "";
                     ingredient1.text = "";
@@ -377,38 +350,11 @@ Popup {
                     diet.currentIndex = 0 ;
                     hours.text = "";
                     minutes.text = "";
-                    ingredientQnt.text = "";
+                    scrollView.contentHeight = scrollView.contentHeight + 82.5;
                     inputModel.clear()
                     instructionModel.clear()
-                    scrollView.contentHeight = scrollView.contentHeight + 82.5;
                     myPopup.close()
                 }
-            }
-        }
-        Button {
-            text: "Add also to my cookbook"
-            width: 250
-            palette.buttonText: "white"
-            //anchors.horizontalCenter: parent.horizontalCenter
-            background: Rectangle {
-                        color: "#1C6F30"
-                        radius:12.5
-            }
-            onClicked: {
-                //do
-            }
-        }
-        Button {
-            text: "Add only to my cookbook"
-            width: 250
-            palette.buttonText: "white"
-            //anchors.horizontalCenter: parent.horizontalCenter
-            background: Rectangle {
-                        color: "#1C6F30"
-                        radius:12.5
-            }
-            onClicked: {
-                //do
             }
         }
     }

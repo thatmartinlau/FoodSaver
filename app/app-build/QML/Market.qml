@@ -126,13 +126,13 @@ Row {
             text: "My Basket"
         }
 
-        Button {
+        /*Button {
             y: parent.height * 0.25
             text: "Add to Fridge"
             onClicked: {
                 addtofridge.open()
             }
-        }
+        }*/
 
         Button {
             y: parent.height * 0.75

@@ -18,7 +18,6 @@ public:
 public slots:
     void submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes);//, const QString &ingredient1, const QString &instruction1);
     QString submitText(const QString &text);
-    //double changeTime(const QString &text);
     int submitInt(const int &time);
     void submit(const QString &recipeName);
     QString gett(const int &i);
@@ -30,6 +29,21 @@ public slots:
     void submitInstructions(const QString &instruction);
     QString get_ingr();
     QList<QString> titleOrDiet(const QList<QString> &titles, const int &need);
+    QString submitRating(const QString &user_rating);
+    void submitTitleForRating(const QString &title);
+    QString getRating(const QString &title);
+    void initial();
+    QList<QString> sendTitleForVis(const QString &title);
+    QList<QString> sendIngredientsForVis(const QString &title);
+    QList<QString> sendInstructionsForVis(const QString &title);
+    QString sendRatingForVis(const QString &title);
+
+    QList<QString> getTitleForVis();
+    QList<QString> getIngredientsForVis();
+    QList<QString> getInstructionsForVis();
+
+    bool checkTitle(const QString &title);
+
     //modif eli: jai changé QList<QString> en QString
     //QString searchRecipes(const QString &entry, const QString &dietRestriction);
 };

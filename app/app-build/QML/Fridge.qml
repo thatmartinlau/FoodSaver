@@ -55,6 +55,7 @@ Row {
                             offerPage.visible = false;
                             buttonOffer.enabled = true;
                             buttonFridge.enabled = false;
+                            addtofridgebutton.visible= true;
                         }
                     }
 
@@ -68,7 +69,7 @@ Row {
                             offerPage.visible = true;
                             buttonOffer.enabled = false;
                             buttonFridge.enabled = true;
-
+                            addtofridgebutton.visible= false;
                         }
                     }
         }
@@ -81,140 +82,138 @@ Row {
             width: parent.width
             radius: 12.5
             color: "white"
+            Column {
+                spacing: 2.5
+                width: parent.width
+                padding:parent.width*0.01
+                height:parent.height
+                Rectangle {
+                    radius: 12.5
+                    width: parent.width *0.98
+                    height: parent.width * 0.05
+                    color:"#EEEEEE"
 
-            ScrollView {
-                    anchors.fill: parent
-                    Column {
-                        spacing: 2.5
-                        width: parent.width
-                        padding:parent.width*0.01
-                        Rectangle {
-                            radius: 12.5
-                            width: parent.width *0.98
-                            height: parent.width * 0.05
-                            color:"#EEEEEE"
+                    /*Label {
+                        text: "My Fridge __ Hello, on this page \n The add product works, you can try it, (you need to put at least a name and a category)\nIf there are enough products the scroll bar will appear\nIf questions, ask Antoine"
+                        anchors.top: parent.top
+                    }*/
 
-                            /*Label {
-                                text: "My Fridge __ Hello, on this page \n The add product works, you can try it, (you need to put at least a name and a category)\nIf there are enough products the scroll bar will appear\nIf questions, ask Antoine"
-                                anchors.top: parent.top
-                            }*/
+                    Row {
+                        spacing: 10
+                        padding:10
+                        anchors.verticalCenter:parent.verticalCenter
+                        TextField {
+                            y:3
+                            id: itemTextFieldOffer
+                            placeholderText: "Search for a specific item"
+                            //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
+                        }
 
-                            Row {
-                                spacing: 10
-                                padding:10
-                                anchors.verticalCenter:parent.verticalCenter
-                                TextField {
-                                    y:3
-                                    id: itemTextFieldOffer
-                                    placeholderText: "Search for a specific item"
-                                    //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
-                                }
-
-                                Button {
-                                    text: "Category"
-                                    onClicked: {
-                                       //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_category()
-                                    }
-                                }
-
-                                Button {
-                                    text: "Time left"
-                                    onClicked: {
-                                        //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
-                                    }
-                                }
-
-                                /*Button {
-                                    text: "Price"
-                                    onClicked: {
-                                        // Handle Price button click
-                                    }
-                                }*/
+                        Button {
+                            text: "Category"
+                            onClicked: {
+                               //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_category()
                             }
                         }
-                        Rectangle {
-                            radius: 12.5
-                            y: parent.height * 0.2
-                            height: parent.height * 0.8
-                            width: parent.width *0.98
-                            ScrollView {
-                                id: scrollViewOffer
-                                anchors.fill: parent
-                                width:parent.width
-                                Column {
-                                    spacing: 2.5
-                                    width:parent.width
-                                    Repeater {
 
-                                        model: itemModel
+                        Button {
+                            text: "Time left"
+                            onClicked: {
+                                //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
+                            }
+                        }
+
+                        /*Button {
+                            text: "Price"
+                            onClicked: {
+                                // Handle Price button click
+                            }
+                        }*/
+                    }
+                }
+                Rectangle {
+                    radius: 12.5
+                    y: parent.height * 0.2
+                    height: parent.height - 5 - parent.width*0.01 - parent.width * 0.05
+                    width: parent.width * 0.99
+                    color: "blue"
+                    ScrollView {
+                        id: scrollViewOffer
+                        anchors.fill: parent
+                        width:parent.width
+                        Column {
+                            spacing: 2.5
+                            width:parent.width
+                            Repeater {
+                                model: itemModel
+                                Rectangle {
+                                    visible: model.status
+                                    radius: 12.5
+                                    width: scrollViewOffer.contentHeight < 625 ? parent.width * 0.99 : parent.width
+                                    height: 150
+                                    color: "#EEEEEE"  // Adjust the color as needed
+
+                                    Row {
+                                        spacing:5
+                                        padding:5
+                                        width: parent.width
+                                        height: parent.height
                                         Rectangle {
-                                            visible: model.status
                                             radius: 12.5
-                                            width: parent.width * 0.98
-                                            height: 150
-                                            color: "#EEEEEE"  // Adjust the color as needed
-
-                                            Row {
-                                                spacing:5
-                                                padding:5
-                                                width: parent.width
-                                                height: parent.height
-                                                Rectangle {
-                                                    radius: 12.5
-                                                    width: parent.height -10
-                                                    height: parent.height -10
-                                                    color: "lightblue"
-                                                    Label { text: "photo" }
-                                                }
-                                                Column {
-                                                    x: parent.height
-                                                    spacing: 1
-                                                    Label {
-                                                        text: "Item: " + model.item
-                                                    }
-                                                    Label {
-                                                        text: "Category: " + model.categorie
-                                                    }
-                                                    Label {
-                                                        text: "Expiration date: " + model.date
-                                                    }
-                                                    Label {
-                                                        text: "Quantity you are selling: " + model.quantity2sell
-                                                    }
-                                                    Label {
-                                                        text: "Quantity you have: " + model.quantity
-                                                    }
-                                                    Label {
-                                                        text: {
-                                                            if (model.pricestatus === 0) {
-                                                                return "Your item is set as Free";
-                                                            } if (model.pricestatus === 1) {
-                                                                return "Your item is set as Negociable";
-                                                            } else {
-                                                                return "Price: " + model.price;
-                                                            }
-                                                        }
+                                            width: parent.height -10
+                                            height: parent.height -10
+                                            color: "lightblue"
+                                            Label { text: "photo" }
+                                        }
+                                        Column {
+                                            x: parent.height
+                                            spacing: 1
+                                            Label {
+                                                text: "Item: " + model.item
+                                            }
+                                            Label {
+                                                text: "Category: " + model.categorie
+                                            }
+                                            Label {
+                                                text: "Expiration date: " + model.date
+                                            }
+                                            Label {
+                                                text: "Quantity you are selling: " + model.quantity2sell
+                                            }
+                                            Label {
+                                                text: "Quantity you have: " + model.quantity
+                                            }
+                                            Label {
+                                                text: {
+                                                    if (model.pricestatus === 0) {
+                                                        return "Your item is set as Free";
+                                                    } if (model.pricestatus === 1) {
+                                                        return "Your item is set as Negociable";
+                                                    } else {
+                                                        return "Price: " + model.price;
                                                     }
                                                 }
-                                                Column {
-                                                    Button {
-                                                        text: "Remove Offer"
-                                                        onClicked: {
-                                                            model.quantity2sell= 0
-                                                            model.pricestatus= -1
-                                                            model.status= 0
-                                                            model.price= 0
-                                                        }
-                                                    }
-                                                    Button {
-                                                        text: "Modify Offer"
-                                                        onClicked: {
-                                                            modifyOffer.open()
-                                                        }
-                                                    }
+                                            }
+                                        }
+                                        Column {
+                                            Button {
+                                                text: "Remove Offer"
+                                                onClicked: {
+                                                    model.quantity2sell= 0
+                                                    model.pricestatus= -1
+                                                    model.status= 0
+                                                    model.price= 0
+                                                    scrollViewOffer.contentHeight-= 152.5
 
                                                 }
                                             }
+                                            Button {
+                                                text: "Modify Offer"
+                                                onClicked: {
+                                                    modifyOffer.open()
+                                                }
+                                            }
+
                                         }
                                     }
                                 }
@@ -222,6 +221,7 @@ Row {
                         }
                     }
                 }
+            }
         }
         Rectangle {
             id: fridgePage
@@ -287,8 +287,9 @@ Row {
                 Rectangle {
                     radius: 12.5
                     y: parent.height * 0.2
-                    height: parent.height * 0.8
-                    width: parent.width
+                    height: parent.height - parent.width *0.08
+                    width: parent.width *0.99
+                    color:"blue"
                     ScrollView {
                         id: scrollViewFridge
                         anchors.fill: parent
@@ -301,7 +302,7 @@ Row {
                                 //property var modelData: model // Assuming each model item is an object
                                 Rectangle {
                                     radius:12.5
-                                    width: parent.width *0.98
+                                    width: scrollViewFridge.contentHeight < 625 ? parent.width * 0.99 : parent.width
                                     height: 150
                                     color: "#EEEEEE"
                                     Row {
@@ -371,10 +372,17 @@ Row {
                                                 text: "Remove item"
                                                 onClicked: {
                                                     itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
+                                                    scrollViewFridge.contentHeight = scrollViewFridge.contentHeight - 152.5;
+                                                    if(model.status) {
+                                                        scrollViewOffer.contentHeight = scrollViewOffer.contentHeight - 152.5;
+                                                    };
+                                                    }
+                                                    //itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
                                                     //pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
                                                 }
-                                            }
+
                                             Button {
+
                                                 visible: !(model.status)
                                                 text: "Put on sell"
                                                 onClicked: {
@@ -394,7 +402,7 @@ Row {
         ListModel {
                 id: itemModel
                 function getIndexByPropertyValue(propertyName, propertyValue) {
-                    scrollViewFridge.contentHeight -= 202.5;
+
                     for (var i = 0; i < count; i++) {
                         if (get(i)[propertyName] === propertyValue) {
                             return i;
@@ -419,7 +427,7 @@ Row {
         }
         Button {
             y: parent.height * 0.25
-            //id: addtofridge
+            id: addtofridgebutton
             text: "Add to Fridge"
             onClicked: {
                 addtofridge.open()
