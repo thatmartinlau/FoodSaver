@@ -425,7 +425,7 @@ int test_send_vec_string() {
 
 
 //CLIENT_SIDE MAIN FUNCTION, FOR TESTSING ONLY:
-int main () {
+int test_sending_to_db() {
 
     cout << "hello, it opens" << endl;
     int val1 = test_send_vec_string();

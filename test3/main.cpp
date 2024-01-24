@@ -5,7 +5,7 @@
 #include "fridge.h"
 #include "offer.h"
 #include "user.h"
-
+#include "rpc_client_side.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
     Date c = ingredientInstance21.get_expiry_date();
     std::cout << c.get_day() << "/" << c.get_month() << "/" << c.get_year() <<  std::endl;
     std::cout << c.countDays() << std::endl; */
-    std::cout << "Hello" << std::endl;
+//    std::cout << "Hello" << std::endl;
 
     //User user1("sixtine", "password");
     //User user2();
@@ -80,6 +80,8 @@ int main(int argc, char *argv[])
     //server.add_user(user1);
 
     //server.loadUserInfo("myFile.txt")
-
+    
+    
+    int val3 = test_sending_to_db();
     return 0;
 }

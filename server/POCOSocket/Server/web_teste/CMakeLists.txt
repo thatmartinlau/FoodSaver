@@ -9,12 +9,14 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+
+
 add_subdirectory(rpclib-master/)
-include_directories(rpclib-master/include)
+#include_directories(rpclib-master/include)
 
 include_directories(../../../../test3)
 	
-add_executable(web_teste
+add_library(web_teste
   ../common_characteristics.hpp
   rpc_client_side.cpp
   rpc_client_side.hpp

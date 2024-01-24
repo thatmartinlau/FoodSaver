@@ -5,11 +5,11 @@
 #include "../common_characteristics.hpp"
 #include "rpc/client.h"
 
-#include "ingredient.h"
-#include "date.h"
-#include "fridge.h"
-#include "offer.h"
-#include "user.h"
+#include "../../../../test3/ingredient.h"
+#include "../../../../test3/date.h"
+#include "../../../../test3/fridge.h"
+#include "../../../../test3/offer.h"
+#include "../../../../test3/user.h"
 string HOST_SERVER_NAME = "localhost"; //local connection first
 int HOST_SERVER_PORT = 8080;
 using namespace std;
@@ -46,8 +46,9 @@ double check_user(); //for William, no functionassociated here. Just tolett you 
 vector<string> getAllRecipes();
 void addRecipes(vector<string> recipes);
 
-
 unordered_map<string, vector<vector<vector<string>>>> get_all_clients_with_offers();
 vector<string> get_all_recipes();
+
+int test_sending_to_db();
 
 #endif

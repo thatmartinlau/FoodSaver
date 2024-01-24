@@ -1,11 +1,37 @@
-C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/CMakeFiles/rpc.dir/lib/rpc/this_handler.cc.obj: \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/this_handler.cc \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_handler.h \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/memory \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algobase.h \
+C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/CMakeFiles/rpc.dir/lib/rpc/server.cc.obj: \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/server.cc \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/server.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/config.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stddef.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/stddef.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/crtdefs.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/corecrt.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_mac.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdint \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdint.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/stdint.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/compatibility.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/object.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/object_decl.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v1/object_decl.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/versioning.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack_decl.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v1/pack_decl.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/cpp_config.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/cpp_config_decl.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v1/cpp_config_decl.hpp \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/memory \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algobase.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/functexcept.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_defines.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cpp_type_traits.h \
@@ -36,17 +62,6 @@ C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/we
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_raw_storage_iter.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/align.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bit \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdint.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/stdint.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/crtdefs.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/corecrt.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_mac.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_secapi.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stddef.h \
- C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/stddef.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/uses_allocator.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_ptr.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/utility \
@@ -107,21 +122,6 @@ C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/we
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_base.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_lockfree_defines.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward/auto_ptr.h \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/config.h \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef \
- C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdint \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/compatibility.h \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/object.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/object_decl.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v1/object_decl.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/versioning.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack_decl.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v1/pack_decl.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/cpp_config.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/cpp_config_decl.hpp \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v1/cpp_config_decl.hpp \
  C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v2/cpp_config_decl.hpp \
  C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v1/cpp_config.hpp \
  C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/sysdep.h \
@@ -893,6 +893,390 @@ C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/we
  C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/v1/adaptor/cpp11/unordered_set.hpp \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/unordered_set \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_set.h \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/util.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/dispatcher.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_function.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/call.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/func_tools.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/invoke.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/all.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/if.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/bool.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/constant.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/any.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/is_specialization_of.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/func_traits.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/log.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/not.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/response.h \
  C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/make_unique.h \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_handler.inl
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/dispatcher.inl \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/pimpl.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/thread \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_thread.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/this_thread_sleep.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/chrono \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ratio \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/parse_numbers.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/async_result.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/config.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/handler_type.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/push_options.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/pop_options.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_datagram_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/async_result.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_io_object.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/io_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/noncopyable.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/wrapped_handler.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/bind_handler.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/handler_alloc_helpers.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/addressof.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/handler_alloc_hook.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/handler_alloc_hook.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/call_stack.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/tss_ptr.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_tss_ptr.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/socket_types.hpp \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/winsock2.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/psdk_inc/_ws1_undef.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/_bsd_types.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/inaddr.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/psdk_inc/_socket_types.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/psdk_inc/_fd_types.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/psdk_inc/_ip_types.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/psdk_inc/_wsadata.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/ws2def.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/psdk_inc/_wsa_errnos.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/qos.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/ws2tcpip.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/ws2ipdef.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/in6addr.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/psdk_inc/_ip_mreq1.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/mstcpip.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/mswsock.h \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/psdk_inc/_xmitfile.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/old_win_sdk_compat.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_tss_ptr.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/throw_error.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/error_code.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/error_code.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/local_free_on_block_exit.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/throw_error.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/throw_exception.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/system_error.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/error.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/error.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_thread_info.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/thread_info_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/handler_cont_helpers.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/handler_continuation_hook.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/handler_invoke_helpers.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/handler_invoke_hook.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/winsock_init.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/winsock_init.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/io_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/handler_type_requirements.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/service_registry.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/mutex.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_mutex.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/scoped_lock.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_mutex.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/service_registry.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/service_registry.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_io_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/limits.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/op_queue.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/scoped_ptr.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/thread.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_thread.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_thread.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/timer_queue_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/operation.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_operation.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/handler_tracking.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/handler_tracking.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/timer_queue_set.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/timer_queue_set.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/wait_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_iocp_io_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/completion_handler.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/fenced_block.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/gcc_x86_fenced_block.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_iocp_io_service.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/cstdint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/io_service.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/type_traits.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/socket_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/io_control.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/socket_option.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/datagram_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/buffer_sequence_adapter.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffer.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/array_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/buffer_sequence_adapter.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/reactor.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/reactor_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/select_reactor.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/fd_set_adapter.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/posix_fd_set_adapter.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_fd_set_adapter.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/reactor_op_queue.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/hash_map.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/assert.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/reactor_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/select_interrupter.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/socket_select_interrupter.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/socket_select_interrupter.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/socket_holder.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/socket_ops.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/shared_ptr.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/weak_ptr.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/socket_ops.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/select_reactor.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/select_reactor.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/signal_blocker.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/null_signal_blocker.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_null_buffers_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_socket_accept_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_socket_service_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_socket_connect_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_socket_send_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_socket_recv_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_socket_recvmsg_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_iocp_socket_service_base.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_socket_recvfrom_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_deadline_timer.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_io_object.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_raw_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/raw_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_seq_packet_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/seq_packet_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_serial_port.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/serial_port_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/serial_port_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/serial_port_base.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/serial_port_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/reactive_serial_port_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_serial_port_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_handle_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_handle_read_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_handle_write_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_iocp_handle_service.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_iocp_serial_port_service.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_signal_set.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/signal_set_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/signal_set_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/signal_handler.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/signal_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/signal_set_service.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/static_mutex.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_static_mutex.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_static_mutex.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_socket_acceptor.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/socket_acceptor_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_socket_iostream.hpp \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/istream.tcc \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_socket_streambuf.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/deadline_timer_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/array.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/stream_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/steady_timer.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_waitable_timer.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/wait_traits.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/waitable_timer_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/chrono_time_traits.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/deadline_timer_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/timer_queue.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/date_time_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/timer_scheduler.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/timer_scheduler_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/wait_handler.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_socket_streambuf.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_stream_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_streambuf.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_streambuf_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_waitable_timer.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffer.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_read_stream_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_read_stream.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_read_stream_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/buffer_resize_guard.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/buffered_stream_storage.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/buffered_read_stream.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_stream_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_stream.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_read_stream.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_write_stream.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_write_stream_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/completion_condition.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/write.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/write.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/base_from_completion_cond.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/consuming_buffers.hpp \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iterator \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stream_iterator.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/dependent_type.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/buffered_write_stream.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_stream_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_write_stream_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffered_write_stream.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffers_iterator.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/completion_condition.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/connect.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/connect.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/coroutine.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/datagram_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/deadline_timer_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/deadline_timer.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/error.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/error_code.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/generic/basic_endpoint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/generic/detail/endpoint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/generic/detail/impl/endpoint.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/generic/datagram_protocol.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_datagram_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/generic/basic_endpoint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/generic/raw_protocol.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_raw_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/generic/seq_packet_protocol.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_seq_packet_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/generic/stream_protocol.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_socket_iostream.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_stream_socket.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/handler_alloc_hook.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/handler_continuation_hook.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/handler_invoke_hook.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/handler_type.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/io_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/address.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/address_v4.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/impl/address_v4.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/impl/address_v4.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/address_v6.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/impl/address_v6.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/impl/address_v6.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/impl/address.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/impl/address.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/address.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/address_v4.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/address_v6.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_endpoint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/detail/endpoint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/detail/impl/endpoint.ipp \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/sstream \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/sstream.tcc \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/impl/basic_endpoint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_resolver.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_resolver_iterator.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_resolver_entry.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_resolver_query.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/resolver_query_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/resolver_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/resolver_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/resolve_endpoint_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/resolve_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/resolver_service_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/resolver_service_base.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_resolver_entry.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_resolver_iterator.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_resolver_query.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/host_name.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/impl/host_name.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/host_name.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/icmp.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_endpoint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/basic_resolver.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/multicast.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/detail/socket_option.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/resolver_query_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/resolver_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/tcp.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_socket_acceptor.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/udp.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/unicast.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/ip/v6_only.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/is_read_buffered.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/is_write_buffered.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/local/basic_endpoint.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/local/connect_pair.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/local/datagram_protocol.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/local/stream_protocol.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/placeholders.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/posix/basic_descriptor.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/posix/basic_stream_descriptor.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/posix/descriptor_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/posix/stream_descriptor.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/posix/stream_descriptor_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/raw_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/read.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/read.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/read_at.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/read_at.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/read_until.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_streambuf.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/regex_fwd.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/read_until.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/buffers_iterator.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/seq_packet_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/serial_port.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_serial_port.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/serial_port_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/serial_port_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/signal_set.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/basic_signal_set.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/signal_set_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/socket_acceptor_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/socket_base.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/strand.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/strand_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/strand_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/strand_service.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/stream_socket_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/streambuf.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/system_error.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/thread.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/time_traits.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/version.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/wait_traits.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/waitable_timer_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/basic_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/basic_object_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/basic_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/object_handle_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_object_handle_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/impl/win_object_handle_service.ipp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/basic_random_access_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/random_access_handle_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/basic_stream_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/stream_handle_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/object_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/basic_object_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/object_handle_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/overlapped_ptr.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_overlapped_ptr.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/detail/win_iocp_overlapped_op.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/random_access_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/basic_random_access_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/random_access_handle_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/stream_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/basic_stream_handle.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/windows/stream_handle_service.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/write.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/write_at.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/asio/impl/write_at.hpp \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/format.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath \
+ C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/math.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/dev_utils.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/server_session.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/async_writer.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/condition_variable \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_mutex.h \
+ C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_lock.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/thread_group.h \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_server.h
