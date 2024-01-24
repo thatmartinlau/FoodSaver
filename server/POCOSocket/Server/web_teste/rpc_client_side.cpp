@@ -10,13 +10,14 @@ using namespace std;
 
 
 //          User Updating and creating functions.
+ServerUser::ServerUser() {
+}
 
 ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user not in db already. Oth, just initialise connection.
     username = usrname;
     password = psswd;
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("add_user", username, password);
-
 }
 
 ServerUser::~ServerUser() {}

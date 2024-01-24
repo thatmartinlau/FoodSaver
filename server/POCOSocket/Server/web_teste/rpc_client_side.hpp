@@ -15,11 +15,22 @@ int HOST_SERVER_PORT = 8080;
 using namespace std;
 //ServerUser is a PARAMETER under the User class, from Sixtine's user.h
 
+
+//fix class imoprsst:
+class User;
+class Fridge;
+class Offer;
+class Date;
+class Ingredient;
+
+
+
 class ServerUser {
     
 public:
     
     //Creates a user for temporary Use.
+    ServerUser();
     ServerUser(string username, string psswd);//if user doesn't exist in database, add him to database.
     ~ServerUser();
     

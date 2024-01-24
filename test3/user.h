@@ -18,6 +18,9 @@
 //#include "client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
 //include "" esma's thing
 
+//fix circular include loop:
+class ServerUser;
+
 class User{
 public:
     User();
