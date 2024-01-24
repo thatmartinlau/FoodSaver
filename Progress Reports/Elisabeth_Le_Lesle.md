@@ -73,6 +73,10 @@ i want my popup to show all of my stored liked recipes. however, the liked recip
 for that, i need my “LIKE” button to open the popup, but also the Personal Cookbook button to open the popup.
 furthermore, for the liked recipes to show on the popup, I need to write an attribute in the User class that saves the recipe names (?)
 
+Session 10:
+with sixtine, helped with the functions like_recipe and unlike_recipe, which I’m going to use to add or take recipes from the Personal Cookbook. The liked_recipes is a vector in the user.h file used to store the recipes in question in the user’s file, in order to individualize the liked recipes
+
+
 
 
 
