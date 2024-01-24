@@ -57,6 +57,16 @@ created a new RecipeSearch.cpp and recipeSearch.hpp that describe a new RecipeSe
 - the third for the cooking time in minutes (just an int)
 Just like ofr adding recipes, there will be one searchbar in which the user prompt will be of the form : “Vegetarian pasta with…”
 
+Personal cookbook:
+cyriac: button to save recipes (QML …)
+sixtine (test3 front): give type of recipe: std::map is an ordered associative container that contains key-value pairs.
+// Declare a map with string keys and int values std::map<std::string, int> myDictionary; // Insert key-value pairs into the map myDictionary["apple"] = 5;
+code a PersonalRecipes class that includes the User class: it should have an addRecipe function that appends a recipe in dictionary format to a list individualised for each user
+in the qml button code, say that it gets filled with color when clicked and that the recipe associated to each button gets added to a list
+this list in stored in the personal recipe class
+the personal cookbook page
+
+
 
 
 
