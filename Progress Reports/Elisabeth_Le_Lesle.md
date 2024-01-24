@@ -66,6 +66,14 @@ in the qml button code, say that it gets filled with color when clicked and that
 this list in stored in the personal recipe class
 the personal cookbook page
 
+Session 9:
+left aesthetics button for later: instead of an outlined star or heart that fills its color when clicked on, the button is a LIKE button
+onClicked now opens a popup that I called personalCookBook (in PersonalCookBook.qml file)
+i want my popup to show all of my stored liked recipes. however, the liked recipes need to be stored in the user class (vectors of recipes) in order for the popup to show each user’s liked recipes.
+for that, i need my “LIKE” button to open the popup, but also the Personal Cookbook button to open the popup.
+furthermore, for the liked recipes to show on the popup, I need to write an attribute in the User class that saves the recipe names (?)
+
+
 
 
 
