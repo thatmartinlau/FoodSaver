@@ -19,8 +19,10 @@ Session 3:
 
 Session 4:
     - found PDF.co API : analysis of downloaded code that implements the API
+    After a talk with the professor in lecture and more research on the topic, the API implementation of a barcode scan and a recipe generator was sadly abandoned. With the implementations team, we discussed the possibility of creating our own Recipe Class from scratch, and create its very own database. We were thinking of a JSON file format for easy access.
     - more research on recipe generating: instead of implementing a hard API, we would make our own Recipe Class, with ingredient selection from fridge, taking expiration priority into account, using dictionaries to store different recipes, 
     - these would be Bachelor recipes, and there would be a functionality to add your own recipe (user string as input, add to recipe dictionary)
+    
 
 Session 5:
 - more research on the Recipe Class and its different functions:
