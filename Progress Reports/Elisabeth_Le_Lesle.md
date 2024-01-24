@@ -34,6 +34,7 @@ Session 5:
   - for now, define a simple empty list matching_recipes to which we append all recipes with the given ingredients
   - then there should be a sorting for maximum optimization
   => should return recipe ideas (with pictures?) in order of relevance (most fridge and recipe ingredients in common)
+ideally, we would want to implement another function that would allow bachelors to add their very own recipes to the data base. However, out of simplicity (and to spare us the difficulty of converting the recipes to JSON format), the website would have spaces to write each recipe characteristic in the format we want (error if not the same format e.g. lowercase, int, list of ingredients separated by commas and no spaces, upload a picture of the recipe and extract its URL?
 
 
 
