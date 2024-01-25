@@ -50,7 +50,10 @@ public:
     string get_username(); // to use in get_all_ServerUser_characteristics
     string get_password(); // to use in get_all_ServerUser_characteristics
 
-    
+
+    vector<string> ServerUser::return_server_characs(string username, string password);
+    list<bool> ServerUser::get_food_restrictions(string username, string password);
+
 
     void delete_self_in_db(); //deletes the user from the database.
     void update_user_password_and_username(string username, string password); //gives new username and password to database.

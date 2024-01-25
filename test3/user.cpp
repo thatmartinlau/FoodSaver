@@ -16,9 +16,9 @@ User::User(std::string username, std::string password) {
     //std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> vector = server->return_server_characs(username, password);
     Fridge userfridge = server->get_fridge();
     std::vector<Offer> user_offer_list = server->get_offer_list();
-
+    list<bool> food_restrictions = server->get_food_restrictions(username, password);
     std::vector<string> vector = server->return_server_characs(username, password);
-    this->update_user_characteritics(vector[0], vector[1], std::stoi(vector[2]), std::stoi(vector[3]), vector[4], std::stoi(vector[5]), std::stoi(vector[6]), std::stoi(vector[7]), userfridge , user_offer_list);
+    this->update_user_characteritics(vector[0], vector[1], std::stoi(vector[2]), std::stoi(vector[3]), vector[4], std::stoi(vector[5]), std::stoi(vector[6]), std::stoi(vector[7]), userfridge , user_offer_list,food_restrictions);
 
 }
 

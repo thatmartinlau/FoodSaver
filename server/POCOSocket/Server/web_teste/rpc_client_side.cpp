@@ -37,6 +37,19 @@ vector<string> ServerUser::return_server_characs(string username, string passwor
 }
 
 
+list<bool> ServerUser::get_food_restrictions(string username, string password){
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    vector<string> food_restrictions = new_cli.call("get_user_food_restrictions", username, password);
+    std::list<bool> boolList;
+
+    for (const std::string& str : food_restrictions) {
+        boolList.push_back(static_cast<bool>(std::stoi(str)));
+    }
+
+    return boolList;
+
+}
+
 
 
 void ServerUser::update_user_characteristics(User usr) { //ESMA TO FIX

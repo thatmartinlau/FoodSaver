@@ -526,7 +526,6 @@ vector<string> getMapOfOffers(){
 }
 
 
-
 vector<string> get_user_name_vectors() {
         vector<string> user_list;
         for (auto& [key, value] : *database) {
@@ -544,6 +543,28 @@ vector<string> getAllRecipes() {
         }
         return all_recipes;
 }
+
+
+// for food and dietary_restrictions
+vector<string> get_user_food_restrictions(username, password) {
+        auto el = database->find(username); // Find the username in the database
+
+        if (el != database->end() && password == el->second.password) {
+            // Username and password match correctly
+            list<bool> food_and_dietary_restrictions = el->second.basic_u_data;
+            std::vector<std::string> stringVector;
+
+            for (bool value : food_and_dietary_restrictions) {
+            stringVector.push_back(std::to_string(value));
+            }
+
+            return stringVector;
+
+        }
+        else {}
+
+}
+
 
 vector<string> get_user_characteristics(username, password) {
     auto el = database->find(username); // Find the username in the database
@@ -615,6 +636,7 @@ int main() {
     srv.bind("addRecipes", &addRecipes);
     srv.bind("getAllRecipes", &getAllRecipes);
     
+    srv.bind('get_user_food_restrictions', &get_user_food_restrictions);
     srv.bind("get_user_characteristics", &get_user_characteristics);
     //Check functions:
     srv.bind("check_user", &check_user);
