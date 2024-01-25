@@ -3,23 +3,18 @@
 
 #include "date.h"
 
-//#include <iostream>
-//#include <list>
-//#include <string>
-//#include <ctime>
-
-
-//#include "nlohmann/json.hpp"
-//using json = nlohmann::json;
 //using namespace std;
 
 enum Food_class{
+    gluten,
     fruit,
     vegetable,
     drink,
-    dairy,
+    lactose,
     canned,
+    eggs,
     meat,
+    halal_meat,
     fish,
     sweet,
     nut,
@@ -35,7 +30,7 @@ enum Priority{
 
 class Ingredient{
 public:
-    Ingredient();
+    Ingredient() {};
     Ingredient(std::string name, Date expiry_date, int quantity = 1,Food_class category = unspecified);
     ~Ingredient();
     std::string get_name() const;
@@ -45,13 +40,13 @@ public:
     std::string get_food_class_name();
     void set_quantity(int quantity);
     int get_quantity();
-    void set_priority(Priority priority_level);
+    void set_priority();
     Priority get_priority();
     std::string get_priority_name();
     void saveToJsonFile(const std::string& fileIngredient);
     void set_expiry_date(Date expiry_date);
     Date get_expiry_date();
-    //json toJson () const;
+    int countDays();
 
 private:
     std::string name;

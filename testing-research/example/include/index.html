@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Server Test Page</title>
+</head>
+<body>
+    <button id="connect" onclick="connect()">CONNECT</button>
+    <button id="disconnect" onclick="socket.disconnect()" disabled>DISCONNECT</button>
+    <span>Username: </span><span id="display_username">Not Logged</span>
+    <br>
+    <textarea id="log" disabled rows="30" cols="80">Client Logs:</textarea><br>
+    <input id="eventname" type="text" size="20" placeholder="Websocket Event Name" disabled><br>
+    <textarea id="eventdata" type="text" rows="2" cols="75" placeholder="Websocket Event Payload" disabled></textarea>
+    <button id="send" onclick="sendEvent()" disabled>Send</button><br>
+    <span>Load a websocket event template:</span>
+    <select id="emit_templates_selection" onchange="loadTemplate()" onfocus="this.selectedIndex = -1"></select>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        var emit_templates = [
+            {event: 'register',data: '{"username":"#YOUR_USERNAME_HERE#","password":"#YOUR_PASSWORD_HERE#"}', desc: "Register a new user"},
+            {event: 'login', data: '{"username":"#YOUR_USERNAME_HERE#","password":"#YOUR_PASSWORD_HERE#"}', desc: "Login an existing user"},
+            {event: 'test', data: '{"type": "json", "desc": "data can be transferred to server with websocket protocol, try it"}', desc: "Test event"},
+            {event: "add_food", data: '{"name":"#FOOD_NAME_HERE#","bestbefore":"2023-12-28"}'},
+            {event: "delete_food", data: '{"uid":#FOOD_UID_HERE#}'},
+        ]
+        var emit_templates_selection = document.getElementById("emit_templates_selection");
+        for (var i = 0; i < emit_templates.length; i++) {
+            var option = document.createElement("option");
+            option.text = emit_templates[i].event + " - " + emit_templates[i].desc;
+            option.value = i;
+            emit_templates_selection.add(option);
+        }
+        function loadTemplate(){
+            var index = emit_templates_selection.value;
+            document.getElementById("eventname").value = emit_templates[index].event;
+            document.getElementById("eventdata").value = emit_templates[index].data;
+        }
+        var logbox = document.getElementById("log");
+        function updateLog(obj) {
+            log.value += "\r\n"
+            log.value += obj.toString();
+            log.scrollTop = log.scrollHeight;
+            console.log(obj);
+        }
+        const socket = io({autoConnect: false, reconnection:false});
+        socket.on("message", (data)=>{
+            updateLog("[Message from Server]"+data.data);
+        });
+        socket.on("alert", (data)=>{
+            alert(data.data)
+            updateLog("[Alert from Server]"+data.data);
+        });
+        socket.on("connect_error", function(){
+            updateLog("Connect failed")
+        })
+        socket.on("connect", function(){
+            onConnect();
+        })
+        socket.on("disconnect", function(){
+            onDisconnect();
+        })
+        socket.on("login", (data) => {
+            document.getElementById("display_username").innerHTML = data.username;
+        })
+        socket.on("update_foods", (data) => {
+            updateLog("[Foods List Updated]"+JSON.stringify(data));
+            updateLog("Best before date ascending order:")
+            data.sort((a,b) => {
+                return new Date(a.bestbefore) - new Date(b.bestbefore);
+            })
+            for (var i = 0; i < data.length; i++) {
+                updateLog("uid:" + data[i].uid.toString() + data[i].name + " - " + data[i].bestbefore.toString());
+            }
+        })
+        
+
+        function sendEvent(){
+            var eventname = document.getElementById("eventname").value;
+            var eventdata = document.getElementById("eventdata").value;
+            socket.emit(eventname, JSON.parse(eventdata));
+            updateLog("[Send Event]"+eventname+", data: "+eventdata);
+        }
+
+        function connect(){
+            updateLog("connecting...")
+            socket.connect();
+        }
+
+        function onDisconnect(){
+            updateLog("disconnected")
+            document.getElementById("connect").disabled = false;
+            document.getElementById("disconnect").disabled = true;
+            document.getElementById("eventname").disabled = true;
+            document.getElementById("eventdata").disabled = true;
+            document.getElementById("send").disabled = true;
+            document.getElementById("display_username").innerHTML = "Not Logged";
+        }
+
+        function onConnect(){
+            updateLog("connected")
+            document.getElementById("connect").disabled = true;
+            document.getElementById("disconnect").disabled = false;
+            document.getElementById("eventname").disabled = false;
+            document.getElementById("eventdata").disabled = false;
+            document.getElementById("send").disabled = false;
+        }
+
+    </script>
+</body>
+</html>

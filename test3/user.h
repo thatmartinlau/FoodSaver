@@ -1,8 +1,11 @@
+#pragma once
 #ifndef USER_H
 #define USER_H
 
 #include "fridge.h"
 #include "offer.h"
+#include "recipe.h"
+#include "rpc_client_side.hpp"
 
 //#include <iostream>
 #include <list>
@@ -12,12 +15,16 @@
 //using json = nlohmann::json;
 //using namespace std;
 
-#include "client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
+//#include "client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
+//include "" esma's thing
+
+//fix circular include loop:
+class ServerUser;
 
 class User{
 public:
     User();
-    User(std::string username, std::string password, std::string telegram_username);
+    User(std::string username, std::string password);
     ~User();
     void set_username(std::string username);
     std::string get_username();
@@ -41,11 +48,28 @@ public:
     int get_telegram_notifications();
     void set_marketplace_notifications(int m);
     int get_marketplace_notifications();
-    //json toJson () const;
-    void add_offer(Offer new_offer);
-    Offer remove_offer(Offer *offer_to_delete);
     std::vector<Offer> get_my_offers();
+    void add_offer(Offer new_offer);
+    Fridge get_user_fridge();
+    void add_ingredient_fridge(Ingredient elt);
+    Offer remove_offer(Offer *offer_to_delete);
+    void like_recipe(Recipe recipe);
+    void unlike_recipe(Recipe recipe);
+    bool operator==(User& other);
 
+    void update_user_characteritics(std::string display_name1, std::string telegram_username1,  int gender1 ,int promotion1,  std::string building_address1, int phone_number1,    std::list<bool> food_and_dietary_restrictions1, int telegram_notifications1, int marketplace_notifications1, Fridge user_fridge1, std::vector<Offer> offer_list1){
+        display_name = display_name1;
+        telegram_username = telegram_username1;
+        gender = gender1;
+        promotion = promotion1;
+        building_address = building_address1;
+        phone_number = phone_number1;
+        food_and_dietary_restrictions = food_and_dietary_restrictions1;
+        telegram_notifications = telegram_notifications1;
+        marketplace_notifications = marketplace_notifications1;
+        user_fridge1 = user_fridge ;
+        offer_list1 = offer_list;
+    }
 private:
     std::string username;
     std::string password;
@@ -60,6 +84,11 @@ private:
     int marketplace_notifications;
     Fridge user_fridge;
     std::vector<Offer> offer_list;
+    std::vector<Recipe> liked_recipes;
+    ServerUser *server_user;
 };
+
+
+std::vector<std::string> getUsers();
 
 #endif // USER_H

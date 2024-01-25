@@ -30,3 +30,11 @@ with complex and large data structures like nested vectors).
 I also added some lines to clean the memory (suggested by my TA since he wasn't sure if c++ has garbage collectors or something along these lines)
 and release it later to further improve the performance. 
 
+Session 6:
+For this session I made a function for Diana which returns all offers and their users. For this function it was important to ensure the file inclusion wont be looping. In other words, since I used server.cpp and client hpp and cpp file to make it, and these files include some backend files as well, we wouldn't want to have a situation where she might include a file which is already including her own in the first place. We also figured out that the offers are no longer going to be made up of different packages of ingrediants but instead ingrediants sold seperately (which I initially suggested in the beggining of the project anyways), so I had to change some offer formats as well. 
+
+Session 7:
+In fixing the rpc bug, we had to change formats of the inputs/outputs for functions which include more complex structures than <vector<string>>. We did that by making functions that serialize and deserialize our data. To sum up, these functions take/return the complex format and put the data in the correct one so it can be transfered by rpc and since there are several different types of the complex structures such as <vector<vector<vector<string>>>> or unordered maps, they all needed a specific function. However I did not have to write everything from scratch since some of them could call upon the others after being reduced to the right format. 
+
+Session 8:
+I made a function for Cyriac that returns and stores recipes. Everything there is in vector<string> format so there was no need for serialization or deserialization. However I noticed that the function I wrote for Diana was not changed (get_all_users_with_offers) regarding this (de)serialization so I also updated it. Finally, I went through the entire server documentation with Oscar to get a complete grasp on the finalized version.
