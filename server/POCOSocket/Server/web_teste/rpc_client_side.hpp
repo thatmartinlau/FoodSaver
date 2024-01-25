@@ -56,7 +56,6 @@ public:
     void update_user_password_and_username(string username, string password); //gives new username and password to database.
     
 
-    std::vector<std::variant<std::string, std::string, int, int, std::string, int, std::list<bool>, int, int, Fridge, std::vector<Offer>>> return_server_characs(string username, string password);
 
     Fridge get_fridge(); //receives the fridge from the database.
     vector<Offer> get_offer_list(); //gets db's offer list for user

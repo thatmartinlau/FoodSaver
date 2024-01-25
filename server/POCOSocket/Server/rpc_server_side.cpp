@@ -32,7 +32,7 @@ const string Database_recipe_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/
 class UserData {
 public:
     UserData(string password, basic_user_data basic_us_data) {
-        basic_u_data = basic_us_data
+        basic_u_data = basic_us_data;
     };
 
     UserData(string password){

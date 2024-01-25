@@ -13,9 +13,12 @@ User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
     ServerUser* server = server_user;
-    std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> vector = server->return_server_characs(username, password);
-    this->update_user_characteritics(std::get<0>(vector[0]), std::get<1>(vector[1]), std::get<2>(vector[2]) , std::get<3>(vector[3]), std::get<4>(vector[4]), std::get<5>(vector[5]),  std::get<6>(vector[6]), std::get<7>(vector[7]), std::get<8>(vector[8]),  std::get<9>(vector[9]), std::get<10>(vector[10]));
+    //std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> vector = server->return_server_characs(username, password);
+    Fridge userfridge = server->get_fridge();
+    std::vector<Offer> user_offer_list = server->get_offer_list();
 
+    std::vector<string> vector = server->return_server_characs(username, password);
+    this->update_user_characteritics(vector[0], vector[1], std::stoi(vector[2]), std::stoi(vector[3]), vector[4], std::stoi(vector[5]), std::stoi(vector[6]), std::stoi(vector[7]), userfridge , user_offer_list);
 
 }
 
