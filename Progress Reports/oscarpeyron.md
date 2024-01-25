@@ -24,22 +24,26 @@ Week 11 23/30
 - Finished converting to data_structure for back_end on rpc_client_side
   
 Week 12 : 
-- Getting familiar with msgpack (in case) 
-- Waiting for final updated classes from the front_end to have the final version of rpc_client_side.
+- Getting familiar with msgpack to help rpc_server side. 
+- Waiting for final updated classes from the front_end to code the final version of rpc_client_side.
 
 Week 13 : 08/01/2024 - 14/01/2024 
-- coding the final rpc_client_side updated with the front-end changes.
+- coding the entire final rpc_client_side updated with the front-end changes.
+  
   
 Week 14: 15/01/2024 - 21/01/2024 : 
 
 - coding serialize functions (for double vector string, and triple vector string) 
 - coding deserialize functions
 - debugging again the code for rpc_client_side.
-- trying to add new enums in link with the wishes of the front end. 
+- adding new enums in link with the wishes of the front end.
 
 Week 15 : 
-- preparing for the presentation
+- preparing on the presentation
 - discussing with Esma on server_side and client_side to be updated of the changes of one and other.
+- coded the final version of the User class struct
+- created the link between User_data, Server_User and User classes --> linking server and front side.
+  
 
   
 
