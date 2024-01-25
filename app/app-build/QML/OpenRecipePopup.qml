@@ -48,12 +48,12 @@ Popup {
                         radius:12.5
             }
             onClicked: {
-                var temp = MainController.getTitleForVis()[0];
+                var temp = RecipeController.getTitleForVis()[0];
                 text = temp;
             }
         }
 
-        Text {text: MainController.getTitleForVis()[0]; color: "blue"; Layout.preferredWidth: 75}
+        Text {text: RecipeController.getTitleForVis()[0]; color: "blue"; Layout.preferredWidth: 75}
 
 
 

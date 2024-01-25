@@ -323,24 +323,24 @@ Popup {
             }
             onClicked: {
                 for (var i = 0; i < itemModel.count; i++) {
-                    MainController.submit(itemModel.get(i).name)
+                    RecipeController.submit(itemModel.get(i).name)
                 }
 
-                if (recipeName.text.trim() !== "" && instructionModel.count != 0 &&  inputModel.count != 0 && MainController.checkTitle(recipeName.text.trim()) != false) { // Check if the text is not empty or only whitespace
+                if (recipeName.text.trim() !== "" && instructionModel.count != 0 &&  inputModel.count != 0 && RecipeController.checkTitle(recipeName.text.trim()) != false) { // Check if the text is not empty or only whitespace
                     for(var index = 0; index < inputModel.count; index++){
-                        MainController.submitIngredients(inputModel.get(index).name)
+                        RecipeController.submitIngredients(inputModel.get(index).name)
                     }
 
                     for(var index = 0; index < instructionModel.count; index++){
-                        MainController.submitInstructions(instructionModel.get(index).name)
+                        RecipeController.submitInstructions(instructionModel.get(index).name)
                     }
                     if(hours.text.trim() == ""){hours.text = 0;}
                     if(minutes.text.trim() == ""){minutes.text = 0;}
-                    var res = MainController.submitAll(recipeName.text, diet.currentValue, hours.text, minutes.text)//, ingredient1.text, instruction1.text)
+                    var res = RecipeController.submitAll(recipeName.text, diet.currentValue, hours.text, minutes.text)//, ingredient1.text, instruction1.text)
 
 
 
-                    var no_Value = MainController.get_ingr()
+                    var no_Value = RecipeController.get_ingr()
 
                     itemModel.append({"name": recipeName.text, "dietRestriction": diet.currentValue, "grade": "None" , "date": "Test1", "quantity": "Test1" });
 

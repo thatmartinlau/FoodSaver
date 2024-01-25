@@ -127,11 +127,11 @@ Row {
                                         Layout.preferredWidth: 5000
                                         onTextChanged: {
                                             for (var i = 0; i < itemModel.count; i++) {
-                                                MainController.submit(itemModel.get(i).name)
+                                                RecipeController.submit(itemModel.get(i).name)
                                             }
-                                            var to_display = MainController.search_res(searchbar.text)
-                                            //var titles = MainController.titleOrDiet(to_display,0)
-                                            var diets = MainController.titleOrDiet(to_display,1)
+                                            var to_display = RecipeController.search_res(searchbar.text)
+                                            //var titles = RecipeController.titleOrDiet(to_display,0)
+                                            var diets = RecipeController.titleOrDiet(to_display,1)
 
                                             itemModel.clear()
 
@@ -143,7 +143,7 @@ Row {
                                             }else{
                                                 nothing_found = false;
                                                 for (var j = 0; j< to_display.length; j++){
-                                                    itemModel.append({"name" : to_display[j], "dietRestriction": diets[j], "grade": MainController.sendRatingForVis(to_display[j])});//titles[j], "dietRestriction" : diets[j]})
+                                                    itemModel.append({"name" : to_display[j], "dietRestriction": diets[j], "grade": RecipeController.sendRatingForVis(to_display[j])});//titles[j], "dietRestriction" : diets[j]})
                                                 }
                                             }
 
@@ -169,10 +169,10 @@ Row {
                                         onClicked: {
                                             if(sorter_box != "None"){
                                                 for (var i = 0; i < itemModel.count; i++) {
-                                                    MainController.submit(itemModel.get(i).name)
+                                                    RecipeController.submit(itemModel.get(i).name)
                                                 }
-                                                var to_display = MainController.search_res(sorter_box)
-                                                var diets = MainController.titleOrDiet(to_display,1)
+                                                var to_display = RecipeController.search_res(sorter_box)
+                                                var diets = RecipeController.titleOrDiet(to_display,1)
 
                                                 itemModel.clear()
 
@@ -184,20 +184,20 @@ Row {
                                                 }else{
                                                     nothing_found = false;
                                                     for (var j = 0; j< to_display.length; j++){
-                                                        itemModel.append({"name" : to_display[j], "dietRestriction": diets[j], "grade": MainController.sendRatingForVis(to_display[j])});//titles[j], "dietRestriction" : diets[j]})
+                                                        itemModel.append({"name" : to_display[j], "dietRestriction": diets[j], "grade": RecipeController.sendRatingForVis(to_display[j])});//titles[j], "dietRestriction" : diets[j]})
                                                     }
                                                 }
                                             }else{
                                                 for (var i = 0; i < itemModel.count; i++) {
-                                                    MainController.submit(itemModel.get(i).name)
+                                                    RecipeController.submit(itemModel.get(i).name)
                                                 }
 
                                                 nothing_found = false
                                                 itemModel.clear()
-                                                var len = MainController.getTotalLength()
+                                                var len = RecipeController.getTotalLength()
                                                 for (var j = 0; j < len; j++) {
-                                                    var see = [MainController.gett(j)]
-                                                    itemModel.append({"name": MainController.gett(j), "dietRestriction":MainController.titleOrDiet(see,1)[0], "grade": MainController.sendRatingForVis(MainController.gett(j))})
+                                                    var see = [RecipeController.gett(j)]
+                                                    itemModel.append({"name": RecipeController.gett(j), "dietRestriction":RecipeController.titleOrDiet(see,1)[0], "grade": RecipeController.sendRatingForVis(RecipeController.gett(j))})
                                                 }
                                                 scrollView.contentHeight = len*82.5;
                                                 searchbar.text = ""
@@ -209,15 +209,15 @@ Row {
                                         text: "Reset"
                                         onClicked: {
                                             for (var i = 0; i < itemModel.count; i++) {
-                                                MainController.submit(itemModel.get(i).name)
+                                                RecipeController.submit(itemModel.get(i).name)
                                             }
 
                                             nothing_found = false
                                             itemModel.clear()
-                                            var len = MainController.getTotalLength()
+                                            var len = RecipeController.getTotalLength()
                                             for (var j = 0; j < len; j++) {
-                                                var see = [MainController.gett(j)]
-                                                itemModel.append({"name": MainController.gett(j), "dietRestriction":MainController.titleOrDiet(see,1)[0], "grade": MainController.sendRatingForVis(MainController.gett(j))})
+                                                var see = [RecipeController.gett(j)]
+                                                itemModel.append({"name": RecipeController.gett(j), "dietRestriction":RecipeController.titleOrDiet(see,1)[0], "grade": RecipeController.sendRatingForVis(RecipeController.gett(j))})
                                             }
                                             scrollView.contentHeight = len*82.5;
                                             searchbar.text = ""
@@ -264,12 +264,12 @@ Row {
 
                                             onClicked: {
                                                 //viewRecipePopup.grid1.
-                                                var buildup = MainController.sendTitleForVis(model.name)
+                                                var buildup = RecipeController.sendTitleForVis(model.name)
                                                 open_title = buildup[0]
                                                 open_diet = buildup[1]
                                                 open_time = buildup[2]
                                                 //open_ingredients.clear()
-                                                open_ingredients = MainController.sendIngredientsForVis(model.name)
+                                                open_ingredients = RecipeController.sendIngredientsForVis(model.name)
 
                                                 readIngredients.clear()
                                                 for(var i = 0; i<open_ingredients.length; i++){
@@ -279,7 +279,7 @@ Row {
 
                                                 //open_instructions.clear()
 
-                                                open_instructions = MainController.sendInstructionsForVis(model.name)
+                                                open_instructions = RecipeController.sendInstructionsForVis(model.name)
 
                                                 readInstructions.clear()
                                                 for(var i = 0; i<open_instructions.length; i++){
@@ -451,7 +451,7 @@ Row {
                                             //anchors.horizontalCenter: parent.horizontalCenter
 
                                             onClicked: {
-                                                MainController.submitTitleForRating(model.name)
+                                                RecipeController.submitTitleForRating(model.name)
                                                 myPopup.open()
                                             }
                                         }
@@ -489,15 +489,15 @@ Row {
             onClicked: {
                 //cookBook.open()
                 //for(var i = 0; i<10;i++){
-                //    itemModel.append(MainController.getJsonRTitle(i))
+                //    itemModel.append(RecipeController.getJsonRTitle(i))
                 //}
-                //var temp_title = MainController.getJsonRTitle(0)
+                //var temp_title = RecipeController.getJsonRTitle(0)
                 //itemModel.append({"name" : "Vegetarian Lasagna"})
                 //itemModel.append({"name" : "Eggs Benedict"})
                 //itemModel.append({"name" : "Noodle Soup"})
                 //itemModel.append({"name" : temp_title})
                 //scrollView.contentHeight = scrollView.contentHeight + 3*82.5;
-                MainController.initial()
+                RecipeController.initial()
             }
         }
         Button {
@@ -585,18 +585,18 @@ Row {
                     radius: 8
                 }
                 onEditingFinished: {
-                    var rating = MainController.submitRating(user_rating.text)
+                    var rating = RecipeController.submitRating(user_rating.text)
 
                     for (var i = 0; i < itemModel.count; i++) {
-                        MainController.submit(itemModel.get(i).name)
+                        RecipeController.submit(itemModel.get(i).name)
                     }
 
                     nothing_found = false
                     itemModel.clear()
-                    var len = MainController.getTotalLength()
+                    var len = RecipeController.getTotalLength()
                     for (var j = 0; j < len; j++) {
-                        var see = [MainController.gett(j)]
-                        itemModel.append({"name":MainController.gett(j) , "dietRestriction":MainController.titleOrDiet(see,1)[0], "grade": MainController.sendRatingForVis(MainController.gett(j)) })
+                        var see = [RecipeController.gett(j)]
+                        itemModel.append({"name":RecipeController.gett(j) , "dietRestriction":RecipeController.titleOrDiet(see,1)[0], "grade": RecipeController.sendRatingForVis(RecipeController.gett(j)) })
                     }
                     user_rating.text = ""
                     myPopup.close()
