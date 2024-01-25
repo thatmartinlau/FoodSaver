@@ -57,6 +57,19 @@ public:
     void unlike_recipe(Recipe recipe);
     bool operator==(User& other);
 
+    void update_user_characteritics(std::string display_name1, std::string telegram_username1,  int gender1 ,int promotion1,  std::string building_address1, int phone_number1,    std::list<bool> food_and_dietary_restrictions1, int telegram_notifications1, int marketplace_notifications1, Fridge user_fridge1, std::vector<Offer> offer_list1){
+        display_name = display_name1;
+        telegram_username = telegram_username1;
+        gender = gender1;
+        promotion = promotion1;
+        building_address = building_address1;
+        phone_number = phone_number1;
+        food_and_dietary_restrictions = food_and_dietary_restrictions1;
+        telegram_notifications = telegram_notifications1;
+        marketplace_notifications = marketplace_notifications1;
+        user_fridge1 = user_fridge ;
+        offer_list1 = offer_list;
+    }
 private:
     std::string username;
     std::string password;
@@ -74,9 +87,6 @@ private:
     std::vector<Recipe> liked_recipes;
     ServerUser *server_user;
 };
-
-// User --> void get_user_characteristics --> struct (display name , ) with all the info and
-
 
 
 std::vector<std::string> getUsers();

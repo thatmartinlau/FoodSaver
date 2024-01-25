@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include<vector>
+#include <variant>
 
 #include "rpc_client_side.hpp"
 
@@ -25,20 +26,33 @@ ServerUser::~ServerUser() {}
 void ServerUser::delete_self_in_db() {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("remove_user", username, password);
+
 }
 
+// basic_user_data get_userdata(); of the class user data;
+std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> ServerUser::return_server_characs(string username, string password){
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    basic_user_data structype = new_cli.call("get_userdata", username, password);
+    std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> vector;
+    vector.emplace_back(std::in_place_type<string>, structype.display_name);
+    vector.emplace_back(std::in_place_type<string>, structype.telegram_username);
+    vector.emplace_back(std::in_place_type<int>, structype.gender);
+    vector.emplace_back(std::in_place_type<int>, structype.promotion);
+    vector.emplace_back(std::in_place_type<string>, structype.building_address);
+    vector.emplace_back(std::in_place_type<int>,structype.phone_number);
+    vector.emplace_back(std::in_place_type<std::list<bool>>,structype.food_and_dietary_restrictions);
+    vector.emplace_back(std::in_place_type<int>,structype.telegram_notifications);
+    vector.emplace_back(std::in_place_type<int>,structype.marketplace_notifications);
+    vector.push_back(this->get_fridge());
+    vector.push_back(this->get_offer_list());
 
-void ServerUser::get_user_characteristics(UserData usd){
-    basic_user_data data = usd.basic_u_data;
-    this-> display_name = data.display_name;
-    this->telegram_username= data.telegram_username;
-    this -> gender = data.gender;
-    this-> promotion = data.promotion;
-    this ->building_address = data.building_address;
-    this-> phone_number = data.phone_number;
-    this-> food_and_dietary_restrictions = data.food_and_dietary_restrictions;
-    this-> telegram_notifications = data.telegram_notifications;
-    this-> marketplace_notifications= data.marketplace_notifications;
+
+    return vector;
+
+
+
+
+
 
 
 }

@@ -12,16 +12,10 @@ User::User() {}
 User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
-    this-> server_user = ServerUser(username, password);
-    this->user_fridge = server_user.get_fridge();
-    this -> offer_list = server_user.get_offer_list();
-    this -> display_name = server_user.display_name;
-    this -> telegram_username = server_user.telegram_username;
-    this -> gender = server_user.gender;
-    this-> phone_number = server_user.phone_number;
-    this-> food_and_dietary_restrictions = server_user.food_and_dietary_restrictions;
-    this-> telegram_notifications = server_user.telegram_notifications;
-    this-> marketplace_notifications= server_user.marketplace_notifications;
+    ServerUser* server = server_user;
+    std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> vector = server->return_server_characs(username, password);
+    this->update_user_characteritics(std::get<0>(vector[0]), std::get<1>(vector[1]), std::get<2>(vector[2]) , std::get<3>(vector[3]), std::get<4>(vector[4]), std::get<5>(vector[5]),  std::get<6>(vector[6]), std::get<7>(vector[7]), std::get<8>(vector[8]),  std::get<9>(vector[9]), std::get<10>(vector[10]));
+
 
 }
 
@@ -32,7 +26,7 @@ User::~User() {
 
 void User::set_username(std::string username) {
     this->username = username;
-    server_user.update_user_password_and_username(username, server_user.get_password());
+    server_user->update_user_password_and_username(username, server_user->get_password());
 }
 
 std::string User::get_username() {
