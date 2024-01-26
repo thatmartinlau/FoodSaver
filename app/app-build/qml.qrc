@@ -17,5 +17,6 @@
         <file>QML/OpenRecipePopup.qml</file>
         <file>QML/CookBook.qml</file>
         <file>QML/PersonalCookBook.qml</file>
+        <file>QML/Basket.qml</file>
     </qresource>
 </RCC>

@@ -124,6 +124,9 @@ Row {
             y: parent.height * 0.05
             id: basket
             text: "My Basket"
+            onClicked: {
+                myBasket.open()
+            }
         }
 
         /*Button {
@@ -173,6 +176,10 @@ Row {
 
     AddToFridge {
         id: addtofridge
+    }
+
+    Basket {
+        id: myBasket
     }
 
     Selling {
