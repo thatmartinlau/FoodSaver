@@ -182,8 +182,8 @@ int main() {
 
     //std::thread expirationCheckerThread = std::thread(expirationChecker);
     std::thread expirationChecker([]() {
-        std::cout << "Starting checking expiration!" << std::endl;
         while (true) {
+            std::cout << "Starting checking expiration!" << std::endl;
             auto expiringItems = check_expiration(c);
 
             for (const auto& item : expiringItems) {
