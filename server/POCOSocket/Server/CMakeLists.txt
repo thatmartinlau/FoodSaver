@@ -13,6 +13,7 @@ add_executable(Server rpc_server_side.cpp
 	common_characteristics.hpp
 )
 
+
 target_link_libraries(Server PRIVATE rpc)
 
 include(GNUInstallDirs)
