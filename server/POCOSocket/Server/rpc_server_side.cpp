@@ -33,7 +33,7 @@ class UserData {
 public:
     UserData(string password, basic_user_data basic_us_data) {
         basic_u_data = basic_us_data;
-    };
+    }
 
     UserData(string password){
         this->password = password;
@@ -42,6 +42,7 @@ public:
     ~UserData() {}
     string password;
     basic_user_data basic_u_data;
+    list<bool> food_and_dietary_restrictions;    
     vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!    
     vector<vector<vector<string>>> offer_list; //Implied: offer is [Ingredient, [price]]. Offer list is vector of this offer type.
 };
@@ -177,14 +178,14 @@ void write_simple_types() {
         vector<string> user_values_in_string_format;
         user_values_in_string_format.push_back(username);
         user_values_in_string_format.push_back(user_data.password);
-        user_values_in_string_format.push_back(user_data.display_name);
-        user_values_in_string_format.push_back(user_data.telegram_username);
-        user_values_in_string_format.push_back(std::to_string(user_data.gender));
-        user_values_in_string_format.push_back(std::to_string(user_data.promotion));
-        user_values_in_string_format.push_back(user_data.building_address);
-        user_values_in_string_format.push_back(std::to_string(user_data.phone_number));
-        user_values_in_string_format.push_back(std::to_string(user_data.telegram_notifications));
-        user_values_in_string_format.push_back(std::to_string(user_data.marketplace_notifications));
+        user_values_in_string_format.push_back(user_data.basic_u_data.display_name);
+        user_values_in_string_format.push_back(user_data.basic_u_data.telegram_username);
+        user_values_in_string_format.push_back(std::to_string(user_data.basic_u_data.gender));
+        user_values_in_string_format.push_back(std::to_string(user_data.basic_u_data.promotion));
+        user_values_in_string_format.push_back(user_data.basic_u_data.building_address);
+        user_values_in_string_format.push_back(std::to_string(user_data.basic_u_data.phone_number));
+        user_values_in_string_format.push_back(std::to_string(user_data.basic_u_data.telegram_notifications));
+        user_values_in_string_format.push_back(std::to_string(user_data.basic_u_data.marketplace_notifications));
         string writing_to_file_line;
         for (vector<string>::iterator it = user_values_in_string_format.begin(); it != user_values_in_string_format.end(); ++it) {
             writing_to_file_line.append(*it + csv_sep);
@@ -268,8 +269,6 @@ void write_to_csv() {
 }
 
 
-
-
 void init_data_test() { //debug function. Tests database read/write all together along with test_read_write_csv().
     UserData data;
     string m = "Molly";
@@ -325,11 +324,7 @@ int test_read_csv() {
 //int val2 = test_read_csv();
 
 
-
-
-
-
-//.////Real Server Stuff:
+//.////Actual Live Server Stuff:
 
 //DB Manipulation functions:
 
@@ -392,15 +387,9 @@ void update_user_characteristics(string username, string password, vector<string
     auto el = database->find(username);
     
     if (el != database->end() && password==el->second.password) {
-            el->second.display_name = new_characs[0];
-            el->second.telegram_username = new_characs[1];
-            el->second.gender = new_characs[2];
-            el->second.promotion = new_characs[3];
-            el->second.building_address = new_characs[4];
-            el->second.phone_number = new_characs[5];
-            el->second.food_and_dietary_restrictions = new_characs[6];
-            el->second.telegram_notifications = new_characs[7];
-            el->second.marketplace_notifications = new_characs[8];
+        basic_user_data new_user_data;
+    new_user_data = deserialize_basic_data_of_user(new_characs);
+        el->second.basic_u_data = new_user_data;
     }
     else if(password != el->second.password){
             // Password does not match
@@ -503,7 +492,10 @@ vector<string> get_fridge(string username, string password) {
         }
 
 
-        return {}; // Return an empty offer_list if no username or password does not match
+        else { // Return an empty offer_list if no username or password does not match
+             vector<string> empty_return_vector = {"Empty, error when coding"};
+             return empty_return_vector;
+        }
 
 }
 
@@ -546,34 +538,39 @@ vector<string> getAllRecipes() {
 
 
 // for food and dietary_restrictions
-vector<string> get_user_food_restrictions(username, password) {
+vector<string> get_user_food_restrictions(string username, string password) {
         auto el = database->find(username); // Find the username in the database
 
         if (el != database->end() && password == el->second.password) {
             // Username and password match correctly
-            list<bool> food_and_dietary_restrictions = el->second.basic_u_data;
-            std::vector<std::string> stringVector;
+            list<bool> food_and_dietary_restrictions = el->second.food_and_dietary_restrictions;
+            std::vector<std::string> vector_string_restrictions;
 
             for (bool value : food_and_dietary_restrictions) {
-            stringVector.push_back(std::to_string(value));
+            vector_string_restrictions.push_back(std::to_string(value));
             }
 
-            return stringVector;
+            return vector_string_restrictions;
 
         }
-        else {}
-
+        else {
+            vector<string> empty_return_vector = {"Empty, error when coding"};
+            return empty_return_vector;
+        }
 }
 
 
-vector<string> get_user_characteristics(username, password) {
+vector<string> get_user_characteristics(string username, string password) {
     auto el = database->find(username); // Find the username in the database
     
     if (el != database->end() && password == el->second.password) {
         // Username and password match correctly
-        return serialize_basic_characs(el->second.basic_u_data);   
+        return serialize_basic_data_of_user(el->second.basic_u_data);   
     }
-    else {}
+    else {
+        vector<string> empty_return_vector = {"Empty, error when coding"};
+        return empty_return_vector;
+    }
     
 }
 
@@ -636,22 +633,21 @@ int main() {
     srv.bind("addRecipes", &addRecipes);
     srv.bind("getAllRecipes", &getAllRecipes);
     
-    srv.bind('get_user_food_restrictions', &get_user_food_restrictions);
+    srv.bind("get_user_food_restrictions", &get_user_food_restrictions);
     srv.bind("get_user_characteristics", &get_user_characteristics);
     //Check functions:
     srv.bind("check_user", &check_user);
     
     
     //binding test functions:
-    srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
-    srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
+    //srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
+    //srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
     
     
     //SERVER running from here:
     read_from_csv();
     cout << "running" << endl;        
     srv.run();
-    cout << "running" << endl;    
         
     return 0;    
 }

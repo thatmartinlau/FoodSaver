@@ -13,17 +13,38 @@ using namespace std;
 struct basic_user_data {
     string display_name;
     string telegram_username;
+    string building_address;
     int gender;
     int promotion;
-    string building_address;
     int phone_number;
-    list<bool> food_and_dietary_restrictions;
     int telegram_notifications;
     int marketplace_notifications;
     basic_user_data() {}
 };
 
 
+vector<string> serialize_basic_data_of_user(basic_user_data u_data) {
+    vector<string> serialized_basic_data;
+    serialized_basic_data.push_back(u_data.display_name);
+    serialized_basic_data.push_back(u_data.telegram_username);
+    serialized_basic_data.push_back(u_data.building_address);
+    serialized_basic_data.push_back(to_string(u_data.gender));    
+    serialized_basic_data.push_back(to_string(u_data.promotion));
+    serialized_basic_data.push_back(to_string(u_data.telegram_notifications));
+    serialized_basic_data.push_back(to_string(u_data.marketplace_notifications));
+    return serialized_basic_data;
+}
+
+basic_user_data deserialize_basic_data_of_user(vector<string> user_data_as_str_vec) {
+    basic_user_data basic_u_data;
+    basic_u_data.marketplace_notifications = stoi(user_data_as_str_vec[0]);
+    basic_u_data.telegram_notifications= stoi(user_data_as_str_vec[1]);
+    basic_u_data.promotion = stoi(user_data_as_str_vec[2]);
+    basic_u_data.gender = stoi(user_data_as_str_vec[3]);
+    basic_u_data.building_address = user_data_as_str_vec[4];
+    basic_u_data.telegram_username = user_data_as_str_vec[5];
+    basic_u_data.display_name = user_data_as_str_vec[6];
+}
 
 //Going to copy paste the deserialize and serialize functions !
 
@@ -89,11 +110,6 @@ vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string
 
 }
 
-
-//vector<string> serialize_basic_characs(basic_user_data u_data) {
-//    vector<string> serialized_characs;
-//    serialized_characs.push_back(u_data.display_name);
-//}
 
 
 
