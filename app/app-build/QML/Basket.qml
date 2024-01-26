@@ -12,4 +12,20 @@ Popup {
             color:"#EEEEEE"
             radius: 12.5
         }
+    Button {
+        anchors.right: parent.right
+        anchors.top: parent.top
+        text: "X"
+        width: 20
+        height: 20
+        //height: 50
+        background: Rectangle {
+                    // color: "red"
+                    radius: 50
+        }
+        onClicked: {
+            myBasket.close()
+        }
+    }
 }
+
