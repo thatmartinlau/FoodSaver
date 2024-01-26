@@ -67,16 +67,16 @@ void ServerUser::update_food_restrictions(list<bool> food_and_diet_restrictions)
     new_cli.call("update_food_restrictions", username, password, vec_food_and_dietary_restrictions);
 }
 
-void ServerUser::update_user_characteristics(User usr) {
+void ServerUser::update_user_characteristics(User *user) {
     basic_user_data basic_data;
-    basic_data.display_name = usr.get_display_name();
-    basic_data.telegram_username = usr.get_telegram_username();
-    basic_data.gender = usr.get_gender();
-    basic_data.promotion = usr.get_promotion();
-    basic_data.building_address = usr.get_building_address();
-    basic_data.phone_number = usr.get_phone_number();
-    basic_data.telegram_notifications = usr.get_telegram_notifications();
-    basic_data.marketplace_notifications = usr.get_marketplace_notifications();
+    basic_data.display_name = user->get_display_name();
+    basic_data.telegram_username = user->get_telegram_username();
+    basic_data.gender = user->get_gender();
+    basic_data.promotion = user->get_promotion();
+    basic_data.building_address = user->get_building_address();
+    basic_data.phone_number = user->get_phone_number();
+    basic_data.telegram_notifications = user->get_telegram_notifications();
+    basic_data.marketplace_notifications = user->get_marketplace_notifications();
 
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_user_characteristics", username, password, serialize_basic_data_of_user(basic_data));

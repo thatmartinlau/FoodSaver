@@ -50,7 +50,7 @@ public:
     Fridge get_fridge(); //receives the fridge from the database.
     vector<Offer> get_offer_list(); //gets db's offer list for user
 
-    void update_user_characteristics(User usr); //updates user's characteristics, ASIDE from username/password. that's update+user.
+    void update_user_characteristics(User *usr); //updates user's characteristics, ASIDE from username/password. that's update+user.
     void update_food_restrictions(list<bool> food_restrictions);
     void update_fridge(Fridge &f_input); //updates the fridge on the database. Adds/removes necessary items with comparisons. Keeps the local fridge unchanged.
     void update_offer_list(vector<Offer> &offer_list); //updates db's offer list.
