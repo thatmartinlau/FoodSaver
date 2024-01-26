@@ -156,6 +156,11 @@ Item {
             }
         }
     }
+    Button {
+        text: "market"
+        onClicked: {stackView.push(Qt.resolvedUrl("Market.qml"))}
+
+    }
 
     // SIDE + EXTRA BUTTONS
 
