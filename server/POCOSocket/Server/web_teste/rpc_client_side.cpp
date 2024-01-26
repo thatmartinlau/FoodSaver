@@ -30,32 +30,26 @@ void ServerUser::delete_self_in_db() {
 }
 
 // basic_user_data get_userdata(); of the class user data;
-std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> ServerUser::return_server_characs(string username, string password){
+vector<string> ServerUser::return_server_characs(string username, string password){
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    basic_user_data structype = new_cli.call("get_userdata", username, password);
-    std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> vector;
-    vector.emplace_back(std::in_place_type<string>, structype.display_name);
-    vector.emplace_back(std::in_place_type<string>, structype.telegram_username);
-    vector.emplace_back(std::in_place_type<int>, structype.gender);
-    vector.emplace_back(std::in_place_type<int>, structype.promotion);
-    vector.emplace_back(std::in_place_type<string>, structype.building_address);
-    vector.emplace_back(std::in_place_type<int>,structype.phone_number);
-    vector.emplace_back(std::in_place_type<std::list<bool>>,structype.food_and_dietary_restrictions);
-    vector.emplace_back(std::in_place_type<int>,structype.telegram_notifications);
-    vector.emplace_back(std::in_place_type<int>,structype.marketplace_notifications);
-    vector.push_back(this->get_fridge());
-    vector.push_back(this->get_offer_list());
+    vector<string> structype = new_cli.call("get_user_characteristics", username, password);
+    return structype;
+}
 
 
-    return vector;
+list<bool> ServerUser::get_food_restrictions(string username, string password){
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    vector<string> food_restrictions = new_cli.call("get_user_food_restrictions", username, password);
+    std::list<bool> boolList;
 
+    for (const std::string& str : food_restrictions) {
+        boolList.push_back(static_cast<bool>(std::stoi(str)));
+    }
 
-
-
-
-
+    return boolList;
 
 }
+
 
 
 void ServerUser::update_user_characteristics(User usr) { //ESMA TO FIX
