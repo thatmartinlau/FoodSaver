@@ -12,14 +12,23 @@ User::User() {}
 User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
-    ServerUser* server = server_user;
-    //std::vector<std::variant <std::string, std::string, int , int , std::string , int , std::list<bool> , int , int , Fridge ,  std::vector<Offer>>> vector = server->return_server_characs(username, password);
-    Fridge userfridge = server->get_fridge();
-    std::vector<Offer> user_offer_list = server->get_offer_list();
-    list<bool> food_restrictions = server->get_food_restrictions(username, password);
-    std::vector<string> vector = server->return_server_characs(username, password);
-    this->update_user_characteritics(vector[0], vector[1], std::stoi(vector[2]), std::stoi(vector[3]), vector[4], std::stoi(vector[5]), std::stoi(vector[6]), std::stoi(vector[7]), userfridge , user_offer_list,food_restrictions);
-
+    ServerUser srv_usr(username, password);
+    server_user = &srv_usr;
+    user_fridge = server_user->get_fridge();
+    offer_list = server_user->get_offer_list();
+    food_and_dietary_restrictions = server_user->get_food_restrictions();
+    basic_user_data basic_u_data;
+    basic_u_data = server_user->get_basic_user_data();
+    //Oscar, coded constructor directly in here, without added function . Initializer list style.
+    display_name = basic_u_data.display_name;
+    telegram_username = basic_u_data.telegram_username;
+    gender = basic_u_data.gender;
+    promotion = basic_u_data.promotion;
+    building_address = basic_u_data.building_address;
+    phone_number = basic_u_data.phone_number;
+    telegram_notifications = basic_u_data.telegram_notifications;
+    marketplace_notifications = basic_u_data.marketplace_notifications;
+    
 }
 
 
@@ -29,7 +38,7 @@ User::~User() {
 
 void User::set_username(std::string username) {
     this->username = username;
-    server_user->update_user_password_and_username(username, server_user->get_password());
+    server_user->update_user_name_and_password(username, password);
 }
 
 std::string User::get_username() {

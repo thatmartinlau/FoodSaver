@@ -23,7 +23,7 @@ struct basic_user_data {
 };
 
 
-vector<string> serialize_basic_data_of_user(basic_user_data u_data) {
+inline vector<string> serialize_basic_data_of_user(basic_user_data u_data) {
     vector<string> serialized_basic_data;
     serialized_basic_data.push_back(u_data.display_name);
     serialized_basic_data.push_back(u_data.telegram_username);
@@ -35,7 +35,7 @@ vector<string> serialize_basic_data_of_user(basic_user_data u_data) {
     return serialized_basic_data;
 }
 
-basic_user_data deserialize_basic_data_of_user(vector<string> user_data_as_str_vec) {
+inline basic_user_data deserialize_basic_data_of_user(vector<string> user_data_as_str_vec) {
     basic_user_data basic_u_data;
     basic_u_data.marketplace_notifications = stoi(user_data_as_str_vec[0]);
     basic_u_data.telegram_notifications= stoi(user_data_as_str_vec[1]);
@@ -46,13 +46,14 @@ basic_user_data deserialize_basic_data_of_user(vector<string> user_data_as_str_v
     basic_u_data.display_name = user_data_as_str_vec[6];
 }
 
+
 //Going to copy paste the deserialize and serialize functions !
 
 // do the recipe thing
 
 // serialize --> vector<vector<string> to vector<string>
 
-vector<string> serialize(vector<vector<string>> vector_of_vector){
+inline vector<string> serialize(vector<vector<string>> vector_of_vector){
     vector<string> just_vector;
     for(int i =0 ; i<sizeof(vector_of_vector); i++){
         for(int j =0; j<sizeof(vector_of_vector[i]); j++ ){
@@ -62,7 +63,7 @@ vector<string> serialize(vector<vector<string>> vector_of_vector){
     return just_vector;
 }
 
-vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vector_of_vector){
+inline vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vector_of_vector){
     vector<string> just_vector;
     for(int i =0 ; i<sizeof(vector_of_vector_of_vector); i++){
         for(int j =0; j<sizeof(vector_of_vector_of_vector[i]); j++ ){
@@ -78,7 +79,7 @@ vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vec
 }
 
 
-vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
+inline vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
     vector<string> just_vector;
 
     for(int i =0 ; i<vector_triple.size(); i++){
@@ -95,7 +96,7 @@ vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
 }
 
 
-vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> maps){
+inline vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> maps){
     vector<string> just_vector;
      auto it = maps.begin();
      just_vector.push_back(it->first);
@@ -119,7 +120,7 @@ vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string
 // [Ingredient1, Ingredient2, .... , [Price]
 
 //Ingredient_i = [name, expiry_date, quantity, category, priority_level]
-vector<vector<string>> deserialize_offer (vector<string> offer){
+inline vector<vector<string>> deserialize_offer (vector<string> offer){
     vector<vector<string>> offer_deser;
     for(int i = 0 ; i<sizeof(offer)-1;i+=6){
         vector<string> inter_vector;
@@ -140,7 +141,7 @@ vector<vector<string>> deserialize_offer (vector<string> offer){
 }
 
 
-vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list){
+inline vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list){
 
     vector<vector<vector<string>>> deserialize_offer_list;
     for(int i =0; i<offer_list.size(); i+=7){
@@ -159,7 +160,7 @@ vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list)
 }
 
 
-vector<vector<string>> deserialize_fridge(vector<string> fridge){
+inline vector<vector<string>> deserialize_fridge(vector<string> fridge){
     vector<vector<string>> fridge_deser;
 
     for(int i =0; i<fridge.size(); i+=6){
@@ -180,7 +181,7 @@ vector<vector<string>> deserialize_fridge(vector<string> fridge){
 
 }
 
-vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> offer_list){
+inline vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> offer_list){
     vector<vector<vector<string>>> offer_deser;
     for(int i = 0 ; i<offer_list.size();i++){
         vector<string> inter_vector;
@@ -190,7 +191,7 @@ vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> offer_lis
     return offer_deser;
 }
 
-unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> mapInStr){
+inline unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> mapInStr){
     unordered_map<string, vector<vector<vector<string>>>> result;
     for (const std::string& str : mapInStr) {
         std::istringstream iss(str);

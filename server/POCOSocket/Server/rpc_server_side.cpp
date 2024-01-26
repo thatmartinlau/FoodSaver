@@ -366,9 +366,11 @@ void update_user(string old_username, string old_password, string new_username, 
         // Create a new entry with the updated username and password
         UserData new_data(new_password);
         database->emplace(new_username, std::move(new_data));
-
+        
         // Remove the old entry
+        
         database->erase(el);
+        write_to_csv();//writes to all databases, this is to ensure no naming conflicts later.
     }
     else if(old_password != el->second.password){
         // Password does not match
@@ -388,8 +390,9 @@ void update_user_characteristics(string username, string password, vector<string
     
     if (el != database->end() && password==el->second.password) {
         basic_user_data new_user_data;
-    new_user_data = deserialize_basic_data_of_user(new_characs);
+        new_user_data = deserialize_basic_data_of_user(new_characs);
         el->second.basic_u_data = new_user_data;
+        write_simple_types();
     }
     else if(password != el->second.password){
             // Password does not match
@@ -417,6 +420,7 @@ void update_fridge(string username, string password, vector<string> fridge) {
             old_data.clear();
 
             std::vector<std::vector<std::string>>().swap(old_data);//releases the memory used by old_data
+            write_fridge_and_food_lists();
             }
             else if(password != el->second.password){
             // Password does not match
@@ -445,7 +449,7 @@ void update_offer(std::string username, string password, vector<string> offer) {
             old_data.clear();
 
            vector<vector<vector<string>>>().swap(old_data);//releases the memory used by old_data
-
+           write_offer_list();
             }
             else if(password != el->second.password){
             // Password does not match
@@ -538,7 +542,7 @@ vector<string> getAllRecipes() {
 
 
 // for food and dietary_restrictions
-vector<string> get_user_food_restrictions(string username, string password) {
+vector<string> get_food_restrictions(string username, string password) {
         auto el = database->find(username); // Find the username in the database
 
         if (el != database->end() && password == el->second.password) {
@@ -560,7 +564,7 @@ vector<string> get_user_food_restrictions(string username, string password) {
 }
 
 
-vector<string> get_user_characteristics(string username, string password) {
+vector<string> get_basic_user_data(string username, string password) {
     auto el = database->find(username); // Find the username in the database
     
     if (el != database->end() && password == el->second.password) {
@@ -626,6 +630,8 @@ int main() {
     //DB Sending
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
+    srv.bind("get_food_restrictions", &get_food_restrictions);
+    srv.bind("get_basic_user_data", &get_basic_user_data);
     
     //General Functions
     srv.bind("getMapOfOffers", &getMapOfOffers);
@@ -633,8 +639,8 @@ int main() {
     srv.bind("addRecipes", &addRecipes);
     srv.bind("getAllRecipes", &getAllRecipes);
     
-    srv.bind("get_user_food_restrictions", &get_user_food_restrictions);
-    srv.bind("get_user_characteristics", &get_user_characteristics);
+    
+    
     //Check functions:
     srv.bind("check_user", &check_user);
     

@@ -34,7 +34,7 @@ add_executable(test3
 
 )
 
-target_link_libraries(test3 web_teste rpc)
+target_link_libraries(test3 rpc)
 
 include(GNUInstallDirs)
 install(TARGETS test3
