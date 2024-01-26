@@ -1,9 +1,5 @@
 #include "fridge.h"
 
-//#include <iostream>
-//#include <list>
-//#include <ctime>
-//#include <chrono>
 //using namespace std;
 
 //FRIDGE
