@@ -87,7 +87,7 @@ Popup {
                     model: ["Male", "Female", "Prefer not to say"]
 
                     onCurrentIndexChanged: {
-                        console.log("Selected option:", model[currentIndex]);
+                        //console.log("Selected option:", model[currentIndex]);
                     }
                 }
 
@@ -114,7 +114,7 @@ Popup {
                     model: ["BX2026", "BX2025", "BX2024"]
 
                     onCurrentIndexChanged: {
-                        console.log("Selected option:", model[currentIndex]);
+                        //console.log("Selected option:", model[currentIndex]);
                     }
                 }
 

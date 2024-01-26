@@ -15,7 +15,7 @@ I corrected the bug in the pop_elt function of the Fridge class. I modified the 
 I had an issue with Qt creator. I asked for help and was told I should delete it and download it again. This took a long time as there is terrible WiFi in the amphi.
 
 12/12/2023
-I finished downloading all necessary things for Qt.
+I finished downloading all necessary things for Qt, and looked at an introductory video about Qt.
 
 13/12/2023
 I added a Date class to the front.hpp file and defined the necessary classes in the cpp file.
@@ -40,7 +40,38 @@ I merged the front branch with the front_merge branch.
 I discussed different problems in our class implementation with other group members.
 I realised the Offer function had a mistake and was badly implemented.
 
-04/12/2024
+04/01/2024
 I implemented two sorting functions in the Fridge class with Martin's help.
 I made all necessary modifications to the User class to align my definition with Martin's one on the app.
 I corrected the Offer class which was badly implemented and discussed what was expected of me with Antoine.
+
+07/01/2024
+I changed the Offer and User classes.
+I also got rid of the quantity variable in Offer.
+I also changed to hierarchy of the classes accordingly.
+
+08/01/2024
+I discussed with each member of the app to better adapt my back-end code to their needs.
+- Fanny: I made some necessary arrangements on the User class to help implement the logic behind her login page.
+- Cyriac, Charlotte and Elisabeth: talked about adding a recipe class.
+- Antoine: showed him the functions on my code such as add_ingredient and the sorting functions of the Fridge class.
+- Diana: discussed the problem she was facing and told her Esma would be better equipped to answer her.
+
+11/01/2024
+I coded the new Recipe class and added the necessary functions.
+I added a is_username function to the User class as Fanny has asked me and discusses with Adam what he had to do to allow me to implement it.
+
+15/01/2024
+I tried to implement a version of is_username without Adam's help by asking Esma. However this did was unsuccessful. I discussed with Elisabeth what she needed me to code for the recipe class and made a not on Trello to add functions to like and unlike things on the User class.
+
+18/01/2024
+I adapted and added the functions Anahi wrote on the front.cpp file to the different class files. 
+I changed the enum per Fanny's request and informed Oscar of the changes he had to implement for the server as a result.
+I added the functions like and unlike recipe in the User class. To do so, I also had to implement an equality operator function in the recipe class.
+I also started working on the presentation.
+
+22/01/2024
+I debugged a problem resulting from the update of the server with help from the TA. I started trying to implement a backup plan in case the server crashed the day of the defense. I therefore created a BackupServer class which did not work as I had issues firstly with cyclic includes and later static members. The TA offered me an alternative solution.
+
+23/01/2024
+I worked some more on the BackupServer. However, I was ended up calling Adam and helping him solve the bugs for the actual server therefore giving up on the backup server idea.

@@ -8,9 +8,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_subdirectory(rpclib-master)
 include_directories(rpclib-master/include)
 
+
 add_executable(Server rpc_server_side.cpp
-	rpc_client_side.cpp
-	rpc_client_side.hpp
+	common_characteristics.hpp
 )
 
 target_link_libraries(Server PRIVATE rpc)
