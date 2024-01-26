@@ -90,10 +90,10 @@ vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string
 }
 
 
-vector<string> serialize_basic_characs(basic_user_data u_data) {
-    vector<string> serialized_characs;
-    serialized_characs.push_back(u_data.display_name);
-}
+//vector<string> serialize_basic_characs(basic_user_data u_data) {
+//    vector<string> serialized_characs;
+//    serialized_characs.push_back(u_data.display_name);
+//}
 
 
 
