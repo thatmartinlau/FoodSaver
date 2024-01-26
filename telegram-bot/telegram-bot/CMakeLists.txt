@@ -26,4 +26,4 @@ add_executable(TELEGRAM_BOT telegram_bot.cpp)
 
 #"-DCMAKE_TOOLCHAIN_FILE=/Users/williamqiu/Desktop/C++_Project/FoodSaver/telegram-bot/telegram-bot/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
-target_link_libraries(TELEGRAM_BOT path_to_your_library ${CMAKE_THREAD_LIBS_INIT} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES} ${CURL_LIBRARIES})
+target_link_libraries(TELEGRAM_BOT ${TGBOT_CPP_LIB} ${CMAKE_THREAD_LIBS_INIT} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES} ${CURL_LIBRARIES} rpclib::rpc)
