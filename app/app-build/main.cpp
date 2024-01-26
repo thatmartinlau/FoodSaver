@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
     engine.addImportPath(QCoreApplication::applicationDirPath() + "/qml");
     engine.addImportPath(":/");
 
-    engine.load(QUrl(QStringLiteral("qrc:/QML/main.qml")));
+    //engine.load(QUrl(QStringLiteral("qrc:/QML/main.qml")));
 
     engine.load(QUrl(QStringLiteral("qrc:/QML/main.qml")));
 
