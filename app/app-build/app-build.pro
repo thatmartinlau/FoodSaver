@@ -17,6 +17,7 @@ SOURCES += \
     Source/fridgemanager.cpp \
     Source/RecipeBook.cpp \
     Source/recipe.cpp \
+    Source/recipeconverter.cpp \
     main.cpp \
     $$CPP/date.cpp \
     $$CPP/fridge.cpp \
@@ -59,3 +60,6 @@ HEADERS += \
     recipecontroller.h
 
 INCLUDEPATH+="lib/"
+
+DISTFILES += \
+    originalsrecipes.txt
