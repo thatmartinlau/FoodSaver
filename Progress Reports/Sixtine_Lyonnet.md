@@ -15,7 +15,7 @@ I corrected the bug in the pop_elt function of the Fridge class. I modified the 
 I had an issue with Qt creator. I asked for help and was told I should delete it and download it again. This took a long time as there is terrible WiFi in the amphi.
 
 12/12/2023
-I finished downloading all necessary things for Qt.
+I finished downloading all necessary things for Qt, and looked at an introductory video about Qt.
 
 13/12/2023
 I added a Date class to the front.hpp file and defined the necessary classes in the cpp file.
@@ -71,4 +71,7 @@ I added the functions like and unlike recipe in the User class. To do so, I also
 I also started working on the presentation.
 
 22/01/2024
-I debugged a problem resulting from the update of the server with help from the TA.
+I debugged a problem resulting from the update of the server with help from the TA. I started trying to implement a backup plan in case the server crashed the day of the defense. I therefore created a BackupServer class which did not work as I had issues firstly with cyclic includes and later static members. The TA offered me an alternative solution.
+
+23/01/2024
+I worked some more on the BackupServer. However, I was ended up calling Adam and helping him solve the bugs for the actual server therefore giving up on the backup server idea.

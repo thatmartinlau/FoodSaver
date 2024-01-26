@@ -17,8 +17,8 @@ SOURCES += \
     Source/fridgemanager.cpp \
     Source/RecipeBook.cpp \
     Source/recipe.cpp \
+    Source/recipeconverter.cpp \
     main.cpp \
-    maincontroller.cpp \
     $$CPP/date.cpp \
     $$CPP/fridge.cpp \
     $$CPP/front.cpp \
@@ -33,7 +33,8 @@ SOURCES += \
     $$CPP/settingsmanager.cpp \
     $$CPP/currentUser.cpp \
     $$CPP/SigninInformation.cpp \
-    $$CPP/market.cpp
+    $$CPP/market.cpp \
+    recipecontroller.cpp
 
 HEADERS += \
     Header/SigninInformation.h \
@@ -42,7 +43,6 @@ HEADERS += \
     Header/RecipeBook.h \
     Header/fridgemanager.h \
     Header/recipe.h \
-    maincontroller.h \
     $$HPP/date.h \
     $$HPP/fridge.h \
     $$HPP/front.hpp \
@@ -56,6 +56,10 @@ HEADERS += \
     $$HPP/Login.h \
     $$HPP/Signin.h \
     $$HPP/market.h \
-    market.h
+    market.h \
+    recipecontroller.h
 
 INCLUDEPATH+="lib/"
+
+DISTFILES += \
+    originalsrecipes.txt

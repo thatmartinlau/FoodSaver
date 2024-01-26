@@ -4,7 +4,9 @@ Recipe::Recipe(std::string title) {
     this->title = title;
 }
 
-std::string Recipe::get_title() {
+Recipe::~Recipe() {}
+
+std::string Recipe::get_title() const {
     return title;
 }
 
@@ -46,4 +48,8 @@ void Recipe::set_tags(std::vector<std::string> tags) {
 
 void Recipe::add_tags(std::string tag) {
     tags.push_back(tag);
+}
+
+bool Recipe::operator==(const Recipe& other) const{
+    return (title == other.get_title());
 }
