@@ -41,7 +41,7 @@ basic_user_data ServerUser::get_basic_user_data(){
     basic_user_data basic_data;
     vector<string> basic_data_as_vec_strings = new_cli.call("get_user_characteristics", username, password).as<vector<string>>();
     basic_data = deserialize_basic_data_of_user(basic_data_as_vec_strings);
-    return basic_data;    
+    return basic_data;
 }
 
 
@@ -59,8 +59,9 @@ list<bool> ServerUser::get_food_restrictions(){
 
 void ServerUser::update_food_restrictions(list<bool> food_and_diet_restrictions) {
     vector<string> vec_food_and_dietary_restrictions;
-    for (auto item: food_and_diet_restrictions) {
-        vec_food_and_dietary_restrictions.push_back(to_string(item));
+
+    for (bool element :food_and_diet_restrictions ){
+        vec_food_and_dietary_restrictions.push_back(to_string(element));
     }
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_food_restrictions", username, password, vec_food_and_dietary_restrictions);
@@ -78,7 +79,7 @@ void ServerUser::update_user_characteristics(User usr) {
     basic_data.marketplace_notifications = usr.get_marketplace_notifications();
 
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_user_characteristics", username, password, serialize_basic_data_of_user(basic_data)); 
+    new_cli.call("update_user_characteristics", username, password, serialize_basic_data_of_user(basic_data));
 }
 
 //      General Functions:
