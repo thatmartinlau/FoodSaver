@@ -108,15 +108,107 @@ Row {
                         }
                     }
                 }
+
+                // Items display with scroll
+
                 Rectangle {
                     radius: 12.5
                     y: parent.height * 0.2
                     height: parent.height * 0.8
                     width: parent.width
-                    ScrollView {
-                        id: scrollViewMarket
-                        anchors.fill: parent
-                        width:parent.width
+                    color:"transparent"
+
+                    Rectangle{
+                        width: parent.width -25
+                        height: parent.height * 0.8
+                        color: "white"
+
+                        ListView{
+                            id: marketListView
+                            anchors.fill: parent
+                            spacing: 10
+                            // width: parent.width
+                            //height: parent.height * 0.8
+                            model: ListModel {
+
+                                // Manually added items to test display
+                                ListElement{name: "Item"}
+                                ListElement{name: "Item"}
+                                ListElement{name: "Item"}
+                                ListElement{name: "Item"}
+                                ListElement{name: "Item"}
+                                ListElement{name: "Item"}
+                                ListElement{name: "Item"}
+                                ListElement{name: "Item"}
+
+                                // Function to add items goes here
+                            }
+                            delegate: Item {
+                                width: marketListView.width
+                                height: 125
+
+                                Rectangle{
+                                    width: parent.width - 25
+                                    height: 125
+                                    color: "#EEEEEE"
+                                    radius: 5
+
+                                    // Display for each item
+
+                                    Row{
+                                        spacing: 5
+                                        anchors.leftMargin: 10
+                                        anchors.topMargin: 10
+                                        anchors.fill: parent
+
+                                        Rectangle{
+                                            radius: 12.5
+                                            width: parent.height - 10
+                                            height: parent.height - 10
+                                            color: "#D7ECDE"
+                                            Label{
+                                                text: "Photo"
+                                                font.bold: true
+                                                anchors.centerIn: parent
+                                            }
+                                        }
+
+                                        Column{
+                                            spacing: 5
+                                            anchors.leftMargin: 120
+                                            anchors.fill: parent
+
+                                            Text {
+                                                text: model.name
+                                                font.bold: true
+                                                font.pixelSize: 18
+                                                anchors.margins: 10
+                                            }
+
+                                            Text {
+                                                text: "Category: " + model.category
+                                                font.pixelSize: 16
+                                                anchors.margins: 10
+                                            }
+
+                                            Text {
+                                                text: "Time left: " + model.timeLeft
+                                                font.pixelSize: 16
+                                                anchors.margins: 10
+                                            }
+
+                                            Text {
+                                                text: "Price: " + model.price
+                                                font.pixelSize: 16
+                                                anchors.margins: 10
+                                            }
+
+                                        }
+                                    }
+                                }
+
+                            }
+                            }
                     }
                 }
             }
@@ -138,14 +230,6 @@ Row {
                 myBasket.open()
             }
         }
-
-        /*Button {
-            y: parent.height * 0.25
-            text: "Add to Fridge"
-            onClicked: {
-                addtofridge.open()
-            }
-        }*/
 
         Button {
             y: parent.height * 0.75

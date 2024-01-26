@@ -5,11 +5,11 @@ import QtQuick.Layouts 1.12
 Popup {
     id: myBasket
     anchors.centerIn: parent
-    width: 700
-    height: 600
+    width: 600
+    height: 700
     closePolicy: Popup.CloseOnPressOutside
     background: Rectangle {
-            color:"#EEEEEE"
+            color:"white"
             radius: 12.5
         }
 
