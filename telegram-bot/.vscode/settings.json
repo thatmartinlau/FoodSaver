@@ -1,5 +1,8 @@
 {
     "cmake.configureOnOpen": false,
+    "cmake.configureSettings": {
+        "CMAKE_TOOLCHAIN_FILE": "/Users/williamqiu/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    },
     "files.associations": {
         "vector": "cpp",
         "__bit_reference": "cpp",

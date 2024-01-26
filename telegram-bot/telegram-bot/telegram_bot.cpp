@@ -182,6 +182,7 @@ int main() {
 
     //std::thread expirationCheckerThread = std::thread(expirationChecker);
     std::thread expirationChecker([]() {
+        std::cout << "Starting checking expiration!" << std::endl;
         while (true) {
             auto expiringItems = check_expiration(c);
 
@@ -195,15 +196,16 @@ int main() {
                 }
             }
 
-            std::this_thread::sleep_for(std::chrono::minutes(30)); // Sleep for 30 minutes
+            std::this_thread::sleep_for(std::chrono::minutes(1)); // Sleep for 30 minutes
         }
     });
 
     // Main loop for the bot
     try {
         TgBot::TgLongPoll longPoll(bot);
+        std::cout << "Starting the bot" << std::endl;
         while (true) {
-            std::cout << "Starting the bot" << std::endl;
+            std::cout << "Receiving messages from telegram" << std::endl;
             longPoll.start();
         }
     } catch (TgBot::TgException& e) {

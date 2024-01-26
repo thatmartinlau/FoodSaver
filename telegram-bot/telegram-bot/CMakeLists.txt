@@ -10,9 +10,6 @@ set(CMAKE_USE_WIN32_THREADS_INIT 0)
 set(CMAKE_USE_PTHREADS_INIT 1)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 set(Boost_USE_MULTITHREADED ON)
-set(CMAKE_OSX_ARCHITECTURES "arm64")
-
-include(./vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 find_package(Threads REQUIRED)
 find_package(OpenSSL REQUIRED)
@@ -26,4 +23,4 @@ add_executable(TELEGRAM_BOT telegram_bot.cpp)
 
 #"-DCMAKE_TOOLCHAIN_FILE=/Users/williamqiu/Desktop/C++_Project/FoodSaver/telegram-bot/telegram-bot/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
-target_link_libraries(TELEGRAM_BOT ${TGBOT_CPP_LIB} ${CMAKE_THREAD_LIBS_INIT} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES} ${CURL_LIBRARIES} rpclib::rpc)
+target_link_libraries(TELEGRAM_BOT path_to_your_library ${CMAKE_THREAD_LIBS_INIT} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES} ${CURL_LIBRARIES})
