@@ -37,13 +37,14 @@ Row {
         }
     }
 
+    // Main content area for the favorites page
     Rectangle {
         x: parent.width * 0.20
         width: parent.width * 0.6
         height: parent.height
         color: "#5E9F7C"
 
-    // Main content area for the marketplace
+        // Sorting buttons
         Rectangle {
             visible: true
             y: parent.height * 0.05
@@ -58,6 +59,16 @@ Row {
                 width: parent.width
                 padding: parent.width *0.01
                 spacing: parent.width *0.01
+
+                // Main title of page
+                Label {
+                    Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+                    text: "My Favorites"
+                    font.bold: true
+                    color: "#1C6F30"
+                    font.pixelSize: 50
+                    padding: 10
+                }
 
 
                 Rectangle {

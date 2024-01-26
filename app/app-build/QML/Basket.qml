@@ -22,7 +22,7 @@ Popup {
             text: "My Basket"
             font.bold: true
             color: "#1C6F30"
-            font.pixelSize: 30
+            font.pixelSize: 35
             padding: 10
         }
 
