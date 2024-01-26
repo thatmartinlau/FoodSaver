@@ -37,6 +37,7 @@ public:
     string get_password(); // to use in get_all_ServerUser_characteristics
 
 
+    void update_food_restrictions(string username, string password, list<bool> food_and_diet_restrictions);
     vector<string> get_user_characteristics(string username, string password);
     list<bool> get_food_restrictions(string username, string password);
 

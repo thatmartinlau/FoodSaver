@@ -52,8 +52,8 @@ list<bool> ServerUser::get_food_restrictions(string username, string password){
 
 void ServerUser::update_food_restrictions(string username, string password, list<bool> food_and_diet_restrictions) {
     vector<string> vec_food_and_dietary_restrictions;
-    for (int i=0; i < food_and_diet_restrictions.size(); i++) {
-        vec_food_and_dietary_restrictions.push_back(to_string(food_and_diet_restrictions[i]));
+    for (bool element :food_and_diet_restrictions ){
+        vec_food_and_dietary_restrictions.push_back(to_string(element));
     }
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("update_food_restrictions", username, password, vec_food_and_dietary_restrictions);
