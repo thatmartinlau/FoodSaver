@@ -136,7 +136,7 @@ Row {
                     y: parent.height * 0.2
                     height: parent.height - 5 - parent.width*0.01 - parent.width * 0.05
                     width: parent.width * 0.99
-                    color: "blue"
+                    color: "white"
                     ScrollView {
                         id: scrollViewOffer
                         anchors.fill: parent
@@ -272,7 +272,28 @@ Row {
                         Button {
                             text: "Time left"
                             onClicked: {
-                                //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
+                                /*if (model.count !== 0) {
+                                var sorted_fridge = fridgemanager.sort_ingredient_by_expiration_date()
+                                itemModel.clear()
+                                for (var j = 0; j< to_display.length; j++){
+                                    var newIngredient = {
+                                        "index": currentIndex,
+                                        "item": iteminput.text,
+                                        "categorie": categorieMenu.currentText,
+                                        "date": dateinput.text,
+                                        "quantity": quantityinput.text,
+                                        "status": 0,
+                                        "price" : 0,
+                                        "quantity2sell": 0,
+                                        "pricestatus": -1
+                                    };
+
+                                    itemModel.append(newIngredient);
+                                    itemModel.append({"name" : sorted_fridge[j]})//titles[j], "dietRestriction" : diets[j]})
+                                }
+
+                                }*/
+
                             }
                         }
 
@@ -289,7 +310,7 @@ Row {
                     y: parent.height * 0.2
                     height: parent.height - parent.width *0.08
                     width: parent.width *0.99
-                    color:"blue"
+                    color:"white"
                     ScrollView {
                         id: scrollViewFridge
                         anchors.fill: parent
@@ -370,16 +391,18 @@ Row {
                                             }
                                             Button {
                                                 text: "Remove item"
-                                                onClicked: {
+                                                onClicked: { if(true) {
                                                     itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
                                                     scrollViewFridge.contentHeight = scrollViewFridge.contentHeight - 152.5;
                                                     if(model.status) {
                                                         scrollViewOffer.contentHeight = scrollViewOffer.contentHeight - 152.5;
                                                     };
-                                                    }
+
                                                     //itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
-                                                    //pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
+                                                    fridgemanager.pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
                                                 }
+                                                }
+                                            }
 
                                             Button {
 
