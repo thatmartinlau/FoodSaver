@@ -10,8 +10,9 @@
 #include "../../../../test3/fridge.h"
 #include "../../../../test3/offer.h"
 #include "../../../../test3/user.h"
-string HOST_SERVER_NAME = "localhost"; //local connection first
-int HOST_SERVER_PORT = 8080;
+
+
+
 using namespace std;
 //ServerUser is a PARAMETER under the User class, from Sixtine's user.h
 
@@ -26,22 +27,8 @@ class Ingredient;
 
 
 class ServerUser {
-    
+
 public:
-    
-    // put in public easier to code the constructor of User :
-
-    std::string display_name;
-    std::string telegram_username;
-    int gender;
-    int promotion;
-    std::string building_address;
-    int phone_number;
-    std::list<bool> food_and_dietary_restrictions;
-    int telegram_notifications;
-    int marketplace_notifications;
-
-
     //Creates a user for temporary Use.
     ServerUser();
     ServerUser(string username, string psswd);//if user doesn't exist in database, add him to database.
@@ -51,22 +38,23 @@ public:
     string get_password(); // to use in get_all_ServerUser_characteristics
 
 
-    vector<string> ServerUser::return_server_characs(string username, string password);
-    list<bool> ServerUser::get_food_restrictions(string username, string password);
+    basic_user_data get_basic_user_data();
+    list<bool> get_food_restrictions();
 
 
     void delete_self_in_db(); //deletes the user from the database.
-    void update_user_password_and_username(string username, string password); //gives new username and password to database.
-    
+    void update_user_name_and_password(string new_username, string new_password); //gives new username and password to database.
+
 
 
     Fridge get_fridge(); //receives the fridge from the database.
     vector<Offer> get_offer_list(); //gets db's offer list for user
-    
-    void update_user_characteristics(User usr); //updates user's characteristics, ASIDE from username/password. that's update+user.
+
+    void update_user_characteristics(User *usr); //updates user's characteristics, ASIDE from username/password. that's update+user.
+    void update_food_restrictions(list<bool> food_restrictions);
     void update_fridge(Fridge &f_input); //updates the fridge on the database. Adds/removes necessary items with comparisons. Keeps the local fridge unchanged.
     void update_offer_list(vector<Offer> &offer_list); //updates db's offer list.
-    
+
 private:
     string username;
     string password;
