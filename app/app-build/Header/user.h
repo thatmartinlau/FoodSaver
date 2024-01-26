@@ -23,13 +23,14 @@ public:
     bool register_user();
     bool register_new_user();
     void set_gender(std::string gender);
-    void set_diet(std::string diet);
     void set_phone_number(std::string phone_number);
     void set_room_number(std::string room_number);
     void set_promotion(std::string promotion);
     void set_display_name(std::string display_name);
     void set_username(std::string username);
     void set_password(std::string password);
+    void set_food_and_dietary_restrictions(std::list<bool> r);
+    std::list<bool> get_food_and_dietary_restrictions();
 
     static bool is_username(std::string username);
     std::string get_telegram();
@@ -48,13 +49,13 @@ private:
     std::string password;
     std::string telegram_username;
     std::string gender;
-    std::string diet;
     std::string phone_number;
     std::string room_number;
     std::string promotion;
     std::string display_name;
     Fridge user_fridge;
     std::list<Offer> offer_list;
+    std::list<bool> food_and_dietary_restrictions;
 
     //settings and preferences
     std::string restrictions;
