@@ -9,6 +9,7 @@ RESOURCES += \
 
 
 #C++ and header file declaration here
+
 CPP = Source/
 HPP = Header/
 
@@ -37,19 +38,4 @@ HEADERS += \
     $$HPP/temp.front.hpp \
     $$HPP/user.h \
     Header/profilemanager.h \
-<<<<<<< Updated upstream
     Header/recipe.h
-=======
-    Header/recipe.h \
-    $$HPP/Login.h \
-    $$HPP/Signin.h \
-    $$HPP/market.h \
-    market.h \
-    recipecontroller.h
-
-INCLUDEPATH+="lib/"
-
-DISTFILES +=
-
-
->>>>>>> Stashed changes
