@@ -43,6 +43,8 @@ Week 15 :
 - discussing with Esma on server_side and client_side to be updated of the changes of one and other.
 - coded the final version of the User class struct
 - created the link between User_data, Server_User and User classes --> linking server and front side.
+- get informed of correctness check of everyone.
+  
   
 
   
