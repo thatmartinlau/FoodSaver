@@ -52,15 +52,21 @@ Popup {
                 placeholderText: "Item"
             }
             ComboBox {
-                    id: categorieMenu
-                    width: 200
-                    model: ["unspecified", "fruit", "vegetable", "drink", "dairy", "canned",
-                        "meat", "fish", "sweet", "nut", "other"]
+                id: categorieMenu
+                width: 200
+                model: ["unspecified", "fruit", "vegetable", "drink", "dairy", "canned",
+                    "meat", "fish", "sweet", "nut", "other"]
 
-                    onCurrentIndexChanged: {
-                        console.log("Selected option:", categorieMenu.currentText);
-                    }
+                onCurrentIndexChanged: {
+                    console.log("Selected option:", categorieMenu.currentText);
                 }
+            }
+            Label {
+                id:errordate
+                visible: false
+                color: "red"
+                text: "Wrong format: dd/mm/yyyy"
+            }
             TextField {
                 padding: 5
                 id: dateinput
@@ -95,7 +101,12 @@ Popup {
                                 color: "#5E9F7C"
                                 radius:12.5
                     }
-                    onClicked: if (iteminput.text.trim() !== "" && quantityinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
+                    onClicked:
+                        if (dateinput.text.lenght !== 10) {
+                            errordate.visible = true
+                            dateinput.text = ""
+                        }
+                        else if (iteminput.text.trim() !== "" && quantityinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
                                    // Create a new Ingredient object
                                    var newIngredient = {
                                        "index": currentIndex,
@@ -106,7 +117,8 @@ Popup {
                                        "status": 0,
                                        "price" : 0,
                                        "quantity2sell": 0,
-                                       "pricestatus": -1
+                                       "pricestatus": -1,
+                                       "visibility" : 1
                                    };
 
                                    itemModel.append(newIngredient);
@@ -122,7 +134,7 @@ Popup {
                                    dateinput.text = "";
                                    quantityinput.text = "";
                                    scrollViewFridge.contentHeight += 152.5;
-
+                                   errordate.visible = false;
                                    addtofridge.close();
                                }
 

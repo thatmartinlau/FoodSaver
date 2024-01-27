@@ -14,6 +14,7 @@
 //using namespace std;
 
 enum Food_class{
+    unspecified,
     fruit,
     vegetable,
     drink,
@@ -23,7 +24,6 @@ enum Food_class{
     fish,
     sweet,
     nut,
-    unspecified,
     other
 };
 

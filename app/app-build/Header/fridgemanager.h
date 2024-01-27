@@ -20,7 +20,11 @@ public slots:
     void add_elt(const QString &name, const QString &date, const QString &quantity, const QString &cat);
     Ingredient pop_elt(Ingredient *getit);
     std::vector<Ingredient> sort_ingredients_by_category();
-    std::vector<Ingredient> sort_ingredients_by_expiration_date();
+    QList<QList<QString>> sort_ingredients_by_expiration_date();
+
+    //std::string convertQtoStd(QString entry);
+    //QString convertStdtoQ(std::string entry);
+    //QString convertDateToQString(const Date& date);
 //private:
 //    void parseDateString(const QString &dateString, int& day, int& month, int& year);
 

@@ -262,37 +262,86 @@ Row {
                             //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
                         }
 
-                        Button {
-                            text: "Category"
-                            onClicked: {
-                               //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_category()
+                        ComboBox {
+                            id: categorieMenu
+                            width: 200
+                            model: ["All Categories", "unspecified", "fruit", "vegetable", "drink", "dairy", "canned",
+                                "meat", "fish", "sweet", "nut", "other"]
+
+                            onCurrentIndexChanged: {
+                                console.log("Selected option:", model[currentIndex]);
+                                console.log("len itemmodel:", itemModel.count);
+                                console.log("OK");
+                                if (model[currentIndex] === "All Categories") {
+                                    for (var i = 0; i < itemModel.count; ++i) {
+                                        itemModel.setProperty(i, "visibility", 1);
+                                    }
+                                }
+                                else {
+                                    for (var j = 0; j < itemModel.count; ++j) {
+                                        var itemCategory = itemModel.get(j).categorie;
+                                        console.log(model[currentIndex], itemCategory);
+                                        if (model[currentIndex] === itemCategory) {
+                                            console.log("visibility set to 1");
+                                            itemModel.setProperty(j, "visibility", 1);
+                                        } else {
+                                            console.log("visibility set to 0");
+                                            itemModel.setProperty(j, "visibility", 0);
+                                        }
+                                    }
+                                }
                             }
                         }
-
+                        Button {
+                            text: "add_ingredient_preset"
+                            onClicked: {
+                                var apple = {
+                                    "index": 0, "item": "apple", "categorie": "fruit", "date": "01/05/2024", "quantity": "2", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                };
+                                var milk = {
+                                    "index": 1, "item": "milk", "categorie": "drink", "date": "01/02/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                };
+                                var carrot = {
+                                    "index": 2, "item": "carrot", "categorie": "vegetable", "date": "01/03/2024", "quantity": "3", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                };
+                                var banana = {
+                                    "index": 3, "item": "banana", "categorie": "fruit", "date": "01/04/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                };
+                                itemModel.append(apple);
+                                itemModel.append(milk);
+                                itemModel.append(carrot);
+                                itemModel.append(banana);
+                                fridgemanager.add_elt(apple.item, apple.date, apple.quantity, apple.categorie);
+                                fridgemanager.add_elt(milk.item, milk.date, milk.quantity, milk.categorie);
+                                fridgemanager.add_elt(carrot.item, carrot.date, carrot.quantity, carrot.categorie);
+                                fridgemanager.add_elt(banana.item, banana.date, banana.quantity, banana.categorie);
+                                scrollViewFridge.contentHeight += 152.5*4;
+                            }
+                        }
                         Button {
                             text: "Time left"
                             onClicked: {
-                                /*if (model.count !== 0) {
-                                var sorted_fridge = fridgemanager.sort_ingredient_by_expiration_date()
+                                if (itemModel.count !== 0) {
+                                var sorted_fridge = fridgemanager.sort_ingredients_by_expiration_date()
                                 itemModel.clear()
-                                for (var j = 0; j< to_display.length; j++){
+                                for (var j = 0; j< sorted_fridge.length; j++){
                                     var newIngredient = {
-                                        "index": currentIndex,
-                                        "item": iteminput.text,
-                                        "categorie": categorieMenu.currentText,
-                                        "date": dateinput.text,
-                                        "quantity": quantityinput.text,
+                                        "index": j,
+                                        "item": sorted_fridge[j][0],
+                                        "categorie": sorted_fridge[j][3],
+                                        "date": sorted_fridge[j][1],
+                                        "quantity": sorted_fridge[j][2],
                                         "status": 0,
                                         "price" : 0,
                                         "quantity2sell": 0,
-                                        "pricestatus": -1
+                                        "pricestatus": -1,
+                                        "visibility" : 1
                                     };
 
                                     itemModel.append(newIngredient);
-                                    itemModel.append({"name" : sorted_fridge[j]})//titles[j], "dietRestriction" : diets[j]})
+                                    //itemModel.append({"name" : sorted_fridge[j]})//titles[j], "dietRestriction" : diets[j]})
                                 }
-
-                                }*/
+                                }
 
                             }
                         }
@@ -322,6 +371,7 @@ Row {
                                 model: itemModel
                                 //property var modelData: model // Assuming each model item is an object
                                 Rectangle {
+                                    visible: model.visibility
                                     radius:12.5
                                     width: scrollViewFridge.contentHeight < 625 ? parent.width * 0.99 : parent.width
                                     height: 150
@@ -425,7 +475,6 @@ Row {
         ListModel {
                 id: itemModel
                 function getIndexByPropertyValue(propertyName, propertyValue) {
-
                     for (var i = 0; i < count; i++) {
                         if (get(i)[propertyName] === propertyValue) {
                             return i;

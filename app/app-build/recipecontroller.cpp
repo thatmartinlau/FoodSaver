@@ -339,25 +339,17 @@ QList<QString> RecipeController::search_res(const QString &entry){
                 dict[list_names[j]]++;
 
             }
-
-
-
         }
     }
-
-
     QList<QString> res = sorter(dict);
 
     QList<QString> final;
     final.clear();
 
-
-
     for(int i = 0; i< res.size(); i++){
         if(dict[res[i]] != 0){
             final.append(res[i]);
         }
-
     }
 
     if(final.isEmpty()){
