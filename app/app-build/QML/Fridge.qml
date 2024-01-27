@@ -17,7 +17,7 @@ Row {
 
             Button { text: "My Fridge"; enabled: false; onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
             Button { text: "Market"; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }
-            Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
+            //Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
             Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
 
         }
@@ -257,9 +257,46 @@ Row {
                         anchors.verticalCenter:parent.verticalCenter
                         TextField {
                             y:3
-                            id: itemTextFieldFridge
+                            id: searchbarFridge
                             placeholderText: "Search for a specific item"
                             //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
+                            onTextChanged: {
+                                console.log("nb d'ingredients:", itemModel.count);
+                                if (categorieMenu.model[currentIndex] !== "All Categories") {
+                                    categorieMenu.model[currentIndex] = "All Categories";
+                                }
+                                console.log("Search bar text:", searchbarFridge.text);
+                                console.log("Search bar nb characters:", searchbarFridge.text.length);
+                                if (searchbarFridge.text.length === 0) {
+                                    for (var i = 0; i < itemModel.count; ++i) {
+                                        itemModel.setProperty(i, "visibility", 1);
+                                    }
+                                }
+                                else {
+                                var big_qlist = fridgemanager.search_result(searchbarFridge.text)
+                                var visible = big_qlist[0]
+                                var invisible = big_qlist[1]
+
+                                itemModel.clear()
+                                for (var q = 0; q< visible.length; q++){
+                                    console.log(q, "visible", visible[q][0])
+                                    var newIngredient = {
+                                        "index": q, "item": visible[q][0], "categorie": visible[q][3], "date": visible[q][1], "quantity": visible[q][2],
+                                        "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                    };
+                                    itemModel.append(newIngredient);
+                                }
+                                var m = visible.length
+                                for (var h = 0; h< invisible.length; h++){
+                                    console.log(m+h, "invisible", invisible[q][0])
+                                    var newIngredient_inv = {
+                                        "index": (m+h), "item": invisible[h][0], "categorie": invisible[h][3], "date": invisible[h][1], "quantity": invisible[h][2],
+                                        "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 0
+                                    };
+                                    itemModel.append(newIngredient_inv);
+                                }
+                                }
+                            }
                         }
 
                         ComboBox {
@@ -267,7 +304,6 @@ Row {
                             width: 200
                             model: ["All Categories", "unspecified", "fruit", "vegetable", "drink", "dairy", "canned",
                                 "meat", "fish", "sweet", "nut", "other"]
-
                             onCurrentIndexChanged: {
                                 console.log("Selected option:", model[currentIndex]);
                                 console.log("len itemmodel:", itemModel.count);

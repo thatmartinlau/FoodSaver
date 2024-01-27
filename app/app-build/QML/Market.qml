@@ -17,7 +17,7 @@ Row {
 
                 Button { text: "Fridge";  onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
                 Button { text: "Market"; enabled: false; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }
-                Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
+                //Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
                 Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
 
             }

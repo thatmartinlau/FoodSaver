@@ -21,6 +21,7 @@ public slots:
     Ingredient pop_elt(Ingredient *getit);
     std::vector<Ingredient> sort_ingredients_by_category();
     QList<QList<QString>> sort_ingredients_by_expiration_date();
+    QList<QList<QList<QString>>> search_result(const QString &request);
 
     //std::string convertQtoStd(QString entry);
     //QString convertStdtoQ(std::string entry);

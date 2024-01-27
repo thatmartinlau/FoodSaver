@@ -7,7 +7,7 @@
 #include <iostream>
 #include <list>
 
-
+//-------Functions for std::strings to QString and Food_class -------
 std::string convertQtoStd2(QString entry){
     std::string res;
     res = entry.toStdString();
@@ -36,50 +36,43 @@ Food_class convertStringToFoodClass(const std::string& catString) {
     return unspecified;
 }
 
-/*QString convertDateToQString(const Date& date) {
-    return QString("%1/%2/%3").arg(date.get_day(), 2, 10, QLatin1Char('0'))
-        .arg(date.get_month(), 2, 10, QLatin1Char('0'))
-        .arg(date.get_year());
-}*/
+//----- Main Code -----------------------------------------------
 
 Fridge myFridge;
 FridgeManager::FridgeManager(QObject *parent) : QObject(parent) {}
 
 void FridgeManager::add_elt(const QString &name, const QString &date, const QString &quantity, const QString &cat) {
 
-    //those two lines
     qDebug() << "Display Name:" << name;
     qDebug() << "Category:" << cat;
 
-    std::string dateString = date.toStdString();
-    int parsedDay = std::stoi(dateString.substr(0, 2));
-    int parsedMonth = std::stoi(dateString.substr(3, 2));
-    int parsedYear = std::stoi(dateString.substr(6, 4));
+    std::string dateString = date.toStdString();                        //Date
+    int parsedDay = std::stoi(dateString.substr(0, 2));                 //
+    int parsedMonth = std::stoi(dateString.substr(3, 2));               //
+    int parsedYear = std::stoi(dateString.substr(6, 4));                //
 
-    //this line
     std::cout << "Date:" << parsedDay << parsedMonth << parsedYear << std::endl;
 
-    std::string nameitem = name.toStdString();
-    int quantityitem = quantity.toInt();
-    //std::string catitem = cat.toStdString();
-    Food_class catitem = convertStringToFoodClass(cat.toStdString());
+    std::string nameitem = name.toStdString();                              //Name
+    int quantityitem = quantity.toInt();                                    //Quantity
+    Food_class catitem = convertStringToFoodClass(cat.toStdString());       //Category
 
-    //Fridge myFridge;
     myFridge.add_elt(Ingredient(nameitem, Date(parsedDay, parsedMonth, parsedYear), quantityitem, catitem));
 
     std::cout << "Added an element to the fridge!" << std::endl;
 }
+
 Ingredient FridgeManager::pop_elt(Ingredient *getit) {
-    //Fridge myFridge;
     return myFridge.pop_elt(getit);
 }
 
-
+//this one is useless
 std::vector<Ingredient> FridgeManager::sort_ingredients_by_category() {
-    //Fridge myFridge;
     return myFridge.sort_ingredients_by_category();
 }
 
+
+//----Function to sort the fridge by expiration date ------------------------------------------------
 #include <QList>
 
 QList<QList<QString>> FridgeManager::sort_ingredients_by_expiration_date() {
@@ -89,16 +82,62 @@ QList<QList<QString>> FridgeManager::sort_ingredients_by_expiration_date() {
 
     for (Ingredient& ingredient : sortedIngredients) {
         QList<QString> ingredientInfo;
-        ingredientInfo.append(convertStdtoQ2(ingredient.get_name()));         // Name
-        ingredientInfo.append(convertStdtoQ2(ingredient.get_expiry_date().Date::formateDate())); // Date using convertDateToQString()
-        ingredientInfo.append(convertStdtoQ2(std::to_string(ingredient.get_quantity()))); // Quantity
-        ingredientInfo.append(convertStdtoQ2(ingredient.get_food_class_name())); // Category
-        //ingredientInfo.append(convertStdtoQ2("unspecified")); // Category
+        ingredientInfo.append(convertStdtoQ2(ingredient.get_name()));                               // Name
+        ingredientInfo.append(convertStdtoQ2(ingredient.get_expiry_date().Date::formateDate()));    // Date
+        ingredientInfo.append(convertStdtoQ2(std::to_string(ingredient.get_quantity())));           // Quantity
+        ingredientInfo.append(convertStdtoQ2(ingredient.get_food_class_name()));                    // Category
 
         result.append(ingredientInfo);
     }
     return result;
 }
+
+
+QList<QList<QList<QString>>> FridgeManager::search_result(const QString &request) {
+    std::vector<Ingredient> allIngredients = myFridge.sort_ingredients_by_expiration_date();  // Assuming you have a function to get all ingredients
+
+    QList<QList<QString>> matchingIngredients;  // List for matching ingredients
+    QList<QList<QString>> otherIngredients;     // List for non-matching ingredients
+
+    QStringList searchTerms = request.split(" ", Qt::SkipEmptyParts);
+
+    for (Ingredient& ingredient : allIngredients) {
+        QList<QString> ingredientInfo;
+        QString ingredientName = convertStdtoQ2(ingredient.get_name());
+
+        // Check if any search term matches the ingredient name
+        bool matches = false;
+        for (const QString& term : searchTerms) {
+            if (ingredientName.contains(term, Qt::CaseInsensitive)) {
+                matches = true;
+                break;
+            }
+        }
+
+        if (matches) {
+            // Add to matchingIngredients list
+            ingredientInfo.append(ingredientName);  // Name
+            ingredientInfo.append(convertStdtoQ2(ingredient.get_expiry_date().Date::formateDate()));  // Date
+            ingredientInfo.append(convertStdtoQ2(std::to_string(ingredient.get_quantity())));         // Quantity
+            ingredientInfo.append(convertStdtoQ2(ingredient.get_food_class_name()));                  // Category
+            matchingIngredients.append(ingredientInfo);
+        } else {
+            // Add to otherIngredients list
+            ingredientInfo.append(ingredientName);
+            ingredientInfo.append(convertStdtoQ2(ingredient.get_expiry_date().Date::formateDate()));
+            ingredientInfo.append(convertStdtoQ2(std::to_string(ingredient.get_quantity())));
+            ingredientInfo.append(convertStdtoQ2(ingredient.get_food_class_name()));
+            otherIngredients.append(ingredientInfo);
+        }
+    }
+
+    QList<QList<QList<QString>>> result;
+    result.append(matchingIngredients);
+    result.append(otherIngredients);
+
+    return result;
+}
+
 
 
 

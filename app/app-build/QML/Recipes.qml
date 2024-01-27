@@ -45,7 +45,7 @@ Row {
 
             Button { text: "Fridge";  onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
             Button { text: "Market"; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }
-            Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
+            //Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
             Button { text: "Recipes"; enabled: false; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
 
         }
@@ -146,8 +146,6 @@ Row {
                                                     itemModel.append({"name" : to_display[j], "dietRestriction": diets[j], "grade": RecipeController.sendRatingForVis(to_display[j])});//titles[j], "dietRestriction" : diets[j]})
                                                 }
                                             }
-
-
                                         }
                                     }
                                     Text {text: "Sort by:"; Layout.preferredWidth: 75; y:4}
