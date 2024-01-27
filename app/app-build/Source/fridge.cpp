@@ -23,7 +23,7 @@ void Fridge::set_list(std::vector<Ingredient> new_list){
     ingredient_list = new_list;
 }
 
-std::vector<Ingredient> Fridge::get_list(){
+std::vector<Ingredient>& Fridge::get_list(){
     return ingredient_list;
 }
 

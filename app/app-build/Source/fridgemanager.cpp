@@ -1,5 +1,7 @@
 #include "../Header/fridgemanager.h"
 #include "../Header/date.h"
+#include "../Header/offer.h"
+
 
 #include <iostream>
 #include <sstream>
@@ -41,6 +43,12 @@ Food_class convertStringToFoodClass(const std::string& catString) {
 Fridge myFridge;
 FridgeManager::FridgeManager(QObject *parent) : QObject(parent) {}
 
+/*std::vector<Offer> my_offers;
+void FridgeManager::
+std::vector<Ingredient> offers_list;
+Offer offer(offers_list);*/
+
+
 void FridgeManager::add_elt(const QString &name, const QString &date, const QString &quantity, const QString &cat) {
 
     qDebug() << "Display Name:" << name;
@@ -62,8 +70,11 @@ void FridgeManager::add_elt(const QString &name, const QString &date, const QStr
     std::cout << "Added an element to the fridge!" << std::endl;
 }
 
-Ingredient FridgeManager::pop_elt(Ingredient *getit) {
-    return myFridge.pop_elt(getit);
+Ingredient FridgeManager::pop_elt(const QString &nb) {
+    int indice = nb.toInt();
+    Ingredient* ingredientPtr = &myFridge.get_list()[indice];
+    //std::cout << myFridge.get_list()[indice] << "ingredient" << std::endl;
+    return myFridge.pop_elt(ingredientPtr);
 }
 
 //this one is useless
@@ -92,7 +103,7 @@ QList<QList<QString>> FridgeManager::sort_ingredients_by_expiration_date() {
     return result;
 }
 
-
+//----Function for the search bar ------------------------------------------------
 QList<QList<QList<QString>>> FridgeManager::search_result(const QString &request) {
     std::vector<Ingredient> allIngredients = myFridge.sort_ingredients_by_expiration_date();  // Assuming you have a function to get all ingredients
 
@@ -137,7 +148,6 @@ QList<QList<QList<QString>>> FridgeManager::search_result(const QString &request
 
     return result;
 }
-
 
 
 

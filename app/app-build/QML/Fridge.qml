@@ -378,7 +378,6 @@ Row {
                                     //itemModel.append({"name" : sorted_fridge[j]})//titles[j], "dietRestriction" : diets[j]})
                                 }
                                 }
-
                             }
                         }
 
@@ -477,16 +476,21 @@ Row {
                                             }
                                             Button {
                                                 text: "Remove item"
-                                                onClicked: { if(true) {
-                                                    itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
-                                                    scrollViewFridge.contentHeight = scrollViewFridge.contentHeight - 152.5;
+                                                onClicked: {
+                                                    if(true) {
+                                                    //scrollViewFridge.contentHeight -= 152.5;
                                                     if(model.status) {
                                                         scrollViewOffer.contentHeight = scrollViewOffer.contentHeight - 152.5;
                                                     };
 
                                                     //itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index));
+                                                    console.log("ok1")
+                                                    console.log(itemModel.getIndexByPropertyValue("index", model.index))
                                                     fridgemanager.pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
-                                                }
+                                                    console.log("ok2")
+                                                    itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index))
+                                                    console.log("ok3")
+                                                    }
                                                 }
                                             }
 
