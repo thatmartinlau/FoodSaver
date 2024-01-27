@@ -8,6 +8,7 @@
 #include <thread>
 #include <chrono>
 #include <tgbot/tgbot.h>
+#include <random>
 
 using namespace rpc;
 using namespace std;
@@ -75,7 +76,8 @@ int main() {
                                                     "Here are the things that I can do for you:\n"
                                                     "- /Login - login to your fridge account\n"
                                                     "- /Register - register a new fridge account\n"
-                                                    "- /Check_fridge - check your fridge contents\n");
+                                                    "- /Check_fridge - check your fridge contents\n"
+                                                    "- /Get_random_recipe - get a random recipe from our recipe list\n");
     });
 
     //
@@ -103,6 +105,30 @@ int main() {
         } else {
             // User already exists
             bot.getApi().sendMessage(chatId, "This telegram account has already logged in.");
+        }
+    });
+
+    //
+    bot.getEvents().onCommand("Get_random_recipe", [](TgBot::Message::Ptr message) {
+        int64_t chatId = message->chat->id;
+        if (userCredentialsMap.find(chatId) == userCredentialsMap.end()) {
+            // User not in list
+            bot.getApi().sendMessage(chatId, "Please login first using /Login, or register a new account using /Register.");
+        } else {
+            // User already exists
+            vector<string> recipe_list = c.call("getAllRecipes").as<vector<string>>();
+            std::random_device rd;
+            std::mt19937 gen(rd());
+
+            if (!recipe_list.empty()) {
+                std::uniform_int_distribution<> distrib(0, recipe_list.size() - 1);
+                int randomIndex = distrib(gen); // Generate a random index
+                std::string randomRecipe = recipe_list[randomIndex]; // Get the element at the random index
+                bot.getApi().sendMessage(chatId, "Here is your random recipe: \n" + randomRecipe);
+            } else {
+                std::cout << "Error! The recipe list is empty!" << std::endl;
+                bot.getApi().sendMessage(chatId, "Sorry! Our recipe list is currently empty, this is a problem caused by the server.");
+            }
         }
     });
 
@@ -196,7 +222,7 @@ int main() {
                 }
             }
 
-            std::this_thread::sleep_for(std::chrono::minutes(1)); // Sleep for 30 minutes
+            std::this_thread::sleep_for(std::chrono::minutes(1)); // Sleep for 30 minutes (testing mode is 1 minute)
         }
     });
 

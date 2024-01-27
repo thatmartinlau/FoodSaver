@@ -5,7 +5,6 @@
 #include "fridge.h"
 #include "offer.h"
 #include "user.h"
-#include "rpc_client_side.hpp"
 
 int main(int argc, char *argv[])
 {
