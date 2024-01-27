@@ -35,6 +35,7 @@ Popup {
                 width: 50
                 background: null
                 onClicked: {
+                    errordate.visible = false
                     addtofridge.close()
                 }
             }
@@ -102,11 +103,11 @@ Popup {
                                 radius:12.5
                     }
                     onClicked:
-                        if (dateinput.text.lenght !== 10) {
+                        /*if (dateinput.text.lenght !== 10) {
                             errordate.visible = true
                             dateinput.text = ""
-                        }
-                        else if (iteminput.text.trim() !== "" && quantityinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
+                        }*/
+                        if (iteminput.text.trim() !== "" && quantityinput.text.trim() !== "") { // Check if the text is not empty or only whitespace
                                    // Create a new Ingredient object
                                    var newIngredient = {
                                        "index": currentIndex,

@@ -262,9 +262,7 @@ Row {
                             //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
                             onTextChanged: {
                                 console.log("nb d'ingredients:", itemModel.count);
-                                if (categorieMenu.model[currentIndex] !== "All Categories") {
-                                    categorieMenu.model[currentIndex] = "All Categories";
-                                }
+
                                 console.log("Search bar text:", searchbarFridge.text);
                                 console.log("Search bar nb characters:", searchbarFridge.text.length);
                                 if (searchbarFridge.text.length === 0) {
@@ -287,10 +285,11 @@ Row {
                                     itemModel.append(newIngredient);
                                 }
                                 var m = visible.length
+                                console.log(m+invisible.length)
                                 for (var h = 0; h< invisible.length; h++){
-                                    console.log(m+h, "invisible", invisible[q][0])
+                                    console.log(h, h+m, "invisible", invisible[h][0])
                                     var newIngredient_inv = {
-                                        "index": (m+h), "item": invisible[h][0], "categorie": invisible[h][3], "date": invisible[h][1], "quantity": invisible[h][2],
+                                        "index": (h+m), "item": invisible[h][0], "categorie": invisible[h][3], "date": invisible[h][1], "quantity": invisible[h][2],
                                         "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 0
                                     };
                                     itemModel.append(newIngredient_inv);
@@ -305,6 +304,7 @@ Row {
                             model: ["All Categories", "unspecified", "fruit", "vegetable", "drink", "dairy", "canned",
                                 "meat", "fish", "sweet", "nut", "other"]
                             onCurrentIndexChanged: {
+                                //searchbarFridge.text = ""
                                 console.log("Selected option:", model[currentIndex]);
                                 console.log("len itemmodel:", itemModel.count);
                                 console.log("OK");
