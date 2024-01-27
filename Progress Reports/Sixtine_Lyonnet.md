@@ -34,7 +34,7 @@ I was told by my TA that the classes should be impplemented in separate cpp and 
 
 24/12/2023
 I added a get_ingredient_list method in Offer.
-I merged the front branch with the front_merge branch.
+I also tested all my functions and classes by creating instances of those in the main file before I merged the front branch with the front_merge branch.
 
 02/01/2024
 I discussed different problems in our class implementation with other group members.
