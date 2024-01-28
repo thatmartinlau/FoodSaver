@@ -219,8 +219,8 @@ Popup {
             text: "Negotiate"
         }*/
         Label {
-                        text: "Enter the quantity you want to sell. Must be less than " + itemModel.get(itemIndex).quantity
-                    }
+            text: "Enter the quantity you want to sell. Must be less than " + itemModel.get(itemIndex).quantity
+        }
         TextField {
             id: quantity2sellInput
             width: 340

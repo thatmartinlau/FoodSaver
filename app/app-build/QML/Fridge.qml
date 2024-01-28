@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 //colors: green #5E9F7C lightgreen #D7ECDE
 
-Row {
+Rectangle {
     property int currentIndex: 0
     Rectangle {
         width: parent.width * 0.20
@@ -453,6 +453,7 @@ Row {
                                                 text: "Modify Offer"
                                                 onClicked: {
                                                     modifyOffer.open()
+                                                    itemIndex2 = itemModel.getIndexByPropertyValue("index", model.index);
                                                 }
                                             }
 
@@ -849,6 +850,7 @@ Row {
             onClicked: stackView.pop() // need to add a function which logs the user out of the server, then deletes all active data from the instance.
         }
     }
+    property int itemIndex2: -1
     Popup {
         id: modifyOffer
         anchors.centerIn: parent
@@ -859,7 +861,7 @@ Row {
             color: "#EEEEEE"
             radius: 12.5
         }
-        property int itemIndex: -1
+        //property int itemIndex: -1
 
         Column {
             anchors.centerIn: parent
@@ -890,7 +892,7 @@ Row {
                     radius: 12.5
                 }
                 placeholderText: "Enter Quantity"
-                text: itemModel.get(itemIndex).quantity
+                text: itemModel.get(itemIndex2).quantity
             }
 
             ComboBox {
@@ -937,10 +939,10 @@ Row {
                     onClicked: {
                         errorQuantity.visible = false;
 
-                        itemModel.setProperty(itemIndex, "pricestatus", priceType.currentIndex);
+                        itemModel.setProperty(itemIndex2, "pricestatus", priceType.currentIndex);
                         //itemModel.setProperty(itemIndex, "status", 1);
-                        itemModel.setProperty(itemIndex, "quantity2sell", quantity2sellInput.text);
-                        itemModel.setProperty(itemIndex, "price", priceInput.text);
+                        itemModel.setProperty(itemIndex2, "quantity2sell", quantity2sellInput.text);
+                        itemModel.setProperty(itemIndex2, "price", priceInput.text);
 
                         quantity2sellInput.text = "";
                         priceInput.text = "";
