@@ -270,10 +270,10 @@ Row {
                                             }
                                         }
                                     }
-                                    Text {text: "Sort by:"; Layout.preferredWidth: 75; y:4}
+                                    Text {text: "Sort by:"; Layout.preferredWidth: 75; anchors.verticalCenter:parent.verticalCenter}
 
                                     ComboBox {
-                                            y:2
+                                            //y:2
                                             id: priority
                                             width: 100
                                             model: ["None", "Vegetarian", "Gluten-free", "other"] //add "Vegan", "Dairy free"
