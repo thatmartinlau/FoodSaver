@@ -1,8 +1,11 @@
+#pragma once
 #ifndef USER_H
 #define USER_H
 
 #include "fridge.h"
 #include "offer.h"
+#include "recipe.h"
+#include "rpc_client_side.hpp"
 
 //#include <iostream>
 #include <list>
@@ -12,6 +15,11 @@
 //using json = nlohmann::json;
 //using namespace std;
 
+//#include "client_side_connection/server_to_backend_connection/rpc_client_side.hpp"
+
+//fix circular include loop:
+class ServerUser;
+
 class User{
 public:
     User();
@@ -19,7 +27,8 @@ public:
     ~User();
     void set_username(std::string username);
     std::string get_username();
-    bool check_password(std::string input_password);
+    bool check_password(std::string input_username, std::string input_password);
+    bool is_username(std::string username);
     void set_distplay_name(std::string display_name);
     std::string get_display_name();
     void set_telegram_username(std::string telegram);
@@ -38,10 +47,14 @@ public:
     int get_telegram_notifications();
     void set_marketplace_notifications(int m);
     int get_marketplace_notifications();
-    //json toJson () const;
-    void add_offer(Offer new_offer);
-    Offer remove_offer(Offer *offer_to_delete);
     std::vector<Offer> get_my_offers();
+    void add_offer(Offer new_offer);
+    Fridge get_user_fridge();
+    void add_ingredient_fridge(Ingredient elt);
+    Offer remove_offer(Offer *offer_to_delete);
+    void like_recipe(Recipe recipe);
+    void unlike_recipe(Recipe recipe);
+    bool operator==(User& other);
 
 private:
     std::string username;
@@ -57,6 +70,11 @@ private:
     int marketplace_notifications;
     Fridge user_fridge;
     std::vector<Offer> offer_list;
+    std::vector<Recipe> liked_recipes;
+    ServerUser* server_user;
 };
 
-#endif // USER_H
+
+//std::vector<std::string> getUsers();
+
+#endif

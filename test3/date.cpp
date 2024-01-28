@@ -1,10 +1,6 @@
 #include "date.h"
 
 //#include "front.hpp"
-//#include <iostream>
-//#include <list>
-//#include <ctime>
-//#include <chrono>
 //using namespace std;
 
 // DATE
