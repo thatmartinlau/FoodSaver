@@ -9,18 +9,127 @@ Row {
         width: parent.width * 0.20
         height: parent.height
         color: "#5E9F7C"
-        Column {
-
+        Rectangle {
+            width: 200
+            height: 152
+            color: "white"
+            radius: 12.5
             anchors.left: parent.left
             anchors.bottom: parent.verticalCenter
-            anchors.leftMargin: parent.width * 0.05
+            anchors.leftMargin: parent.width * 0.5 - 100
 
-                Button { text: "Fridge";  onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
-                Button { text: "Market"; enabled: false; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }
-                //Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
-                Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
+            Column {
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "transparent" // Light grey color
+                    radius: 12.5 // Add radius to the grey rectangle
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            stackView.replace(Qt.resolvedUrl("Fridge.qml")) // Handle click event if needed
+                        }
+
+                        Rectangle {
+                            width: 24
+                            height: 24
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 13 // Additional property for the small rectangle
+                        }
+
+                        Label {
+                            text: "Fridge"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 50 // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = "transparent"; // Back to white when not hovered
+                        }
+                    }
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 0.5 // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "#EEEEEE" // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
+
+                    Rectangle {
+                        width: 24
+                        height: 24
+                        color: "#A3C995" // Updated color
+                        radius: 2 // Updated radius
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 13 // Additional property for the small rectangle
+                    }
+
+                    Label {
+                        text: "Markets"
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 50 // Additional property for the label
+                    }
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 0.5 // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "transparent" // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml"))
+
+                        Rectangle {
+                            width: 24
+                            height: 24
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 13 // Additional property for the small rectangle
+                        }
+
+                        Label {
+                            text: "Recipes"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 50 // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = "transparent"; // Back to transparent when not hovered
+                        }
+                    }
+                }
             }
+        }
 
         Button {
             anchors.left: parent.left

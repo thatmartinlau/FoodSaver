@@ -39,8 +39,8 @@ Food_class Ingredient::get_food_class(){
 
 std::string Ingredient::get_food_class_name() {
     static const std::string foodClassNames[] = {
-        "unspecified","fruit", "vegetable", "drink", "dairy", "canned",
-        "meat", "fish", "sweet", "nut", "other"
+        "Unspecified","Fruit", "Vegetable", "Drink", "Dairy", "Canned",
+        "Meat", "Fish", "Sweet", "Nut", "Other"
     };
     return foodClassNames[category];
 }

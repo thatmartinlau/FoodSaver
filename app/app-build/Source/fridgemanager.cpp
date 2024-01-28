@@ -22,20 +22,20 @@ QString convertStdtoQ2(std::string entry){
 }
 
 Food_class convertStringToFoodClass(const std::string& catString) {
-    if (catString == "unspecified") return unspecified;
-    else if (catString == "fruit") return fruit;
-    else if (catString == "vegetable") return vegetable;
-    else if (catString == "drink") return drink;
-    else if (catString == "dairy") return dairy;
-    else if (catString == "canned") return canned;
-    else if (catString == "meat") return meat;
-    else if (catString == "fish") return fish;
-    else if (catString == "sweet") return sweet;
-    else if (catString == "nut") return nut;
-    else if (catString == "other") return other;
+    if (catString == "Unspecified") return Unspecified;
+    else if (catString == "Fruit") return Fruit;
+    else if (catString == "Vegetable") return Vegetable;
+    else if (catString == "Drink") return Drink;
+    else if (catString == "Dairy") return Dairy;
+    else if (catString == "Canned") return Canned;
+    else if (catString == "Meat") return Meat;
+    else if (catString == "Fish") return Fish;
+    else if (catString == "Sweet") return Sweet;
+    else if (catString == "Nut") return Nut;
+    else if (catString == "Other") return Other;
 
     // Default case if the category is not recognized
-    return unspecified;
+    return Unspecified;
 }
 
 //----- Main Code -----------------------------------------------
@@ -75,6 +75,15 @@ Ingredient FridgeManager::pop_elt(const QString &nb) {
     Ingredient* ingredientPtr = &myFridge.get_list()[indice];
     //std::cout << myFridge.get_list()[indice] << "ingredient" << std::endl;
     return myFridge.pop_elt(ingredientPtr);
+}
+
+void FridgeManager::clear(const QString &tt) {
+    int nb = 0;
+    for (int i = 0; i < tt.toInt(); i++) {
+        pop_elt(0);
+        nb++;
+    }
+    std::cout << nb << " item.s deleted" << std::endl;
 }
 
 //this one is useless

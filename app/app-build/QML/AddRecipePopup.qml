@@ -15,7 +15,7 @@ Popup {
     Button {
         anchors.right: parent.right
         anchors.top: parent.top
-        text: "X"
+        text: "╳"
         width: 20
         height: 20
         background: Rectangle {

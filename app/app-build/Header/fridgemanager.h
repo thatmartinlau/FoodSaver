@@ -19,6 +19,7 @@ public:
 public slots:
     void add_elt(const QString &name, const QString &date, const QString &quantity, const QString &cat);
     Ingredient pop_elt(const QString &nb);
+    void clear(const QString &tt);
     std::vector<Ingredient> sort_ingredients_by_category();
     QList<QList<QString>> sort_ingredients_by_expiration_date();
     QList<QList<QList<QString>>> search_result(const QString &request);

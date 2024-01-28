@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.15
 import QtQuick.Layouts
+import QtQuick.Window 2.2
 
 Popup {
 
@@ -18,9 +19,10 @@ Popup {
 
         id: addtofridge
         anchors.centerIn: parent
-        width: 200
+        width: 210
         height: 220
         closePolicy: "CloseOnEscape"
+
         background: Rectangle {
                 color:"#EEEEEE"
                 radius: 12.5
@@ -31,7 +33,7 @@ Popup {
             Button {
                 anchors.right: parent.right
                 //anchors.top: parent.top
-                text: "X"
+                text: "╳"
                 width: 50
                 background: null
                 onClicked: {
@@ -55,8 +57,8 @@ Popup {
             ComboBox {
                 id: categorieMenu
                 width: 200
-                model: ["unspecified", "fruit", "vegetable", "drink", "dairy", "canned",
-                    "meat", "fish", "sweet", "nut", "other"]
+                model: ["Unspecified", "Fruit", "Vegetable", "Drink", "Dairy", "Canned",
+                    "Meat", "Fish", "Sweet", "Nut", "Other"]
 
                 onCurrentIndexChanged: {
                     console.log("Selected option:", categorieMenu.currentText);
@@ -170,5 +172,6 @@ Popup {
                     }
                 }
             }
+
         }
 

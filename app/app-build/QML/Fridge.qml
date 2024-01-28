@@ -9,7 +9,7 @@ Row {
         width: parent.width * 0.20
         height: parent.height
         color: "#5E9F7C"
-        Column {
+        /*Column {
 
             anchors.left: parent.left
             anchors.bottom: parent.verticalCenter
@@ -20,7 +20,135 @@ Row {
             //Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
             Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
 
+        }*/
+
+        Rectangle {
+            width: 200
+            height: 152
+            color: "white"
+            radius: 12.5
+            anchors.left: parent.left
+            anchors.bottom: parent.verticalCenter
+            anchors.leftMargin: parent.width * 0.5 - 100
+
+            Column {
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "#EEEEEE" // Light grey color
+                    radius: 12.5 // Add radius to the grey rectangle
+
+                    Rectangle {
+                        width: 24
+                        height: 24
+                        color: "#A3C995" // Updated color
+                        radius: 2 // Updated radius
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 13 // Additional property for the small rectangle
+                    }
+
+                    Label {
+                        text: "Fridge"
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 50 // Additional property for the label
+                    }
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 0.5 // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "transparent" // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            fridgemanager.clear(itemModel.count)
+                            stackView.replace(Qt.resolvedUrl("Market.qml"))
+                        }
+
+                        Rectangle {
+                            width: 24
+                            height: 24
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 13 // Additional property for the small rectangle
+                        }
+
+                        Label {
+                            text: "Markets"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 50 // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = "transparent"; // Back to transparent when not hovered
+                        }
+                    }
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 0.5 // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "transparent" // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            fridgemanager.clear(itemModel.count)
+                            stackView.replace(Qt.resolvedUrl("Recipes.qml"))
+                        }
+
+                        Rectangle {
+                            width: 24
+                            height: 24
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 13 // Additional property for the small rectangle
+                        }
+
+                        Label {
+                            text: "Recipes"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 50 // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = "transparent"; // Back to transparent when not hovered
+                        }
+                    }
+                }
+            }
         }
+
+
 
         Button {
             anchors.left: parent.left
@@ -42,42 +170,156 @@ Row {
         height: parent.height
         color: "#5E9F7C"
 
-        Row{
+        /*Row{
             anchors.top: parent.top
+            Button {
+                id:buttonFridge
+                enabled: false
+                text: "My Fridge"
+                width: parent.parent.width * 0.2
+                onClicked: {
+                    fridgePage.visible = true;
+                    offerPage.visible = false;
+                    buttonOffer.enabled = true;
+                    buttonFridge.enabled = false;
+                    addtofridgebutton.visible= true;
+                }
+            }
+            Button {
+                id:buttonOffer
+                enabled: true
+                text: "My Offers"
+                width: parent.parent.width * 0.2
+                onClicked: {
+                    fridgePage.visible = false;
+                    offerPage.visible = true;
+                    buttonOffer.enabled = false;
+                    buttonFridge.enabled = true;
+                    addtofridgebutton.visible= false;
+                }
+            }
+        }*/
+        Rectangle {
+            color: "white"
+            radius:12.5
+            height:parent.width * 0.04
+            width: parent.width * 0.4 + 0.05
+            x: parent.width * 0.01
+            y: parent.width * 0.01
 
-                    Button {
-                        id:buttonFridge
-                        enabled: false
+
+            Row {
+                anchors.top: parent.top
+
+                Rectangle {
+                    id:fridgecolor
+                    width: (parent.parent.width - 0.05) * 0.5
+                    height: parent.parent.height
+                    color: buttonFridge.enabled ? "white" : "#EEEEEE"
+                    //color: "#EEEEEE" // Light grey color
+                    radius: 12.5 // Add radius to the grey rectangle
+
+                    Rectangle {
+                        width: parent.parent.height *2/3
+                        height: parent.parent.height *2/3
+                        color: "#A3C995" // Updated color
+                        radius: 2 // Updated radius
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: parent.parent.height *1/6 // Additional property for the small rectangle
+                    }
+
+                    Label {
                         text: "My Fridge"
-                        width: parent.parent.width * 0.2
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: parent.parent.height // Additional property for the label
+                    }
+
+                    MouseArea {
+                        id: buttonFridge
+                        enabled : false
+                        anchors.fill: parent
                         onClicked: {
                             fridgePage.visible = true;
                             offerPage.visible = false;
                             buttonOffer.enabled = true;
                             buttonFridge.enabled = false;
-                            addtofridgebutton.visible= true;
+                            addtofridgebutton.visible = true;
+                            parent.color=buttonFridge.enabled ? "white" : "#EEEEEE";
+                            offercolor.color = buttonOffer.enabled ? "white" : "#EEEEEE";
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = buttonFridge.enabled ? "white" : "#EEEEEE"; // Back to white when not hovered
                         }
                     }
+                }
 
-                    Button {
-                        id:buttonOffer
-                        enabled: true
-                        text: "My Offers"
-                        width: parent.parent.width * 0.2
+                Rectangle {
+                    width: 0.5
+                    height: parent.parent.height // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
+
+                Rectangle {
+                    id:offercolor
+                    width: (parent.parent.width - 0.05) * 0.5
+                    height: parent.parent.height
+                    color: buttonOffer.enabled ? "white" : "#EEEEEE"; // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
+
+                    MouseArea {
+                        id: buttonOffer
+                        anchors.fill: parent
                         onClicked: {
                             fridgePage.visible = false;
                             offerPage.visible = true;
                             buttonOffer.enabled = false;
                             buttonFridge.enabled = true;
-                            addtofridgebutton.visible= false;
+                            addtofridgebutton.visible = false;
+                            parent.color = buttonOffer.enabled ? "white" : "#EEEEEE";
+                            fridgecolor.color = buttonFridge.enabled ? "white" : "#EEEEEE";
+                        }
+
+                        Rectangle {
+                            width: parent.parent.height *2/3
+                            height: parent.parent.height *2/3
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: parent.parent.height *1/6 // Additional property for the small rectangle
+                        }
+
+                        Label {
+                            text: "My Offers"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: parent.parent.height // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = buttonOffer.enabled ? "white" : "#EEEEEE"; // Back to transparent when not hovered
                         }
                     }
+                }
+            }
         }
+
 
         Rectangle {
             id: offerPage
             visible: false
-            y: parent.height * 0.05
+            y: parent.width * 0.06
             height: parent.height * 0.9
             width: parent.width
             radius: 12.5
@@ -226,7 +468,7 @@ Row {
         Rectangle {
             id: fridgePage
             visible: true
-            y: parent.height * 0.05
+            y: parent.width * 0.06
             height: parent.height * 0.9
             width: parent.width
             radius: 12.5
@@ -258,7 +500,7 @@ Row {
                         TextField {
                             y:3
                             id: searchbarFridge
-                            placeholderText: "Search for a specific item"
+                            placeholderText: "🔎 Search"
                             //onTextChanged: newItemText = itemTextField.text // Update the newItemText on text change
                             onTextChanged: {
                                 console.log("nb d'ingredients:", itemModel.count);
@@ -301,8 +543,8 @@ Row {
                         ComboBox {
                             id: categorieMenu
                             width: 200
-                            model: ["All Categories", "unspecified", "fruit", "vegetable", "drink", "dairy", "canned",
-                                "meat", "fish", "sweet", "nut", "other"]
+                            model: ["All Categories", "Unspecified", "Fruit", "Vegetable", "Drink", "Dairy", "Canned",
+                                "Meat", "Fish", "Sweet", "Nut", "Other"]
                             onCurrentIndexChanged: {
                                 //searchbarFridge.text = ""
                                 console.log("Selected option:", model[currentIndex]);
@@ -332,16 +574,16 @@ Row {
                             text: "add_ingredient_preset"
                             onClicked: {
                                 var apple = {
-                                    "index": 0, "item": "apple", "categorie": "fruit", "date": "01/05/2024", "quantity": "2", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                    "index": 0, "item": "apple", "categorie": "Fruit", "date": "01/05/2024", "quantity": "2", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
                                 };
                                 var milk = {
-                                    "index": 1, "item": "milk", "categorie": "drink", "date": "01/02/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                    "index": 1, "item": "milk", "categorie": "Drink", "date": "01/02/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
                                 };
                                 var carrot = {
-                                    "index": 2, "item": "carrot", "categorie": "vegetable", "date": "01/03/2024", "quantity": "3", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                    "index": 2, "item": "carrot", "categorie": "Vegetable", "date": "01/03/2024", "quantity": "3", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
                                 };
                                 var banana = {
-                                    "index": 3, "item": "banana", "categorie": "fruit", "date": "01/04/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                                    "index": 3, "item": "banana", "categorie": "Fruit", "date": "01/04/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
                                 };
                                 itemModel.append(apple);
                                 itemModel.append(milk);
@@ -478,7 +720,7 @@ Row {
                                                 text: "Remove item"
                                                 onClicked: {
                                                     if(true) {
-                                                    //scrollViewFridge.contentHeight -= 152.5;
+                                                    scrollViewFridge.contentHeight -= 152.5;
                                                     if(model.status) {
                                                         scrollViewOffer.contentHeight = scrollViewOffer.contentHeight - 152.5;
                                                     };
@@ -558,8 +800,45 @@ Row {
             background: Rectangle {
                         color: "#D7ECDE"
                         radius:12.5
-                    }
+            }
         }
+        Rectangle {
+            y: parent.height * 0.5
+            x: parent.width * 0.5 - 50
+            width: 100
+            height: 100
+            color: "white"
+            radius: 50
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    profile.open()
+                }
+
+                Rectangle {
+                    //y:parent.parent.height * 0.25
+                    width: parent.height * 0.8
+                    height: parent.height * 0.8
+                    color: "#A3C995"
+                    radius: 50
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    //anchors.bottom: parent.bottom
+                    //anchors.bottomMargin:  parent.parent.height * 1/2// Adjust the margin as needed
+                }
+
+                Label {
+                    text: "Profile"
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        bottom: parent.bottom
+                        bottomMargin: 15 // Adjust the margin as needed
+                    }
+                }
+            }
+        }
+
         Button {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
