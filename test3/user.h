@@ -71,7 +71,7 @@ private:
     Fridge user_fridge;
     std::vector<Offer> offer_list;
     std::vector<Recipe> liked_recipes;
-    ServerUser* server_user;
+//    ServerUser* server_user;
 };
 
 

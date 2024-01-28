@@ -81,6 +81,6 @@ int main(int argc, char *argv[])
     //server.loadUserInfo("myFile.txt")
     
     
-    int val3 = test_sending_to_db();
+//    int val3 = test_sending_to_db();
     return 0;
 }

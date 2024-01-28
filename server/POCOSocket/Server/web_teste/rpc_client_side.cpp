@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include<vector>
-#include <variant>
 
 #include "rpc_client_side.hpp"
 using namespace std;
@@ -472,6 +471,7 @@ int test_send_vec_string() {
     vector<string> vec_for_testing = {"ingredient_name", "ingr_dat", "ingr_qty", "ingr_cat", "ingr_prio_level"};
     rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
     vector<string> returned_vec = new_client.call("test_sending_ingredient_as_vec", vec_for_testing).as<vector<string>>();
+//    new_cli
     cout << returned_vec[0] << endl;
     return 1;
 }
@@ -485,3 +485,4 @@ int test_sending_to_db() {
 
 
 }
+int va = test_sending_to_db();
