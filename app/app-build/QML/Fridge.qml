@@ -45,6 +45,11 @@ Rectangle {
                         radius: 2 // Updated radius
                         anchors.verticalCenter: parent.verticalCenter
                         x: 13 // Additional property for the small rectangle
+                        Label {
+                            text: "🗄️"
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
                     }
 
                     Label {
@@ -80,6 +85,11 @@ Rectangle {
                             radius: 2 // Updated radius
                             anchors.verticalCenter: parent.verticalCenter
                             x: 13 // Additional property for the small rectangle
+                            Label {
+                                text: "🛒"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
                         }
 
                         Label {
@@ -126,6 +136,11 @@ Rectangle {
                             radius: 2 // Updated radius
                             anchors.verticalCenter: parent.verticalCenter
                             x: 13 // Additional property for the small rectangle
+                            Label {
+                                text: "🍳"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
                         }
 
                         Label {
@@ -148,23 +163,61 @@ Rectangle {
             }
         }
 
-
-
-        Button {
+        Rectangle {
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: parent.width * 0.5 - 100
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: deux.width * 0.04
 
-            id: button
-            text: "Settings"
-            onClicked: {
-            settings.open()
+
+
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                id: button
+                anchors.fill: parent
+                onClicked: {
+                settings.open()
+                }
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "⚙️"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Settings"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
             }
         }
     }
 
     Rectangle {
+        id: deux
         x: parent.width * 0.20
         width: parent.width * 0.6
         height: parent.height
@@ -226,6 +279,11 @@ Rectangle {
                         radius: 2 // Updated radius
                         anchors.verticalCenter: parent.verticalCenter
                         x: parent.parent.height *1/6 // Additional property for the small rectangle
+                        Label {
+                           text: "🍅"
+                           anchors.verticalCenter: parent.verticalCenter
+                           anchors.horizontalCenter: parent.horizontalCenter
+                        }
                     }
 
                     Label {
@@ -293,6 +351,11 @@ Rectangle {
                             radius: 2 // Updated radius
                             anchors.verticalCenter: parent.verticalCenter
                             x: parent.parent.height *1/6 // Additional property for the small rectangle
+                            Label {
+                                text: "📣"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
                         }
 
                         Label {

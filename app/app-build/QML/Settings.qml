@@ -6,7 +6,7 @@ Popup {
     id: settingswindow
     anchors.centerIn: parent
     width: Screen.width / 2.5
-    height: Screen.height / 1.4
+    height: Screen.height / 1.3
     focus: true
     closePolicy: Popup.CloseOnEscape
     modal: true

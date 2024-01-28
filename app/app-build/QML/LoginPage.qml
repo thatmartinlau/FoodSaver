@@ -14,7 +14,23 @@ Item {
     }
 
     // FOODSAVER LOGO/LABEL
+    Rectangle {
+            width: 400
+            height: 300
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
 
+            Image {
+                source: "whatif.jpg"
+                anchors.centerIn: parent
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log("Image clicked!")
+                    }
+                }
+            }
+    }
     Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
