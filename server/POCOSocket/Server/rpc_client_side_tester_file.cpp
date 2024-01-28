@@ -16,6 +16,7 @@ ServerUser::ServerUser(string usrname, string psswd) { //Add user to db if user 
     password = psswd;
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     new_cli.call("add_user", username, password);
+    
 }
 
 ServerUser::~ServerUser() {}
@@ -387,6 +388,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 //    // [name, expiry_date, quantity, category, priority_level]
 
 
+<<<<<<< Updated upstream:server/POCOSocket/Server/rpc_client_side_tester_file.cpp
 //}
 
 
@@ -419,3 +421,23 @@ int test2 () {
 
 
 
+=======
+int test_send_vec_string() {
+    vector<string> vec_for_testing = {"ingredient_name", "ingr_dat", "ingr_qty", "ingr_cat", "ingr_prio_level"};
+    rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    cout << "sending call";
+    vector<string> returned_vec = new_client.call("test_sending_ingredient_as_vec", vec_for_testing).as<vector<string>>();
+    new_client.call("exit");
+    cout << returned_vec[0] << endl;
+    return 1;
+}
+
+
+//CLIENT_SIDE FUNCTION, FOR TESTIING STILL
+int test_sending_to_db() {
+
+    cout << "hello, it opens" << endl;
+//    int val1 = test_send_vec_string();
+    ServerUser adam("a", "b");
+}
+>>>>>>> Stashed changes:server/POCOSocket/Server/web_teste/rpc_client_side.cpp

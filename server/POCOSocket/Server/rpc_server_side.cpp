@@ -616,9 +616,9 @@ vector<string> test_sending_ingredient_as_vec(vector<string> ingredient) {
     return ingredient;
 }
 
-vector<vector<string>> test_sending_fridge_as_vec(vector<vector<string>> fridge) {
-    cout << fridge[0][0] << fridge[1][1] << endl;
-    return fridge;
+vector<string> just_sending(vector<string> ingredient) {
+    cout << ingredient[0] << ingredient[0] << endl;
+    return ingredient;
 }
 
 
@@ -652,16 +652,30 @@ int main() {
     
     
     //binding test functions:
+<<<<<<< Updated upstream
 //    srv.bind("test_sending_fridges", &test_sending_fridges);
     srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
     srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
+=======
+    //srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
+    srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
+    
+    //Importantt exiting function for Client calling quickly, iteratively:
+    srv.bind("exit", []() {
+        rpc::this_session().post_exit(); // post exit to the queue
+    });
+>>>>>>> Stashed changes
     
     
     //SERVER running from here:
     read_from_csv();
     cout << "running" << endl;        
+<<<<<<< Updated upstream
     srv.run();
     cout << "running" << endl;    
+=======
+    srv.async_run(2);
+>>>>>>> Stashed changes
         
     
     
