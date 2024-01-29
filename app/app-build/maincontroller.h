@@ -1,5 +1,5 @@
-#ifndef RECIPECONTROLLER_H
-#define RECIPECONTROLLER_H
+#ifndef MAINCONTROLLER_H
+#define MAINCONTROLLER_H
 
 #include <QObject>
 #include <string>
@@ -8,12 +8,12 @@
 #include <QList>
 #include <QMap>
 
-class RecipeController : public QObject
+class MainController : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit RecipeController(QObject *parent = nullptr);
+    explicit MainController(QObject *parent = nullptr);
 
 public slots:
     void submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes);//, const QString &ingredient1, const QString &instruction1);
@@ -37,17 +37,15 @@ public slots:
     QList<QString> sendIngredientsForVis(const QString &title);
     QList<QString> sendInstructionsForVis(const QString &title);
     QString sendRatingForVis(const QString &title);
-    bool checkTitle(const QString &title);
 
     QList<QString> getTitleForVis();
     QList<QString> getIngredientsForVis();
     QList<QString> getInstructionsForVis();
 
-
-
+    bool checkTitle(const QString &title);
 
     //modif eli: jai changé QList<QString> en QString
     //QString searchRecipes(const QString &entry, const QString &dietRestriction);
 };
 
-#endif // RECIPECONTROLLER_H
+#endif // MAINCONTROLLER_H
