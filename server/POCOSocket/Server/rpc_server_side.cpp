@@ -608,7 +608,9 @@ vector<vector<string>> test_sending_fridge_as_vec(vector<vector<string>> fridge)
     cout << fridge[0][0] << fridge[1][1] << endl;
     return fridge;
 }
-/*
+
+
+
 void initializeUser() {
     // Create a test user with known credentials
     UserData testUser;
@@ -645,6 +647,8 @@ void initializeUser() {
     // Add the test user to the database
     (*database)["TestUser"] = testUser;  // "TestUser" is the test username
 }
+
+
 
 void initializeTestRecipes() {
     // Adding some test recipes to the recipes_list
@@ -685,6 +689,78 @@ void initializeTestUsersWithRestrictions() {
 
 //tests.......................................
 
+
+//test updates;
+
+void test_update_username(){
+
+    string test_username = "TestUser";
+    string test_password = "TestPassword";
+    update_user("TestUser", "TestPassword", "Oscar", "ChangedPassword");
+    cout<< "New Password is : "<<  (*database)["Oscar"].password <<endl;
+
+}
+
+/*
+void update_user_characteristics(string username, string password, vector<string> new_characs) {
+    auto el = database->find(username);
+
+    if (el != database->end() && password==el->second.password) {
+            basic_user_data new_user_data;
+            new_user_data = deserialize_basic_data_of_user(new_characs);
+            el->second.basic_u_data = new_user_data;
+            write_simple_types();
+    }
+    else if(password != el->second.password){
+            // Password does not match
+            auto err_obj = std::make_tuple(507, "Incorrect Password");
+            rpc::this_handler().respond_error(err_obj);
+    }
+    else {
+            // Username not found
+            auto err_obj = std::make_tuple(123, "Username not found");
+            rpc::this_handler().respond_error(err_obj);
+    }
+
+}
+
+struct basic_user_data {
+    string display_name;
+    string telegram_username;
+    string building_address;
+    int gender;
+    int promotion;
+    int phone_number;
+    int telegram_notifications;
+    int marketplace_notifications;
+    basic_user_data() {}
+};
+
+*/
+
+
+
+void test_update_user_characteristics(){
+    string username = "TestUsername";
+    string password = "TestPassword";
+    vector<string> characteristics;
+    characteristics.push_back("newDisplay");
+    characteristics.push_back("newtelegram");
+    characteristics.push_back("1");
+    characteristics.push_back("25");
+    characteristics.push_back("33667");
+    characteristics.push_back("3");
+    characteristics.push_back("4");
+    update_user_characteristics("TestUsername1", "TestPassword", characteristics);
+
+
+
+    cout<<(*database)["TestUsername1"].basic_u_data.display_name <<endl;
+
+
+}
+
+/*
 void test_get_basic_user_data() {
     // Assuming you have a test user with known username and password
     string test_username = "TestUser";
@@ -704,6 +780,7 @@ void test_get_basic_user_data() {
     }
     cout << endl;
 }
+
 
 void test_get_fridge() {
     string test_username = "TestUser";
@@ -755,6 +832,9 @@ void test_getMapOfOffers() {
     cout << endl;
 }
 
+*/
+
+
 void test_get_user_name_vectors() {
     vector<string> user_names = get_user_name_vectors();
     cout << "User Names: ";
@@ -763,6 +843,8 @@ void test_get_user_name_vectors() {
     }
     cout << endl;
 }
+
+/*
 void test_get_food_restrictions() {
     string test_username = "TestUser";
     string test_password = "TestPassword";
@@ -774,25 +856,36 @@ void test_get_food_restrictions() {
     }
     cout << endl;
 }
+
 */
+
+
+
+
+
+
+
 //main.............................................................
 int main() {
-    /*
+
     cout << "Starting program..." << endl;
     // Run tests before starting the server
     initializeUser();
     initializeTestRecipes();
     initializeUsersWithOfferLists();
     initializeTestUsersWithRestrictions();
+
     // Run the specific test for get_basic_user_data
-    test_get_basic_user_data();
-    test_get_fridge();
-    test_getAllRecipes();
-    test_get_offer_list();
-    test_getMapOfOffers();
+
+    test_update_username();
+    //test_get_basic_user_data();
+    //test_get_fridge();
+    //test_getAllRecipes();
+    //test_get_offer_list();
+    //test_getMapOfOffers();
     test_get_user_name_vectors();
-    test_get_food_restrictions();
-*/
+    //test_get_food_restrictions();
+
     rpc::server srv(8080);
     
     
@@ -831,8 +924,8 @@ int main() {
     
     //SERVER running from here:
     read_from_csv();
-    cout << "running" << endl;        
-    srv.run();*/
+    cout << "running" << endl;
+    srv.run();
     cout << "end program..." << endl;
 
     return 0;    
