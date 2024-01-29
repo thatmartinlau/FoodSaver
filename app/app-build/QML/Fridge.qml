@@ -94,7 +94,7 @@ Rectangle {
                         }
 
                         Label {
-                            text: "Markets"
+                            text: "Market"
                             anchors.verticalCenter: parent.verticalCenter
                             x: 50 // Additional property for the label
                         }
@@ -635,32 +635,7 @@ Rectangle {
                                 }
                             }
                         }
-                        Button {
-                            text: "add_ingredient_preset"
-                            onClicked: {
-                                var apple = {
-                                    "index": 0, "item": "apple", "categorie": "Fruit", "date": "01/05/2024", "quantity": "2", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
-                                };
-                                var milk = {
-                                    "index": 1, "item": "milk", "categorie": "Drink", "date": "01/02/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
-                                };
-                                var carrot = {
-                                    "index": 2, "item": "carrot", "categorie": "Vegetable", "date": "01/03/2024", "quantity": "3", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
-                                };
-                                var banana = {
-                                    "index": 3, "item": "banana", "categorie": "Fruit", "date": "01/04/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
-                                };
-                                itemModel.append(apple);
-                                itemModel.append(milk);
-                                itemModel.append(carrot);
-                                itemModel.append(banana);
-                                fridgemanager.add_elt(apple.item, apple.date, apple.quantity, apple.categorie);
-                                fridgemanager.add_elt(milk.item, milk.date, milk.quantity, milk.categorie);
-                                fridgemanager.add_elt(carrot.item, carrot.date, carrot.quantity, carrot.categorie);
-                                fridgemanager.add_elt(banana.item, banana.date, banana.quantity, banana.categorie);
-                                scrollViewFridge.contentHeight += 152.5*4;
-                            }
-                        }
+
                         Button {
                             text: "Time left"
                             onClicked: {
@@ -853,6 +828,30 @@ Rectangle {
                 id: basket
                 anchors.fill: parent
 
+                onClicked: {
+                    var apple = {
+                        "index": 0, "item": "apple", "categorie": "Fruit", "date": "01/05/2024", "quantity": "2", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                    };
+                    var milk = {
+                        "index": 1, "item": "milk", "categorie": "Drink", "date": "01/02/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                    };
+                    var carrot = {
+                        "index": 2, "item": "carrot", "categorie": "Vegetable", "date": "01/03/2024", "quantity": "3", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                    };
+                    var banana = {
+                        "index": 3, "item": "banana", "categorie": "Fruit", "date": "01/04/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                    };
+                    itemModel.append(apple);
+                    itemModel.append(milk);
+                    itemModel.append(carrot);
+                    itemModel.append(banana);
+                    fridgemanager.add_elt(apple.item, apple.date, apple.quantity, apple.categorie);
+                    fridgemanager.add_elt(milk.item, milk.date, milk.quantity, milk.categorie);
+                    fridgemanager.add_elt(carrot.item, carrot.date, carrot.quantity, carrot.categorie);
+                    fridgemanager.add_elt(banana.item, banana.date, banana.quantity, banana.categorie);
+                    scrollViewFridge.contentHeight += 152.5*4;
+                }
+
                 Rectangle {
                     width: 24
                     height: 24
@@ -861,14 +860,14 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     x: 13 // Additional property for the small rectangle
                     Label {
-                        text: "🧾"
+                        text: "💾"
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
 
                 Label {
-                    text: "My basket"
+                    text: "Demo Fridge"
                     anchors.verticalCenter: parent.verticalCenter
                     x: 50 // Additional property for the label
                 }
@@ -885,6 +884,7 @@ Rectangle {
             }
         }
         Rectangle {
+            id: addtofridgebutton
             anchors.left: parent.left
             anchors.leftMargin: parent.width * 0.5 - 100
             anchors.top: parent.top
@@ -895,7 +895,7 @@ Rectangle {
             radius: 12.5 // Add radius to the transparent rectangle
 
             MouseArea {
-                id: addtofridgebutton
+
                 anchors.fill: parent
 
                 onClicked: {
@@ -1006,7 +1006,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
 
-                onClicked: stackView.pop()
+                onClicked: {stackView.push(Qt.resolvedUrl("LoginPage.qml"))}
 
                 Rectangle {
                     width: 24
