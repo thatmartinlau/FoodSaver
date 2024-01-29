@@ -28,8 +28,8 @@ With the teacher, I created a new branch with a new project cause the first vers
 Figma
 
 ##6th session Thursday 19th
-We finally have something to work on!! God to be fair i completely lost all hopes at this point but I go with the flow. 
-We attribute task to everyone to what they have to do over the break. (edit: forgor to mention I took Fridge)
+We finally have something to work on!! To be fair i completely lost all hopes at this point but I go with the flow. 
+We attributed tasks to everyone to what they have to do over the break. I took Fridge.
 I try to make sure to have something to code in cpp... we will see
 Finally managed to make the pop up to 'add to fridge' an item
 
