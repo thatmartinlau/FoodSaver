@@ -37,13 +37,22 @@ inline vector<string> serialize_basic_data_of_user(basic_user_data u_data) {
 
 inline basic_user_data deserialize_basic_data_of_user(vector<string> user_data_as_str_vec) {
     basic_user_data basic_u_data;
-    basic_u_data.marketplace_notifications = stoi(user_data_as_str_vec[0]);
-    basic_u_data.telegram_notifications= stoi(user_data_as_str_vec[1]);
-    basic_u_data.promotion = stoi(user_data_as_str_vec[2]);
+
+    basic_u_data.display_name = user_data_as_str_vec[0];
+
+    basic_u_data.telegram_username = user_data_as_str_vec[1];
+
+    basic_u_data.building_address = user_data_as_str_vec[2];
+
     basic_u_data.gender = stoi(user_data_as_str_vec[3]);
-    basic_u_data.building_address = user_data_as_str_vec[4];
-    basic_u_data.telegram_username = user_data_as_str_vec[5];
-    basic_u_data.display_name = user_data_as_str_vec[6];
+
+    basic_u_data.promotion = stoi(user_data_as_str_vec[4]);
+    basic_u_data.phone_number= stoi(user_data_as_str_vec[5]);
+
+    basic_u_data.telegram_notifications= stoi(user_data_as_str_vec[6]);
+
+    basic_u_data.marketplace_notifications = stoi(user_data_as_str_vec[7]);
+
 }
 
 
