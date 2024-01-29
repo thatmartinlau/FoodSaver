@@ -467,22 +467,29 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 //    // [name, expiry_date, qua
 
 
-int test_send_vec_string() {
-    vector<string> vec_for_testing = {"ingredient_name", "ingr_dat", "ingr_qty", "ingr_cat", "ingr_prio_level"};
-    rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    vector<string> returned_vec = new_client.call("test_sending_ingredient_as_vec", vec_for_testing).as<vector<string>>();
-//    new_cli
-    cout << returned_vec[0] << endl;
-    return 1;
+//int test_send_vec_string() {
+//    vector<string> vec_for_testing = {"ingredient_name", "ingr_dat", "ingr_qty", "ingr_cat", "ingr_prio_level"};
+//    rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
+//    vector<string> returned_vec = new_client.call("test_sending_ingredient_as_vec", vec_for_testing).as<vector<string>>();
+//    cout << returned_vec[0] << endl;
+//    return 1;
+//}
+
+
+////CLIENT_SIDE FUNCTION, FOR TESTIING STILL
+//int test_sending_to_db() {
+
+//    cout << "hello, it opens" << endl;
+//    int val1 = test_send_vec_string();
+
+
+//}
+//int va = test_sending_to_db();
+
+int test_getOfferMapFromServer() {
+    
 }
 
 
-//CLIENT_SIDE FUNCTION, FOR TESTIING STILL
-int test_sending_to_db() {
-
-    cout << "hello, it opens" << endl;
-    int val1 = test_send_vec_string();
 
 
-}
-int va = test_sending_to_db();

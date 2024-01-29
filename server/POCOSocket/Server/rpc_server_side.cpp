@@ -6,7 +6,9 @@
 #include <unordered_map>
 #include <fstream>
 #include <sstream>
-
+#include "rpc/server.h"
+#include "rpc/this_handler.h"
+#include "rpc/this_session.h"
 
 using namespace std;
 
@@ -644,11 +646,8 @@ int main() {
     
     //binding test functions:
     //srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
-    //srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
+    srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
     
-    srv.bind("exit", []() {
-        rpc::this_session().post_exit(); // post exit to the queue
-    });
     
     //SERVER running from here:
     read_from_csv();

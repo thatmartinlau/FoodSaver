@@ -12,22 +12,22 @@ User::User() {}
 User::User(std::string username, std::string password) {
     this->username = username;
     this->password = password;
-//    ServerUser srv_usr(username, password);
-//    server_user = &srv_usr;
-//    user_fridge = server_user->get_fridge();
-//    offer_list = server_user->get_offer_list();
-//    food_and_dietary_restrictions = server_user->get_food_restrictions();
-//    basic_user_data basic_u_data;
-//    basic_u_data = server_user->get_basic_user_data();
-//    //Oscar, coded constructor directly in here, without added function . Initializer list style.
-//    display_name = basic_u_data.display_name;
-//    telegram_username = basic_u_data.telegram_username;
-//    gender = basic_u_data.gender;
-//    promotion = basic_u_data.promotion;
-//    building_address = basic_u_data.building_address;
-//    phone_number = basic_u_data.phone_number;
-//    telegram_notifications = basic_u_data.telegram_notifications;
-//    marketplace_notifications = basic_u_data.marketplace_notifications;
+    ServerUser srv_usr(username, password);
+    server_user = &srv_usr;
+    user_fridge = server_user->get_fridge();
+    offer_list = server_user->get_offer_list();
+    food_and_dietary_restrictions = server_user->get_food_restrictions();
+    basic_user_data basic_u_data;
+    basic_u_data = server_user->get_basic_user_data();
+    //Oscar, coded constructor directly in here, without added function . Initializer list style.
+    display_name = basic_u_data.display_name;
+    telegram_username = basic_u_data.telegram_username;
+    gender = basic_u_data.gender;
+    promotion = basic_u_data.promotion;
+    building_address = basic_u_data.building_address;
+    phone_number = basic_u_data.phone_number;
+    telegram_notifications = basic_u_data.telegram_notifications;
+    marketplace_notifications = basic_u_data.marketplace_notifications;
 }
 
 
@@ -37,7 +37,7 @@ User::~User() {
 
 void User::set_username(std::string username) {
     this->username = username;
-//    server_user->update_user_name_and_password(username, password);
+    server_user->update_user_name_and_password(username, password);
 }
 
 std::string User::get_username() {
@@ -55,7 +55,7 @@ Fridge User::get_user_fridge(){
 
 void User::add_ingredient_fridge(Ingredient elt){
     user_fridge.add_elt(elt);
-//    server_user->update_fridge(user_fridge);
+    server_user->update_fridge(user_fridge);
 }
 
 
@@ -89,7 +89,7 @@ bool User::is_username(std::string username) {
 
 void User::set_distplay_name(std::string display_name) {
     this->display_name = display_name;
-//    server_user->update_user_characteristics(this);
+    server_user->update_user_characteristics(this);
 }
 
 std::string User::get_display_name() {
@@ -98,7 +98,7 @@ std::string User::get_display_name() {
 
 void User::set_telegram_username(std::string telegram) {
     telegram_username = telegram;
-//    server_user->update_user_characteristics(this);    
+    server_user->update_user_characteristics(this);    
 }
 
 std::string User::get_telegram_username() {
@@ -108,7 +108,7 @@ std::string User::get_telegram_username() {
 
 void User::set_gender(int gender) {
     this->gender = gender;
-//    server_user->update_user_characteristics(this);    
+    server_user->update_user_characteristics(this);    
 }
 
 int User::get_gender() {
@@ -117,7 +117,7 @@ int User::get_gender() {
 
 void User::set_promotion(int promotion) {
     this->promotion = promotion;
-//    server_user->update_user_characteristics(this);
+    server_user->update_user_characteristics(this);
 }
 
 int User::get_promotion() {
@@ -126,7 +126,7 @@ int User::get_promotion() {
 
 void User::set_building_address(std::string building_address) {
     this->building_address = building_address;
-//    server_user->update_user_characteristics(this);    
+    server_user->update_user_characteristics(this);    
 }
 
 std::string User::get_building_address() {
@@ -135,7 +135,7 @@ std::string User::get_building_address() {
 
 void User::set_phone_number(int phone_number) {
     this->phone_number = phone_number;
-//    server_user->update_user_characteristics(this);        
+    server_user->update_user_characteristics(this);        
 }
 
 int User::get_phone_number() {
@@ -144,7 +144,7 @@ int User::get_phone_number() {
 
 void User::set_food_and_dietary_restrictions(std::list<bool> r) {
     this->food_and_dietary_restrictions = r;
-//    server_user->update_user_characteristics(this);        
+    server_user->update_user_characteristics(this);        
 }
 
 std::list<bool> User::get_food_and_dietary_restrictions() {
@@ -153,7 +153,7 @@ std::list<bool> User::get_food_and_dietary_restrictions() {
 
 void User::set_telegram_notifications(int t) {
     this->telegram_notifications = t;
-//    server_user->update_user_characteristics(this);            
+    server_user->update_user_characteristics(this);            
 }
 
 int User::get_telegram_notifications() {
@@ -162,7 +162,7 @@ int User::get_telegram_notifications() {
 
 void User::set_marketplace_notifications(int m) {
     this->marketplace_notifications = m;
-//    server_user->update_user_characteristics(this);        
+    server_user->update_user_characteristics(this);        
     
 }
 
@@ -172,7 +172,7 @@ int User::get_marketplace_notifications() {
 
 void User::add_offer(Offer new_offer) {
     offer_list.push_back(new_offer);
-//    server_user->update_offer_list(offer_list);
+    server_user->update_offer_list(offer_list);
 }
 
 Offer User::remove_offer(Offer *offer_to_delete) {
@@ -186,7 +186,7 @@ Offer User::remove_offer(Offer *offer_to_delete) {
             Offer foundOffer = *it;
             offer_list.erase(it);
             //sorry Sixtine, looks ugly, but best place to put it:
-//            server_user->update_offer_list(offer_list);
+            server_user->update_offer_list(offer_list);
             return foundOffer;
         }
     }

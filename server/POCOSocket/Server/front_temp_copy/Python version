@@ -1,0 +1,63 @@
+##Python version:
+
+import time
+import datetime
+date = [time.localtime()[2], time.localtime[1], time.localtime()[0]]
+recipes = [1, 2, 3, 4]
+
+class ingredient:
+    def __init__(self, quantity, expiry_date):
+        self.expiry_date = expiry_date #string of the form "{day}-{month}-{year}"
+        self.quantity = quantity #int
+        self.color = 'green' #string
+        
+    def expiration(self):
+        if date == self.expiry_date: return True
+        return False
+    
+    def counter(self):
+        current_time = datetime.datetime.now()
+        expiry = datetime.datetime.strptime(self.expiry_date, "%d-%m-%Y")
+        time_diff = expiry - current_time
+        days_left = time_diff.days
+        return days_left
+    
+    def color(self):
+        if self.count() <= 7: 
+            self.color = 'yellow'
+            if self.count() <= 2:
+                self.color = 'red'
+        
+
+
+class fridge:
+    def __init__(self, ingredients):
+        self.ingredients = ingredients #list with all ingredient names
+        
+        
+class recipe:
+    def __init__(self, name, number, ingredients, restriction, instructions):
+        self.name = name
+        self.number = number
+        self.ingredients = ingredients
+        self.restriction = restriction
+        self.instructions = instructions
+    
+    def __repr__(self):
+        st = ""
+        st += f'{self.name}\n Restriction: {self.restriction} '
+        for i in range(len(self.ingredients)):
+            st += f'\n- {self.ingredients[i]}'
+        st += f'{self.instructions}'
+        return st
+            
+        
+def find_recipes(self, ingredient, fridge):
+    recipe_nums = []
+    for recipe in recipes:
+        if ingredient in recipe.ingredients:
+            recipe_nums.append(recipe.number)
+    if len(recipe_nums) == 0:
+        return "no recipe matches your search"
+    for num in recipe_nums:
+        print(num)

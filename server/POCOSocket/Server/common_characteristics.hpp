@@ -18,6 +18,7 @@ struct basic_user_data {
     int promotion;
     int phone_number;
     int telegram_notifications;
+    list<bool> food_and_dietary_restrictions;
     int marketplace_notifications;
     basic_user_data() {}
 };
