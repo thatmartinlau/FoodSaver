@@ -124,7 +124,27 @@ int main() {
                 std::uniform_int_distribution<> distrib(0, recipe_list.size() - 1);
                 int randomIndex = distrib(gen); // Generate a random index
                 std::string randomRecipe = recipe_list[randomIndex]; // Get the element at the random index
-                bot.getApi().sendMessage(chatId, "Here is your random recipe: \n" + randomRecipe);
+
+                // tilte @ instruction % ingredient * source # tags , url
+                std::string title, instructions, ingredients, source, tags, url;
+                std::istringstream recipeStream(randomRecipe);
+                std::getline(recipeStream, title, '@');
+                std::getline(recipeStream, instructions, '%');
+                std::getline(recipeStream, ingredients, '*');
+                std::getline(recipeStream, source, '#');
+                std::getline(recipeStream, tags, ',');
+                std::getline(recipeStream, url);
+
+                std::string formattedMessage = "Here is your random recipe:\n\n";
+                formattedMessage += "Title: " + title + "\n\n";
+                formattedMessage += "Instructions:\n" + instructions + "\n\n";
+                formattedMessage += "Ingredients:\n" + ingredients + "\n\n";
+                formattedMessage += "Source: " + source + "\n";
+                formattedMessage += "Tags: " + tags + "\n";
+                formattedMessage += "URL: " + url + "\n";
+
+
+                bot.getApi().sendMessage(chatId, formattedMessage);
             } else {
                 std::cout << "Error! The recipe list is empty!" << std::endl;
                 bot.getApi().sendMessage(chatId, "Sorry! Our recipe list is currently empty, this is a problem caused by the server.");
