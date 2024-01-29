@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 //colors: green #5E9F7C lightgreen #D7ECDE
 
+
 Rectangle {
     property int currentIndex: 0
     Rectangle {
@@ -838,41 +839,109 @@ Rectangle {
         color: "#5E9F7C"
         anchors.right: parent.right
 
-        Button {
-            y: parent.height * 0.05
-            id: basket
-            text: "My Basket"
-        }
-        Button {
-            y: parent.height * 0.25
-            id: addtofridgebutton
-            text: "Add to Fridge"
-            onClicked: {
-                addtofridge.open()
-            }
-        }
-        Button {
-            y: parent.height * 0.75
-            x: parent.width * 0.5 - 50
-            id: profil
-            height: 100
-            width: 100
-            text: "Profile"
-            onClicked: {
-                profile.open()
-            }
-            background: Rectangle {
-                        color: "#D7ECDE"
-                        radius:12.5
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.top: parent.top
+            anchors.topMargin: deux.width * 0.06
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                id: basket
+                anchors.fill: parent
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "🧾"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "My basket"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
             }
         }
         Rectangle {
-            y: parent.height * 0.5
-            x: parent.width * 0.5 - 50
-            width: 100
-            height: 100
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.top: parent.top
+            anchors.topMargin: deux.width * 0.06 + 100
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                id: addtofridgebutton
+                anchors.fill: parent
+
+                onClicked: {
+                    addtofridge.open()
+                }
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "➕"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Add a product"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
+            }
+        }
+        Rectangle {
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: parent.height * 0.75
+            //x: parent.width * 0.5 - 50
+            width: 75
+            height: 95
             color: "white"
-            radius: 50
+            radius:12.5
+
 
             MouseArea {
                 anchors.fill: parent
@@ -881,37 +950,96 @@ Rectangle {
                 }
 
                 Rectangle {
-                    //y:parent.parent.height * 0.25
-                    width: parent.height * 0.8
-                    height: parent.height * 0.8
+                    id:centerprofile
+                    y:parent.parent.height * 0.15
+                    //x:parent.parent.height * 0.15
+                    width: parent.width * 0.7
+                    height: parent.width * 0.7
                     color: "#A3C995"
-                    radius: 50
+                    radius: 2
                     anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
+                    //anchors.verticalCenter: parent.verticalCenter
                     //anchors.bottom: parent.bottom
                     //anchors.bottomMargin:  parent.parent.height * 1/2// Adjust the margin as needed
-                }
 
+                    Label {
+                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻","👨🏻‍🎓"]
+                        text: textList[Math.ceil(Math.random() * 5)]
+                        font.pixelSize: parent.height *0.7
+                        anchors.bottom: parent.bottom
+                        //anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
                 Label {
                     text: "Profile"
+                    font.bold: true
                     anchors {
                         horizontalCenter: parent.horizontalCenter
                         bottom: parent.bottom
-                        bottomMargin: 15 // Adjust the margin as needed
+                        bottomMargin: 5 // Adjust the margin as needed
                     }
+                }
+                hoverEnabled: true
+
+                onEntered: {
+                    centerprofile.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    centerprofile.color = "#A3C995"; // Back to transparent when not hovered
+                }
+
+            }
+        }
+
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: deux.width * 0.04
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                anchors.fill: parent
+
+                onClicked: stackView.pop()
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "👋"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Logout"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
                 }
             }
         }
 
-        Button {
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            anchors.rightMargin: 10
-            anchors.bottomMargin: 10
-
-            text: "Logout"
-            onClicked: stackView.pop() // need to add a function which logs the user out of the server, then deletes all active data from the instance.
-        }
     }
     property int itemIndex2: -1
     Popup {
