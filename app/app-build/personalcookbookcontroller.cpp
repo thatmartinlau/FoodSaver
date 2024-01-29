@@ -6,6 +6,16 @@
 #include <string>
 
 
+std::string convertQtoStd(QString entry){
+    std::string res;
+    res = entry.toStdString();
+    return res;
+}
+
+QString convertStdtoQ(std::string entry){
+    QString res = QString::fromStdString(entry);
+    return res;
+}
 
 PersonalCookbookController::PersonalCookbookController(QObject *parent) : QObject(parent)
 {
