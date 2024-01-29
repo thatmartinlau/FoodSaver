@@ -21,7 +21,7 @@ Popup {
         anchors.centerIn: parent
         width: 210
         height: 220
-        closePolicy: "CloseOnEscape"
+        closePolicy: Popup.CloseOnEscape
 
         background: Rectangle {
                 color:"#EEEEEE"
