@@ -37,6 +37,7 @@ public slots:
     QList<QString> sendIngredientsForVis(const QString &title);
     QList<QString> sendInstructionsForVis(const QString &title);
     QString sendRatingForVis(const QString &title);
+    bool checkTitle(const QString &title);
 
     QList<QString> getTitleForVis();
     QList<QString> getIngredientsForVis();

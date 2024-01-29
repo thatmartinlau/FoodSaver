@@ -644,9 +644,10 @@ Rectangle {
 
             MouseArea {
                 id: basket
+                //id: addtofridge
                 anchors.fill: parent
 
-            onClicked: {
+                onClicked: {
                 //cookBook.open()
                 //for(var i = 0; i<10;i++){
                 //    itemModel.append(RecipeController.getJsonRTitle(i))
@@ -658,15 +659,7 @@ Rectangle {
                 //itemModel.append({"name" : temp_title})
                 //scrollView.contentHeight = scrollView.contentHeight + 3*82.5;
                 RecipeController.initial()
-            }
-        }
-        Button {
-            y: parent.height * 0.25
-            id: addtofridge
-            text: "Add to Cookbook"
-
-                onClicked: {
-                    addRecipe.open()
+                addRecipe.open()
                 }
 
                 Rectangle {
@@ -691,19 +684,21 @@ Rectangle {
 
                 hoverEnabled: true
 
-                /*onEntered: {
+                onEntered: {
                     parent.color = "#D3D3D3"; // Light grey when hovered
                 }
 
                 onExited: {
                     parent.color = "white"; // Back to transparent when not hovered
-                }*/
+                }
             }
         }
 
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
-            y: parent.height * 0.75
+            anchors.bottom:parent.bottom
+            anchors.bottomMargin: parent.height * 0.1 +50
+            //y: parent.height * 0.75
             //x: parent.width * 0.5 - 50
             width: 75
             height: 95

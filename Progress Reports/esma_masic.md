@@ -38,3 +38,6 @@ In fixing the rpc bug, we had to change formats of the inputs/outputs for functi
 
 Session 8:
 I made a function for Cyriac that returns and stores recipes. Everything there is in vector<string> format so there was no need for serialization or deserialization. However I noticed that the function I wrote for Diana was not changed (get_all_users_with_offers) regarding this (de)serialization so I also updated it. Finally, I went through the entire server documentation with Oscar to get a complete grasp on the finalized version.
+
+Session 9:
+Adam and I had a little misunderstanding so we ended up fixing the bugs on the same file (test3 client side and a little bit of a server side functions). Which is why our changes overlapped and we did extra work for nothing :). Here I also ended up fixing serialize and deserialize functions in common characteristics, but my commits were overriden by adams which i got to know only days later. This means that there were a lot of bugs but after we figured out the issue I just copied the changes I stored locally and committed them. I also tested locally all of the get_something functions in the server and made them work.  
