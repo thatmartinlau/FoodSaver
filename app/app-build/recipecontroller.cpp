@@ -1,5 +1,5 @@
 // maincontroller.cpp
-#include "maincontroller.h"
+#include "recipecontroller.h"
 #include "Source/recipe.cpp"
 #include <QDebug>
 #include <iostream>
@@ -35,11 +35,11 @@ QString convertStdtoQ(std::string entry){
     return res;
 }
 
-    MainController::MainController(QObject *parent) : QObject(parent)
+    RecipeController::RecipeController(QObject *parent) : QObject(parent)
 {
 }
 
-QString MainController::submitText(const QString &text)
+QString RecipeController::submitText(const QString &text)
 {
     if (!text.trimmed().isEmpty()) {
         qDebug() << "User has typed:" << text;
@@ -48,7 +48,7 @@ QString MainController::submitText(const QString &text)
 }
 
 
-double changeTime(const QString &hours, const QString &minutes)
+double changeTime(const QString &hours, const QString &minutes) //converts two time strings to a single double (for example: 1h , 30min --> 1.5 hrs)
 {
     QString copyHrs = hours;
     QString copyMin = minutes;
@@ -59,7 +59,7 @@ double changeTime(const QString &hours, const QString &minutes)
     return time;
 }
 
-int MainController::submitInt(const int &time)
+int RecipeController::submitInt(const int &time) //testing purposes
 {
     qDebug() << "time is:" << time;
     return time + 20;
@@ -77,9 +77,12 @@ void temp_allRecipes_extension(std::vector<Recipe> book){
     }
 }
 
+// -------------- This secction deals with the visualisation of the recipes by the users (it sends/recieves all that needs to be displayed)
+
+
 QList< QList<QString> > vis_titles;
 
-QList<QString> MainController::sendTitleForVis(const QString &title){
+QList<QString> RecipeController::sendTitleForVis(const QString &title){
     std::cout << "MAN why" << std::endl;
     QList<QString> res;
     for(int i = 0; i<allRecipes.size();i++){
@@ -97,7 +100,7 @@ QList<QString> MainController::sendTitleForVis(const QString &title){
     return res;
 }
 
-QList<QString> MainController::sendIngredientsForVis(const QString &title){
+QList<QString> RecipeController::sendIngredientsForVis(const QString &title){
     QList<QString> res;
     res.clear();
     std::cout<< convertQtoStd(title) << std::endl;
@@ -117,7 +120,7 @@ QList<QString> MainController::sendIngredientsForVis(const QString &title){
     return res;
 }
 
-QList<QString> MainController::sendInstructionsForVis(const QString &title){
+QList<QString> RecipeController::sendInstructionsForVis(const QString &title){
     QList<QString> res;
     for(int i = 0; i<allRecipes.size();i++){
         if(title == convertStdtoQ(allRecipes[i].get_title())){
@@ -133,7 +136,18 @@ QList<QString> MainController::sendInstructionsForVis(const QString &title){
     return res;
 }
 
-QList<QString> MainController::getTitleForVis(){
+QString RecipeController::sendRatingForVis(const QString &title){
+    QString res;
+    for(int i = 0; i<allRecipes.size();i++){
+        if(title == convertStdtoQ(allRecipes[i].get_title())){
+            res = QString::number(allRecipes[i].get_rating());
+        }
+    }
+    return res;
+}
+
+
+QList<QString> RecipeController::getTitleForVis(){
     QList<QString> test;
     test.append("one");
     test.append("two");
@@ -148,33 +162,27 @@ QList<QString> MainController::getTitleForVis(){
     }
 }
 
-QString MainController::sendRatingForVis(const QString &title){
-    QString res;
-    for(int i = 0; i<allRecipes.size();i++){
-        if(title == convertStdtoQ(allRecipes[i].get_title())){
-            res = QString::number(allRecipes[i].get_rating());
-        }
-    }
-    return res;
-}
 
 
-QList<QString> MainController::getIngredientsForVis(){
+QList<QString> RecipeController::getIngredientsForVis(){
     return vis_titles[1];
 }
 
-QList<QString> MainController::getInstructionsForVis(){
+QList<QString> RecipeController::getInstructionsForVis(){
     QList<QString> temp;
     return temp;
 }
 
-void MainController::submitTitleForRating(const QString &title){
+
+// -------------- This section deals with the rating of the recipes
+
+void RecipeController::submitTitleForRating(const QString &title){
     rated_recipes.append(title);
 }
 
 double tester=1.64;
 
-QString MainController::submitRating(const QString &user_rating){
+QString RecipeController::submitRating(const QString &user_rating){
     double usr_rating = user_rating.toDouble();
     double res;
     for(int i = 0; i<allRecipes.size();i++){
@@ -191,7 +199,7 @@ QString MainController::submitRating(const QString &user_rating){
     return QString::number(res);
 }
 
-QString MainController::getRating(const QString &title){
+QString RecipeController::getRating(const QString &title){
 
     for(int i = 0; i<allRecipes.size();i++){
         if(convertStdtoQ(allRecipes[i].get_title()).toLower() == title.toLower()){
@@ -201,7 +209,10 @@ QString MainController::getRating(const QString &title){
     return "ERR";
 }
 
-void MainController::submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes)//, const QString &ingredient1, const QString &instruction1)
+
+// -------------- This section deals with the creation of a new recipe - creating a recipe object from what the user wrote in the UI
+
+void RecipeController::submitAll(const QString &recipeName, const QString &diet, const QString &hours, const QString &minutes)//, const QString &ingredient1, const QString &instruction1)
 {
     std::vector<std::string> vecttt;
 
@@ -226,17 +237,17 @@ void MainController::submitAll(const QString &recipeName, const QString &diet, c
 
 
 
-QString MainController::submitIngredients(const QString &ingredientName){
+QString RecipeController::submitIngredients(const QString &ingredientName){
     allIngredients.push_back(convertQtoStd(ingredientName));
     test.push_back(convertQtoStd(ingredientName));
     return ingredientName;
 }
 
-void MainController::submitInstructions(const QString &instruction){
+void RecipeController::submitInstructions(const QString &instruction){
     allInstructions.push_back(convertQtoStd(instruction));
 }
 
-QString MainController::get_ingr(){
+QString RecipeController::get_ingr(){
     std::cout << "hello2";
 
     if(allRecipes[0].get_directions().empty()){
@@ -252,7 +263,10 @@ QString MainController::get_ingr(){
 
 QList<QString> list_names;
 
-void MainController::submit(const QString &recipeName)
+
+// -------------- This section deals with the visualisation of the recipes in the main window, as small boxes with only titles and ratings
+
+void RecipeController::submit(const QString &recipeName)
 {
     qDebug() << "name"; //<< recipeName << "diet" << diet<< "ingr" << ingredient1<< "instr" << instruction1 << "hours"<< hours << "minutes" << minutes;
     std::cout << "RESULT";
@@ -263,16 +277,16 @@ void MainController::submit(const QString &recipeName)
     }
 }
 
-QString MainController::gett(const int &i)
+QString RecipeController::gett(const int &i)
 {
     return list_names.at(i);
 }
 
-int MainController::getTotalLength(){
+int RecipeController::getTotalLength(){
     return list_names.size();
 }
 
-bool MainController::checkTitle(const QString &title){
+bool RecipeController::checkTitle(const QString &title){
     for(int i = 0; i<allRecipes.size();i++){
         if(convertStdtoQ(allRecipes[i].get_title()) == title){
             return false;
@@ -281,9 +295,7 @@ bool MainController::checkTitle(const QString &title){
     return true;
 }
 
-/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-//Search Bar
-
+// -------------- This section deals with the search bar
 
 QMap<QString, int> dict;
 QList<QString> tagsLasagna;
@@ -305,7 +317,7 @@ QList<QString> construct_templst(int i){
     return tmplst;
 }
 
-QList<QString> MainController::search_res(const QString &entry){
+QList<QString> RecipeController::search_res(const QString &entry){
 
     list_names=construct_lstnames(list_names);
 
@@ -355,7 +367,7 @@ QList<QString> MainController::search_res(const QString &entry){
     return final;
 }
 
-QList<QString> MainController::titleOrDiet(const QList<QString> &titles,const int &need){
+QList<QString> RecipeController::titleOrDiet(const QList<QString> &titles,const int &need){
     QList<QString> res;
     for(int i = 0; i<titles.size();i++){
         for(int j = 0; j<allRecipes.size(); j++){
@@ -375,7 +387,7 @@ QList<QString> MainController::titleOrDiet(const QList<QString> &titles,const in
 
 
 
-QList<QString> MainController::sorter(const QMap<QString, int> &dict){
+QList<QString> RecipeController::sorter(const QMap<QString, int> &dict){
     QList<int> occurences = dict.values();
     QList<QString> names = dict.keys();
 
@@ -390,6 +402,7 @@ QList<QString> MainController::sorter(const QMap<QString, int> &dict){
     }
     return names;
 }
+
 
 //modif eli:
 /*the function no longer returns recipes from listnames but rather iterates through the Recipes.json seen previously and iterates over the titles of
@@ -459,6 +472,8 @@ and be sorted even higher if the dietary restriction is the same.*/
     return result;
 }*/
 
+// -------------- This section links the textfile full of recipes to the UI
+
 std::vector<std::string> splitpoint(const std::string& s, const char& delim){
 
     std::vector<std::string> result;
@@ -482,7 +497,7 @@ std::vector<Recipe> originalsrecipe() {
     //ifstream file;
     //std::string array[MAX_LINE];
 
-    //file.open("originalsrecipes.txt");
+    //file.open("jsonformatter.txt");
 
     //// Open the text file
     std::ifstream file("originalsrecipes.txt");
@@ -537,6 +552,6 @@ std::vector<Recipe> originalsrecipe() {
 }
 
 
-void MainController::initial(){
+void RecipeController::initial(){
     temp_allRecipes_extension(originalsrecipe());
 }
