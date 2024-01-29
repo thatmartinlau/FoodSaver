@@ -1,6 +1,6 @@
-C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/CMakeFiles/rpc.dir/lib/rpc/detail/client_error.cc.obj: \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/detail/client_error.cc \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/format.h \
+C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/CMakeFiles/rpc.dir/lib/rpc/detail/client_error.cc.obj: \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/detail/client_error.cc \
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/format.h \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdint.h \
  C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/stdint.h \
  C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/crtdefs.h \
@@ -153,4 +153,4 @@ C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/we
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets.tcc \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_ios.tcc \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ostream.tcc \
- C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/client_error.h
+ C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/client_error.h
