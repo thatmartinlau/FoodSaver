@@ -503,6 +503,7 @@ vector<string> get_fridge(string username, string password) {
 }
 
 vector<string> getMapOfOffers(){
+        cout << "here";
         unordered_map<string, vector<vector<vector<string>>>> offerMap;
 
         // Iterating through the database to retrieve user offers

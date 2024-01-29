@@ -96,22 +96,35 @@ inline vector<string> serialize_triple (vector<vector<vector<string>>> vector_tr
 }
 
 
-inline vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> maps){
-    vector<string> just_vector;
-     auto it = maps.begin();
-     just_vector.push_back(it->first);
-     vector<vector<vector<string>>> offer_lists;
-     vector<string> dec_ol = serialize_offer_list(it->second);
-
-     for(int k =0; k<sizeof(dec_ol); k++ ){
-        just_vector.push_back(dec_ol[k]);
-     }
-
-     return just_vector;
+inline vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> map){
+    vector<string> serialized_map;
+    for (auto key: map) {
+        
+    }
 
 }
 
-
+inline unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> mapInStr){
+    unordered_map<string, vector<vector<vector<string>>>> result;
+    for (const std::string& str : mapInStr) {
+       std::istringstream iss(str);
+       std::string key;
+       iss >> key;
+       
+       
+       std::string valueStr;
+       iss >> std::ws;
+       std::getline(iss, valueStr);
+       
+       // Deserialize the value string into the map value type
+       std::vector<std::vector<std::vector<std::string>>> value = deserialize_offer_list({valueStr});
+       
+       // Insert into the map
+       result[key] = value;
+    }
+    
+    return result;
+}
 
 
 
@@ -191,27 +204,7 @@ inline vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> of
     return offer_deser;
 }
 
-inline unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> mapInStr){
-    unordered_map<string, vector<vector<vector<string>>>> result;
-    for (const std::string& str : mapInStr) {
-        std::istringstream iss(str);
-        std::string key;
-        iss >> key;
 
-
-        std::string valueStr;
-        iss >> std::ws;
-        std::getline(iss, valueStr);
-
-        // Deserialize the value string into the map value type
-        std::vector<std::vector<std::vector<std::string>>> value = deserialize_offer_list({valueStr});
-
-        // Insert into the map
-        result[key] = value;
-    }
-
-    return result;
-}
 
 
 

@@ -350,6 +350,15 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
 
 // working on vector<Offer> ;
+unordered_map<string, vector<vector<vector<string>>>> getOfferMapFromServer() {
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    cout <<"runs";
+    vector<string> serialized_offer_Map = new_cli.call("getMapOfOffers").as<vector<string>>();
+    return deserialize_map(serialized_offer_Map);
+}
+
+
+
 
 vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
@@ -476,20 +485,30 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 //}
 
 
-////CLIENT_SIDE FUNCTION, FOR TESTIING STILL
-int test_sending_to_db() {
+//CLIENT_SIDE FUNCTION, FOR TESTIING STILL
+//int test_sending_to_db() {
 
-    cout << "hello, it opens" << endl;
-    int val1 = test_send_vec_string();
+//    cout << "hello, it opens" << endl;
+//    int val1 = test_send_vec_string();
 
-}
+//}
 
-int va = test_sending_to_db();
+//int va = test_sending_to_db();
 
 int test_getOfferMapFromServer() {
-    
+    unordered_map<string, vector<vector<vector<string>>>> map_res = getOfferMapFromServer();
+    for (auto i: map_res) { //code from SOverflow, user NutCracker, 2017
+        cout << i.first << " " << i.second[0][0][0] << endl;
+    }
+    return 0;
 }
 
+int testing_suite() {
+//    int va = test_sending_to_db();
+    cout << "hi, running";    
+    int val12 = test_getOfferMapFromServer();
+    return  1;
+}
 
-
+auto test = testing_suite();
 
