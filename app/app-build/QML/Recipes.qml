@@ -693,6 +693,57 @@ Rectangle {
                 }
             }
         }
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.top: parent.top
+            anchors.topMargin: deux.width * 0.1+50
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+
+                //id: addtofridge
+                anchors.fill: parent
+
+                onClicked: {
+                RecipeController.initial()
+                addFavoriteRecipe.open()
+                }
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "🧑‍🍳"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "My Personal Cookbook"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
+            }
+        }
 
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter

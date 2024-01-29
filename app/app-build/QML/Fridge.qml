@@ -5,6 +5,35 @@ import QtQuick.Layouts 1.12
 
 
 Rectangle {
+
+    Component.onCompleted: {
+        console.log('hello fridge')
+        // Your function code goes here
+        var myfridge = fridgemanager.sort_ingredients_by_expiration_date();
+        console.log('fridge downloaded')
+        console.log('nb in fridge', myfridge.length)
+
+
+        for (var q = 0; q < myfridge.length; q++) {
+            console.log(q, "ingre", myfridge[q]);
+
+            var newIngredient = {
+                "index": q,
+                "item": myfridge[q][0],
+                "categorie": myfridge[q][3],
+                "date": myfridge[q][1],
+                "quantity": myfridge[q][2],
+                "status": 0,
+                "price": 0,
+                "quantity2sell": 0,
+                "pricestatus": -1,
+                "visibility": 1
+            };
+
+            itemModel.append(newIngredient);
+        }
+    }
+
     property int currentIndex: 0
     Rectangle {
         width: parent.width * 0.20
@@ -75,7 +104,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            fridgemanager.clear(itemModel.count)
+                            //fridgemanager.clear(itemModel.count)
                             stackView.replace(Qt.resolvedUrl("Market.qml"))
                         }
 
@@ -126,7 +155,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            fridgemanager.clear(itemModel.count)
+                            //fridgemanager.clear(itemModel.count)
                             stackView.replace(Qt.resolvedUrl("Recipes.qml"))
                         }
 
@@ -803,6 +832,16 @@ Rectangle {
                     }
                     return -1; // Return -1 if the item is not found
                 }
+
+                /*var myfridge = fridgemanager.myFridge
+                for (var q = 0; q< myfridge.length; q++) {
+                    console.log(q, "vingre", myfridge[0])
+                    var newIngredient = {
+                        "index": q, "item": visible[q][0], "categorie": visible[q][3], "date": visible[q][1], "quantity": visible[q][2],
+                        "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                    };
+                    itemModel.append(newIngredient);
+                }*/
         }
     }
 
@@ -963,8 +1002,8 @@ Rectangle {
                     //anchors.bottomMargin:  parent.parent.height * 1/2// Adjust the margin as needed
 
                     Label {
-                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻","👨🏻‍🎓"]
-                        text: textList[Math.ceil(Math.random() * 5)]
+                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻","👨🏻‍🎓", "👩‍🚀"]
+                        text: textList[Math.ceil(Math.random() * 6)]
                         font.pixelSize: parent.height *0.7
                         anchors.bottom: parent.bottom
                         //anchors.verticalCenter: parent.verticalCenter
