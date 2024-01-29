@@ -18,5 +18,6 @@
         <file>QML/CookBook.qml</file>
         <file>QML/PersonalCookBook.qml</file>
         <file>QML/functions.js</file>
+        <file>QML/Basket.qml</file>
     </qresource>
 </RCC>

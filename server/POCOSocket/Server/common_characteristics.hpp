@@ -55,8 +55,8 @@ inline basic_user_data deserialize_basic_data_of_user(vector<string> user_data_a
 
 inline vector<string> serialize(vector<vector<string>> vector_of_vector){
     vector<string> just_vector;
-    for(int i =0 ; i<sizeof(vector_of_vector); i++){
-        for(int j =0; j<sizeof(vector_of_vector[i]); j++ ){
+    for(size_t i = 0; i < vector_of_vector.size(); i++){
+        for(size_t j = 0; j < vector_of_vector[i].size(); j++){
             just_vector.push_back(vector_of_vector[i][j]);
         }
     }
@@ -65,10 +65,10 @@ inline vector<string> serialize(vector<vector<string>> vector_of_vector){
 
 inline vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vector_of_vector){
     vector<string> just_vector;
-    for(int i =0 ; i<sizeof(vector_of_vector_of_vector); i++){
-        for(int j =0; j<sizeof(vector_of_vector_of_vector[i]); j++ ){
+    for(int i =0 ; i<vector_of_vector_of_vector.size(); i++){
+        for(int j =0; j<vector_of_vector_of_vector[i].size(); j++ ){
 
-             for(int k =0; k<sizeof(vector_of_vector_of_vector[j]); k++ ){
+             for(int k =0; k<vector_of_vector_of_vector[i][j].size(); k++ ){
 
                 just_vector.push_back(vector_of_vector_of_vector[i][j][k]);
             }
@@ -95,22 +95,28 @@ inline vector<string> serialize_triple (vector<vector<vector<string>>> vector_tr
     return just_vector;
 }
 
+inline vector<string> serialize_unMap(const unordered_map<string, vector<vector<vector<string>>>>& maps) {
+    vector<string> serialized_map;
 
-inline vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> maps){
-    vector<string> just_vector;
-     auto it = maps.begin();
-     just_vector.push_back(it->first);
-     vector<vector<vector<string>>> offer_lists;
-     vector<string> dec_ol = serialize_offer_list(it->second);
+    for (const auto& pair : maps) {
+        const string& username = pair.first;
+        const auto& offers = pair.second;
 
-     for(int k =0; k<sizeof(dec_ol); k++ ){
-        just_vector.push_back(dec_ol[k]);
-     }
+        // Start with the username
+        string user_offers = username + ": ";
 
-     return just_vector;
+        // Serialize each offer for this user
+        vector<string> serialized_offers = serialize_offer_list(offers);
+        for (const auto& offer : serialized_offers) {
+            user_offers += offer + "; "; // Concatenate offers, separated by semicolons
+        }
 
+        // Add the complete string to the vector
+        serialized_map.push_back(user_offers);
+    }
+
+    return serialized_map;
 }
-
 
 
 
@@ -122,7 +128,7 @@ inline vector<string> serialize_unMap(unordered_map<string, vector<vector<vector
 //Ingredient_i = [name, expiry_date, quantity, category, priority_level]
 inline vector<vector<string>> deserialize_offer (vector<string> offer){
     vector<vector<string>> offer_deser;
-    for(int i = 0 ; i<sizeof(offer)-1;i+=6){
+    for(int i = 0 ; i<offer.size()-1;i+=6){
         vector<string> inter_vector;
         for(int j=i; j<i+6; j++){
             inter_vector.push_back(offer[j]);
@@ -191,28 +197,56 @@ inline vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> of
     return offer_deser;
 }
 
-inline unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> mapInStr){
-    unordered_map<string, vector<vector<vector<string>>>> result;
-    for (const std::string& str : mapInStr) {
-        std::istringstream iss(str);
-        std::string key;
-        iss >> key;
+unordered_map<string, vector<vector<vector<string>>>> deserialize_map(const vector<string>& serialized_map) {
+    unordered_map<string, vector<vector<vector<string>>>> maps;
 
+    for (const auto& user_data : serialized_map) {
+        size_t colon_pos = user_data.find(":");
+        if (colon_pos == string::npos) continue; // Skip if format is incorrect
 
-        std::string valueStr;
-        iss >> std::ws;
-        std::getline(iss, valueStr);
+        string username = user_data.substr(0, colon_pos);
+        string offers_str = user_data.substr(colon_pos + 2); // Skip ": " after username
 
-        // Deserialize the value string into the map value type
-        std::vector<std::vector<std::vector<std::string>>> value = deserialize_offer_list({valueStr});
+        vector<vector<vector<string>>> user_offers;
+        stringstream ss_offers(offers_str);
+        string offer_str;
 
-        // Insert into the map
-        result[key] = value;
+        while (getline(ss_offers, offer_str, ';')) {
+            if (offer_str.empty() || offer_str[0] == ' ') {
+                offer_str = offer_str.substr(1); // Remove leading space if present
+            }
+
+            stringstream ss_offer(offer_str);
+            string element;
+            vector<vector<string>> offer;
+
+            while (getline(ss_offer, element, ' ')) {
+                if (!element.empty()) {
+                    // Assuming each element represents a part of the offer details
+                    vector<string> offer_details;
+                    offer_details.push_back(element); // Add each part to offer_details
+
+                    // Assuming each offer detail is separated by a space
+                    while (getline(ss_offer, element, ' ')) {
+                        offer_details.push_back(element);
+                    }
+
+                    offer.push_back(offer_details);
+                }
+            }
+
+            if (!offer.empty()) {
+                user_offers.push_back(offer);
+            }
+        }
+
+        if (!user_offers.empty()) {
+            maps[username] = user_offers;
+        }
     }
 
-    return result;
+    return maps;
 }
-
 
 
 #endif
