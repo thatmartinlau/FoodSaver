@@ -239,7 +239,6 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
 
 
 
-//LIST of chars to exclude: currently, only comma to exclude.
 char char_exclude_list[9] = {","};
 bool char_to_exclude_satisfied(string input_string) {
     for (int i=0; i <sizeof(char_exclude_list); i++) { //iterate through exclusion list, check find, if returned string::npos; return false.
@@ -354,6 +353,7 @@ unordered_map<string, vector<vector<vector<string>>>> getOfferMapFromServer() {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
     cout <<"runs";
     vector<string> serialized_offer_Map = new_cli.call("getMapOfOffers").as<vector<string>>();
+    cout << serialized_offer_Map[0];
     return deserialize_map(serialized_offer_Map);
 }
 
@@ -486,14 +486,6 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 
 
 //CLIENT_SIDE FUNCTION, FOR TESTIING STILL
-//int test_sending_to_db() {
-
-//    cout << "hello, it opens" << endl;
-//    int val1 = test_send_vec_string();
-
-//}
-
-//int va = test_sending_to_db();
 
 int test_getOfferMapFromServer() {
     unordered_map<string, vector<vector<vector<string>>>> map_res = getOfferMapFromServer();
@@ -503,10 +495,16 @@ int test_getOfferMapFromServer() {
     return 0;
 }
 
+void test_serveruser_call_destroy() {
+    ServerUser srv_usr1("adam", "pass");
+    
+}
+
 int testing_suite() {
 //    int va = test_sending_to_db();
     cout << "hi, running";    
-    int val12 = test_getOfferMapFromServer();
+    int val12 = test_getOfferMapFromServer(); //works!
+    test_serveruser_call_destroy();
     return  1;
 }
 

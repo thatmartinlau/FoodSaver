@@ -58,11 +58,12 @@ private:
 
 };
 
-unordered_map<string, vector<vector<vector<string>>>>
-getOfferMapFromServer();
+
+
+unordered_map<string, vector<vector<vector<string>>>> //works :) below function works!! HEll yeas.
+getOfferMapFromServer(); //works
 
 vector<string> get_user_name_list();
-double check_user(); //for William, no functionassociated here. Just tolett you know this name is already taken.
 
 vector<string> getAllRecipes();
 void addRecipes(vector<string> recipes);
@@ -72,5 +73,7 @@ vector<string> get_all_recipes();
 
 int test_sending_to_db();
 int test_getOfferMapFromServer();
+int test_serveruser_call_destroy();
+int testing_suite();
 
 #endif

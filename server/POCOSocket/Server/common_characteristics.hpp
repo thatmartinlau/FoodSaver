@@ -65,18 +65,16 @@ inline vector<string> serialize(vector<vector<string>> vector_of_vector){
 
 inline vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vector_of_vector){
     vector<string> just_vector;
-    for(int i =0 ; i<sizeof(vector_of_vector_of_vector); i++){
-        for(int j =0; j<sizeof(vector_of_vector_of_vector[i]); j++ ){
-
-             for(int k =0; k<sizeof(vector_of_vector_of_vector[j]); k++ ){
-
-                just_vector.push_back(vector_of_vector_of_vector[i][j][k]);
-            }
+    for(int i =0 ; i<vector_of_vector_of_vector.size(); i++){
+        for (int k = 0; k < 5; k++) {
+            just_vector.push_back(vector_of_vector_of_vector[i][0][k]);
         }
-    }
+        just_vector.push_back(vector_of_vector_of_vector[i][1][0]);
+        }
     return just_vector;
-
+        
 }
+
 
 
 inline vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
@@ -96,35 +94,7 @@ inline vector<string> serialize_triple (vector<vector<vector<string>>> vector_tr
 }
 
 
-inline vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> map){
-    vector<string> serialized_map;
-    for (auto key: map) {
-        
-    }
 
-}
-
-inline unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> mapInStr){
-    unordered_map<string, vector<vector<vector<string>>>> result;
-    for (const std::string& str : mapInStr) {
-       std::istringstream iss(str);
-       std::string key;
-       iss >> key;
-       
-       
-       std::string valueStr;
-       iss >> std::ws;
-       std::getline(iss, valueStr);
-       
-       // Deserialize the value string into the map value type
-       std::vector<std::vector<std::vector<std::string>>> value = deserialize_offer_list({valueStr});
-       
-       // Insert into the map
-       result[key] = value;
-    }
-    
-    return result;
-}
 
 
 
@@ -189,8 +159,8 @@ inline vector<vector<string>> deserialize_fridge(vector<string> fridge){
 
 
     return fridge_deser;
-
-
+    
+    
 
 }
 
@@ -205,7 +175,39 @@ inline vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> of
 }
 
 
+inline vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> map){
+    vector<string> serialized_map;
+    for (auto it=map.begin(); it!= map.end(); it++) {
+        serialized_map.push_back(it->first);
+        vector<string> offer_list_as_str = serialize_offer_list(it->second);
+        serialized_map.insert(serialized_map.end(), offer_list_as_str.begin(), offer_list_as_str.end());
+        string comma_sep = ",";
+        serialized_map.push_back(comma_sep); //separator between users, used in deserialized functions.
+    }
+    serialized_map.erase(serialized_map.end()-1);//get rid of extra comma.
+    return serialized_map;
+}
 
+inline unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> map){
+    unordered_map<string, vector<vector<vector<string>>>> resultant_map;
+    int count = 0;
+    for (int i=0; i < map.size(); i++) {
+        string comma_sep = ",";        
+        if (map[i] == comma_sep) {
+            vector<string> serialized_offer_list;
+            string u_name = map[count];
+            for (int j = count + 1; j < i; j++) {
+                serialized_offer_list.push_back(map[j]);
+            }
+            resultant_map[u_name] = deserialize_offer_list(serialized_offer_list);
+            count = i+1;
+        }
+        
+        
+    }
+    
+    return resultant_map;
+}
 
 
 #endif
