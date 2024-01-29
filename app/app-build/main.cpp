@@ -19,6 +19,7 @@
 #include "Header/SigninInformation.h"
 
 #include "recipecontroller.h"
+#include "personalcookbookcontroller.h"
 
 
 int main(int argc, char *argv[]) {
@@ -49,6 +50,9 @@ int main(int argc, char *argv[]) {
 
     RecipeController recipeController;
     engine.rootContext()->setContextProperty("RecipeController", &recipeController);
+
+    PersonalCookbookController personalcookbookController;
+    engine.rootContext()->setContextProperty("PersonalCookbookController", &personalcookbookController);
 
     engine.addImportPath(QCoreApplication::applicationDirPath() + "/qml");
     engine.addImportPath(":/");
