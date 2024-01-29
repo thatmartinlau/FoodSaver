@@ -884,6 +884,7 @@ Rectangle {
             }
         }
         Rectangle {
+            id: addtofridgebutton
             anchors.left: parent.left
             anchors.leftMargin: parent.width * 0.5 - 100
             anchors.top: parent.top
@@ -894,7 +895,7 @@ Rectangle {
             radius: 12.5 // Add radius to the transparent rectangle
 
             MouseArea {
-                id: addtofridgebutton
+
                 anchors.fill: parent
 
                 onClicked: {
