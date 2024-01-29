@@ -35,7 +35,7 @@ public:
     string get_password(); // to use in get_all_ServerUser_characteristics
 
 
-    basic_user_data get_basic_user_data();
+    basic_user_data get_basic_user_data(); //all gets work
     list<bool> get_food_restrictions();
 
 
@@ -73,7 +73,8 @@ vector<string> get_all_recipes();
 
 int test_sending_to_db();
 int test_getOfferMapFromServer();
-int test_serveruser_call_destroy();
+void test_serveruser_call_destroy();
+void test_update_fridge_get_fridge();
 int testing_suite();
 
 #endif

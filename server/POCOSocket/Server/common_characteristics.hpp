@@ -55,8 +55,8 @@ inline basic_user_data deserialize_basic_data_of_user(vector<string> user_data_a
 
 inline vector<string> serialize(vector<vector<string>> vector_of_vector){
     vector<string> just_vector;
-    for(int i =0 ; i<sizeof(vector_of_vector); i++){
-        for(int j =0; j<sizeof(vector_of_vector[i]); j++ ){
+    for(int i =0 ; i<vector_of_vector.size(); i++){
+        for(int j =0; j<vector_of_vector[i].size(); j++ ){
             just_vector.push_back(vector_of_vector[i][j]);
         }
     }
@@ -127,9 +127,9 @@ inline vector<vector<string>> deserialize_offer (vector<string> offer){
 inline vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list){
 
     vector<vector<vector<string>>> deserialize_offer_list;
-    for(int i =0; i<offer_list.size(); i+=7){
+    for(int i =0; i<offer_list.size(); i+=6){
         vector<string> vector_inter;
-        for(int j = i ; j<i+7; j++){
+        for(int j = i ; j<i+6; j++){
             vector_inter.push_back(offer_list[j]); // --> vector of an offer ;
         }
 
@@ -146,10 +146,10 @@ inline vector<vector<vector<string>>> deserialize_offer_list(vector<string> offe
 inline vector<vector<string>> deserialize_fridge(vector<string> fridge){
     vector<vector<string>> fridge_deser;
 
-    for(int i =0; i<fridge.size(); i+=6){
+    for(int i =0; i<fridge.size(); i+=5){
 
         vector<string> inter_vector;
-        for(int j =i; j<i+6; j++){
+        for(int j =i; j<i+5; j++){
             inter_vector.push_back(fridge[j]);
 
         }

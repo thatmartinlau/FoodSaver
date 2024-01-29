@@ -334,6 +334,13 @@ void add_user(string username, string password){
         // Element doesn't exist, so add it
         UserData data(password);
         (*database)[username] = data;
+        cout << "Added User: " << username << endl;
+        write_to_csv();
+    }
+    else {
+        UserData data(password);
+        (*database)[username] = data;
+        cout << "user already added." << endl;
     }
 }
 
@@ -344,6 +351,7 @@ void remove_user(string username, string password){
         if (password == el->second.password) {
             // Password matches
             database->erase(el); // Remove the user if the password matches
+            write_to_csv();
         } else {
             // Password does not match
             auto err_obj = std::make_tuple(507, "Incorrect Password");
@@ -415,6 +423,7 @@ void update_fridge(string username, string password, vector<string> fridge) {
                 // Password matches
             vector<vector<string>> old_data = el->second.fridge; //used so we can later delete the old data
             el->second.fridge = std::move(new_fridge);
+            cout << "fridge_replaced." << endl;
 
             old_data.clear();
 
@@ -486,18 +495,19 @@ vector<string> get_offer_list(string username, string password) {
 
 }
 vector<string> get_fridge(string username, string password) {
+        cout << "get_fridge called." << endl;
         auto el = database->find(username); // Find the username in the database
         if (el != database->end() && password == el->second.password) {
             // Username exists and password matches
 
 
-             return serialize(std::move(el->second.fridge));
+            return serialize(std::move(el->second.fridge));
         }
 
 
         else { // Return an empty offer_list if no username or password does not match
-             vector<string> empty_return_vector = {"Empty, error when coding"};
-             return empty_return_vector;
+            vector<string> empty_return_vector = {"Empty, error when coding"};
+            return empty_return_vector;
         }
 
 }
@@ -599,15 +609,15 @@ double check_user(string username, string password) {
 //    cout << fridge[0].name << fridge[0].quantity << endl;
 //}
 
-vector<string> test_sending_ingredient_as_vec(vector<string> ingredient) {
-    cout << ingredient[0] << ingredient[0] << endl;
-    return ingredient;
-}
+//vector<string> test_sending_ingredient_as_vec(vector<string> ingredient) {
+//    cout << ingredient[0] << ingredient[0] << endl;
+//    return ingredient;
+//}
 
-vector<vector<string>> test_sending_fridge_as_vec(vector<vector<string>> fridge) {
-    cout << fridge[0][0] << fridge[1][1] << endl;
-    return fridge;
-}
+//vector<vector<string>> test_sending_fridge_as_vec(vector<vector<string>> fridge) {
+//    cout << fridge[0][0] << fridge[1][1] << endl;
+//    return fridge;
+//}
 
 
 
