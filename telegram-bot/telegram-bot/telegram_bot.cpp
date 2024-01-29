@@ -38,7 +38,7 @@ std::map<int64_t, UserCredentials> userCredentialsMap;
 std::map<int64_t, UserInfo> userStates;
 
 TgBot::Bot bot("6644281748:AAFh40LQLa5054caEUPt8T_9wf-Yv1hAB-w");
-rpc::client c("3333", rpc::constants::DEFAULT_PORT);
+rpc::client c("172.20.10.7", 8080);
 
 
 vector<vector<string>> check_expiration(client& c) {
@@ -124,7 +124,27 @@ int main() {
                 std::uniform_int_distribution<> distrib(0, recipe_list.size() - 1);
                 int randomIndex = distrib(gen); // Generate a random index
                 std::string randomRecipe = recipe_list[randomIndex]; // Get the element at the random index
-                bot.getApi().sendMessage(chatId, "Here is your random recipe: \n" + randomRecipe);
+
+                // tilte @ instruction % ingredient * source # tags , url
+                std::string title, instructions, ingredients, source, tags, url;
+                std::istringstream recipeStream(randomRecipe);
+                std::getline(recipeStream, title, '@');
+                std::getline(recipeStream, instructions, '%');
+                std::getline(recipeStream, ingredients, '*');
+                std::getline(recipeStream, source, '#');
+                std::getline(recipeStream, tags, ',');
+                std::getline(recipeStream, url);
+
+                std::string formattedMessage = "Here is your random recipe:\n\n";
+                formattedMessage += "Title: " + title + "\n\n";
+                formattedMessage += "Instructions:\n" + instructions + "\n\n";
+                formattedMessage += "Ingredients:\n" + ingredients + "\n\n";
+                formattedMessage += "Source: " + source + "\n";
+                formattedMessage += "Tags: " + tags + "\n";
+                formattedMessage += "URL: " + url + "\n";
+
+
+                bot.getApi().sendMessage(chatId, formattedMessage);
             } else {
                 std::cout << "Error! The recipe list is empty!" << std::endl;
                 bot.getApi().sendMessage(chatId, "Sorry! Our recipe list is currently empty, this is a problem caused by the server.");
@@ -179,10 +199,19 @@ int main() {
 
             userCredentialsMap[chatId] = {userInfo.username, userInfo.password};
 
-            // RPC call to link the fridge
-            c.call("add_user", userInfo.username, userInfo.password);
+            double server_message = c.call("check_user", userInfo.username, userInfo.password).as<double>();
 
-            bot.getApi().sendMessage(chatId, "Registered successfully!");
+            if (server_message == 1) {
+                c.call("add_user", userInfo.username, userInfo.password);
+                bot.getApi().sendMessage(chatId, "Registered successfully!");
+            } else if (server_message == 0) {
+                bot.getApi().sendMessage(chatId, "This username has been used, Sorry!");
+            } else {
+                bot.getApi().sendMessage(chatId, "An error occurred during registration, please try later.");
+            }
+
+            // RPC call to link the fridge
+            
 
         } else if (userInfo.state == UserState::AwaitingPassword) {
             userInfo.password = message->text;
