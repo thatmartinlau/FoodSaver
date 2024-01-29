@@ -22,6 +22,7 @@ Rectangle {
 
         }*/
 
+        // New side buttons
         Rectangle {
             width: 200
             height: 151
@@ -158,7 +159,11 @@ Rectangle {
                 }
             }
         }
+        // End of side buttons
 
+
+
+        // Settings button
         Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: parent.width * 0.5 - 100
