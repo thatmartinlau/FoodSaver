@@ -32,14 +32,14 @@ if (MSVC)
                      POST_BUILD
                      COMMAND ${CMAKE_COMMAND} -E copy_if_different
                      ${TORCH_DLLS}
-                     $<TARGET_FILE_DIR:CNNT>) #项目路径
+                     $<TARGET_FILE_DIR:CNNT>) 
   
   file(GLOB TORCH_DLLS "C:/CNN/opencv/build/x64/vc16/bin/*.dll")
   add_custom_command(TARGET CNNT
                      POST_BUILD
                      COMMAND ${CMAKE_COMMAND} -E copy_if_different
                      ${TORCH_DLLS}
-                     $<TARGET_FILE_DIR:CNNT>) #项目路径
+                     $<TARGET_FILE_DIR:CNNT>) 
 endif (MSVC)
 
 message(STATUS "Torch libraries: ${TORCH_LIBRARIES}")
