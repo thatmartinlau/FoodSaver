@@ -167,8 +167,112 @@ Item {
 
 
     // SIDE + EXTRA BUTTONS
+    Rectangle {
+        width: 200
+        height: 100.5
+        color: "white"
+        radius: 12.5
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: parent.width * 0.6 * 0.04
+        anchors.rightMargin: parent.width * 0.2 * 0.5 - 100
 
-    Column {
+        Column {
+            Rectangle {
+                width: 200
+                height: 50
+                color: "transparent" // Transparent color
+                radius: 12.5 // Add radius to the transparent rectangle
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        var url = "https://github.com/thatmartinlau/FoodSaver"
+                        Qt.openUrlExternally(url)
+                    }
+
+                    Rectangle {
+                        width: 24
+                        height: 24
+                        color: "#A3C995" // Updated color
+                        radius: 2 // Updated radius
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 13 // Additional property for the small rectangle
+                        Label {
+                            text: "📄"
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
+                    }
+
+                    Label {
+                        text: "About this project"
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 50 // Additional property for the label
+                    }
+
+                    hoverEnabled: true
+
+                    onEntered: {
+                        parent.color = "#D3D3D3"; // Light grey when hovered
+                    }
+
+                    onExited: {
+                        parent.color = "transparent"; // Back to transparent when not hovered
+                    }
+                }
+            }
+
+            Rectangle {
+                width: 200
+                height: 0.5 // Height of the grey bar
+                color: "#D3D3D3" // Light grey color
+            }
+
+            Rectangle {
+                width: 200
+                height: 50
+                color: "transparent" // Transparent color
+                radius: 12.5 // Add radius to the transparent rectangle
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: Qt.quit()
+
+                    Rectangle {
+                        width: 24
+                        height: 24
+                        color: "#A3C995" // Updated color
+                        radius: 2 // Updated radius
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 13 // Additional property for the small rectangle
+                        Label {
+                            text: "✖️"
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
+                    }
+
+                    Label {
+                        text: "Exit"
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 50 // Additional property for the label
+                    }
+
+                    hoverEnabled: true
+
+                    onEntered: {
+                        parent.color = "#D3D3D3"; // Light grey when hovered
+                    }
+
+                    onExited: {
+                        parent.color = "transparent"; // Back to transparent when not hovered
+                    }
+                }
+            }
+        }
+    }
+    /*Column {
         anchors.right: parent.right
         anchors.bottomMargin: 10
         anchors.bottom: parent.bottom
@@ -190,5 +294,5 @@ Item {
             text: "Exit"
             onClicked: Qt.quit()
         }
-    }
+    }*/
 }

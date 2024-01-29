@@ -11,7 +11,7 @@ Row {
         color: "#5E9F7C"
         Rectangle {
             width: 200
-            height: 152
+            height: 151
             color: "white"
             radius: 12.5
             anchors.left: parent.left
