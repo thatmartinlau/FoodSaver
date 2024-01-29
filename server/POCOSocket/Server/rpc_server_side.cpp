@@ -763,6 +763,11 @@ void test_update_user_characteristics(){
 
 }
 
+void test_update_offer_list(){
+    vector<string> offer_list = serialize_offer_list({{{"Bread", "2024-05-10", "1 loaf", "Bakery", "Low"}, {"2"}},{{"Milk", "2024-05-15", "1L", "Dairy", "High"}, {"3"}} });
+    update_offer("User1", "Password1", offer_list);
+}
+
 /*
 void test_get_basic_user_data() {
     // Assuming you have a test user with known username and password
@@ -847,6 +852,8 @@ void test_get_user_name_vectors() {
     cout << endl;
 }
 
+
+
 /*
 void test_get_food_restrictions() {
     string test_username = "TestUser";
@@ -884,6 +891,7 @@ int main() {
     test_get_user_name_vectors();
 
     test_update_user_characteristics();
+    test_update_offer_list();
     //test_get_basic_user_data();
     //test_get_fridge();
     //test_getAllRecipes();
