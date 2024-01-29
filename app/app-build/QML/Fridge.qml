@@ -520,7 +520,6 @@ Rectangle {
                                                     itemIndex2 = itemModel.getIndexByPropertyValue("index", model.index);
                                                 }
                                             }
-
                                         }
                                     }
                                 }
@@ -935,7 +934,8 @@ Rectangle {
         }
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
-            y: parent.height * 0.75
+            anchors.bottom:parent.bottom
+            anchors.bottomMargin: parent.height * 0.1 +50
             //x: parent.width * 0.5 - 50
             width: 75
             height: 95
