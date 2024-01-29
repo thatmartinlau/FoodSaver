@@ -751,11 +751,11 @@ void test_update_user_characteristics(){
     characteristics.push_back("33667");
     characteristics.push_back("3");
     characteristics.push_back("4");
-    update_user_characteristics("TestUsername1", "TestPassword", characteristics);
+    update_user_characteristics("User1", "Password1", characteristics);
 
 
 
-    cout<<(*database)["TestUsername1"].basic_u_data.display_name <<endl;
+    cout<<(*database)["User1"].basic_u_data.display_name <<endl;
 
 
 }
