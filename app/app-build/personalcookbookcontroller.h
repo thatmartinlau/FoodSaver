@@ -5,7 +5,7 @@
 #include <QString>
 #include <QList>
 
-class PersonalCookbookController : public QObject
+class PersonalCookbookController : public RecipeController
 {
     Q_OBJECT
 
