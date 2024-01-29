@@ -691,13 +691,13 @@ Rectangle {
 
                 hoverEnabled: true
 
-                onEntered: {
+                /*onEntered: {
                     parent.color = "#D3D3D3"; // Light grey when hovered
                 }
 
                 onExited: {
                     parent.color = "white"; // Back to transparent when not hovered
-                }
+                }*/
             }
         }
 
