@@ -31,7 +31,7 @@ void Date::displayDate() {
     std::cout << "Date: " << year << '-' << month << '-' << day << std::endl;
 }
 
-int Date::get_day() {
+int Date::get_day() const{
     return day;
 }
 
@@ -39,7 +39,7 @@ void Date::set_day(int d) {
     this->day = d;
 }
 
-int Date::get_month() {
+int Date::get_month() const {
     return month;
 }
 
@@ -47,7 +47,7 @@ void Date::set_month(int m) {
     this->month = m;
 }
 
-int Date::get_year() {
+int Date::get_year() const {
     return year;
 }
 
@@ -141,3 +141,9 @@ Date parseDateString(const std::string& dateString) {
 
     return Date(day, month, year);
 }
+std::string Date::formateDate() {
+    std::stringstream ss;
+    ss << day << '/' << month << '/' << year;
+    return ss.str();
+}
+

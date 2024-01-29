@@ -26,7 +26,7 @@ public:
     Fridge(std::vector<Ingredient> init_list);
     ~Fridge();
     void set_list(std::vector<Ingredient> new_list);
-    std::vector<Ingredient> get_list();
+    std::vector<Ingredient>& get_list();
     void add_elt(Ingredient elt);
     Ingredient pop_elt(Ingredient *getit);
     void saveToJsonFile(const std::string& fileFridge);

@@ -3,47 +3,217 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 //colors: green #5E9F7C lightgreen #D7ECDE
 
-Row {
+Rectangle {
     property int currentIndex: 0
     Rectangle {
         width: parent.width * 0.20
         height: parent.height
         color: "#5E9F7C"
-        Column {
 
+        // New side buttons
+        Rectangle {
+            width: 200
+            height: 151
+            color: "white"
+            radius: 12.5
             anchors.left: parent.left
             anchors.bottom: parent.verticalCenter
-            anchors.leftMargin: parent.width * 0.05
+            anchors.leftMargin: parent.width * 0.5 - 100
 
-                Button { text: "Fridge";  onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
-                Button { text: "Market"; enabled: false; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }
-                Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
-                Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
+            Column {
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "transparent" // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            stackView.replace(Qt.resolvedUrl("Fridge.qml"))
+                        }
+
+                        Rectangle {
+                            width: 24
+                            height: 24
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 13 // Additional property for the small rectangle
+                            Label {
+                                text: "🗄️"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
+                        }
+
+                        Label {
+                            text: "Fridge"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 50 // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = "transparent"; // Back to transparent when not hovered
+                        }
+                    }
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 0.5 // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "#EEEEEE" // Light grey color
+                    radius: 12.5 // Add radius to the grey rectangle
+
+                    Rectangle {
+                        width: 24
+                        height: 24
+                        color: "#A3C995" // Updated color
+                        radius: 2 // Updated radius
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 13 // Additional property for the small rectangle
+                        Label {
+                            text: "🛒"
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
+                    }
+
+                    Label {
+                        text: "Market"
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 50 // Additional property for the label
+                    }
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 0.5 // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "transparent" // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {stackView.replace(Qt.resolvedUrl("Recipes.qml"))}
+
+                        Rectangle {
+                            width: 24
+                            height: 24
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 13 // Additional property for the small rectangle
+                            Label {
+                                text: "🍳"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
+                        }
+
+                        Label {
+                            text: "Recipes"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 50 // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = "transparent"; // Back to transparent when not hovered
+                        }
+                    }
+                }
             }
+        }
+        // End of side buttons
 
-        Button {
+
+
+        // Settings button
+        Rectangle {
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: parent.width * 0.5 - 100
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: parent.height * 0.05
 
-            id: button
-            text: "Settings"
-            onClicked: {
-            settings.open()
+
+
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                id: button
+                anchors.fill: parent
+                onClicked: {
+                settings.open()
+                }
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "⚙️"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Settings"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
             }
         }
     }
 
-    // Main content area for the marketplace
     Rectangle {
+        id: deux
         x: parent.width * 0.20
         width: parent.width * 0.6
         height: parent.height
-        color: "#5E9F7C" // background
+        color: "#5E9F7C"
 
-        // Sorting buttons
+
+    // Sorting buttons
         Rectangle {
             id:mainrectangle
             visible: true
@@ -99,6 +269,7 @@ Row {
                             text: "Time left"
                             onClicked: {
                                 //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
+
                             }
                         }
 
@@ -117,7 +288,7 @@ Row {
                     id:scrollrectangle
                     radius: 12.5
                     y: mainrectangle.y
-                    height: 710
+                    height: parent.height * 0.78
                     width: parent.width
                     color: "transparent" // main scroll rectangle
                     //clip: true
@@ -127,6 +298,7 @@ Row {
                         id: scrollMarket
                         Layout.fillHeight: true
                         Layout.fillWidth: true
+                        anchors.fill:parent
                         //clip: true
 
                         //contentHeight: columnLayout.implicitHeight
@@ -167,12 +339,12 @@ Row {
                                             radius: 12.5
                                             width: parent.height - 10
                                             height: parent.height - 10
-                                            color: "white"
+                                            color: "transparent"
 
                                             Label{
-                                                text: "Photo"
+                                                text: model.emoji
                                                 font.bold: true
-                                                font.pixelSize: 18
+                                                font.pixelSize: 75
                                                 anchors.centerIn: parent
                                             }
                                         }
@@ -227,6 +399,7 @@ Row {
                                                 anchors.fill: parent
                                                 onClicked: {
                                                     myBasket.open() // need to change so that it adds it actually to the basket
+
                                                 }
                                             }
                                         }
@@ -238,7 +411,7 @@ Row {
 
                             }
                         }
-                    height: 710
+
                     }
 
 
@@ -256,41 +429,161 @@ Row {
         color: "#5E9F7C"
         anchors.right: parent.right
 
-        Button {
-            y: parent.height * 0.05
-            id: basket
-            text: "My Basket"
-            onClicked: {
-                myBasket.open()
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.05
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                id: basket
+                anchors.fill: parent
+                onClicked: myBasket.open()
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "🧾"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "My Basket"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
+            }
+        }
+        Rectangle {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom:parent.bottom
+            anchors.bottomMargin: parent.height * 0.1 +50
+            //y: parent.height * 0.75
+            //x: parent.width * 0.5 - 50
+            width: 75
+            height: 95
+            color: "white"
+            radius:12.5
+
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    profile.open()
+                }
+
+                Rectangle {
+                    id:centerprofile
+                    y:parent.parent.height * 0.15
+                    //x:parent.parent.height * 0.15
+                    width: parent.width * 0.7
+                    height: parent.width * 0.7
+                    color: "#A3C995"
+                    radius: 2
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    //anchors.verticalCenter: parent.verticalCenter
+                    //anchors.bottom: parent.bottom
+                    //anchors.bottomMargin:  parent.parent.height * 1/2// Adjust the margin as needed
+
+                    Label {
+                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻","👨🏻‍🎓"]
+                        text: textList[Math.ceil(Math.random() * 5)]
+                        font.pixelSize: parent.height *0.7
+                        anchors.bottom: parent.bottom
+                        //anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+                Label {
+                    text: "Profile"
+                    font.bold: true
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        bottom: parent.bottom
+                        bottomMargin: 5 // Adjust the margin as needed
+                    }
+                }
+                hoverEnabled: true
+
+                onEntered: {
+                    centerprofile.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    centerprofile.color = "#A3C995"; // Back to transparent when not hovered
+                }
+
             }
         }
 
-        Button {
-            y: parent.height * 0.75
-            x: parent.width * 0.5 - 50
-            id: profil
-            height: 100
-            width: 100
-            text: "Profile"
-            onClicked: {
-                profile.open()
-            }
-            background: Rectangle {
-                color: "#D7ECDE"
-                radius: 12.5
-            }
-        }
-
-        // Example of a logout button with modified text
-        Button {
-            anchors.right: parent.right
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
             anchors.bottom: parent.bottom
-            anchors.rightMargin: 10
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: parent.height * 0.05
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
 
-            text: "Logout"
-            onClicked: stackView.pop() // need to add a function which logs the user out of the server, then deletes all active data from the instance.
+            MouseArea {
+                anchors.fill: parent
+
+                onClicked: {stackView.push(Qt.resolvedUrl("LoginPage.qml"))}
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "👋"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Logout"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
+            }
         }
+
     }
 
     // Additional components
@@ -302,12 +595,12 @@ Row {
         id: settings
     }
 
+    Basket {
+            id: myBasket
+        }
+
     AddToFridge {
         id: addtofridge
-    }
-
-    Basket {
-        id: myBasket
     }
 
     Selling {

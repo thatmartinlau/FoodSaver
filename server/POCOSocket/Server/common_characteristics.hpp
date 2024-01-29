@@ -13,16 +13,38 @@ using namespace std;
 struct basic_user_data {
     string display_name;
     string telegram_username;
+    string building_address;
     int gender;
     int promotion;
-    string building_address;
     int phone_number;
-    list<bool> food_and_dietary_restrictions;
     int telegram_notifications;
     int marketplace_notifications;
     basic_user_data() {}
 };
 
+
+inline vector<string> serialize_basic_data_of_user(basic_user_data u_data) {
+    vector<string> serialized_basic_data;
+    serialized_basic_data.push_back(u_data.display_name);
+    serialized_basic_data.push_back(u_data.telegram_username);
+    serialized_basic_data.push_back(u_data.building_address);
+    serialized_basic_data.push_back(to_string(u_data.gender));    
+    serialized_basic_data.push_back(to_string(u_data.promotion));
+    serialized_basic_data.push_back(to_string(u_data.telegram_notifications));
+    serialized_basic_data.push_back(to_string(u_data.marketplace_notifications));
+    return serialized_basic_data;
+}
+
+inline basic_user_data deserialize_basic_data_of_user(vector<string> user_data_as_str_vec) {
+    basic_user_data basic_u_data;
+    basic_u_data.marketplace_notifications = stoi(user_data_as_str_vec[0]);
+    basic_u_data.telegram_notifications= stoi(user_data_as_str_vec[1]);
+    basic_u_data.promotion = stoi(user_data_as_str_vec[2]);
+    basic_u_data.gender = stoi(user_data_as_str_vec[3]);
+    basic_u_data.building_address = user_data_as_str_vec[4];
+    basic_u_data.telegram_username = user_data_as_str_vec[5];
+    basic_u_data.display_name = user_data_as_str_vec[6];
+}
 
 
 //Going to copy paste the deserialize and serialize functions !
@@ -31,22 +53,22 @@ struct basic_user_data {
 
 // serialize --> vector<vector<string> to vector<string>
 
-vector<string> serialize(vector<vector<string>> vector_of_vector){
+inline vector<string> serialize(vector<vector<string>> vector_of_vector){
     vector<string> just_vector;
-    for(int i =0 ; i<sizeof(vector_of_vector); i++){
-        for(int j =0; j<sizeof(vector_of_vector[i]); j++ ){
+    for(size_t i = 0; i < vector_of_vector.size(); i++){
+        for(size_t j = 0; j < vector_of_vector[i].size(); j++){
             just_vector.push_back(vector_of_vector[i][j]);
         }
     }
     return just_vector;
 }
 
-vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vector_of_vector){
+inline vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vector_of_vector){
     vector<string> just_vector;
-    for(int i =0 ; i<sizeof(vector_of_vector_of_vector); i++){
-        for(int j =0; j<sizeof(vector_of_vector_of_vector[i]); j++ ){
+    for(int i =0 ; i<vector_of_vector_of_vector.size(); i++){
+        for(int j =0; j<vector_of_vector_of_vector[i].size(); j++ ){
 
-             for(int k =0; k<sizeof(vector_of_vector_of_vector[j]); k++ ){
+             for(int k =0; k<vector_of_vector_of_vector[i][j].size(); k++ ){
 
                 just_vector.push_back(vector_of_vector_of_vector[i][j][k]);
             }
@@ -57,7 +79,7 @@ vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vec
 }
 
 
-vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
+inline vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
     vector<string> just_vector;
 
     for(int i =0 ; i<vector_triple.size(); i++){
@@ -73,27 +95,28 @@ vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
     return just_vector;
 }
 
+inline vector<string> serialize_unMap(const unordered_map<string, vector<vector<vector<string>>>>& maps) {
+    vector<string> serialized_map;
 
-vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string>>>> maps){
-    vector<string> just_vector;
-     auto it = maps.begin();
-     just_vector.push_back(it->first);
-     vector<vector<vector<string>>> offer_lists;
-     vector<string> dec_ol = serialize_offer_list(it->second);
+    for (const auto& pair : maps) {
+        const string& username = pair.first;
+        const auto& offers = pair.second;
 
-     for(int k =0; k<sizeof(dec_ol); k++ ){
-        just_vector.push_back(dec_ol[k]);
-     }
+        // Start with the username
+        string user_offers = username + ": ";
 
-     return just_vector;
+        // Serialize each offer for this user
+        vector<string> serialized_offers = serialize_offer_list(offers);
+        for (const auto& offer : serialized_offers) {
+            user_offers += offer + "; "; // Concatenate offers, separated by semicolons
+        }
 
+        // Add the complete string to the vector
+        serialized_map.push_back(user_offers);
+    }
+
+    return serialized_map;
 }
-
-
-//vector<string> serialize_basic_characs(basic_user_data u_data) {
-//    vector<string> serialized_characs;
-//    serialized_characs.push_back(u_data.display_name);
-//}
 
 
 
@@ -103,9 +126,9 @@ vector<string> serialize_unMap(unordered_map<string, vector<vector<vector<string
 // [Ingredient1, Ingredient2, .... , [Price]
 
 //Ingredient_i = [name, expiry_date, quantity, category, priority_level]
-vector<vector<string>> deserialize_offer (vector<string> offer){
+inline vector<vector<string>> deserialize_offer (vector<string> offer){
     vector<vector<string>> offer_deser;
-    for(int i = 0 ; i<sizeof(offer)-1;i+=6){
+    for(int i = 0 ; i<offer.size()-1;i+=6){
         vector<string> inter_vector;
         for(int j=i; j<i+6; j++){
             inter_vector.push_back(offer[j]);
@@ -124,7 +147,7 @@ vector<vector<string>> deserialize_offer (vector<string> offer){
 }
 
 
-vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list){
+inline vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list){
 
     vector<vector<vector<string>>> deserialize_offer_list;
     for(int i =0; i<offer_list.size(); i+=7){
@@ -143,7 +166,7 @@ vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list)
 }
 
 
-vector<vector<string>> deserialize_fridge(vector<string> fridge){
+inline vector<vector<string>> deserialize_fridge(vector<string> fridge){
     vector<vector<string>> fridge_deser;
 
     for(int i =0; i<fridge.size(); i+=6){
@@ -164,7 +187,7 @@ vector<vector<string>> deserialize_fridge(vector<string> fridge){
 
 }
 
-vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> offer_list){
+inline vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> offer_list){
     vector<vector<vector<string>>> offer_deser;
     for(int i = 0 ; i<offer_list.size();i++){
         vector<string> inter_vector;
@@ -174,28 +197,56 @@ vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> offer_lis
     return offer_deser;
 }
 
-unordered_map<string, vector<vector<vector<string>>>> deserialize_map(vector<string> mapInStr){
-    unordered_map<string, vector<vector<vector<string>>>> result;
-    for (const std::string& str : mapInStr) {
-        std::istringstream iss(str);
-        std::string key;
-        iss >> key;
+unordered_map<string, vector<vector<vector<string>>>> deserialize_map(const vector<string>& serialized_map) {
+    unordered_map<string, vector<vector<vector<string>>>> maps;
 
+    for (const auto& user_data : serialized_map) {
+        size_t colon_pos = user_data.find(":");
+        if (colon_pos == string::npos) continue; // Skip if format is incorrect
 
-        std::string valueStr;
-        iss >> std::ws;
-        std::getline(iss, valueStr);
+        string username = user_data.substr(0, colon_pos);
+        string offers_str = user_data.substr(colon_pos + 2); // Skip ": " after username
 
-        // Deserialize the value string into the map value type
-        std::vector<std::vector<std::vector<std::string>>> value = deserialize_offer_list({valueStr});
+        vector<vector<vector<string>>> user_offers;
+        stringstream ss_offers(offers_str);
+        string offer_str;
 
-        // Insert into the map
-        result[key] = value;
+        while (getline(ss_offers, offer_str, ';')) {
+            if (offer_str.empty() || offer_str[0] == ' ') {
+                offer_str = offer_str.substr(1); // Remove leading space if present
+            }
+
+            stringstream ss_offer(offer_str);
+            string element;
+            vector<vector<string>> offer;
+
+            while (getline(ss_offer, element, ' ')) {
+                if (!element.empty()) {
+                    // Assuming each element represents a part of the offer details
+                    vector<string> offer_details;
+                    offer_details.push_back(element); // Add each part to offer_details
+
+                    // Assuming each offer detail is separated by a space
+                    while (getline(ss_offer, element, ' ')) {
+                        offer_details.push_back(element);
+                    }
+
+                    offer.push_back(offer_details);
+                }
+            }
+
+            if (!offer.empty()) {
+                user_offers.push_back(offer);
+            }
+        }
+
+        if (!user_offers.empty()) {
+            maps[username] = user_offers;
+        }
     }
 
-    return result;
+    return maps;
 }
-
 
 
 #endif

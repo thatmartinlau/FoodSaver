@@ -31,7 +31,7 @@ struct CNNModelImpl : torch::nn::Module {
         fc3 = register_module("fc3", torch::nn::Linear(256, 131)); // Assuming 131 output classes
 
         // Dropout
-        dropout = register_module("dropout", torch::nn::Dropout(0.2));
+        dropout = register_module("dropout", torch::nn::Dropout(0.5));
 
         // Activation function
         relu = register_module("relu", torch::nn::ReLU());
@@ -171,7 +171,16 @@ int main() {
 
     // Model
     CNNModel model;
-    torch::Device device(torch::kCPU);
+    torch::Device device(torch::kCUDA);
+    if (torch::cuda::is_available()) {
+        std::cout << "CUDA is available! Training on GPU." << std::endl;
+        model->to(device); // Move model to GPU
+    }
+    else {
+        std::cout << "CUDA not available. Training on CPU." << std::endl;
+        device = torch::Device(torch::kCPU);
+        model->to(device); // Move model to CPU
+    }
 
     std::cout << "Model no bugs" << std::endl;
 

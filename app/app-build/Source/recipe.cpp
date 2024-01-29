@@ -82,4 +82,11 @@ double Recipe::get_rating(){
     return rating;
 }
 
+void Recipe::set_url(std::string url){
+    this->url = url;
+}
+
+std::string Recipe::get_url(){
+    return url;
+}
 

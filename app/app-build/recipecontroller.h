@@ -24,7 +24,7 @@ public slots:
     QList<QString> search_res(const QString &entry);
     QList<QString> sorter(const QMap<QString, int> &dict);
     int getTotalLength();
-    QString getJsonRTitle(const int &h);
+    //QString getJsonRTitle(const int &h);
     QString submitIngredients(const QString &ingredientName);
     void submitInstructions(const QString &instruction);
     QString get_ingr();
@@ -37,12 +37,14 @@ public slots:
     QList<QString> sendIngredientsForVis(const QString &title);
     QList<QString> sendInstructionsForVis(const QString &title);
     QString sendRatingForVis(const QString &title);
+    bool checkTitle(const QString &title);
 
     QList<QString> getTitleForVis();
     QList<QString> getIngredientsForVis();
     QList<QString> getInstructionsForVis();
 
-    bool checkTitle(const QString &title);
+
+
 
     //modif eli: jai changé QList<QString> en QString
     //QString searchRecipes(const QString &entry, const QString &dietRestriction);

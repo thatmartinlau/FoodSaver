@@ -31,11 +31,11 @@ public:
     Date();
     Date(int d, int m, int y);
     void displayDate();
-    int get_day();
+    int get_day() const;
     void set_day(int d);
-    int get_month();
+    int get_month() const;
     void set_month(int m);
-    int get_year();
+    int get_year() const;
     void set_year(int y);
 
     // overloaded operators to compare two date objects together and say which was before/after.
@@ -44,6 +44,7 @@ public:
     bool operator!=(const Date& other) const;
 
     Date parseDateString(const std::string& dateString);
+    std::string formateDate();
 
     int is_exp_date();
     //bool isLeapYear(int y) const;

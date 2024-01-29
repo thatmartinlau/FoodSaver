@@ -339,25 +339,17 @@ QList<QString> RecipeController::search_res(const QString &entry){
                 dict[list_names[j]]++;
 
             }
-
-
-
         }
     }
-
-
     QList<QString> res = sorter(dict);
 
     QList<QString> final;
     final.clear();
 
-
-
     for(int i = 0; i< res.size(); i++){
         if(dict[res[i]] != 0){
             final.append(res[i]);
         }
-
     }
 
     if(final.isEmpty()){
@@ -402,16 +394,7 @@ QList<QString> RecipeController::sorter(const QMap<QString, int> &dict){
     }
     return names;
 }
-std::string filename = "Recipes.json";
-JsonRecipeReader reader(filename);
 
-QString RecipeController::getJsonRTitle(const int &h){
-    std::string title; // = reader.getRecipeTitle(h);
-    QString res = "lol";
-    title = "bonjour";//jsonData1["RecipeBook"][h]["title"];
-    res = res.fromStdString(title);
-    return res;
-}
 
 //modif eli:
 /*the function no longer returns recipes from listnames but rather iterates through the Recipes.json seen previously and iterates over the titles of
@@ -564,3 +547,5 @@ std::vector<Recipe> originalsrecipe() {
 void RecipeController::initial(){
     temp_allRecipes_extension(originalsrecipe());
 }
+
+
