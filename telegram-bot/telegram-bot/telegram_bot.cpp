@@ -38,7 +38,7 @@ std::map<int64_t, UserCredentials> userCredentialsMap;
 std::map<int64_t, UserInfo> userStates;
 
 TgBot::Bot bot("6644281748:AAFh40LQLa5054caEUPt8T_9wf-Yv1hAB-w");
-rpc::client c("3333", rpc::constants::DEFAULT_PORT);
+rpc::client c("172.20.10.7", 8080);
 
 
 vector<vector<string>> check_expiration(client& c) {
@@ -179,10 +179,19 @@ int main() {
 
             userCredentialsMap[chatId] = {userInfo.username, userInfo.password};
 
-            // RPC call to link the fridge
-            c.call("add_user", userInfo.username, userInfo.password);
+            double server_message = c.call("check_user", userInfo.username, userInfo.password).as<double>();
 
-            bot.getApi().sendMessage(chatId, "Registered successfully!");
+            if (server_message == 1) {
+                c.call("add_user", userInfo.username, userInfo.password);
+                bot.getApi().sendMessage(chatId, "Registered successfully!");
+            } else if (server_message == 0) {
+                bot.getApi().sendMessage(chatId, "This username has been used, Sorry!");
+            } else {
+                bot.getApi().sendMessage(chatId, "An error occurred during registration, please try later.");
+            }
+
+            // RPC call to link the fridge
+            
 
         } else if (userInfo.state == UserState::AwaitingPassword) {
             userInfo.password = message->text;
