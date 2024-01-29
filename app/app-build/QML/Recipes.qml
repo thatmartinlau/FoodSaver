@@ -418,6 +418,14 @@ Row {
                                             //anchors.horizontalCenter: parent.horizontalCenter
 
                                             onClicked: {
+                                                // Check if the recipe is already liked
+                                                if (RecipeController.getLikedRecipes().indexOf(model.name) === -1) {
+                                                    // If not liked, call likeRecipe
+                                                    RecipeController.likeRecipe(model.name);
+                                                } else {
+                                                    // If liked, call unlikeRecipe
+                                                    RecipeController.unlikeRecipe(model.name);
+                                                }
                                                 addFavoriteRecipe.open()
                                             }
                                         }
@@ -607,7 +615,7 @@ Row {
             //anchors.horizontalCenter: parent.horizontalCenter
 
             onClicked: {
-                //cookBook.open()
+                addFavoriteRecipe.open()
                 //for(var i = 0; i<10;i++){
                 //    itemModel.append(RecipeController.getJsonRTitle(i))
                 //}
