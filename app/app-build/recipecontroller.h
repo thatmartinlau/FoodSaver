@@ -24,7 +24,7 @@ public slots:
     QList<QString> search_res(const QString &entry);
     QList<QString> sorter(const QMap<QString, int> &dict);
     int getTotalLength();
-    QString getJsonRTitle(const int &h);
+    //QString getJsonRTitle(const int &h);
     QString submitIngredients(const QString &ingredientName);
     void submitInstructions(const QString &instruction);
     QString get_ingr();

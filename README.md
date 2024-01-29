@@ -30,3 +30,5 @@ There are 7 pages available on our app. Here are the things they can do:
 
 
 III. Connecting the server to the app
+
+IV. Photo recognition

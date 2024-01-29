@@ -394,16 +394,7 @@ QList<QString> RecipeController::sorter(const QMap<QString, int> &dict){
     }
     return names;
 }
-std::string filename = "Recipes.json";
-JsonRecipeReader reader(filename);
 
-QString RecipeController::getJsonRTitle(const int &h){
-    std::string title; // = reader.getRecipeTitle(h);
-    QString res = "lol";
-    title = "bonjour";//jsonData1["RecipeBook"][h]["title"];
-    res = res.fromStdString(title);
-    return res;
-}
 
 //modif eli:
 /*the function no longer returns recipes from listnames but rather iterates through the Recipes.json seen previously and iterates over the titles of
