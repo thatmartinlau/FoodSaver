@@ -209,7 +209,7 @@ inline vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> of
 }
 
 unordered_map<string, vector<vector<vector<string>>>> deserialize_map(const vector<string>& serialized_map) {
-    unordered_map<string, vector<vector<vector<string>>>> maps;
+//    unordered_map<string, vector<vector<vector<string>>>> maps;
 
     for (const auto& user_data : serialized_map) {
         size_t colon_pos = user_data.find(":");
@@ -252,11 +252,11 @@ unordered_map<string, vector<vector<vector<string>>>> deserialize_map(const vect
         }
 
         if (!user_offers.empty()) {
-            maps[username] = user_offers;
+            serialized_map[username] = user_offers;
         }
     }
 
-    return maps;
+    return serialized_map;
 }
 
 

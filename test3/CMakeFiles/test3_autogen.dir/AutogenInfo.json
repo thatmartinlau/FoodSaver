@@ -1,0 +1,167 @@
+{
+	"BUILD_DIR" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/test3_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/app/build-app-release-Desktop_Qt_6_5_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3",
+	"CMAKE_EXECUTABLE" : "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/CMakeLists.txt",
+		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/app/build-app-release-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake",
+		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/GNUInstallDirs.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/app/app-release",
+	"DEP_FILE" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/test3_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "test3_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/common_characteristics.hpp",
+			"MU",
+			"2OZU3EY2EE/moc_common_characteristics.cpp",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpc_client_side.hpp",
+			"MU",
+			"UILQC7P5HI/moc_rpc_client_side.cpp",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/date.h",
+			"MU",
+			"EWIEGA46WW/moc_date.cpp",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/fridge.h",
+			"MU",
+			"EWIEGA46WW/moc_fridge.cpp",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/ingredient.h",
+			"MU",
+			"EWIEGA46WW/moc_ingredient.cpp",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/offer.h",
+			"MU",
+			"EWIEGA46WW/moc_offer.cpp",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/recipe.h",
+			"MU",
+			"EWIEGA46WW/moc_recipe.cpp",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/user.h",
+			"MU",
+			"EWIEGA46WW/moc_user.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/test3_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/test3_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "RPCLIB_MSGPACK=clmdep_msgpack", "RPCLIB_WIN32" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3",
+		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste",
+		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include",
+		"C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++",
+		"C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32",
+		"C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward",
+		"C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include",
+		"C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed",
+		"C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"C:/Qt/Tools/mingw1120_64/bin/g++.exe",
+		"-dM",
+		"-E",
+		"-c",
+		"C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/test3_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 2,
+	"PARSE_CACHE_FILE" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/CMakeFiles/test3_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/Qt/6.5.3/mingw_64/./bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 5,
+	"SETTINGS_FILE" : "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/CMakeFiles/test3_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpc_client_side.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/date.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/fridge.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/ingredient.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/main.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/offer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/recipe.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3/user.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

@@ -51,7 +51,7 @@ add_library(rpclib::rpc STATIC IMPORTED)
 
 set_target_properties(rpclib::rpc PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "RPCLIB_WIN32;RPCLIB_MSGPACK=clmdep_msgpack"
-  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/User/OneDrive/Desktop/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include"
   INTERFACE_LINK_LIBRARIES "wsock32;ws2_32"
 )
 
@@ -59,7 +59,7 @@ set_target_properties(rpclib::rpc PROPERTIES
 set_property(TARGET rpclib::rpc APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(rpclib::rpc PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/User/OneDrive/Desktop/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/librpc.a"
+  IMPORTED_LOCATION_DEBUG "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/librpc.a"
   )
 
 # This file does not depend on other imported targets which have
