@@ -268,7 +268,6 @@ void write_to_csv() {
     write_recipes_list();
 }
 
-
 void init_data_test() { //debug function. Tests database read/write all together along with test_read_write_csv().
     UserData data;
     string m = "Molly";
@@ -590,6 +589,7 @@ double check_user(string username, string password) {
         else {
             return 0;
         }
+
 }
 
 
@@ -608,12 +608,191 @@ vector<vector<string>> test_sending_fridge_as_vec(vector<vector<string>> fridge)
     cout << fridge[0][0] << fridge[1][1] << endl;
     return fridge;
 }
+/*
+void initializeUser() {
+    // Create a test user with known credentials
+    UserData testUser;
+    testUser.password = "TestPassword";  // Set the test password
+    // Set up basic user data for the test user
+    testUser.basic_u_data.display_name = "Test User";
+    testUser.basic_u_data.telegram_username = "testuser123";
+    testUser.basic_u_data.gender = 1; // Assuming '1' is a valid value for gender
+    testUser.basic_u_data.promotion = 2022;
+    testUser.basic_u_data.building_address = "123 Test Street";
+    testUser.basic_u_data.phone_number = 1234567890;
+    testUser.basic_u_data.telegram_notifications = 1;
+    testUser.basic_u_data.marketplace_notifications = 1;
+
+    //fridge
+    vector<string> item1 = {"Milk", "2024-01-01", "2L", "Dairy", "High"};
+    vector<string> item2 = {"Eggs", "2024-02-01", "12", "Poultry", "Medium"};
+    testUser.fridge.push_back(item1);
+    testUser.fridge.push_back(item2);
+
+    //offer lists
+    vector<string> offer1_ingredient = {"Tomatoes", "2024-01-01", "5kg", "Vegetable", "Medium"};
+    vector<string> offer1_price = {"10"};
+    vector<vector<string>> offer1 = {offer1_ingredient, offer1_price};
+
+    vector<string> offer2_ingredient = {"Potatoes", "2024-02-01", "10kg", "Vegetable", "Low"};
+    vector<string> offer2_price = {"15"};
+    vector<vector<string>> offer2 = {offer2_ingredient, offer2_price};
+
+    testUser.offer_list.push_back(offer1);
+    testUser.offer_list.push_back(offer2);
 
 
+    // Add the test user to the database
+    (*database)["TestUser"] = testUser;  // "TestUser" is the test username
+}
+
+void initializeTestRecipes() {
+    // Adding some test recipes to the recipes_list
+    if (recipes_list != nullptr) {
+            recipes_list->push_back("Recipe 1: Ingredients...");
+            recipes_list->push_back("Recipe 2: Ingredients...");
+            // Add as many test recipes as needed
+    }
+}
+
+void initializeUsersWithOfferLists() {
+    // Test User 1
+    UserData user1;
+    user1.password = "Password1";
+    // Add offers to user1's offer list
+    user1.offer_list.push_back({{"Apples", "2024-05-01", "2kg", "Fruit", "High"}, {"5"}});
+    user1.offer_list.push_back({{"Oranges", "2024-06-01", "3kg", "Fruit", "Medium"}, {"7"}});
+    (*database)["User1"] = user1;
+
+    // Test User 2
+    UserData user2;
+    user2.password = "Password2";
+    // Add offers to user2's offer list
+    user2.offer_list.push_back({{"Bread", "2024-05-10", "1 loaf", "Bakery", "Low"}, {"2"}});
+    user2.offer_list.push_back({{"Milk", "2024-05-15", "1L", "Dairy", "High"}, {"3"}});
+    (*database)["User2"] = user2;
 
 
+}
+void initializeTestUsersWithRestrictions() {
+    // Test User with food restrictions
+    UserData user;
+    user.password = "TestPassword";
+    user.food_and_dietary_restrictions = {true, false, true}; // Example restrictions
+    (*database)["TestUser"] = user;
+}
 
+
+//tests.......................................
+
+void test_get_basic_user_data() {
+    // Assuming you have a test user with known username and password
+    string test_username = "TestUser";
+    string test_password = "TestPassword";
+
+    // Initialize the database with test data (if not already initialized)
+    // You need to make sure a user with the above credentials exists in the database
+    // ...
+
+    // Call the get_basic_user_data function with the test credentials
+    vector<string> user_data = get_basic_user_data(test_username, test_password);
+
+    // Output the results for verification
+    cout << "Basic User Data for " << test_username << ": " << endl;
+    for (const auto& data : user_data) {
+            cout << data << " ";
+    }
+    cout << endl;
+}
+
+void test_get_fridge() {
+    string test_username = "TestUser";
+    string test_password = "TestPassword";
+
+    // Call the get_fridge function with the test credentials
+    vector<string> fridge_contents = get_fridge(test_username, test_password);
+
+    // Output the results for verification
+    cout << "Fridge Contents for " << test_username << ": " << endl;
+    for (const auto& item : fridge_contents) {
+            cout << item << " ";
+    }
+    cout << endl;
+}
+void test_getAllRecipes() {
+    // Call the getAllRecipes function
+    vector<string> recipes = getAllRecipes();
+
+    // Output the results for verification
+    cout << "Recipes: " << endl;
+    for (const auto& recipe : recipes) {
+            cout << recipe << endl;
+    }
+}
+void test_get_offer_list() {
+    string test_username = "TestUser";
+    string test_password = "TestPassword";
+
+    // Call the get_offer_list function with the test credentials
+    vector<string> offer_list = get_offer_list(test_username, test_password);
+
+    // Output the results for verification
+    cout << "Offer List for " << test_username << ": " << endl;
+    for (const auto& offer : offer_list) {
+            cout << offer << " ";
+    }
+    cout << endl;
+}
+void test_getMapOfOffers() {
+    // Call the getMapOfOffers function
+    vector<string> map_of_offers = getMapOfOffers();
+
+    // Output the results for verification
+    cout << "Map of Offers: " << endl;
+    for (const auto& offer : map_of_offers) {
+            cout << offer << " ";
+    }
+    cout << endl;
+}
+
+void test_get_user_name_vectors() {
+    vector<string> user_names = get_user_name_vectors();
+    cout << "User Names: ";
+    for (const auto& name : user_names) {
+            cout << name << " ";
+    }
+    cout << endl;
+}
+void test_get_food_restrictions() {
+    string test_username = "TestUser";
+    string test_password = "TestPassword";
+
+    vector<string> restrictions = get_food_restrictions(test_username, test_password);
+    cout << "Food Restrictions for " << test_username << ": ";
+    for (const auto& r : restrictions) {
+            cout << r << " ";
+    }
+    cout << endl;
+}
+*/
+//main.............................................................
 int main() {
+    /*
+    cout << "Starting program..." << endl;
+    // Run tests before starting the server
+    initializeUser();
+    initializeTestRecipes();
+    initializeUsersWithOfferLists();
+    initializeTestUsersWithRestrictions();
+    // Run the specific test for get_basic_user_data
+    test_get_basic_user_data();
+    test_get_fridge();
+    test_getAllRecipes();
+    test_get_offer_list();
+    test_getMapOfOffers();
+    test_get_user_name_vectors();
+    test_get_food_restrictions();
+*/
     rpc::server srv(8080);
     
     
@@ -653,7 +832,8 @@ int main() {
     //SERVER running from here:
     read_from_csv();
     cout << "running" << endl;        
-    srv.run();
-        
+    srv.run();*/
+    cout << "end program..." << endl;
+
     return 0;    
 }
