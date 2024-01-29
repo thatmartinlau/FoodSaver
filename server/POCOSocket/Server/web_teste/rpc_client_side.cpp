@@ -477,14 +477,14 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 
 
 ////CLIENT_SIDE FUNCTION, FOR TESTIING STILL
-//int test_sending_to_db() {
+int test_sending_to_db() {
 
-//    cout << "hello, it opens" << endl;
-//    int val1 = test_send_vec_string();
+    cout << "hello, it opens" << endl;
+    int val1 = test_send_vec_string();
 
+}
 
-//}
-//int va = test_sending_to_db();
+int va = test_sending_to_db();
 
 int test_getOfferMapFromServer() {
     

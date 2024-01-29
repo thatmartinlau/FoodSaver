@@ -33,7 +33,7 @@ void ServerUser::update_user_characteristics(User usr) {
     basic_data.promotion = usr.get_promotion();
     basic_data.building_address = usr.get_building_address();
     basic_data.phone_number = usr.get_phone_number();
-    basic_data.food_and_dietary_restrictions = usr.get_food_and_dietary_restrictions();
+//    basic_data.food_and_dietary_restrictions = usr.get_food_and_dietary_restrictions();
     basic_data.telegram_notifications = usr.get_telegram_notifications();
     basic_data.marketplace_notifications = usr.get_marketplace_notifications();
     
