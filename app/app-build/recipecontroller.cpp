@@ -557,28 +557,4 @@ void RecipeController::initial(){
     temp_allRecipes_extension(originalsrecipe());
 }
 
-// -------------- This section deals with liked recipes added to the personal cookbook : when the like button is clicked, the recipes are then added to the list of liked recipes
 
-void RecipeController::likeRecipe(const QString &recipeName)
-{
-    // Check if the recipe is not already liked
-    if (!likedRecipes.contains(recipeName)) {
-        likedRecipes.append(recipeName);
-        // Add your logic to update backend or perform any other necessary actions
-    }
-}
-
-void RecipeController::unlikeRecipe(const QString &recipeName)
-{
-    // Check if the recipe is liked
-    int index = likedRecipes.indexOf(recipeName);
-    if (index != -1) {
-        likedRecipes.removeAt(index);
-        // Add your logic to update backend or perform any other necessary actions
-    }
-}
-
-QList<QString> RecipeController::getLikedRecipes()
-{
-    return likedRecipes;
-}
