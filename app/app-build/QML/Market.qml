@@ -300,7 +300,7 @@ Rectangle {
                     id:scrollrectangle
                     radius: 12.5
                     y: mainrectangle.y
-                    height: 710
+                    height: parent.height * 0.78
                     width: parent.width
                     color: "transparent" // main scroll rectangle
                     //clip: true
@@ -310,6 +310,7 @@ Rectangle {
                         id: scrollMarket
                         Layout.fillHeight: true
                         Layout.fillWidth: true
+                        anchors.fill:parent
                         //clip: true
 
                         //contentHeight: columnLayout.implicitHeight
@@ -422,7 +423,7 @@ Rectangle {
 
                             }
                         }
-                    height: 710
+
                     }
 
 
