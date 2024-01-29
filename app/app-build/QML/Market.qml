@@ -41,16 +41,17 @@ Row {
         x: parent.width * 0.20
         width: parent.width * 0.6
         height: parent.height
-        color: "#5E9F7C"
+        color: "#5E9F7C" // background
 
         // Sorting buttons
         Rectangle {
+            id:mainrectangle
             visible: true
             y: parent.height * 0.05
             height: parent.height * 0.9
             width: parent.width
             radius: 12.5
-            color: "white"
+            color: "white" // main important rectangle
             property string newItemText: ""
 
             Column {
@@ -62,7 +63,7 @@ Row {
                 // Main title of page
                 Label {
                     Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-                    text: "Market Place"
+                    text: "Market Place 🛒"
                     font.bold: true
                     color: "#1C6F30"
                     font.pixelSize: 50
@@ -73,8 +74,9 @@ Row {
                     radius: 12.5
                     width: parent.width * 0.98
                     height: parent.width * 0.05
-                    color:"#EEEEEE"
+                    color:"#EEEEEE" // search bar
 
+                    //update with options!
                     Row {
                         spacing: 10
                         padding:10
@@ -112,49 +114,49 @@ Row {
                 // Items display with scroll
 
                 Rectangle {
+                    id:scrollrectangle
                     radius: 12.5
-                    y: parent.height * 0.2
-                    height: parent.height * 0.8
+                    y: mainrectangle.y
+                    height: 710
                     width: parent.width
-                    color:"transparent"
+                    color: "transparent" // main scroll rectangle
+                    //clip: true
+                    // visible: true
 
-                    Rectangle{
-                        width: parent.width -25
-                        height: parent.height * 0.8
-                        color: "white"
+                    ScrollView {
+                        id: scrollMarket
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        //clip: true
 
-                        ListView{
-                            id: marketListView
-                            anchors.fill: parent
+                        //contentHeight: columnLayout.implicitHeight
+
+                        ColumnLayout{
+                            id:columnLayout
                             spacing: 10
-                            // width: parent.width
-                            //height: parent.height * 0.8
-                            model: ListModel {
+                            anchors.fill: parent
 
-                                // Manually added items to test display
-                                ListElement{name: "Item"}
-                                ListElement{name: "Item"}
-                                ListElement{name: "Item"}
-                                ListElement{name: "Item"}
-                                ListElement{name: "Item"}
-                                ListElement{name: "Item"}
-                                ListElement{name: "Item"}
-                                ListElement{name: "Item"}
+                            // Model to add items
+                            Repeater{
+                                model: ListModel{
+                                    ListElement{name: "Banana"; category: "Fruits"; timeLeft: "2 days"; price: "$2.00"; emoji: "🍌"; user: "User BX25"; quantity: "2"}
+                                    ListElement{name: "Apple"; category: "Fruits"; timeLeft: "1 day"; price: "$1.50"; emoji: "🍎"; user: "User BX25"; quantity: "3"}
+                                    ListElement{name: "Milk"; category: "Dairy"; timeLeft: "3 days"; price: "$3.00"; emoji: "🥛"; user: "User BX25"; quantity: "1"}
+                                    ListElement { name: "Eggs"; category: "Dairy"; timeLeft: "4 days"; price: "$2.50" ; emoji: "🥚"; user: "User BX25"; quantity: "6"}
+                                    ListElement { name: "Carrot"; category: "Vegetables"; timeLeft: "2 days"; price: "$1.00"; emoji: "🥕" ; user: "User BX25"; quantity: "2"}
+                                    ListElement { name: "Onions"; category: "Vegetables"; timeLeft: "3 days"; price: "$1.20" ; emoji: "🧅"; user: "User BX25"; quantity: "3"}
+                                    ListElement { name: "Spinach"; category: "Vegetables"; timeLeft: "1 day"; price: "$1.80"; emoji: "🥬" ; user: "User BX25"; quantity: "1"}
+                                    ListElement { name: "Avocado"; category: "Fruits"; timeLeft: "2 days"; price: "$2.50"; emoji: "🥑"; user: "User BX25" ; quantity: "2"}
+                                }
 
-                                // Function to add items goes here
-                            }
-                            delegate: Item {
-                                width: marketListView.width
-                                height: 125
 
-                                Rectangle{
-                                    width: parent.width - 25
-                                    height: 125
-                                    color: "#EEEEEE"
+                                delegate: Rectangle{
+                                    width: scrollrectangle.width - 25
+                                    height: 150
+                                    color: "#D7ECDE"
                                     radius: 5
 
-                                    // Display for each item
-
+                                    // Display information for each item
                                     Row{
                                         spacing: 5
                                         anchors.leftMargin: 10
@@ -165,52 +167,84 @@ Row {
                                             radius: 12.5
                                             width: parent.height - 10
                                             height: parent.height - 10
-                                            color: "#D7ECDE"
+                                            color: "white"
+
                                             Label{
                                                 text: "Photo"
                                                 font.bold: true
+                                                font.pixelSize: 18
                                                 anchors.centerIn: parent
                                             }
                                         }
 
-                                        Column{
-                                            spacing: 5
-                                            anchors.leftMargin: 120
-                                            anchors.fill: parent
+                                    // info on each item
+                                    Column{
+                                        spacing: 5
+                                        anchors.leftMargin: 140
+                                        anchors.fill: parent
+                                        padding: 5
 
-                                            Text {
-                                                text: model.name
-                                                font.bold: true
-                                                font.pixelSize: 18
-                                                anchors.margins: 10
+                                        Text {
+                                            text: model.name
+                                            font.bold: true
+                                            font.pixelSize: 20
+                                        }
+
+                                        Text {
+                                            text: "Category: " + model.category
+                                            font.pixelSize: 16
+                                        }
+
+                                        Text {
+                                            text: "Quantity: " + model.quantity
+                                            font.pixelSize: 16
+                                        }
+
+                                        Text {
+                                            text: "Time left: " + model.timeLeft
+                                            font.pixelSize: 16
+                                        }
+
+                                        Text {
+                                            text: "Price: " + model.price
+                                            font.pixelSize: 16
+                                        }
+
+                                    }
+
+                                    Row{
+                                        spacing: 5
+                                        anchors.leftMargin: parent.width/2
+                                        anchors.fill: parent
+                                        padding: 10
+
+                                        Button {
+                                            text: "Add to Basket"
+                                            //anchors.centerIn: parent
+                                            anchors.verticalCenter: parent.verticalCenter
+
+                                            MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: {
+                                                    myBasket.open() // need to change so that it adds it actually to the basket
+                                                }
                                             }
-
-                                            Text {
-                                                text: "Category: " + model.category
-                                                font.pixelSize: 16
-                                                anchors.margins: 10
-                                            }
-
-                                            Text {
-                                                text: "Time left: " + model.timeLeft
-                                                font.pixelSize: 16
-                                                anchors.margins: 10
-                                            }
-
-                                            Text {
-                                                text: "Price: " + model.price
-                                                font.pixelSize: 16
-                                                anchors.margins: 10
-                                            }
-
                                         }
                                     }
                                 }
 
+                                }
+
+
                             }
-                            }
+                        }
+                    height: 710
                     }
+
+
                 }
+
+
             }
         }
     }

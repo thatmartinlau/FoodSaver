@@ -142,15 +142,7 @@ Popup {
                 }
             }
         }
-
-
     }
-
-
-
-
-
-
 
     //Close button
     Button {
