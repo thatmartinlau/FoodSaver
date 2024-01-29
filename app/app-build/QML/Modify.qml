@@ -20,7 +20,7 @@ Popup {
 
         Button {
             anchors.right: parent.right
-            text: "X"
+            text: "╳"
             width: 50
             background: null
             onClicked: {

@@ -4,10 +4,11 @@
 #include <variant>
 
 #include "rpc_client_side.hpp"
-
-
 using namespace std;
 
+
+inline string HOST_SERVER_NAME = "localhost";//local connection first
+inline int HOST_SERVER_PORT = 8080;
 
 
 //          User Updating and creating functions.
@@ -29,17 +30,24 @@ void ServerUser::delete_self_in_db() {
 
 }
 
-// basic_user_data get_userdata(); of the class user data;
-vector<string> ServerUser::return_server_characs(string username, string password){
+void ServerUser::update_user_name_and_password(string new_username, string new_password) {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    vector<string> structype = new_cli.call("get_user_characteristics", username, password);
-    return structype;
+    new_cli.call("update_user", username, password, new_username, new_password);
+}
+
+// basic_user_data get_userdata(); of the class user data;
+basic_user_data ServerUser::get_basic_user_data(){
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    basic_user_data basic_data;
+    vector<string> basic_data_as_vec_strings = new_cli.call("get_user_characteristics", username, password).as<vector<string>>();
+    basic_data = deserialize_basic_data_of_user(basic_data_as_vec_strings);
+    return basic_data;
 }
 
 
-list<bool> ServerUser::get_food_restrictions(string username, string password){
+list<bool> ServerUser::get_food_restrictions(){
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    vector<string> food_restrictions = new_cli.call("get_user_food_restrictions", username, password);
+    vector<string> food_restrictions = new_cli.call("get_food_restrictions", username, password).as<vector<string>>();
     std::list<bool> boolList;
 
     for (const std::string& str : food_restrictions) {
@@ -47,25 +55,31 @@ list<bool> ServerUser::get_food_restrictions(string username, string password){
     }
 
     return boolList;
-
 }
 
+void ServerUser::update_food_restrictions(list<bool> food_and_diet_restrictions) {
+    vector<string> vec_food_and_dietary_restrictions;
 
+    for (bool element :food_and_diet_restrictions ){
+        vec_food_and_dietary_restrictions.push_back(to_string(element));
+    }
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    new_cli.call("update_food_restrictions", username, password, vec_food_and_dietary_restrictions);
+}
 
-void ServerUser::update_user_characteristics(User usr) { //ESMA TO FIX
+void ServerUser::update_user_characteristics(User *user) {
     basic_user_data basic_data;
-    basic_data.display_name = usr.get_display_name();
-    basic_data.telegram_username = usr.get_telegram_username();
-    basic_data.gender = usr.get_gender();
-    basic_data.promotion = usr.get_promotion();
-    basic_data.building_address = usr.get_building_address();
-    basic_data.phone_number = usr.get_phone_number();
-    basic_data.food_and_dietary_restrictions = usr.get_food_and_dietary_restrictions();
-    basic_data.telegram_notifications = usr.get_telegram_notifications();
-    basic_data.marketplace_notifications = usr.get_marketplace_notifications();
+    basic_data.display_name = user->get_display_name();
+    basic_data.telegram_username = user->get_telegram_username();
+    basic_data.gender = user->get_gender();
+    basic_data.promotion = user->get_promotion();
+    basic_data.building_address = user->get_building_address();
+    basic_data.phone_number = user->get_phone_number();
+    basic_data.telegram_notifications = user->get_telegram_notifications();
+    basic_data.marketplace_notifications = user->get_marketplace_notifications();
 
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    new_cli.call("update_user_characteristics", username, password); 
+    new_cli.call("update_user_characteristics", username, password, serialize_basic_data_of_user(basic_data));
 }
 
 //      General Functions:

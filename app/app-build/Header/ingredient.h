@@ -14,17 +14,17 @@
 //using namespace std;
 
 enum Food_class{
-    fruit,
-    vegetable,
-    drink,
-    dairy,
-    canned,
-    meat,
-    fish,
-    sweet,
-    nut,
-    unspecified,
-    other
+    Unspecified,
+    Fruit,
+    Vegetable,
+    Drink,
+    Dairy,
+    Canned,
+    Meat,
+    Fish,
+    Sweet,
+    Nut,
+    Other
 };
 
 enum Priority{
@@ -36,7 +36,7 @@ enum Priority{
 class Ingredient{
 public:
     Ingredient(){};
-    Ingredient(std::string name, Date expiry_date, int quantity = 1,Food_class category = unspecified);
+    Ingredient(std::string name, Date expiry_date, int quantity = 1,Food_class category = Unspecified);
     ~Ingredient();
     std::string get_name() const;
     bool operator==(const Ingredient& other) const;

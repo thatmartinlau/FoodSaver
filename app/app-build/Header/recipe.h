@@ -30,6 +30,9 @@ public:
     double get_time();
     void add_rating(const double &user_rating);
     double get_rating();
+    void set_url(std::string url);
+    std::string get_url();
+
 
 private:
     std::string title;

@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Shapes 1.6 //eli
 //colors: green #5E9F7C lightgreen #D7ECDE
 
-Row {
+Rectangle {
     property string open_title: ""
     property string open_diet: ""
     property string open_time: ""
@@ -13,58 +13,205 @@ Row {
     property var open_instructions
     property bool nothing_found: false
     property string sorter_box : ""
-
-
-
     Rectangle {
         width: parent.width * 0.20
         height: parent.height
         color: "#5E9F7C"
-        Column {
 
+        Rectangle {
+            width: 200
+            height: 151
+            color: "white"
+            radius: 12.5
             anchors.left: parent.left
             anchors.bottom: parent.verticalCenter
-            anchors.leftMargin: parent.width * 0.05
+            anchors.leftMargin: parent.width * 0.5 - 100
 
-            /*Window{
-                visible: true
-                width: 640
-                height: 480
-                title: qsTr("Welcome")
+            Column {
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "transparent" // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            //fridgemanager.clear(itemModel.count)
+                            stackView.replace(Qt.resolvedUrl("Fridge.qml"))
+                        }
 
-                Image {
-                    //anchors.top: parent.top
-                    //height: parent.height
-                    //width: parent.width
-                    id: root
-                    anchors.fill: parent
-                    source: "images/dog.png"
+                        Rectangle {
+                            width: 24
+                            height: 24
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 13 // Additional property for the small rectangle
+                            Label {
+                                text: "🗄️"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
+                        }
+
+                        Label {
+                            text: "Fridge"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 50 // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = "transparent"; // Back to transparent when not hovered
+                        }
+                    }
                 }
-            }*/
+                Rectangle {
+                    width: 200
+                    height: 0.5 // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
 
-            Button { text: "Fridge";  onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
-            Button { text: "Market"; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }
-            Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
-            Button { text: "Recipes"; enabled: false; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "transparent" // Transparent color
+                    radius: 12.5 // Add radius to the transparent rectangle
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            fridgemanager.clear(itemModel.count)
+                            stackView.replace(Qt.resolvedUrl("Market.qml"))
+                        }
+
+                        Rectangle {
+                            width: 24
+                            height: 24
+                            color: "#A3C995" // Updated color
+                            radius: 2 // Updated radius
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 13 // Additional property for the small rectangle
+                            Label {
+                                text: "🛒"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
+                        }
+
+                        Label {
+                            text: "Market"
+                            anchors.verticalCenter: parent.verticalCenter
+                            x: 50 // Additional property for the label
+                        }
+
+                        hoverEnabled: true
+
+                        onEntered: {
+                            parent.color = "#D3D3D3"; // Light grey when hovered
+                        }
+
+                        onExited: {
+                            parent.color = "transparent"; // Back to transparent when not hovered
+                        }
+                    }
+                }
+
+                Rectangle {
+                    width: 200
+                    height: 0.5 // Height of the grey bar
+                    color: "#D3D3D3" // Light grey color
+                }
+                Rectangle {
+                    width: 200
+                    height: 50
+                    color: "#EEEEEE" // Light grey color
+                    radius: 12.5 // Add radius to the grey rectangle
+
+                    Rectangle {
+                        width: 24
+                        height: 24
+                        color: "#A3C995" // Updated color
+                        radius: 2 // Updated radius
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 13 // Additional property for the small rectangle
+                        Label {
+                            text: "🍳"
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
+                    }
+
+                    Label {
+                        text: "Recipes"
+                        anchors.verticalCenter: parent.verticalCenter
+                        x: 50 // Additional property for the label
+                    }
+                }
+
+            }
         }
 
-
-        Button {
+        Rectangle {
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: parent.width * 0.5 - 100
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: deux.width * 0.04
 
-            id: button
-            text: "Settings"
-            onClicked: {
-            settings.open()
+
+
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                id: button
+                anchors.fill: parent
+                onClicked: {
+                settings.open()
+                }
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "⚙️"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Settings"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
             }
         }
     }
     Rectangle {
+        id:deux
         x: parent.width * 0.20
         width: parent.width * 0.6
         height: parent.height
@@ -123,7 +270,7 @@ Row {
                                     TextField {
                                         y:3
                                         id: searchbar
-                                        placeholderText: "Search for a specific recipe"
+                                        placeholderText: "🔎 Search"
                                         Layout.preferredWidth: 5000
                                         onTextChanged: {
                                             for (var i = 0; i < itemModel.count; i++) {
@@ -146,14 +293,12 @@ Row {
                                                     itemModel.append({"name" : to_display[j], "dietRestriction": diets[j], "grade": RecipeController.sendRatingForVis(to_display[j])});//titles[j], "dietRestriction" : diets[j]})
                                                 }
                                             }
-
-
                                         }
                                     }
-                                    Text {text: "Sort by:"; Layout.preferredWidth: 75; y:4}
+                                    Text {text: "Sort by:"; Layout.preferredWidth: 75; anchors.verticalCenter:parent.verticalCenter}
 
                                     ComboBox {
-                                            y:2
+                                            //y:2
                                             id: priority
                                             width: 100
                                             model: ["None", "Vegetarian", "Gluten-free", "other"] //add "Vegan", "Dairy free"
@@ -298,6 +443,14 @@ Row {
                                             //anchors.horizontalCenter: parent.horizontalCenter
 
                                             onClicked: {
+                                                // Check if the recipe is already liked
+                                                if (RecipeController.getLikedRecipes().indexOf(model.name) === -1) {
+                                                    // If not liked, call likeRecipe
+                                                    RecipeController.likeRecipe(model.name);
+                                                } else {
+                                                    // If liked, call unlikeRecipe
+                                                    RecipeController.unlikeRecipe(model.name);
+                                                }
                                                 addFavoriteRecipe.open()
                                             }
                                         }
@@ -479,12 +632,19 @@ Row {
         height: parent.height
         color: "#5E9F7C"
         anchors.right: parent.right
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.top: parent.top
+            anchors.topMargin: deux.width * 0.05
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
 
-        Button {
-            y: parent.height * 0.05
-            id: basket
-            text: "My Personal Cookbook"
-            //anchors.horizontalCenter: parent.horizontalCenter
+            MouseArea {
+                id: basket
+                anchors.fill: parent
 
             onClicked: {
                 //cookBook.open()
@@ -505,33 +665,147 @@ Row {
             id: addtofridge
             text: "Add to Cookbook"
 
-            onClicked: {
-                addRecipe.open()
-            }
-        }
-        Button {
-            y: parent.height * 0.75
-            x: parent.width * 0.5 - 50
-            id: profil
-            height: 100
-            width: 100
-            text: "Profil"
-            onClicked: {
-                //cookBook.open()
-            }
-            background: Rectangle {
-                        color: "#D7ECDE"
-                        radius:12.5
-                    }
-        }
-        Button {
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            anchors.rightMargin: 10
-            anchors.bottomMargin: 10
+                onClicked: {
+                    addRecipe.open()
+                }
 
-            text: "Logout"
-            onClicked: stackView.pop() // need to add a function which logs the user out of the server, then deletes all active data from the instance.
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "➕"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Add A Recipe"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
+            }
+        }
+
+        Rectangle {
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: parent.height * 0.75
+            //x: parent.width * 0.5 - 50
+            width: 75
+            height: 95
+            color: "white"
+            radius:12.5
+
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    profile.open()
+                }
+
+                Rectangle {
+                    id:centerprofile
+                    y:parent.parent.height * 0.15
+                    //x:parent.parent.height * 0.15
+                    width: parent.width * 0.7
+                    height: parent.width * 0.7
+                    color: "#A3C995"
+                    radius: 2
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    //anchors.verticalCenter: parent.verticalCenter
+                    //anchors.bottom: parent.bottom
+                    //anchors.bottomMargin:  parent.parent.height * 1/2// Adjust the margin as needed
+
+                    Label {
+                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻","👨🏻‍🎓"]
+                        text: textList[Math.ceil(Math.random() * 5)]
+                        font.pixelSize: parent.height *0.7
+                        anchors.bottom: parent.bottom
+                        //anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+                Label {
+                    text: "Profile"
+                    font.bold: true
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        bottom: parent.bottom
+                        bottomMargin: 5 // Adjust the margin as needed
+                    }
+                }
+                hoverEnabled: true
+
+                onEntered: {
+                    centerprofile.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    centerprofile.color = "#A3C995"; // Back to transparent when not hovered
+                }
+
+            }
+        }
+
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: deux.width * 0.04
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                anchors.fill: parent
+
+                onClicked: {stackView.push(Qt.resolvedUrl("LoginPage.qml"))}
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "👋"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Logout"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
+            }
         }
     }
 
@@ -633,6 +907,9 @@ Row {
 
     Settings {
         id: settings
+    }
+    Profile {
+        id: profile
     }
 
     Popup {
