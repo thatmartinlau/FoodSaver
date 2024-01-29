@@ -42,17 +42,8 @@ public slots:
     QList<QString> getIngredientsForVis();
     QList<QString> getInstructionsForVis();
 
-    bool checkTitle(const QString &title);
-    void likeRecipe(const QString &recipeName);
-    void unlikeRecipe(const QString &recipeName);
-    QList<QString> getLikedRecipes();
 
-private:
-    QList<QString> likedRecipes;
 
-    /*void like_recipe(QList<QString> recipe);
-    void unlike_recipe(QList<QString> recipe);
-    QList<QString> liked_recipes;*/
 
     //modif eli: jai changé QList<QString> en QString
     //QString searchRecipes(const QString &entry, const QString &dietRestriction);
