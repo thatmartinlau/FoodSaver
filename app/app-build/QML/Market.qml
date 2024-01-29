@@ -281,6 +281,7 @@ Rectangle {
                             text: "Time left"
                             onClicked: {
                                 //std::vector<Ingredient> sorted_fridge = sort_ingredient_by_expiration_date()
+
                             }
                         }
 
@@ -349,12 +350,12 @@ Rectangle {
                                             radius: 12.5
                                             width: parent.height - 10
                                             height: parent.height - 10
-                                            color: "white"
+                                            color: "transparent"
 
                                             Label{
-                                                text: "Photo"
+                                                text: model.emoji
                                                 font.bold: true
-                                                font.pixelSize: 18
+                                                font.pixelSize: 75
                                                 anchors.centerIn: parent
                                             }
                                         }
@@ -409,6 +410,7 @@ Rectangle {
                                                 anchors.fill: parent
                                                 onClicked: {
                                                     myBasket.open() // need to change so that it adds it actually to the basket
+
                                                 }
                                             }
                                         }
@@ -451,6 +453,7 @@ Rectangle {
             MouseArea {
                 id: basket
                 anchors.fill: parent
+                onClicked: myBasket.open()
 
                 Rectangle {
                     width: 24
@@ -602,6 +605,10 @@ Rectangle {
     Settings {
         id: settings
     }
+
+    Basket {
+            id: myBasket
+        }
 
     AddToFridge {
         id: addtofridge
