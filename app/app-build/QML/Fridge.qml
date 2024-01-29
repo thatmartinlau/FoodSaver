@@ -94,7 +94,7 @@ Rectangle {
                         }
 
                         Label {
-                            text: "Markets"
+                            text: "Market"
                             anchors.verticalCenter: parent.verticalCenter
                             x: 50 // Additional property for the label
                         }
@@ -868,7 +868,7 @@ Rectangle {
                 }
 
                 Label {
-                    text: "My basket"
+                    text: "My Basket"
                     anchors.verticalCenter: parent.verticalCenter
                     x: 50 // Additional property for the label
                 }
@@ -1006,7 +1006,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
 
-                onClicked: stackView.pop()
+                onClicked: {stackView.push(Qt.resolvedUrl("LoginPage.qml"))}
 
                 Rectangle {
                     width: 24
