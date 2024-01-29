@@ -9,18 +9,6 @@ Rectangle {
         width: parent.width * 0.20
         height: parent.height
         color: "#5E9F7C"
-        /*Column {
-
-            anchors.left: parent.left
-            anchors.bottom: parent.verticalCenter
-            anchors.leftMargin: parent.width * 0.05
-
-            Button { text: "My Fridge"; enabled: false; onClicked: stackView.push(Qt.resolvedUrl("Fridge.qml")) }
-            Button { text: "Market"; onClicked: stackView.replace(Qt.resolvedUrl("Market.qml")) }
-            //Button { text: "My Favorites"; onClicked: stackView.replace(Qt.resolvedUrl("Favorites.qml")) }
-            Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
-
-        }*/
 
         // New side buttons
         Rectangle {

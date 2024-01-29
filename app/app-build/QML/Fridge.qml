@@ -779,7 +779,8 @@ Rectangle {
                                             Button {
                                                 text: "Modify item"
                                                 onClicked: {
-                                                    modify.itemIndex = itemModel.getIndexByPropertyValue("index", model.index);
+                                                    modify.itemIndex3 = itemModel.getIndexByPropertyValue("index", model.index);
+                                                    console.log(modify.itemIndex3)
                                                     modify.open();
                                                     //pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
                                                 }
@@ -800,6 +801,7 @@ Rectangle {
                                                     console.log("ok2")
                                                     itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index))
                                                     console.log("ok3")
+
                                                     }
                                                 }
                                             }
@@ -1002,7 +1004,7 @@ Rectangle {
                     //anchors.bottomMargin:  parent.parent.height * 1/2// Adjust the margin as needed
 
                     Label {
-                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻","👨🏻‍🎓", "👩‍🚀"]
+                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻", "👨🏻‍🎓", "👩‍🚀"]
                         text: textList[Math.ceil(Math.random() * 6)]
                         font.pixelSize: parent.height *0.7
                         anchors.bottom: parent.bottom
