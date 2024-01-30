@@ -76,7 +76,7 @@ int main() {
                                                     "Here are the things that I can do for you:\n"
                                                     "- /Login - login to your fridge account\n"
                                                     "- /Register - register a new fridge account\n"
-                                                    "- Logout - terminate the link of this telegram account\n"
+                                                    "- /Logout - terminate the link of this telegram account\n"
                                                     "- /Check_fridge - check your fridge contents\n"
                                                     "- /Get_random_recipe - get a random recipe from our recipe list\n");
     });
