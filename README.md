@@ -60,4 +60,7 @@ The three actions on an item work in QML locally. When you put an item up for sa
 
 <h2>III. Connecting the server to the app</h2>
 
-<h2>IV. Photo recognition</h2>
+<h2>IV. Photo recognition and Telegram bot</h2>
+Please check server/CNN/README.txt and telegram-bot/telegram-bot/README.md for instructions.
+
+
