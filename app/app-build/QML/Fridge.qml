@@ -1204,7 +1204,95 @@ Rectangle {
                 }
             }
         }
+    } 
+    ApplicationWindow {
+        visible: true
+        width: 400
+        height: 400
+
+        Rectangle {
+            width: parent.width
+            height: parent.height
+
+            TextField {
+                id: dateField
+                width: parent.width - 20
+                placeholderText: "Select a date"
+                readOnly: true
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        datePickerPopup.open()
+                    }
+                }
+            }
+
+            Popup {
+                id: datePickerPopup
+                width: 300
+                height: 300
+                modal: true
+
+                ListView {
+                    anchors.fill: parent
+                    model: ListModel {
+                        ListElement { month: "January" }
+                        ListElement { month: "February" }
+                        ListElement { month: "March" }
+                        ListElement { month: "April" }
+                        ListElement { month: "May" }
+                        ListElement { month: "June" }
+                        ListElement { month: "July" }
+                        ListElement { month: "August" }
+                        ListElement { month: "September" }
+                        ListElement { month: "October" }
+                        ListElement { month: "November" }
+                        ListElement { month: "December" }
+                    }
+
+                    delegate: Item {
+                        width: datePickerPopup.width
+                        height: datePickerPopup.height / 4
+
+                        Column {
+                            spacing: 5
+
+                            Text {
+                                text: model.month
+                                font.bold: true
+                            }
+
+                            Repeater {
+                                model: 31 // Assuming maximum 31 days in a month
+                                Rectangle {
+                                    width: datePickerPopup.width
+                                    height: 30
+                                    color: "lightblue"
+                                    border.color: "white"
+                                    border.width: 1
+
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: (index + 1).toString()
+                                        MouseArea {
+                                            anchors.fill: parent
+                                            onClicked: {
+                                                var selectedDate = new Date(new Date().getFullYear(), monthIndex, index + 1);
+                                                dateField.text = selectedDate.toLocaleDateString(Qt.locale("en_US"));
+                                                datePickerPopup.close();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+
 
 Profile {
     id: profile
