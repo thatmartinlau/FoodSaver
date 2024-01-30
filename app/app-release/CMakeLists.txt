@@ -5,32 +5,59 @@ project(app-release)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.2 COMPONENTS Quick Gui REQUIRED)
+find_package(Qt6 6.2 COMPONENTS Core Quick Gui REQUIRED)
 qt_standard_project_setup(REQUIRES 6.5)
 
+include_directories(../../test3 Header Source ../../server/POCOSocket/Server/web_teste)
+#add_subdirectory(../../test3 ../../test3)
+
+add_subdirectory(../../server/POCOSocket/Server/web_teste/rpclib-master/ ../../server/POCOSocket/Server/web_teste/rpclib-master/)
 
 # Add the source files
-set(SOURCES
-    Source/fridgemanager.cpp
-    Source/RecipeBook.cpp
-    Source/recipe.cpp
-    Source/recipeconverter.cpp
-    main.cpp
-    Source/date.cpp
-    Source/fridge.cpp
-    Source/front.cpp
-    Source/ingredient.cpp
-    Source/link_pocco.cpp
-    Source/Login.cpp
-    Source/offer.cpp
-    # Add other source files here
+
+
+
+qt_add_resources(RESOURCES qml.qrc)
+# Add an executable for the project using the specified source files
+add_executable(${PROJECT_NAME} main.cpp
+	Header/currentUser.h
+	Header/fridgemanager.h
+	Header/Login.h
+	Header/profilemanager.h
+#	Header/RecipeBook.h
+	Header/settingsmanager.h
+	Header/Signin.h
+	Header/SigninInformation.h
+	
+	Source/currentUser.cpp
+	Source/fridgemanager.cpp
+	Source/Login.cpp
+	Source/profilemanager.cpp
+#	Source/RecipeBook.cpp
+	Source/settingsmanager.cpp
+	Source/Signin.cpp
+	Source/SigninInformation.cpp
+	Source/recipeconverter.cpp
+	
+	../../test3/date.h 
+	../../test3/fridge.h 
+	../../test3/ingredient.h
+	../../test3/offer.h 
+	../../test3/recipe.h 
+	../../test3/user.h
+	../../test3/main.cpp
+	../../test3/date.cpp 
+	../../test3/fridge.cpp
+	../../test3/ingredient.cpp
+	../../test3/offer.cpp
+	../../test3/user.cpp
+	../../test3/recipe.cpp
+	
+	qml.qrc
 )
 
-# Add an executable for the project using the specified source files
-add_executable(${PROJECT_NAME} ${SOURCES})
-
 # Link the Qt5 libraries
-target_link_libraries(app-release PRIVATE Qt6::Gui Qt6::Quick)
+target_link_libraries(app-release PRIVATE Qt6::Core Qt6::Gui Qt6::Quick rpc)
 
 include(GNUInstallDirs)
 install(TARGETS app-release

@@ -38,9 +38,9 @@ std::map<int64_t, UserCredentials> userCredentialsMap;
 std::map<int64_t, UserInfo> userStates;
 
 TgBot::Bot bot("6644281748:AAFh40LQLa5054caEUPt8T_9wf-Yv1hAB-w");
-rpc::client c("172.20.10.7", 8080);
+rpc::client c("172.20.10.7", 8080); // IP number, Port number
 
-
+// Check expiration from all fridges
 vector<vector<string>> check_expiration(client& c) {
     vector<vector<string>> result;
     for (const auto& entry : userCredentialsMap) {
@@ -75,6 +75,7 @@ int main() {
         bot.getApi().sendMessage(message->chat->id, "Welcome to FoodSaver bot, I can help you manage your fridge account." 
                                                     "Here are the things that I can do for you:\n"
                                                     "- /Login - login to your fridge account\n"
+                                                    "- /Logout - terminate the link of this telegram account\n"
                                                     "- /Register - register a new fridge account\n"
                                                     "- /Check_fridge - check your fridge contents\n"
                                                     "- /Get_random_recipe - get a random recipe from our recipe list\n");
@@ -91,6 +92,19 @@ int main() {
             UserInfo& userInfo = userStates[message->chat->id];
             userInfo.state = UserState::AwaitingUsername;
             bot.getApi().sendMessage(chatId, "Enter your username: ");
+        }
+    });
+
+    //
+    bot.getEvents().onCommand("Logout", [](TgBot::Message::Ptr message) {
+        int64_t chatId = message->chat->id;
+        if (userCredentialsMap.find(chatId) != userCredentialsMap.end()) {
+            // User already logged in
+            userCredentialsMap.erase(chatId);
+            bot.getApi().sendMessage(chatId, "Logout successfully!");
+        } else {
+            // User needs to log in
+            bot.getApi().sendMessage(chatId, "Sorry, this telegram account hasn't linked to any fridge!");
         }
     });
 

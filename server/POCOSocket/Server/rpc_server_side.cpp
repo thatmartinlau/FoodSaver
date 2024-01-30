@@ -386,9 +386,12 @@ void update_user(string old_username, string old_password, string new_username, 
 
 void update_user_characteristics(string username, string password, vector<string> new_characs) {
     auto el = database->find(username);
-    
+
     if (el != database->end() && password==el->second.password) {
         basic_user_data new_user_data;
+        //cout<< "I'm in"<< endl;
+        cout<< "I'm in"<< endl;
+
         new_user_data = deserialize_basic_data_of_user(new_characs);
         el->second.basic_u_data = new_user_data;
         write_simple_types();
@@ -411,6 +414,8 @@ void update_fridge(string username, string password, vector<string> fridge) {
         auto el = database->find(username); // Find the username in the database
         if (el != database->end()) {
             // Username exists
+
+
             if (password == el->second.password) {
                 // Password matches
             vector<vector<string>> old_data = el->second.fridge; //used so we can later delete the old data
@@ -746,18 +751,21 @@ void test_update_user_characteristics(){
     vector<string> characteristics;
     characteristics.push_back("newDisplay");
     characteristics.push_back("newtelegram");
+    characteristics.push_back("batiment");
     characteristics.push_back("1");
     characteristics.push_back("25");
     characteristics.push_back("33667");
     characteristics.push_back("3");
     characteristics.push_back("4");
     update_user_characteristics("User1", "Password1", characteristics);
-
-
-
     cout<<(*database)["User1"].basic_u_data.display_name <<endl;
 
 
+}
+
+void test_update_offer_list(){
+    vector<string> offer_list = serialize_offer_list({{{"Bread", "2024-05-10", "1 loaf", "Bakery", "Low"}, {"2"}},{{"Milk", "2024-05-15", "1L", "Dairy", "High"}, {"3"}} });
+    update_offer("User1", "Password1", offer_list);
 }
 
 /*
@@ -844,6 +852,8 @@ void test_get_user_name_vectors() {
     cout << endl;
 }
 
+
+
 /*
 void test_get_food_restrictions() {
     string test_username = "TestUser";
@@ -878,12 +888,15 @@ int main() {
     // Run the specific test for get_basic_user_data
 
     test_update_username();
+    test_get_user_name_vectors();
+
+    test_update_user_characteristics();
+    test_update_offer_list();
     //test_get_basic_user_data();
     //test_get_fridge();
     //test_getAllRecipes();
     //test_get_offer_list();
     //test_getMapOfOffers();
-    test_get_user_name_vectors();
     //test_get_food_restrictions();
 
     rpc::server srv(8080);

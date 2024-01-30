@@ -53,7 +53,24 @@ Modified the fridge and created in the fridge two tabs: the one My Fridge and th
 
 ##11th session (TD of 18th of jan & full day on):
 
-After HOURSS - I mean it - of struggle and with the help of Martin, I finally managed to make the first porgress in connecting qml and cpp. i actually requiered me writing a lot of cpp (did not expected it) but i guess it's nice for my grade cause I'm finaly writing in cpp (the focus of this class let us remind here). Today I manage that when a ingredient is added to your fridge (with the pop up window I coded earlier) it is actually handled by the rest of the team to do smth about it. I am just the guys connecting their blubibulga to mine, I am not interested by what they are doing nor how they did it. just that now they are happy cause I did it without giving up. 
+After HOURSS - I mean it - of struggle and with the help of Martin, I finally managed to make the first porgress in connecting qml and cpp. i actually requiered me writing a lot of cpp (did not expected it) but i guess it's nice for my grade cause I'm finaly writing in cpp (the focus of this class let us remind here). Today I manage that when a ingredient is added to your fridge (with the pop up window I coded earlier). 
 
 ##12th session (TD of 22th of Jan): 
-What I did today consists of makaing a lot of small changes: repairing the scroll over the product in your fridge and make it looks good. Modifying the repeater of the ingredient to make it looks better and indicate when the product is on sell or not, the price etc. 
+What I did today consists of a lot of small changes: repairing the scroll over the product in your fridge and make it looks good. Modifying the repeater of the ingredient to make it looks better and indicate when the product is on sell or not, the price etc. 
+
+##13th session (26th of jan):
+
+for the fridge by date completed by getting inspired of what cyriac did and using the functions of the sixtine, i coded in fridgemanager.cpp the needed functions to convert the objects, int and strings from QObejct to std (standard) object, like for the date with the date class and the Food_class. 
+
+order fridge by category: show the element that has the category selected or not 
+
+
+##13th session (27th of jan):
+search bar: different logic that the one of Cyriac, I send to cpp the request, then it goes through every name of item in the fridge vector, if the sequence of letters (can be in the middle .i.e "il" for "milk") is in the name of the ingredient it is added to the list of visible item if not the item would be hidden. 
+
+##14th session (28/9th of jan):
+Work on the aethetic of the application, I coded the button with small icons and deploy it on the whole app (the page of Recipes and Market and login page). There is also some more subtiles changes (would need to go to every commit to see one and one lines changed) they all added up to a significant amount to be mentionned and they contribute greatly to the overall user experience. 
+
+In sight of the demo there is the "demo fridge" button that automatically add 4 ingredients (presetted) to the fride cause adding ingredient one by one is time conssuming
+
+I'll try later to make a list of what work only in qml, in both or just in cpp and therefore what functionnality are not compatible together cause some breaks what others do. 

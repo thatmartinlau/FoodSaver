@@ -2,7 +2,7 @@ Progress Report
 
 Week 1:
 
-During the monday session we spent an hour splitting the group into smaller working groups. I decided to join the frontend group. The rest of the session was spent deciding on the general layout of the app and figuring out how to install Qt Designer. The thursdya session along with 4 hours at home were spent struggling to install the software.
+During the monday session we spent an hour splitting the group into smaller working groups. I decided to join the frontend group. The rest of the session was spent deciding on the general layout of the app and figuring out how to install Qt Designer. The thursday session along with 4 hours at home were spent struggling to install the software.
 
 Week 2:
 
@@ -40,3 +40,9 @@ Week 8:
 
 During the Monday session I worked on debugging the SigninInformation.qml page  but it still emits errors during the execution, however it compiles so hopefully 
 it won't cause too many issues when joined to other pages.
+
+Final 2 weeks:
+
+Once I had finished implementing everything we started the merging process. I had several issues leading me to lose my code and rewrite the newer bits of it or copy and pasting it but in the end I got all my code to main. I added some logic to the Profile page.
+
+Martin got very sick so I took over the coordination of everything for the presentation.

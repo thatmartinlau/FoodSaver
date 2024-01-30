@@ -30,7 +30,6 @@ Week 12 :
 Week 13 : 08/01/2024 - 14/01/2024 
 - coding the entire final rpc_client_side updated with the front-end changes.
   
-  
 Week 14: 15/01/2024 - 21/01/2024 : 
 
 - coding serialize functions (for double vector string, and triple vector string) 
@@ -38,12 +37,18 @@ Week 14: 15/01/2024 - 21/01/2024 :
 - debugging again the code for rpc_client_side.
 - adding new enums in link with the wishes of the front end.
 
-Week 15 : 
+Week 15:  21/04/2024 - 28/04/2024 : 
 - preparing on the presentation
 - discussing with Esma on server_side and client_side to be updated of the changes of one and other.
 - coded the final version of the User class struct
 - created the link between User_data, Server_User and User classes --> linking server and front side.
 - get informed of correctness check of everyone.
+
+Week 16 29/04/2024 - 31/04/2024 : 
+- testing update functions in the server for the demo <--> working with the testing functions of Esma
+- managed to debug important deserialization function
+- writing individual report 
+  
   
   
 

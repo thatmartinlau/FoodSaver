@@ -7,16 +7,17 @@ Popup {
     anchors.centerIn: parent
     width: 350
     height: 370
-    closePolicy: "CloseOnEscape"
+    closePolicy: Popup.CloseOnEscape
     background: Rectangle {
         color:"#EEEEEE"
         radius: 12.5
     }
-    property int itemIndex: -1
+    property int itemIndex3
 
     Column {
         anchors.centerIn: parent
         spacing: 10
+
 
         Button {
             anchors.right: parent.right
@@ -52,11 +53,11 @@ Popup {
                 radius: 12.5
             }
             placeholderText: "Enter Item"
-            text: (itemIndex !== -1 ? itemModel.get(itemIndex).item : "")
+            text: (itemIndex3 !== -1 ? itemModel.get(itemIndex3).item : "")
         }
 
-        TextField {
-            id: categoryInput
+        /*TextField {
+            id: categorieInput
             width: 340
             height: 25
             padding: 5
@@ -66,7 +67,18 @@ Popup {
                 radius: 12.5
             }
             placeholderText: "Enter Category"
-            text: (itemIndex !== -1 ? itemModel.get(itemIndex).categorie : "")
+            text: (itemIndex3 !== -1 ? itemModel.get(itemIndex3).categorie : "")
+        }*/
+        ComboBox {
+            id: categoryInput
+            width: 200
+            model: ["Unspecified", "Fruit", "Vegetable", "Drink", "Dairy", "Canned",
+                "Meat", "Fish", "Sweet", "Nut", "Other"]
+
+            onCurrentIndexChanged: {
+                console.log("Selected option:", categoryInput.currentText);
+                console.log(itemModel)
+            }
         }
         TextField {
             id: expiryDateInput
@@ -79,7 +91,7 @@ Popup {
                 radius: 12.5
             }
             placeholderText: "Enter Expiry Date"
-            text: (itemIndex !== -1 ? itemModel.get(itemIndex).date : "")
+            text: (itemIndex3 !== -1 ? itemModel.get(itemIndex3).date : "")
         }
         TextField {
             id: quantityInput
@@ -92,7 +104,7 @@ Popup {
                 radius: 12.5
             }
             placeholderText: "Enter Quantity"
-            text: (itemIndex !== -1 ? itemModel.get(itemIndex).quantity : "")
+            text: (itemIndex3 !== -1 ? itemModel.get(itemIndex3).quantity : "")
         }
 
         Row {
@@ -105,19 +117,24 @@ Popup {
                     radius: 12.5
                 }
                 onClicked: {
-                    var indexToSell = modify.itemIndex;
+                    var indexToSell = modify.itemIndex3;
                     if (indexToSell !== -1) {
 
                         var quantityToSet = quantityInput.text;
                         var itemToSet = itemInput.text;
-                        var categoryToSet = categoryInput.text;
+                        var categoryToSet = categoryInput.currentText;
                         var expiryDateToSet = expiryDateInput.text;
+                        fridgemanager.pop_elt(indexToSell)
+                        quantityInput.text = "";
+                        itemInput.text= "";
+                        expiryDateInput.text= "";
+
 
                         itemModel.setProperty(indexToSell, "quantity", quantityToSet);
                         itemModel.setProperty(indexToSell, "item", itemToSet);
-                        itemModel.setProperty(indexToSell, "category", categoryToSet);
+                        itemModel.setProperty(indexToSell, "categorie", categoryToSet);
                         itemModel.setProperty(indexToSell, "date", expiryDateToSet);
-
+                        fridgemanager.add_elt(itemToSet, expiryDateToSet, quantityToSet, categoryToSet);
                         modify.close();
                     }
                 }

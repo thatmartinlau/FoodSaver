@@ -168,3 +168,5 @@ for idx in np.arange(4):
     imshow(images.cpu()[idx])
     print(train_data.classes[preds[idx]])
     ax.set_title(f'Predicted: {train_data.classes[preds[idx]]}\nActual: {train_data.classes[labels[idx]]}')
+
+torch.save(model.state_dict(), 'model.pth')

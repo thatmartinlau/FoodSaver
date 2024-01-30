@@ -42,6 +42,33 @@
             "tags": ["Jambalaya", "Hot pepper sauce", "Shrimp", "Chicken","Tomatoes", "Rice", "Parsley", "Cajun", "Olive oil", "Dinner"],
             "url": "http://allrecipes.com/recipe/231315/1-2-3-jambalaya/"
         },
+            {
+            "title": "Cream of Mushroom Soup",
+            "directions": [
+                "Gather all ingredients.",
+                "Simmer mushrooms, broth, onion, and thyme in a large heavy saucepan until vegetables are tender, 10 to 15 minutes.",
+                "Carefully transfer the hot mixture to a blender or food processor. Cover and hold lid down with a potholder; pulse until creamy but still with some chunks of vegetable.",
+                "Melt butter in the same saucepan. Whisk in flour until smooth. Whisk in salt and pepper. Slowly whisk in half-and-half and mushroom mixture.",
+                "Bring soup to a boil and cook, stirring constantly, until thickened.",
+                "Stir in sherry. Taste and season with more salt and pepper if needed."
+              ],
+            "ingredients": [
+                "5 cups sliced fresh mushrooms",
+                "1 ½ cups chicken broth",
+                "½ cup chopped onion",
+                "⅛ teaspoon dried thyme",
+                "3 tablespoons butter",
+                "3 tablespoons all-purpose flour",
+                "¼ teaspoon salt",
+                "¼ teaspoon ground black pepper",
+                "1 cup half-and-half",
+                "1 tablespoon sherry"
+              ],
+          "source": "Allrecipes",
+          "tags": ["Soup", "Mushroom", "Cream", "Onion", "Thyme", "Butter", "Flour", "Half-and-Half", "Sherry"],
+          "url": "https://www.allrecipes.com/recipe/13096/cream-of-mushroom-soup-i/"
+        }
+
         {
             "title": "1-Dish Chicken Parmesan",
             "directions": [
@@ -291,6 +318,32 @@
             "tags": ["Mochaccino", "Coffee", "Drink", "Hot", "Juice", "Cacao", "Milk", "Protein Power", "Breakfast"],
             "url": "http://allrecipes.com/recipe/239043/a-healthier-mochaccino/"
         },
+        {
+    "title": "Chocolate Pie",
+    "directions": [
+        "Preheat the oven to 325 degrees F (162 degrees C).",
+        "To make the filling: Whisk 1 cup sugar, flour, cornstarch, and salt together in a medium saucepan; stir in water, lemon juice, and lemon zest. Cook over medium-high heat, stirring frequently, until mixture comes to a boil. Stir in butter.",
+        "Place egg yolks in a small bowl and gradually whisk in 1/2 cup of hot sugar mixture. Whisk egg yolk mixture back into remaining sugar mixture. Bring to a boil and continue to cook while stirring constantly until thick. Remove from heat; pour filling into baked pastry shell.",
+        "To make the meringue: Beat egg whites in a glass, metal, or ceramic bowl with an electric mixer until foamy. Gradually add sugar, continuing to beat until stiff peaks form. Spread meringue over pie filling, sealing the edges at the crust.",
+        "Bake in preheated oven until meringue is golden brown, about 20 to 25 minutes."
+    ],
+    "ingredients": [
+        "1 cup white sugar",
+        "2 tablespoons all-purpose flour",
+        "3 tablespoons cornstarch",
+        "¼ teaspoon salt",
+        "1 ½ cups water",
+        "2 lemons, juiced and zested",
+        "2 tablespoons butter",
+        "4 egg yolks, beaten",
+        "1 (9 inch) pie crust, baked",
+        "4 egg whites",
+        "1/2 cup white sugar"
+    ],
+    "source": "Allrecipes",
+    "tags": ["Pie", "Dessert", "Chocolate", "Lemon", "Meringue"],
+    "url": "https://www.allrecipes.com/recipe/15234/grandmas-lemon-meringue-pie/"
+}
         {
             "title": "A Hearty Porridge",
             "directions": [
@@ -570,7 +623,55 @@
                 "Tree Nut Free"
             ],
             "url": "http://www.epicurious.com/recipes/food/views/a-simple-roast-turkey-51122680"
-        },
+        }
+        {
+    "title": "Classic Peanut Butter Cookies",
+    "directions": [
+        "Beat butter, peanut butter, white sugar, and brown sugar with an electric mixer in a large bowl until smooth; beat in eggs.",
+        "Sift flour, baking soda, baking powder, and salt into a separate bowl; stir into butter mixture until dough is just combined. Chill cookie dough in the refrigerator for 1 hour to make it easier to work with.",
+        "Preheat the oven to 375 degrees F (190 degrees C).",
+        "Roll dough into 1-inch balls and place 2 inches apart onto ungreased baking sheets. Flatten each ball with a fork, making a crisscross pattern.",
+        "Bake in the preheated oven until edges are golden, about 7 to 10 minutes. Cool on the baking sheets briefly before removing to a wire rack to cool completely."
+    ],
+    "ingredients": [
+        "1 cup unsalted butter",
+        "1 cup crunchy peanut butter",
+        "1 cup white sugar",
+        "1 cup packed brown sugar",
+        "2 large eggs",
+        "2 ½ cups all-purpose flour",
+        "1 ½ teaspoons baking soda",
+        "1 teaspoon baking powder",
+        "½ teaspoon salt"
+    ],
+    "source": "Allrecipes",
+    "tags": ["Cookies", "Peanut Butter", "Baking", "Dessert"],
+    "url": "https://www.allrecipes.com/recipe/10275/classic-peanut-butter-cookies/"
+}
+        {
+    "title": "Classic Peanut Butter Cookies",
+    "directions": [
+        "Beat butter, peanut butter, white sugar, and brown sugar with an electric mixer in a large bowl until smooth; beat in eggs.",
+        "Sift flour, baking soda, baking powder, and salt into a separate bowl; stir into butter mixture until dough is just combined. Chill cookie dough in the refrigerator for 1 hour to make it easier to work with.",
+        "Preheat the oven to 375 degrees F (190 degrees C).",
+        "Roll dough into 1-inch balls and place 2 inches apart onto ungreased baking sheets. Flatten each ball with a fork, making a crisscross pattern.",
+        "Bake in the preheated oven until edges are golden, about 7 to 10 minutes. Cool on the baking sheets briefly before removing to a wire rack to cool completely."
+    ],
+    "ingredients": [
+        "1 cup unsalted butter",
+        "1 cup crunchy peanut butter",
+        "1 cup white sugar",
+        "1 cup packed brown sugar",
+        "2 large eggs",
+        "2 ½ cups all-purpose flour",
+        "1 ½ teaspoons baking soda",
+        "1 teaspoon baking powder",
+        "½ teaspoon salt"
+    ],
+    "source": "Allrecipes",
+    "tags": ["Cookies", "Peanut Butter", "Baking", "Dessert"],
+    "url": "https://www.allrecipes.com/recipe/10275/classic-peanut-butter-cookies/"
+    }
         {
             "title": "Fried Chicken",
             "directions": [
@@ -635,6 +736,238 @@
             "tags": ["Smoothie", "Fruits", "Fruit", "Juice", "Vegan","Vegetarian", "Free"],
             "url": "http://allrecipes.com/recipe/20026/a-very-intense-fruit-smoothie/"
         },
+{
+    "title": "Garlic Shrimp Pasta Bake",
+    "directions": [
+        "Preheat the oven to 350 degrees F (175 degrees C).",
+        "Bring a large pot of lightly salted water to a boil. Add penne and cook until tender yet firm to the bite, about 11 minutes. Drain and set aside.",
+        "In a large oven-safe skillet, heat 1 tablespoon butter and oil over medium heat. Add garlic and cook until fragrant, about 30 seconds. Add shrimp, 2 tablespoons parsley, and dill; cook until shrimp are pink and opaque, about 2 minutes per side. Transfer shrimp to a plate.",
+        "Melt remaining 2 tablespoons butter in the skillet. Whisk in flour until golden, then gradually whisk in chicken broth and milk. Stir in tomatoes, lemon juice, salt, and pepper; simmer.",
+        "Stir in 1/2 cup Parmesan and Romano until melted and sauce is creamy. Add 1 tablespoon mozzarella, then mix in 1/2 of the cooked pasta. Add more pasta if needed. Stir in shrimp, then top with remaining mozzarella, Parmesan, and parsley.",
+        "Bake until golden and bubbling, 8 to 10 minutes."
+    ],
+    "ingredients": [
+        "1 (10 ounce) package penne pasta",
+        "3 tablespoons butter, divided",
+        "1 teaspoon vegetable oil",
+        "1 tablespoon minced garlic",
+        "1 pound uncooked medium shrimp, peeled and deveined",
+        "3 tablespoons chopped fresh parsley, divided",
+        "2 teaspoons chopped fresh dill",
+        "2 tablespoons all-purpose flour",
+        "½ cup chicken broth",
+        "1 cup milk",
+        "2 large tomatoes, chopped",
+        "1 tablespoon lemon juice",
+        "1 teaspoon salt",
+        "1 teaspoon ground black pepper",
+        "¾ cup grated Parmesan cheese",
+        "½ cup grated Romano cheese",
+        "¼ cup shredded mozzarella cheese"
+    ],
+    "source": "Ed N Angela Latimer",
+    "url": "https://www.allrecipes.com/recipe/263394/garlic-shrimp-pasta-bake/",
+    "tags": ["Garlic Shrimp", "Pasta Bake", "Seafood", "Italian", "Creamy Sauce"]
+}
+        {
+    "title": "Chef John's American Goulash",
+    "directions": [
+        "Gather all ingredients.",
+        "Heat oil in a pot over medium-high heat. Add ground beef and onion; cook and stir until beef is browned and crumbly and onion is translucent, about 5 minutes. Continue to cook and stir until liquid is evaporated, 3 to 5 minutes.",
+        "Add garlic, bay leaves, paprika, Italian seasoning, salt, black pepper, and cayenne. Cook, stirring occasionally, until flavors come together, about 3 minutes.",
+        "Pour in broth, marinara sauce, and diced tomatoes. Pour water into the sauce jar, swirl, and pour into the pot. Stir in soy sauce; bring to a simmer. Reduce the heat to medium and simmer until flavors intensify, about 30 minutes.",
+        "Increase the heat to medium-high and bring to a rapid simmer. Stir in macaroni; cook, stirring occasionally, until just barely tender, about 12 minutes. Check for doneness after 10 minutes.",
+        "Remove from the heat and discard bay leaves. Stir in Cheddar and parsley. Cover and let rest for 5 minutes. Taste and season as desired."
+    ],
+    "ingredients": [
+        "1 tablespoon olive oil",
+        "2 pounds ground beef",
+        "1 large onion, diced",
+        "4 cloves garlic, minced",
+        "2 large bay leaves",
+        "2 tablespoons paprika",
+        "2 teaspoons Italian seasoning",
+        "2 teaspoons kosher salt",
+        "½ teaspoon ground black pepper",
+        "1 pinch cayenne pepper, or to taste",
+        "1 quart chicken broth",
+        "1 (24 ounce) jar marinara sauce",
+        "1 (15 ounce) can diced tomatoes",
+        "1 cup water",
+        "2 tablespoons soy sauce",
+        "2 cups elbow macaroni",
+        "¼ cup chopped Italian parsley",
+        "1 cup shredded white Cheddar cheese (Optional)"
+    ],
+    "source": "Allrecipes",
+    "url": "",
+    "tags": ["Goulash", "American", "Comfort Food", "Pasta", "Beef", "One Pot Meal"]
+}
+        {
+    "title": "Potato Chip Cookies",
+    "directions": [
+        "Whisk flour, baking soda, and salt together in a bowl; set aside.",
+        "Beat butter, white sugar, and brown sugar together with an electric mixer until light and fluffy. Add egg and mix until fully incorporated and the mixture is smooth. Add milk and vanilla and repeat.",
+        "Stir potato chips and chocolate chips in with a spatula until just combined. Add flour mixture; continue mixing in with a spatula until flour disappears and dough comes together.",
+        "Wrap and chill dough for about 30 minutes, or until ready to bake. Dough can be used immediately if desired.",
+        "Preheat the oven to 375 degrees F (190 degrees C). Line baking sheets with parchment.",
+        "Scoop dough by rounded tablespoons onto the prepared baking sheet. Space evenly, as dough will spread when baked.",
+        "Bake in the preheated oven until outside edges of cookies are lightly browned, about 12 minutes. Cool on the pan for about 5 minutes, before removing cookies to a wire rack to cool completely. For best results, let cool completely before serving."
+    ],
+    "ingredients": [
+        "2 1/4 cups all-purpose flour",
+        "1 teaspoon baking soda",
+        "1/2 teaspoon salt",
+        "1 cup very soft unsalted butter (2 sticks)",
+        "1 cup white sugar",
+        "1/2 cup light brown sugar",
+        "1 large egg",
+        "2 tablespoons milk",
+        "1 teaspoon pure vanilla extract",
+        "2 cups lightly crushed potato chips",
+        "1 cup dark chocolate chips"
+    ],
+    "source": "Allrecipes",
+    "url": "",
+    "tags": ["Cookies", "Potato Chips", "Chocolate", "Dessert", "Baking"]
+}
+        {
+    "title": "Triple Coffee Sweet Rolls",
+    "directions": [
+        "Combine 1/4 cup instant espresso and hot milk in the bowl of a stand mixer, and let cool until just warm to the touch, about 95 degrees F (35 degrees C).",
+        "Add yeast, egg, white sugar, salt, and 6 tablespoons melted butter. Add most of the flour, attach the dough hook, and knead on low speed until everything comes together and begins to pull away from the sides of the bowl. Turn mixer speed up a notch, and continue to knead until a smooth, soft, elastic dough forms, adding in remaining flour as needed, 3 to 4 minutes.",
+        "Remove dough from the mixer, form into a ball, and place back in the bowl. Cover and let it rise in a warm place until doubled in size, 1 to 2 hours.",
+        "Meanwhile, make filling. Melt 1/2 cup butter in a small pan over medium heat. Stir in brown sugar, cocoa, and 1 tablespoon instant espresso powder. Once combined, remove from heat and let cool. As soon as butter starts to cool and solidify, stir to form a thick, spreadable paste. Reserve until needed.",
+        "Once dough has risen, use your hands to press out the air, and reshape into a ball. For best results, transfer dough to a plastic bag and place in the refrigerator overnight. Dough can be used right away if need be.",
+        "Very lightly flour a work surface. Turn dough out onto the work surface, press into a rectangle, and very lightly dust the top with flour. Roll out into a 12x18-inch rectangle.",
+        "Spread filling evenly to the edges, leaving a few inches along one of the long sides free of filling. Lightly brush exposed dough with water; this will help to seal the seam.",
+        "Beginning with the long side that has filling, roll dough and filling toward the long side with exposed dough to form a uniform log, finishing with the seam on the bottom.",
+        "Generously butter a 9x12- or 13-inch baking dish or pan, and, if desired, line the bottom with buttered parchment. Score the log of dough into 12 equal portions, and then cut each portion with a piece of string as shown.",
+        "Place cut rolls into the prepared pan. Cover rolls and leave to rise in a warm spot until doubled in size, 1 to 2 hours.",
+        "Preheat the oven to 375 degrees F (190 degrees C).",
+        "Bake in the preheated oven until puffed, golden brown at the edges, and an instant-read thermometer inserted into the center, reads 200 degrees F (95 degrees C), about 30 minutes.",
+        "Let cool for 15 minutes before icing.",
+        "Whisk together confectioner’s sugar with 3 to 4 tablespoons of espresso or strong coffee, or enough to form an icing that can be drizzled over with a spoon.",
+        "Drizzle icing over rolls and let cool before serving, or enjoy slightly warm."
+    ],
+    "ingredients": [
+        "Dough:",
+        "1/4 cup instant espresso powder",
+        "2 cups very hot milk, at 190 degrees F (88 degrees C)",
+        "2 1/4 teaspoons active dry yeast",
+        "1 large egg, beaten",
+        "2 tablespoons white sugar",
+        "3/4 teaspoon fine salt",
+        "6 tablespoons unsalted butter, melted",
+        "4 cups all-purpose flour, or more as needed",
+        "Filling:",
+        "1/2 cup unsalted butter",
+        "3/4 cup brown sugar",
+        "1 tablespoon instant espresso powder",
+        "1 tablespoon unsweetened cocoa",
+        "Icing:",
+        "1 1/4 cups confectioner's sugar",
+        "3 tablespoons espresso or strong coffee, or more as needed"
+    ],
+    "source": "Allrecipes",
+    "url": "",
+    "tags": ["Sweet Rolls", "Coffee", "Breakfast", "Brunch", "Baking", "Dessert"]
+}
+        {
+    "title": "Classic Dinner Rolls",
+    "directions": [
+        "Combine 3/4 cup flour, sugar, undissolved yeast, and salt in a large bowl.",
+        "Heat milk, water, and 2 tablespoons butter in a saucepan until very warm (120 degrees to 130 degrees F).",
+        "Add warm milk mixture to the flour mixture. Beat for 2 minutes on medium speed of an electric mixer, scraping the bowl occasionally. Add 1/4 cup flour; beat for 2 minutes at high speed. Stir in enough remaining flour to make soft dough.",
+        "Knead dough on a lightly floured surface until smooth and elastic, about 8 to 10 minutes. Cover; let rest for 10 minutes.",
+        "Divide dough into 12 equal pieces.",
+        "Shape pieces into balls and place in a greased 8-inch round pan. Cover and let rise in warm, draft-free place until doubled in size, about 30 minutes.",
+        "Preheat the oven to 375 degrees F (190 degrees C).",
+        "Bake rolls in the preheated oven until golden brown on top, about 20 minutes.",
+        "Brush with melted butter if you like; serve warm and enjoy!"
+    ],
+    "ingredients": [
+        "2 cups all-purpose flour, divided, or as needed",
+        "2 tablespoons white sugar",
+        "1 (.25 ounce) envelope Fleischmann's RapidRise Yeast",
+        "½ teaspoon salt",
+        "½ cup milk",
+        "¼ cup water",
+        "2 tablespoons butter, plus more for brushing"
+    ],
+    "source": "Allrecipes",
+    "url": "",
+    "tags": ["Dinner Rolls", "Bread", "Baking", "Yeast Bread", "Side Dish"]
+}
+        {
+    "title": "Skillet Pork Chops with Potatoes and Onion",
+    "directions": [
+        "Heat oil in a large skillet over medium heat. Coat the pork chops with flour, and place in the skillet. Brown about 4 minutes on each side.",
+        "In a small bowl, mix the Parmesan cheese, salt, and pepper. Sprinkle 1/2 the Parmesan cheese mixture over the pork chops. Layer chops with the potatoes. Sprinkle with remaining Parmesan cheese mixture. Top with onion slices.",
+        "In a small bowl, dissolve the beef bouillon cubes in hot water. Stir in the lemon juice. Pour over the layered pork chops.",
+        "Cover skillet, and reduce heat. Simmer 40 minutes, until vegetables are tender and pork chops have reached an internal temperature of 145 degrees F (63 degrees C)."
+    ],
+    "ingredients": [
+        "2 tablespoons vegetable oil",
+        "4 pork chops (1/2 inch thick), trimmed",
+        "2 tablespoons all-purpose flour",
+        "⅓ cup grated Parmesan cheese",
+        "½ teaspoon salt",
+        "¼ teaspoon pepper",
+        "4 Yukon Gold potatoes, thinly sliced",
+        "2 medium onions, sliced",
+        "3 cubes beef bouillon",
+        "¾ cup hot water",
+        "1 tablespoon lemon juice"
+    ],
+    "source": "Allrecipes",
+    "url": "",
+    "tags": ["Pork Chops", "Skillet", "Potatoes", "Onion", "Easy", "One Pan Meal"]
+}
+        {
+    "title": "Loaded Potato Chip Nachos",
+    "directions": [
+        "Preheat the oven to 425 degrees F (220 degrees C). Line a large rimmed baking sheet with parchment and spread chips out in an even layer.",
+        "Add 1 tablespoon ranch seasoning to sour cream and stir well to combine; set aside.",
+        "Place bacon in a large skillet and cook over medium-high heat, turning occasionally, until evenly browned, about 10 minutes. Drain bacon slices on paper towels; crumble when cool enough to handle.",
+        "Toss remaining ranch seasoning with shredded cheeses and sprinkle cheese mixture evenly over all the chips. Top evenly with bacon.",
+        "Bake in the preheated oven until cheese is melted and chips are beginning to brown and crisp around the edges, 10 to 12 minutes. Top with green onions and hot sauce. Serve with reserved sour cream dipping sauce."
+    ],
+    "ingredients": [
+        "1 (1 ounce) packet ranch seasoning, divided",
+        "1 cup sour cream",
+        "10 slices bacon",
+        "12 ounces wavy, kettle-cooked potato chips (such as Cape Cod Waves®), about 1 1/2 bags",
+        "2 cups shredded Cheddar cheese",
+        "2 cups shredded Monterey Jack cheese",
+        "3 green onions, thinly sliced",
+        "1 teaspoon hot sauce, or to taste (optional)"
+    ],
+    "source": "Allrecipes",
+    "url": "",
+    "tags": ["Nachos", "Potato Chips", "Loaded", "Appetizer", "Game Day", "Party Food"]
+}
+        {
+    "title": "Romantic Chicken with Artichokes and Mushrooms",
+    "directions": [
+        "Season chicken with salt and pepper. Heat oil and butter in a large skillet over medium heat. Brown chicken in oil and butter for 5 to 7 minutes per side; remove from skillet, and set aside.",
+        "Place artichoke hearts and mushrooms in the skillet, and saute until mushrooms are brown and tender. Return chicken to skillet, and pour in reserved artichoke liquid and wine. Reduce heat to low, and simmer for about 10 to 15 minutes, until chicken is no longer pink and juices run clear.",
+        "Stir in capers, and simmer for another 5 minutes. Remove from heat; serve immediately."
+    ],
+    "ingredients": [
+        "4 skinless, boneless chicken breast halves",
+        "salt and pepper to taste",
+        "1 tablespoon olive oil",
+        "1 tablespoon butter",
+        "1 (14 ounce) can marinated quartered artichoke hearts, drained, liquid reserved",
+        "1 cup sliced fresh mushrooms",
+        "1 cup white wine",
+        "1 tablespoon capers"
+    ],
+    "source": "Allrecipes",
+    "url": "",
+    "tags": ["Chicken", "Romantic", "Artichokes", "Mushrooms", "Easy", "Dinner", "Main Dish"]
+}
         {
             "title": "BBQ Sauce",
             "directions": [
@@ -720,7 +1053,35 @@
             "source": "allrecipes.com",
             "tags": ["Chocolate", "White Chocolate", "Latte", "Milk", "Vanilla", "Espresso", "Coffee", "Drink", "Breakfast"],
             "url": "http://allrecipes.com/recipe/137332/abbeys-white-chocolate-latte/"
-        },
+        },{
+          "title": "Bolognese Stuffed Bell Peppers",
+          "directions": [
+                "Preheat oven to 375 degrees F (190 degrees C).",
+                "Heat 1 tablespoon olive oil in a skillet over medium heat. Stir in the carrots and celery; cook and stir until the vegetables are tender, about 5 minutes.",
+                "Stir in ground beef and pancetta, and cook until browned and crumbled; drain off any excess liquid, and return to heat. Add marinara sauce, wine, and red pepper flakes, and simmer for 10 minutes. Stir in cream, half of the Parmesan cheese, and rice. Simmer 5 minutes more, or until most liquid has absorbed.",
+                "Place peppers in a shallow baking dish, and fill with beef mixture. Drizzle with remaining olive oil and top with remaining Parmesan cheese.",
+                "Bake, uncovered, for 30 minutes in the preheated oven. Serve hot."
+          ],
+          "ingredients": [
+            "½ cup cooked rice",
+            "2 tablespoons olive oil, divided",
+            "⅛ cup minced carrots",
+            "⅛ cup celery",
+            "6 bell peppers (any color) stems and seeds removed, cut in half lengthwise",
+            "½ pound ground beef",
+            "¼ pound pancetta or lightly smoked bacon, diced",
+            "1 ½ cups prepared marinara sauce",
+            "¼ cup red wine",
+            "½ teaspoon red pepper flakes",
+            "⅓ cup heavy cream",
+            "½ cup grated Parmesan cheese, divided"
+          ],
+        "source": "Allrecipes",
+        "tags": ["Main Dish", "Italian", "Bell Peppers", "Beef", "Pancetta", "Rice", "Parmesan", "Cream", "Red Wine"],
+        "url": "https://www.allrecipes.com/recipe/77194/bolognese-stuffed-bell-peppers/"
+}
+
+        
         {
             "title": "Golden Yogurt Cake",
             "directions": [
@@ -1101,6 +1462,39 @@
             ],
             "url": "http://www.epicurious.com/recipes/food/views/acorn-squash-with-wild-mushroom-cranberry-stuffing-1042"
         },
+        {
+    "title": "Garlic Shrimp Pasta Bake",
+    "directions": [
+        "Preheat the oven to 350 degrees F (175 degrees C).",
+        "Bring a large pot of lightly salted water to a boil. Add penne and cook until tender yet firm to the bite, about 11 minutes. Drain and set aside.",
+        "In a large oven-safe skillet, heat 1 tablespoon butter and oil over medium heat. Add garlic and cook until fragrant, about 30 seconds. Add shrimp, 2 tablespoons parsley, and dill; cook until shrimp are pink and opaque, about 2 minutes per side. Transfer shrimp to a plate.",
+        "Melt remaining 2 tablespoons butter in the skillet. Whisk in flour until golden, then gradually whisk in chicken broth and milk. Stir in tomatoes, lemon juice, salt, and pepper; simmer.",
+        "Stir in 1/2 cup Parmesan and Romano until melted and sauce is creamy. Add 1 tablespoon mozzarella, then mix in 1/2 of the cooked pasta. Add more pasta if needed. Stir in shrimp, then top with remaining mozzarella, Parmesan, and parsley.",
+        "Bake until golden and bubbling, 8 to 10 minutes."
+    ],
+    "ingredients": [
+        "1 (10 ounce) package penne pasta",
+        "3 tablespoons butter, divided",
+        "1 teaspoon vegetable oil",
+        "1 tablespoon minced garlic",
+        "1 pound uncooked medium shrimp, peeled and deveined",
+        "3 tablespoons chopped fresh parsley, divided",
+        "2 teaspoons chopped fresh dill",
+        "2 tablespoons all-purpose flour",
+        "½ cup chicken broth",
+        "1 cup milk",
+        "2 large tomatoes, chopped",
+        "1 tablespoon lemon juice",
+        "1 teaspoon salt",
+        "1 teaspoon ground black pepper",
+        "¾ cup grated Parmesan cheese",
+        "½ cup grated Romano cheese",
+        "¼ cup shredded mozzarella cheese"
+    ],
+    "source": "Ed N Angela Latimer",
+    "url": "",
+    "tags": ["Garlic Shrimp", "Pasta Bake", "Seafood", "Italian", "Creamy Sauce"]
+        }
         {
             "title": "Acorn Squash with Sweet Spicy Sausage",
             "directions": [
@@ -1734,6 +2128,26 @@
             "url": "http://www.foodnetwork.com/recipes/ree-drummond/all-purpose-meatballs"
         },
         {
+            "title": "Thin-Crust Pizza Dough",
+            "directions": [
+                "Dissolve yeast and sugar in warm water that's 110 degrees F (44 degrees C) in a small bowl. Let stand until yeast softens and begins to form a creamy foam, about 5 to 8 minutes.",
+                "Combine 1 3/4 cups flour and salt in a large bowl. Pour in yeast mixture; mix well until dough comes together.",
+                "Transfer dough to a floured surface and knead until smooth, about 2 minutes. Add remaining 1/4 cup flour if dough is too sticky.",
+                "Roll dough into a 12-inch circle. Transfer to a greased pizza pan."
+              ],
+            "ingredients": [
+                "1 teaspoon active dry yeast",
+                "¼ teaspoon white sugar",
+                "¾ cup lukewarm water",
+                "2 cups all-purpose flour, divided",
+                "½ teaspoon salt"
+              ],
+            "source": "Allrecipes",
+             "tags": ["Pizza", "Dough", "Thin-Crust", "Yeast", "Sugar", "Flour", "Salt"],
+            "url": "https://www.allrecipes.com/recipe/257198/thin-crust-pizza-dough/"
+        }
+
+        {
             "title": "All-Purpose Pizza Dough",
             "directions": [
                 "In a small bowl, dissolve the yeast in the lukewarm water and let stand until slightly foamy, about 10 minutes.",
@@ -1817,6 +2231,25 @@
             "tags": ["Veggie", "Burger", "Beans", "Bean", "Basil", "Rice", "Oats", "Tofu", "Garlic", "Vegetable", "Pepper", "Dinner", "Lunch", "Vegetarian"],
             "url": "http://allrecipes.com/recipe/81532/all-star-veggie-burger/"
         },
+{
+    "title": "Roasted Brussels Sprouts with Balsamic and Honey",
+    "directions": [
+        "Preheat the oven to 425 degrees F (220 degrees C). Line a baking sheet with parchment paper.",
+        "Combine Brussels sprouts, olive oil, salt, and pepper in a large bowl; toss to coat. Spread out evenly on the prepared baking sheet.",
+        "Roast in the preheated oven until browned, about 30 minutes, turning after 15 minutes. Remove from oven and drizzle with balsamic vinegar and honey, mixing to coat evenly."
+    ],
+    "ingredients": [
+        "1 pound Brussels sprouts, trimmed",
+        "3 tablespoons extra-virgin olive oil",
+        "1 teaspoon kosher salt, or to taste",
+        "½ teaspoon freshly ground black pepper, or to taste",
+        "1 tablespoon good quality balsamic vinegar",
+        "2 tablespoons honey, or to taste"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/274675/roasted-brussels-sprouts-with-balsamic-and-honey/",
+    "tags": ["Brussels Sprouts", "Roasted Vegetables", "Balsamic Vinegar", "Honey", "Side Dish"]
+}
         {
             "title": "Chili",
             "directions": [
@@ -2166,6 +2599,27 @@
             "tags": ["Asparagus", "Peas","Cheddar", "Cheese", " Parmesan", "Vegetarian", "Snack", "Lunch", "Diner"],
             "url": "http://allrecipes.com/recipe/31471/amazing-asparagus/"
         },
+        {
+    "title": "Air Fryer Tofu Milanesa",
+    "directions": [
+        "Cut tofu lengthwise into 2 slabs. Cut each slab into two triangles.",
+        "Mix bread crumbs and taco seasoning together in a shallow pan or plate. Lightly beat eggs in a separate shallow pan or plate.",
+        "Preheat the air fryer to 375 degrees F (190 degrees C).",
+        "Dip each tofu triangle into the beaten eggs. Dredge them in the bread crumb mixture. Gently press down to coat each side. Arrange in a single layer on a plate. Spray lightly with cooking spray.",
+        "Cook in the air fryer on one side for 15 minutes. Flip each triangle and spray lightly with cooking spray. Cook until browned, about 10 minutes more. You may need to cook in batches, depending on the size of your air fryer basket."
+    ],
+    "ingredients": [
+        "1 (8 ounce) container firm tofu, drained and pressed",
+        "⅓ cup dry bread crumbs",
+        "1 tablespoon taco seasoning mix",
+        "2 eggs",
+        "cooking spray"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/280717/air-fryer-tofu-milanesa/",
+    "tags": ["Tofu", "Milanesa", "Air Fryer", "Tex-Mex", "Crispy", "Easy", "Vegetarian"]
+}
+
         {
             "title": "Artichoke and Spinach Dip",
             "directions": [
@@ -3647,6 +4101,33 @@
             "tags": ["Salad", "California Roll", "Rice", "Lettuce", "Mayonnaise", "Soy Sauce", "Vinegar", "Sesame", "Avocado", "Cucumber", "Wasabi", "Crabmeat", "Lunch", "Dinner", "Snack"],
             "url": "http://allrecipes.com/recipe/62442/california-roll-salad/"
         },
+{
+    "title": "Mediterranean Zucchini and Chickpea Salad",
+    "directions": [
+        "Mix zucchini, chickpeas, tomatoes, red bell pepper, onion, feta, Kalamata olives, olive oil, basil, vinegar, rosemary, capers, garlic, oregano, red pepper flakes, salt, and black pepper together in a large bowl."
+    ],
+    "ingredients": [
+        "2 cups diced zucchini",
+        "1 (15 ounce) can chickpeas, drained and rinsed",
+        "1 cup halved grape tomatoes",
+        "¾ cup chopped red bell pepper",
+        "½ cup chopped sweet onion (such as Vidalia®)",
+        "½ cup crumbled feta cheese",
+        "½ cup chopped Kalamata olives",
+        "⅓ cup olive oil",
+        "⅓ cup packed fresh basil leaves, roughly chopped",
+        "¼ cup white balsamic vinegar",
+        "1 tablespoon chopped fresh rosemary",
+        "1 tablespoon capers, drained and chopped",
+        "1 clove garlic, minced",
+        "½ teaspoon dried Greek oregano",
+        "1 pinch crushed red pepper flakes (Optional)",
+        "Salt and ground black pepper to taste"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/222653/mediterranean-zucchini-and-chickpea-salad/",
+    "tags": ["Zucchini", "Chickpea", "Salad", "Mediterranean", "Vegetarian", "Healthy", "Light Lunch", "Side Dish"]
+}
         {
             "title": "California Tacos",
             "directions": [
@@ -3770,6 +4251,35 @@
             "tags": ["Calzone", "Pizza", "Flour", "Dinner", "Lunch", "Pepperoni", "Sausage", "Cheese","Mozzarella", "Vegetarian" ],
             "url": "http://allrecipes.com/recipe/6806/calzone/"
         },
+        {
+    "title": "Argentinian Beef Empanadas",
+    "directions": [
+        "Preheat the oven to 450 degrees F (230 degrees C). Set racks in the upper and lower thirds of the oven and line 2 large baking sheets with parchment paper.",
+        "Cook beef in a large, heavy skillet over medium-high heat, stirring and breaking up lumps, until no longer pink, 4 to 5 minutes. Transfer beef to a small bowl with a slotted spoon, and pour off grease from the skillet. Melt butter in the skillet and saute onions and green onion, stirring occasionally, until tender, about 5 minutes.",
+        "Return beef to skillet and stir in hard-boiled eggs, olives, raisins, cumin, salt, and pepper. Transfer mixture to a shallow bowl and chill until cooled, 10 to 20 minutes.",
+        "Unfold one pastry sheet, keeping remaining sheets chilled, onto a lightly floured surface, dust lightly with flour, and roll out into a 12-inch square. Cut four 5 1/2-inch rounds from pastry. Brush a 1/2-inch border around the edges of one round with water, using a small brush or fingertip. Spoon about 3 tablespoons of filling onto half of the round. Fold other half over filling and press edges together firmly.",
+        "Crimp edges with a fork and transfer to one of the prepared baking sheets. Repeat with three remaining rounds. Form 12 more empanadas in the same manner with remaining pastry and filling, arranging them about 1 1/2 inches apart on baking sheets.",
+        "Brush tops of empanadas with beaten egg. Bake in the preheated oven, switching position of sheets halfway through, until golden brown, about 15 minutes."
+    ],
+    "ingredients": [
+        "½ pound ground beef",
+        "3 tablespoons butter",
+        "2 medium onions, chopped",
+        "1 green onion, chopped",
+        "2 hard-boiled eggs, chopped",
+        "14 pitted green olives, such as Manzanilla, finely chopped",
+        "3 tablespoons raisins",
+        "1 teaspoon cumin",
+        "½ teaspoon salt",
+        "¼ teaspoon black pepper",
+        "2 (17.5 ounce) packages frozen puff pastry (each with 2 sheets), thawed",
+        "1 raw egg, lightly beaten"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/244265/argentinian-beef-empanadas/",
+    "tags": ["Empanadas", "Argentinian Cuisine", "Appetizer", "Beef", "Savory", "Pastry", "Party Food"]
+}
+
         {
             "title": "Cannellini Bean and Artichoke Salad",
             "directions": [
@@ -3914,6 +4424,32 @@
             "tags": ["Caramel", "Apple", "Bars", "Oats", "Walnuts", "Snack", "Sweet"],
             "url": "http://allrecipes.com/recipe/10580/caramel-apple-bars-i/"
         },
+{
+    "title": "Flan Mexicano",
+    "directions": [
+        "Place sugar into a heavy saucepan over medium-high heat. Cook, stirring constantly, until sugar melts and turns a golden amber color, about 10 minutes. Watch carefully once syrup begins to change color because it burns quickly. Carefully pour caramel syrup into a flan mold. Set aside to cool.",
+        "Preheat the oven to 350 degrees F (175 degrees C). Place an oven rack in the middle position.",
+        "Place sweetened condensed milk, whole milk, eggs, egg yolks, orange juice, orange peel, vanilla, and cornstarch into a blender; blend until smooth, about 1 minute. Pour in cream and pulse several times to incorporate. Pour mixture over cooled caramel syrup in the flan mold.",
+        "Line a roasting pan with a damp kitchen towel. Place the filled flan mold carefully on the towel in the roasting pan, then place the roasting pan on the oven rack. Fill the roasting pan with enough boiling water to reach halfway up the sides of the flan mold.",
+        "Bake in the preheated oven until the center of flan is set but still slightly jiggles when nudged, 45 minutes to 1 hour. Let cool, then refrigerate for at least 4 hours.",
+        "To serve, run a sharp paring knife around the inside of the mold to release flan. Place a serving plate on the mold, then flip the mold over. Gently lift the mold to release flan and allow caramel syrup to cascade over custard. Remove the mold."
+    ],
+    "ingredients": [
+        "1 cup white sugar",
+        "1 (14 ounce) can sweetened condensed milk",
+        "1 cup whole milk",
+        "3 large eggs",
+        "3 large egg yolks",
+        "¼ cup freshly squeezed orange juice",
+        "1 tablespoon grated orange peel",
+        "1 tablespoon vanilla extract",
+        "1 tablespoon cornstarch",
+        "1 cup heavy cream"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/214091/flan-mexicano-mexican-flan/",
+    "tags": ["Flan", "Mexican Cuisine", "Dessert", "Custard", "Holiday Recipe", "Traditional", "Orange", "Vanilla", "Cream"]
+}
         {
             "title": "Caramel Apple Cookies",
             "directions": [
@@ -5348,6 +5884,35 @@
             "url": "http://allrecipes.com/recipe/221292/yummy-guacamole/"
         },
         {
+            "title": "Grandma's Lemon Meringue Pie",
+            "directions": [
+                "Preheat the oven to 325 degrees F (162 degrees C).",
+                "To make the filling: Whisk 1 cup sugar, flour, cornstarch, and salt together in a medium saucepan; stir in water, lemon juice, and lemon zest. Cook over medium-high heat, stirring frequently, until mixture comes to a boil. Stir in butter.",
+                "Place egg yolks in a small bowl and gradually whisk in 1/2 cup of hot sugar mixture. Whisk egg yolk mixture back into remaining sugar mixture. Bring to a boil and continue to cook while stirring constantly until thick. Remove from heat; pour filling into baked pastry shell.",
+                "To make the meringue: Beat egg whites in a glass, metal, or ceramic bowl with an electric mixer until foamy. Gradually add sugar, continuing to beat until stiff peaks form. Spread meringue over pie filling, sealing the edges at the crust.",
+                "Bake in preheated oven until meringue is golden brown, about 20 to 25 minutes."
+              ],
+            "ingredients": [
+                "Filling:",
+                "1 cup white sugar",
+                "2 tablespoons all-purpose flour",
+                "3 tablespoons cornstarch",
+                "¼ teaspoon salt",
+                "1 ½ cups water",
+                "2 lemons (juiced and zested)",
+                "2 tablespoons butter",
+                "4 egg yolks (beaten)",
+                "1 (9 inch) pie crust, baked",
+                "Meringue:",
+                "4 egg whites",
+                "1/2 cup white sugar"
+              ],
+              "source": "Emilie S, Tested by Allrecipes Test Kitchen",
+              "tags": ["Pie", "Lemon", "Meringue", "Dessert"],
+              "url": ""
+        }
+
+        {
             "title": "Yummy Lemon Bread",
             "directions": [
                 "Generously grease a 9 x 5 inch loaf pan.  Preheat oven to 350 degrees F (175 degrees C).",
@@ -6091,4 +6656,4 @@
             "url": "http://allrecipes.com/recipe/217158/white-chocolate-blondie-brownies/"
         },
 ]
-}
+},
