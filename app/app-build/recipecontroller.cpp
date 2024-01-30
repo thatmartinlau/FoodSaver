@@ -83,7 +83,7 @@ void temp_allRecipes_extension(std::vector<Recipe> book){
 QList< QList<QString> > vis_titles;
 
 QList<QString> RecipeController::sendTitleForVis(const QString &title){
-    std::cout << "MAN why" << std::endl;
+    //std::cout << "MAN why" << std::endl;
     QList<QString> res;
     for(int i = 0; i<allRecipes.size();i++){
         if(title == convertStdtoQ(allRecipes[i].get_title())){
@@ -94,8 +94,8 @@ QList<QString> RecipeController::sendTitleForVis(const QString &title){
         }
     }
     vis_titles.append(res);
-    std::cout << vis_titles.isEmpty() << std::endl;
-    std::cout << convertQtoStd(vis_titles[0][0]) << std::endl;
+    //std::cout << vis_titles.isEmpty() << std::endl;
+    //std::cout << convertQtoStd(vis_titles[0][0]) << std::endl;
 
     return res;
 }
@@ -103,20 +103,20 @@ QList<QString> RecipeController::sendTitleForVis(const QString &title){
 QList<QString> RecipeController::sendIngredientsForVis(const QString &title){
     QList<QString> res;
     res.clear();
-    std::cout<< convertQtoStd(title) << std::endl;
+    //std::cout<< convertQtoStd(title) << std::endl;
     for(int i = 0; i<allRecipes.size();i++){
         if(title == convertStdtoQ(allRecipes[i].get_title())){
-            std::cout << i << "    ----" << std::endl;
+            //std::cout << i << "    ----" << std::endl;
             std::vector<std::string> ingrs = allRecipes[i].get_ingredients();
             for(int j = 0; j<ingrs.size();j++){
-                std::cout << "ingrdients: ---- " << ingrs[j] << std::endl;
+                //std::cout << "ingrdients: ---- " << ingrs[j] << std::endl;
                 res.append(convertStdtoQ(ingrs[j]));
             }
         }
     }
     vis_titles.append(res);
-    std::cout << "just checking_ingr"<< convertQtoStd(res[res.size()-1]) << std::endl;
-    std::cout << res.size() << std::endl;
+    //std::cout << "just checking_ingr"<< convertQtoStd(res[res.size()-1]) << std::endl;
+    //std::cout << res.size() << std::endl;
     return res;
 }
 
@@ -131,8 +131,8 @@ QList<QString> RecipeController::sendInstructionsForVis(const QString &title){
         }
     }
     vis_titles.append(res);
-    std::cout << "just checking" << std::endl;
-    std::cout << convertQtoStd( res[0]) << std::endl;
+    //std::cout << "just checking" << std::endl;
+    //std::cout << convertQtoStd( res[0]) << std::endl;
     return res;
 }
 
@@ -151,8 +151,8 @@ QList<QString> RecipeController::getTitleForVis(){
     QList<QString> test;
     test.append("one");
     test.append("two");
-    std::cout << "vis_titles.isEmpty()" << std::endl;
-    std::cout << vis_titles.isEmpty() << std::endl;
+    //std::cout << "vis_titles.isEmpty()" << std::endl;
+    //std::cout << vis_titles.isEmpty() << std::endl;
     if(vis_titles.isEmpty() == true){
         QList<QString> lol;
         lol.append("bob");
@@ -187,15 +187,15 @@ QString RecipeController::submitRating(const QString &user_rating){
     double res;
     for(int i = 0; i<allRecipes.size();i++){
         if(convertStdtoQ(allRecipes[i].get_title()).toLower() == rated_recipes[0].toLower()){
-            std::cout<< 222220 << usr_rating<<std::endl;
+            //std::cout<< 222220 << usr_rating<<std::endl;
             allRecipes[i].add_rating(usr_rating);
             res = allRecipes[i].get_rating();
-            std::cout<< 3333330 << res<<std::endl;
+            //std::cout<< 3333330 << res<<std::endl;
         }
     }
     rated_recipes.clear();
     tester = user_rating.toDouble();
-    std::cout<< 11111111110 << res << std::endl;
+    //std::cout<< 11111111110 << res << std::endl;
     return QString::number(res);
 }
 
@@ -218,14 +218,14 @@ void RecipeController::submitAll(const QString &recipeName, const QString &diet,
 
     std::string name = convertQtoStd(recipeName);
     Recipe new_recipe(name);
-    std::cout << vecttt.size() << std::endl;
+    //std::cout << vecttt.size() << std::endl;
 
     std::string diet_restr = convertQtoStd(diet);
     new_recipe.set_diet(diet_restr);
     new_recipe.set_time(changeTime(hours,minutes));
-    std::cout << vecttt.size() << std::endl;
+    //std::cout << vecttt.size() << std::endl;
     vecttt.push_back(diet_restr);
-    std::cout << vecttt.size() << std::endl;
+    //std::cout << vecttt.size() << std::endl;
 
     new_recipe.set_ingredients(allIngredients);
     std::string scd = "secondingr";
@@ -248,10 +248,10 @@ void RecipeController::submitInstructions(const QString &instruction){
 }
 
 QString RecipeController::get_ingr(){
-    std::cout << "hello2";
+    //std::cout << "hello2";
 
     if(allRecipes[0].get_directions().empty()){
-        std::cout << "hello";
+        //std::cout << "hello";
         QString res = convertStdtoQ(allRecipes[0].get_title());
         return res;
 
@@ -269,7 +269,7 @@ QList<QString> list_names;
 void RecipeController::submit(const QString &recipeName)
 {
     qDebug() << "name"; //<< recipeName << "diet" << diet<< "ingr" << ingredient1<< "instr" << instruction1 << "hours"<< hours << "minutes" << minutes;
-    std::cout << "RESULT";
+    //std::cout << "RESULT";
     if(!list_names.contains(recipeName)){
         std::string str = "lol";
         Recipe test(str);
@@ -311,7 +311,10 @@ QList<QString> construct_lstnames(QList<QString> lstnames){
 QList<QString> construct_templst(int i){
     QList<QString> tmplst = list_names[i].split(u' ', Qt::SkipEmptyParts);
     for(int j=0; j < allRecipes[i].get_ingredients().size(); j++){
-        tmplst.append(convertStdtoQ(allRecipes[i].get_ingredients()[j]));
+        QList<QString> ingrs_split = convertStdtoQ(allRecipes[i].get_ingredients()[j]).split(" ");
+        for(int h = 0; h<ingrs_split.size(); h ++){
+            tmplst.append(ingrs_split[h]);
+        }
     }
     tmplst.append(convertStdtoQ(allRecipes[i].get_diet()));
     return tmplst;
@@ -320,6 +323,7 @@ QList<QString> construct_templst(int i){
 QList<QString> RecipeController::search_res(const QString &entry){
 
     list_names=construct_lstnames(list_names);
+    //std::cout << list_names.size() << std::endl;
 
 
     for(int i = 0; i<list_names.size(); i++){

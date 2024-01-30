@@ -3,6 +3,8 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 Popup {
+    property bool  title_new: false
+
     id: myPopup
     anchors.centerIn: parent
     width: 700
@@ -48,8 +50,6 @@ Popup {
                 radius: 8
             }
         }
-
-
 
         //ON LINE 2 OF GRID
         Text {text: "Dietary Restriction"; color: "#28A745"; Layout.preferredWidth: 125}
@@ -311,6 +311,18 @@ Popup {
         id: instructionModel
     }
 
+    GridLayout{
+        id: grid5
+        columns: 1
+        width: parent.width
+        columnSpacing: 20
+        //rowSpacing: 10
+        y: parent.height*0.92
+
+        //ON LINE 1 OF GRID
+        Text {text: "This title is already being used, please enter a new one (for example: recipe name + your name)"; visible: title_new ; color: "red"; Layout.preferredWidth: 135}
+    }
+
     Row {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
@@ -324,6 +336,10 @@ Popup {
             onClicked: {
                 for (var i = 0; i < itemModel.count; i++) {
                     RecipeController.submit(itemModel.get(i).name)
+                }
+
+                if(RecipeController.checkTitle(recipeName.text.trim()) == false){
+                    title_new = true;
                 }
 
                 if (recipeName.text.trim() !== "" && instructionModel.count != 0 &&  inputModel.count != 0 && RecipeController.checkTitle(recipeName.text.trim()) != false) { // Check if the text is not empty or only whitespace
@@ -344,6 +360,7 @@ Popup {
 
                     itemModel.append({"name": recipeName.text, "dietRestriction": diet.currentValue, "grade": "None" , "date": "Test1", "quantity": "Test1" });
 
+                    title_new = false;
                     recipeName.text = "";
                     ingredient1.text = "";
                     instruction1.text = "";

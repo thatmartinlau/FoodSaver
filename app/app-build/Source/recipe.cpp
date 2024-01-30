@@ -70,11 +70,11 @@ void Recipe::add_ingredient(std::string ingredient_name){
 
 void Recipe::add_rating(const double &user_rating){
     double R = this->rating;
-    std::cout<< "rrrr" << R << " user " << user_rating << std::endl;
+    //std::cout<< "rrrr" << R << " user " << user_rating << std::endl;
     int n = this->times_rated;
-    std::cout<< "nnnn" << n << std::endl;
+    //std::cout<< "nnnn" << n << std::endl;
     this->rating = ((double)1/(double)(n+1))*(n*R+user_rating);
-    std::cout<< "rating" << ((double)1/(double)(n+1))*(n*R+user_rating) << std::endl;
+    //std::cout<< "rating" << ((double)1/(double)(n+1))*(n*R+user_rating) << std::endl;
     this->times_rated ++;
 }
 

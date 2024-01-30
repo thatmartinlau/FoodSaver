@@ -87,7 +87,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            fridgemanager.clear(itemModel.count)
+                            //fridgemanager.clear(itemModel.count)
                             stackView.replace(Qt.resolvedUrl("Market.qml"))
                         }
 
@@ -377,7 +377,7 @@ Rectangle {
                                     radius:12.5
                                     width: parent.width*0.98
                                     height: 80
-                                    border.color: "#28A745"
+                                    //border.color: "#28A745"
                                     color: "#EEEEEE"
 
                                     Rectangle {
@@ -388,7 +388,7 @@ Rectangle {
                                         anchors.verticalCenter: parent.verticalCenter
                                         color:"lightblue"
 
-                                        Label {text:"photo"}
+                                        //Label {text:"photo"}
                                     }
                                     GridLayout{
                                         id: repeated
@@ -729,6 +729,126 @@ Rectangle {
 
                 Label {
                     text: "My Personal Cookbook"
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 50 // Additional property for the label
+                }
+
+                hoverEnabled: true
+
+                onEntered: {
+                    parent.color = "#D3D3D3"; // Light grey when hovered
+                }
+
+                onExited: {
+                    parent.color = "white"; // Back to transparent when not hovered
+                }
+            }
+        }
+
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.top: parent.top
+            anchors.topMargin: deux.width * 0.20 +50
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            MouseArea {
+                id: demo_recipe
+                //id: addtofridge
+                anchors.fill: parent
+
+                onClicked: {
+                    // Append 3 recipes for the demontrastion
+
+                    RecipeController.submitIngredients("2 carrot");
+                    RecipeController.submitIngredients("2 celery");
+                    RecipeController.submitIngredients("500g pasta");
+
+                    RecipeController.submitInstructions("peel vegetables")
+                    RecipeController.submitInstructions("boil them")
+                    RecipeController.submitInstructions("enjoy!")
+
+
+                    //if(hours.text.trim() == ""){hours.text = 0;}
+                    //if(minutes.text.trim() == ""){minutes.text = 0;}
+                    var res = RecipeController.submitAll("Lasagna", "None", "0", "30")//, ingredient1.text, instruction1.text)
+
+
+
+                    var no_Value = RecipeController.get_ingr()
+
+                    itemModel.append({"name": "Lasagna", "dietRestriction": "None", "grade": "None" , "date": "0" , "quantity": "30"});
+
+
+                    // RECIPE 2
+
+                    RecipeController.submitIngredients("2 apple");
+                    RecipeController.submitIngredients("2 banana");
+                    RecipeController.submitIngredients("200g flour");
+                    RecipeController.submitIngredients("100g sugar");
+                    RecipeController.submitIngredients("3 eggs");
+
+
+                    RecipeController.submitInstructions("cut fruits")
+                    RecipeController.submitInstructions("mix everything")
+                    RecipeController.submitInstructions("bake in the oven for 1h")
+
+
+                    //if(hours.text.trim() == ""){hours.text = 0;}
+                    //if(minutes.text.trim() == ""){minutes.text = 0;}
+                    var res = RecipeController.submitAll("Apple Banana Cake", "Vegetarian", "1", "0")//, ingredient1.text, instruction1.text)
+
+
+
+                    var no_Value = RecipeController.get_ingr()
+
+                    itemModel.append({"name": "Apple Banana Cake", "dietRestriction": "Vegetarian", "grade": "None" , "date": "1" , "quantity": "0"});
+
+                    //RECIPE 3
+
+                    RecipeController.submitIngredients("1 onion");
+                    RecipeController.submitIngredients("3 eggs");
+                    RecipeController.submitIngredients("3 potatoes");
+                    RecipeController.submitIngredients("salt");
+                    RecipeController.submitIngredients("pepper");
+
+
+                    RecipeController.submitInstructions("cut the potatoes")
+                    RecipeController.submitInstructions("grill them in a pan")
+                    RecipeController.submitInstructions("add the eggs and flip")
+
+
+                    //if(hours.text.trim() == ""){hours.text = 0;}
+                    //if(minutes.text.trim() == ""){minutes.text = 0;}
+                    var res = RecipeController.submitAll("Tortillas", "Vegetarian", "0", "20")//, ingredient1.text, instruction1.text)
+
+
+
+                    var no_Value = RecipeController.get_ingr()
+
+                    itemModel.append({"name": "Tortillas", "dietRestriction": "Vegetarian", "grade": "None" , "date": "0" , "quantity": "20"});
+
+                }
+
+                Rectangle {
+                    width: 24
+                    height: 24
+                    color: "#A3C995" // Updated color
+                    radius: 2 // Updated radius
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 13 // Additional property for the small rectangle
+                    Label {
+                        text: "💾"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+                Label {
+                    text: "Recipies Demo"
                     anchors.verticalCenter: parent.verticalCenter
                     x: 50 // Additional property for the label
                 }
