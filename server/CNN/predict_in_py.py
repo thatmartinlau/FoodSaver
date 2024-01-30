@@ -67,6 +67,6 @@ def imshow(inp, title=None):
         plt.title(title)
     plt.show()
 
-# Example usage
-process_and_display_image('test1.jpg')  # Replace with your image path
+# Test, change 'test1.jpg' to your path to image
+process_and_display_image('test1.jpg')
 
