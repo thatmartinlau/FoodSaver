@@ -31,8 +31,8 @@ then:
 
 <p>
 "app-release" is still under construction, as the app team is not yet experienced with Cmake, while it is needed by the server team in order to connect the two together.
-<br> We invite you to first try to compile "app-release" as it is aimed to be more functional to work alongside the rest of the other sub-projects associated with FoodSaver. To do so, open the following project file on Qt Creator: <code>/app/app-release/CMakeLists.txt</code>
-<br> Should "app-release" fail to compile, we invite you to open the "app-build" project which is a stable version of the app, but is not linked to the server and backend subprojects. To do so, open the following project file on Qt Creator: <code>/app/app-build/app-build.pro</code>
+<br> The compilation for "app-release" is broken as we have not had enough time to merge the two separate parts together. 
+<br> As "app-release" fails to compile (errors linked to CMake), we invite you to open the "app-build" project which is a stable version of the app, but is not linked to the server and backend subprojects. To do so, open the following project file on Qt Creator: <code>/app/app-build/app-build.pro</code>
 </p>
 
 <h3>
