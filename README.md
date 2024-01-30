@@ -17,10 +17,12 @@ Two step process to run the server:
 Firstly, go to server/POCOSocket/Server/CMakeLists.txt, which you should open as: Open Project in QT, under File tab. Then, simply click run. Green arrow.
 If you want to test out the clientside, if it were the case that app-release did not function,
 then:
-1. With a new qt window, head into server/POCOSocket/Server/web-teste/CMakeLists.txt , to open the client-side server section.
-2. Run the server from the above instruction.
-3. Run the client afterwards, after the server is built and you see "running" hopefully in the QT Console for the server project.
-4. You should see testing results in both consoles, after the rpc_client_side.cpp file runs.
+<ol>
+<li>With a new qt window, head into <code>server/POCOSocket/Server/web-teste/CMakeLists.txt</code> , to open the client-side server section.</li>
+<li>Run the server from the above instruction.</li>
+<li>Run the client afterwards, after the server is built and you see "running" hopefully in the QT Console for the server project.</li>
+<li>You should see testing results in both consoles, after the rpc_client_side.cpp file runs.</li>
+</ol>
 
 <h2>II. Running the app</h2>
 
@@ -65,9 +67,10 @@ The reset button resets the recipe page to all the available recipes, reseting a
 <h3>6. Settings and profile</h3>
 <p>The settings page and profile pages are popups that open when a button is clicked on any of the Market, Recipes or Fridge pages. Their function is to allow the user to change their personal information, and then save this information to that it can be updated on the server.</p>
 
-<h2>III. Connecting the server to the app</h2>
+<h2>III. Backend code</h2>
+<p>Should you wish to pay interest to the backend code connecting the server and the app interface, you may open the project file on a new Qt window at the following directory: <code>/test3/CMakeLists.txt</code></p>
+<p>This project contains the code defining the important classes and functions used by both the server side and app side.</p>
+
 
 <h2>IV. Photo recognition and Telegram bot</h2>
-Please check server/CNN/README.txt and telegram-bot/telegram-bot/README.md for instructions.
-
-
+Please check <code>server/CNN/README.txt and telegram-bot/telegram-bot/README.md</code> for instructions.
