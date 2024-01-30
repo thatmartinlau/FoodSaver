@@ -39,6 +39,11 @@ FoodSaver was designed as an app and a server that is meant to connect from one 
 
 <h3>3. Fridge</h3>
 
+<p>The Fridge page allows you to visualize the content of your fridge. Its intended mechanism is to store all the items you purchase in real life (IRL) along with their expiration dates. To add a product, use the "Add a Product" button on the left. In the popup, make sure to fill in all the information. The date format should be dd/mm/yyyy (enter it as follows: 03/02/2024), and the quantity should be an integer. The "Demo Fridge" button adds four preset products.
+<br>
+   
+The three actions on an item work in QML locally. When you put an item up for sale, it appears in the "My Offers" tab, where you can fully manage it in QML locally. You can search in your fridge with the search bar, by category with the menu, and order the ingredients by time left (the first to spoil first). Note that using the search bar and ordering by time both remove all your offers made locally. When you leave the page and go back to it, in the manner mentioned, the offers are reset, and the products are ordered by time left automatically.</p>
+
 <h3>4. Market</h3>
 
 <h3>5. Recipes</h3>
