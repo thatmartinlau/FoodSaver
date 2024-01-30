@@ -40,3 +40,9 @@ Week 8:
 
 During the Monday session I worked on debugging the SigninInformation.qml page  but it still emits errors during the execution, however it compiles so hopefully 
 it won't cause too many issues when joined to other pages.
+
+Final 2 weeks:
+
+Once I had finished implementing everything we started the merging process. I had several issues leading me to lose my code and rewrite the newer bits of it or copy and pasting it but in the end I got all my code to main. I added some logic to the Profile page.
+
+Martin got very sick so I took over the coordination of everything for the presentation.
