@@ -1,6 +1,6 @@
-#include "../Header/Login.h"
-#include "../Header/user.h"
-#include "../Header/currentUser.h"
+#include "Login.h"
+#include "user.h"
+#include "currentUser.h"
 #include <string>
 #include <iostream>
 

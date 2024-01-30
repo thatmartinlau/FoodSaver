@@ -47,9 +47,3 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   endif()
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake_install.cmake")
-
-endif()
-

@@ -1123,6 +1123,8 @@
 	"MOC_INCLUDES" : 
 	[
 		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/test3",
+		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/app/app-release/Header",
+		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/app/app-release/Source",
 		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste",
 		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include",
 		"C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include",

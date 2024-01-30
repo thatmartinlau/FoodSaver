@@ -1,6 +1,6 @@
-#include "../Header/fridgemanager.h"
-#include "../Header/date.h"
-#include "../Header/offer.h"
+#include "fridgemanager.h"
+#include "date.h"
+#include "offer.h"
 
 
 #include <iostream>

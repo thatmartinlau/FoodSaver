@@ -3,20 +3,19 @@
 #include <QQmlContext>
 #include <QCoreApplication>
 #include <iostream>
-#include "Header/date.h"
-#include "Header/ingredient.h"
-#include "Header/fridge.h"
-#include "Header/offer.h"
-#include "Header/recipe.h"
-#include "Header/user.h"
+#include "date.h"
+#include "ingredient.h"
+#include "fridge.h"
+#include "offer.h"
+#include "recipe.h"
+#include "user.h"
 
-#include "Header/settingsmanager.h"
-#include "Header/profilemanager.h"
-#include "Header/fridgemanager.h"
-
-#include "Header/Signin.h"
-#include "Header/Login.h"
-#include "Header/SigninInformation.h"
+#include "settingsmanager.h"
+#include "profilemanager.h"
+#include "fridgemanager.h"
+#include "Signin.h"
+#include "Login.h"
+#include "SigninInformation.h"
 
 #include "recipecontroller.h"
 
