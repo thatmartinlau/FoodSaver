@@ -11,6 +11,7 @@ FoodSaver was designed as an app and a server that is meant to connect from one 
 <li><b>Telegram bot project</b>: This project is developed in tandem with the server and sends reminders whenever food items are about to expire.</li>
 
 <p>For your evaluation of our work, we invite you to check each of these projects to get a good picture of the overall spread of our work.</p>
+<p>Finally, we would like to preface this with the fact that each module/subproject works independently of the others, but are not linked together due to unforseen issues between compatibility between Cmake and Qmake.</p>
 
 <h2>I. Running the server</h2>
 Two step process to run the server:
