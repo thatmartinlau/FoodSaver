@@ -64,7 +64,7 @@ Focused on aesthetic improvements, incorporating small icons and subtle changes 
 
 In preparation for the demo, I plan to evaluate functionalities exclusive to QML, CPP, and those compatible with both.
 
-This summarizes the progress made so far, and I look forward to further advancements in the upcoming sessions.
+This summarizes the progress made so far, the ingredient implementation is fully completed (including connectivity in CPP (for the part I was intended to code)). The offer functionality works locally independently of the one coded in CPP. This project was a great way for me to get the basis of application development in Qt with c++ and QML. I am grateful for the help and the cohesion of my team and how we managed to have a satisfying final release. As the coder of the Fridge page, I also completed the readme.md file of the project. 
 
 
 
