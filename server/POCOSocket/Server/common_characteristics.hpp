@@ -53,6 +53,8 @@ inline basic_user_data deserialize_basic_data_of_user(vector<string> user_data_a
 
     basic_u_data.marketplace_notifications = stoi(user_data_as_str_vec[7]);
 
+    return basic_u_data;
+
 }
 
 

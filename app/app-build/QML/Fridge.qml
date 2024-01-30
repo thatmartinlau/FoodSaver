@@ -779,7 +779,8 @@ Rectangle {
                                             Button {
                                                 text: "Modify item"
                                                 onClicked: {
-                                                    modify.itemIndex = itemModel.getIndexByPropertyValue("index", model.index);
+                                                    modify.itemIndex3 = itemModel.getIndexByPropertyValue("index", model.index);
+                                                    console.log(modify.itemIndex3)
                                                     modify.open();
                                                     //pop_elt(itemModel.getIndexByPropertyValue("index", model.index))
                                                 }
@@ -800,6 +801,7 @@ Rectangle {
                                                     console.log("ok2")
                                                     itemModel.remove(itemModel.getIndexByPropertyValue("index", model.index))
                                                     console.log("ok3")
+
                                                     }
                                                 }
                                             }
@@ -1002,7 +1004,7 @@ Rectangle {
                     //anchors.bottomMargin:  parent.parent.height * 1/2// Adjust the margin as needed
 
                     Label {
-                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻","👨🏻‍🎓", "👩‍🚀"]
+                        property var textList: ["💁‍♀️", "🧜🏽", "👩🏾‍💼", "👨🏻‍🦰","🧕🏻", "👨🏻‍🎓", "👩‍🚀"]
                         text: textList[Math.ceil(Math.random() * 6)]
                         font.pixelSize: parent.height *0.7
                         anchors.bottom: parent.bottom
@@ -1029,6 +1031,94 @@ Rectangle {
                     centerprofile.color = "#A3C995"; // Back to transparent when not hovered
                 }
 
+            }
+        }
+        Rectangle {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: deux.width * 0.04
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+
+            Rectangle {
+                    id: calendarPopup
+                    width: 300
+                    height: 300
+                    color: "white"
+                    radius: 10
+                    visible: false
+
+                    GridLayout {
+                        id: calendarGrid
+                        columns: 7
+                        anchors.fill: parent
+
+                        Repeater {
+                            model: 31 // Assuming maximum 31 days in a month
+                            delegate: Rectangle {
+                                width: (calendarPopup.width - (calendarGrid.columns - 1) * calendarGrid.spacing) / calendarGrid.columns
+                                height: width
+                                color: "transparent"
+                                border.color: "lightgrey"
+                                border.width: 1
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: (index + 1).toString()
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        var selectedDate = new Date(new Date().getFullYear(), new Date().getMonth(), index + 1);
+                                        console.log("Selected date:", selectedDate.toLocaleDateString(Qt.locale("en_US")));
+                                        // Implement your logic here to handle the selected date
+                                    }
+                                }
+
+                                // Mark expiration dates here based on your data
+                                // For example, you can compare with itemModel data and mark relevant dates
+                            }
+                        }
+                    }
+                }
+
+                Label {
+                    text: "View Expiration Dates"
+                    color: "blue"
+                    font.underline: true
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 20
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            calendarPopup.visible = true;
+                        }
+                    }
+                }
+
+            // Label that opens the calendar when clicked
+            Label {
+                text: "View Expiration Dates"
+                color: "blue"
+                font.underline: true
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 20
+
+                // Event handler for when the label is clicked
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        expirationCalendar.populateCalendar();
+                        expirationCalendar.visible = true;
+                    }
+                }
             }
         }
 
@@ -1202,7 +1292,95 @@ Rectangle {
                 }
             }
         }
+    } 
+    ApplicationWindow {
+        visible: true
+        width: 400
+        height: 400
+
+        Rectangle {
+            width: parent.width
+            height: parent.height
+
+            TextField {
+                id: dateField
+                width: parent.width - 20
+                placeholderText: "Select a date"
+                readOnly: true
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        datePickerPopup.open()
+                    }
+                }
+            }
+
+            Popup {
+                id: datePickerPopup
+                width: 300
+                height: 300
+                modal: true
+
+                ListView {
+                    anchors.fill: parent
+                    model: ListModel {
+                        ListElement { month: "January" }
+                        ListElement { month: "February" }
+                        ListElement { month: "March" }
+                        ListElement { month: "April" }
+                        ListElement { month: "May" }
+                        ListElement { month: "June" }
+                        ListElement { month: "July" }
+                        ListElement { month: "August" }
+                        ListElement { month: "September" }
+                        ListElement { month: "October" }
+                        ListElement { month: "November" }
+                        ListElement { month: "December" }
+                    }
+
+                    delegate: Item {
+                        width: datePickerPopup.width
+                        height: datePickerPopup.height / 4
+
+                        Column {
+                            spacing: 5
+
+                            Text {
+                                text: model.month
+                                font.bold: true
+                            }
+
+                            Repeater {
+                                model: 31 // Assuming maximum 31 days in a month
+                                Rectangle {
+                                    width: datePickerPopup.width
+                                    height: 30
+                                    color: "lightblue"
+                                    border.color: "white"
+                                    border.width: 1
+
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: (index + 1).toString()
+                                        MouseArea {
+                                            anchors.fill: parent
+                                            onClicked: {
+                                                var selectedDate = new Date(new Date().getFullYear(), monthIndex, index + 1);
+                                                dateField.text = selectedDate.toLocaleDateString(Qt.locale("en_US"));
+                                                datePickerPopup.close();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+
 
 Profile {
     id: profile

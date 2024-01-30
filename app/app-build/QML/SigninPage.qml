@@ -69,13 +69,7 @@ Item {
             color: "#544E3D"
             placeholderText: "Chose a username"
         }
-        TextField {
-            width: parent.width
-            id: input_telegram_username
-            placeholderTextColor: "#A0A0A0"
-            color: "#544E3D"
-            placeholderText: "Fill in your telegram username"
-        }
+
         TextField {
             width: parent.width
             id: input_password
@@ -122,7 +116,7 @@ Item {
                 padding: 5
             }
             onClicked: {
-                if (signin.signIn(input_username.text, input_password.text, input_password_check.text, input_telegram_username.text)){
+                if (signin.signIn(input_username.text, input_password.text, input_password_check.text)){
                     passwordError.visible = false;
                     usernameError.visible = false;
                     noUsernameError.visible = false;
@@ -132,7 +126,7 @@ Item {
                 input_username.text = ""
                 input_password.text = ""
                 input_password_check.text = ""
-                input_telegram_username.text = ""
+
             }
         }
 
