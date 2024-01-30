@@ -53,7 +53,8 @@ add_executable(${PROJECT_NAME} main.cpp
 	../../test3/user.cpp
 	../../test3/recipe.cpp
 	
-	
+	../../server/POCOSocket/Server/web_teste/rpc_client_side.hpp
+	../../server/POCOSocket/Server/web_teste/rpc_client_side.cpp
 	
 	qml.qrc
 )
