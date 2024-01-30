@@ -35,6 +35,7 @@ public:
     void set_telegram_username(std::string telegram);
     std::string get_telegram_username();
     void set_room_number(std::string room);
+    std::string get_room_number();
     void set_gender(int gender);
     int get_gender();
     void set_promotion(int promotion);

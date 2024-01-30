@@ -114,6 +114,10 @@ void User::set_room_number(std::string room) {
     server_user->update_user_characteristics(this);
 }
 
+std::string User::get_room_number() {
+    return building_address;
+}
+
 std::string User::get_telegram_username() {
     return telegram_username;
 }
