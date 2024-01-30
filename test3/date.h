@@ -25,6 +25,7 @@ public:
     int is_exp_date();
     //bool isLeapYear(int y) const;
     int countDays() const;
+    std::string formateDate();
 
 private:
     int day;

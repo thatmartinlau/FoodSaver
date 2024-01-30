@@ -1,7 +1,7 @@
 #include "date.h"
-
+#include <sstream>
 //#include "front.hpp"
-//using namespace std;
+using namespace std;
 
 // DATE
 
@@ -111,4 +111,10 @@ int Date::countDays() const {
     int today_month = now->tm_mon + 1;  // tm_mon is zero-based
     int today_year = now->tm_year + 1900;  // tm_year is years since 1900
     return daysFromEpoch(day, month, year) - daysFromEpoch(today_day, today_month, today_year);
+}
+
+std::string Date::formateDate() {
+    std::stringstream ss;
+    ss << day << '/' << month << '/' << year;
+    return ss.str();
 }

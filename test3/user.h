@@ -26,13 +26,15 @@ public:
     User(std::string username, std::string password);
     ~User();
     void set_username(std::string username);
+    void set_password(std::string password);
     std::string get_username();
     bool check_password(std::string input_username, std::string input_password);
     bool is_username(std::string username);
-    void set_distplay_name(std::string display_name);
+    void set_display_name(std::string display_name);
     std::string get_display_name();
     void set_telegram_username(std::string telegram);
     std::string get_telegram_username();
+    void set_room_number(std::string room);
     void set_gender(int gender);
     int get_gender();
     void set_promotion(int promotion);
@@ -55,6 +57,8 @@ public:
     void like_recipe(Recipe recipe);
     void unlike_recipe(Recipe recipe);
     bool operator==(User& other);
+    bool register_user();
+    bool register_new_user();
 
 private:
     std::string username;

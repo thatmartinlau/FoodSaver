@@ -53,3 +53,19 @@ void Recipe::add_tags(std::string tag) {
 bool Recipe::operator==(const Recipe& other) const{
     return (title == other.get_title());
 }
+
+void Recipe::set_url(std::string url){
+    this->url = url;
+}
+
+std::string Recipe::get_url(){
+    return url;
+}
+
+double Recipe::get_time(){
+    return time;
+}
+
+void Recipe::set_time(double time){
+    this->time = time;
+}

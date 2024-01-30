@@ -1,5 +1,5 @@
 #include "../Header/settingsmanager.h"
-#include "../Header/user.h"
+//#include "../Header/user.h"
 
 #include <QDebug>
 

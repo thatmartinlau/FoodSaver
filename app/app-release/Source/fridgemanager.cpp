@@ -2,7 +2,7 @@
 #include "date.h"
 #include "offer.h"
 
-
+#include "ingredient.h"
 #include <iostream>
 #include <sstream>
 #include <QDebug>
@@ -22,20 +22,20 @@ QString convertStdtoQ2(std::string entry){
 }
 
 Food_class convertStringToFoodClass(const std::string& catString) {
-    if (catString == "Unspecified") return Unspecified;
-    else if (catString == "Fruit") return Fruit;
-    else if (catString == "Vegetable") return Vegetable;
-    else if (catString == "Drink") return Drink;
-    else if (catString == "Dairy") return Dairy;
-    else if (catString == "Canned") return Canned;
-    else if (catString == "Meat") return Meat;
-    else if (catString == "Fish") return Fish;
-    else if (catString == "Sweet") return Sweet;
-    else if (catString == "Nut") return Nut;
-    else if (catString == "Other") return Other;
+    if (catString == "Unspecified") return unspecified;
+    else if (catString == "Fruit") return fruit;
+    else if (catString == "Vegetable") return vegetable;
+    else if (catString == "Drink") return drink;
+    else if (catString == "Dairy") return lactose;
+    else if (catString == "Canned") return canned;
+    else if (catString == "Meat") return meat;
+    else if (catString == "Fish") return fish;
+    else if (catString == "Sweet") return sweet;
+    else if (catString == "Nut") return nut;
+    else if (catString == "Other") return other;
 
     // Default case if the category is not recognized
-    return Unspecified;
+    return unspecified;
 }
 
 //----- Main Code -----------------------------------------------

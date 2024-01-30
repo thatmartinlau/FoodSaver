@@ -40,6 +40,11 @@ void User::set_username(std::string username) {
     server_user->update_user_name_and_password(username, password);
 }
 
+void User::set_password(std::string password) {
+    this->password = password;
+    server_user->update_user_name_and_password(username, password);
+}
+
 std::string User::get_username() {
     return username;
 }
@@ -58,7 +63,10 @@ void User::add_ingredient_fridge(Ingredient elt){
     server_user->update_fridge(user_fridge);
 }
 
-
+/*testing purpose*/
+bool User::is_username(std::string username) {
+    return true;
+}
 
 /*
 // Returns true if username in user and false otherwise
@@ -87,7 +95,7 @@ bool User::is_username(std::string username) {
 }
 */
 
-void User::set_distplay_name(std::string display_name) {
+void User::set_display_name(std::string display_name) {
     this->display_name = display_name;
     server_user->update_user_characteristics(this);
 }
@@ -99,6 +107,11 @@ std::string User::get_display_name() {
 void User::set_telegram_username(std::string telegram) {
     telegram_username = telegram;
     server_user->update_user_characteristics(this);    
+}
+
+void User::set_room_number(std::string room) {
+    building_address = room;
+    server_user->update_user_characteristics(this);
 }
 
 std::string User::get_telegram_username() {
@@ -224,6 +237,15 @@ void User::unlike_recipe(Recipe recipe) {
 
 bool User::operator==(User& other) {
     return (this->get_username() == other.get_username());
+}
+
+bool User::register_user() {
+    //implement logic for registering the user in the server
+    return true;
+}
+bool User::register_new_user() {
+    //implement logic for registering the user in the server
+    return true;
 }
 
 

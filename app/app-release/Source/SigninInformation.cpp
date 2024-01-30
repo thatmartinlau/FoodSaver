@@ -1,6 +1,6 @@
 
 #include "../Header/SigninInformation.h"
-#include "../Header/user.h"
+#include "user.h"
 #include "../Header/currentUser.h"
 #include <QDebug>
 SigninInfo::SigninInfo(QObject *parent) : QObject(parent) {}
@@ -46,8 +46,8 @@ void SigninInfo::setUserInfo(const QString &displayName, const QString &gender, 
         }
 
         if (!diet.empty()) {
-            CurrentUser::currentUser.set_diet(diet);
-            qDebug() << "Diet:" << QString::fromStdString(CurrentUser::currentUser.User::get_diet());
+            CurrentUser::currentUser.set_food_and_dietary_restrictions(diet);
+            qDebug() << "Diet:" << QString::fromStdString(CurrentUser::currentUser.User::get_food_and_dietary_restrictions());
         }
 
         qDebug() << "Update complete.";
