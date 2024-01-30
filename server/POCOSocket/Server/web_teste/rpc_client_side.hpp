@@ -16,14 +16,11 @@
 using namespace std;
 //ServerUser is a PARAMETER under the User class, from Sixtine's user.h
 
-
-//fix class imoprsst:
-class User;
+class Ingredient;
+class Date;
 class Fridge;
 class Offer;
-class Date;
-class Ingredient;
-
+class User;
 
 
 class ServerUser {
@@ -38,7 +35,7 @@ public:
     string get_password(); // to use in get_all_ServerUser_characteristics
 
 
-    basic_user_data get_basic_user_data();
+    basic_user_data get_basic_user_data(); //all gets work
     list<bool> get_food_restrictions();
 
 
@@ -61,9 +58,12 @@ private:
 
 };
 
-vector<string> getOfferMapFromServer();
+
+
+unordered_map<string, vector<vector<vector<string>>>> //works :) below function works!! HEll yeas.
+getOfferMapFromServer(); //works
+
 vector<string> get_user_name_list();
-double check_user(); //for William, no functionassociated here. Just tolett you know this name is already taken.
 
 vector<string> getAllRecipes();
 void addRecipes(vector<string> recipes);
@@ -72,5 +72,9 @@ unordered_map<string, vector<vector<vector<string>>>> get_all_clients_with_offer
 vector<string> get_all_recipes();
 
 int test_sending_to_db();
+int test_getOfferMapFromServer();
+void test_serveruser_call_destroy();
+void test_update_fridge_get_fridge();
+int testing_suite();
 
 #endif

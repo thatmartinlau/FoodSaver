@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include<vector>
-#include <variant>
 
 #include "rpc_client_side.hpp"
 using namespace std;
@@ -240,20 +239,6 @@ Ingredient ingredient_from_vector(std::vector<std::string> vector) { //Oscar wor
 
 
 
-//LIST of chars to exclude: currently, only comma to exclude.
-char char_exclude_list[9] = {","};
-bool char_to_exclude_satisfied(string input_string) {
-    for (int i=0; i <sizeof(char_exclude_list); i++) { //iterate through exclusion list, check find, if returned string::npos; return false.
-        size_t found_or_not = input_string.find(char_exclude_list[i]);
-        if (found_or_not != string::npos) {
-            cout << "Character Matched!" << endl;
-            return false;
-        }
-    }
-    cout << "All good, no match!" << endl;
-    return true;
-}
-
 std::unordered_map<std::string, std::vector<std::vector<std::vector<std::string>>>>
 get_all_clients_with_offers() {
     rpc::client cl(HOST_SERVER_NAME, HOST_SERVER_PORT);
@@ -304,10 +289,10 @@ Fridge ServerUser::get_fridge() { //
     std::vector<Ingredient> vector_Ingredient;
 
     //CONVERT TO DOUBLE VECTOR, THEN: Deserialize
-    vector<vector<string>>fridge_vec_as_double= deserialize_fridge(fridge_vector_as_single);
-    for (size_t i = 0; i < fridge_vec_as_double.size(); ++i) {
+    vector<vector<string>>double_fridge_vec= deserialize_fridge(fridge_vector_as_single);
+    for (int i = 0; i < double_fridge_vec.size(); ++i) {
 
-        vector<string> ingredient = fridge_vec_as_double[i];
+        vector<string> ingredient = double_fridge_vec[i];
         vector_Ingredient.push_back(ingredient_from_vector(ingredient)); //vector_ingredient type Ingredient
 
     }
@@ -324,13 +309,6 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
     for (size_t i = 0; i < ingredient_list.size(); ++i){
         vector<string> ingredient = ingredient_to_vector(ingredient_list[i]);  // Pass the current Ingredient object
-        //verify allowed characters or not:
-        for (vector<string>::iterator it= ingredient.begin(); it != ingredient.end(); it++) {
-            if (char_to_exclude_satisfied(*it) == false) {
-                throw std::invalid_argument("Banned characters are present. Try again.");
-                return;
-            }
-        }
         //add back to fridge vector, if works.
 
         fridge_as_string_vector.push_back(ingredient);
@@ -351,6 +329,16 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 
 
 // working on vector<Offer> ;
+unordered_map<string, vector<vector<vector<string>>>> getOfferMapFromServer() {
+    rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
+    cout <<"runs";
+    vector<string> serialized_offer_Map = new_cli.call("getMapOfOffers").as<vector<string>>();
+    cout << serialized_offer_Map[0];
+    return deserialize_map(serialized_offer_Map);
+}
+
+
+
 
 vector<Offer> ServerUser::get_offer_list() {  //  [[Ingredient_vector1, [PRICE1]], [Ingredient_vector2, [PRICE2]], ... ,]
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
@@ -396,13 +384,6 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 
         vector<string> ingredient_vector = ingredient_to_vector(ingredient_offer);
 
-        //Check banned characters.
-        for (vector<string>::iterator it= ingredient_vector.begin(); it != ingredient_vector.end(); it++) {
-            if (char_to_exclude_satisfied(*it) == false) {
-                throw std::invalid_argument("This contains a comma, which is a banned character.");
-                return;
-            }
-        }
         vector<vector<string>> ingredient_price;
 
         ingredient_price.push_back(ingredient_vector);
@@ -468,20 +449,70 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 //    // [name, expiry_date, qua
 
 
-int test_send_vec_string() {
-    vector<string> vec_for_testing = {"ingredient_name", "ingr_dat", "ingr_qty", "ingr_cat", "ingr_prio_level"};
-    rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    vector<string> returned_vec = new_client.call("test_sending_ingredient_as_vec", vec_for_testing).as<vector<string>>();
-    cout << returned_vec[0] << endl;
-    return 1;
-}
+//int test_send_vec_string() {
+//    vector<string> vec_for_testing = {"ingredient_name", "ingr_dat", "ingr_qty", "ingr_cat", "ingr_prio_level"};
+//    rpc::client new_client(HOST_SERVER_NAME, HOST_SERVER_PORT);
+//    vector<string> returned_vec = new_client.call("test_sending_ingredient_as_vec", vec_for_testing).as<vector<string>>();
+//    cout << returned_vec[0] << endl;
+//    return 1;
+//}
 
 
 //CLIENT_SIDE FUNCTION, FOR TESTIING STILL
-int test_sending_to_db() {
 
-    cout << "hello, it opens" << endl;
-    int val1 = test_send_vec_string();
-
-
+int test_getOfferMapFromServer() {
+    unordered_map<string, vector<vector<vector<string>>>> map_res = getOfferMapFromServer();
+    for (auto i: map_res) { //code from SOverflow, user NutCracker, 2017
+        cout << i.first << " " << i.second[0][0][0] << endl;
+    }
+    return 0;
 }
+
+void test_serveruser_call_destroy() {
+    ServerUser srv_usr1("adam", "pass");
+    vector<string> u_name_list = get_user_name_list();
+    cout << u_name_list[0] << u_name_list[1]; 
+}
+
+void test_update_fridge_get_fridge() {
+    ServerUser srv_usr1("adam", "pass");
+//    vector<string> vec_for_testing = {"ingredient_name", "ingr_dat", "ingr_qty", "ingr_cat", "ingr_prio_level"};
+    std::string ingredientName = "salmon";
+    Date d;
+    Food_class ct = fish;
+    Ingredient ingredientInstance(ingredientName, d, 1, ct);
+    
+    std::string ingredientName2 = "broccoli";
+    int ingredientQuantity = 5;
+    Food_class ingredientCategory =  vegetable;
+    Date date;
+    date.set_day(19);
+    Ingredient ingredientInstance2(ingredientName2, date, ingredientQuantity, ingredientCategory);
+    
+    std::string ingredientName3 = "aubergine";
+    int q = 5;
+    Food_class iC =  vegetable;
+    Date da;
+    da.set_day(16);
+    Ingredient ingredientInstance3(ingredientName3, da, q, iC);
+    
+    Fridge fridge;
+    fridge.add_elt(ingredientInstance2);
+    fridge.add_elt(ingredientInstance);
+    fridge.add_elt(ingredientInstance3);
+    srv_usr1.update_fridge(fridge);
+    Fridge f_returned = srv_usr1.get_fridge();
+    cout << f_returned.get_list()[0].get_name();
+}
+
+int testing_suite() {
+//    int va = test_sending_to_db();
+    cout << "hi, running";    
+//    int val12 = test_getOfferMapFromServer(); //works!
+//    test_serveruser_call_destroy();
+    test_update_fridge_get_fridge();
+    return  1;
+}
+
+auto test = testing_suite();
+
