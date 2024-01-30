@@ -23,8 +23,15 @@ Item {
             leftPadding: 20
             rightPadding: 20
             font.pixelSize: 32
-            color: "#1C6F30" // Dark color for the title
+            color: "#1C6F30"
             horizontalAlignment: Text.AlignHCenter
+        }
+
+        Text {
+            id: errorInfo
+            visible: false // Initially hidden
+            text: "You need to fill in a name and username to continue"
+            color: "red"
         }
 
         //Separator line
@@ -75,7 +82,7 @@ Item {
 
 
             //ON LINE 2 OF GRID
-            Text { text: "Building address"; color: "#28A745"; Layout.preferredWidth: 75}
+            Text { text: "Address"; color: "#28A745"; Layout.preferredWidth: 75}
             TextField {
                 Layout.preferredWidth: 150
                 id: buildingaddressinput
@@ -101,6 +108,21 @@ Item {
                 }
 
             //ON LINE 3 OF GRID
+
+            Text {text: "Telegram"; color: "#28A745"}
+            TextField {
+                Layout.preferredWidth: 150
+                id: telegramInput
+                width: parent.width
+                placeholderText: "Telegram username"
+                placeholderTextColor: "#A0A0A0"
+                color: "#544E3D"
+                background: Rectangle {
+                    color: "#D9E8FF" // Light blue for text field
+                    radius: 8
+                }
+            }
+
             Text {text: "Phone number"; color: "#28A745"}
             TextField {
                 Layout.preferredWidth: 150
@@ -319,6 +341,7 @@ Item {
                             var address = buildingaddressinput.text;
                             var promotion = choiceMenu.currentText;
                             var phone = phonenumInput.text;
+                            var telegram = telegramInput.text;
 
                             // Extracting checkbox states
                             var vegetarian = vegetarianCheck.checked;
@@ -329,17 +352,35 @@ Item {
                             var halal = halalCheck.checked;
 
                             // Calling the setUserInfo function
-                            signinInfo.setUserInfo(displayName, gender, address, promotion, phone, vegetarian, vegan, glutenFree, lactoseIntolerant, pescatarian, halal);
+                            if (signinInfo.setUserInfo(displayName, telegram, gender, address, promotion, phone, vegetarian, vegan, glutenFree, lactoseIntolerant, pescatarian, halal)){
+                                errorInfo.visible=false;
+                            }
+                            displaynametext.text=""
+                            genderMenu.currentText=""
+                            buildingaddressinput.text=""
+                            choiceMenu.currentText=""
+                            phonenumInput.text=""
+                            telegramInput.text=""
+                            vegetarianCheck.checked=""
+                            veganCheck.checked=""
+                            glutenCheck.checked=""
+                            lactoseCheck.checked=""
+                            pescatarianCheck.checked=""
+                            halalCheck.checked=""
                 }
             }
+
             Connections {
                 target: signinInfo
 
                 function onOpenMarketPage() {
-                    stackView.push(Qt.resolvedUrl("Market.qml"))
+                    stackView.push(Qt.resolvedUrl("Market.qml"));
                 }
                 function onOpenPreviousPage() {
-                    stackView.push(Qt.resolvedUrl("SigninPage.qml"))
+                    stackView.push(Qt.resolvedUrl("SigninPage.qml"));
+                }
+                function onOpenInfoError() {
+                    errorInfo.visible=true;
                 }
             }
         }

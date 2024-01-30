@@ -5,17 +5,18 @@
 
 Signin::Signin(QObject *parent) : QObject(parent) {}
 
-bool Signin::signIn(const QString &username, const QString &password, const QString &passwordCheck, const QString &telegram) {
+bool Signin::signIn(const QString &username, const QString &password, const QString &passwordCheck) {
+    // check that a username has been given
     if (username== "") {
         emit openNoUsernameError();
         return false;
     }
-
+    // check that the username is not taken
     else if (User::is_username(username.toStdString())) {
         emit openUsernameError();
         return false;
     }
-
+    // check that password and password check have been filled out
     else if (password== "" || passwordCheck== "") {
         emit openNoPasswordError();
         return false;
@@ -25,12 +26,13 @@ bool Signin::signIn(const QString &username, const QString &password, const QStr
         emit openShortPasswordError();
         return false;
     }
+    // check that the password and password check match
     else if (password != passwordCheck) {
         emit openPasswordError();
         return false;
     }
 
-    // If all conditions are satisfied
+    // If all conditions are satisfied: initialize user
     else{
         emit openNextPage();
         CurrentUser::currentUser.User::set_username(username.toStdString());

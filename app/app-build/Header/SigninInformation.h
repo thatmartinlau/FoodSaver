@@ -10,7 +10,7 @@ public:
 
 
 public slots:
-    void setUserInfo(const QString &displayName, const QString &gender, const QString &address,
+    bool setUserInfo(const QString &displayName, const QString &telegram, const QString &gender, const QString &address,
                       const QString &promotion, const QString &phone, bool vegetarian,
                       bool vegan, bool glutenFree, bool lactoseIntolerant, bool pescatarian, bool halal);
 
@@ -18,6 +18,7 @@ public slots:
 signals:
 void openMarketPage();
 void openPreviousPage();
+void openInfoError();
 
 };
 #endif // SIGNININFORMATION_H

@@ -5,11 +5,17 @@
 #include <QDebug>
 SigninInfo::SigninInfo(QObject *parent) : QObject(parent) {}
 
-void SigninInfo::setUserInfo(const QString &displayName, const QString &gender, const QString &address,
+bool SigninInfo::setUserInfo(const QString &displayName, const QString &telegram, const QString &gender, const QString &address,
                              const QString &promotion, const QString &phone, bool vegetarian,
                              bool vegan, bool glutenFree, bool lactoseIntolerant, bool pescatarian, bool halal) {
 
-    if (CurrentUser::currentUser.User::get_username() != "") {
+    // check that the user input at least a name and a telegram username
+    if (displayName.toStdString()=="" || telegram.toStdString()==""){
+        emit openInfoError();
+        return false;
+    }
+
+    else if (CurrentUser::currentUser.User::get_username() != "") {
         qDebug() << "Updating current user attributes:";
 
         // Update the attributes of the current user
@@ -28,7 +34,10 @@ void SigninInfo::setUserInfo(const QString &displayName, const QString &gender, 
         CurrentUser::currentUser.set_phone_number(phone.toStdString());
         qDebug() << "Phone Number:" << QString::fromStdString(CurrentUser::currentUser.User::get_phone_number());
 
-        // Handle dietary restrictions
+        CurrentUser::currentUser.set_telegram(telegram.toStdString());
+        qDebug() << "Telegram:" << QString::fromStdString(CurrentUser::currentUser.User::get_telegram());
+
+        // Initialize user's dietary restrictions
         std::string diet = "";
         if (vegan) {
             diet = "vegan";
@@ -49,11 +58,12 @@ void SigninInfo::setUserInfo(const QString &displayName, const QString &gender, 
             CurrentUser::currentUser.set_diet(diet);
             qDebug() << "Diet:" << QString::fromStdString(CurrentUser::currentUser.User::get_diet());
         }
-
-        qDebug() << "Update complete.";
         emit openMarketPage();
+        return true;
+
     } else {
         qDebug() << "Error: Current user is null.";
         emit openPreviousPage();
+        return false;
     }
 }
