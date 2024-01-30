@@ -128,7 +128,7 @@ Popup {
             Layout.preferredWidth: 400
             id: ingredient1
             width: parent.width
-            placeholderText: "Ingredient 1"
+            placeholderText: "Ingredient (press enter or +)"
             placeholderTextColor: "#A0A0A0"
             color: "#544E3D"
             background: Rectangle {
@@ -229,7 +229,7 @@ Popup {
             Layout.preferredWidth: 400
             id: instruction1
             width: parent.width
-            placeholderText: "Instruction 1"
+            placeholderText: "Instruction (press enter or +)"
             placeholderTextColor: "#A0A0A0"
             color: "#544E3D"
             background: Rectangle {

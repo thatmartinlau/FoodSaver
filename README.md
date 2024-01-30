@@ -54,6 +54,13 @@ The three actions on an item work in QML locally. When you put an item up for sa
 <h3>4. Market</h3>
 
 <h3>5. Recipes</h3>
+<p>The Recipes page allows students to share their recipes. One can add a new recipe by pressing the "Add A Recipe" button. This then opens a popup which should be filled. In order to submit the ingrdients and instuctions, one must clik the "+" buttton or enter key. All fields are mandatory except fo the time. The title of a recipe must be new, else a message will popup. Recipes can be visualized by clicking the "try it out button".
+
+Once a recipe has been published anyone can rate it (scale of 0-5) which will add on to an average of all ratings. 
+
+One can search for a recipe in the searchbar. The results are only given once a full word has been entered by the user and the results keep updating as the searchbar input is updated. The results are ordered by most relevant, comparing both titles and ingredients of the available recipes with the user search input.
+
+The reset button resets the recipe page to all the available recipes, reseting all sorting or searches input.
 
 <h3>6. Settings and profile</h3>
 <p>The settings page and profile pages are popups that open when a button is clicked on any of the Market, Recipes or Fridge pages. Their function is to allow the user to change their personal information, and then save this information to that it can be updated on the server.</p>
