@@ -250,7 +250,7 @@ int main() {
     }
 
     // Save the model
-    torch::save(model, "result.pt");
+    torch::save(model, "resnet18_fruits360.pth");
 
     std::cout << "traning complete!" << std::endl;
 
