@@ -503,7 +503,6 @@ void test_update_fridge_get_fridge() {
     srv_usr1.update_fridge(fridge);
     Fridge f_returned = srv_usr1.get_fridge();
     cout << f_returned.get_list()[0].get_name();
-//    srv_usr1.delete_self_in_db();
 }
 
 int testing_suite() {

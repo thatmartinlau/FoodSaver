@@ -15,10 +15,10 @@ using namespace std;
 
 
 //Database storage files: no touchy :)) Except if you wihs totest fully: change to YOUR absolute file path.
-const string Database_simple_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
-const string Database_offer_list_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
-const string Database_fridge_and_food_lists_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as 0,1,0 etc...
-const string Database_recipe_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_recipe_data.csv"; //stores recipes, indexed by $ as separator.
+const string Database_simple_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
+const string Database_offer_list_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
+const string Database_fridge_and_food_lists_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as 0,1,0 etc...
+const string Database_recipe_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/databases/database_recipe_data.csv"; //stores recipes, indexed by $ as separator.
 //FILE FORMATS:
 
 //Ingredients: vector<string>> as [ingredient_name, expiry_date, quantity, category, priority_level;
@@ -253,9 +253,9 @@ void write_recipes_list() {
     ofstream file;
     file.open(Database_recipe_data);
     for (vector<string>::iterator i = recipes_list->begin(); i != recipes_list->end()-1; i++) {
-        file << *i << recipes_sep;
+        file << *i << recipes_sep << endl;
     }
-    file << *(recipes_list->end() -1);
+    file << *(recipes_list->end() -1) << endl;
     file.close();
 }
 
@@ -264,7 +264,7 @@ void write_to_csv() {
     write_simple_types();
     write_fridge_and_food_lists();
     write_offer_list();
-    write_recipes_list();
+//    write_recipes_list(); broken code
 }
 
 
@@ -657,14 +657,13 @@ int main() {
     
     //binding test functions:
     //srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
-    srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
+//    srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
     
     
     //SERVER running from here:
     read_from_csv();
     cout << "running" << endl;        
     srv.run();
-    
     
     
     
