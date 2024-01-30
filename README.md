@@ -10,7 +10,7 @@ I. Runing the server
 
 II. Runing the app
 
-There are 7 pages available on our app. Here are the things they can do:
+Our app can be run by oppening the 'app-build' file in the There are 7 pages available on our app. Here are the things they can do:
 
 1. Signin
 
