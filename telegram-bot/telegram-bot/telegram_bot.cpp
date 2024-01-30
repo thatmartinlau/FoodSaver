@@ -40,7 +40,7 @@ std::map<int64_t, UserInfo> userStates;
 TgBot::Bot bot("6644281748:AAFh40LQLa5054caEUPt8T_9wf-Yv1hAB-w");
 rpc::client c("172.20.10.7", 8080);
 
-
+// Check expiration from all fridges
 vector<vector<string>> check_expiration(client& c) {
     vector<vector<string>> result;
     for (const auto& entry : userCredentialsMap) {
