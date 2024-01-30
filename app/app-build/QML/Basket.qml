@@ -60,13 +60,13 @@ Popup {
                 Repeater{
                     model: ListModel{
                         ListElement{name: "Banana"; category: "Fruits"; timeLeft: "2 days"; price: "$2.00"; emoji: "🍌"; user: "User BX25"}
-                        ListElement{name: "Apple"; category: "Fruits"; timeLeft: "1 day"; price: "$1.50"; emoji: "🍎"; user: "User BX25"}
+                        /*ListElement{name: "Apple"; category: "Fruits"; timeLeft: "1 day"; price: "$1.50"; emoji: "🍎"; user: "User BX25"}
                         ListElement{name: "Milk"; category: "Dairy"; timeLeft: "3 days"; price: "$3.00"; emoji: "🥛"; user: "User BX25"}
                         ListElement { name: "Eggs"; category: "Dairy"; timeLeft: "4 days"; price: "$2.50" ; emoji: "🥚"; user: "User BX25"}
                         ListElement { name: "Carrot"; category: "Vegetables"; timeLeft: "2 days"; price: "$1.00"; emoji: "🥕" ; user: "User BX25"}
                         ListElement { name: "Onions"; category: "Vegetables"; timeLeft: "3 days"; price: "$1.20" ; emoji: "🧅"; user: "User BX25"}
                         ListElement { name: "Spinach"; category: "Vegetables"; timeLeft: "1 day"; price: "$1.80"; emoji: "🥬" ; user: "User BX25"}
-                        ListElement { name: "Avocado"; category: "Fruits"; timeLeft: "2 days"; price: "$2.50"; emoji: "🥑"; user: "User BX25" }
+                        ListElement { name: "Avocado"; category: "Fruits"; timeLeft: "2 days"; price: "$2.50"; emoji: "🥑"; user: "User BX25" }*/
                     }
 
 
@@ -149,7 +149,7 @@ Popup {
                                     anchors.fill: parent
                                     onClicked: {
                                         // URL contact link
-                                        Qt.openUrlExternally("https://t.me")
+                                        Qt.openUrlExternally("https://t.me/FSMarketPlace_bot")
                                     }
                                 }
                             }
