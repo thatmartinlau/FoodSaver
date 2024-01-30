@@ -208,7 +208,7 @@ inline vector<vector<vector<string>>> deserialize_offer_list2 (vector<string> of
     return offer_deser;
 }
 
-unordered_map<string, vector<vector<vector<string>>>> deserialize_map(const vector<string>& serialized_map) {
+inline unordered_map<string, vector<vector<vector<string>>>> deserialize_map(const vector<string>& serialized_map) {
     unordered_map<string, vector<vector<vector<string>>>> maps;
 
     for (const auto& user_data : serialized_map) {

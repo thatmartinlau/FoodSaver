@@ -5,7 +5,7 @@ project(app-release)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTORCC ON)
-find_package(Qt6 6.2 COMPONENTS Core Quick Gui REQUIRED)
+find_package(Qt6 6.2 COMPONENTS Quick Gui REQUIRED)
 qt_standard_project_setup(REQUIRES 6.5)
 
 include_directories(../../test3 Header Source ../../server/POCOSocket/Server/web_teste)
@@ -52,6 +52,8 @@ add_executable(${PROJECT_NAME} main.cpp
 	../../test3/offer.cpp
 	../../test3/user.cpp
 	../../test3/recipe.cpp
+	
+	
 	
 	qml.qrc
 )
