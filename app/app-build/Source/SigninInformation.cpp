@@ -69,6 +69,7 @@ bool SigninInfo::setUserInfo(const QString &displayName, const QString &gender, 
             *eggs_i = false;
         }
 
+
         emit openMarketPage();
         return true;
 
