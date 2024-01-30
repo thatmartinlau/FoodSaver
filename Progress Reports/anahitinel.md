@@ -38,4 +38,85 @@ Progress report 5:
 Worked on the RecipeBook cpp and hpp files, applying JSON files. Sent over the classes and commited the to the front branch. Next session will start working on the telegram bot and applying the Foodsaver as a medium of communication, sending ingredients that some users will not use to other users. 
 
 Progress report 6:
+instead of bot, working on frontend. implemented popup expiration calendar
+
+Porgress report 7:
+working on implementing calendar within the fridge, to track all the expiration dates. Not working yet :,(
+Will work on it over the weekend.
+
+For now have: 
+
+
+Rectangle {
+    anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.5 - 100
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: deux.width * 0.04
+            width: 200
+            height: 50
+            color: "white" // Transparent color
+            radius: 12.5 // Add radius to the transparent rectangle
+    Rectangle {
+        id: calendarPopup
+        width: 300
+        height: 300
+        color: "white"
+        radius: 10
+        visible: false
+
+        GridLayout {
+            id: calendarGrid
+            columns: 7
+            spacing: 2
+            anchors.fill: parent
+
+            Repeater {
+                model: 31 // Assuming maximum 31 days in a month
+                delegate: Rectangle {
+                    width: (calendarPopup.width - (calendarGrid.columns - 1) * calendarGrid.spacing) / calendarGrid.columns
+                    height: width
+                    color: "transparent"
+                    border.color: "lightgrey"
+                    border.width: 1
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: (index + 1).toString()
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            var selectedDate = new Date(new Date().getFullYear(), new Date().getMonth(), index + 1);
+                            console.log("Selected date:", selectedDate.toLocaleDateString(Qt.locale("en_US")));
+                            // Implement your logic here to handle the selected date
+                        }
+                    }
+
+                    // Mark expiration dates here based on your data
+                    // For example, you can compare with itemModel data and mark relevant dates
+                }
+            }
+        }
+    }
+
+    Label {
+        text: "View Expiration Dates"
+        color: "blue"
+        font.underline: true
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                calendarPopup.visible = true;
+            }
+        }
+    }
+}
+
+
+
 
