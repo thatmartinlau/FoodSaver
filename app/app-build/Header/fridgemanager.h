@@ -8,8 +8,6 @@
 #include "ingredient.h"
 #include "fridge.h"
 
-
-
 class FridgeManager : public QObject {
     Q_OBJECT
 
