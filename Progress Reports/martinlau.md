@@ -72,3 +72,10 @@ The code is currently very buggy and cannot compile due to an unforseen bug done
 WEEK 14: 15/01/24 - 21/01/24
 Working on merging 3-4 different branches together, and resolving conflicts
 Implementing logic properly into QML buttons.
+
+Final week: 21/01/24-31/01/24
+Could not get much done this week, due to strong sickness making me bedridden. After I recovered, I worked with the team on the presentation, did some final tweaks to the project, and finish the final release of the project. 
+
+We also attempted to start converting the <code>app-release</code> project into CMake, but we did not have enough time to fix all the compilation errors, so the app and the server will remain separated.
+
+Also wrote up most of the readme file for examiners to read.
