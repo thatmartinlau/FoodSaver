@@ -56,6 +56,11 @@ The three actions on an item work in QML locally. When you put an item up for sa
 
 <h3>4. Market</h3>
 
+The Market Place page displays a general view of what the database will show for anyone that wants to look at all the offers that every user has registered. It is the main link to identify which items are on sale with the basic information such as category, time left for expiration and of course, the price. Once a user is interested in buying an item, they may click on the "Add to Basket" button corresponding to each item, which will open the "My Basket" popup containing the product that is now currently in the basket. Here, the information of the item is also displayed as well as a "Contact to Buy" button, which works as a link to a chat with the Telegram user that has put out the item for sale. Currently, this link shows the Telegram Bot's chat for demo purposes, however, it is not intended to particularly initiate a conversation with or through the bot, but with the user who is selling the product.
+
+It is important to remark that currently, the Market page shows a manually introduced database, since the main idea is to try out the features coded in order for them to work out visually and properly. The project itself requires a database that should be updated when every user is online and keeps adding items to their personal offers. Connecting this functionalities through a server will ensure an updated database and also, full functionality when adding items to the basket. Both the Market and the Basket pages currently display manual information with the purpose of demonstrating its capabilities through the "demo" itself.
+
+
 <h3>5. Recipes</h3>
 <p>The Recipes page allows students to share their recipes. One can add a new recipe by pressing the "Add A Recipe" button. This then opens a popup which should be filled. In order to submit the ingrdients and instuctions, one must clik the "+" buttton or enter key. All fields are mandatory except fo the time. The title of a recipe must be new, else a message will popup. Recipes can be visualized by clicking the "try it out button".
 
