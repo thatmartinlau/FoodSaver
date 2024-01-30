@@ -38,7 +38,7 @@ std::map<int64_t, UserCredentials> userCredentialsMap;
 std::map<int64_t, UserInfo> userStates;
 
 TgBot::Bot bot("6644281748:AAFh40LQLa5054caEUPt8T_9wf-Yv1hAB-w");
-rpc::client c("172.20.10.7", 8080); // IP number, Port number
+rpc::client c("172.20.10.7", 8080);
 
 // Check expiration from all fridges
 vector<vector<string>> check_expiration(client& c) {
@@ -104,7 +104,7 @@ int main() {
             bot.getApi().sendMessage(chatId, "Logout successfully!");
         } else {
             // User needs to log in
-            bot.getApi().sendMessage(chatId, "Sorry, this telegram account hasn't linked to any fridge!");
+            bot.getApi().sendMessage(chatId, "Sorry, this telegram account hasn't linked to any fridge yet.");
         }
     });
 
@@ -245,7 +245,7 @@ int main() {
                 bot.getApi().sendMessage(chatId, "An error occurred while linking your fridge.");
             }
         } else {
-            bot.getApi().sendMessage(chatId, "Sorry, I couldn't understand. Please use /start to check more commands. ");
+            bot.getApi().sendMessage(chatId, "Sorry, I couldn't understand your questions. Please use /start to check available commands.");
         }
     });
 
@@ -253,6 +253,14 @@ int main() {
     std::thread expirationChecker([]() {
         while (true) {
             std::cout << "Starting checking expiration!" << std::endl;
+            
+            try {
+                int64_t test_user = userCredentialsMap.begin()->first;
+                bot.getApi().sendMessage(test_user, "testing");
+            } catch (const std::exception& e) {
+                std::cerr << "Error sending message: " << e.what() << std::endl;
+            }
+            
             auto expiringItems = check_expiration(c);
 
             for (const auto& item : expiringItems) {

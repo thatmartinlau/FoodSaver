@@ -13,7 +13,14 @@ FoodSaver was designed as an app and a server that is meant to connect from one 
 <p>For your evaluation of our work, we invite you to check each of these projects to get a good picture of the overall spread of our work.</p>
 
 <h2>I. Running the server</h2>
-[fill this in]
+Two step process to run the server:
+Firstly, go to server/POCOSocket/Server/CMakeLists.txt, which you should open as: Open Project in QT, under File tab. Then, simply click run. Green arrow.
+If you want to test out the clientside, if it were the case that app-release did not function,
+then:
+1. With a new qt window, head into server/POCOSocket/Server/web-teste/CMakeLists.txt , to open the client-side server section.
+2. Run the server from the above instruction.
+3. Run the client afterwards, after the server is built and you see "running" hopefully in the QT Console for the server project.
+4. You should see testing results in both consoles, after the rpc_client_side.cpp file runs.
 
 <h2>II. Running the app</h2>
 
@@ -53,4 +60,7 @@ The three actions on an item work in QML locally. When you put an item up for sa
 
 <h2>III. Connecting the server to the app</h2>
 
-<h2>IV. Photo recognition</h2>
+<h2>IV. Photo recognition and Telegram bot</h2>
+Please check server/CNN/README.txt and telegram-bot/telegram-bot/README.md for instructions.
+
+
