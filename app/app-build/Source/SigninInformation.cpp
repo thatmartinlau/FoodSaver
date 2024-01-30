@@ -5,9 +5,10 @@
 #include <QDebug>
 SigninInfo::SigninInfo(QObject *parent) : QObject(parent) {}
 
-bool SigninInfo::setUserInfo(const QString &displayName, const QString &telegram, const QString &gender, const QString &address,
-                             const QString &promotion, const QString &phone, bool vegetarian,
-                             bool vegan, bool glutenFree, bool lactoseIntolerant, bool pescatarian, bool halal) {
+bool SigninInfo::setUserInfo(const QString &displayName, const QString &gender, const QString &address,
+                             const QString &promotion, const QString &phone, const QString &telegram,
+                             bool gluten, bool lactose, bool meat, bool halal_meat, bool fish,
+                             bool nuts, bool eggs) {
 
     // check that the user input at least a name and a telegram username
     if (displayName.toStdString()=="" || telegram.toStdString()==""){
@@ -37,27 +38,37 @@ bool SigninInfo::setUserInfo(const QString &displayName, const QString &telegram
         CurrentUser::currentUser.set_telegram(telegram.toStdString());
         qDebug() << "Telegram:" << QString::fromStdString(CurrentUser::currentUser.User::get_telegram());
 
-        // Initialize user's dietary restrictions
-        std::string diet = "";
-        if (vegan) {
-            diet = "vegan";
-        } else if (glutenFree) {
-            diet = "glutenFree";
-        } else if (vegetarian) {
-            diet = "vegetarian";
-        } else if (pescatarian) {
-            diet = "pescatarian";
-        } else if (halal) {
-            diet = "halal";
+        // Handle dietary restrictions
+
+        // initialize to no dietary restrictions
+        std::list<bool> diet = {true, true, true, true, true, true, true, true, true, true, true, true, true, true};
+
+        // add more dietary restrictions
+        if (!gluten) {
+            auto gluten_i = diet.begin();; // gluten is at indice 1
+            *gluten_i = false;
+        } else if (!lactose) {
+            auto lactose_i = std::next(diet.begin(), 4); //lactose is at indice 5
+            *lactose_i = false;
+        } else if (!meat) {
+            auto meat_i = std::next(diet.begin(), 7); // meat is at indice 8
+            *meat_i = false;
+        } else if (!halal_meat) {
+            auto halal_meat_i = std::prev(diet.end(),6);; // halal is at indice 9
+            *halal_meat_i = false;
+        } else if (!fish) {
+            auto fish_i = std::prev(diet.end(),5); // fish is at indice 10
+            *fish_i = false;
         }
-        else if (lactoseIntolerant) {
-            diet = "lactoseIntolerant";
+        else if (!nuts) {
+            auto nuts_i = std::prev(diet.end(),3); // nuts are at indice 12
+            *nuts_i = false;
+        }
+        else if (!eggs) {
+            auto eggs_i = std::next(diet.begin(), 6); // eggs are at indice 7
+            *eggs_i = false;
         }
 
-        if (!diet.empty()) {
-            CurrentUser::currentUser.set_diet(diet);
-            qDebug() << "Diet:" << QString::fromStdString(CurrentUser::currentUser.User::get_diet());
-        }
         emit openMarketPage();
         return true;
 
