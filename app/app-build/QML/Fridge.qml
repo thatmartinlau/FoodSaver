@@ -870,16 +870,16 @@ Rectangle {
 
                 onClicked: {
                     var apple = {
-                        "index": 0, "item": "apple", "categorie": "Fruit", "date": "01/05/2024", "quantity": "2", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                        "index": 0, "item": "Apple", "categorie": "Fruit", "date": "01/05/2024", "quantity": "2", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
                     };
                     var milk = {
-                        "index": 1, "item": "milk", "categorie": "Drink", "date": "01/02/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                        "index": 1, "item": "Milk", "categorie": "Drink", "date": "01/02/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
                     };
                     var carrot = {
-                        "index": 2, "item": "carrot", "categorie": "Vegetable", "date": "01/03/2024", "quantity": "3", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                        "index": 2, "item": "Carrot", "categorie": "Vegetable", "date": "01/03/2024", "quantity": "3", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
                     };
                     var banana = {
-                        "index": 3, "item": "banana", "categorie": "Fruit", "date": "01/04/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
+                        "index": 3, "item": "Banana", "categorie": "Fruit", "date": "01/04/2024", "quantity": "1", "status": 0, "price" : 0, "quantity2sell": 0, "pricestatus": -1, "visibility" : 1
                     };
                     itemModel.append(apple);
                     itemModel.append(milk);
@@ -1033,7 +1033,7 @@ Rectangle {
 
             }
         }
-        Rectangle {
+        /*Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: parent.width * 0.5 - 100
             anchors.bottom: parent.bottom
@@ -1120,7 +1120,7 @@ Rectangle {
                     }
                 }
             }
-        }
+        }*/
 
         Rectangle {
             anchors.left: parent.left
@@ -1293,7 +1293,7 @@ Rectangle {
             }
         }
     } 
-    ApplicationWindow {
+    /*ApplicationWindow {
         visible: true
         width: 400
         height: 400
@@ -1379,7 +1379,7 @@ Rectangle {
                 }
             }
         }
-    }
+    }*/
 
 
 Profile {

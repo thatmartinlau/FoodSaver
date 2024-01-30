@@ -2,7 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 Item {
-    Column {
+    /*Column {
         Button {
             text: "market"
             onClicked: {stackView.push(Qt.resolvedUrl("Market.qml"))}
@@ -11,7 +11,7 @@ Item {
             text: "fridge"
             onClicked: {stackView.push(Qt.resolvedUrl("Fridge.qml"))}
         }
-    }
+    }*/
 
     // FOODSAVER LOGO/LABEL
     Rectangle {
