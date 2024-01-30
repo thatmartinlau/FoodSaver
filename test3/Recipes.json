@@ -42,6 +42,33 @@
             "tags": ["Jambalaya", "Hot pepper sauce", "Shrimp", "Chicken","Tomatoes", "Rice", "Parsley", "Cajun", "Olive oil", "Dinner"],
             "url": "http://allrecipes.com/recipe/231315/1-2-3-jambalaya/"
         },
+            {
+            "title": "Cream of Mushroom Soup",
+            "directions": [
+                "Gather all ingredients.",
+                "Simmer mushrooms, broth, onion, and thyme in a large heavy saucepan until vegetables are tender, 10 to 15 minutes.",
+                "Carefully transfer the hot mixture to a blender or food processor. Cover and hold lid down with a potholder; pulse until creamy but still with some chunks of vegetable.",
+                "Melt butter in the same saucepan. Whisk in flour until smooth. Whisk in salt and pepper. Slowly whisk in half-and-half and mushroom mixture.",
+                "Bring soup to a boil and cook, stirring constantly, until thickened.",
+                "Stir in sherry. Taste and season with more salt and pepper if needed."
+              ],
+            "ingredients": [
+                "5 cups sliced fresh mushrooms",
+                "1 ½ cups chicken broth",
+                "½ cup chopped onion",
+                "⅛ teaspoon dried thyme",
+                "3 tablespoons butter",
+                "3 tablespoons all-purpose flour",
+                "¼ teaspoon salt",
+                "¼ teaspoon ground black pepper",
+                "1 cup half-and-half",
+                "1 tablespoon sherry"
+              ],
+          "source": "Allrecipes",
+          "tags": ["Soup", "Mushroom", "Cream", "Onion", "Thyme", "Butter", "Flour", "Half-and-Half", "Sherry"],
+          "url": "https://www.allrecipes.com/recipe/13096/cream-of-mushroom-soup-i/"
+        }
+
         {
             "title": "1-Dish Chicken Parmesan",
             "directions": [
@@ -720,7 +747,35 @@
             "source": "allrecipes.com",
             "tags": ["Chocolate", "White Chocolate", "Latte", "Milk", "Vanilla", "Espresso", "Coffee", "Drink", "Breakfast"],
             "url": "http://allrecipes.com/recipe/137332/abbeys-white-chocolate-latte/"
-        },
+        },{
+          "title": "Bolognese Stuffed Bell Peppers",
+          "directions": [
+                "Preheat oven to 375 degrees F (190 degrees C).",
+                "Heat 1 tablespoon olive oil in a skillet over medium heat. Stir in the carrots and celery; cook and stir until the vegetables are tender, about 5 minutes.",
+                "Stir in ground beef and pancetta, and cook until browned and crumbled; drain off any excess liquid, and return to heat. Add marinara sauce, wine, and red pepper flakes, and simmer for 10 minutes. Stir in cream, half of the Parmesan cheese, and rice. Simmer 5 minutes more, or until most liquid has absorbed.",
+                "Place peppers in a shallow baking dish, and fill with beef mixture. Drizzle with remaining olive oil and top with remaining Parmesan cheese.",
+                "Bake, uncovered, for 30 minutes in the preheated oven. Serve hot."
+          ],
+          "ingredients": [
+            "½ cup cooked rice",
+            "2 tablespoons olive oil, divided",
+            "⅛ cup minced carrots",
+            "⅛ cup celery",
+            "6 bell peppers (any color) stems and seeds removed, cut in half lengthwise",
+            "½ pound ground beef",
+            "¼ pound pancetta or lightly smoked bacon, diced",
+            "1 ½ cups prepared marinara sauce",
+            "¼ cup red wine",
+            "½ teaspoon red pepper flakes",
+            "⅓ cup heavy cream",
+            "½ cup grated Parmesan cheese, divided"
+          ],
+        "source": "Allrecipes",
+        "tags": ["Main Dish", "Italian", "Bell Peppers", "Beef", "Pancetta", "Rice", "Parmesan", "Cream", "Red Wine"],
+        "url": "https://www.allrecipes.com/recipe/77194/bolognese-stuffed-bell-peppers/"
+}
+
+        
         {
             "title": "Golden Yogurt Cake",
             "directions": [
@@ -1733,6 +1788,26 @@
             ],
             "url": "http://www.foodnetwork.com/recipes/ree-drummond/all-purpose-meatballs"
         },
+        {
+            "title": "Thin-Crust Pizza Dough",
+            "directions": [
+                "Dissolve yeast and sugar in warm water that's 110 degrees F (44 degrees C) in a small bowl. Let stand until yeast softens and begins to form a creamy foam, about 5 to 8 minutes.",
+                "Combine 1 3/4 cups flour and salt in a large bowl. Pour in yeast mixture; mix well until dough comes together.",
+                "Transfer dough to a floured surface and knead until smooth, about 2 minutes. Add remaining 1/4 cup flour if dough is too sticky.",
+                "Roll dough into a 12-inch circle. Transfer to a greased pizza pan."
+              ],
+            "ingredients": [
+                "1 teaspoon active dry yeast",
+                "¼ teaspoon white sugar",
+                "¾ cup lukewarm water",
+                "2 cups all-purpose flour, divided",
+                "½ teaspoon salt"
+              ],
+            "source": "Allrecipes",
+             "tags": ["Pizza", "Dough", "Thin-Crust", "Yeast", "Sugar", "Flour", "Salt"],
+            "url": "https://www.allrecipes.com/recipe/257198/thin-crust-pizza-dough/"
+        }
+
         {
             "title": "All-Purpose Pizza Dough",
             "directions": [
@@ -5347,6 +5422,35 @@
             "tags": ["Guacamole", "Avocado", "Cilantro", "Onion","Garlic", "pepper", "Lemon","Limes", "Snack", "Dip", "Vegetarian"],
             "url": "http://allrecipes.com/recipe/221292/yummy-guacamole/"
         },
+        {
+            "title": "Grandma's Lemon Meringue Pie",
+            "directions": [
+                "Preheat the oven to 325 degrees F (162 degrees C).",
+                "To make the filling: Whisk 1 cup sugar, flour, cornstarch, and salt together in a medium saucepan; stir in water, lemon juice, and lemon zest. Cook over medium-high heat, stirring frequently, until mixture comes to a boil. Stir in butter.",
+                "Place egg yolks in a small bowl and gradually whisk in 1/2 cup of hot sugar mixture. Whisk egg yolk mixture back into remaining sugar mixture. Bring to a boil and continue to cook while stirring constantly until thick. Remove from heat; pour filling into baked pastry shell.",
+                "To make the meringue: Beat egg whites in a glass, metal, or ceramic bowl with an electric mixer until foamy. Gradually add sugar, continuing to beat until stiff peaks form. Spread meringue over pie filling, sealing the edges at the crust.",
+                "Bake in preheated oven until meringue is golden brown, about 20 to 25 minutes."
+              ],
+            "ingredients": [
+                "Filling:",
+                "1 cup white sugar",
+                "2 tablespoons all-purpose flour",
+                "3 tablespoons cornstarch",
+                "¼ teaspoon salt",
+                "1 ½ cups water",
+                "2 lemons (juiced and zested)",
+                "2 tablespoons butter",
+                "4 egg yolks (beaten)",
+                "1 (9 inch) pie crust, baked",
+                "Meringue:",
+                "4 egg whites",
+                "1/2 cup white sugar"
+              ],
+              "source": "Emilie S, Tested by Allrecipes Test Kitchen",
+              "tags": ["Pie", "Lemon", "Meringue", "Dessert"],
+              "url": ""
+        }
+
         {
             "title": "Yummy Lemon Bread",
             "directions": [
