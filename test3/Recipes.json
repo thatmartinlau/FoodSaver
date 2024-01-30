@@ -319,6 +319,32 @@
             "url": "http://allrecipes.com/recipe/239043/a-healthier-mochaccino/"
         },
         {
+    "title": "Chocolate Pie",
+    "directions": [
+        "Preheat the oven to 325 degrees F (162 degrees C).",
+        "To make the filling: Whisk 1 cup sugar, flour, cornstarch, and salt together in a medium saucepan; stir in water, lemon juice, and lemon zest. Cook over medium-high heat, stirring frequently, until mixture comes to a boil. Stir in butter.",
+        "Place egg yolks in a small bowl and gradually whisk in 1/2 cup of hot sugar mixture. Whisk egg yolk mixture back into remaining sugar mixture. Bring to a boil and continue to cook while stirring constantly until thick. Remove from heat; pour filling into baked pastry shell.",
+        "To make the meringue: Beat egg whites in a glass, metal, or ceramic bowl with an electric mixer until foamy. Gradually add sugar, continuing to beat until stiff peaks form. Spread meringue over pie filling, sealing the edges at the crust.",
+        "Bake in preheated oven until meringue is golden brown, about 20 to 25 minutes."
+    ],
+    "ingredients": [
+        "1 cup white sugar",
+        "2 tablespoons all-purpose flour",
+        "3 tablespoons cornstarch",
+        "¼ teaspoon salt",
+        "1 ½ cups water",
+        "2 lemons, juiced and zested",
+        "2 tablespoons butter",
+        "4 egg yolks, beaten",
+        "1 (9 inch) pie crust, baked",
+        "4 egg whites",
+        "1/2 cup white sugar"
+    ],
+    "source": "Allrecipes",
+    "tags": ["Pie", "Dessert", "Chocolate", "Lemon", "Meringue"],
+    "url": "https://www.allrecipes.com/recipe/15234/grandmas-lemon-meringue-pie/"
+}
+        {
             "title": "A Hearty Porridge",
             "directions": [
                 "Combine oats, quinoa, raisins, walnuts, almond meal, flaxseed meal, coconut, apple, and cinnamon in a pot; add water. Bring mixture to a boil, stirring regularly; reduce heat and simmer until oats are tender and liquid is absorbed, about 10 minutes."
@@ -597,7 +623,31 @@
                 "Tree Nut Free"
             ],
             "url": "http://www.epicurious.com/recipes/food/views/a-simple-roast-turkey-51122680"
-        },
+        }
+        {
+    "title": "Classic Peanut Butter Cookies",
+    "directions": [
+        "Beat butter, peanut butter, white sugar, and brown sugar with an electric mixer in a large bowl until smooth; beat in eggs.",
+        "Sift flour, baking soda, baking powder, and salt into a separate bowl; stir into butter mixture until dough is just combined. Chill cookie dough in the refrigerator for 1 hour to make it easier to work with.",
+        "Preheat the oven to 375 degrees F (190 degrees C).",
+        "Roll dough into 1-inch balls and place 2 inches apart onto ungreased baking sheets. Flatten each ball with a fork, making a crisscross pattern.",
+        "Bake in the preheated oven until edges are golden, about 7 to 10 minutes. Cool on the baking sheets briefly before removing to a wire rack to cool completely."
+    ],
+    "ingredients": [
+        "1 cup unsalted butter",
+        "1 cup crunchy peanut butter",
+        "1 cup white sugar",
+        "1 cup packed brown sugar",
+        "2 large eggs",
+        "2 ½ cups all-purpose flour",
+        "1 ½ teaspoons baking soda",
+        "1 teaspoon baking powder",
+        "½ teaspoon salt"
+    ],
+    "source": "Allrecipes",
+    "tags": ["Cookies", "Peanut Butter", "Baking", "Dessert"],
+    "url": "https://www.allrecipes.com/recipe/10275/classic-peanut-butter-cookies/"
+}
         {
             "title": "Fried Chicken",
             "directions": [
@@ -662,6 +712,40 @@
             "tags": ["Smoothie", "Fruits", "Fruit", "Juice", "Vegan","Vegetarian", "Free"],
             "url": "http://allrecipes.com/recipe/20026/a-very-intense-fruit-smoothie/"
         },
+        ```json
+{
+    "title": "Garlic Shrimp Pasta Bake",
+    "directions": [
+        "Preheat the oven to 350 degrees F (175 degrees C).",
+        "Bring a large pot of lightly salted water to a boil. Add penne and cook until tender yet firm to the bite, about 11 minutes. Drain and set aside.",
+        "In a large oven-safe skillet, heat 1 tablespoon butter and oil over medium heat. Add garlic and cook until fragrant, about 30 seconds. Add shrimp, 2 tablespoons parsley, and dill; cook until shrimp are pink and opaque, about 2 minutes per side. Transfer shrimp to a plate.",
+        "Melt remaining 2 tablespoons butter in the skillet. Whisk in flour until golden, then gradually whisk in chicken broth and milk. Stir in tomatoes, lemon juice, salt, and pepper; simmer.",
+        "Stir in 1/2 cup Parmesan and Romano until melted and sauce is creamy. Add 1 tablespoon mozzarella, then mix in 1/2 of the cooked pasta. Add more pasta if needed. Stir in shrimp, then top with remaining mozzarella, Parmesan, and parsley.",
+        "Bake until golden and bubbling, 8 to 10 minutes."
+    ],
+    "ingredients": [
+        "1 (10 ounce) package penne pasta",
+        "3 tablespoons butter, divided",
+        "1 teaspoon vegetable oil",
+        "1 tablespoon minced garlic",
+        "1 pound uncooked medium shrimp, peeled and deveined",
+        "3 tablespoons chopped fresh parsley, divided",
+        "2 teaspoons chopped fresh dill",
+        "2 tablespoons all-purpose flour",
+        "½ cup chicken broth",
+        "1 cup milk",
+        "2 large tomatoes, chopped",
+        "1 tablespoon lemon juice",
+        "1 teaspoon salt",
+        "1 teaspoon ground black pepper",
+        "¾ cup grated Parmesan cheese",
+        "½ cup grated Romano cheese",
+        "¼ cup shredded mozzarella cheese"
+    ],
+    "source": "Ed N Angela Latimer",
+    "url": "https://www.allrecipes.com/recipe/263394/garlic-shrimp-pasta-bake/",
+    "tags": ["Garlic Shrimp", "Pasta Bake", "Seafood", "Italian", "Creamy Sauce"]
+}
         {
             "title": "BBQ Sauce",
             "directions": [
@@ -1156,6 +1240,39 @@
             ],
             "url": "http://www.epicurious.com/recipes/food/views/acorn-squash-with-wild-mushroom-cranberry-stuffing-1042"
         },
+        {
+    "title": "Garlic Shrimp Pasta Bake",
+    "directions": [
+        "Preheat the oven to 350 degrees F (175 degrees C).",
+        "Bring a large pot of lightly salted water to a boil. Add penne and cook until tender yet firm to the bite, about 11 minutes. Drain and set aside.",
+        "In a large oven-safe skillet, heat 1 tablespoon butter and oil over medium heat. Add garlic and cook until fragrant, about 30 seconds. Add shrimp, 2 tablespoons parsley, and dill; cook until shrimp are pink and opaque, about 2 minutes per side. Transfer shrimp to a plate.",
+        "Melt remaining 2 tablespoons butter in the skillet. Whisk in flour until golden, then gradually whisk in chicken broth and milk. Stir in tomatoes, lemon juice, salt, and pepper; simmer.",
+        "Stir in 1/2 cup Parmesan and Romano until melted and sauce is creamy. Add 1 tablespoon mozzarella, then mix in 1/2 of the cooked pasta. Add more pasta if needed. Stir in shrimp, then top with remaining mozzarella, Parmesan, and parsley.",
+        "Bake until golden and bubbling, 8 to 10 minutes."
+    ],
+    "ingredients": [
+        "1 (10 ounce) package penne pasta",
+        "3 tablespoons butter, divided",
+        "1 teaspoon vegetable oil",
+        "1 tablespoon minced garlic",
+        "1 pound uncooked medium shrimp, peeled and deveined",
+        "3 tablespoons chopped fresh parsley, divided",
+        "2 teaspoons chopped fresh dill",
+        "2 tablespoons all-purpose flour",
+        "½ cup chicken broth",
+        "1 cup milk",
+        "2 large tomatoes, chopped",
+        "1 tablespoon lemon juice",
+        "1 teaspoon salt",
+        "1 teaspoon ground black pepper",
+        "¾ cup grated Parmesan cheese",
+        "½ cup grated Romano cheese",
+        "¼ cup shredded mozzarella cheese"
+    ],
+    "source": "Ed N Angela Latimer",
+    "url": "",
+    "tags": ["Garlic Shrimp", "Pasta Bake", "Seafood", "Italian", "Creamy Sauce"]
+        }
         {
             "title": "Acorn Squash with Sweet Spicy Sausage",
             "directions": [
@@ -1892,6 +2009,26 @@
             "tags": ["Veggie", "Burger", "Beans", "Bean", "Basil", "Rice", "Oats", "Tofu", "Garlic", "Vegetable", "Pepper", "Dinner", "Lunch", "Vegetarian"],
             "url": "http://allrecipes.com/recipe/81532/all-star-veggie-burger/"
         },
+        ```json
+{
+    "title": "Roasted Brussels Sprouts with Balsamic and Honey",
+    "directions": [
+        "Preheat the oven to 425 degrees F (220 degrees C). Line a baking sheet with parchment paper.",
+        "Combine Brussels sprouts, olive oil, salt, and pepper in a large bowl; toss to coat. Spread out evenly on the prepared baking sheet.",
+        "Roast in the preheated oven until browned, about 30 minutes, turning after 15 minutes. Remove from oven and drizzle with balsamic vinegar and honey, mixing to coat evenly."
+    ],
+    "ingredients": [
+        "1 pound Brussels sprouts, trimmed",
+        "3 tablespoons extra-virgin olive oil",
+        "1 teaspoon kosher salt, or to taste",
+        "½ teaspoon freshly ground black pepper, or to taste",
+        "1 tablespoon good quality balsamic vinegar",
+        "2 tablespoons honey, or to taste"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/274675/roasted-brussels-sprouts-with-balsamic-and-honey/",
+    "tags": ["Brussels Sprouts", "Roasted Vegetables", "Balsamic Vinegar", "Honey", "Side Dish"]
+}
         {
             "title": "Chili",
             "directions": [
@@ -2241,6 +2378,27 @@
             "tags": ["Asparagus", "Peas","Cheddar", "Cheese", " Parmesan", "Vegetarian", "Snack", "Lunch", "Diner"],
             "url": "http://allrecipes.com/recipe/31471/amazing-asparagus/"
         },
+        {
+    "title": "Air Fryer Tofu Milanesa",
+    "directions": [
+        "Cut tofu lengthwise into 2 slabs. Cut each slab into two triangles.",
+        "Mix bread crumbs and taco seasoning together in a shallow pan or plate. Lightly beat eggs in a separate shallow pan or plate.",
+        "Preheat the air fryer to 375 degrees F (190 degrees C).",
+        "Dip each tofu triangle into the beaten eggs. Dredge them in the bread crumb mixture. Gently press down to coat each side. Arrange in a single layer on a plate. Spray lightly with cooking spray.",
+        "Cook in the air fryer on one side for 15 minutes. Flip each triangle and spray lightly with cooking spray. Cook until browned, about 10 minutes more. You may need to cook in batches, depending on the size of your air fryer basket."
+    ],
+    "ingredients": [
+        "1 (8 ounce) container firm tofu, drained and pressed",
+        "⅓ cup dry bread crumbs",
+        "1 tablespoon taco seasoning mix",
+        "2 eggs",
+        "cooking spray"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/280717/air-fryer-tofu-milanesa/",
+    "tags": ["Tofu", "Milanesa", "Air Fryer", "Tex-Mex", "Crispy", "Easy", "Vegetarian"]
+}
+
         {
             "title": "Artichoke and Spinach Dip",
             "directions": [
@@ -3722,6 +3880,34 @@
             "tags": ["Salad", "California Roll", "Rice", "Lettuce", "Mayonnaise", "Soy Sauce", "Vinegar", "Sesame", "Avocado", "Cucumber", "Wasabi", "Crabmeat", "Lunch", "Dinner", "Snack"],
             "url": "http://allrecipes.com/recipe/62442/california-roll-salad/"
         },
+        ```json
+{
+    "title": "Mediterranean Zucchini and Chickpea Salad",
+    "directions": [
+        "Mix zucchini, chickpeas, tomatoes, red bell pepper, onion, feta, Kalamata olives, olive oil, basil, vinegar, rosemary, capers, garlic, oregano, red pepper flakes, salt, and black pepper together in a large bowl."
+    ],
+    "ingredients": [
+        "2 cups diced zucchini",
+        "1 (15 ounce) can chickpeas, drained and rinsed",
+        "1 cup halved grape tomatoes",
+        "¾ cup chopped red bell pepper",
+        "½ cup chopped sweet onion (such as Vidalia®)",
+        "½ cup crumbled feta cheese",
+        "½ cup chopped Kalamata olives",
+        "⅓ cup olive oil",
+        "⅓ cup packed fresh basil leaves, roughly chopped",
+        "¼ cup white balsamic vinegar",
+        "1 tablespoon chopped fresh rosemary",
+        "1 tablespoon capers, drained and chopped",
+        "1 clove garlic, minced",
+        "½ teaspoon dried Greek oregano",
+        "1 pinch crushed red pepper flakes (Optional)",
+        "Salt and ground black pepper to taste"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/222653/mediterranean-zucchini-and-chickpea-salad/",
+    "tags": ["Zucchini", "Chickpea", "Salad", "Mediterranean", "Vegetarian", "Healthy", "Light Lunch", "Side Dish"]
+}
         {
             "title": "California Tacos",
             "directions": [
@@ -3845,6 +4031,35 @@
             "tags": ["Calzone", "Pizza", "Flour", "Dinner", "Lunch", "Pepperoni", "Sausage", "Cheese","Mozzarella", "Vegetarian" ],
             "url": "http://allrecipes.com/recipe/6806/calzone/"
         },
+        {
+    "title": "Argentinian Beef Empanadas",
+    "directions": [
+        "Preheat the oven to 450 degrees F (230 degrees C). Set racks in the upper and lower thirds of the oven and line 2 large baking sheets with parchment paper.",
+        "Cook beef in a large, heavy skillet over medium-high heat, stirring and breaking up lumps, until no longer pink, 4 to 5 minutes. Transfer beef to a small bowl with a slotted spoon, and pour off grease from the skillet. Melt butter in the skillet and saute onions and green onion, stirring occasionally, until tender, about 5 minutes.",
+        "Return beef to skillet and stir in hard-boiled eggs, olives, raisins, cumin, salt, and pepper. Transfer mixture to a shallow bowl and chill until cooled, 10 to 20 minutes.",
+        "Unfold one pastry sheet, keeping remaining sheets chilled, onto a lightly floured surface, dust lightly with flour, and roll out into a 12-inch square. Cut four 5 1/2-inch rounds from pastry. Brush a 1/2-inch border around the edges of one round with water, using a small brush or fingertip. Spoon about 3 tablespoons of filling onto half of the round. Fold other half over filling and press edges together firmly.",
+        "Crimp edges with a fork and transfer to one of the prepared baking sheets. Repeat with three remaining rounds. Form 12 more empanadas in the same manner with remaining pastry and filling, arranging them about 1 1/2 inches apart on baking sheets.",
+        "Brush tops of empanadas with beaten egg. Bake in the preheated oven, switching position of sheets halfway through, until golden brown, about 15 minutes."
+    ],
+    "ingredients": [
+        "½ pound ground beef",
+        "3 tablespoons butter",
+        "2 medium onions, chopped",
+        "1 green onion, chopped",
+        "2 hard-boiled eggs, chopped",
+        "14 pitted green olives, such as Manzanilla, finely chopped",
+        "3 tablespoons raisins",
+        "1 teaspoon cumin",
+        "½ teaspoon salt",
+        "¼ teaspoon black pepper",
+        "2 (17.5 ounce) packages frozen puff pastry (each with 2 sheets), thawed",
+        "1 raw egg, lightly beaten"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/244265/argentinian-beef-empanadas/",
+    "tags": ["Empanadas", "Argentinian Cuisine", "Appetizer", "Beef", "Savory", "Pastry", "Party Food"]
+}
+
         {
             "title": "Cannellini Bean and Artichoke Salad",
             "directions": [
@@ -3988,7 +4203,33 @@
             "source": "allrecipes.com",
             "tags": ["Caramel", "Apple", "Bars", "Oats", "Walnuts", "Snack", "Sweet"],
             "url": "http://allrecipes.com/recipe/10580/caramel-apple-bars-i/"
-        },
+        },```json
+{
+    "title": "Flan Mexicano",
+    "directions": [
+        "Place sugar into a heavy saucepan over medium-high heat. Cook, stirring constantly, until sugar melts and turns a golden amber color, about 10 minutes. Watch carefully once syrup begins to change color because it burns quickly. Carefully pour caramel syrup into a flan mold. Set aside to cool.",
+        "Preheat the oven to 350 degrees F (175 degrees C). Place an oven rack in the middle position.",
+        "Place sweetened condensed milk, whole milk, eggs, egg yolks, orange juice, orange peel, vanilla, and cornstarch into a blender; blend until smooth, about 1 minute. Pour in cream and pulse several times to incorporate. Pour mixture over cooled caramel syrup in the flan mold.",
+        "Line a roasting pan with a damp kitchen towel. Place the filled flan mold carefully on the towel in the roasting pan, then place the roasting pan on the oven rack. Fill the roasting pan with enough boiling water to reach halfway up the sides of the flan mold.",
+        "Bake in the preheated oven until the center of flan is set but still slightly jiggles when nudged, 45 minutes to 1 hour. Let cool, then refrigerate for at least 4 hours.",
+        "To serve, run a sharp paring knife around the inside of the mold to release flan. Place a serving plate on the mold, then flip the mold over. Gently lift the mold to release flan and allow caramel syrup to cascade over custard. Remove the mold."
+    ],
+    "ingredients": [
+        "1 cup white sugar",
+        "1 (14 ounce) can sweetened condensed milk",
+        "1 cup whole milk",
+        "3 large eggs",
+        "3 large egg yolks",
+        "¼ cup freshly squeezed orange juice",
+        "1 tablespoon grated orange peel",
+        "1 tablespoon vanilla extract",
+        "1 tablespoon cornstarch",
+        "1 cup heavy cream"
+    ],
+    "source": "Allrecipes",
+    "url": "https://www.allrecipes.com/recipe/214091/flan-mexicano-mexican-flan/",
+    "tags": ["Flan", "Mexican Cuisine", "Dessert", "Custard", "Holiday Recipe", "Traditional", "Orange", "Vanilla", "Cream"]
+}
         {
             "title": "Caramel Apple Cookies",
             "directions": [
