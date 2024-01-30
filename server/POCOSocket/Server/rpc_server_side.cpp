@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include "rpc/server.h"
+#include "rpc/client.h"
 #include "rpc/this_handler.h"
 #include "rpc/this_session.h"
 
@@ -15,10 +16,10 @@ using namespace std;
 
 
 //Database storage files: no touchy :)) Except if you wihs totest fully: change to YOUR absolute file path.
-const string Database_simple_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
-const string Database_offer_list_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
-const string Database_fridge_and_food_lists_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as 0,1,0 etc...
-const string Database_recipe_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/FoodSaver/server/POCOSocket/Server/databases/database_recipe_data.csv"; //stores recipes, indexed by $ as separator.
+const string Database_simple_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_simple_data.csv"; //               Stores: username, password, display_na, telegram_name, gender, promo, address, phone_num, tele_notif, mkt_notif
+const string Database_offer_list_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_offer_list_data.csv"; //       Stores: username, ingr1_name, 4 others, price,ingr2_name, 4 others, price2, etc...
+const string Database_fridge_and_food_lists_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_fridge_data.csv"; //Stores: username, fridge as ingr1_name, 4 others, ingr2_name, 4 others, etc. On new line, stores dietary restrictions as 0,1,0 etc...
+const string Database_recipe_data = "C:/Users/adamn/OneDrive/Desktop/L'X School/FoodSaver/server/POCOSocket/Server/databases/database_recipe_data.csv"; //stores recipes, indexed by $ as separator.
 //FILE FORMATS:
 
 //Ingredients: vector<string>> as [ingredient_name, expiry_date, quantity, category, priority_level;
@@ -41,8 +42,8 @@ public:
     ~UserData() {}
     string password;
     basic_user_data basic_u_data;
-    list<bool> food_and_dietary_restrictions;
-    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!
+    list<bool> food_and_dietary_restrictions;    
+    vector<vector<string>> fridge; //Implied: ingredient is vector<string>, still. Good luyck coding guys!    
     vector<vector<vector<string>>> offer_list; //Implied: offer is [Ingredient, [price]]. Offer list is vector of this offer type.
 };
 
@@ -63,10 +64,10 @@ void read_simple_types_from_csv() {
     for (string line_it; getline(file, line_it);) {
         lines.push_back(line_it);
     }
-
+    
     for (auto line_it: lines) { //iterate through each user, add up all the factors into UserData , into database.
         vector<string> user_data;
-
+        
         stringstream line_it_stream(line_it);
         for (string line_it_elt; getline(line_it_stream, line_it_elt, csv_sep);) {
             user_data.push_back(line_it_elt);
@@ -81,7 +82,7 @@ void read_simple_types_from_csv() {
         basic_u_data.phone_number = std::stoi(user_data[7]); //convert to int
         basic_u_data.telegram_notifications = std::stoi(user_data[8]); //convert to int
         basic_u_data.marketplace_notifications = std::stoi(user_data[9]);//convert to int
-
+        
         (*database)[user_data[0]] = UserData(user_data[1], basic_u_data); //0 is username, 1 is password, rest is U-data.
     }
     file.close();
@@ -143,7 +144,7 @@ void read_offer_list_from_csv() {
             offer.push_back(price);
             (*database)[username].offer_list.push_back(offer);
         }
-
+        
     }
     file.close();
 }
@@ -162,7 +163,7 @@ void read_recipes_from_csv() {
 void read_from_csv() {
     //first, read simple types for username / password. And this allows us to create UserData.
     read_simple_types_from_csv();//we begin here, initialize user class. Then, we initialise fridge and offer_list types. Along with food restrictions.
-    read_fridge_and_food_lists_from_csv(); //use already initialized database.
+    read_fridge_and_food_lists_from_csv(); //use already initialized database. 
     read_offer_list_from_csv();
     read_recipes_from_csv();
 }
@@ -205,7 +206,7 @@ void write_fridge_and_food_lists() {
                 vector<string> ingredient = user_data.fridge[i];
                 for (int j=0; j < 5; j++) {
                     first_line_to_write.push_back(ingredient[j]);
-
+                    
                 }
         }
         string line_to_write_here;
@@ -216,7 +217,7 @@ void write_fridge_and_food_lists() {
             line_to_write_here.pop_back();        file << line_to_write_here << endl;
 
         //second line is writing boolean restrictions into file.
-        string line2;
+        string line2; 
         for (list<bool>::const_iterator it = user_data.food_and_dietary_restrictions.begin(); it != user_data.food_and_dietary_restrictions.end(); it++) {
             line2.append(to_string(*it) + csv_sep); //outputs "0" or "1" in string repr.
         }
@@ -243,7 +244,7 @@ void write_offer_list() {
             line_to_write_string.append(*it + csv_sep);
         }
         if (!line_to_write_string.empty()) //stolen fron SToflow, username jcrv
-            line_to_write_string.pop_back();
+            line_to_write_string.pop_back();        
         file << line_to_write_string << endl;
     }
     file.close();
@@ -253,9 +254,9 @@ void write_recipes_list() {
     ofstream file;
     file.open(Database_recipe_data);
     for (vector<string>::iterator i = recipes_list->begin(); i != recipes_list->end()-1; i++) {
-        file << *i << recipes_sep << endl;
+        file << *i << recipes_sep;
     }
-    file << *(recipes_list->end() -1) << endl;
+    file << *(recipes_list->end() -1);
     file.close();
 }
 
@@ -264,13 +265,13 @@ void write_to_csv() {
     write_simple_types();
     write_fridge_and_food_lists();
     write_offer_list();
-//    write_recipes_list(); broken code
+//    write_recipes_list();
 }
 
 void init_data_test() { //debug function. Tests database read/write all together along with test_read_write_csv().
     UserData data;
     string m = "Molly";
-
+    
     data.password = "Darton";
     vector<vector<string>> fridge_darton;
     vector<string> apple;
@@ -291,9 +292,9 @@ void init_data_test() { //debug function. Tests database read/write all together
     offer2.push_back(price_2);
     data.offer_list.push_back(offer2);
     data.food_and_dietary_restrictions = restrictions_of_molly;
-
+    
     (*database)[m] = data;
-
+    
     string k = "Johnny";
     vector<vector<string>> offer;
     offer.push_back(data.fridge[0]);
@@ -304,11 +305,11 @@ void init_data_test() { //debug function. Tests database read/write all together
     data.offer_list.push_back(offer);
     data.food_and_dietary_restrictions = restrictions_of_johnny;
     (*database)[k] = data;
-
+    
     //add simple recipes:
     (*recipes_list)[0] = "hello, this is a recipe!";
     (*recipes_list)[1] = "recipe2";
-
+    
 }
 
 int test_read_csv() {
@@ -333,13 +334,6 @@ void add_user(string username, string password){
         // Element doesn't exist, so add it
         UserData data(password);
         (*database)[username] = data;
-        cout << "Added User: " << username << endl;
-        write_to_csv();
-    }
-    else {
-        UserData data(password);
-        (*database)[username] = data;
-        cout << "user already added." << endl;
     }
 }
 
@@ -350,7 +344,6 @@ void remove_user(string username, string password){
         if (password == el->second.password) {
             // Password matches
             database->erase(el); // Remove the user if the password matches
-            write_to_csv();
         } else {
             // Password does not match
             auto err_obj = std::make_tuple(507, "Incorrect Password");
@@ -372,9 +365,9 @@ void update_user(string old_username, string old_password, string new_username, 
         // Create a new entry with the updated username and password
         UserData new_data(new_password);
         database->emplace(new_username, std::move(new_data));
-
+        
         // Remove the old entry
-
+        
         database->erase(el);
         write_to_csv();//writes to all databases, this is to ensure no naming conflicts later.
     }
@@ -388,7 +381,7 @@ void update_user(string old_username, string old_password, string new_username, 
     auto err_obj = std::make_tuple(123, "Username not found");
     rpc::this_handler().respond_error(err_obj);
 }
-
+    
 }
 
 void update_user_characteristics(string username, string password, vector<string> new_characs) {
@@ -413,7 +406,7 @@ else {
         auto err_obj = std::make_tuple(123, "Username not found");
         rpc::this_handler().respond_error(err_obj);
     }
-
+    
 }
 
 void update_fridge(string username, string password, vector<string> fridge) {
@@ -427,7 +420,6 @@ void update_fridge(string username, string password, vector<string> fridge) {
                 // Password matches
             vector<vector<string>> old_data = el->second.fridge; //used so we can later delete the old data
             el->second.fridge = std::move(new_fridge);
-            cout << "fridge_replaced." << endl;
 
             old_data.clear();
 
@@ -499,25 +491,23 @@ vector<string> get_offer_list(string username, string password) {
 
 }
 vector<string> get_fridge(string username, string password) {
-        cout << "get_fridge called." << endl;
         auto el = database->find(username); // Find the username in the database
         if (el != database->end() && password == el->second.password) {
             // Username exists and password matches
 
 
-            return serialize(std::move(el->second.fridge));
+             return serialize(std::move(el->second.fridge));
         }
 
 
         else { // Return an empty offer_list if no username or password does not match
-            vector<string> empty_return_vector = {"Empty, error when coding"};
-            return empty_return_vector;
+             vector<string> empty_return_vector = {"Empty, error when coding"};
+             return empty_return_vector;
         }
 
 }
 
 vector<string> getMapOfOffers(){
-        cout << "here";
         unordered_map<string, vector<vector<vector<string>>>> offerMap;
 
         // Iterating through the database to retrieve user offers
@@ -580,16 +570,16 @@ vector<string> get_food_restrictions(string username, string password) {
 
 vector<string> get_basic_user_data(string username, string password) {
     auto el = database->find(username); // Find the username in the database
-
+    
     if (el != database->end() && password == el->second.password) {
         // Username and password match correctly
-        return serialize_basic_data_of_user(el->second.basic_u_data);
+        return serialize_basic_data_of_user(el->second.basic_u_data);   
     }
     else {
         vector<string> empty_return_vector = {"Empty, error when coding"};
         return empty_return_vector;
     }
-
+    
 }
 
 
@@ -609,61 +599,12 @@ double check_user(string username, string password) {
 
 
 
-//Testing functions
-//void test_sending_fridges(vector_of_ingredients fridge) {
-//    cout << fridge[0].name << fridge[0].quantity << endl;
-//}
-
-//vector<string> test_sending_ingredient_as_vec(vector<string> ingredient) {
-//    cout << ingredient[0] << ingredient[0] << endl;
-//    return ingredient;
-//}
-
-//vector<vector<string>> test_sending_fridge_as_vec(vector<vector<string>> fridge) {
-//    cout << fridge[0][0] << fridge[1][1] << endl;
-//    return fridge;
-//}
 
 
-
-
-void initializeUser() {
-        // Create a test user with known credentials
-        UserData testUser;
-        testUser.password = "TestPassword";  // Set the test password
-        // Set up basic user data for the test user
-        testUser.basic_u_data.display_name = "Test User";
-        testUser.basic_u_data.telegram_username = "testuser123";
-        testUser.basic_u_data.gender = 1; // Assuming '1' is a valid value for gender
-        testUser.basic_u_data.promotion = 2022;
-        testUser.basic_u_data.building_address = "123 Test Street";
-        testUser.basic_u_data.phone_number = 1234567890;
-        testUser.basic_u_data.telegram_notifications = 1;
-        testUser.basic_u_data.marketplace_notifications = 1;
-
-        //fridge
-        vector<string> item1 = {"Milk", "2024-01-01", "2L", "Dairy", "High"};
-        vector<string> item2 = {"Eggs", "2024-02-01", "12", "Poultry", "Medium"};
-        testUser.fridge.push_back(item1);
-        testUser.fridge.push_back(item2);
-
-        //offer lists
-        vector<string> offer1_ingredient = {"Tomatoes", "2024-01-01", "5kg", "Vegetable", "Medium"};
-        vector<string> offer1_price = {"10"};
-        vector<vector<string>> offer1 = {offer1_ingredient, offer1_price};
-
-        vector<string> offer2_ingredient = {"Potatoes", "2024-02-01", "10kg", "Vegetable", "Low"};
-        vector<string> offer2_price = {"15"};
-        vector<vector<string>> offer2 = {offer2_ingredient, offer2_price};
-
-        testUser.offer_list.push_back(offer1);
-        testUser.offer_list.push_back(offer2);
-
-
-        // Add the test user to the database
-        (*database)["TestUser"] = testUser;  // "TestUser" is the test username
+vector<string> test_sending_ingredient_as_vec(vector<string> ingredient) {
+    cout << ingredient[0] << ingredient[0] << endl;
+    return ingredient;
 }
-
 
 
 void initializeUser() {
@@ -756,42 +697,6 @@ void test_update_username(){
 
 }
 
-/*
-void update_user_characteristics(string username, string password, vector<string> new_characs) {
-    auto el = database->find(username);
-
-    if (el != database->end() && password==el->second.password) {
-            basic_user_data new_user_data;
-            new_user_data = deserialize_basic_data_of_user(new_characs);
-            el->second.basic_u_data = new_user_data;
-            write_simple_types();
-    }
-    else if(password != el->second.password){
-            // Password does not match
-            auto err_obj = std::make_tuple(507, "Incorrect Password");
-            rpc::this_handler().respond_error(err_obj);
-    }
-    else {
-            // Username not found
-            auto err_obj = std::make_tuple(123, "Username not found");
-            rpc::this_handler().respond_error(err_obj);
-    }
-
-}
-
-struct basic_user_data {
-    string display_name;
-    string telegram_username;
-    string building_address;
-    int gender;
-    int promotion;
-    int phone_number;
-    int telegram_notifications;
-    int marketplace_notifications;
-    basic_user_data() {}
-};
-
-*/
 
 
 
@@ -818,7 +723,7 @@ void test_update_offer_list(){
     update_offer("User1", "Password1", offer_list);
 }
 
-/*
+
 void test_get_basic_user_data() {
     // Assuming you have a test user with known username and password
     string test_username = "TestUser";
@@ -890,7 +795,7 @@ void test_getMapOfOffers() {
     cout << endl;
 }
 
-*/
+
 
 
 void test_get_user_name_vectors() {
@@ -904,7 +809,7 @@ void test_get_user_name_vectors() {
 
 
 
-/*
+
 void test_get_food_restrictions() {
     string test_username = "TestUser";
     string test_password = "TestPassword";
@@ -917,7 +822,6 @@ void test_get_food_restrictions() {
     cout << endl;
 }
 
-*/
 
 
 
@@ -950,46 +854,45 @@ int main() {
     //test_get_food_restrictions();
 
     rpc::server srv(8080);
-
-
+    
+    
     //DB Manip/add/remove
     srv.bind("add_user", &add_user);
     srv.bind("remove_user", &remove_user);
     srv.bind("update_user", &update_user);
 
     srv.bind("update_user_characteristics", &update_user_characteristics);
-
+    
     srv.bind("update_fridge", &update_fridge);
     srv.bind("update_offer", &update_offer);
-
+    
     //DB Sending
     srv.bind("get_fridge", &get_fridge);
     srv.bind("get_offer_list", &get_offer_list);
     srv.bind("get_food_restrictions", &get_food_restrictions);
     srv.bind("get_basic_user_data", &get_basic_user_data);
-
+    
     //General Functions
     srv.bind("getMapOfOffers", &getMapOfOffers);
     srv.bind("get_user_name_vectors", &get_user_name_vectors);
     srv.bind("addRecipes", &addRecipes);
     srv.bind("getAllRecipes", &getAllRecipes);
-
-
-
+    
+    
+    
     //Check functions:
     srv.bind("check_user", &check_user);
-
-
+    
+    
     //binding test functions:
     //srv.bind("test_sending_fridge_as_vec", &test_sending_fridge_as_vec);
     //srv.bind("test_sending_ingredient_as_vec", &test_sending_ingredient_as_vec);
-
-
+    
+    
     //SERVER running from here:
     read_from_csv();
     cout << "running" << endl;
     srv.run();
-    cout << "end program..." << endl;
 
-    return 0;
+    return 0;    
 }

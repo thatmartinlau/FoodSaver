@@ -28,7 +28,7 @@ inline vector<string> serialize_basic_data_of_user(basic_user_data u_data) {
     serialized_basic_data.push_back(u_data.display_name);
     serialized_basic_data.push_back(u_data.telegram_username);
     serialized_basic_data.push_back(u_data.building_address);
-    serialized_basic_data.push_back(to_string(u_data.gender));
+    serialized_basic_data.push_back(to_string(u_data.gender));    
     serialized_basic_data.push_back(to_string(u_data.promotion));
     serialized_basic_data.push_back(to_string(u_data.telegram_notifications));
     serialized_basic_data.push_back(to_string(u_data.marketplace_notifications));
@@ -66,8 +66,8 @@ inline basic_user_data deserialize_basic_data_of_user(vector<string> user_data_a
 
 inline vector<string> serialize(vector<vector<string>> vector_of_vector){
     vector<string> just_vector;
-    for(int i =0 ; i<vector_of_vector.size(); i++){
-        for(int j =0; j<vector_of_vector[i].size(); j++ ){
+    for(size_t i = 0; i < vector_of_vector.size(); i++){
+        for(size_t j = 0; j < vector_of_vector[i].size(); j++){
             just_vector.push_back(vector_of_vector[i][j]);
         }
     }
@@ -77,15 +77,17 @@ inline vector<string> serialize(vector<vector<string>> vector_of_vector){
 inline vector<string> serialize_offer_list(vector<vector<vector<string>>> vector_of_vector_of_vector){
     vector<string> just_vector;
     for(int i =0 ; i<vector_of_vector_of_vector.size(); i++){
-        for (int k = 0; k < 5; k++) {
-            just_vector.push_back(vector_of_vector_of_vector[i][0][k]);
+        for(int j =0; j<vector_of_vector_of_vector[i].size(); j++ ){
+
+             for(int k =0; k<vector_of_vector_of_vector[i][j].size(); k++ ){
+
+                just_vector.push_back(vector_of_vector_of_vector[i][j][k]);
+            }
         }
-        just_vector.push_back(vector_of_vector_of_vector[i][1][0]);
-        }
+    }
     return just_vector;
 
 }
-
 
 
 inline vector<string> serialize_triple (vector<vector<vector<string>>> vector_triple){
@@ -159,9 +161,9 @@ inline vector<vector<string>> deserialize_offer (vector<string> offer){
 inline vector<vector<vector<string>>> deserialize_offer_list(vector<string> offer_list){
 
     vector<vector<vector<string>>> deserialize_offer_list;
-    for(int i =0; i<offer_list.size(); i+=6){
+    for(int i =0; i<offer_list.size(); i+=7){
         vector<string> vector_inter;
-        for(int j = i ; j<i+6; j++){
+        for(int j = i ; j<i+7; j++){
             vector_inter.push_back(offer_list[j]); // --> vector of an offer ;
         }
 
@@ -178,10 +180,10 @@ inline vector<vector<vector<string>>> deserialize_offer_list(vector<string> offe
 inline vector<vector<string>> deserialize_fridge(vector<string> fridge){
     vector<vector<string>> fridge_deser;
 
-    for(int i =0; i<fridge.size(); i+=5){
+    for(int i =0; i<fridge.size(); i+=6){
 
         vector<string> inter_vector;
-        for(int j =i; j<i+5; j++){
+        for(int j =i; j<i+6; j++){
             inter_vector.push_back(fridge[j]);
 
         }
@@ -253,11 +255,8 @@ inline unordered_map<string, vector<vector<vector<string>>>> deserialize_map(con
             maps[username] = user_offers;
         }
     }
-    serialized_map.erase(serialized_map.end()-1);//get rid of extra comma.
-    return serialized_map;
-}
 
-    // return maps;
+    return maps;
 }
 
 

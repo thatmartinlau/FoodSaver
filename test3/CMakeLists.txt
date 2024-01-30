@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #add_subdirectory(../server/POCOSocket/Server/web_teste ../server/POCOSocket/Server/web_teste)
 include_directories(../server/POCOSocket/Server/web_teste)
 
-#add_subdirectory(../server/POCOSocket/Server/web_teste/rpclib-master/ ../server/POCOSocket/Server/web_teste/rpclib-master/)
+add_subdirectory(../server/POCOSocket/Server/web_teste/rpclib-master/ ../server/POCOSocket/Server/web_teste/rpclib-master/)
 
 
 add_executable(test3				
@@ -34,7 +34,7 @@ add_executable(test3
 
 )
 
-#target_link_libraries(test3 rpc)
+target_link_libraries(test3 rpc)
 
 include(GNUInstallDirs)
 install(TARGETS test3
