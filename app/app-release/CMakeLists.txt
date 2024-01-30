@@ -8,8 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.2 COMPONENTS Core Quick Gui REQUIRED)
 qt_standard_project_setup(REQUIRES 6.5)
 
-include_directories(../../test3)
-add_subdirectory(../../test3 ../../test3)
+include_directories(../../test3 Header Source ../../server/POCOSocket/Server/web_teste)
+#add_subdirectory(../../test3 ../../test3)
+
+add_subdirectory(../../server/POCOSocket/Server/web_teste/rpclib-master/ ../../server/POCOSocket/Server/web_teste/rpclib-master/)
+
 # Add the source files
 
 
@@ -21,15 +24,16 @@ add_executable(${PROJECT_NAME} main.cpp
 	Header/fridgemanager.h
 	Header/Login.h
 	Header/profilemanager.h
-	Header/RecipeBook.h
+#	Header/RecipeBook.h
 	Header/settingsmanager.h
 	Header/Signin.h
 	Header/SigninInformation.h
+	
 	Source/currentUser.cpp
 	Source/fridgemanager.cpp
 	Source/Login.cpp
 	Source/profilemanager.cpp
-	Source/RecipeBook.cpp
+#	Source/RecipeBook.cpp
 	Source/settingsmanager.cpp
 	Source/Signin.cpp
 	Source/SigninInformation.cpp
@@ -41,7 +45,6 @@ add_executable(${PROJECT_NAME} main.cpp
 	../../test3/offer.h 
 	../../test3/recipe.h 
 	../../test3/user.h
-#	../../test3/
 	../../test3/main.cpp
 	../../test3/date.cpp 
 	../../test3/fridge.cpp
@@ -49,11 +52,12 @@ add_executable(${PROJECT_NAME} main.cpp
 	../../test3/offer.cpp
 	../../test3/user.cpp
 	../../test3/recipe.cpp
+	
 	qml.qrc
 )
 
 # Link the Qt5 libraries
-target_link_libraries(app-release PRIVATE Qt6::Core Qt6::Gui Qt6::Quick)
+target_link_libraries(app-release PRIVATE Qt6::Core Qt6::Gui Qt6::Quick rpc)
 
 include(GNUInstallDirs)
 install(TARGETS app-release

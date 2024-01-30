@@ -7,7 +7,7 @@
 #include <ctime>
 #include <vector>
 #include <regex>
-#include <lib/nlohmann/json.hpp>
+#include <nlohmann/json.hpp>
 #include <fstream>
 //#include "restClient.cpp"
 using json = nlohmann::json;

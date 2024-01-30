@@ -1,6 +1,6 @@
-#include "../Header/Signin.h"
-#include "../Header/user.h"
-#include "../Header/currentUser.h"
+#include "Signin.h"
+#include "user.h"
+#include "currentUser.h"
 
 
 Signin::Signin(QObject *parent) : QObject(parent) {}
