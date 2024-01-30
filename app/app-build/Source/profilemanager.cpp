@@ -30,16 +30,22 @@ void ProfileManager::applyChanges(const QString &displayName, const QString &gen
     std::string phonestr = phone.toStdString();             // Convert to int
     std::list<bool> food_restrictions = {vegetarian, vegan, glutenFree, lactoseIntolerant, pescatarian, halal};
 
+    if (displayNamestr!="" && displayNamestr!=CurrentUser::currentUser.User::get_display_name()){
+        CurrentUser::currentUser.User::set_display_name(displayNamestr);
+    }
+    qDebug() << "Name:" << CurrentUser::currentUser.User::get_display_name();
 
-    CurrentUser::currentUser.User::set_display_name(displayNamestr);
-    CurrentUser::currentUser.User::set_gender(genderstr);
-    CurrentUser::currentUser.User::set_room_number(addressstr);
-    CurrentUser::currentUser.User::set_promotion(promotionstr);
-    CurrentUser::currentUser.User::set_phone_number(phonestr);
-    CurrentUser::currentUser.User::set_diet(phonestr);
-
-
-
-
-    //figure out what to do with this information now
+    if (genderstr!="" && genderstr!=CurrentUser::currentUser.User::get_display_name()){
+        CurrentUser::currentUser.User::set_gender(genderstr);
+    }
+    if (addressstr!="" && addressstr!=CurrentUser::currentUser.User::get_room_number()){
+        CurrentUser::currentUser.User::set_room_number(addressstr);
+    }
+    if (promotionstr!="" && promotionstr!=CurrentUser::currentUser.User::get_promotion()){
+        CurrentUser::currentUser.User::set_promotion(promotionstr);
+    }
+    if (phonestr!="" && phonestr!=CurrentUser::currentUser.User::get_phone_number()){
+        CurrentUser::currentUser.User::set_phone_number(phonestr);
+    }
+   //need to figure out food restrictions because diet is a tring in user class
 }
