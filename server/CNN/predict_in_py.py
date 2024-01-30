@@ -29,7 +29,7 @@ model = models.resnet18(pretrained=True)
 num_ftrs = model.fc.in_features
 num_classes = 131  # Replace with the number of classes in your dataset
 model.fc = torch.nn.Linear(num_ftrs, num_classes)
-model.load_state_dict(torch.load('resnet18_fruits360.pth'))  # Load your trained model
+model.load_state_dict(torch.load('resnet18_fruits360.pth'), map_location=torch.device('cpu'))  # Load your trained model
 model = model.to(device)
 model.eval()
 
@@ -68,5 +68,5 @@ def imshow(inp, title=None):
     plt.show()
 
 # Test, change 'test1.jpg' to your path to image
-process_and_display_image('test1.jpg')
+process_and_display_image('test.jpg')
 
