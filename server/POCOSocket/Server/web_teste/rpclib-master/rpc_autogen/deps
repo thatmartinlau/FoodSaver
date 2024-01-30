@@ -1,209 +1,209 @@
 rpc_autogen/timestamp: \
-	/home/martinlau/Qt/Tools/CMake/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in \
-	/home/martinlau/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake \
-	/home/martinlau/Qt/Tools/CMake/share/cmake-3.27/Modules/CheckCXXSourceCompiles.cmake \
-	/home/martinlau/Qt/Tools/CMake/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake \
-	/home/martinlau/projects/FoodSaver/app/build-app-release-Desktop_Qt_6_5_3_GCC_64bit-Debug/.qtc/package-manager/auto-setup.cmake \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/CMakeLists.txt \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/check_warning_flag.cmake \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/coverage.cmake \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/msvc_support.cmake \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/policies.cmake \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/rpclibConfig.cmake.in \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/format.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/gmock/gmock.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/gtest/gtest.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/posix.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/src/format.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/src/posix.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/doc/pages/versions.md.in \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/client.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/compatibility.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/config.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/config.h.in \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/all.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/any.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/async_writer.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/bool.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/call.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/client_error.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/constant.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/dev_utils.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/func_tools.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/func_traits.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/if.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/invoke.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/is_specialization_of.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/log.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/make_unique.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/not.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/pimpl.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/response.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/server_session.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/thread_group.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/util.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/dispatcher.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/fbuffer.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/gcc_atomic.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/object.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack_define.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack_template.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/alpha.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/arm.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/blackfin.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/convex.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/ia64.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/m68k.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/mips.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/parisc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/ppc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/pyramid.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/rs6k.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/sparc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/superh.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/sys370.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/sys390.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/x86.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/x86/32.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/x86/64.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/z.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/borland.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/clang.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/comeau.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/compaq.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/diab.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/digitalmars.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/dignus.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/edg.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/ekopath.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/gcc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/gcc_xml.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/greenhills.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/hp_acc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/iar.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/ibm.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/intel.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/kai.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/llvm.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/metaware.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/metrowerks.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/microtec.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/mpw.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/palm.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/pgi.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/sgi_mipspro.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/sunpro.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/tendra.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/visualc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/watcom.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/_cassert.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/_exception.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/comp_detected.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/endian_compat.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/os_detected.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/platform_detected.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/test.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/test_def.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/arm.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/arm/versions.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/ppc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/ppc/versions.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/x86.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/x86/versions.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/x86_amd.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/x86_amd/versions.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/language.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/language/objc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/language/stdc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/language/stdcpp.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/_prefix.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/gnu.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/uc.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/vms.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/zos.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/_prefix.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/cxx.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/dinkumware.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/libcomo.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/modena.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/msl.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/roguewave.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/sgi.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/stdcpp3.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/stlport.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/vacpp.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/make.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/aix.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/amigaos.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/android.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/beos.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/bsdi.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/dragonfly.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/free.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/net.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/open.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/cygwin.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/haiku.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/hpux.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/ios.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/irix.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/linux.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/macos.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/os400.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/qnxnto.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/solaris.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/unix.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/vms.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/windows.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/other.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/other/endian.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/mingw.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/windows_desktop.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/windows_phone.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/windows_runtime.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/windows_store.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/version.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/version_number.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/sbuffer.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/sysdep.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/unpack.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/unpack_define.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/unpack_template.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/util.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/version.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/version_master.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/vrefbuffer.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/zbuffer.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/zone.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/rpc_error.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/server.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_handler.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_server.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_session.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/version.h \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/version.h.in \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/client.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/detail/client_error.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/detail/response.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/detail/server_session.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/dispatcher.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/nonstd/optional.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/rpc_error.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/server.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/this_handler.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/this_server.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/this_session.cc \
-	/home/martinlau/projects/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/rpclib.pc.in \
-	/home/martinlau/Qt/Tools/CMake/bin/cmake
+	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in \
+	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CMakePackageConfigHelpers.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/CheckCXXSourceCompiles.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.24/Modules/WriteBasicConfigVersionFile.cmake \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/app/build-app-release-Desktop_Qt_6_5_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/CMakeLists.txt \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/check_warning_flag.cmake \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/coverage.cmake \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/msvc_support.cmake \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/policies.cmake \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/cmake/rpclibConfig.cmake.in \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/format.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/gmock/gmock.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/gtest/gtest.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/include/posix.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/src/format.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/dependencies/src/posix.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/doc/pages/versions.md.in \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/client.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/compatibility.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/config.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/config.h.in \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/all.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/any.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/async_writer.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/bool.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/call.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/client_error.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/constant.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/dev_utils.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/func_tools.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/func_traits.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/if.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/invoke.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/is_specialization_of.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/log.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/make_unique.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/not.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/pimpl.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/response.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/server_session.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/thread_group.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/detail/util.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/dispatcher.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/fbuffer.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/gcc_atomic.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/object.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack_define.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/pack_template.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/alpha.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/arm.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/blackfin.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/convex.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/ia64.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/m68k.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/mips.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/parisc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/ppc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/pyramid.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/rs6k.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/sparc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/superh.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/sys370.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/sys390.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/x86.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/x86/32.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/x86/64.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/architecture/z.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/borland.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/clang.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/comeau.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/compaq.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/diab.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/digitalmars.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/dignus.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/edg.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/ekopath.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/gcc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/gcc_xml.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/greenhills.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/hp_acc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/iar.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/ibm.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/intel.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/kai.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/llvm.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/metaware.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/metrowerks.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/microtec.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/mpw.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/palm.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/pgi.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/sgi_mipspro.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/sunpro.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/tendra.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/visualc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/compiler/watcom.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/_cassert.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/_exception.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/comp_detected.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/endian_compat.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/os_detected.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/platform_detected.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/test.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/detail/test_def.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/arm.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/arm/versions.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/ppc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/ppc/versions.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/x86.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/x86/versions.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/x86_amd.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/hardware/simd/x86_amd/versions.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/language.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/language/objc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/language/stdc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/language/stdcpp.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/_prefix.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/gnu.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/uc.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/vms.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/c/zos.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/_prefix.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/cxx.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/dinkumware.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/libcomo.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/modena.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/msl.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/roguewave.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/sgi.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/stdcpp3.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/stlport.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/library/std/vacpp.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/make.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/aix.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/amigaos.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/android.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/beos.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/bsdi.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/dragonfly.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/free.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/net.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/bsd/open.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/cygwin.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/haiku.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/hpux.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/ios.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/irix.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/linux.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/macos.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/os400.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/qnxnto.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/solaris.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/unix.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/vms.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/os/windows.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/other.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/other/endian.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/mingw.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/windows_desktop.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/windows_phone.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/windows_runtime.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/platform/windows_store.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/version.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/predef/version_number.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/sbuffer.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/sysdep.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/unpack.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/unpack_define.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/unpack_template.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/util.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/version.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/version_master.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/vrefbuffer.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/zbuffer.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/msgpack/zone.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/rpc_error.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/server.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_handler.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_server.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/this_session.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/version.h \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/include/rpc/version.h.in \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/client.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/detail/client_error.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/detail/response.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/detail/server_session.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/dispatcher.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/nonstd/optional.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/rpc_error.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/server.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/this_handler.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/this_server.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/lib/rpc/this_session.cc \
+	C:/Users/adamn/OneDrive/Desktop/L'X\ School/FoodSaver/FoodSaver/server/POCOSocket/Server/web_teste/rpclib-master/rpclib.pc.in \
+	C:/Qt/Tools/CMake_64/bin/cmake.exe
