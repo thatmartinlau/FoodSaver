@@ -61,3 +61,11 @@ had to re-convert Sixtine''s test3 folder into CMake from qMake, debugged that, 
 This week is the last!
 
 Week 4: Final week!
+Hell of a week. Needed to repair CMake connection between test3 and app-side, because I was the only one experienced with this system.
+Further, I had to code twice the same things I had asked people to code before, and ran into a same-code-twice issue with Esma, wherein I coded what she coded.
+This was annoying to both of us, as we had agreed to let things flow, more naturally between us. However, in fine, we got it sorted. My main concern was having to do everything
+everyone else did, plus my own work on top. It really felt like I had to fx everything for everyone. Including re-writing code I had asked them to tst previously. However,
+this demonstrated that my leadership skills were at fault: I should've been more demanding with my group, asking them to do their work correctly since the beginning.
+So, in the end, I cannot put any of this on their shoulders: it was simply a lesson in taking things on my own shoulders, a great one at that: delegate, delegate, people!
+
+

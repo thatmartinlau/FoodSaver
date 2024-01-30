@@ -165,7 +165,7 @@ void read_from_csv() {
     read_simple_types_from_csv();//we begin here, initialize user class. Then, we initialise fridge and offer_list types. Along with food restrictions.
     read_fridge_and_food_lists_from_csv(); //use already initialized database. 
     read_offer_list_from_csv();
-    read_recipes_from_csv();
+//    read_recipes_from_csv();
 }
 
 
@@ -370,6 +370,7 @@ void update_user(string old_username, string old_password, string new_username, 
         
         database->erase(el);
         write_to_csv();//writes to all databases, this is to ensure no naming conflicts later.
+        
     }
     else if(old_password != el->second.password){
         // Password does not match
@@ -389,12 +390,11 @@ void update_user_characteristics(string username, string password, vector<string
 
     if (el != database->end() && password==el->second.password) {
         basic_user_data new_user_data;
-        //cout<< "I'm in"<< endl;
-        cout<< "I'm in"<< endl;
 
         new_user_data = deserialize_basic_data_of_user(new_characs);
         el->second.basic_u_data = new_user_data;
         write_simple_types();
+        cout << "Basic characteristics updated for user " << username << endl;
     }
     else if(password != el->second.password){
             // Password does not match
@@ -704,7 +704,7 @@ void test_update_user_characteristics(){
     string username = "TestUsername";
     string password = "TestPassword";
     vector<string> characteristics;
-    characteristics.push_back("newDisplay");
+    characteristics.push_back("Disp_name");
     characteristics.push_back("newtelegram");
     characteristics.push_back("batiment");
     characteristics.push_back("1");
@@ -713,7 +713,7 @@ void test_update_user_characteristics(){
     characteristics.push_back("3");
     characteristics.push_back("4");
     update_user_characteristics("User1", "Password1", characteristics);
-    cout<<(*database)["User1"].basic_u_data.display_name <<endl;
+    cout<< "updated user characteristics: new display name "<< (*database)["User1"].basic_u_data.display_name <<endl;
 
 
 }
@@ -748,7 +748,6 @@ void test_get_basic_user_data() {
 void test_get_fridge() {
     string test_username = "TestUser";
     string test_password = "TestPassword";
-
     // Call the get_fridge function with the test credentials
     vector<string> fridge_contents = get_fridge(test_username, test_password);
 
@@ -772,7 +771,6 @@ void test_getAllRecipes() {
 void test_get_offer_list() {
     string test_username = "TestUser";
     string test_password = "TestPassword";
-
     // Call the get_offer_list function with the test credentials
     vector<string> offer_list = get_offer_list(test_username, test_password);
 
@@ -831,6 +829,7 @@ void test_get_food_restrictions() {
 
 //main.............................................................
 int main() {
+    read_from_csv();
 
     cout << "Starting program..." << endl;
     // Run tests before starting the server
@@ -846,12 +845,12 @@ int main() {
 
     test_update_user_characteristics();
     test_update_offer_list();
-    //test_get_basic_user_data();
-    //test_get_fridge();
-    //test_getAllRecipes();
-    //test_get_offer_list();
-    //test_getMapOfOffers();
-    //test_get_food_restrictions();
+//    test_get_basic_user_data();
+//    test_get_fridge();
+    test_getAllRecipes();
+//    test_get_offer_list();
+    test_getMapOfOffers();
+//    test_get_food_restrictions();
 
     rpc::server srv(8080);
     
@@ -890,7 +889,6 @@ int main() {
     
     
     //SERVER running from here:
-    read_from_csv();
     cout << "running" << endl;
     srv.run();
 

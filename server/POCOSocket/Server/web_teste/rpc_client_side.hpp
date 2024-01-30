@@ -71,7 +71,7 @@ void addRecipes(vector<string> recipes);
 unordered_map<string, vector<vector<vector<string>>>> get_all_clients_with_offers();
 vector<string> get_all_recipes();
 
-int test_sending_to_db();
+//int test_sending_to_db();
 int test_getOfferMapFromServer();
 void test_serveruser_call_destroy();
 void test_update_fridge_get_fridge();

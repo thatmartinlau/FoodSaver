@@ -331,7 +331,6 @@ void ServerUser:: update_fridge(Fridge &f_input) {
 // working on vector<Offer> ;
 unordered_map<string, vector<vector<vector<string>>>> getOfferMapFromServer() {
     rpc::client new_cli(HOST_SERVER_NAME, HOST_SERVER_PORT);
-    cout <<"runs";
     vector<string> serialized_offer_Map = new_cli.call("getMapOfOffers").as<vector<string>>();
     cout << serialized_offer_Map[0];
     return deserialize_map(serialized_offer_Map);
@@ -462,6 +461,7 @@ void ServerUser::update_offer_list(vector<Offer> &offer_list) {
 
 int test_getOfferMapFromServer() {
     unordered_map<string, vector<vector<vector<string>>>> map_res = getOfferMapFromServer();
+    cout << "test 1: Retrieving an offer map from the server." << endl;    
     for (auto i: map_res) { //code from SOverflow, user NutCracker, 2017
         cout << i.first << " " << i.second[0][0][0] << endl;
     }
@@ -471,7 +471,8 @@ int test_getOfferMapFromServer() {
 void test_serveruser_call_destroy() {
     ServerUser srv_usr1("adam", "pass");
     vector<string> u_name_list = get_user_name_list();
-    cout << u_name_list[0] << u_name_list[1]; 
+    cout << "test 2: retrieving username List, after adding a new user." << endl;
+    cout << u_name_list[0] << u_name_list[1] << endl; 
 }
 
 void test_update_fridge_get_fridge() {
@@ -502,15 +503,17 @@ void test_update_fridge_get_fridge() {
     fridge.add_elt(ingredientInstance3);
     srv_usr1.update_fridge(fridge);
     Fridge f_returned = srv_usr1.get_fridge();
-    cout << f_returned.get_list()[0].get_name();
+    cout << "test3: Adding a fridge to the server, then retrieving it again, and outputting that." << endl;
+    cout << f_returned.get_list()[0].get_name() << endl;
 }
 
 int testing_suite() {
-//    int va = test_sending_to_db();
-    cout << "hi, running";    
-//    int val12 = test_getOfferMapFromServer(); //works!
-//    test_serveruser_call_destroy();
+//    int va = test_sending_to_db(); //works, renamed.
+    cout << "test suite running" << endl;  //formal!   
+    int val12 = test_getOfferMapFromServer(); //works!
+    test_serveruser_call_destroy();
     test_update_fridge_get_fridge();
+    cout << "All tests succeeded.";
     return  1;
 }
 
