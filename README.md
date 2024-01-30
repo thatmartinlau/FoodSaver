@@ -11,16 +11,19 @@ FoodSaver was designed as an app and a server that is meant to connect from one 
 <li><b>Telegram bot project</b>: This project is developed in tandem with the server and sends reminders whenever food items are about to expire.</li>
 
 <p>For your evaluation of our work, we invite you to check each of these projects to get a good picture of the overall spread of our work.</p>
+<p>Finally, we would like to preface this with the fact that each module/subproject works independently of the others, but are not linked together due to unforseen issues between compatibility between Cmake and Qmake.</p>
 
 <h2>I. Running the server</h2>
 Two step process to run the server:
 Firstly, go to server/POCOSocket/Server/CMakeLists.txt, which you should open as: Open Project in QT, under File tab. Then, simply click run. Green arrow.
 If you want to test out the clientside, if it were the case that app-release did not function,
 then:
-1. With a new qt window, head into server/POCOSocket/Server/web-teste/CMakeLists.txt , to open the client-side server section.
-2. Run the server from the above instruction.
-3. Run the client afterwards, after the server is built and you see "running" hopefully in the QT Console for the server project.
-4. You should see testing results in both consoles, after the rpc_client_side.cpp file runs.
+<ol>
+<li>With a new qt window, head into <code>server/POCOSocket/Server/web-teste/CMakeLists.txt</code> , to open the client-side server section.</li>
+<li>Run the server from the above instruction.</li>
+<li>Run the client afterwards, after the server is built and you see "running" hopefully in the QT Console for the server project.</li>
+<li>You should see testing results in both consoles, after the rpc_client_side.cpp file runs.</li>
+</ol>
 
 <h2>II. Running the app</h2>
 
@@ -31,8 +34,8 @@ then:
 
 <p>
 "app-release" is still under construction, as the app team is not yet experienced with Cmake, while it is needed by the server team in order to connect the two together.
-<br> We invite you to first try to compile "app-release" as it is aimed to be more functional to work alongside the rest of the other sub-projects associated with FoodSaver. To do so, open the following project file on Qt Creator: <code>/app/app-release/CMakeLists.txt</code>
-<br> Should "app-release" fail to compile, we invite you to open the "app-build" project which is a stable version of the app, but is not linked to the server and backend subprojects. To do so, open the following project file on Qt Creator: <code>/app/app-build/app-build.pro</code>
+<br> The compilation for "app-release" is broken as we have not had enough time to merge the two separate parts together. 
+<br> As "app-release" fails to compile (errors linked to CMake), we invite you to open the "app-build" project which is a stable version of the app, but is not linked to the server and backend subprojects. To do so, open the following project file on Qt Creator: <code>/app/app-build/app-build.pro</code>
 </p>
 
 <h3>
@@ -65,9 +68,10 @@ The reset button resets the recipe page to all the available recipes, reseting a
 <h3>6. Settings and profile</h3>
 <p>The settings page and profile pages are popups that open when a button is clicked on any of the Market, Recipes or Fridge pages. Their function is to allow the user to change their personal information, and then save this information to that it can be updated on the server.</p>
 
-<h2>III. Connecting the server to the app</h2>
+<h2>III. Backend code</h2>
+<p>Should you wish to pay interest to the backend code connecting the server and the app interface, you may open the project file on a new Qt window at the following directory: <code>/test3/CMakeLists.txt</code></p>
+<p>This project contains the code defining the important classes and functions used by both the server side and app side.</p>
+
 
 <h2>IV. Photo recognition and Telegram bot</h2>
-Please check server/CNN/README.txt and telegram-bot/telegram-bot/README.md for instructions.
-
-
+Please check <code>server/CNN/README.txt</code> and <code>telegram-bot/telegram-bot/README.md</code> for instructions.
