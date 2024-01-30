@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Window 2.2
 import QtQuick.Effects
 
+// Diana Parra
 Popup {
     id: myBasket
     anchors.centerIn: parent
@@ -11,7 +12,7 @@ Popup {
     height: 700
     closePolicy: Popup.CloseOnPressOutside
 
-
+    // Popup shadow
     background: MultiEffect {
             source: rect
             anchors.fill: rect
