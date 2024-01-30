@@ -74,4 +74,4 @@ The reset button resets the recipe page to all the available recipes, reseting a
 
 
 <h2>IV. Photo recognition and Telegram bot</h2>
-Please check <code>server/CNN/README.txt and telegram-bot/telegram-bot/README.md</code> for instructions.
+Please check <code>server/CNN/README.txt</code> and <code>telegram-bot/telegram-bot/README.md</code> for instructions.
