@@ -63,11 +63,6 @@ void User::add_ingredient_fridge(Ingredient elt){
     server_user->update_fridge(user_fridge);
 }
 
-/*testing purpose*/
-bool User::is_username(std::string username) {
-    return true;
-}
-
 /*
 // Returns true if username in user and false otherwise
 bool User::is_username(std::string username) {

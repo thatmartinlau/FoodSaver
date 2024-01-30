@@ -1,6 +1,6 @@
 #include "Login.h"
 #include "user.h"
-#include "currentUser.h"
+#include "../Header/currentUser.h"
 #include <string>
 #include <iostream>
 
@@ -13,8 +13,8 @@ bool Login::logIn(const QString &username, const QString &password) {
          return false;
      }
 
-
-     else if (!User::is_username(username.toStdString())) {
+     else if (!true) { //testing purposes, fix later
+     //else if (!User::is_username(username.toStdString())) {
          emit openUsernameError2();
          return false;
      }
@@ -24,7 +24,8 @@ bool Login::logIn(const QString &username, const QString &password) {
          return false;
      }
 
-     else if (!User::check_password(username.toStdString(),password.toStdString())) {
+     else if (!true) {
+     //else if (!User::check_password(username.toStdString(),password.toStdString())) {
          emit openPasswordError2();
          return false;
      }

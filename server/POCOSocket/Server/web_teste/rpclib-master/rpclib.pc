@@ -1,7 +1,7 @@
-prefix=C:/Program Files (x86)/app-release
+prefix=/usr/local
 exec_prefix=
-libdir=C:/Program Files (x86)/app-release/lib
-includedir=C:/Program Files (x86)/app-release/include
+libdir=/usr/local/lib
+includedir=/usr/local/include
 
 Name: rpclib
 Description: rpclib is a msgpack-rpc library written using modern C++

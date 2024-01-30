@@ -11,7 +11,8 @@ bool Signin::signIn(const QString &username, const QString &password, const QStr
         return false;
     }
 
-    else if (User::is_username(username.toStdString())) {
+    else if (false) {
+    //else if (User::is_username(username.toStdString())) {
         emit openUsernameError();
         return false;
     }
