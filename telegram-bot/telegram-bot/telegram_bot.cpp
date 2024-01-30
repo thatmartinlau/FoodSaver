@@ -75,8 +75,8 @@ int main() {
         bot.getApi().sendMessage(message->chat->id, "Welcome to FoodSaver bot, I can help you manage your fridge account." 
                                                     "Here are the things that I can do for you:\n"
                                                     "- /Login - login to your fridge account\n"
-                                                    "- /Register - register a new fridge account\n"
                                                     "- /Logout - terminate the link of this telegram account\n"
+                                                    "- /Register - register a new fridge account\n"
                                                     "- /Check_fridge - check your fridge contents\n"
                                                     "- /Get_random_recipe - get a random recipe from our recipe list\n");
     });
