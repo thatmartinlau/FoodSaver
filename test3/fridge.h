@@ -2,6 +2,8 @@
 #define FRIDGE_H
 
 #include "ingredient.h"
+#include <vector>
+using namespace std;
 
 
 #include <vector>

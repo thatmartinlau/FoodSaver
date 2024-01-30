@@ -13,5 +13,41 @@ Continue converting data to json. --> for every class in front.hpp converting th
 - Solving problem with Github --> managed to solve
 - Translate data of classes in json file for POCO - compatibility
 
-Week 10 : 11/12/2023 - 17/12/2023
-- Finishing data conversion into Json
+Week 10 : 18/12/2023 - 23/12/2023 :
+
+- Finished json on front end.  
+- Applying json converting algorithms to server_client.cpp --> converting data into vectors of strings. 
+- Debugging code --> client side. 
+
+Week 11 23/30
+- Finished debugging code on the entire rpc_cliend_side 
+- Finished converting to data_structure for back_end on rpc_client_side
+  
+Week 12 : 
+- Getting familiar with msgpack to help rpc_server side. 
+- Waiting for final updated classes from the front_end to code the final version of rpc_client_side.
+
+Week 13 : 08/01/2024 - 14/01/2024 
+- coding the entire final rpc_client_side updated with the front-end changes.
+  
+  
+Week 14: 15/01/2024 - 21/01/2024 : 
+
+- coding serialize functions (for double vector string, and triple vector string) 
+- coding deserialize functions
+- debugging again the code for rpc_client_side.
+- adding new enums in link with the wishes of the front end.
+
+Week 15 : 
+- preparing on the presentation
+- discussing with Esma on server_side and client_side to be updated of the changes of one and other.
+- coded the final version of the User class struct
+- created the link between User_data, Server_User and User classes --> linking server and front side.
+- get informed of correctness check of everyone.
+  
+  
+
+  
+
+
+
