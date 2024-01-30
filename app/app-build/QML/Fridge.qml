@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Effects
 //colors: green #5E9F7C lightgreen #D7ECDE
 
 
@@ -51,7 +52,6 @@ Rectangle {
             Button { text: "Recipes"; onClicked: stackView.replace(Qt.resolvedUrl("Recipes.qml")) }
 
         }*/
-
         Rectangle {
             width: 200
             height: 151

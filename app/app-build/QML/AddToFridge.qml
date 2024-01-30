@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.15
 import QtQuick.Layouts
 import QtQuick.Window 2.2
+import QtQuick.Effects
 
 Popup {
 
@@ -23,10 +24,32 @@ Popup {
         height: 220
         closePolicy: Popup.CloseOnEscape
 
-        background: Rectangle {
+        /*background: Rectangle {
                 color:"#EEEEEE"
                 radius: 12.5
+            }*/
+
+        background: MultiEffect {
+                source: rect
+                anchors.fill: rect
+                shadowBlur: 1.0
+                shadowColor: 'white'
+                shadowEnabled: true
             }
+
+            Rectangle {
+                id: rect
+                property int rectHeight: 210
+                property int rectWidth: 200
+                property int rectRadius: 12
+                property int shadowSize: 10
+                height: rectHeight
+                width: rectWidth
+                radius: rectRadius
+                color: '#EEEEEE'
+            }
+
+
         Column {
             anchors.centerIn: parent
             spacing: 10
