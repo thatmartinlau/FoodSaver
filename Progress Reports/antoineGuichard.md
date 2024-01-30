@@ -68,7 +68,7 @@ This summarizes the progress made so far, and I look forward to further advancem
 
 
 
-# Old weekly reports (not formated)
+# Old weekly reports (not formated, not formal, but way more detailed)
 
 Hello everyone, 
 
