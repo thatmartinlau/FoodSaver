@@ -243,7 +243,7 @@ int main() {
         std::cout << std::endl;
         float epoch_acc_val = acc_val / batch_index_val;
         if (epoch_acc_val > best_acc) {
-            torch::save(model, "best_result.pt");
+            // torch::save(model, "best_result.pt");
             best_acc = epoch_acc_val;
         }
         loss_train = 0; loss_val = 0; acc_train = 0; acc_val = 0; batch_index_train = 0; batch_index_val = 0;
