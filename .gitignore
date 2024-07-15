@@ -55,3 +55,6 @@ compile_commands.json
 
 # VSCode folder in PocoSocket
 .vscode/*
+
+# MacOS shit 
+.DS_Store
