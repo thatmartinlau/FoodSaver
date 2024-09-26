@@ -1,3 +1,8 @@
+**Disclaimer**
+FoodSaver 1.0 is now an obsolete project and will be completely reworked in FoodSaver 2.0.
+
+----
+
 <h1>FoodSaver</h1>
 <p>A CSE201 project - Saving food, one fridge at a time!</p>
 
